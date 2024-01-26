@@ -1,0 +1,223 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ae="clr-namespace:AvaloniaEdit.Editing;assembly=AvaloniaEdit"
+        xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+        xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls">
+
+  <!-- Add Styles Here -->
+  <Style Selector="Label.LayoutItem">
+    <Setter Property="Margin" Value="6"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxtl|TreeListControl.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+  </Style>
+  <Style Selector="mxtl|TreeViewControl.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0" />
+  </Style>
+  <Style Selector="mxe|ComboBoxEditor.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxe|PopupColorEditor.LayoutItem">
+	  <Setter Property="Margin" Value="6,0,6,0"/>
+	  <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxe|CheckEditor.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="CheckBox.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="Image.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+  </Style>
+  <Style Selector="RadioButton.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxe|TextEditor.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxe|ButtonEditor.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxe|SpinEditor.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxe|DateEditor.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxe|SegmentedEditor.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="mxe|HyperlinkEditor.LayoutItem">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="Label">
+    <Setter Property="FontSize" Value="12"/>
+  </Style>
+  <Style Selector="Label.Caption">
+    <Setter Property="FontWeight" Value="Bold"/>
+  </Style>
+  <Style Selector="Button.LayoutItem">
+    <Setter Property="Margin" Value="6,8,6,8"/>
+    <Setter Property="MinWidth" Value="100"></Setter>
+  </Style>
+  <Style Selector="Button.LayoutItemFirst">
+    <Setter Property="Margin" Value="6,8,6,8"/>
+    <Setter Property="MinWidth" Value="100"></Setter>
+  </Style>
+  <Style Selector="Button.LayoutItemMiddle">
+    <Setter Property="Margin" Value="0,8,6,8"/>
+    <Setter Property="MinWidth" Value="100"></Setter>
+  </Style>
+  <Style Selector="Button.LayoutItemLast">
+    <Setter Property="Margin" Value="0,8,0,8"/>
+    <Setter Property="MinWidth" Value="100"></Setter>
+  </Style>
+  
+  <Style Selector=":is(Panel).LayoutGroup > :is(Control)">
+	  <Setter Property="Margin" Value="6,8,0,8"/>
+  </Style>
+  <Style Selector=":is(Panel).LayoutGroup > :is(Control):nth-last-child(1)">
+	  <Setter Property="Margin" Value="6,8,6,8"/>
+  </Style>
+  
+  <Style Selector=":is(Panel).LayoutGroup.Vertical > :is(Control)">
+	  <Setter Property="Margin" Value="6,8,6,0"/>
+  </Style>
+  <Style Selector=":is(Panel).LayoutGroup.Vertical > :is(Control):nth-last-child(1)">
+	  <Setter Property="Margin" Value="6,8,6,8"/>
+  </Style>
+  
+  <Style Selector=":is(Panel).LayoutGroup > :is(Panel).LayoutGroup">
+	  <Setter Property="Margin" Value="0"/>
+  </Style>
+  
+  <Style Selector="Button.LayoutItemNarrow">
+    <Setter Property="Margin" Value="6,0,6,0"/>
+  </Style>
+  <Style Selector="Grid.LayoutControl">
+    <Setter Property="Margin" Value="12"/>
+  </Style>
+  <Style Selector="StackPanel.LayoutControl">
+     <Setter Property="Margin" Value="12"/>
+  </Style>
+  <Style Selector="Button.IconButton">
+        <Setter Property="MinHeight" Value="28"></Setter>
+        <Setter Property="MinWidth" Value="28"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="8"></Setter>
+    </Style>
+    
+
+    <Style Selector="Button.Link">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    
+    <Style Selector="Button.Link:pointerover">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    
+    <Style Selector="Button.Link:pointerover TextBlock">
+        <Setter Property="TextDecorations" Value="Underline"></Setter>
+    </Style>
+
+
+    <Style Selector="Window.DialogWindow">
+        <Setter Property="Padding" Value="{DynamicResource windowPadding}"></Setter>
+    </Style>
+
+    <Style Selector="mxe|TextEditor.Hyperlink">
+          <Setter Property="Foreground" Value="{DynamicResource Icons/Outline/Blue}"/>
+          <Setter Property="ReadOnly" Value="True"/>
+          <Setter Property="Template">
+              <ControlTemplate>
+                  <TextBlock Cursor="Hand"
+                             Text="{TemplateBinding EditorValue}"
+                             VerticalAlignment="Center"
+                             TextDecorations="Underline"        
+                             Name="PART_RealEditorPresenter"
+                             TextTrimming="CharacterEllipsis"/>
+              </ControlTemplate>
+          </Setter>
+    </Style>
+    <Style Selector="mxe|TextEditor.Hyperlink:activeMode">
+          <Setter Property="Foreground" Value="{DynamicResource Icons/Outline/Blue}"/>
+          <Setter Property="ReadOnly" Value="True"/>
+          <Setter Property="Template">
+              <ControlTemplate>
+                  <TextBlock Cursor="Hand"
+                             VerticalAlignment="Center"
+                             TextDecorations="Underline"
+                             Text="{TemplateBinding EditorValue}"
+                             Name="PART_RealEditorPresenter"
+                             TextTrimming="CharacterEllipsis"/>
+              </ControlTemplate>
+          </Setter>
+    </Style>
+  
+  <Style Selector="Border.SimpleBorder">
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource Control/Border/Curved/Neutral/Enabled}"/>
+      <Setter Property="Margin" Value="6"/>
+  </Style>
+
+	<Style Selector="TextBlock.ColumnHeaderControlCaption">
+		<Setter Property="Text" Value="{Binding Converter={mxe:StringUpperCaseConverter}}" />
+		<Setter Property="FontSize" Value="11" />
+	</Style>
+    
+    <Style Selector="ae|TextArea">
+        <Setter Property="SelectionBrush" Value="{DynamicResource Fill/Accent/Highlighting/Text}" />
+    </Style>   
+  
+  <Style Selector="Label.EditorHeader">
+    <Setter Property="VerticalAlignment" Value="Bottom"/>
+    <Setter Property="Margin" Value="6,0,6,12"/>
+    <Setter Property="FontSize" Value="12"/>
+  </Style>
+  
+  <Style Selector="ContentControl.DemoUserControl">
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border Background="{DynamicResource Fill/Neutral/Secondary/Enabled}"
+                  BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
+                  BorderThickness="1,0,1,0">
+            <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
+              <!-- <Border IsHitTestVisible="False" BoxShadow="0 0.39 1.45 #06000000" Margin="30" CornerRadius="7"/> -->
+              <!-- <Border IsHitTestVisible="False" BoxShadow="0 1.8 4.06 0 #09000000" Margin="30" CornerRadius="7"/> -->
+              <!-- <Border IsHitTestVisible="False" BoxShadow="0 4.56 10.9 0 #12000000" Margin="30" CornerRadius="7"/> -->
+              <!-- <Border IsHitTestVisible="False" BoxShadow="0 0 1 0 #52000000" Margin="30" CornerRadius="7"/> -->
+              <Border Background="{DynamicResource Fill/Neutral/Primary/Enabled}"
+                      BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
+                      BorderThickness="1"
+                      Margin="30"
+                      CornerRadius="0"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Padding="26">
+                <ContentPresenter Content="{TemplateBinding Content}"/>
+              </Border>
+            </Panel>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</Styles>

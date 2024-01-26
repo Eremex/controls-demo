@@ -1,0 +1,55 @@
+<UserControl x:Class="DemoCenter.Views.SegmentedEditorPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxei="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:data="using:DemoCenter.DemoData"
+             xmlns:view="using:DemoCenter.Views"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="600"
+             d:DesignWidth="800"
+             x:CompileBindings="False"
+             x:DataType="vm:SegmentedEditorPageViewModel"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:SegmentedEditorPageViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*">
+        <ContentControl Classes="DemoUserControl">
+            <Border>
+                <Border.Background>
+                    <MultiBinding Converter="{view:SegmentedEditorViewBackgroundConverter}">
+                        <Binding Path="EditorValue" ElementName="ViewTypesSelector"/>
+                        <DynamicResourceExtension ResourceKey="TransparentBrush"/>
+                        <DynamicResourceExtension ResourceKey="Fill/Neutral/Secondary/Enabled"/>
+                    </MultiBinding>
+                </Border.Background>
+                <Grid RowDefinitions="Auto, 30, Auto, 30, Auto, Auto" ColumnDefinitions="300, *, 200" Width="560" Margin="30">
+                    <mxe:SegmentedEditor x:Name="GraphicViewSelector" EditorValue="{Binding GraphicView}"
+                                         ItemsSource="{mxc:EnumItemsSource EnumType=data:GraphicView, ShowImages=True, ShowNames=False, ImageSize='32,32', NameToDescriptionConverter={view:EnumDescriptionConverter}}"
+                                         Grid.ColumnSpan="3"/>
+                    <Border x:Name="ImageBorder" Grid.Row="2" Grid.ColumnSpan="3" BorderThickness="{StaticResource EditorBorderThickness}" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+                        <Image Grid.Column="2" HorizontalAlignment="Stretch" Width="96" Height="96" Source="{Binding SelectedItem.Image, ElementName=GraphicViewSelector}"/>
+                    </Border>
+                    <Label Content="Horizontal Alignment:" Grid.Row="4" Classes="LayoutItem"/>
+                    <mxe:SegmentedEditor x:Name="HorizontalAlignmentSelector" Grid.Row="5" EditorValue="{Binding HorizontalAlignment, ElementName=ImageBorder, Mode=TwoWay}"
+                                         ItemsSource="{mxc:EnumItemsSource EnumType=HorizontalAlignment}" Classes="LayoutItem"/>
+                    <Label Content="View Type:" Grid.Row="4" Grid.Column="2" Classes="LayoutItem"/>
+                    <mxe:SegmentedEditor x:Name="ViewTypesSelector" Grid.Row="5" Grid.Column="2"
+                                         Classes="LayoutItem"
+                                         EditorValue="{Binding SelectedViewType, Mode=TwoWay}"
+                                         ItemsSource="{Binding ViewTypes}"/>
+                </Grid>
+            </Border>
+        </ContentControl>
+    </Grid>
+</UserControl>

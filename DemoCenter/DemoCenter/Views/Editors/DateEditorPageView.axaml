@@ -1,0 +1,71 @@
+<UserControl x:Class="DemoCenter.Views.DateEditorPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="550"
+             d:DesignWidth="800"
+             x:CompileBindings="False"
+             x:DataType="vm:DateEditorPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+		<vm:DateEditorPageViewModel />
+	</Design.DataContext>
+
+    <Grid ColumnDefinitions="*, 250">
+        <ContentControl Classes="DemoUserControl">
+                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, 26, Auto"
+                              Margin="30"
+                          IsEnabled="{Binding #IsEnabledSelector.IsChecked}">
+                        <Label Content="Date Editor" Classes="EditorHeader"/>
+                        <mxe:DateEditor HorizontalAlignment="Stretch"
+                                        FirstDayOfWeek="Monday"
+                                        ShowToday="{Binding #ShowTodaySelector.IsChecked}" 
+                                        NullValueButtonPosition="{Binding NullValueButtonPosition}"
+                                        MinValue="{Binding Minimum}"
+                                        DateTime="{Binding Current, Mode=TwoWay}"
+                                        MaxValue="{Binding Maximum}"
+                                        DisplayFormatString="{Binding SelectedTextFormat}"
+                                        Margin="0,8"
+                                        Width="256"
+                                        VerticalAlignment="Top"
+                                        Grid.Row="1"/>
+                        <Label Content="Calendar" Grid.Row="0" Grid.Column="2" Classes="EditorHeader"/>
+                        <mxe:CalendarControl FirstDayOfWeek="Monday"
+                                             IsTodayHighlighted="{Binding #ShowTodaySelector.IsChecked}"
+                                             DisplayDateStart="{Binding Minimum}"
+                                             DisplayDateEnd="{Binding Maximum}"
+                                             SelectedDate="{Binding Current, Mode=TwoWay}"
+                                             Margin="0,8"
+                                             Grid.Column="2"
+                                             Grid.Row="1"/>
+                    </Grid>
+            </ContentControl>
+        <!--Options-->
+        <Grid Grid.Column="1" ColumnDefinitions="Auto, *">
+            <Border Width="1" Background="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
+            <StackPanel Grid.Column="1">
+                <mxe:GroupBox Header="Properties">
+                    <StackPanel>
+                        <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="LayoutItem"/>
+                        <mxe:CheckEditor x:Name="ShowTodaySelector" Content="Highlight Today Date" IsChecked="True" Classes="LayoutItem"/>
+                        <mxe:CheckEditor x:Name="ShowNullValueButtonSelector" Content="Show Clear Button in Popup" IsChecked="{Binding ShowNullButton, Mode=TwoWay}" Classes="LayoutItem"/>
+
+                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto">
+                            <Label Content="Maximum:" Classes="LayoutItem" Grid.Row="0"/>
+                            <mxe:DateEditor x:Name="MaximumValueEditor" Grid.Row="0" Grid.Column="1" DateTime="{Binding Maximum, Mode=TwoWay}" Classes="LayoutItem"/>
+                            <Label Content="Minimum:" Classes="LayoutItem" Grid.Row="1"/>
+                            <mxe:DateEditor x:Name="MinimumValueEditor" Grid.Row="1" Grid.Column="1" DateTime="{Binding Minimum, Mode=TwoWay}" Classes="LayoutItem"/>
+                            <Label Content="Date Format:" Grid.Row="2" Classes="LayoutItem"/>
+                            <mxe:ComboBoxEditor x:Name="ProgressTextFormatSelector" Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Left"
+                                                ItemsSource="{Binding Formats}" IsTextEditable="False"
+                                                SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="LayoutItem"/>
+                        </Grid>
+                    </StackPanel>
+                </mxe:GroupBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

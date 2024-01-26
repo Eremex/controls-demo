@@ -1,0 +1,157 @@
+<UserControl x:Class="DemoCenter.Views.BarItemsPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="640"
+             d:DesignWidth="850"
+             x:CompileBindings="False"
+             x:DataType="vm:BarItemsPageViewModel"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:BarItemsPageViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*, 250">
+        <mxb:ToolbarManager IsWindowManager="True">
+            <Grid RowDefinitions="Auto, 100, Auto, 100, Auto"
+                  HorizontalAlignment="Center"
+                  Margin="0,80,0,0" Width="420">
+
+                <mxb:ToolbarContainerControl>
+                    <mxb:Toolbar ShowCustomizationButton="False" AllowDragToolbar="False">
+                        <mxb:ToolbarButtonItem Name="ButtonItem" Header="Create" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=NewFolderAction.svg'}" 
+                                               GlyphSize="32,32"/>
+                        <mxb:ToolbarCheckItem x:Name="ButtonCheckItem" Header="Lock" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=PCB, Icon=Lock True.svg'}" GlyphSize="32,32"/>
+                        
+                        <mxb:ToolbarButtonItem x:Name="ButtonDropDownItem"
+                                               Header="Save" 
+                                               Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" GlyphSize="32,32">
+                            <mxb:ToolbarButtonItem.DropDownControl>
+                                <mxb:PopupMenu>
+                                    <mxb:ToolbarButtonItem Header="Save All" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save All.svg'}"/>
+                                    <mxb:ToolbarButtonItem Header="Save 3D model" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=3D, Icon=Save.svg'}"/>
+                                </mxb:PopupMenu>
+                            </mxb:ToolbarButtonItem.DropDownControl>
+                        </mxb:ToolbarButtonItem>
+
+                        <mxb:ToolbarEditorItem>
+                            <mxb:ToolbarEditorItem.Editor>
+                                <mxe:ButtonEditor Width="200" NullValueButtonPosition="EditorBox" EditorValue="Toolbar editor item"/>
+                            </mxb:ToolbarEditorItem.Editor>
+                        </mxb:ToolbarEditorItem>
+                    </mxb:Toolbar>
+                </mxb:ToolbarContainerControl>
+
+                <mxe:GroupBox Grid.Row="2" Header="Selected Item" Classes="LayoutItem" HorizontalAlignment="Left">
+                    <StackPanel Spacing="10">
+                        <RadioButton x:Name="ButtonItemSelector" Classes="LayoutItem" GroupName="G1" IsChecked="True" 
+                                     IsCheckedChanged="OnRadioButtonCheckedChanged">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=NewFolderAction.svg'}" Width="32" Height="32"/>
+                                    <Label Content="BarButtonItem" Classes="LayoutItem"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton x:Name="ButtonCheckItemSelector" Classes="LayoutItem" GroupName="G1"
+                                     IsCheckedChanged="OnRadioButtonCheckedChanged">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{SvgImage 'avares://DemoCenter/Images/Group=PCB, Icon=Lock True.svg'}" Width="32" Height="32"/>
+                                    <Label Content="BarCheckItem" Classes="LayoutItem"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton x:Name="ButtonDropDownItemSelector" Classes="LayoutItem" GroupName="G1"
+                                     IsCheckedChanged="OnRadioButtonCheckedChanged">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" Width="32" Height="32"/>
+                                    <Label Content="BarButtonItem with DropDown" Classes="LayoutItem"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton x:Name="TextItemSelector" Classes="LayoutItem" GroupName="G1"
+                                     IsCheckedChanged="OnRadioButtonCheckedChanged">
+                            <RadioButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}" Width="32" Height="32"/>
+                                    <Label Content="BarTextItem" Classes="LayoutItem"/>
+                                </StackPanel>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </StackPanel>
+                </mxe:GroupBox>
+                <mxb:ToolbarContainerControl Grid.Row="4">
+                    <mxb:Toolbar ShowCustomizationButton="False" AllowDragToolbar="False">
+                        <mxb:ToolbarTextItem x:Name="TextItem"
+                                             DisplayMode="Both" Header="Info"
+                                             ShowBorder="False"
+                                             Glyph="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}"
+                                             GlyphSize="32,32"/>
+                    </mxb:Toolbar>
+                </mxb:ToolbarContainerControl>
+            </Grid>
+        </mxb:ToolbarManager>
+        <!--Options-->
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox x:Name="PropertiesSelector" Header="Selected item properties">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Visible" IsChecked="{Binding IsVisible, Mode=TwoWay}" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="{Binding IsEnabled, Mode=TwoWay}" Classes="LayoutItem"/>
+                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+                        <Label Content="Display Mode:" Classes="LayoutItem" Grid.Row="0"/>
+                        <mxe:ComboBoxEditor x:Name="DisplayModeSelector" Grid.Row="0" Grid.Column="1" IsTextEditable="False"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:ToolbarItemDisplayMode}"
+                                            EditorValue="{Binding DisplayMode, Mode=TwoWay}"
+                                            Classes="LayoutItem" />                        
+                        <Label Content="Glyph Alignment:" Classes="LayoutItem" Grid.Row="1"/>
+                        <mxe:ComboBoxEditor x:Name="AlignmentSelector" Grid.Row="1" Grid.Column="1" IsTextEditable="False" 
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:Alignment}" 
+                                            EditorValue="{Binding GlyphAlignment, Mode=TwoWay}" 
+                                            Classes="LayoutItem"/>
+                        <Label Content="Glyph Size:" Classes="LayoutItem" Grid.Row="2"/>
+                        <mxe:ComboBoxEditor x:Name="GlyphSizeSelector" Grid.Row="2" Grid.Column="1" IsTextEditable="False"
+                                            ItemsSource="{x:Static vm:BarItemsPageViewModel.GlyphSizes}"
+                                            EditorValue="{Binding GlyphSize, Mode=TwoWay}"
+                                            Classes="LayoutItem"/>
+                        <Label Content="Open Mode:" Classes="LayoutItem" Grid.Row="3"
+                               IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
+                        <mxe:ComboBoxEditor x:Name="DropDownOpenModeSelector" Grid.Row="3" Grid.Column="1" IsTextEditable="False"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:DropDownOpenMode}"
+                                            EditorValue="{Binding #ButtonDropDownItem.DropDownOpenMode, Mode=TwoWay}"
+                                            Classes="LayoutItem"
+                                            IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
+                        <Label Content="Arrow Visibility:" Classes="LayoutItem" Grid.Row="4"
+                               IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
+                        <mxe:ComboBoxEditor x:Name="DropDownArrowVisibilitySelector" Grid.Row="4" Grid.Column="1" IsTextEditable="False"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:DropDownArrowVisibility}"
+                                            EditorValue="{Binding #ButtonDropDownItem.DropDownArrowVisibility, Mode=TwoWay}"
+                                            Classes="LayoutItem"
+                                            IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
+                        <Label Content="Arrow Alignment:" Classes="LayoutItem" Grid.Row="5"
+                               IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
+                        <mxe:ComboBoxEditor x:Name="DropDownArrowAlignmentSelector" Grid.Row="5" Grid.Column="1" IsTextEditable="False"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:DropDownArrowAlignment}"
+                                            EditorValue="{Binding #ButtonDropDownItem.DropDownArrowAlignment, Mode=TwoWay}"
+                                            Classes="LayoutItem"
+                                            IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
+                    </Grid>
+                    <mxe:CheckEditor x:Name="IsCheckedSelector" Content="Is Checked"
+                                     IsVisible="{Binding #ButtonCheckItemSelector.IsChecked}"
+                                     IsChecked="{Binding #ButtonCheckItem.IsChecked, Mode=TwoWay}" 
+                                     Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="ShowBorderSelector" Content="Show Border"
+                                     IsVisible="{Binding #TextItemSelector.IsChecked}"
+                                     IsChecked="{Binding #TextItem.ShowBorder, Mode=TwoWay}"
+                                     Classes="LayoutItem"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

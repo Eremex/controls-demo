@@ -1,0 +1,28 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:DemoCenter"
+             x:Class="DemoCenter.App"
+             RequestedThemeVariant="Light">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Resources/Colors.Light.axaml"/>
+                <ResourceInclude Source="/Resources/Colors.Dark.axaml"/>
+                <ResourceInclude Source="/Resources/SharedResources.axaml"/>
+                <ResourceInclude Source="/Resources/SearchPanel.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <StyleInclude x:Key="EremexLightTheme" Source="avares://Eremex.Avalonia.Controls/Themes/Light/Theme.axaml"/>
+            <StyleInclude x:Key="EremexDarkTheme" Source="avares://Eremex.Avalonia.Controls/Themes/Dark/Theme.axaml"/>
+        </ResourceDictionary>
+    </Application.Resources>
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+        <StyleInclude Source="avares://Eremex.Avalonia.Controls/Themes/Generic.axaml"/>
+        <StyleInclude Source="/Resources/SharedStyles.axaml"/>
+    </Application.Styles>
+</Application>

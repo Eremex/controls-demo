@@ -1,0 +1,206 @@
+<UserControl x:Class="DemoCenter.Views.ToolbarAndMenuPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:data="using:DemoCenter.DemoData"
+             xmlns:view="clr-namespace:DemoCenter.Views;assembly=DemoCenter"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             xmlns:helpers="clr-namespace:DemoCenter.Views.Bars.Helpers;assembly=DemoCenter"
+             d:DesignHeight="640"
+             d:DesignWidth="800"
+             x:CompileBindings="False"
+             x:Name="Page"
+             x:DataType="vm:ToolbarAndMenuPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+        <vm:ToolbarAndMenuPageViewModel />
+	</Design.DataContext>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ControlTemplate x:Key="DemoToolbarBorderTemplate">
+                <Grid>
+                    <Border CornerRadius="4" Margin="1, 2" Background="LightPink" Classes.highlight="{Binding $parent[mxb:Toolbar].(view:ToolbarAndMenuPageView.IsToolbarSelected)}" Opacity="0"/>
+                    <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="22" Padding="1">
+                        <ContentPresenter Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="Border.highlight">
+            <Style.Animations>
+                <Animation Duration="0:0:2" IterationCount="1">
+                    <KeyFrame Cue="20%">
+                        <Setter Property="Opacity" Value="1"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="80%">
+                        <Setter Property="Opacity" Value="1"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="0"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="mxb|Toolbar /template/ContentControl#PART_Border">
+            <Setter Property="Template" Value="{StaticResource DemoToolbarBorderTemplate}"/>
+        </Style>
+        <Style Selector="mxb|Toolbar:floating /template/ContentControl#PART_Border">
+            <Setter Property="Template" Value="{StaticResource DemoToolbarBorderTemplate}"/>
+        </Style>
+        <Style Selector="mxb|Toolbar:vertical /template/ContentControl#PART_Border">
+            <Setter Property="Template" Value="{StaticResource DemoToolbarBorderTemplate}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Border BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" BorderThickness="1,0">
+        <Grid ColumnDefinitions="*, 250">
+            <mxb:ToolbarManager IsWindowManager="True">
+                <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="Auto, *, Auto">
+                    <mxb:ToolbarContainerControl Grid.ColumnSpan="3" DockType="Top">
+                        <mxb:Toolbar x:Name="MainMenu" ToolbarName="Main Menu" DisplayMode="MainMenu" ShowCustomizationButton="False">
+                            <mxb:ToolbarMenuItem Header="File" Category="File">
+                                <mxb:ToolbarButtonItem Header="New" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=NewDraftAction.svg'}" Category="File"/>
+                                <mxb:ToolbarButtonItem Header="Open" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Open.svg'}" Category="File"/>
+                                <mxb:ToolbarButtonItem Header="Save" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" Category="File"/>
+                                <mxb:ToolbarButtonItem Header="Print" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Print.svg'}" ShowSeparator="True"  Category="File"/>
+                            </mxb:ToolbarMenuItem>
+
+                            <mxb:ToolbarMenuItem Header="Edit" Category="Edit">
+                                <mxb:ToolbarButtonItem Header="Cut" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Cut.svg'}" Category="Edit"/>
+                                <mxb:ToolbarButtonItem Header="Copy" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Copy.svg'}" Category="Edit"/>
+                                <mxb:ToolbarButtonItem Header="Paste" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Paste.svg'}" Category="Edit"/>
+                                <mxb:ToolbarButtonItem Header="Select All" Command="{Binding #textBox.SelectAll}" Category="Edit" ShowSeparator="True"/>
+                                <mxb:ToolbarButtonItem Header="Clear all" Command="{Binding #textBox.Clear}" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Clear.svg'}" Category="Edit"/>
+                            </mxb:ToolbarMenuItem>
+
+                            <mxb:ToolbarMenuItem Header="View" Category="View">
+                                <mxb:ToolbarMenuItem Header="Zoom">
+                                    <mxb:ToolbarButtonItem Header="Zoom Out" Command="{Binding #scaleDecorator.DecreaseCommand}" Category="View"/>
+                                    <mxb:ToolbarButtonItem Header="Zoom In" Command="{Binding #scaleDecorator.IncreaseCommand}" Category="View"/>
+                                    <mxb:ToolbarButtonItem Header="Restore Default Zoom" Command="{Binding #scaleDecorator.DefaultScaleCommand}" Category="View"/>
+                                </mxb:ToolbarMenuItem>
+                                <mxb:ToolbarCheckItem Header="Status Bar" IsChecked="{Binding #StatusBar.IsVisible, Mode=TwoWay}" Category="View"/>
+                            </mxb:ToolbarMenuItem>
+
+                            <mxb:ToolbarMenuItem Alignment="Far" Header="Options" Category="Options">
+                                <mxb:ToolbarButtonItem Header="Check for Updates" Category="Options"/>
+                                <mxb:ToolbarButtonItem Header="About" Category="Options" ShowSeparator="True"/>
+                            </mxb:ToolbarMenuItem>
+                        </mxb:Toolbar>
+
+                        <mxb:Toolbar x:Name="FileToolbar" ToolbarName="File" ShowCustomizationButton="False">
+                            <mxb:ToolbarButtonItem Header="New" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=NewDraftAction.svg'}" Category="File"/>
+                            <mxb:ToolbarButtonItem Header="Open" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Open.svg'}" Category="File"/>
+                            <mxb:ToolbarButtonItem Header="Save" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" Category="File"/>
+                            <mxb:ToolbarButtonItem Header="Print" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Print.svg'}" Alignment="Far" Category="File"/>
+                        </mxb:Toolbar>
+
+                        <mxb:Toolbar x:Name="EditToolbar" ToolbarName="Edit" ShowCustomizationButton="False">
+                            <mxb:ToolbarButtonItem Header="Cut" Command="{Binding #textBox.Cut}" IsEnabled="{Binding #textBox.CanCut}" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Cut.svg'}" Category="Edit"/>
+                            <mxb:ToolbarButtonItem Header="Copy" Command="{Binding #textBox.Copy}" IsEnabled="{Binding #textBox.CanCopy}" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Copy.svg'}" Category="Edit"/>
+                            <mxb:ToolbarButtonItem Header="Paste" Command="{Binding #textBox.Paste}" IsEnabled="{Binding #textBox.CanPaste}" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Paste.svg'}" Category="Edit"/>
+                        </mxb:Toolbar>
+                        
+                        <mxb:Toolbar x:Name="FontToolbar" ToolbarName="Font" ShowCustomizationButton="False">
+                            <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{SvgImage 'avares://DemoCenter/Images/FontBold.svg'}" Category="Font"/>
+                            <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{SvgImage 'avares://DemoCenter/Images/FontItalic.svg'}" Category="Font"/>
+                            <!--<mxb:ToolbarCheckItem Header="Underline" Glyph="{SvgImage 'avares://DemoCenter/Images/FontUnderline.svg'}"/>-->
+                            <!--Does not work with TextBox-->
+
+                            <mxb:ToolbarEditorItem Header="Font Color:" Category="Font" EditorWidth="100" EditorValue="{Binding #textBox.Foreground, Converter={helpers:ColorToBrushConverter}}">
+                                <mxb:ToolbarEditorItem.EditorProperties>
+                                    <mxe:PopupColorEditorProperties />
+                                </mxb:ToolbarEditorItem.EditorProperties>
+                            </mxb:ToolbarEditorItem>
+
+                            <mxb:ToolbarEditorItem Header="Font:" EditorWidth="150" Category="Font" EditorValue="{Binding #textBox.FontFamily, Converter={helpers:FontNameToFontFamilyConverter}}">
+                                <mxb:ToolbarEditorItem.EditorProperties>
+                                    <mxe:ComboBoxEditorProperties ItemsSource="{Binding $parent[view:ToolbarAndMenuPageView].Fonts}"
+                                                        IsTextEditable="False"/>
+                                </mxb:ToolbarEditorItem.EditorProperties>
+                            </mxb:ToolbarEditorItem>
+
+                            <mxb:ToolbarEditorItem Header="Font Size:" EditorWidth="75" Category="Font" EditorValue="{Binding #textBox.FontSize}">
+                                <mxb:ToolbarEditorItem.EditorProperties>
+                                    <mxe:ComboBoxEditorProperties ItemsSource="{Binding $parent[view:ToolbarAndMenuPageView].FontSizes}"
+                                                        IsTextEditable="False"/>
+                                </mxb:ToolbarEditorItem.EditorProperties>
+                            </mxb:ToolbarEditorItem>
+                        </mxb:Toolbar>
+                        
+                        <mxb:Toolbar x:Name="UserToolbar" ToolbarName="UserToolbar" UserToolbar="True">
+                            <mxb:ToolbarButtonItem Header="Tree" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Depend.svg'}" Category="UserCommands"/>
+                            <mxb:ToolbarButtonItem Header="Script" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Script, Icon=CSharpFile.svg'}" Category="UserCommands"/>
+                            <mxb:ToolbarButtonItem Header="Settings" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=List of Bugs.svg'}" Category="UserCommands"/>
+                        </mxb:Toolbar>
+                        
+                    </mxb:ToolbarContainerControl>
+                    <mxb:ToolbarContainerControl DockType="Left" Grid.Row="1"/>
+                    <helpers:ScaleDecorator x:Name="scaleDecorator" Grid.Row="1" Grid.Column="1">
+                        <TextBox x:Name="textBox" Text="Text Editor" AcceptsReturn="True" CornerRadius="0" FontFamily="Arial" FontSize="20" helpers:TextBoxHelper.IsEnabled="True"/>
+                    </helpers:ScaleDecorator>
+                    <mxb:ToolbarContainerControl DockType="Right" Grid.Row="1" Grid.Column="2"/>
+                    <mxb:ToolbarContainerControl Grid.Row="2" Grid.ColumnSpan="3" DockType="Bottom">
+                        <mxb:Toolbar DisplayMode="StatusBar" ToolbarName="Status Bar" x:Name="StatusBar" ShowCustomizationButton="False">
+                            <mxb:ToolbarTextItem Alignment="Far" ShowSeparator="True" ShowBorder="False" Category="Info" CustomizationName="Position Info">
+                                <mxb:ToolbarTextItem.Header>
+                                    <MultiBinding Converter="{helpers:LineAndColumnToTextConverter}">
+                                        <Binding ElementName="textBox" Path="(helpers:TextBoxHelper.Line)"/>
+                                        <Binding ElementName="textBox" Path="(helpers:TextBoxHelper.Column)"/>
+                                    </MultiBinding>
+                                </mxb:ToolbarTextItem.Header>
+                            </mxb:ToolbarTextItem>
+                            <mxb:ToolbarTextItem Header="{Binding #scaleDecorator.Scale, StringFormat={}Zoom: {0:P0}}" ShowBorder="False" Alignment="Far" ShowSeparator="True" Category="Info" CustomizationName="Zoom Info"/>
+                        </mxb:Toolbar>
+                    </mxb:ToolbarContainerControl>
+                </Grid>
+            </mxb:ToolbarManager>
+            
+            <!--Options-->
+            <Border BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" BorderThickness="1,0,0,0" Grid.Column="1">
+                <StackPanel>
+                    <mxe:GroupBox Grid.Row="2" Header="Selected Toolbar" Classes="LayoutItem" HorizontalAlignment="Left">
+                        <StackPanel Spacing="10">
+                            <RadioButton x:Name="MainMenuSelector" Classes="LayoutItem" GroupName="G1" IsChecked="True" Content="Main Menu" IsCheckedChanged="OnRadioButtonCheckedChanged"/>
+                            <RadioButton x:Name="FileToolbarSelector" Classes="LayoutItem" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="File Toolbar"/>
+                            <RadioButton x:Name="EditToolbarSelector" Classes="LayoutItem" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Edit Toolbar"/>
+                            <RadioButton x:Name="FontToolbarSelector" Classes="LayoutItem" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Font Toolbar"/>
+                            <RadioButton x:Name="StatusBarSelector" Classes="LayoutItem" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Status Bar"/>
+                        </StackPanel>
+                    </mxe:GroupBox>
+
+                    <mxe:GroupBox x:Name="PropertiesSelector" Header="Selected toolbar properties">
+                        <StackPanel>
+                            <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Visible" IsChecked="{Binding IsVisible, Mode=TwoWay}" Classes="LayoutItem"/>
+                            <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="{Binding IsEnabled, Mode=TwoWay}" Classes="LayoutItem"/>
+                            <mxe:CheckEditor x:Name="AllowDragToolbarSelector" Content="Allow Drag" IsChecked="{Binding AllowDragToolbar, Mode=TwoWay}" IsThreeState="True" Classes="LayoutItem"/>
+                            <mxe:CheckEditor x:Name="ShowCustomizationButtonSelector" Content="Allow Customization" IsChecked="{Binding ShowCustomizationButton, Mode=TwoWay}" Classes="LayoutItem"/>
+                            <mxe:CheckEditor x:Name="StretchToolbarSelector" Content="Stretch Toolbar" IsChecked="{Binding StretchToolbar, Mode=TwoWay}" Classes="LayoutItem">
+                                <mxe:CheckEditor.IsVisible>
+                                    <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                        <Binding ElementName="FileToolbarSelector"
+                                                 Path="IsChecked"/>
+                                        <Binding ElementName="EditToolbarSelector"
+                                                 Path="IsChecked"/>
+                                    </MultiBinding>
+                                </mxe:CheckEditor.IsVisible>
+                            </mxe:CheckEditor>
+                        </StackPanel>
+                    </mxe:GroupBox>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

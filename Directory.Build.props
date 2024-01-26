@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <Company>Eremex</Company>
+    <Copyright>©2010-2024 Eremex</Copyright>
+    <Product>Eremex Controls</Product>
+    <Version>0.9.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <LangVersion>10.0</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <AvaloniaVersion>11.0.7</AvaloniaVersion>
+    <AvaloniaSvgSkiaVersion>11.0.0.276</AvaloniaSvgSkiaVersion>
+    <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>NU1803;</NoWarn>
+  </PropertyGroup>
+</Project>

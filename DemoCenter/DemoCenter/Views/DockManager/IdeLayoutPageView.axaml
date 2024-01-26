@@ -1,0 +1,286 @@
+<UserControl x:Class="DemoCenter.Views.IdeLayoutPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             xmlns:mxd="clr-namespace:Eremex.AvaloniaUI.Controls.Docking;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:views="clr-namespace:DemoCenter.Views"
+             xmlns:dataGrid="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:propertyGrid="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             d:DesignHeight="450"
+             d:DesignWidth="900"
+             x:CompileBindings="False"
+             x:DataType="vm:IdeLayoutPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+		<vm:IdeLayoutPageViewModel />
+	</Design.DataContext>
+
+	<UserControl.Resources>
+		<views:SolutionItemImageSelector x:Key="imageSelector"
+		                                 ClosedFolderImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Closed.svg'}"
+		                                 OpenedFolderImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Opened.svg'}"
+		                                 FileImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=File.svg'}"
+		                                 CSharpFileImage="{SvgImage 'avares://DemoCenter/Images/Group=Script, Icon=CSharpFile.svg'}"
+		                                 ProjectImage="{SvgImage 'avares://DemoCenter/Images/Group=Script, Icon=CSharpFileImage.svg'}"
+		                                 DependenciesImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Depend.svg'}"/>
+	</UserControl.Resources>
+
+	<Grid ColumnDefinitions="*" RowDefinitions="Auto * Auto">
+		<Grid>
+			<mxb:ToolbarContainerControl>
+				<mxb:Toolbar x:Name="MainMenu" DisplayMode="MainMenu" ShowCustomizationButton="False">
+					<mxb:ToolbarMenuItem Header="File">
+						<mxb:ToolbarButtonItem Header="New"
+						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=NewDraftAction.svg'}" />
+						<mxb:ToolbarButtonItem Header="Open"
+						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Open.svg'}" />
+						<mxb:ToolbarButtonItem Header="Save" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" />
+						<mxb:ToolbarSeparatorItem />
+						<mxb:ToolbarButtonItem Header="Print" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Print.svg'}" />
+					</mxb:ToolbarMenuItem>
+					<mxb:ToolbarMenuItem Header="Edit">
+						<mxb:ToolbarButtonItem Header="Undo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}" />
+						<mxb:ToolbarButtonItem Header="Redo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}" />
+						<mxb:ToolbarSeparatorItem />
+						<mxb:ToolbarButtonItem Header="Cut"
+						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Cut.svg'}" />
+						<mxb:ToolbarButtonItem Header="Copy"
+						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Copy.svg'}" />
+						<mxb:ToolbarButtonItem Header="Paste"
+						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Paste.svg'}" />
+						<mxb:ToolbarSeparatorItem />
+						<mxb:ToolbarButtonItem Header="Select All" />
+						<mxb:ToolbarButtonItem Header="Clear all"
+						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Clear.svg'}" />
+					</mxb:ToolbarMenuItem>
+					<mxb:ToolbarMenuItem Header="Options">
+						<mxb:ToolbarButtonItem Header="Check for Updates" />
+						<mxb:ToolbarSeparatorItem />
+						<mxb:ToolbarButtonItem Header="About" />
+					</mxb:ToolbarMenuItem>
+				</mxb:Toolbar>
+				<mxb:Toolbar x:Name="FileToolbar" ShowCustomizationButton="False">
+					<mxb:ToolbarButtonItem Header="New"
+					                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=NewDraftAction.svg'}" />
+					<mxb:ToolbarButtonItem Header="Open"
+					                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Open.svg'}" />
+					<mxb:ToolbarButtonItem Header="Save" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" />
+					<mxb:ToolbarButtonItem Header="Print" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Print.svg'}"
+					                       Alignment="Far" />
+				</mxb:Toolbar>
+				<mxb:Toolbar x:Name="EditToolbar" ShowCustomizationButton="False">
+					<mxb:ToolbarButtonItem Header="Cut"
+					                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Cut.svg'}" />
+					<mxb:ToolbarButtonItem Header="Copy"
+					                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Copy.svg'}" />
+					<mxb:ToolbarButtonItem Header="Paste"
+					                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Paste.svg'}" />
+					<mxb:ToolbarButtonItem Header="Undo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}"
+					                       Alignment="Far" />
+					<mxb:ToolbarButtonItem Header="Redo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}"
+					                       Alignment="Far" />
+				</mxb:Toolbar>
+			</mxb:ToolbarContainerControl>
+		</Grid>
+		<mxd:DockManager Grid.Column="0" Grid.Row="1"
+		                 BorderThickness="1,0" 
+		                 ItemsSource="{Binding Documents}"
+		                 ItemContentTemplate="{views:IdeLayoutDocumentContentTemplate}">
+			<mxd:DockManager.ItemContainerTemplate>
+				<DataTemplate DataType="vm:IdeLayoutDocumentViewModel">
+					<mxd:DocumentPane Header="{Binding Header}"
+					                  IsActive="{Binding IsActive}"
+					                  CloseCommand="{Binding CloseCommand}"/>
+				</DataTemplate>
+			</mxd:DockManager.ItemContainerTemplate>
+			<mxd:DockGroup>
+				<mxd:DockGroup Orientation="Vertical">
+					<mxd:DockGroup DockHeight="3*">
+						<mxd:TabbedGroup DockWidth="2*" TabStripPlacement="Left" TabHeaderOrientation="Horizontal" AllowFloat="False">
+							<mxd:DockPane Header="Explorer" AllowFloat="False">
+								<mxd:TabbedGroup.TabHeaderTemplate>
+									<DataTemplate>
+										<Border Background="Transparent"
+										        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
+										        ToolTip.ShowDelay="500">
+											<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Library.svg'}"
+											       Width="16"
+											       Height="16">
+											</Image>
+										</Border>
+									</DataTemplate>
+								</mxd:TabbedGroup.TabHeaderTemplate>
+								<mxtl:TreeListControl ItemsSource="{Binding SolutionNodes}"
+								                      ParentFieldName="ParentId"
+								                      KeyFieldName="Id"
+								                      ExpandStateFieldName="IsExpanded"
+								                      ShowHorizontalLines="False"
+								                      ShowColumnHeaders="False"
+								                      AllowEditing="False"
+								                      NodeImageSelector="{StaticResource imageSelector}"
+								                      ShowNodeImages="True"
+								                      FocusedItem="{Binding FocusedSolutionItem}"
+								                      NodeClick="TreeListControlBase_OnNodeClick"
+								                      CustomColumnSort="TreeListControl_OnCustomColumnSort">
+									<mxtl:TreeListColumn FieldName="Name" Width="*" SortMode="Custom" SortDirection="Ascending" />
+								</mxtl:TreeListControl>
+							</mxd:DockPane>
+							<mxd:DockPane Header="Search" AllowFloat="False">
+								<mxd:TabbedGroup.TabHeaderTemplate>
+									<DataTemplate>
+										<Border Background="Transparent"
+										        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
+										        ToolTip.ShowDelay="500">
+											<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Search.svg'}"
+											       Width="16"
+											       Height="16">
+											</Image>
+										</Border>
+									</DataTemplate>
+								</mxd:TabbedGroup.TabHeaderTemplate>
+								<Grid RowDefinitions="Auto *">
+									<StackPanel Classes="LayoutGroup Vertical">
+										<mxe:ButtonEditor Watermark="Search" >
+											<mxe:ButtonEditor.Buttons>
+												<mxe:ButtonSettings ToolTip.Tip="Match case"
+												                    Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Operators, Icon=Starts with.svg'}"
+												                    ButtonKind="Toggle"/>
+												<mxe:ButtonSettings ToolTip.Tip="Match whole word"
+												                    Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Painting, Icon=Report text column.svg'}"
+												                    ButtonKind="Toggle"/>
+											</mxe:ButtonEditor.Buttons>
+										</mxe:ButtonEditor>
+										<mxe:ButtonEditor Watermark="Replace"/>
+									</StackPanel>	
+									<TextBlock Grid.Row="1"
+									           Text="No search results available"
+									           TextWrapping="Wrap"
+									           TextAlignment="Center"
+									           HorizontalAlignment="Center"
+									           VerticalAlignment="Center"/>
+								</Grid>
+								
+							</mxd:DockPane>
+							<mxd:DockPane Header="Debug" AllowFloat="False">
+								<mxd:TabbedGroup.TabHeaderTemplate>
+									<DataTemplate>
+										<Border Background="Transparent"
+										        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
+										        ToolTip.ShowDelay="500">
+											<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=SimOne, Icon=Play.svg'}"
+											       Width="16"
+											       Height="16">
+											</Image>
+										</Border>
+									</DataTemplate>
+								</mxd:TabbedGroup.TabHeaderTemplate>
+								<Grid RowDefinitions="200 *">
+									<Button Content="Debug and Run"
+									        HorizontalAlignment="Center"
+									        VerticalAlignment="Center"
+									        IsEnabled="False"/>
+									<TextBlock Grid.Row="1" TextAlignment="Center"
+									           Text="To customize Debug and Run, edit a launch.json file"
+									           TextWrapping="Wrap"
+									           VerticalAlignment="Top"
+									           HorizontalAlignment="Center">
+									</TextBlock>
+								</Grid>
+							</mxd:DockPane>
+							<mxd:DockPane Header="Source Control" AllowFloat="False">
+								<mxd:TabbedGroup.TabHeaderTemplate>
+									<DataTemplate>
+										<Border Background="Transparent"
+										        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
+										        ToolTip.ShowDelay="500">
+											<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=SimOne, Icon=List of Graphs.svg'}"
+											       Width="16"
+											       Height="16">
+											</Image>
+										</Border>
+									</DataTemplate>
+								</mxd:TabbedGroup.TabHeaderTemplate>
+								<TextBlock Text="Not a git repository (or any of the parent directories)"
+								           TextAlignment="Center"
+								           TextWrapping="Wrap"
+								           HorizontalAlignment="Center"
+								           VerticalAlignment="Center" />
+							</mxd:DockPane>
+						</mxd:TabbedGroup>
+
+						<mxd:DocumentGroup DockWidth="5*">
+						</mxd:DocumentGroup>
+
+					</mxd:DockGroup>
+
+					<mxd:TabbedGroup TabStripPlacement="Left" TabHeaderOrientation="Horizontal" AllowFloat="False">
+						<mxd:DockPane Header="Error List" AllowFloat="False">
+							<mxd:TabbedGroup.TabHeaderTemplate>
+								<DataTemplate>
+									<Border Background="Transparent"
+									        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
+									        ToolTip.ShowDelay="500">
+										<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=List of Bugs.svg'}"
+										       Width="16"
+										       Height="16">
+										</Image>
+									</Border>
+								</DataTemplate>
+							</mxd:TabbedGroup.TabHeaderTemplate>
+							<Grid RowDefinitions="Auto *">
+								<mxb:ToolbarContainerControl DockType="Top">
+									<mxb:Toolbar x:Name="ErrorListBar" ShowCustomizationButton="False" AllowDragToolbar="False">
+										<mxb:ToolbarCheckItem Header="0 Errors" GlyphSize="16,16" DisplayMode="Both"
+										                      Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Status, Icon=Warning.svg'}"
+										                      IsChecked="true" />
+										<mxb:ToolbarCheckItem Header="0 Warnings" GlyphSize="16,16" DisplayMode="Both"
+										                      Glyph="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Warning.svg'}" />
+										<mxb:ToolbarCheckItem Header="0 Messages" GlyphSize="16,16" DisplayMode="Both"
+										                      Glyph="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}" />
+									</mxb:Toolbar>
+								</mxb:ToolbarContainerControl>
+								<dataGrid:DataGridControl Grid.Row="1" ShowGroupPanel="False">
+									<dataGrid:GridColumn FieldName="Code"></dataGrid:GridColumn>
+									<dataGrid:GridColumn FieldName="Description" Width="*"></dataGrid:GridColumn>
+									<dataGrid:GridColumn FieldName="File"></dataGrid:GridColumn>
+									<dataGrid:GridColumn FieldName="Line"></dataGrid:GridColumn>
+								</dataGrid:DataGridControl>
+							</Grid>
+						</mxd:DockPane>
+						<mxd:DockPane Header="Output" AllowFloat="False">
+							<mxd:TabbedGroup.TabHeaderTemplate>
+								<DataTemplate>
+									<Border Background="Transparent"
+									        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
+									        ToolTip.ShowDelay="500">
+										<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}"
+										       Width="16"
+										       Height="16">
+										</Image>
+									</Border>
+								</DataTemplate>
+							</mxd:TabbedGroup.TabHeaderTemplate>
+							<TextBlock Text="Build finished successfully"
+							           HorizontalAlignment="Center"
+							           VerticalAlignment="Center"></TextBlock>
+						</mxd:DockPane>
+					</mxd:TabbedGroup>
+				</mxd:DockGroup>
+				<mxd:DockPane Header="Properties" DockWidth="300">
+					<propertyGrid:PropertyGridControl SelectedObject="{Binding FocusedSolutionItem}"
+					                                  UseModernAppearance="True" />
+				</mxd:DockPane>
+			</mxd:DockGroup>
+		</mxd:DockManager>
+		<mxb:ToolbarContainerControl Grid.Column="0" Grid.Row="2" DockType="Bottom">
+			<mxb:Toolbar DisplayMode="StatusBar" x:Name="StatusBar" ShowCustomizationButton="False">
+				<mxb:ToolbarTextItem Header="Ready" ShowBorder="False" />
+			</mxb:Toolbar>
+		</mxb:ToolbarContainerControl>
+	</Grid>
+</UserControl>

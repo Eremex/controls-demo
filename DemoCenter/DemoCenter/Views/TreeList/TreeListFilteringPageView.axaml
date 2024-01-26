@@ -1,0 +1,109 @@
+<UserControl x:Class="DemoCenter.Views.TreeListFilteringPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+			 xmlns:views="using:DemoCenter.Views"
+             xmlns:data="using:DemoCenter.DemoData"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="900"
+             x:CompileBindings="False"
+             x:DataType="vm:TreeListFilteringPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+        <vm:TreeListFilteringPageViewModel />
+	</Design.DataContext>
+
+	<UserControl.Resources>
+		<views:ProjectTaskImageSelector x:Key="imageSelector"
+									 ProjectImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Docs.svg'}"
+									 TaskImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=File.svg'}" />
+	</UserControl.Resources>
+
+	<Grid ColumnDefinitions="*, 250">
+		<mxtl:TreeListControl x:Name="treeList"
+							  BorderThickness="1,0"
+							  ChildrenFieldName="Tasks"
+							  AllowEditing="False"	
+							  FilterMode="ShowMatchesWithAncestors"
+							  ItemsSource="{Binding Tasks}"
+							  ShowNodeImages="True"
+							  NodeImageSelector="{StaticResource imageSelector}"
+							  IsSearchPanelVisible="True"
+							  TreeColumnFieldName="Description"
+							  SearchPanelDisplayMode="HotKey"
+							  ShowAutoFilterRow="True"
+							  AutoExpandAllNodes="True">
+			<mxtl:TreeListControl.Styles>
+				<Style Selector="mxtl|TreeListRowControl">
+					<Setter Property="TextBlock.FontWeight">
+						<Setter.Value>
+							<Binding Path="HasTasks">
+								<Binding.Converter>
+									<mx:BoolToObjectConverter>
+										<mx:BoolToObjectConverter.TrueValue>
+											<FontWeight>Bold</FontWeight>
+										</mx:BoolToObjectConverter.TrueValue>
+										<mx:BoolToObjectConverter.FalseValue>
+											<FontWeight>Normal</FontWeight>
+										</mx:BoolToObjectConverter.FalseValue>
+									</mx:BoolToObjectConverter>
+								</Binding.Converter>
+							</Binding>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</mxtl:TreeListControl.Styles>
+			<mxtl:TreeListColumn FieldName="HighPriority" ColumnChooserHeader="High Priority" AllowSorting="False" AllowResizing="False" Header=" " Width="32">
+				<mxtl:TreeListColumn.CellTemplate>
+					<DataTemplate>
+						<Border ToolTip.Tip="High Priority" Background="Transparent">
+							<Image Width="16" Height="16" Stretch="None" IsVisible="{Binding Value}" Source="{SvgImage 'avares://DemoCenter/Images/HighPriority.svg'}" />
+						</Border>
+					</DataTemplate>
+				</mxtl:TreeListColumn.CellTemplate>
+			</mxtl:TreeListColumn>
+			<mxtl:TreeListColumn FieldName="Description" Width="*" />
+			<mxtl:TreeListColumn FieldName="Assignee" Width="120" />
+			<mxtl:TreeListColumn FieldName="Status" Width="85" />
+			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="110" />
+			<mxtl:TreeListColumn FieldName="TimeSpent" Header="Time Spent (h)" Width="90" />
+			<mxtl:TreeListColumn FieldName="Progress" Header="Progress" Width="110">
+				<mxtl:TreeListColumn.CellTemplate>
+					<DataTemplate>
+						<ProgressBar Margin="4,0" Minimum="0" Maximum="100" MinWidth="10" ShowProgressText="True" Value="{Binding Value}" />
+					</DataTemplate>
+				</mxtl:TreeListColumn.CellTemplate>
+			</mxtl:TreeListColumn>
+			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="90" />
+		</mxtl:TreeListControl>
+
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Show Auto Filter Row" IsChecked="{Binding #treeList.ShowAutoFilterRow}" Classes="LayoutItem"/>
+                    <DockPanel>
+                        <Label Content="Search Panel Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:SearchPanelDisplayMode}"
+                                            EditorValue="{Binding #treeList.SearchPanelDisplayMode}"
+                                            Classes="LayoutItem"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label Content="Filter Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxtl:FilterMode}"
+                                            EditorValue="{Binding #treeList.FilterMode}"
+                                            Classes="LayoutItem"/>
+                    </DockPanel>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+		
+	</Grid>
+    
+</UserControl>

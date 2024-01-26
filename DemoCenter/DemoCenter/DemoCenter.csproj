@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Include="DemoData\csv\**" />
+    <AvaloniaResource Include="Images\*.svg" />
+    <EmbeddedResource Include="Images\css\**" />
+    <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Dark.xshd" />
+    <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Light.xshd" />
+    <EmbeddedResource Include="Resources\Highlighters\CSharp-Highlight-Dark.xshd" />
+    <EmbeddedResource Include="Resources\Highlighters\CSharp-Highlight-Light.xshd" />
+    <None Remove="Resources\Axaml-Highlight-Dark.xshd" />
+    <None Remove="Resources\Axaml-Highlight-Light.xshd" />
+    <None Remove="Resources\CSharp-Highlight-Dark.xshd" />
+    <None Remove="Resources\CSharp-Highlight-Light.xshd" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="Avalonia.Fonts.Inter" />
+    <PackageReference Include="Avalonia.ReactiveUI" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
+
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="$(CommunityToolkitMvvmVersion)" />
+    <PackageReference Include="Avalonia.Svg.Skia" />
+    <PackageReference Include="MessageBox.Avalonia" Version="$(MessageBoxAvaloniaVersion)" />
+    <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
+    <PackageReference Include="SkiaSharp" Version="$(SkiaSharpVersion)" />
+    <PackageReference Include="System.Resources.Extensions" Version="$(SystemResourcesExtensionsVersion)" />
+    <PackageReference Include="Avalonia.AvaloniaEdit" />
+    <PackageReference Include="AvaloniaEdit.TextMate" />
+    <PackageReference Include="TextMateSharp.Grammars" />
+    <PackageReference Include="Eremex.Avalonia.Controls" />
+  </ItemGroup>
+
+  <Target Name="SourceCode" BeforeTargets="PreBuildEvent">
+    <ItemGroup>
+      <EmbeddedResource Include="Views\**" />
+      <EmbeddedResource Include="ViewModels\**" />
+    </ItemGroup>
+  </Target>
+    
+</Project>

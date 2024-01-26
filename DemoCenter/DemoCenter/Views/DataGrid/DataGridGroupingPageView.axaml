@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:dataGridControls="using:DemoCenter.Views.DataGrid.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridGroupingPageView">
+    <UserControl.Resources>
+        <DataTemplate x:Key="quarterTemplate">
+            <dataGridControls:ProgressControl Color="SkyBlue" Value="{Binding Value}" Maximum="100000"/>
+        </DataTemplate>
+        <DataTemplate x:Key="totalTemplate">
+            <dataGridControls:ProgressControl Color="DeepSkyBlue" Value="{Binding Value}" Maximum="400000"/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid ColumnDefinitions="*, 250">
+        <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Sales}" AutoGenerateColumns="True" AutoExpandAllGroups="True" AllowEditing="False" GroupCount="1" BorderThickness="1,0">
+            <mxdg:GridColumn FieldName="Year" SortIndex="0" SortDirection="Descending"/>
+            <mxdg:GridColumn FieldName="Employee" SortIndex="1" Width="200"/>
+            <mxdg:GridColumn FieldName="Quarter1" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
+            <mxdg:GridColumn FieldName="Quarter2" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
+            <mxdg:GridColumn FieldName="Quarter3" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
+            <mxdg:GridColumn FieldName="Quarter4" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
+            <mxdg:GridColumn FieldName="Total" Width="*" CellTemplate="{StaticResource totalTemplate}"/>
+        </mxdg:DataGridControl>
+
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Show Group Panel" IsChecked="{Binding #dataGrid.ShowGroupPanel}" Classes="LayoutItem"/>
+                    <mxe:CheckEditor Content="Show Grouped Columns" IsChecked="{Binding #dataGrid.ShowGroupedColumns}" Classes="LayoutItem"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,67 @@
+<UserControl x:Class="DemoCenter.Views.PrimitivesPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:CompileBindings="True"
+             x:DataType="vm:PrimitivesPageViewModel"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:PrimitivesPageViewModel />
+    </Design.DataContext>
+    <UserControl.Styles>
+        <Style Selector="Button.localStyle">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid ColumnDefinitions="*, 250">
+        <Grid RowDefinitions="Auto, 20, Auto, 60, *"
+              ColumnDefinitions="*, 20, *"
+              HorizontalAlignment="Center"
+              Margin="0,100,0,0"
+              MinWidth="400"
+              IsEnabled="{Binding IsChecked, ElementName=IsEnabledSelector}">
+            <Button Content="Ordinary Button" Classes="localStyle" />
+            <Button Grid.Row="2" Content="Accent Button" Classes="accent localStyle" />
+            <Button Grid.Column="2" Content="Warning Button" Classes="warning localStyle" />
+            <Button Grid.Row="2" Grid.Column="2" Content="Warning Accent Button" Classes="warning accent localStyle" />
+            <mxe:GroupBox Header="Check boxes" Grid.Row="4" VerticalAlignment="Top">
+                <StackPanel>
+                    <CheckBox Content="Unchecked"/>
+                    <CheckBox Content="Checked" IsChecked="True"/>
+                    <CheckBox Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"/>
+                    <CheckBox Content="Warning Unchecked" Classes="warning"/>
+                    <CheckBox Content="Warning Checked" IsChecked="True" Classes="warning"/>
+                </StackPanel>
+            </mxe:GroupBox>
+            <mxe:GroupBox Header="Radio Buttons" Grid.Row="4" Grid.Column="2" VerticalAlignment="Top">
+                <StackPanel>
+                    <RadioButton Content="Item 1" GroupName="G1"/>
+                    <RadioButton Content="Item 2" IsChecked="True" GroupName="G1" Margin="0,0,0,28"/>
+
+                    <RadioButton Content="Warning Item 1" IsChecked="True" Classes="warning" GroupName="G2"/>
+                    <RadioButton Content="Warning Item 2" Classes="warning" GroupName="G2"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Grid>
+        <!--Options-->
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="LayoutItem"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

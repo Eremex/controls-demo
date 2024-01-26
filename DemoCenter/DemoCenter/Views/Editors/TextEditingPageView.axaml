@@ -1,0 +1,88 @@
+<UserControl x:Class="DemoCenter.Views.TextEditingPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:data="using:DemoCenter.DemoData"
+             xmlns:view="using:DemoCenter.Views"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:CompileBindings="False"
+             x:DataType="vm:TextEditingPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+		<vm:TextEditingPageViewModel />
+	</Design.DataContext>
+
+    <Grid ColumnDefinitions="*,250">
+        <ContentControl Classes="DemoUserControl">
+            <Grid RowDefinitions="Auto, 30, Auto, 30, Auto, 30, Auto, 30, Auto, 30, Auto" Width="250"
+              Margin="30"
+              IsEnabled="{Binding IsChecked, ElementName=IsEnabledSelector}">
+            
+            <mxe:TextEditor EditorValue="TextEditor sample" SelectionStart="4" SelectionEnd="10"/>
+            <mxe:ButtonEditor Grid.Row="2" EditorValue="ButtonEditor sample">
+                <mxe:ButtonEditor.Buttons>
+                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}"
+                                        Command="{Binding AddLogLineCommand}" CommandParameter="Undo"/>
+                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}"
+                                        Command="{Binding AddLogLineCommand}" CommandParameter="Redo"/>
+                    <mxe:ButtonSettings ToolTip.Tip="Delete" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Delete.svg'}"
+                                        Command="{Binding AddLogLineCommand}" CommandParameter="Delete"/>
+                </mxe:ButtonEditor.Buttons>
+            </mxe:ButtonEditor>
+            <mxe:ButtonEditor Grid.Row="4" EditorValue="Text editing locker">
+                <mxe:ButtonEditor.Buttons>
+                    <mxe:ButtonSettings ButtonKind="Toggle" 
+                                        Glyph="{Binding $parent.IsTextEditable, Converter={view:LockButtonImageConverter}}"
+                                        IsChecked="{Binding !$parent.IsTextEditable}"/>
+                </mxe:ButtonEditor.Buttons>
+            </mxe:ButtonEditor>  
+            <mxe:ButtonEditor Grid.Row="6" EditorValue="{Binding SelectedEditor}"
+                              IsTextEditable="False"
+                              ReadOnly="True"
+                              HorizontalContentAlignment="Center">
+                <mxe:ButtonEditor.Buttons>
+                    <mxe:ButtonSettings ToolTip.Tip="Previous" Glyph="{SvgImage 'avares://DemoCenter/Images/chevron-left.svg'}"
+                                        Command="{Binding ShowPreviousCommand}" CommandParameter="Previous" IsLeft="True"/>
+                    <mxe:ButtonSettings ToolTip.Tip="Next" Glyph="{SvgImage 'avares://DemoCenter/Images/chevron-right.svg'}"
+                                        Command="{Binding ShowNextCommand}" CommandParameter="Next"/>
+                </mxe:ButtonEditor.Buttons>
+            </mxe:ButtonEditor>
+            <mxe:ButtonEditor Grid.Row="8" EditorValue="Click built-in 'x' button to clear text" Watermark="Enter text to show built-in 'x' button" 
+                              NullValueButtonPosition="EditorBox"/>
+            <mxe:TextEditor x:Name="EmptyTextEditor" Grid.Row="10" Watermark="Watermark text" ValidationInfo="{Binding ValidationInfo}"/>
+
+        </Grid>
+        </ContentControl>
+        <!--Options-->
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="ShowErrorSelector" Content="Show Error" IsChecked="{Binding ShowError}" Classes="LayoutItem"/>
+                    <DockPanel>
+                        <Label Content="Error Show Mode:" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor x:Name="ErrorShowModeSelector" EditorValue="{Binding ErrorShowMode, ElementName=EmptyTextEditor, Mode=TwoWay}" ItemsSource="{mxc:EnumItemsSource EnumType=mxe:EditorErrorShowMode}"/>
+                    </DockPanel>
+                </StackPanel>
+            </mxe:GroupBox>
+            <mxe:GroupBox Header="Button Click Log">
+                <Grid RowDefinitions="*, Auto">
+                    <mxe:TextEditor EditorValue="{Binding LogContent}" ReadOnly="True" Height="150" VerticalContentAlignment="Top"/>
+                    <Button Grid.Row="1" Content="Clear" Command="{Binding ClearLogCommand}" HorizontalAlignment="Center" Classes="LayoutItem"/>
+                </Grid>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+    
+</UserControl>

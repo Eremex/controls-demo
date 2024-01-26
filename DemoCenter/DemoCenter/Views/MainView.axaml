@@ -1,0 +1,148 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:aEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:views="clr-namespace:DemoCenter.Views"
+             xmlns:helpers="clr-namespace:DemoCenter.Helpers"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="620"
+             x:Class="DemoCenter.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    <UserControl.Resources>
+        <StreamGeometry x:Key="SunPath">
+            M8.53332 0.00112641C8.80885 0.0194951 9.01732 0.257748 8.99895 0.533278L8.86562 2.53328C8.84725 2.80881 8.609 3.01728 8.33346 2.99891C8.05793 2.98054 7.84946 2.74229 7.86783 2.46676L8.00116 0.466759C8.01953 0.191229 8.25779 -0.0172423 8.53332 0.00112641Z
+            M7.66665 13.0011C7.94218 13.0195 8.15065 13.2577 8.13228 13.5333L7.99895 15.5333C7.98058 15.8088 7.74233 16.0173 7.4668 15.9989C7.19127 15.9805 6.9828 15.7423 7.00116 15.4668L7.1345 13.4668C7.15287 13.1912 7.39112 12.9828 7.66665 13.0011Z
+            M4.00004 8.00003C4.00004 5.79089 5.7909 4.00003 8.00004 4.00003C10.2092 4.00003 12 5.79089 12 8.00003C12 10.2092 10.2092 12 8.00004 12C5.7909 12 4.00004 10.2092 4.00004 8.00003ZM8.00004 5.00003C6.34318 5.00003 5.00004 6.34318 5.00004 8.00003C5.00004 9.65689 6.34318 11 8.00004 11C9.65689 11 11 9.65689 11 8.00003C11 6.34318 9.65689 5.00003 8.00004 5.00003Z
+            M13.9861 3.42658C14.1939 3.24474 14.215 2.92885 14.0331 2.72104C13.8513 2.51322 13.5354 2.49216 13.3276 2.674L11.8191 3.99393C11.6113 4.17577 11.5902 4.49165 11.7721 4.69947C11.9539 4.90729 12.2698 4.92835 12.4776 4.74651L13.9861 3.42658Z
+            M4.18089 12.0061C4.38871 11.8243 4.40977 11.5084 4.22793 11.3006C4.04609 11.0928 3.7302 11.0717 3.52239 11.2536L2.01389 12.5735C1.80607 12.7553 1.78501 13.0712 1.96686 13.279C2.1487 13.4869 2.46458 13.5079 2.6724 13.3261L4.18089 12.0061Z
+            M15.9989 8.53328C15.9805 8.80881 15.7423 9.01728 15.4668 8.99891L13.4668 8.86558C13.1912 8.84721 12.9828 8.60896 13.0011 8.33343C13.0195 8.0579 13.2577 7.84942 13.5333 7.86779L15.5333 8.00113C15.8088 8.0195 16.0173 8.25775 15.9989 8.53328Z
+            M2.99891 7.66661C2.98054 7.94214 2.74229 8.15061 2.46676 8.13224L0.46676 7.99891C0.191229 7.98054 -0.0172423 7.74229 0.00112642 7.46676C0.0194952 7.19123 0.257748 6.98276 0.533279 7.00113L2.53328 7.13446C2.80881 7.15283 3.01728 7.39108 2.99891 7.66661Z
+            M12.5735 13.9861C12.7554 14.1939 13.0712 14.215 13.2791 14.0332C13.4869 13.8513 13.5079 13.5354 13.3261 13.3276L12.0062 11.8191C11.8243 11.6113 11.5084 11.5903 11.3006 11.7721C11.0928 11.9539 11.0717 12.2698 11.2536 12.4776L12.5735 13.9861Z
+            M3.99396 4.18091C4.1758 4.38873 4.49168 4.40979 4.6995 4.22795C4.90732 4.04611 4.92838 3.73023 4.74654 3.52241L3.4266 2.01391C3.24476 1.8061 2.92888 1.78504 2.72106 1.96688C2.51325 2.14872 2.49219 2.4646 2.67403 2.67242L3.99396 4.18091Z
+        </StreamGeometry>
+        <StreamGeometry x:Key="MoonPath">M5.86202 0.458762C5.9851 0.697922 5.98434 1.0123 5.80073 1.26681C5.29679 1.96532 5 2.82244 5 3.75035C5 6.09757 6.90279 8.00035 9.25 8.00035C9.63503 8.00035 10.0074 7.94928 10.3609 7.85382C10.6637 7.77208 10.9581 7.88213 11.1385 8.08169C11.326 8.28909 11.41 8.62218 11.2361 8.93215C10.2095 10.762 8.24968 12.0003 6 12.0003C2.68629 12.0003 0 9.31406 0 6.00035C0 2.99175 2.2139 0.501137 5.10156 0.0672336C5.45254 0.0144957 5.73419 0.210389 5.86202 0.458762ZM4.67216 1.17846C2.55533 1.75995 1 3.69889 1 6.00035C1 8.76177 3.23858 11.0003 6 11.0003C7.66194 11.0003 9.13506 10.1897 10.0447 8.94053C9.78532 8.97994 9.51992 9.00035 9.25 9.00035C6.35051 9.00035 4 6.64985 4 3.75035C4 2.81653 4.24419 1.93875 4.67216 1.17846Z</StreamGeometry>
+    </UserControl.Resources>
+    <UserControl.Resources>
+        <views:PagesChildrenSelector x:Key="childNodesSelector" />
+    </UserControl.Resources>
+    <Border Background="{DynamicResource Fill/Neutral/Primary/Enabled}" Padding="8">
+        <Grid ColumnDefinitions="250, *, Auto" RowDefinitions="Auto, *, Auto">
+            <mxtl:TreeViewControl x:Name="pageSelector"
+                                  Grid.RowSpan="3"
+                                  ItemsSource="{Binding Products}"
+                                  SearchPanelDisplayMode="Always"
+                                  DataFieldName="Name"
+                                  AutoExpandAllNodes="True"
+                                  ChildrenSelector="{StaticResource childNodesSelector}"
+                                  FocusedItem="{Binding CurrentProductItem, Mode=TwoWay}"
+                                  FocusedNodeChanged="OnPageSelectorFocusedNodeChanged"
+                                  Margin="0,0,8,0">
+                <mxtl:TreeViewControl.Styles>
+                    <Style Selector="mxtl|TreeViewRowControl">
+                        <Setter Property="TextBlock.FontWeight">
+                            <Setter.Value>
+                                <Binding Path="HasChildren">
+                                    <Binding.Converter>
+                                        <mx:BoolToObjectConverter>
+                                            <mx:BoolToObjectConverter.TrueValue>
+                                                <FontWeight>Bold</FontWeight>
+                                            </mx:BoolToObjectConverter.TrueValue>
+                                            <mx:BoolToObjectConverter.FalseValue>
+                                                <FontWeight>Normal</FontWeight>
+                                            </mx:BoolToObjectConverter.FalseValue>
+                                        </mx:BoolToObjectConverter>
+                                    </Binding.Converter>
+                                </Binding>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+					<Style Selector="mxdcv|SearchPanel">
+						<Setter Property="Padding" Value="0, 6, 0, 10" />
+						<Setter Property="BorderThickness" Value="0,0,0,1" />
+						<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+					</Style>
+                </mxtl:TreeViewControl.Styles>
+            </mxtl:TreeViewControl>
+            <mxb:ToolbarContainerControl Grid.Column="1" BorderBrush="Transparent">
+                <mxb:Toolbar ShowCustomizationButton="False" AllowDragToolbar="False" StretchToolbar="True">
+                    <mxb:ToolbarButtonItem Header="Previous" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Arrow Back.svg'}" GlyphSize="20, 20"
+                                           Command="{Binding PreviousViewCommand}" IsEnabled="{Binding IsPreviousButtonEnabled}"/>
+                    <mxb:ToolbarButtonItem Header="Next" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Arrow Next.svg'}" GlyphSize="20, 20"
+                                           Command="{Binding NextViewCommand}" IsEnabled="{Binding IsNextButtonEnabled}"/>
+                    <mxb:ToolbarCheckItem x:Name="ShowCodeSelector" Header="Show Code" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Painting, Icon=Text.svg'}" GlyphSize="20, 20"
+                                          IsChecked="{Binding ShowCode, Mode=TwoWay}"/>
+                    <mxb:ToolbarButtonItem Header="Search" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Search.svg'}"
+                                           Click="OnShowSearchPanel" Alignment="Far"
+                                           IsVisible="{Binding #ShowCodeSelector.IsChecked}"/>
+                    <mxb:ToolbarEditorItem IsVisible="{Binding #ShowCodeSelector.IsChecked}" Alignment="Far" GlyphSize="20, 20">
+                        <mxb:ToolbarEditorItem.Editor>
+                            <mxe:ComboBoxEditor
+                                Width="250"
+                                IsTextEditable="False"
+                                ItemsSource="{Binding SourceFiles}"
+                                SelectedItem="{Binding SourceFile, Mode=TwoWay}" />
+                        </mxb:ToolbarEditorItem.Editor>
+                    </mxb:ToolbarEditorItem>
+                </mxb:Toolbar>
+            </mxb:ToolbarContainerControl>
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <Label Content="Theme:" VerticalAlignment="Center" Margin="8"/>
+                <mxe:SegmentedEditor ItemsSource="{Binding Palettes}" Width="64" Height="32"
+                 ValueMember="PaletteType"
+                 EditorValue="{Binding SelectedPalette}">
+                    <mxe:SegmentedEditor.ItemTemplate>
+                        <DataTemplate>
+                            <PathIcon Width="16" Height="16" Foreground="{DynamicResource Text/Neutral/Secondary}"
+                                      ToolTip.Tip="{Binding PaletteTypeName}">
+                                <PathIcon.Data>
+                                    <MultiBinding Converter="{views:PaletteTypeToIconDataConverter}">
+                                        <Binding Path="PaletteType"/>
+                                        <DynamicResourceExtension ResourceKey="SunPath"/>
+                                        <DynamicResourceExtension ResourceKey="MoonPath"/>
+                                    </MultiBinding>
+                                </PathIcon.Data>
+                            </PathIcon>
+                        </DataTemplate>
+                    </mxe:SegmentedEditor.ItemTemplate>
+                </mxe:SegmentedEditor>
+            </StackPanel>
+            <TransitioningContentControl Name="TransitionsControl" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"
+                                         Content="{Binding CurrentProductItemViewModel}"
+                                         PageTransition="{Binding PageTransition}"
+                                         IsVisible="{Binding !#ShowCodeSelector.IsChecked}"
+                                         BorderThickness="0,1,0,0"
+                                         BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
+            <aEdit:TextEditor x:Name="CodeViewEditor" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"
+                              IsVisible="{Binding #ShowCodeSelector.IsChecked}"
+                              IsReadOnly="True" 
+                              WordWrap="True" 
+                              FontFamily="Inter"
+                              FontSize="14"
+                              SearchResultsBrush="{DynamicResource Fill/Accent/Highlighting/Text}"
+                              Margin="16"/>
+            <Border Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="0,1,0,0"
+                    BorderBrush="{DynamicResource Border/Neutral/SecondaryTransparent}">
+                <!--TODO Add modules description text-->
+                <TextBlock Text="{Binding CurrentProductItem.Description}" 
+                           VerticalAlignment="Center"
+						   TextWrapping="Wrap"
+                           FontSize="{StaticResource EditorFontSize}"
+                           FontFamily="{StaticResource EditorFontFamily}"
+                           Foreground="{DynamicResource Text/Neutral/Primary}"
+                           Margin="8" MinHeight="34"
+                           IsVisible="{Binding CurrentProductItem.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Color x:Key="NamespaceAlias">#00855F</Color>
+    <Color x:Key="Tag">#6B2FBA</Color>
+    <Color x:Key="AttributeName">#00855F</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="Default">#000000</Color>
+    
+    <Color x:Key="Comment">#248700</Color>
+    <Color x:Key="String">#8C6C41</Color>
+    <Color x:Key="StringInterpolation">#8C6C41</Color>
+    <Color x:Key="Char">#8C6C41</Color>
+    <Color x:Key="Preprocessor">#0F54D6</Color>
+    <Color x:Key="Punctuation">#383838</Color>
+    <Color x:Key="ValueTypeKeywords">#0F54D6</Color>
+    <Color x:Key="ReferenceTypeKeywords">#0F54D6</Color>
+    <Color x:Key="MethodCall">#00855F</Color>
+    <Color x:Key="NumberLiteral">#248700</Color>
+    <Color x:Key="ThisOrBaseReference">#0F54D6</Color>
+    <Color x:Key="NullOrValueKeywords">#0F54D6</Color>
+    <Color x:Key="Keywords">#0F54D6</Color>
+    <Color x:Key="GotoKeywords">#0F54D6</Color>
+    <Color x:Key="ContextKeywords">#0F54D6</Color>
+    <Color x:Key="ExceptionKeywords">#0F54D6</Color>
+    <Color x:Key="CheckedKeyword">#0F54D6</Color>
+    <Color x:Key="UnsafeKeywords">#0F54D6</Color>
+    <Color x:Key="OperatorKeywords">#0F54D6</Color>
+    <Color x:Key="ParameterModifiers">#0F54D6</Color>
+    <Color x:Key="Modifiers">#0F54D6</Color>
+    <Color x:Key="Visibility">#0F54D6</Color>
+    <Color x:Key="NamespaceKeywords">#6B2FBA</Color>
+    <Color x:Key="GetSetAddRemove">#00855F</Color>
+    <Color x:Key="TrueFalse">#0F54D6</Color>
+    <Color x:Key="TypeKeywords">#0F54D6</Color>
+    <Color x:Key="SemanticKeywords">#0F54D6</Color>
+    
+</ResourceDictionary>

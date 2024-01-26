@@ -1,0 +1,66 @@
+<UserControl x:Class="DemoCenter.Views.StandardControlsOverviewPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="600"
+             d:DesignWidth="800"
+             x:CompileBindings="True"
+             x:DataType="vm:StandardControlsOverviewPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+        <vm:StandardControlsOverviewPageViewModel />
+	</Design.DataContext>
+
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style Selector="CheckBox">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style Selector="RadioButton">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Styles>
+
+	<StackPanel HorizontalAlignment="Center" MinWidth="400" Margin="0,100,0,0">
+        <mxe:GroupBox Header="Primary View">
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*, 20, *">
+                <Button Content="Button" Classes="LayoutItem" />
+                <Button Grid.Column="2" Content="Warning Button" Classes="warning LayoutItem" />
+                <CheckBox Grid.Row="1"/>
+                <CheckBox Grid.Row="2" IsChecked="True"/>
+                <CheckBox Grid.Row="3" Classes="warning"/>
+                <RadioButton Grid.Row="1" Grid.Column="2"/>
+                <RadioButton Grid.Row="2" Grid.Column="2" />
+                <RadioButton Grid.Row="3" Grid.Column="2" IsChecked="True" Classes="warning"/>
+                <Slider Grid.ColumnSpan="3" Value="30" Grid.Row="4" Margin="0,20,0,0"/>
+            </Grid>
+        </mxe:GroupBox>
+        <mxe:GroupBox Header="Secondary View">
+            <Border CornerRadius="{StaticResource EditorCornerRadius}" Background="{DynamicResource Fill/Neutral/Secondary/Enabled}">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*, 20, *">
+                    <Button Content="Button" Classes="secondary LayoutItem" />
+                    <Button Grid.Column="2" Content="Warning Button" Classes="secondary warning LayoutItem" />
+                    <CheckBox Grid.Row="1" Classes="secondary"/>
+                    <CheckBox Grid.Row="2" IsChecked="True" Classes="secondary"/>
+                    <CheckBox Grid.Row="3" Classes="secondary warning"/>
+                    <RadioButton Grid.Row="1" Grid.Column="2" Classes="secondary"/>
+                    <RadioButton Grid.Row="2" Grid.Column="2" Classes="secondary"/>
+                    <RadioButton Grid.Row="3" Grid.Column="2" IsChecked="True" Classes="secondary warning"/>
+                    <Slider Grid.ColumnSpan="3" Value="30" Grid.Row="4" Margin="0,20,0,0" Classes="secondary"/>
+                </Grid>             
+            </Border>
+        </mxe:GroupBox>        
+        <Label Content="See product pages for details." HorizontalAlignment="Center" FontSize="16" Margin="0,16,0,0"/>
+	</StackPanel>  
+</UserControl>

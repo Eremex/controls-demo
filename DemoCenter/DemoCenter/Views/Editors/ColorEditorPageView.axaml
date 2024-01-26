@@ -1,0 +1,86 @@
+<UserControl x:Class="DemoCenter.Views.ColorEditorPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             xmlns:mxei="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Visuals;assembly=Eremex.Avalonia.Controls"
+             d:DesignHeight="750"
+             d:DesignWidth="900"
+             x:CompileBindings="True"
+             x:DataType="vm:ColorEditorPageViewModel"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:ColorEditorPageViewModel />
+    </Design.DataContext> 
+
+    <Grid ColumnDefinitions="*, 250">
+        <ContentControl Classes="DemoUserControl">
+            <Grid RowDefinitions="Auto, 60, Auto" ColumnDefinitions="Auto, 26, Auto" HorizontalAlignment="Center" Margin="30">
+                <!-- <Label Classes="EditorHeader" Content="POPUP COLOR EDITOR"/> -->
+                <mxe:PopupColorEditor Grid.Row="2" x:Name="PopupColorEditor" VerticalAlignment="Top"
+                                      ReadOnly="{Binding IsChecked, ElementName=ReadOnlySelector}"
+                                      ShowAlphaChannel="{Binding IsChecked, ElementName=AlphaChannelSelector}"
+                                      ColorsShowMode="{Binding ColorsShowMode}"
+                                      Color="#FF00B7B8"
+                                      CustomColors="{Binding CustomColors2, Mode=TwoWay}">
+                    <mxe:PopupColorEditor.PopupFooterButtons>
+                        <Binding Path="IsChecked" ElementName="AutoUpdateColorSelector">
+                            <Binding.Converter>
+                                <mx:BoolToObjectConverter>
+                                    <mx:BoolToObjectConverter.TrueValue>
+                                        <mxe:PopupFooterButtons>None</mxe:PopupFooterButtons>
+                                    </mx:BoolToObjectConverter.TrueValue>
+                                    <mx:BoolToObjectConverter.FalseValue>
+                                        <mxe:PopupFooterButtons>OkCancel</mxe:PopupFooterButtons>
+                                    </mx:BoolToObjectConverter.FalseValue>
+                                </mx:BoolToObjectConverter>
+                            </Binding.Converter>
+                        </Binding>
+                    </mxe:PopupColorEditor.PopupFooterButtons>
+                </mxe:PopupColorEditor>
+                <!-- <Label Classes="EditorHeader" Grid.Column="2" Content="STANDALONE COLOR EDITOR"/> -->
+                <mxe:ColorEditor x:Name="ColorEditor" VerticalAlignment="Top"
+                                 ReadOnly="{Binding IsChecked, ElementName=ReadOnlySelector}"
+                                 ShowAlphaChannel="{Binding IsChecked, ElementName=AlphaChannelSelector}"
+                                 ColorsShowMode="{Binding ColorsShowMode}"
+                                 ShowConfirmationButtons="{Binding !IsChecked, ElementName=AutoUpdateColorSelector}"
+                                 Color="#FF37C47F"
+                                 CustomColors="{Binding CustomColors1, Mode=TwoWay}"/>
+            <Grid Grid.Column="2" RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" MinWidth="120" MaxWidth="150">
+                <Border Height="40" Width="40" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        CornerRadius="{StaticResource EditorCornerRadius}"
+                        BorderThickness="{StaticResource EditorBorderThickness}"
+                        BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
+                        Background="{Binding Color, ElementName=ColorEditor, Converter={mxei:SolidColorBrushConverter}}"/>
+                <Label Grid.Column="1" Margin="{StaticResource leftGroupMargin}" VerticalAlignment="Center"
+                       Content="{Binding Color, ElementName=ColorEditor}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2" RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" MinWidth="120" MaxWidth="150">
+                <Border Height="40" Width="40" VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Background="{Binding Color, ElementName=PopupColorEditor, Converter={mxei:SolidColorBrushConverter}}"
+                        CornerRadius="{StaticResource EditorCornerRadius}"
+                        BorderThickness="{StaticResource EditorBorderThickness}"
+                        BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
+                <Label Grid.Column="1" Margin="{StaticResource leftGroupMargin}" VerticalAlignment="Center"
+                       Content="{Binding Color, ElementName=PopupColorEditor}"/>
+            </Grid>
+        </Grid>
+        </ContentControl>
+        <!--Options-->
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="AlphaChannelSelector" Content="Use Alpha Channel" IsChecked="True" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="ReadOnlySelector" Content="Read Only" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="StandardColorsSelector" Content="Show Standard Colors" IsChecked="{Binding ShowStandardColors, Mode=TwoWay}" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="CustomColorsSelector" Content="Show Custom Colors" IsChecked="{Binding ShowCustomColors, Mode=TwoWay}" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="AutoUpdateColorSelector" Content="Update Color on Creation" IsChecked="True" Classes="LayoutItem"
+                                     IsEnabled="{Binding IsChecked, ElementName=CustomColorsSelector}"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

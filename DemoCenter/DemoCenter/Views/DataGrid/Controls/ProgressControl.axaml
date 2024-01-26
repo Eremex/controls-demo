@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dataGridControls="using:DemoCenter.Views.DataGrid.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGrid.Controls.ProgressControl">
+    <Grid>
+        <Border x:Name="border"
+                Background="{Binding $parent[UserControl].Color}"
+                HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding $parent[UserControl].Value, StringFormat={}{0:c}}"
+                   FontFamily="{DynamicResource EditorFontFamily}"
+                   FontSize="{DynamicResource EditorFontSize}"
+                   Foreground="{DynamicResource Text/Neutral/Primary}"
+                   VerticalAlignment="Center"
+                   Margin="8,6"
+                   HorizontalAlignment="Right"
+                   Grid.ColumnSpan="2"/>
+    </Grid>
+</UserControl>

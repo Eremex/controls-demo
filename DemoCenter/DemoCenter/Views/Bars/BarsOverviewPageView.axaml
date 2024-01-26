@@ -1,0 +1,71 @@
+<UserControl x:Class="DemoCenter.Views.BarsOverviewPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:data="using:DemoCenter.DemoData"
+             xmlns:view="using:DemoCenter.Views"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="700"
+             d:DesignWidth="800"
+             x:CompileBindings="True"
+             x:DataType="vm:BarsOverviewPageViewModel"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:BarsOverviewPageViewModel />
+    </Design.DataContext>
+
+    <Grid Width="440" Height="640" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,80,0,0">
+        <mxb:ToolbarManager IsWindowManager="True">
+            <Grid RowDefinitions="Auto, 400, Auto" ColumnDefinitions="Auto, *, Auto">
+                <mxb:ToolbarContainerControl DockType="Top" Grid.ColumnSpan="3">
+                    <mxb:Toolbar DisplayMode="MainMenu">
+                        <mxb:ToolbarMenuItem Header="Menu"/>
+                        <mxb:ToolbarMenuItem Header="File"/>
+                        <mxb:ToolbarMenuItem Header="Options" Alignment="Far"/>
+                    </mxb:Toolbar>
+                    <mxb:Toolbar x:Name="FileToolbar" ShowCustomizationButton="False" AllowDragToolbar="False" StretchToolbar="True">
+                        <mxb:ToolbarButtonItem Header="New" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=NewDraftAction.svg'}" GlyphSize="48,48"/>
+                        <mxb:ToolbarEditorItem>
+                            <mxb:ToolbarEditorItem.Editor>
+                                <mxe:ButtonEditor MinWidth="200" HorizontalContentAlignment="Center" EditorValue="Editor item"/>
+                            </mxb:ToolbarEditorItem.Editor>
+                        </mxb:ToolbarEditorItem>
+
+                        <mxb:ToolbarButtonItem x:Name="ButtonDropDownItem"
+                                               Header="Save"
+                                               Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" GlyphSize="48,48">
+                            <mxb:ToolbarButtonItem.DropDownControl>
+                                <mxb:PopupMenu>
+                                    <mxb:ToolbarButtonItem Header="Save All" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save All.svg'}" GlyphSize="32,32"/>
+                                    <mxb:ToolbarButtonItem Header="Save 3D model" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=3D, Icon=Save.svg'}" GlyphSize="32,32"/>
+                                </mxb:PopupMenu>
+                            </mxb:ToolbarButtonItem.DropDownControl>
+                        </mxb:ToolbarButtonItem>
+                        <mxb:ToolbarButtonItem Header="Clear" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Clear.svg'}" GlyphSize="48,48"/>
+                    </mxb:Toolbar>
+                </mxb:ToolbarContainerControl>           
+                <mxb:ToolbarContainerControl Grid.Row="1" DockType="Left"/>
+                <Label Grid.Row="1" Grid.Column="1" Content="See product pages for details." 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="16"/>
+                <mxb:ToolbarContainerControl Grid.Row="1" Grid.Column="2" DockType="Right"/>
+                <mxb:ToolbarContainerControl Grid.Row="2" Grid.ColumnSpan="3" DockType="Bottom">
+                    <mxb:Toolbar DisplayMode="StatusBar" x:Name="StatusBar" ShowCustomizationButton="False">
+                        <mxb:ToolbarTextItem ShowBorder="False"
+                         Glyph="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}"
+                         GlyphSize="32,32"/>
+                        <mxb:ToolbarTextItem Header="Status Bar" ShowBorder="False" Alignment="Far"/>
+                    </mxb:Toolbar>
+                </mxb:ToolbarContainerControl>
+            </Grid>
+        </mxb:ToolbarManager>
+    </Grid>
+</UserControl>

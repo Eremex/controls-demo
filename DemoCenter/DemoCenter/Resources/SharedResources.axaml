@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Thickness x:Key="windowPadding">16</Thickness>
+	<Thickness x:Key="topGroupMargin">0,8,0,0</Thickness>
+	<Thickness x:Key="bottomGroupMargin">0,0,0,8</Thickness>
+	<Thickness x:Key="topControlMargin">0,4,0,0</Thickness>
+	<Thickness x:Key="leftControlMargin">4,0,0,0</Thickness>
+	<Thickness x:Key="leftGroupMargin">8,0,0,0</Thickness>
+	<Thickness x:Key="layoutItemMargin">6 0</Thickness>
+	<Thickness x:Key="leftRightGroupMargin">8,0,8,0</Thickness>
+
+    <CornerRadius x:Key="wizardControlCornerRadius">4</CornerRadius>
+    <Thickness x:Key="wizardControl_SelectorHeaderPadding">3,6,3,6</Thickness>
+    <Thickness x:Key="wizardControlPanelsPadding">8,8,8,8</Thickness>
+    <Thickness x:Key="wizardControlSettingsMargin">8,0,8,8</Thickness>
+	
+	<Thickness x:Key="firstVerticalStackItemMargin">0,4,0,4</Thickness>
+	<Thickness x:Key="firstVerticalStackTopItemMargin">0,0,0,4</Thickness>
+	<Thickness x:Key="firstVerticalStackBottomItemMargin">0,4,0,0</Thickness>
+	<Thickness x:Key="verticalStackItemMargin">8,4,0,4</Thickness>
+	<Thickness x:Key="verticalStackTopItemMargin">8,0,0,4</Thickness>
+	<Thickness x:Key="verticalStackBottomItemMargin">8,4,0,0</Thickness>
+</ResourceDictionary>

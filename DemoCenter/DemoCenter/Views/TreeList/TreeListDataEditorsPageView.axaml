@@ -1,0 +1,94 @@
+<UserControl x:Class="DemoCenter.Views.TreeListDataEditorsPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+			 xmlns:views="using:DemoCenter.Views"
+             xmlns:data="using:DemoCenter.DemoData"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="900"
+             x:CompileBindings="False"
+             x:DataType="vm:TreeListDataEditorsPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+		<vm:TreeListDataEditorsPageViewModel />
+	</Design.DataContext>
+
+	<UserControl.Resources>
+		<views:ProjectTaskImageSelector x:Key="imageSelector"
+									 ProjectImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Docs.svg'}"
+									 TaskImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=File.svg'}" />
+	</UserControl.Resources>
+
+	<Grid ColumnDefinitions="*, 250">
+		<mxtl:TreeListControl x:Name="treeList"
+							  BorderThickness="1,0"
+							  ChildrenFieldName="Tasks"
+							  ItemsSource="{Binding Tasks}"
+							  ShowNodeImages="True"
+							  ShowingEditor="OnShowingEditor"
+							  NodeImageSelector="{StaticResource imageSelector}"
+							  AutoExpandAllNodes="True">
+			<mxtl:TreeListControl.Styles>
+				<Style Selector="mxtl|TreeListRowControl">
+					<Setter Property="TextBlock.FontWeight">
+						<Setter.Value>
+							<Binding Path="HasTasks">
+								<Binding.Converter>
+									<mx:BoolToObjectConverter>
+										<mx:BoolToObjectConverter.TrueValue>
+											<FontWeight>Bold</FontWeight>
+										</mx:BoolToObjectConverter.TrueValue>
+										<mx:BoolToObjectConverter.FalseValue>
+											<FontWeight>Normal</FontWeight>
+										</mx:BoolToObjectConverter.FalseValue>
+									</mx:BoolToObjectConverter>
+								</Binding.Converter>
+							</Binding>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</mxtl:TreeListControl.Styles>
+			<mxtl:TreeListColumn FieldName="Description" Width="2*" />
+			<mxtl:TreeListColumn FieldName="Assignee" Width="*" />
+			<mxtl:TreeListColumn FieldName="HighPriority" Header="High Priority" AllowSorting="False" Width="90" />
+			<mxtl:TreeListColumn FieldName="Status" Width="*" />
+			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="*">
+				<mxtl:TreeListColumn.EditorProperties>
+					<mxe:SpinEditorProperties Minimum="1" Maximum="100" />
+				</mxtl:TreeListColumn.EditorProperties>
+			</mxtl:TreeListColumn>
+			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="*" />
+		</mxtl:TreeListControl>
+
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #treeList.AllowEditing}" Classes="LayoutItem"/>
+
+                    <DockPanel IsEnabled="{Binding #treeList.AllowEditing}">
+                        <Label Content="Editor Show Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorShowMode}"
+											EditorValue="{Binding #treeList.EditorShowMode}"
+											Classes="LayoutItem"/>
+                    </DockPanel>
+
+                    <DockPanel IsEnabled="{Binding #treeList.AllowEditing}">
+                        <Label Content="Editor Button Show Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorButtonShowMode}"
+											EditorValue="{Binding #treeList.EditorButtonShowMode}"
+											Classes="LayoutItem"/>
+                    </DockPanel>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+
+	</Grid>
+
+</UserControl>

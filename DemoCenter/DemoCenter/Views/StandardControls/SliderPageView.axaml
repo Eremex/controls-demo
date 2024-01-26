@@ -1,0 +1,79 @@
+<UserControl x:Class="DemoCenter.Views.SliderPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="500"
+             d:DesignWidth="800"
+             x:CompileBindings="True"
+             x:DataType="vm:SliderPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+        <vm:SliderPageViewModel />
+	</Design.DataContext>
+
+    <Grid ColumnDefinitions="*, 250">
+        <Grid RowDefinitions="Auto, 20, Auto, 80, Auto" ColumnDefinitions="Auto, Auto, Auto, * Auto, Auto"
+              HorizontalAlignment="Center"
+              Margin="0,100,0,0"
+              MinWidth="400"
+              IsEnabled="{Binding IsChecked, ElementName=IsEnabledSelector}">
+            
+            <Label Content="Slider:"/>
+            <Label Grid.Row="2" Content="Color slider:"/>
+            <Slider Grid.Column="1" Grid.ColumnSpan="5" 
+                    Value="80" 
+                    IsSnapToTickEnabled="{Binding IsChecked, ElementName=IsSnapToTickEnabledSelector}" 
+                    TickPlacement="{Binding TickPlacement}" 
+                    Ticks="0,25,50,75,100"/>
+            <Slider Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" 
+                    Value="120" 
+                    TickPlacement="{Binding TickPlacement}" 
+                    Classes="color"/>
+
+            <Slider x:Name="VerticalSlider" Grid.Row="4" Grid.Column="1" TickPlacement="{Binding TickPlacement}" TickFrequency="10" Value="30" Orientation="Vertical" Height="200"/>           
+            <mxe:TextEditor Grid.Row="4" Grid.Column="2" MinWidth="50"
+                DisplayFormatString="{}{0:N1}" HorizontalAlignment="Left" VerticalAlignment="Top" ReadOnly="True"
+                EditorValue="{Binding Maximum, ElementName=VerticalSlider}"/>
+            <mxe:TextEditor Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" MinWidth="50" 
+                            DisplayFormatString="{}{0:N1}"
+                            ReadOnly="True" 
+                            EditorValue="{Binding Value, ElementName=VerticalSlider}"/>
+            <mxe:TextEditor Grid.Row="4" Grid.Column="2" VerticalAlignment="Bottom" MinWidth="50"
+                            DisplayFormatString="{}{0:N1}" HorizontalAlignment="Right" ReadOnly="True"
+                            EditorValue="{Binding Minimum, ElementName=VerticalSlider}"/>
+            
+            <Slider x:Name="VerticalColorSlider" Value="250" Orientation="Vertical" Grid.Row="4" Grid.Column="5"
+                    TickPlacement="{Binding TickPlacement}" Classes="color"
+                    Height="200" />
+            <mxe:TextEditor Grid.Row="4" Grid.Column="4" VerticalAlignment="Center" MinWidth="50" DisplayFormatString="{}{0:N1}"
+                            ReadOnly="True" EditorValue="{Binding Value, ElementName=VerticalColorSlider}"/>
+        </Grid>
+        <!--Options-->
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="IsSnapToTickEnabledSelector" Content="Snap to Tick" Classes="LayoutItem"/>
+                    <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto">
+                        <Label Content="Tick Placement:" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor Grid.Column="1" EditorValue="{Binding TickPlacement, Mode=TwoWay}" ItemsSource="{mxc:EnumItemsSource EnumType=TickPlacement}" Classes="LayoutItem"/>
+                        <Label Content="Minimum:" Grid.Row="1" Classes="LayoutItem"/>
+                        <mxe:SpinEditor Grid.Row="1" Grid.Column="1" Value="{Binding Minimum, ElementName=VerticalSlider, Mode=TwoWay}" HorizontalContentAlignment="Left" Classes="LayoutItem"/>
+                        <Label Content="Maximum:" Grid.Row="2" Classes="LayoutItem"/>
+                        <mxe:SpinEditor Grid.Row="2" Grid.Column="1" Value="{Binding Maximum, ElementName=VerticalSlider, Mode=TwoWay}" HorizontalContentAlignment="Left" Classes="LayoutItem"/>
+                    </Grid>
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+    
+</UserControl>

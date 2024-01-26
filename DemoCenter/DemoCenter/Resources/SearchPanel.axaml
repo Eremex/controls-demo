@@ -1,0 +1,105 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ae="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+                    xmlns:editing="clr-namespace:AvaloniaEdit.Editing;assembly=AvaloniaEdit"
+                    xmlns:search="clr-namespace:AvaloniaEdit.Search;assembly=AvaloniaEdit"
+                    xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+                    x:ClassModifier="internal">
+
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <search:SearchPanel />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type search:SearchPanel}" TargetType="search:SearchPanel">
+        <Setter Property="BorderThickness" Value="{StaticResource EditorBorderThickness}" />
+        <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline/Neutral/Transparent/Medium}" />
+        <Setter Property="Background" Value="{DynamicResource Fill/Neutral/Secondary/Enabled}" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Margin" Value="0 0 18 0" />
+        <Setter Property="FontSize" Value="{StaticResource EditorFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource EditorFontFamily}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="PART_Border"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        Background="{TemplateBinding Background}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top">
+                    <Grid ColumnDefinitions="Auto, 6, Auto, 6, Auto, 24, Auto" Margin="10" RowDefinitions="Auto, *">
+                        <mxe:ButtonEditor Watermark="{x:Static ae:SR.SearchLabel}"
+                                          Width="260" Focusable="True"
+                                          NullValueButtonPosition="EditorBox"
+                                          Classes="secondary"
+                                          EditorValue="{Binding SearchPattern, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            <mxe:ButtonEditor.Buttons>
+                                <mxe:ButtonSettings ToolTip.Tip="{x:Static ae:SR.SearchMatchCaseText}"
+                                                    Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Operators, Icon=Starts with.svg'}"
+                                                    ButtonKind="Toggle"
+                                                    IsChecked="{Binding $parent[search:SearchPanel].MatchCase, Mode=TwoWay}"/>
+                                <mxe:ButtonSettings ToolTip.Tip="{x:Static ae:SR.SearchMatchWholeWordsText}"
+                                                    Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Painting, Icon=Report text column.svg'}"
+                                                    ButtonKind="Toggle"
+                                                    IsChecked="{Binding $parent[search:SearchPanel].WholeWords, Mode=TwoWay}"/>
+                            </mxe:ButtonEditor.Buttons>
+                        </mxe:ButtonEditor>
+                        <Button x:Name="PART_PreviousButton"
+                                Grid.Column="2"
+                                VerticalAlignment="Stretch"
+                                Command="{x:Static search:SearchCommands.FindPrevious}"
+                                Classes="secondary"
+                                ToolTip.Tip="{x:Static ae:SR.SearchFindPreviousText}">
+                            <PathIcon Width="8"
+                                      Height="8"
+                                      Data="{StaticResource ChevronUpIcon}"
+                                      Foreground="{Binding #PART_PreviousButton.Foreground}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="PART_NextButton"
+                                Grid.Column="4"
+                                VerticalAlignment="Stretch"
+                                Command="{x:Static search:SearchCommands.FindNext}"
+                                Classes="secondary"
+                                ToolTip.Tip="{x:Static ae:SR.SearchFindNextText}">
+                            <PathIcon Width="8"
+                                      Height="8"
+                                      Data="{StaticResource ChevronDownIcon}"
+                                      Foreground="{Binding #PART_NextButton.Foreground}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="PART_CloseButton"
+                                Grid.Column="6"
+                                VerticalAlignment="Stretch"
+                                Command="{x:Static search:SearchCommands.CloseSearchPanel}"
+                                Classes="secondary"
+                                ToolTip.Tip="Close (Esc)">
+                            <PathIcon Width="8"
+                                Height="8"
+                                Data="{StaticResource ClearCrossIcon}"
+                                Foreground="{Binding #PART_CloseButton.Foreground}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Button>
+                        <StackPanel Name="PART_MessageView"
+                                    IsVisible="False"
+                                    Orientation="Horizontal"
+                                    Margin="0 5 0 0 "
+                                    Grid.Row="1" 
+                                    Grid.ColumnSpan="6">
+                            <TextBlock Name="PART_MessageContent"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource Text/Neutral/Primary}"
+                                       FontFamily="{StaticResource EditorFontFamily}"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

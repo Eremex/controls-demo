@@ -1,0 +1,21 @@
+Yacht Name,Length (ft),Number of Cabins,Maximum Speed (knots),Cruising Range (nm),Price (USD),Year of Release,Builder,Designer,Flag
+Yacht A,150,6,30,4000,10,000,000,2020,Builders Inc.,Design Studio XYZ,USA
+Yacht B,120,5,25,3500,8,000,000,2019,Yacht Builders Ltd.,Design Studio ABC,UK
+Yacht C,140,6,28,3800,9,500,000,2021,Marine Constructors,Design Studio PQR,France
+Yacht D,130,5,26,3600,8,500,000,2018,Boat Makers Co.,Design Studio LMN,Italy
+Yacht E,160,7,32,4200,11,000,000,2022,Luxury Yacht Builders,Design Studio RST,Germany
+Yacht F,110,4,24,3200,7,500,000,2017,Yachting Industries,Design Studio UVW,USA
+Yacht G,170,8,34,4400,12,000,000,2023,Yacht Builders Ltd.,Design Studio XYZ,UK
+Yacht H,150,6,30,4000,10,000,000,2020,Marine Constructors,Design Studio ABC,France
+Yacht I,120,5,25,3500,8,000,000,2019,Builders Inc.,Design Studio PQR,USA
+Yacht J,140,6,28,3800,9,500,000,2021,Boat Makers Co.,Design Studio LMN,Italy
+Yacht K,130,5,26,3600,8,500,000,2018,Luxury Yacht Builders,Design Studio RST,Germany
+Yacht L,160,7,32,4200,11,000,000,2022,Yachting Industries,Design Studio UVW,USA
+Yacht M,110,4,24,3200,7,500,000,2017,Yacht Builders Ltd.,Design Studio XYZ,UK
+Yacht N,170,8,34,4400,12,000,000,2023,Marine Constructors,Design Studio ABC,France
+Yacht O,150,6,30,4000,10,000,000,2020,Builders Inc.,Design Studio PQR,USA
+Yacht P,120,5,25,3500,8,000,000,2019,Boat Makers Co.,Design Studio LMN,Italy
+Yacht Q,140,6,28,3800,9,500,000,2021,Luxury Yacht Builders,Design Studio RST,Germany
+Yacht R,130,5,26,3600,8,500,000,2018,Yachting Industries,Design Studio UVW,USA
+Yacht S,160,7,32,4200,11,000,000,2022,Yacht Builders Ltd.,Design Studio XYZ,UK
+Yacht T,110,4,24,3200,7,500,000,2017,Marine Constructors,Design Studio ABC,France

@@ -1,0 +1,103 @@
+<UserControl x:Class="DemoCenter.Views.ContextMenuPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:data="using:DemoCenter.DemoData"
+             xmlns:view="using:DemoCenter.Views"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:CompileBindings="False"
+             x:DataType="vm:ContextMenuPageViewModel"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:ContextMenuPageViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*, 250">
+        <mxb:ToolbarManager IsWindowManager="True">
+            <ContentControl Classes="DemoUserControl">
+                <Grid RowDefinitions="50, Auto, 80, Auto, 80, Auto, 80"
+                      HorizontalAlignment="Center" Width="400">
+                    <Grid.Styles>
+                        <Style Selector="TextBox">
+                            <Setter Property="mxb:ToolbarManager.ContextPopup">
+                                <Setter.Value>
+                                    <Template>
+                                        <mxb:PopupMenu Focusable="False">
+                                            <mxb:ToolbarButtonItem Header="Cut" HotKeyDisplayString="Ctrl+X" Command="{Binding $parent[TextBox].Cut}" IsEnabled="{Binding $parent[TextBox].CanCut}"
+                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Cut.svg'}"/>
+                                            <mxb:ToolbarButtonItem Header="Copy" HotKeyDisplayString="Ctrl+C" Command="{Binding $parent[TextBox].Copy}" IsEnabled="{Binding $parent[TextBox].CanCopy}"
+                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Copy.svg'}"/>
+                                            <mxb:ToolbarButtonItem Header="Paste" HotKeyDisplayString="Ctrl+V" Command="{Binding $parent[TextBox].Paste}" IsEnabled="{Binding $parent[TextBox].CanPaste}"
+                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Paste.svg'}"/>
+                                            <mxb:ToolbarSeparatorItem/>
+                                            <mxb:ToolbarButtonItem Header="Undo" HotKeyDisplayString="Ctrl+Z" Command="{Binding $parent[TextBox].Undo}" IsEnabled="{Binding $parent[TextBox].CanUndo}"
+                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}"/>
+                                            <mxb:ToolbarButtonItem Header="Redo" HotKeyDisplayString="Ctrl+Y"  Command="{Binding $parent[TextBox].Redo}" IsEnabled="{Binding $parent[TextBox].CanRedo}"
+                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}"/>
+                                            <mxb:ToolbarSeparatorItem/>
+                                            <mxb:ToolbarButtonItem Header="Select All" HotKeyDisplayString="Ctrl+A" Command="{Binding $parent[TextBox].SelectAll}"/>
+                                            <mxb:ToolbarButtonItem Header="Clear" Command="{Binding $parent[TextBox].Clear}"
+                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Delete.svg'}"/>
+                                        </mxb:PopupMenu>
+                                    </Template>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Grid.Styles>
+
+                    <Label Content="Button editor" VerticalAlignment="Bottom" Classes="LayoutItem"/>
+                    <mxe:ButtonEditor EditorValue="Majestic Mariner" Grid.Row="1" Classes="LayoutItem">
+                        <mxe:ButtonEditor.Buttons>
+                            <mxe:ButtonSettings ToolTip.Tip="Delete" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Delete.svg'}"/>
+                        </mxe:ButtonEditor.Buttons>
+                    </mxe:ButtonEditor>
+
+                    <Label Grid.Row="2" Content="Date editor" VerticalAlignment="Bottom" Classes="LayoutItem"/>
+                    <mxe:DateEditor Grid.Row="3" EditorValue="{Binding DateTime}" Classes="LayoutItem"/>
+
+                    <Label Content="Segmented editor" Grid.Row="4" VerticalAlignment="Bottom" Classes="LayoutItem"/>
+                    <mxe:SegmentedEditor Grid.Row="5" ItemsSource="{Binding Mechs}" DisplayMember="Name" Classes="LayoutItem" MinHeight="28">
+                        <mxb:ToolbarManager.ContextPopup>
+                            <mxb:PopupMenu
+                                IsEnabled="{Binding #IsEnabledSelector.IsChecked}"
+                                ShowIconStrip="{Binding #ShowIconsStripSelector.IsChecked}"
+                                IsVisible="{Binding #IsVisibleSelector.IsChecked}" >
+                                <mxb:ToolbarButtonItem Header="Reload" Command="{Binding Reload}"
+                                                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Update.svg'}"/>
+                                <mxb:ToolbarSeparatorItem/>
+                                <mxb:ToolbarCheckItem Header="Order by Ascending" IsChecked="{Binding OrderByAscending, Mode=TwoWay}" />
+                                <mxb:ToolbarCheckItem Header="Order by Descending" IsChecked="{Binding OrderByDescending, Mode=TwoWay}"/>
+                                <mxb:ToolbarSeparatorItem/>
+                                <mxb:ToolbarButtonItem Header="Clear all but the first" Command="{Binding ClearAllButTheFirst}"
+                                                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Clear.svg'}"/>
+                            </mxb:PopupMenu>
+                        </mxb:ToolbarManager.ContextPopup>
+                    </mxe:SegmentedEditor>
+
+                    <Label Grid.Row="6" Content="Right click over editor to show a context menu" HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom" FontSize="16"/>
+                </Grid>
+            </ContentControl>
+        </mxb:ToolbarManager>
+        <!--Options-->
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Segmented Editor Properties">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Menu Enabled" IsChecked="True" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Menu Visible" IsChecked="True" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="ShowIconsStripSelector" Content="Show Icon Strip" IsChecked="True" Classes="LayoutItem"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,70 @@
+<UserControl x:Class="DemoCenter.Views.SplitContainerControlPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:CompileBindings="True"
+             x:DataType="vm:SplitContainerControlPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+        <vm:SplitContainerControlPageViewModel />
+	</Design.DataContext>
+
+    <UserControl.Styles>
+        <Style Selector="mxe|SplitContainerControl">
+            <Setter Property="BorderThickness" Value="{StaticResource EditorBorderThickness}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
+        </Style>
+        <Style Selector="Label.ContentLabel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid ColumnDefinitions="*, 250">
+        <Grid RowDefinitions="*, 40, *" HorizontalAlignment="Center" Margin="0,40">
+            <mxe:SplitContainerControl Width="400" 
+                                       IsCollapsed="{Binding IsChecked, ElementName=IsCollapsedSelector}"
+                                       IsSplitterVisible="{Binding IsChecked, ElementName=IsSplitterVisibleSelector}"
+                                       CollapsePanel="{Binding CollapsedPanel}"
+                                       Panel1Length="250">
+                <mxe:SplitContainerControl.Panel1>
+                    <Label Classes="ContentLabel" Content="Panel 1"/>
+                </mxe:SplitContainerControl.Panel1>
+                <mxe:SplitContainerControl.Panel2>
+                    <Label Classes="ContentLabel" Content="Panel 2"/>
+                </mxe:SplitContainerControl.Panel2>
+            </mxe:SplitContainerControl>
+            <mxe:SplitContainerControl Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Stretch"
+                                       IsCollapsed="{Binding IsChecked, ElementName=IsCollapsedSelector}"
+                                       IsSplitterVisible="{Binding IsChecked, ElementName=IsSplitterVisibleSelector}"
+                                       CollapsePanel="{Binding CollapsedPanel}"
+                                       Panel2Length="2*">
+                <mxe:SplitContainerControl.Panel1>
+                    <Label Classes="ContentLabel" Content="Panel 1"/>
+                </mxe:SplitContainerControl.Panel1>
+                <mxe:SplitContainerControl.Panel2>
+                    <Label Classes="ContentLabel" Content="Panel 2"/>
+                </mxe:SplitContainerControl.Panel2>
+            </mxe:SplitContainerControl>
+        </Grid>
+        <!--Options-->
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="IsCollapsedSelector" Content="IsCollapsed" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="IsSplitterVisibleSelector" Content="Is Splitter Visible" IsChecked="True" Classes="LayoutItem"/>
+                    <DockPanel>
+                        <Label Content="Collapsed Panel:" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor EditorValue="{Binding CollapsedPanel, Mode=TwoWay}" ItemsSource="{mxc:EnumItemsSource EnumType=mxe:SplitContainerControlCollapsePanel}"/>
+                    </DockPanel>
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>   
+</UserControl>
