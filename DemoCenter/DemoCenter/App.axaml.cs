@@ -23,7 +23,6 @@ public partial class App : Application
 
     public override void Initialize()
     {
-        RegisterThemes();
         AvaloniaXamlLoader.Load(this);
 
         lightTheme = (IStyle)Resources["EremexLightTheme"];
@@ -78,28 +77,6 @@ public partial class App : Application
                 Styles[Styles.IndexOf(oldStyle)] = newStyle;
             else
                 Styles.Add(newStyle);
-        }
-    }
-
-    private void RegisterThemes()
-    {
-        RegisterPalette(PaletteType.White, PaletteState.Disabled);
-        RegisterPalette(PaletteType.White, PaletteState.Selected);
-        RegisterPalette(PaletteType.White, PaletteState.Normal);
-        RegisterPalette(PaletteType.Black, PaletteState.Disabled);
-        RegisterPalette(PaletteType.Black, PaletteState.Selected);
-        RegisterPalette(PaletteType.Black, PaletteState.Normal);
-    }
-
-    private static void RegisterPalette(PaletteType paletteType, PaletteState paletteState)
-    {
-        var paletteName = "DemoCenter.Images.css." + PaletteManager.Default.GetPaletteName(paletteType, paletteState);
-        var stream = Assembly.GetAssembly(typeof(App))?.GetManifestResourceStream(paletteName);
-        if(stream != null)
-        {
-            StreamReader reader = new StreamReader(stream);
-            var palette = reader.ReadToEnd();
-            PaletteManager.Default.RegisterPalette(paletteType, paletteState, palette);
         }
     }
 

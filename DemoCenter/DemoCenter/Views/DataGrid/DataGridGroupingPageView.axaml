@@ -9,10 +9,21 @@
              x:Class="DemoCenter.Views.DataGridGroupingPageView">
     <UserControl.Resources>
         <DataTemplate x:Key="quarterTemplate">
-            <dataGridControls:ProgressControl Color="SkyBlue" Value="{Binding Value}" Maximum="100000"/>
+            <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Pressed}" 
+                         MinWidth="0"
+                         Background="Transparent"
+                         CornerRadius="2"
+                         VerticalAlignment="Stretch"
+                         Padding="1, 1" Minimum="0" Maximum="100000" ShowProgressText="True" Value="{Binding Value}" />
         </DataTemplate>
         <DataTemplate x:Key="totalTemplate">
-            <dataGridControls:ProgressControl Color="DeepSkyBlue" Value="{Binding Value}" Maximum="400000"/>
+            <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Text}"
+                         MinWidth="0"
+                         Background="Transparent"
+                         CornerRadius="2"
+                         VerticalAlignment="Stretch"
+                         Opacity="1"
+                         Padding="1, 1" Minimum="0" Maximum="400000" ShowProgressText="True" Value="{Binding Value}" />
         </DataTemplate>
     </UserControl.Resources>
 

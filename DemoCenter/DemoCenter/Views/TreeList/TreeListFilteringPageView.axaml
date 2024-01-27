@@ -77,7 +77,7 @@
 			<mxtl:TreeListColumn FieldName="Progress" Header="Progress" Width="110">
 				<mxtl:TreeListColumn.CellTemplate>
 					<DataTemplate>
-						<ProgressBar Margin="4,0" Minimum="0" Maximum="100" MinWidth="10" ShowProgressText="True" Value="{Binding Value}" />
+						<ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Enabled}" CornerRadius="2" Margin="4,0" Minimum="0" Maximum="100" MinWidth="10" ShowProgressText="True" Value="{Binding Value}" />
 					</DataTemplate>
 				</mxtl:TreeListColumn.CellTemplate>
 			</mxtl:TreeListColumn>
