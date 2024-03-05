@@ -10,7 +10,6 @@
                 Background="{Binding $parent[UserControl].Color}"
                 HorizontalAlignment="Left"/>
         <TextBlock Text="{Binding $parent[UserControl].Value, StringFormat={}{0:c}}"
-                   FontFamily="{DynamicResource EditorFontFamily}"
                    FontSize="{DynamicResource EditorFontSize}"
                    Foreground="{DynamicResource Text/Neutral/Primary}"
                    VerticalAlignment="Center"

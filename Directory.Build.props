@@ -20,7 +20,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <AvaloniaVersion>11.0.7</AvaloniaVersion>
-    <AvaloniaSvgSkiaVersion>11.0.0.276</AvaloniaSvgSkiaVersion>
+    <AvaloniaSvgSkiaVersion>11.0.0.13</AvaloniaSvgSkiaVersion>
     <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
   </PropertyGroup>
 

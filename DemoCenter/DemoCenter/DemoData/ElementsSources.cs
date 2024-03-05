@@ -1,12 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Collections.Generic;
-using Avalonia.Media;
-using Avalonia.Svg.Skia;
-using ExCSS;
-using System.Xml.Linq;
-using System.Globalization;
+﻿using Avalonia.Media;
+using DemoCenter.Helpers;
 
 namespace DemoCenter.DemoData
 {
@@ -20,7 +13,7 @@ namespace DemoCenter.DemoData
         {
             Name = name;
             Category = category;
-            Icon = SvgImageExtension.ProvideValue($"avares://DemoCenter/Images/{iconName}.svg", null!, null!);
+            Icon = SvgImageHelper.CreateSvgImage($"avares://DemoCenter/Images/{iconName}.svg");
         }
     }
 

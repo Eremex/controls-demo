@@ -7,7 +7,8 @@ namespace DemoCenter.Views
 {
     public partial class ToolbarAndMenuPageView : UserControl
     {
-        public static readonly AttachedProperty<bool> IsToolbarSelectedProperty = AvaloniaProperty.RegisterAttached<ToolbarAndMenuPageView, AvaloniaObject, bool>("IsToolbarSelected");
+        public static readonly AttachedProperty<bool> IsToolbarSelectedProperty =
+            AvaloniaProperty.RegisterAttached<ToolbarAndMenuPageView, AvaloniaObject, bool>("IsToolbarSelected");
 
         public static bool GetIsToolbarSelected(AvaloniaObject target)
         {
@@ -21,9 +22,11 @@ namespace DemoCenter.Views
 
         IReadOnlyList<string> fonts;
 
-        public IReadOnlyList<string> Fonts => fonts ?? (fonts = FontManager.Current.SystemFonts.Select(x => x.Name).OrderBy(x => x).ToList());
+        public IReadOnlyList<string> Fonts =>
+            fonts ?? (fonts = FontManager.Current.SystemFonts.Select(x => x.Name).OrderBy(x => x).ToList());
 
-        public IReadOnlyList<double> FontSizes { get; } = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+        public IReadOnlyList<double> FontSizes { get; } = new List<double>()
+            { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
 
 
 
@@ -38,21 +41,21 @@ namespace DemoCenter.Views
         {
             var source = e.Source as RadioButton;
 
-            if (source.IsChecked != true)
+            if(source.IsChecked != true)
                 return;
 
             if(PropertiesSelector.DataContext is AvaloniaObject oldToolbar)
                 SetIsToolbarSelected(oldToolbar, false);
 
-            if (source == MainMenuSelector)
+            if(source == MainMenuSelector)
                 PropertiesSelector.DataContext = MainMenu;
-            else if (source == FileToolbarSelector)
+            else if(source == FileToolbarSelector)
                 PropertiesSelector.DataContext = FileToolbar;
-            else if (source == EditToolbarSelector)
+            else if(source == EditToolbarSelector)
                 PropertiesSelector.DataContext = EditToolbar;
-            else if (source == FontToolbarSelector)
+            else if(source == FontToolbarSelector)
                 PropertiesSelector.DataContext = FontToolbar;
-            else if (source == StatusBarSelector)
+            else if(source == StatusBarSelector)
                 PropertiesSelector.DataContext = StatusBar;
 
             SetIsToolbarSelected((AvaloniaObject)PropertiesSelector.DataContext, true);

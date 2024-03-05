@@ -102,8 +102,8 @@
 				<mxd:DockGroup>
 					<mxd:DockGroup Orientation="Vertical">
 						<mxd:DockGroup DockHeight="3*">
-							<mxd:TabbedGroup DockWidth="2*" TabStripPlacement="Left" TabHeaderOrientation="Horizontal" AllowFloat="False">
-								<mxd:DockPane Header="Explorer" AllowFloat="False">
+							<mxd:TabbedGroup DockWidth="2*" TabStripPlacement="Left" TabHeaderOrientation="Horizontal">
+								<mxd:DockPane Header="Explorer">
 									<mxd:TabbedGroup.TabHeaderTemplate>
 										<DataTemplate>
 											<Border Background="Transparent"
@@ -131,7 +131,7 @@
 										<mxtl:TreeListColumn FieldName="Name" Width="*" SortMode="Custom" SortDirection="Ascending" />
 									</mxtl:TreeListControl>
 								</mxd:DockPane>
-								<mxd:DockPane Header="Search" AllowFloat="False">
+								<mxd:DockPane Header="Search">
 									<mxd:TabbedGroup.TabHeaderTemplate>
 										<DataTemplate>
 											<Border Background="Transparent"
@@ -167,7 +167,7 @@
 									</Grid>
 									
 								</mxd:DockPane>
-								<mxd:DockPane Header="Debug" AllowFloat="False">
+								<mxd:DockPane Header="Debug">
 									<mxd:TabbedGroup.TabHeaderTemplate>
 										<DataTemplate>
 											<Border Background="Transparent"
@@ -193,7 +193,7 @@
 										</TextBlock>
 									</Grid>
 								</mxd:DockPane>
-								<mxd:DockPane Header="Source Control" AllowFloat="False">
+								<mxd:DockPane Header="Source Control">
 									<mxd:TabbedGroup.TabHeaderTemplate>
 										<DataTemplate>
 											<Border Background="Transparent"
@@ -219,8 +219,8 @@
 
 						</mxd:DockGroup>
 
-						<mxd:TabbedGroup TabStripPlacement="Left" TabHeaderOrientation="Horizontal" AllowFloat="False">
-							<mxd:DockPane Header="Error List" AllowFloat="False">
+						<mxd:TabbedGroup TabStripPlacement="Left" TabHeaderOrientation="Horizontal">
+							<mxd:DockPane Header="Error List">
 								<mxd:TabbedGroup.TabHeaderTemplate>
 									<DataTemplate>
 										<Border Background="Transparent"
@@ -253,7 +253,7 @@
 									</dataGrid:DataGridControl>
 								</Grid>
 							</mxd:DockPane>
-							<mxd:DockPane Header="Output" AllowFloat="False">
+							<mxd:DockPane Header="Output">
 								<mxd:TabbedGroup.TabHeaderTemplate>
 									<DataTemplate>
 										<Border Background="Transparent"

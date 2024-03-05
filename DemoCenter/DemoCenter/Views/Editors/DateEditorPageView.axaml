@@ -6,7 +6,7 @@
              xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="550"
-             d:DesignWidth="800"
+             d:DesignWidth="1000"
              x:CompileBindings="False"
              x:DataType="vm:DateEditorPageViewModel"
              mc:Ignorable="d">
@@ -20,14 +20,15 @@
                               Margin="30"
                           IsEnabled="{Binding #IsEnabledSelector.IsChecked}">
                         <Label Content="Date Editor" Classes="EditorHeader"/>
-                        <mxe:DateEditor HorizontalAlignment="Stretch"
+                        <mxe:DateEditor x:Name="DateEditor" HorizontalAlignment="Stretch"
                                         FirstDayOfWeek="Monday"
                                         ShowToday="{Binding #ShowTodaySelector.IsChecked}" 
                                         NullValueButtonPosition="{Binding NullValueButtonPosition}"
+                                        IsTextEditable="{Binding #IsTextEditableSelector.IsChecked}"
                                         MinValue="{Binding Minimum}"
                                         DateTime="{Binding Current, Mode=TwoWay}"
                                         MaxValue="{Binding Maximum}"
-                                        DisplayFormatString="{Binding SelectedTextFormat}"
+                                        Mask="{Binding SelectedTextFormat}"
                                         Margin="0,8"
                                         Width="256"
                                         VerticalAlignment="Top"
@@ -50,16 +51,19 @@
                 <mxe:GroupBox Header="Properties">
                     <StackPanel>
                         <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="LayoutItem"/>
+                        <mxe:CheckEditor x:Name="IsTextEditableSelector" Content="Is Text Editable" IsChecked="True" Classes="LayoutItem"/>
                         <mxe:CheckEditor x:Name="ShowTodaySelector" Content="Highlight Today Date" IsChecked="True" Classes="LayoutItem"/>
                         <mxe:CheckEditor x:Name="ShowNullValueButtonSelector" Content="Show Clear Button in Popup" IsChecked="{Binding ShowNullButton, Mode=TwoWay}" Classes="LayoutItem"/>
 
-                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto">
-                            <Label Content="Maximum:" Classes="LayoutItem" Grid.Row="0"/>
-                            <mxe:DateEditor x:Name="MaximumValueEditor" Grid.Row="0" Grid.Column="1" DateTime="{Binding Maximum, Mode=TwoWay}" Classes="LayoutItem"/>
-                            <Label Content="Minimum:" Classes="LayoutItem" Grid.Row="1"/>
-                            <mxe:DateEditor x:Name="MinimumValueEditor" Grid.Row="1" Grid.Column="1" DateTime="{Binding Minimum, Mode=TwoWay}" Classes="LayoutItem"/>
-                            <Label Content="Date Format:" Grid.Row="2" Classes="LayoutItem"/>
-                            <mxe:ComboBoxEditor x:Name="ProgressTextFormatSelector" Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Left"
+                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
+                            <Label Content="Date:" Classes="LayoutItem" Grid.Row="0"/>
+                            <mxe:TextEditor x:Name="DateTimeValueViewer" Grid.Row="0" Grid.Column="1" MaskType="DateTime" Mask="d" ReadOnly="True" EditorValue="{Binding #DateEditor.DateTime}" Classes="LayoutItem"/>
+                            <Label Content="Maximum:" Classes="LayoutItem" Grid.Row="1"/>
+                            <mxe:DateEditor x:Name="MaximumValueEditor" Grid.Row="1" Grid.Column="1" DateTime="{Binding Maximum, Mode=TwoWay}" Classes="LayoutItem"/>
+                            <Label Content="Minimum:" Classes="LayoutItem" Grid.Row="2"/>
+                            <mxe:DateEditor x:Name="MinimumValueEditor" Grid.Row="2" Grid.Column="1" DateTime="{Binding Minimum, Mode=TwoWay}" Classes="LayoutItem"/>
+                            <Label Content="Date Format:" Grid.Row="3" Classes="LayoutItem"/>
+                            <mxe:ComboBoxEditor x:Name="ProgressTextFormatSelector" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Left"
                                                 ItemsSource="{Binding Formats}" IsTextEditable="False"
                                                 SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="LayoutItem"/>
                         </Grid>

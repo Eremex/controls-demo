@@ -29,11 +29,11 @@
               HorizontalAlignment="Center"
               Margin="30">           
             <Label Classes="LayoutItem" Content="Web Page Link:" VerticalAlignment="Center"/>
-            <mxe:HyperlinkEditor EditorValue="www.eremex.ru" Command="{Binding ShowWebPageCommand}" VerticalAlignment="Center"
-                                 CommandParameter="https://www.eremex.ru" Classes="LayoutItem" Grid.Column="1"/>
+            <mxe:HyperlinkEditor Text="Eremex link" EditorValue="www.eremex.ru" NavigationUrlFormat="https://{0}" VerticalAlignment="Center" 
+                                 AllowAutoNavigate="True" Classes="LayoutItem" Grid.Column="1"/>
 
             <Label Classes="LayoutItem" Content="Demo Link:" Grid.Row="1" VerticalAlignment="Center"/>
-            <mxe:HyperlinkEditor EditorValue="ComboBox Editor module" Command="{Binding ShowDemoCommand}" VerticalAlignment="Center"
+            <mxe:HyperlinkEditor EditorValue="ComboBox Editor module" ShowNavigationUrlToolTip="False" Command="{Binding ShowDemoCommand}" VerticalAlignment="Center"
                                  CommandParameter="ComboBox Editor" Classes="LayoutItem" Grid.Column="1" Grid.Row="1"/>
             
             <mxdg:DataGridControl x:Name="materialsGrid"

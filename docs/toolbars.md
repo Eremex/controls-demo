@@ -12,8 +12,8 @@ The main features of the Toolbar&amp;Menu controls include:
 
 - User customization:
     - Bar drag-and-drop — Allows a user to rearrange bars using drag thumbs.
-    - Quick customization — A user can quickly move items within and between bars using drag-and-drop by holding the Alt key down.
-    - Bar customization buttons — Allow a user to change the visibility of bar items.
+    - Customization mode and Customization Window — In the Customization Window, a user can change the visibility of existing toolbars, and create custom toolbars. A user can hide, restore, and move toolbar items using drag-and-drop operations.
+    - Quick customization — A user can move items within and between bars using drag-and-drop by holding the Alt key down. There is no need to activate customization mode/Customization Window to perform quick customization.
 
 - Numerous bar layout options:
     - Horizontal and vertical directions of individual bars.

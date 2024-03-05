@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using DemoCenter.DemoData;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Eremex.AvaloniaUI.Controls.Common;
 using CommunityToolkit.Mvvm.Input;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
+
+using DemoCenter.DemoData;
 
 namespace DemoCenter.ViewModels
 {
@@ -22,19 +20,6 @@ namespace DemoCenter.ViewModels
         }
 
         public event Action<string> SelectDemo;
-
-        [RelayCommand]
-        public void ShowWebPage(string parameter)
-        {
-            try
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                    Process.Start(new ProcessStartInfo(parameter) { UseShellExecute = true });
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    Process.Start("xdg-open", parameter);
-            }
-            catch { };
-        }
 
         [RelayCommand]
         public void ShowDemo(string moduleName)

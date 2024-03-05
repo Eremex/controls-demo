@@ -32,8 +32,6 @@
             M3.99396 4.18091C4.1758 4.38873 4.49168 4.40979 4.6995 4.22795C4.90732 4.04611 4.92838 3.73023 4.74654 3.52241L3.4266 2.01391C3.24476 1.8061 2.92888 1.78504 2.72106 1.96688C2.51325 2.14872 2.49219 2.4646 2.67403 2.67242L3.99396 4.18091Z
         </StreamGeometry>
         <StreamGeometry x:Key="MoonPath">M5.86202 0.458762C5.9851 0.697922 5.98434 1.0123 5.80073 1.26681C5.29679 1.96532 5 2.82244 5 3.75035C5 6.09757 6.90279 8.00035 9.25 8.00035C9.63503 8.00035 10.0074 7.94928 10.3609 7.85382C10.6637 7.77208 10.9581 7.88213 11.1385 8.08169C11.326 8.28909 11.41 8.62218 11.2361 8.93215C10.2095 10.762 8.24968 12.0003 6 12.0003C2.68629 12.0003 0 9.31406 0 6.00035C0 2.99175 2.2139 0.501137 5.10156 0.0672336C5.45254 0.0144957 5.73419 0.210389 5.86202 0.458762ZM4.67216 1.17846C2.55533 1.75995 1 3.69889 1 6.00035C1 8.76177 3.23858 11.0003 6 11.0003C7.66194 11.0003 9.13506 10.1897 10.0447 8.94053C9.78532 8.97994 9.51992 9.00035 9.25 9.00035C6.35051 9.00035 4 6.64985 4 3.75035C4 2.81653 4.24419 1.93875 4.67216 1.17846Z</StreamGeometry>
-    </UserControl.Resources>
-    <UserControl.Resources>
         <views:PagesChildrenSelector x:Key="childNodesSelector" />
     </UserControl.Resources>
     <Border Background="{DynamicResource Fill/Neutral/Primary/Enabled}" Padding="8">
@@ -127,18 +125,17 @@
                               IsVisible="{Binding #ShowCodeSelector.IsChecked}"
                               IsReadOnly="True" 
                               WordWrap="True" 
-                              FontFamily="Inter"
                               FontSize="14"
                               SearchResultsBrush="{DynamicResource Fill/Accent/Highlighting/Text}"
-                              Margin="16"/>
+                              Margin="16"
+                              ActualThemeVariantChanged="CodeViewEditor_OnActualThemeVariantChanged"/>
             <Border Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="0,1,0,0"
-                    BorderBrush="{DynamicResource Border/Neutral/SecondaryTransparent}">
+                    BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
                 <!--TODO Add modules description text-->
                 <TextBlock Text="{Binding CurrentProductItem.Description}" 
                            VerticalAlignment="Center"
 						   TextWrapping="Wrap"
                            FontSize="{StaticResource EditorFontSize}"
-                           FontFamily="{StaticResource EditorFontFamily}"
                            Foreground="{DynamicResource Text/Neutral/Primary}"
                            Margin="8" MinHeight="34"
                            IsVisible="{Binding CurrentProductItem.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>

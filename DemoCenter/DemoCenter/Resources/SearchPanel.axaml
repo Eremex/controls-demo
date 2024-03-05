@@ -20,7 +20,6 @@
         <Setter Property="Focusable" Value="True" />
         <Setter Property="Margin" Value="0 0 18 0" />
         <Setter Property="FontSize" Value="{StaticResource EditorFontSize}" />
-        <Setter Property="FontFamily" Value="{StaticResource EditorFontFamily}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Name="PART_Border"
@@ -94,8 +93,7 @@
                                     Grid.ColumnSpan="6">
                             <TextBlock Name="PART_MessageContent"
                                        FontSize="11"
-                                       Foreground="{DynamicResource Text/Neutral/Primary}"
-                                       FontFamily="{StaticResource EditorFontFamily}"/>
+                                       Foreground="{DynamicResource Text/Neutral/Primary}"/>
                         </StackPanel>
                     </Grid>
                 </Border>

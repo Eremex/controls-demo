@@ -119,7 +119,7 @@
                             <!--<mxb:ToolbarCheckItem Header="Underline" Glyph="{SvgImage 'avares://DemoCenter/Images/FontUnderline.svg'}"/>-->
                             <!--Does not work with TextBox-->
 
-                            <mxb:ToolbarEditorItem Header="Font Color:" Category="Font" EditorWidth="100" EditorValue="{Binding #textBox.Foreground, Converter={helpers:ColorToBrushConverter}}">
+                            <mxb:ToolbarEditorItem Header="Font Color:" Category="Font" EditorWidth="150" EditorValue="{Binding #textBox.Foreground, Converter={helpers:ColorToBrushConverter}}">
                                 <mxb:ToolbarEditorItem.EditorProperties>
                                     <mxe:PopupColorEditorProperties />
                                 </mxb:ToolbarEditorItem.EditorProperties>
@@ -140,7 +140,7 @@
                             </mxb:ToolbarEditorItem>
                         </mxb:Toolbar>
                         
-                        <mxb:Toolbar x:Name="UserToolbar" ToolbarName="UserToolbar" UserToolbar="True">
+                        <mxb:Toolbar x:Name="UserToolbar" ToolbarName="UserToolbar" UserToolbar="True" Row="2">
                             <mxb:ToolbarButtonItem Header="Tree" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Depend.svg'}" Category="UserCommands"/>
                             <mxb:ToolbarButtonItem Header="Script" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Script, Icon=CSharpFile.svg'}" Category="UserCommands"/>
                             <mxb:ToolbarButtonItem Header="Settings" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=List of Bugs.svg'}" Category="UserCommands"/>

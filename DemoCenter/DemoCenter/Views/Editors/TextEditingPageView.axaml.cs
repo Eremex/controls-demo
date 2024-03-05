@@ -1,10 +1,9 @@
-using System;
 using System.Globalization;
 
 using Avalonia.Controls;
 using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
-using Avalonia.Svg.Skia;
+using DemoCenter.Helpers;
 
 namespace DemoCenter.Views
 {
@@ -27,7 +26,7 @@ namespace DemoCenter.Views
             if (value == null)
                 return null;
             var uri = $"avares://DemoCenter/Images/Group=PCB, Icon=Lock {((bool)value ? "True" : "False")}.svg";
-            return SvgImageExtension.ProvideValue(uri, null!, null!);
+            return SvgImageHelper.CreateSvgImage(uri);
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

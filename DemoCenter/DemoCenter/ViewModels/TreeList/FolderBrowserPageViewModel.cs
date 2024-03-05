@@ -1,22 +1,21 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Eremex.AvaloniaUI.Controls.Utils;
 
 namespace DemoCenter.ViewModels
 {
-    public partial class FolderBrowserPageViewModel : PageViewModelBase
+    public class FolderBrowserPageViewModel : PageViewModelBase
     {
         public FolderBrowserPageViewModel()
         {
-            CreateDrives();
+            Drives = CreateDrives();
         }
 
-        [ObservableProperty] List<DriveFileSystemItemModel> drives;
+        public List<DriveFileSystemItemModel> Drives { get; }
 
-        private void CreateDrives()
+        private List<DriveFileSystemItemModel> CreateDrives()
         {
             List<DriveFileSystemItemModel> drives = new();
-            Directory.GetLogicalDrives().ForEach(drive => drives.Add(new DriveFileSystemItemModel(drive)));
-            Drives = drives;
+            Array.ForEach(Directory.GetLogicalDrives(), drive => drives.Add(new DriveFileSystemItemModel(drive)));
+            return drives;
         }
     }
 
