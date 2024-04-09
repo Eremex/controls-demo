@@ -1,0 +1,45 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             x:Class="DemoCenter.Views.CartesianChartLogarithmicScalePageView">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:CartesianChart Grid.Column="0">
+            <mxc:CartesianSeries DataAdapter="{Binding Data1}">
+                <mxc:CartesianLineSeriesView Color="{Binding Color1}" Thickness="2" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data2}">
+                <mxc:CartesianLineSeriesView Color="{Binding Color2}" Thickness="2" />
+            </mxc:CartesianSeries>
+            
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX Title="Frequency">
+                    <mxc:AxisXRange MinSideMargin="0" MaxSideMargin="0" />
+                    <mxc:AxisX.ScaleOptions>
+                        <mxc:NumericScaleOptions LogarithmicBase="{Binding AxisX.LogarithmicBase}"
+                                                 LabelFormatter="{Binding FrequencyFormatter}" />
+                    </mxc:AxisX.ScaleOptions>
+                </mxc:AxisX>
+            </mxc:CartesianChart.AxesX>
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY Title="Total Harmonic Distortion">
+                    <mxc:AxisY.ScaleOptions>
+                        <mxc:NumericScaleOptions LogarithmicBase="{Binding AxisY.LogarithmicBase}"
+                                                 LabelFormatter="{Binding PercentFormatter}" />
+                    </mxc:AxisY.ScaleOptions>
+                </mxc:AxisY>
+            </mxc:CartesianChart.AxesY>
+        </mxc:CartesianChart>
+        
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <StackPanel>
+                <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
+                    <StackPanel Classes="LayoutGroup">
+                        <mxe:CheckEditor Content="Logarithmic X-Axis" IsChecked="{Binding LogarithmicX}" />
+                        <mxe:CheckEditor Content="Logarithmic Y-Axis" IsChecked="{Binding LogarithmicY}" />
+                    </StackPanel>
+                </mxe:GroupBox>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

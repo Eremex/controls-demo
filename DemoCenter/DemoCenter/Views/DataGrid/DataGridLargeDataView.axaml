@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:data="using:DemoCenter.DemoData"
+			 xmlns:views="using:DemoCenter.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridLargeDataView">
+	<UserControl.Resources>
+		<views:EnumRadioButtonConverter x:Key="enumRadioButtonConverter"/>
+	</UserControl.Resources>
+
+	<Grid ColumnDefinitions="*, 250">
+		<mxdg:DataGridControl ItemsSource="{Binding Orders}" BorderThickness="1,0">
+			<mxdg:GridColumn FieldName="OrderId" Width="*"/>
+			<mxdg:GridColumn FieldName="Manager" Width="*">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:ComboBoxEditorProperties ItemsSource="{x:Static data:EmployeesData.EmployeeNames}"/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+			<mxdg:GridColumn FieldName="Count" Width="*"/>
+			<mxdg:GridColumn FieldName="Price" Width="*">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:SpinEditorProperties Mask="c" MaskType="Numeric"/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+			<mxdg:GridColumn FieldName="Date" Width="*"/>
+			<mxdg:GridColumn FieldName="TotalPrice" Width="*">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:SpinEditorProperties Mask="c" MaskType="Numeric"/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+		</mxdg:DataGridControl>
+
+		<Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+			<StackPanel>
+				<mxe:GroupBox Header="Item Count">
+					<StackPanel>
+						<RadioButton Content="100 000" GroupName="ItemsCount" Classes="LayoutItem"
+									 IsChecked="{Binding SelectedItemsSourceSize, Converter={StaticResource enumRadioButtonConverter}, ConverterParameter=Small}"/>
+						<RadioButton Content="500 000" GroupName="ItemsCount" Classes="LayoutItem"
+									 IsChecked="{Binding SelectedItemsSourceSize, Converter={StaticResource enumRadioButtonConverter}, ConverterParameter=Medium}"/>
+						<RadioButton Content="1 000 000" GroupName="ItemsCount" Classes="LayoutItem"
+									 IsChecked="{Binding SelectedItemsSourceSize, Converter={StaticResource enumRadioButtonConverter}, ConverterParameter=Large}"/>
+					</StackPanel>
+				</mxe:GroupBox>
+
+				<Button Content="Generate" Command="{Binding GenerateCommand}" Classes="LayoutItem" HorizontalAlignment="Center"/>
+			</StackPanel>
+		</Border>
+	</Grid>
+	
+</UserControl>

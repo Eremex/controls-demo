@@ -1,0 +1,91 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxct="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             x:Class="DemoCenter.Views.CartesianChartAxesPageView">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:CartesianChart Grid.Column="0">
+            <mxc:CartesianSeries DataAdapter="{Binding Data1}" AxisXKey="1" AxisYKey="1">
+                <mxc:CartesianLineSeriesView Color="{Binding Color1}" Thickness="2" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data2}" AxisXKey="2" AxisYKey="2">
+                <mxc:CartesianLineSeriesView Color="{Binding Color2}" Thickness="2" />
+            </mxc:CartesianSeries>
+            
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX Key="1" Color="{Binding Color1}" 
+                           Position="{Binding AxisX1.Position}"
+                           Title="{Binding AxisX1.Title}"
+                           ShowTitle="{Binding AxisX1.ShowTitle}"
+                           ShowLabels="{Binding AxisX1.ShowLabels}"
+                           ShowInterlacing="{Binding AxisX1.ShowInterlacing}"
+                           ShowMajorGridlines="{Binding AxisX1.ShowMajorGridlines}"
+                           ShowMinorGridlines="{Binding AxisX1.ShowMinorGridlines}"
+                           MinorCount="{Binding AxisX1.MinorCount}"/>
+                <mxc:AxisX Key="2" Color="{Binding Color2}"
+                           Position="{Binding AxisX2.Position}"
+                           Title="{Binding AxisX2.Title}"
+                           ShowTitle="{Binding AxisX2.ShowTitle}"
+                           ShowLabels="{Binding AxisX2.ShowLabels}"
+                           ShowInterlacing="{Binding AxisX2.ShowInterlacing}"
+                           ShowMajorGridlines="{Binding AxisX2.ShowMajorGridlines}"
+                           ShowMinorGridlines="{Binding AxisX2.ShowMinorGridlines}"
+                           MinorCount="{Binding AxisX2.MinorCount}"/>
+            </mxc:CartesianChart.AxesX>
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY Key="1" Color="{Binding Color1}"
+                           Position="{Binding AxisY1.Position}"
+                           Title="{Binding AxisY1.Title}"
+                           ShowTitle="{Binding AxisY1.ShowTitle}"
+                           ShowLabels="{Binding AxisY1.ShowLabels}"
+                           ShowInterlacing="{Binding AxisY1.ShowInterlacing}"
+                           ShowMajorGridlines="{Binding AxisY1.ShowMajorGridlines}"
+                           ShowMinorGridlines="{Binding AxisY1.ShowMinorGridlines}"
+                           MinorCount="{Binding AxisY1.MinorCount}"/>
+                <mxc:AxisY Key="2" Color="{Binding Color2}"
+                           Position="{Binding AxisY2.Position}"
+                           Title="{Binding AxisY2.Title}"
+                           ShowTitle="{Binding AxisY2.ShowTitle}"
+                           ShowLabels="{Binding AxisY2.ShowLabels}"
+                           ShowInterlacing="{Binding AxisY2.ShowInterlacing}"
+                           ShowMajorGridlines="{Binding AxisY2.ShowMajorGridlines}"
+                           ShowMinorGridlines="{Binding AxisY2.ShowMinorGridlines}"
+                           MinorCount="{Binding AxisY2.MinorCount}"/>
+            </mxc:CartesianChart.AxesY>
+        </mxc:CartesianChart>
+        
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <StackPanel>
+                <mxe:GroupBox Header="Selected Axis" VerticalAlignment="Top">
+                    <mxe:ComboBoxEditor ItemsSource="{Binding Axes}"
+                                        EditorValue="{Binding SelectedAxis}"
+                                        Classes="LayoutItem" />
+                </mxe:GroupBox>
+                <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
+                    <StackPanel>
+                        <StackPanel Classes="LayoutGroup">
+                            <Label Content="Position:" />
+                            <mxe:ComboBoxEditor ItemsSource="{mxct:EnumItemsSource EnumType=mxc:AxisPosition}"
+                                                EditorValue="{Binding SelectedAxis.Position}"/>
+                        </StackPanel>
+
+                        <StackPanel Classes="LayoutGroup">
+                            <mxe:CheckEditor Content="Show Title" IsChecked="{Binding SelectedAxis.ShowTitle}" />
+                            <mxe:TextEditor IsEnabled="{Binding SelectedAxis.ShowTitle}" EditorValue="{Binding SelectedAxis.Title}" />
+                            <mxe:CheckEditor Content="Show Labels" IsChecked="{Binding SelectedAxis.ShowLabels}" />
+                        </StackPanel>
+
+                        <StackPanel Classes="LayoutGroup">
+                            <mxe:CheckEditor Content="Show Major Gridlines" IsChecked="{Binding SelectedAxis.ShowMajorGridlines}" />
+                            <mxe:CheckEditor Content="Show Interlacing" IsEnabled="{Binding SelectedAxis.ShowMajorGridlines}" IsChecked="{Binding SelectedAxis.ShowInterlacing}" />
+                            <mxe:CheckEditor Content="Show Minor Gridlines" IsChecked="{Binding SelectedAxis.ShowMinorGridlines}" />
+                            <Label Content="Minor Count:" />
+                            <Slider Minimum="0" Maximum="9" Value="{Binding SelectedAxis.MinorCount}" />
+                        </StackPanel>
+                    </StackPanel>
+                </mxe:GroupBox>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

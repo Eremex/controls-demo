@@ -1,0 +1,37 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
+             x:Class="DemoCenter.Views.CartesianChartRealtimePageView">
+    <Grid RowDefinitions="Auto Auto *">
+        <TextBlock Grid.Row="0" Margin="12, 12, 12, 0" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Real-Time data</TextBlock>
+        <TextBlock Grid.Row="1" Margin="12, 4, 12, 12" HorizontalAlignment="Center" FontSize="14">6 series with 2000 points each</TextBlock>
+        
+        <mxc:CartesianChart Grid.Row="2">
+            <mxc:CartesianSeries DataAdapter="{Binding Data1}">
+                <mxc:CartesianLineSeriesView Color="Red" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data2}">
+                <mxc:CartesianLineSeriesView Color="DarkRed" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data3}">
+                <mxc:CartesianLineSeriesView Color="Blue" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data4}">
+                <mxc:CartesianLineSeriesView Color="DarkBlue" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data5}">
+                <mxc:CartesianLineSeriesView Color="Green" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data6}">
+                <mxc:CartesianLineSeriesView Color="DarkGreen" />
+            </mxc:CartesianSeries>
+            
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX Title="Time" EnableZooming="False" EnableScrolling="False" />
+            </mxc:CartesianChart.AxesX>
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY ShowTitle="False" EnableZooming="False" EnableScrolling="False" />
+            </mxc:CartesianChart.AxesY>
+        </mxc:CartesianChart>
+    </Grid>
+</UserControl>

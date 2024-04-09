@@ -1,0 +1,29 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
+             x:Class="DemoCenter.Views.CartesianChartLargeDataPageView">
+    <Grid RowDefinitions="Auto Auto *">
+        <TextBlock Grid.Row="0" Margin="12, 12, 12, 0" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Large data</TextBlock>
+        <TextBlock Grid.Row="1" Margin="12, 4, 12, 12" HorizontalAlignment="Center" FontSize="14">2 series with 1 million points each</TextBlock>
+        
+        <mxc:CartesianChart Grid.Row="2">
+            <mxc:CartesianSeries DataAdapter="{Binding Data1}">
+                <mxc:CartesianLineSeriesView Color="Red" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data2}">
+                <mxc:CartesianLineSeriesView Color="Blue" />
+            </mxc:CartesianSeries>
+            
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX ShowTitle="False">
+                    <mxc:AxisXRange MinSideMargin="10000" MaxSideMargin="10000" />
+                </mxc:AxisX>
+            </mxc:CartesianChart.AxesX>
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY ShowTitle="False">
+                    <mxc:AxisYRange MinSideMargin="100" MaxSideMargin="100" />
+                </mxc:AxisY>
+            </mxc:CartesianChart.AxesY>
+        </mxc:CartesianChart>
+    </Grid>
+</UserControl>
