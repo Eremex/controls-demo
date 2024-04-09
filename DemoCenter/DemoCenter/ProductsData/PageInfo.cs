@@ -9,12 +9,14 @@ namespace DemoCenter.ProductsData
 {
     public class PageInfo : ProductInfoBase
     {
-        public PageInfo(string name, string title, string description, Func<PageViewModelBase> viewModelGetter)
+        public PageInfo(string name, string title, string description, Func<PageViewModelBase> viewModelGetter, ProductBageType? bageType = null, bool showInWeb = true)
         {
             Name = name;
             Title = title;
             Description = description;
             ViewModelGetter = viewModelGetter;
+            BageType = bageType;
+            ShowInWeb = showInWeb;
         }
     }
 }

@@ -15,6 +15,8 @@ namespace DemoCenter.DemoData
             "Earl Lee", "Merle Williamson", "Gene Morse", "Steven Dodd", "Julius Peck",
             "Trevor Chaney", "Lon Schneider", "Julio Hammond", "Rosario Kirby", "Janice Perry" };
 
+        public static List<string> EmployeeNames => employeeNames;
+
         static List<string> cities = new List<string>()
         {
             "New York", "Los Angeles", "Chicago", "Houston", "Phoenix",

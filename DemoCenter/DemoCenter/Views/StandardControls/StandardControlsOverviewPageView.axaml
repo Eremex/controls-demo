@@ -60,7 +60,6 @@
                     <Slider Grid.ColumnSpan="3" Value="30" Grid.Row="4" Margin="0,20,0,0" Classes="secondary"/>
                 </Grid>             
             </Border>
-        </mxe:GroupBox>        
-        <Label Content="See product pages for details." HorizontalAlignment="Center" FontSize="16" Margin="0,16,0,0"/>
+        </mxe:GroupBox>
 	</StackPanel>  
 </UserControl>

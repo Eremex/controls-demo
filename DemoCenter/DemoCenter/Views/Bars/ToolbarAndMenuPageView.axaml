@@ -127,15 +127,13 @@
 
                             <mxb:ToolbarEditorItem Header="Font:" EditorWidth="150" Category="Font" EditorValue="{Binding #textBox.FontFamily, Converter={helpers:FontNameToFontFamilyConverter}}">
                                 <mxb:ToolbarEditorItem.EditorProperties>
-                                    <mxe:ComboBoxEditorProperties ItemsSource="{Binding $parent[view:ToolbarAndMenuPageView].Fonts}"
-                                                        IsTextEditable="False"/>
+                                    <mxe:ComboBoxEditorProperties ItemsSource="{Binding $parent[view:ToolbarAndMenuPageView].Fonts}"/>
                                 </mxb:ToolbarEditorItem.EditorProperties>
                             </mxb:ToolbarEditorItem>
 
                             <mxb:ToolbarEditorItem Header="Font Size:" EditorWidth="75" Category="Font" EditorValue="{Binding #textBox.FontSize}">
                                 <mxb:ToolbarEditorItem.EditorProperties>
-                                    <mxe:ComboBoxEditorProperties ItemsSource="{Binding $parent[view:ToolbarAndMenuPageView].FontSizes}"
-                                                        IsTextEditable="False"/>
+                                    <mxe:ComboBoxEditorProperties ItemsSource="{Binding $parent[view:ToolbarAndMenuPageView].FontSizes}"/>
                                 </mxb:ToolbarEditorItem.EditorProperties>
                             </mxb:ToolbarEditorItem>
                         </mxb:Toolbar>

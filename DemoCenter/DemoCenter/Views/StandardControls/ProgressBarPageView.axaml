@@ -58,7 +58,7 @@
                         <mxe:SpinEditor x:Name="MinimumSelector" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Left" Classes="LayoutItem"/>
                         <Label Content="Text Format:" Grid.Row="4" Classes="LayoutItem"/>                        
                         <mxe:ComboBoxEditor x:Name="ProgressTextFormatSelector" Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Left"
-                                            ItemsSource="{Binding Formats}" IsTextEditable="False" 
+                                            ItemsSource="{Binding Formats}"
                                             SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="LayoutItem"/>
                     </Grid>
                 </StackPanel>

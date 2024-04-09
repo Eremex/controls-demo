@@ -171,7 +171,7 @@
   
   <Style Selector="Border.SimpleBorder">
       <Setter Property="BorderThickness" Value="1"/>
-      <Setter Property="BorderBrush" Value="{DynamicResource Control/Border/Curved/Neutral/Enabled}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource Outline/Neutral/Transparent/Light}"/>
       <Setter Property="Margin" Value="6"/>
   </Style>
 

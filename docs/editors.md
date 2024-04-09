@@ -82,9 +82,23 @@ You can embed the Eremex data editors in cells in container controls (Data Grid,
     - The ancestor of all text-based Eremex editors.
     - Support for the data validation mechanism used to show errors to users.
 
+<br/>
+
+- `MemoEditor`  — A dropdown text editor.
+    - A text editor embedded in the dropdown window.
+    - To show the presence of text in the dropdown editor, the control can display a special icon or the first line of the text in the edit box. 
 
 
 ## Common Features
+
+- Masks
+    - Text editors support masked input, which prevents users from entering invalid values.
+    - Masks can be used to format cell text in container controls in display mode (when text editing is not active).
+    - Supported mask types: Numeric and DateTime.
+    - DateEditor uses a DateTime input mask by default.
+    - SpinEditor uses a Numeric input mask by default.
+
+<br/>
 
 - Eremex Application Themes
     - Eremex application themes allow you to modify the appearance of the Eremex controls.

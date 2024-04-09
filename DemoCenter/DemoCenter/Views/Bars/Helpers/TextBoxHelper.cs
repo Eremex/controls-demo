@@ -88,7 +88,7 @@ public class TextBoxHelper : AvaloniaObject
             if (textBox.Text.Substring(currentIndex, textBox.NewLine.Length) == textBox.NewLine)
             {
                 lineNumber++;
-                currentIndex += textBox.NewLine.Length - 1;
+                currentIndex += textBox.NewLine.Length;
             }
             else
             {

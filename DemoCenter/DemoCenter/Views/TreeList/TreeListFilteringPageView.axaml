@@ -17,10 +17,11 @@
              x:DataType="vm:TreeListFilteringPageViewModel"
              mc:Ignorable="d">
 	<Design.DataContext>
-        <vm:TreeListFilteringPageViewModel />
+		<vm:TreeListFilteringPageViewModel />
 	</Design.DataContext>
 
 	<UserControl.Resources>
+		<views:NullValueConverter x:Key="nullValueConverter"/>
 		<views:ProjectTaskImageSelector x:Key="imageSelector"
 									 ProjectImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Docs.svg'}"
 									 TaskImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=File.svg'}" />
@@ -30,7 +31,7 @@
 		<mxtl:TreeListControl x:Name="treeList"
 							  BorderThickness="1,0"
 							  ChildrenFieldName="Tasks"
-							  AllowEditing="False"	
+							  AllowEditing="False"
 							  FilterMode="ShowMatchesWithAncestors"
 							  ItemsSource="{Binding Tasks}"
 							  ShowNodeImages="True"
@@ -64,7 +65,7 @@
 				<mxtl:TreeListColumn.CellTemplate>
 					<DataTemplate>
 						<Border ToolTip.Tip="High Priority" Background="Transparent">
-							<Image Width="16" Height="16" Stretch="None" IsVisible="{Binding Value}" Source="{SvgImage 'avares://DemoCenter/Images/HighPriority.svg'}" />
+							<Image Width="16" Height="16" Stretch="None" IsVisible="{Binding Value, Converter={StaticResource nullValueConverter}}" Source="{SvgImage 'avares://DemoCenter/Images/HighPriority.svg'}" />
 						</Border>
 					</DataTemplate>
 				</mxtl:TreeListColumn.CellTemplate>
@@ -77,7 +78,7 @@
 			<mxtl:TreeListColumn FieldName="Progress" Header="Progress" Width="110">
 				<mxtl:TreeListColumn.CellTemplate>
 					<DataTemplate>
-						<ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Enabled}" CornerRadius="2" Margin="4,0" Minimum="0" Maximum="100" MinWidth="10" ShowProgressText="True" Value="{Binding Value}" />
+						<ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Enabled}" CornerRadius="2" Margin="4,0" Minimum="0" Maximum="100" MinWidth="10" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
 					</DataTemplate>
 				</mxtl:TreeListColumn.CellTemplate>
 			</mxtl:TreeListColumn>

@@ -37,6 +37,14 @@
     <PackageReference Include="AvaloniaEdit.TextMate" />
     <PackageReference Include="TextMateSharp.Grammars" />
     <PackageReference Include="Eremex.Avalonia.Controls" />
+    <PackageReference Include="Eremex.Avalonia.Charts" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <Compile Update="Views\Charts\CartesianChartLogarithmicScalePageView.axaml.cs">
+      <DependentUpon>CartesianChartLogarithmicScalePageView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <Target Name="SourceCode" BeforeTargets="PreBuildEvent">

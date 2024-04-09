@@ -56,7 +56,7 @@ public partial class MainViewModel : ViewModelBase
         SelectedPalette = Palettes[0].PaletteType;
         Products = ProductsData.Products.GetOrCreate();
         CreateFlatCollection();
-        SelectProduct("Grouping");
+        CurrentProductItem = flatProducts.FirstOrDefault(x => x is PageInfo);
         PageTransition = new PageSlide(TimeSpan.FromMilliseconds(200), PageSlide.SlideAxis.Horizontal);
     }
 

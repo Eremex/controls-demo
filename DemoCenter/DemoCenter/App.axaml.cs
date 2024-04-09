@@ -21,6 +21,8 @@ public partial class App : Application
     private IStyle lightTheme;
     private IStyle darkTheme;
 
+    public static bool IsWebApp { get; private set; }
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -42,6 +44,7 @@ public partial class App : Application
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
+            IsWebApp = true;
             singleViewPlatform.MainView = new MainView
             {
                 DataContext = new MainViewModel()

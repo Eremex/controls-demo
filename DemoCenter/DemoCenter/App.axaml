@@ -23,6 +23,7 @@
         <FluentTheme />
         <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
         <StyleInclude Source="avares://Eremex.Avalonia.Controls/Themes/Generic.axaml"/>
+        <StyleInclude Source="avares://Eremex.Avalonia.Charts/Themes/Generic.axaml"/>
         <StyleInclude Source="/Resources/SharedStyles.axaml"/>
     </Application.Styles>
 </Application>

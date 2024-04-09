@@ -15,6 +15,9 @@ The Eremex Controls Library ships with advanced controls to meet the most demand
 - [Tree List and Tree View](docs/treelist.md)
 - [Property Grid](docs/propertygrid.md)
 
+## Charts
+- [Chart Control](docs/charts.md)
+
 ## Classic Office and IDE-Inspired UI
 
 - [Toolbars and Menus](docs/toolbars.md)
@@ -69,6 +72,11 @@ The following are system requirements to run the current Demo project, and use t
 - Clone the repository with the `git clone` command.
 - Go to the `DemoCenter/DemoCenter.Desktop` directory for a classic desktop application, or the `DemoCenter/DemoCenter.Web` directory for a Web Assembly project.
 - Run the selected project with the `dotnet run` command.
+
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net)
+- [Документация на русском](https://eremexcontrols.net/docsru/)
 
 ## Product Licensing
 

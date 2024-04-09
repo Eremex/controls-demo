@@ -52,6 +52,7 @@
             <mxe:ComboBoxEditor x:Name="SimpleViewComboBox"
                                 ItemsSource="{x:Static data:CsvSources.YachtNames}"
                                 EditorValue="{Binding YachtValue, Mode=TwoWay}"
+                                IsTextEditable="True"
                                 Grid.Row="1"
                                 Classes="LayoutItem"/>
             <Label Content="Text editing enabled" Grid.Row="2" Classes="ViewName"/>
@@ -63,14 +64,13 @@
                                 AutoComplete="{Binding #AutoCompleteSelector.IsChecked}"
                                 FilterCondition="{Binding EditableViewFilterCondition}"
                                 DisplayMember="Name"
-
+                                IsTextEditable="True"
                                 Classes="LayoutItem"/>
             <Label Content="Text editing disabled" Grid.Row="4" Classes="ViewName"/>
             <mxe:ComboBoxEditor x:Name="NonEditableComboBox"
                                 ItemsSource="{Binding Elements}"
                                 Grid.Row="5"
                                 SelectedItem="{Binding SelectedElement}"
-                                IsTextEditable="False"
                                 ItemTemplate="{StaticResource ElementItemTemplate}"
                                 ApplyItemTemplateToEditBox="{Binding #ShowApplyItemTemplateToEditBoxSelector.IsChecked}"
                                 DisplayMember="Name"
@@ -107,7 +107,7 @@
                     <mxe:CheckEditor x:Name="AutoCompleteSelector" Content="Auto-Complete" IsChecked="True" Classes="LayoutItem"/>
                     <DockPanel>
                         <Label Content="Filter:" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor x:Name="FilerSelector" IsTextEditable="False" EditorValue="{Binding #EditableViewComboBox.FilterCondition, Mode=TwoWay}"
+                        <mxe:ComboBoxEditor x:Name="FilerSelector" EditorValue="{Binding #EditableViewComboBox.FilterCondition, Mode=TwoWay}"
                                             ItemsSource="{mxc:EnumItemsSource EnumType=mxe:FilterCondition}" Classes="LayoutItem"/>
                     </DockPanel>
                 </StackPanel>
@@ -130,7 +130,7 @@
                     <mxe:CheckEditor x:Name="ShowSelectAllSelector" Content="Show 'Select All' in Popup" IsChecked="True" Classes="LayoutItem"/>
                     <DockPanel>
                         <Label Content="Separator:" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor x:Name="SeparatorSelector" IsTextEditable="False" EditorValue="{Binding SelectedSeparator, Mode=TwoWay}"
+                        <mxe:ComboBoxEditor x:Name="SeparatorSelector" EditorValue="{Binding SelectedSeparator, Mode=TwoWay}"
                                             ItemsSource="{Binding Separators}" Classes="LayoutItem"/>
                     </DockPanel>
                 </StackPanel>

@@ -62,7 +62,7 @@
                             <mxe:DateEditor x:Name="MaximumValueEditor" Grid.Row="1" Grid.Column="1" DateTime="{Binding Maximum, Mode=TwoWay}" Classes="LayoutItem"/>
                             <Label Content="Minimum:" Classes="LayoutItem" Grid.Row="2"/>
                             <mxe:DateEditor x:Name="MinimumValueEditor" Grid.Row="2" Grid.Column="1" DateTime="{Binding Minimum, Mode=TwoWay}" Classes="LayoutItem"/>
-                            <Label Content="Date Format:" Grid.Row="3" Classes="LayoutItem"/>
+                            <Label Content="Mask:" Grid.Row="3" Classes="LayoutItem"/>
                             <mxe:ComboBoxEditor x:Name="ProgressTextFormatSelector" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Left"
                                                 ItemsSource="{Binding Formats}" IsTextEditable="False"
                                                 SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="LayoutItem"/>

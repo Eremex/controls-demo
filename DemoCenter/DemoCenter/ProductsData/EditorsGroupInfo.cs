@@ -23,7 +23,7 @@ namespace DemoCenter.ProductsData
                 viewModelGetter: () => new TextEditingPageViewModel()),
 
                 new PageInfo(name: "Spin Editor", title: "Spin Editor",
-                description: "The Spin Editor is a numeric value editor with built-in spin buttons used to increase and decrease a number by a specific value (increment). A user can increment and decrement the number by clicking these buttons, or by pressing the Up and Down Arrows on the keyboard.",
+                description: "The Spin Editor is a numeric value editor with built-in spin buttons used to increase and decrease a number by a specific value (increment). A user can increment and decrement the number by clicking these buttons, or by pressing the Up and Down Arrows on the keyboard. SpinEditor uses a numeric mask to restrict user input to numeric values only, and to format the edit value according to the specified pattern.",
                 viewModelGetter: () => new SpinEditorPageViewModel()),
 
                 new PageInfo(name: "ComboBox Editor", title: "ComboBox Editor",
@@ -35,7 +35,7 @@ namespace DemoCenter.ProductsData
                 viewModelGetter: () => new SegmentedEditorPageViewModel()),
 
                 new PageInfo(name: "Date Editor", title: "Date Editor",
-                description: "The Date Editor features a dropdown calendar that allows users to select a date. The calendar's navigation bar enables the user to browse through months and years. You can format the selected date in a specific manner by setting one of numerous display formats.",
+                description: "The Date Editor features a dropdown calendar that allows users to select a date. The calendar's navigation bar enables the user to browse through months and years. DateEditor uses a date-time mask to restrict user input to date-time values only, and to format the edit value according to the specified pattern.",
                 viewModelGetter: () => new DateEditorPageViewModel()),
 
                 new PageInfo(name: "Color Editor", title: "Color Editor",
@@ -44,7 +44,7 @@ namespace DemoCenter.ProductsData
 
                 new PageInfo(name: "Hyperlink Editor", title: "Hyperlink Editor",
                 description: "The Hyperlink Editor displays its contents as a hyperlink. Bind a command to the editor to process hyperlink clicks.",
-                viewModelGetter: () => new HyperlinkEditorPageViewModel()),
+                viewModelGetter: () => new HyperlinkEditorPageViewModel(), bageType: ProductBageType.Updated),
 
                 new PageInfo(name: "Enum Source", title: "Enum Source", 
                 description: "You can create ComboBox and Segmented Editors' items from enumeration type values. Dedicated Data Annotation attributes applied to the enumeration values allow you to populate the controls' items with images, display text and tooltips.",

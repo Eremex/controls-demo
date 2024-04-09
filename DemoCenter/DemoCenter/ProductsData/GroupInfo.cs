@@ -13,13 +13,17 @@ namespace DemoCenter.ProductsData
 
         public override bool HasChildren => Pages.Count > 0;
 
-        public GroupInfo(string name, string title, string description, Func<PageViewModelBase> viewModel, List<PageInfo> pages)
+        public GroupInfo(string name, string title, string description, Func<PageViewModelBase> viewModel, List<PageInfo> pages, ProductBageType? bageType = null, bool showInWeb = true)
         {
             Name = name.ToUpper();
             Title = title;
             Description = description;
             ViewModelGetter = viewModel;
-            Pages = pages;
+            Pages = GetAppProducts(pages);
+            BageType = bageType;
+            ShowInWeb = showInWeb;
         }
+        public static List<T> GetAppProducts<T>(List<T> source, bool checkHasChildren = false) where T : ProductInfoBase
+            => source.Where(x => (!App.IsWebApp || x.ShowInWeb) && (!checkHasChildren || x.HasChildren)).ToList();
     }
 }

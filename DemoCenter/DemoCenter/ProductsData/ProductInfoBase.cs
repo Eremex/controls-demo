@@ -14,5 +14,13 @@ namespace DemoCenter.ProductsData
         public string Description { get; set; }
         public Func<PageViewModelBase> ViewModelGetter { get; init; }
         public virtual bool HasChildren => false;
+        public ProductBageType? BageType { get; init; }
+        public bool ShowInWeb { get; init; }
+    }
+
+    public enum ProductBageType
+    {
+        New,
+        Updated
     }
 }

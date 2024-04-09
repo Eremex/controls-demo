@@ -106,30 +106,30 @@
                     <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="{Binding IsEnabled, Mode=TwoWay}" Classes="LayoutItem"/>
                     <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
                         <Label Content="Display Mode:" Classes="LayoutItem" Grid.Row="0"/>
-                        <mxe:ComboBoxEditor x:Name="DisplayModeSelector" Grid.Row="0" Grid.Column="1" IsTextEditable="False"
+                        <mxe:ComboBoxEditor x:Name="DisplayModeSelector" Grid.Row="0" Grid.Column="1"
                                             ItemsSource="{mxc:EnumItemsSource EnumType=mxb:ToolbarItemDisplayMode}"
                                             EditorValue="{Binding DisplayMode, Mode=TwoWay}"
                                             Classes="LayoutItem" />                        
                         <Label Content="Glyph Alignment:" Classes="LayoutItem" Grid.Row="1"/>
-                        <mxe:ComboBoxEditor x:Name="AlignmentSelector" Grid.Row="1" Grid.Column="1" IsTextEditable="False" 
+                        <mxe:ComboBoxEditor x:Name="AlignmentSelector" Grid.Row="1" Grid.Column="1"
                                             ItemsSource="{mxc:EnumItemsSource EnumType=mxb:Alignment}" 
                                             EditorValue="{Binding GlyphAlignment, Mode=TwoWay}" 
                                             Classes="LayoutItem"/>
                         <Label Content="Glyph Size:" Classes="LayoutItem" Grid.Row="2"/>
-                        <mxe:ComboBoxEditor x:Name="GlyphSizeSelector" Grid.Row="2" Grid.Column="1" IsTextEditable="False"
+                        <mxe:ComboBoxEditor x:Name="GlyphSizeSelector" Grid.Row="2" Grid.Column="1"
                                             ItemsSource="{x:Static vm:BarItemsPageViewModel.GlyphSizes}"
                                             EditorValue="{Binding GlyphSize, Mode=TwoWay}"
                                             Classes="LayoutItem"/>
                         <Label Content="Open Mode:" Classes="LayoutItem" Grid.Row="3"
                                IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
-                        <mxe:ComboBoxEditor x:Name="DropDownOpenModeSelector" Grid.Row="3" Grid.Column="1" IsTextEditable="False"
+                        <mxe:ComboBoxEditor x:Name="DropDownOpenModeSelector" Grid.Row="3" Grid.Column="1"
                                             ItemsSource="{mxc:EnumItemsSource EnumType=mxb:DropDownOpenMode}"
                                             EditorValue="{Binding #ButtonDropDownItem.DropDownOpenMode, Mode=TwoWay}"
                                             Classes="LayoutItem"
                                             IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
                         <Label Content="Arrow Visibility:" Classes="LayoutItem" Grid.Row="4"
                                IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
-                        <mxe:ComboBoxEditor x:Name="DropDownArrowVisibilitySelector" Grid.Row="4" Grid.Column="1" IsTextEditable="False"
+                        <mxe:ComboBoxEditor x:Name="DropDownArrowVisibilitySelector" Grid.Row="4" Grid.Column="1"
                                             ItemsSource="{mxc:EnumItemsSource EnumType=mxb:DropDownArrowVisibility}"
                                             EditorValue="{Binding #ButtonDropDownItem.DropDownArrowVisibility, Mode=TwoWay}"
                                             Classes="LayoutItem"

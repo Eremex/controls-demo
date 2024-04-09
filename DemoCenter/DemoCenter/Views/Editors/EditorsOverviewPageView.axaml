@@ -60,7 +60,7 @@
             </mxe:ButtonEditor>
 
             <Label Content="ComboBoxEditor" Grid.Column="0" Grid.Row="2" Classes="EditorName"/>
-            <mxe:ComboBoxEditor Grid.Column="0" Grid.Row="3" IsTextEditable="False" ApplyItemTemplateToEditBox="True"
+            <mxe:ComboBoxEditor Grid.Column="0" Grid.Row="3" ApplyItemTemplateToEditBox="True"
                                 ItemsSource="{Binding Elements}"
                                 SelectedItem="{Binding SelectedItem}"
                                 ItemTemplate="{StaticResource ElementItemTemplate}"
