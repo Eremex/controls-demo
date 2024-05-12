@@ -1,0 +1,60 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.MemoEditorPageView">
+    <Design.DataContext>
+		<viewModels:MemoEditorPageViewModel />
+	</Design.DataContext>
+
+    <Grid ColumnDefinitions="*, 250">
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
+                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, 26, Auto"
+                              Margin="30"
+                          IsEnabled="{Binding #IsEnabledSelector.IsChecked}">
+                        <Label Content="Memo Editor" Classes="EditorHeader"/>
+                        <mxe:MemoEditor x:Name="DateEditor" HorizontalAlignment="Stretch"
+                                        IsTextEditable="{Binding #IsTextEditableSelector.IsChecked}"
+                                        MemoTextWrapping="{Binding #WordWrapCheck.IsChecked}"
+                                        ShowSizeGrip="{Binding #ShowSizeGripCheck.IsChecked}"
+                                        ShowIcon="{Binding #ShowIconCheck.IsChecked }"
+                                        MemoHorizontalScrollBarVisibility="{Binding HorizontalScrollbarVisibility}"
+                                        MemoVerticalScrollBarVisibility="{Binding VerticalScrollbarVisibility}"
+                                        Margin="0,8"
+                                        Width="256"
+                                        VerticalAlignment="Top"
+                                        EditorValue="{Binding Text}"
+                                        Grid.Row="1"/>
+                    </Grid>
+            </ContentControl>
+        <!--Options-->
+        <Grid Grid.Column="1" ColumnDefinitions="Auto, *">
+            <Border Width="1" Background="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
+            <StackPanel Grid.Column="1">
+                <mxe:GroupBox Header="Properties">
+                    <StackPanel>
+                        <mxe:CheckEditor x:Name="WordWrapCheck" Content="Word Wrap" IsChecked="False" Classes="LayoutItem"/>
+                        <mxe:CheckEditor x:Name="IsTextEditableSelector" Content="Is Text Editable" IsChecked="True" Classes="LayoutItem"/>
+                        <mxe:CheckEditor x:Name="ShowSizeGripCheck" Content="Popup Sizeable" IsChecked="True" Classes="LayoutItem"/>
+                        <mxe:CheckEditor x:Name="ShowIconCheck" Content="Show Icon" IsChecked="True" Classes="LayoutItem"/>
+                    </StackPanel>
+                </mxe:GroupBox>
+                <mxe:GroupBox Header="ScrollBars">
+                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
+                        <Label Content="Horizontal:" Grid.Row="0" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor x:Name="HorizontalScrollbarVisibilityCombo" Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Left"
+                                            ItemsSource="{Binding ScrollbarVisibilityItems}" IsTextEditable="False"
+                                            SelectedItem="{Binding HorizontalScrollbarVisibility, Mode=TwoWay}" Classes="LayoutItem"/>
+                        <Label Content="Vertival:" Grid.Row="1" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor x:Name="VerticalScrollbarVisibilityCombo" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Left"
+                                            ItemsSource="{Binding ScrollbarVisibilityItems}" IsTextEditable="False"
+                                            SelectedItem="{Binding VerticalScrollbarVisibility, Mode=TwoWay}" Classes="LayoutItem"/>
+                    </Grid>
+                </mxe:GroupBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
