@@ -10,6 +10,7 @@
              xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
              xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:view="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -23,7 +24,7 @@
     </Design.DataContext>
 
     <Grid Width="440" Height="640" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,80,0,0">
-        <mxb:ToolbarManager IsWindowManager="True">
+        <mxb:ToolbarManager IsWindowManager="True" x:Name="DemoControl">
             <Grid RowDefinitions="Auto, 400, Auto" ColumnDefinitions="Auto, *, Auto">
                 <mxb:ToolbarContainerControl DockType="Top" Grid.ColumnSpan="3">
                     <mxb:Toolbar DisplayMode="MainMenu">
@@ -32,7 +33,7 @@
                         <mxb:ToolbarMenuItem Header="Options" Alignment="Far"/>
                     </mxb:Toolbar>
                     <mxb:Toolbar x:Name="FileToolbar" ShowCustomizationButton="False" AllowDragToolbar="False" StretchToolbar="True">
-                        <mxb:ToolbarButtonItem Header="New" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=NewDraftAction.svg'}" GlyphSize="48,48"/>
+                        <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static icons:Basic.Doc_Add}" GlyphSize="48,48"/>
                         <mxb:ToolbarEditorItem>
                             <mxb:ToolbarEditorItem.Editor>
                                 <mxe:ButtonEditor MinWidth="200" HorizontalContentAlignment="Center" EditorValue="Editor item"/>
@@ -41,15 +42,15 @@
 
                         <mxb:ToolbarButtonItem x:Name="ButtonDropDownItem"
                                                Header="Save"
-                                               Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" GlyphSize="48,48">
+                                               Glyph="{x:Static icons:Basic.Save}" GlyphSize="48,48">
                             <mxb:ToolbarButtonItem.DropDownControl>
                                 <mxb:PopupMenu>
-                                    <mxb:ToolbarButtonItem Header="Save All" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save All.svg'}" GlyphSize="32,32"/>
-                                    <mxb:ToolbarButtonItem Header="Save 3D model" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=3D, Icon=Save.svg'}" GlyphSize="32,32"/>
+                                    <mxb:ToolbarButtonItem Header="Save All" Glyph="{x:Static icons:Basic.Save_All}" GlyphSize="32,32"/>
+                                    <mxb:ToolbarButtonItem Header="Save 3D model" Glyph="{x:Static icons:Basic.Save}" GlyphSize="32,32"/>
                                 </mxb:PopupMenu>
                             </mxb:ToolbarButtonItem.DropDownControl>
                         </mxb:ToolbarButtonItem>
-                        <mxb:ToolbarButtonItem Header="Clear" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Clear.svg'}" GlyphSize="48,48"/>
+                        <mxb:ToolbarButtonItem Header="Clear" Glyph="{x:Static icons:Basic.Table_Clear}" GlyphSize="48,48"/>
                     </mxb:Toolbar>
                 </mxb:ToolbarContainerControl>           
                 <mxb:ToolbarContainerControl Grid.Row="1" DockType="Left"/>
@@ -60,7 +61,7 @@
                 <mxb:ToolbarContainerControl Grid.Row="2" Grid.ColumnSpan="3" DockType="Bottom">
                     <mxb:Toolbar DisplayMode="StatusBar" x:Name="StatusBar" ShowCustomizationButton="False">
                         <mxb:ToolbarTextItem ShowBorder="False"
-                         Glyph="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}"
+                         Glyph="{x:Static icons:Basic.Info}"
                          GlyphSize="32,32"/>
                         <mxb:ToolbarTextItem Header="Status Bar" ShowBorder="False" Alignment="Far"/>
                     </mxb:Toolbar>

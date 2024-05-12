@@ -11,6 +11,7 @@
              xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
              xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
 			 xmlns:views="using:DemoCenter.Views"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -24,13 +25,13 @@
 	</Design.DataContext>
 	<UserControl.Resources>
 		<views:FileSystemImageSelector x:Key="imageSelector" 
-									   ClosedFolderImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Closed.svg'}" 
-									   OpenedFolderImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Opened.svg'}"
-									   FileImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=File.svg'}" />
+									   ClosedFolderImage="{x:Static icons:Basic.Folder}" 
+									   OpenedFolderImage="{x:Static icons:Basic.Folder_Open}"
+									   FileImage="{x:Static icons:Basic.Doc}" />
 		<views:FileSystemItemChildrenSelector x:Key="childrenSelector" />
 	</UserControl.Resources>
 
-	<Grid>
+	<Grid x:Name="DemoControl">
 		<mxtl:TreeListControl x:Name="folderBrowserTreeList"
 							  ItemsSource="{Binding Drives}" 
 							  BorderThickness="1,0" 

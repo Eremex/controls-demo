@@ -11,6 +11,7 @@
              xmlns:dataGrid="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
              xmlns:propertyGrid="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
              d:DesignHeight="450"
              d:DesignWidth="900"
              x:CompileBindings="False"
@@ -22,12 +23,12 @@
 
 	<UserControl.Resources>
 		<views:SolutionItemImageSelector x:Key="imageSelector"
-		                                 ClosedFolderImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Closed.svg'}"
-		                                 OpenedFolderImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Opened.svg'}"
-		                                 FileImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=File.svg'}"
-		                                 CSharpFileImage="{SvgImage 'avares://DemoCenter/Images/Group=Script, Icon=CSharpFile.svg'}"
-		                                 ProjectImage="{SvgImage 'avares://DemoCenter/Images/Group=Script, Icon=CSharpFileImage.svg'}"
-		                                 DependenciesImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Depend.svg'}"/>
+		                                 ClosedFolderImage="{x:Static icons:Basic.Folder }"
+		                                 OpenedFolderImage="{x:Static icons:Basic.Folder_Open }"
+		                                 FileImage="{x:Static icons:Basic.Doc }"
+		                                 CSharpFileImage="{x:Static icons:Code.Doc_CSharp }"
+		                                 ProjectImage="{x:Static icons:Code.Folder_CSharp }"
+		                                 DependenciesImage="{x:Static icons:Code.Storage}"/>
 	</UserControl.Resources>
 
 	<mxb:ToolbarManager>
@@ -37,27 +38,27 @@
 					<mxb:Toolbar x:Name="MainMenu" DisplayMode="MainMenu" ShowCustomizationButton="False">
 						<mxb:ToolbarMenuItem Header="File">
 							<mxb:ToolbarButtonItem Header="New"
-							                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=NewDraftAction.svg'}" />
+							                       Glyph="{x:Static icons:Basic.Doc_Add }" />
 							<mxb:ToolbarButtonItem Header="Open"
-							                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Open.svg'}" />
-							<mxb:ToolbarButtonItem Header="Save" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" />
+							                       Glyph="{x:Static icons:Basic.Folder_Open }" />
+							<mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save }" />
 							<mxb:ToolbarSeparatorItem />
-							<mxb:ToolbarButtonItem Header="Print" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Print.svg'}" />
+							<mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static icons:Basic.Print }" />
 						</mxb:ToolbarMenuItem>
 						<mxb:ToolbarMenuItem Header="Edit">
-							<mxb:ToolbarButtonItem Header="Undo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}" />
-							<mxb:ToolbarButtonItem Header="Redo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}" />
+							<mxb:ToolbarButtonItem Header="Undo" Glyph="{x:Static icons:Basic.Undo }" />
+							<mxb:ToolbarButtonItem Header="Redo" Glyph="{x:Static icons:Basic.Redo }" />
 							<mxb:ToolbarSeparatorItem />
 							<mxb:ToolbarButtonItem Header="Cut"
-							                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Cut.svg'}" />
+							                       Glyph="{x:Static icons:Basic.Cut }" />
 							<mxb:ToolbarButtonItem Header="Copy"
-							                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Copy.svg'}" />
+							                       Glyph="{x:Static icons:Basic.Copy }" />
 							<mxb:ToolbarButtonItem Header="Paste"
-							                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Paste.svg'}" />
+							                       Glyph="{x:Static icons:Basic.Paste }" />
 							<mxb:ToolbarSeparatorItem />
 							<mxb:ToolbarButtonItem Header="Select All" />
 							<mxb:ToolbarButtonItem Header="Clear all"
-							                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Clear.svg'}" />
+							                       Glyph="{x:Static icons:Basic.Remove }" />
 						</mxb:ToolbarMenuItem>
 						<mxb:ToolbarMenuItem Header="Options">
 							<mxb:ToolbarButtonItem Header="Check for Updates" />
@@ -67,23 +68,23 @@
 					</mxb:Toolbar>
 					<mxb:Toolbar x:Name="FileToolbar" ShowCustomizationButton="False">
 						<mxb:ToolbarButtonItem Header="New"
-						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=NewDraftAction.svg'}" />
+						                       Glyph="{x:Static icons:Basic.Doc_Add }" />
 						<mxb:ToolbarButtonItem Header="Open"
-						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Folder Open.svg'}" />
-						<mxb:ToolbarButtonItem Header="Save" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" />
-						<mxb:ToolbarButtonItem Header="Print" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Print.svg'}"
+						                       Glyph="{x:Static icons:Basic.Folder_Open }" />
+						<mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save }" />
+						<mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static icons:Basic.Print }"
 						                       Alignment="Far" />
 					</mxb:Toolbar>
 					<mxb:Toolbar x:Name="EditToolbar" ShowCustomizationButton="False">
 						<mxb:ToolbarButtonItem Header="Cut"
-						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Cut.svg'}" />
+						                       Glyph="{x:Static icons:Basic.Cut }" />
 						<mxb:ToolbarButtonItem Header="Copy"
-						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Copy.svg'}" />
+						                       Glyph="{x:Static icons:Basic.Copy }" />
 						<mxb:ToolbarButtonItem Header="Paste"
-						                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Paste.svg'}" />
-						<mxb:ToolbarButtonItem Header="Undo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}"
+						                       Glyph="{x:Static icons:Basic.Paste }" />
+						<mxb:ToolbarButtonItem Header="Undo" Glyph="{x:Static icons:Basic.Undo }"
 						                       Alignment="Far" />
-						<mxb:ToolbarButtonItem Header="Redo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}"
+						<mxb:ToolbarButtonItem Header="Redo" Glyph="{x:Static icons:Basic.Redo }"
 						                       Alignment="Far" />
 					</mxb:Toolbar>
 				</mxb:ToolbarContainerControl>
@@ -109,7 +110,7 @@
 											<Border Background="Transparent"
 											        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
 											        ToolTip.ShowDelay="500">
-												<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Library.svg'}"
+												<Image Source="{x:Static icons:Basic.Docs }"
 												       Width="16"
 												       Height="16">
 												</Image>
@@ -137,7 +138,7 @@
 											<Border Background="Transparent"
 											        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
 											        ToolTip.ShowDelay="500">
-												<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Search.svg'}"
+												<Image Source="{x:Static icons:Basic.Search }"
 												       Width="16"
 												       Height="16">
 												</Image>
@@ -149,10 +150,10 @@
 											<mxe:ButtonEditor Watermark="Search" >
 												<mxe:ButtonEditor.Buttons>
 													<mxe:ButtonSettings ToolTip.Tip="Match case"
-													                    Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Operators, Icon=Starts with.svg'}"
+													                    Glyph="{x:Static icons:Filter.Starts_with }"
 													                    ButtonKind="Toggle"/>
 													<mxe:ButtonSettings ToolTip.Tip="Match whole word"
-													                    Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Painting, Icon=Report text column.svg'}"
+													                    Glyph="{x:Static icons:Painting.Report_text_column }"
 													                    ButtonKind="Toggle"/>
 												</mxe:ButtonEditor.Buttons>
 											</mxe:ButtonEditor>
@@ -173,7 +174,7 @@
 											<Border Background="Transparent"
 											        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
 											        ToolTip.ShowDelay="500">
-												<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=SimOne, Icon=Play.svg'}"
+												<Image Source="{x:Static icons:Code.CSharp_Play }"
 												       Width="16"
 												       Height="16">
 												</Image>
@@ -199,7 +200,7 @@
 											<Border Background="Transparent"
 											        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
 											        ToolTip.ShowDelay="500">
-												<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=SimOne, Icon=List of Graphs.svg'}"
+												<Image Source="{x:Static icons:Basic.Docs }"
 												       Width="16"
 												       Height="16">
 												</Image>
@@ -226,7 +227,7 @@
 										<Border Background="Transparent"
 										        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
 										        ToolTip.ShowDelay="500">
-											<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=List of Bugs.svg'}"
+											<Image Source="{x:Static icons:Basic.Warning }"
 											       Width="16"
 											       Height="16">
 											</Image>
@@ -237,12 +238,12 @@
 									<mxb:ToolbarContainerControl DockType="Top">
 										<mxb:Toolbar x:Name="ErrorListBar" ShowCustomizationButton="False" AllowDragToolbar="False">
 											<mxb:ToolbarCheckItem Header="0 Errors" GlyphSize="16,16" DisplayMode="Both"
-											                      Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Status, Icon=Warning.svg'}"
+											                      Glyph="{x:Static icons:Basic.Warning }"
 											                      IsChecked="true" />
 											<mxb:ToolbarCheckItem Header="0 Warnings" GlyphSize="16,16" DisplayMode="Both"
-											                      Glyph="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Warning.svg'}" />
+											                      Glyph="{x:Static icons:Basic.Warning}"/>
 											<mxb:ToolbarCheckItem Header="0 Messages" GlyphSize="16,16" DisplayMode="Both"
-											                      Glyph="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}" />
+											                      Glyph="{x:Static icons:Basic.Info }" />
 										</mxb:Toolbar>
 									</mxb:ToolbarContainerControl>
 									<dataGrid:DataGridControl Grid.Row="1" ShowGroupPanel="False">
@@ -259,7 +260,7 @@
 										<Border Background="Transparent"
 										        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
 										        ToolTip.ShowDelay="500">
-											<Image Source="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}"
+											<Image Source="{x:Static icons:Basic.Info}"
 											       Width="16"
 											       Height="16">
 											</Image>
@@ -273,8 +274,7 @@
 						</mxd:TabbedGroup>
 					</mxd:DockGroup>
 					<mxd:DockPane Header="Properties" DockWidth="300">
-						<propertyGrid:PropertyGridControl SelectedObject="{Binding FocusedSolutionItem}"
-						                                  UseModernAppearance="True" />
+						<propertyGrid:PropertyGridControl SelectedObject="{Binding FocusedSolutionItem}"/>
 					</mxd:DockPane>
 				</mxd:DockGroup>
 			</mxd:DockManager>

@@ -11,6 +11,7 @@
              xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
              xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:view="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -43,7 +44,7 @@
         </DataTemplate>
     </UserControl.Resources>
    
-    <Grid Width="640" Height="640" HorizontalAlignment="Center" VerticalAlignment="Top">
+    <Grid Width="640" Height="640" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="DemoControl">
         <Grid RowDefinitions="*, Auto, *, Auto, *, Auto, *, Auto" ColumnDefinitions="150, 150, 40, 150, 150" ShowGridLines="False">
             <Border Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="7" Margin="20, -30, -10, -10" 
                     Background="{DynamicResource Fill/Neutral/Secondary/Enabled}"
@@ -54,8 +55,8 @@
             <Label Content="ButtonEditor" Grid.Column="3" Classes="EditorName"/>
             <mxe:ButtonEditor Grid.Row="1" Grid.Column="3" EditorValue="Capacitor" Classes="LayoutItem secondary">
                 <mxe:ButtonEditor.Buttons>
-                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}"/>
-                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}"/>
+                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{x:Static icons:Basic.Undo}"/>
+                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{x:Static icons:Basic.Redo}"/>
                 </mxe:ButtonEditor.Buttons>
             </mxe:ButtonEditor>
 
@@ -84,7 +85,7 @@
             <mxe:HyperlinkEditor Grid.Column="1" Grid.Row="7" EditorValue="www.eremex.ru" Command="{Binding ShowPageCommand}" 
                                  CommandParameter="www.eremex.ru" Classes="LayoutItem"/>
 
-            <Image Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{SvgImage 'avares://DemoCenter/Assets/Eremex.svg'}" Width="105"/>
+            <Image Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Static icons:Basic.Binoculars}" Width="105"/>
             <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Content="See product pages for details." HorizontalAlignment="Center" FontSize="16" Margin="0,16,0,0"/>
             <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Content="Secondary view" 
                    HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"

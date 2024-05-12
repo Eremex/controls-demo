@@ -44,7 +44,7 @@
                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Border>
 
-        <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding}" UseModernAppearance="True" ImmediatePostEditor="True" BorderThickness="1,0" Grid.Column="1">
+        <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding}" ImmediatePostEditor="True" BorderThickness="1,0" Grid.Column="1">
             <mxpg:PropertyGridRow FieldName="Content"/>
 
             <mxpg:PropertyGridTabRow Caption="Appearance">

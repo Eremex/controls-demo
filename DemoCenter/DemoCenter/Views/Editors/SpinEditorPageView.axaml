@@ -10,6 +10,7 @@
              xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
              xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:view="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -23,7 +24,7 @@
 	</Design.DataContext>
 
     <Grid ColumnDefinitions="*, 250">
-        <ContentControl Classes="DemoUserControl">
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
             <Grid  RowDefinitions="Auto, 60, Auto"
               HorizontalAlignment="Center"
               Margin="30">
@@ -96,10 +97,10 @@
             <mxe:GroupBox Header="Commands">
                 <Grid ColumnDefinitions="*,*">
                     <Button Classes="LayoutItem" Command="{Binding #SpinEditor.DecreaseCommand}" ToolTip.Tip="Decrease">
-                        <Image Source="{SvgImage 'avares://DemoCenter/Images/chevron-left.svg'}" Width="16" Height="16"/>
+                        <Image Source="{x:Static icons:_12.Chevron_Left}" Width="16" Height="16"/>
                     </Button>
                     <Button Grid.Column="1"  Command="{Binding #SpinEditor.IncreaseCommand}" ToolTip.Tip="Increase" Classes="LayoutItem">
-                        <Image Source="{SvgImage 'avares://DemoCenter/Images/chevron-right.svg'}" Width="16" Height="16"/>
+                        <Image Source="{x:Static icons:_12.Chevron_Left}" Width="16" Height="16"/>
                     </Button>
                 </Grid>
             </mxe:GroupBox>

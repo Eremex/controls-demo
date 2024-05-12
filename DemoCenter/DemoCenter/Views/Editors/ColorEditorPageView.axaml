@@ -17,7 +17,7 @@
     </Design.DataContext> 
 
     <Grid ColumnDefinitions="*, 250">
-        <ContentControl Classes="DemoUserControl">
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
             <Grid RowDefinitions="Auto, 60, Auto" ColumnDefinitions="Auto, 26, Auto" HorizontalAlignment="Center" Margin="30">
                 <!-- <Label Classes="EditorHeader" Content="POPUP COLOR EDITOR"/> -->
                 <mxe:PopupColorEditor Grid.Row="2" x:Name="PopupColorEditor" VerticalAlignment="Top"

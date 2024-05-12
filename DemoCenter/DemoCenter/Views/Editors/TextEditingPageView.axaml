@@ -11,6 +11,8 @@
              xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
              xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:cicons="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:view="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -24,19 +26,19 @@
 	</Design.DataContext>
 
     <Grid ColumnDefinitions="*,250">
-        <ContentControl Classes="DemoUserControl">
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
             <Grid RowDefinitions="Auto, 30, Auto, 30, Auto, 30, Auto, 30, Auto, 30, Auto" Width="250"
               Margin="30"
               IsEnabled="{Binding IsChecked, ElementName=IsEnabledSelector}">
             
-            <mxe:TextEditor EditorValue="TextEditor sample" SelectionStart="4" SelectionEnd="10"/>
+            <mxe:TextEditor EditorValue="10.04.2024" SelectionStart="4" SelectionEnd="10" MaskType="DateTime"/>
             <mxe:ButtonEditor Grid.Row="2" EditorValue="ButtonEditor sample">
                 <mxe:ButtonEditor.Buttons>
-                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}"
+                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{x:Static icons:Basic.Undo}"
                                         Command="{Binding AddLogLineCommand}" CommandParameter="Undo"/>
-                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}"
+                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{x:Static icons:Basic.Redo}"
                                         Command="{Binding AddLogLineCommand}" CommandParameter="Redo"/>
-                    <mxe:ButtonSettings ToolTip.Tip="Delete" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Delete.svg'}"
+                    <mxe:ButtonSettings ToolTip.Tip="Delete" Glyph="{x:Static icons:Basic.Remove}"
                                         Command="{Binding AddLogLineCommand}" CommandParameter="Delete"/>
                 </mxe:ButtonEditor.Buttons>
             </mxe:ButtonEditor>
@@ -52,9 +54,9 @@
                               ReadOnly="True"
                               HorizontalContentAlignment="Center">
                 <mxe:ButtonEditor.Buttons>
-                    <mxe:ButtonSettings ToolTip.Tip="Previous" Glyph="{SvgImage 'avares://DemoCenter/Images/chevron-left.svg'}"
+                    <mxe:ButtonSettings ToolTip.Tip="Previous" Glyph="{x:Static cicons:_12.Chevron_Left}"
                                         Command="{Binding ShowPreviousCommand}" CommandParameter="Previous" IsLeft="True"/>
-                    <mxe:ButtonSettings ToolTip.Tip="Next" Glyph="{SvgImage 'avares://DemoCenter/Images/chevron-right.svg'}"
+                    <mxe:ButtonSettings ToolTip.Tip="Next" Glyph="{x:Static cicons:_12.Chevron_Right}"
                                         Command="{Binding ShowNextCommand}" CommandParameter="Next"/>
                 </mxe:ButtonEditor.Buttons>
             </mxe:ButtonEditor>

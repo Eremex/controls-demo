@@ -4,6 +4,7 @@
                     xmlns:editing="clr-namespace:AvaloniaEdit.Editing;assembly=AvaloniaEdit"
                     xmlns:search="clr-namespace:AvaloniaEdit.Search;assembly=AvaloniaEdit"
                     xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+                    xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
                     x:ClassModifier="internal">
 
     <Design.PreviewWith>
@@ -37,11 +38,11 @@
                                           EditorValue="{Binding SearchPattern, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                             <mxe:ButtonEditor.Buttons>
                                 <mxe:ButtonSettings ToolTip.Tip="{x:Static ae:SR.SearchMatchCaseText}"
-                                                    Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Operators, Icon=Starts with.svg'}"
+                                                    Glyph="{x:Static icons:Filter.Starts_with }"
                                                     ButtonKind="Toggle"
                                                     IsChecked="{Binding $parent[search:SearchPanel].MatchCase, Mode=TwoWay}"/>
                                 <mxe:ButtonSettings ToolTip.Tip="{x:Static ae:SR.SearchMatchWholeWordsText}"
-                                                    Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Painting, Icon=Report text column.svg'}"
+                                                    Glyph="{x:Static icons:Painting.Report_text_column }"
                                                     ButtonKind="Toggle"
                                                     IsChecked="{Binding $parent[search:SearchPanel].WholeWords, Mode=TwoWay}"/>
                             </mxe:ButtonEditor.Buttons>

@@ -8,6 +8,7 @@
 			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
              xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
 			 xmlns:views="using:DemoCenter.Views"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -22,19 +23,20 @@
 
 	<UserControl.Resources>
 		<views:ProjectTaskImageSelector x:Key="imageSelector"
-									 ProjectImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Docs.svg'}"
-									 TaskImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=File.svg'}" />
+									 ProjectImage="{x:Static icons:Basic.Docs}"
+									 TaskImage="{x:Static icons:Basic.Doc}" />
 	</UserControl.Resources>
 
 	<Grid ColumnDefinitions="*, 250">
-		<mxtl:TreeListControl x:Name="treeList"
-							  BorderThickness="1,0"
-							  ChildrenFieldName="Tasks"
-							  ItemsSource="{Binding Tasks}"
-							  ShowNodeImages="True"
-							  ShowingEditor="OnShowingEditor"
-							  NodeImageSelector="{StaticResource imageSelector}"
-							  AutoExpandAllNodes="True">
+		<Border x:Name="DemoControl">
+			<mxtl:TreeListControl x:Name="treeList"
+		                      BorderThickness="1,0"
+		                      ChildrenFieldName="Tasks"
+		                      ItemsSource="{Binding Tasks}"
+		                      ShowNodeImages="True"
+		                      ShowingEditor="OnShowingEditor"
+		                      NodeImageSelector="{StaticResource imageSelector}"
+		                      AutoExpandAllNodes="True">
 			<mxtl:TreeListControl.Styles>
 				<Style Selector="mxtl|TreeListRowControl">
 					<Setter Property="TextBlock.FontWeight">
@@ -66,7 +68,7 @@
 			</mxtl:TreeListColumn>
 			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="*" />
 		</mxtl:TreeListControl>
-
+		</Border>
         <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
             <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
                 <StackPanel>

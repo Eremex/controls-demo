@@ -7,7 +7,7 @@ namespace DemoCenter.ViewModels;
 public class CartesianChartRealtimePageViewModel : ChartsPageViewModel
 {
     readonly DispatcherTimer timer = new(DispatcherPriority.Background);
-    readonly RealtimeDataGenerator generator = new(6, 2000, 15);
+    readonly RealtimeDataGenerator generator = new(6, 500, 35);
 
     public SortedTimeSpanDataAdapter Data1 => generator.Adapters[0];
     public SortedTimeSpanDataAdapter Data2 => generator.Adapters[1];
@@ -20,7 +20,7 @@ public class CartesianChartRealtimePageViewModel : ChartsPageViewModel
     {
         generator.GenerateInitialData();
         timer.Tick += (_, _) => generator.UpdateAdapters(); 
-        timer.Interval = TimeSpan.FromMilliseconds(15);
+        timer.Interval = TimeSpan.FromMilliseconds(2);
     }
     public void Start()
     {

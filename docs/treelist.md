@@ -13,7 +13,7 @@ The Eremex Controls library includes two data-aware controls to display hierarch
 
 
 
-The `TreeListControl` and `TreeViewControl` controls have one ancestor, so they share multiple features:
+`TreeListControl` and `TreeViewControl` have one ancestor, so they share multiple features:
 
 - Data Binding — You can bind the controls to self-referential (flat) and hierarchical data sources.
 - Unbound Mode — Allows you to manually create the node structure.

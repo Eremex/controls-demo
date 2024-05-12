@@ -6,6 +6,7 @@
              xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
              xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
              xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="640"
              d:DesignWidth="850"
@@ -17,24 +18,28 @@
     </Design.DataContext>
 
     <Grid ColumnDefinitions="*, 250">
-        <mxb:ToolbarManager IsWindowManager="True">
+        <mxb:ToolbarManager IsWindowManager="True" x:Name="DemoControl">
             <Grid RowDefinitions="Auto, 100, Auto, 100, Auto"
                   HorizontalAlignment="Center"
                   Margin="0,80,0,0" Width="420">
 
                 <mxb:ToolbarContainerControl>
                     <mxb:Toolbar ShowCustomizationButton="False" AllowDragToolbar="False">
-                        <mxb:ToolbarButtonItem Name="ButtonItem" Header="Create" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=NewFolderAction.svg'}" 
+                        <mxb:ToolbarButtonItem Name="ButtonItem" Header="Create" 
+                                               Glyph="{x:Static icons:Basic.Folder_Add}" 
                                                GlyphSize="32,32"/>
-                        <mxb:ToolbarCheckItem x:Name="ButtonCheckItem" Header="Lock" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=PCB, Icon=Lock True.svg'}" GlyphSize="32,32"/>
+                        <mxb:ToolbarCheckItem x:Name="ButtonCheckItem" Header="Lock" 
+                                              Glyph="{x:Static icons:PCB.Layer_Lock}" GlyphSize="32,32"/>
                         
                         <mxb:ToolbarButtonItem x:Name="ButtonDropDownItem"
                                                Header="Save" 
-                                               Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" GlyphSize="32,32">
+                                               Glyph="{x:Static icons:Basic.Save}" GlyphSize="32,32">
                             <mxb:ToolbarButtonItem.DropDownControl>
                                 <mxb:PopupMenu>
-                                    <mxb:ToolbarButtonItem Header="Save All" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save All.svg'}"/>
-                                    <mxb:ToolbarButtonItem Header="Save 3D model" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=3D, Icon=Save.svg'}"/>
+                                    <mxb:ToolbarButtonItem Header="Save All" 
+                                                           Glyph="{x:Static icons:Basic.Save_All}"/>
+                                    <mxb:ToolbarButtonItem Header="Save 3D model" 
+                                                           Glyph="{x:Static icons:_3D.Save}"/>
                                 </mxb:PopupMenu>
                             </mxb:ToolbarButtonItem.DropDownControl>
                         </mxb:ToolbarButtonItem>
@@ -53,7 +58,7 @@
                                      IsCheckedChanged="OnRadioButtonCheckedChanged">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=NewFolderAction.svg'}" Width="32" Height="32"/>
+                                    <Image Source="{x:Static icons:Basic.Folder_Add}" Width="32" Height="32"/>
                                     <Label Content="BarButtonItem" Classes="LayoutItem"/>
                                 </StackPanel>
                             </RadioButton.Content>
@@ -62,7 +67,7 @@
                                      IsCheckedChanged="OnRadioButtonCheckedChanged">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{SvgImage 'avares://DemoCenter/Images/Group=PCB, Icon=Lock True.svg'}" Width="32" Height="32"/>
+                                    <Image Source="{x:Static icons:PCB.Layer_Lock}" Width="32" Height="32"/>
                                     <Label Content="BarCheckItem" Classes="LayoutItem"/>
                                 </StackPanel>
                             </RadioButton.Content>
@@ -71,7 +76,7 @@
                                      IsCheckedChanged="OnRadioButtonCheckedChanged">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Save.svg'}" Width="32" Height="32"/>
+                                    <Image Source="{x:Static icons:Basic.Save}" Width="32" Height="32"/>
                                     <Label Content="BarButtonItem with DropDown" Classes="LayoutItem"/>
                                 </StackPanel>
                             </RadioButton.Content>
@@ -80,7 +85,7 @@
                                      IsCheckedChanged="OnRadioButtonCheckedChanged">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}" Width="32" Height="32"/>
+                                    <Image Source="{x:Static icons:Basic.Info}" Width="32" Height="32"/>
                                     <Label Content="BarTextItem" Classes="LayoutItem"/>
                                 </StackPanel>
                             </RadioButton.Content>
@@ -92,7 +97,7 @@
                         <mxb:ToolbarTextItem x:Name="TextItem"
                                              DisplayMode="Both" Header="Info"
                                              ShowBorder="False"
-                                             Glyph="{SvgImage 'avares://DemoCenter/Images/Group=List of Bugs, Icon=Info.svg'}"
+                                             Glyph="{x:Static icons:Basic.Info}"
                                              GlyphSize="32,32"/>
                     </mxb:Toolbar>
                 </mxb:ToolbarContainerControl>

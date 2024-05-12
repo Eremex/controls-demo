@@ -10,6 +10,7 @@
              xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
              xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:view="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -24,7 +25,7 @@
 
     <Grid ColumnDefinitions="*, 250">
         <mxb:ToolbarManager IsWindowManager="True">
-            <ContentControl Classes="DemoUserControl">
+            <ContentControl Classes="DemoUserControl" x:Name="DemoControl">
                 <Grid RowDefinitions="50, Auto, 80, Auto, 80, Auto, 80"
                       HorizontalAlignment="Center" Width="400">
                     <Grid.Styles>
@@ -34,20 +35,20 @@
                                     <Template>
                                         <mxb:PopupMenu Focusable="False">
                                             <mxb:ToolbarButtonItem Header="Cut" HotKeyDisplayString="Ctrl+X" Command="{Binding $parent[TextBox].Cut}" IsEnabled="{Binding $parent[TextBox].CanCut}"
-                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Cut.svg'}"/>
+                                                                   Glyph="{x:Static icons:Basic.Cut}"/>
                                             <mxb:ToolbarButtonItem Header="Copy" HotKeyDisplayString="Ctrl+C" Command="{Binding $parent[TextBox].Copy}" IsEnabled="{Binding $parent[TextBox].CanCopy}"
-                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Copy.svg'}"/>
+                                                                   Glyph="{x:Static icons:Basic.Copy}"/>
                                             <mxb:ToolbarButtonItem Header="Paste" HotKeyDisplayString="Ctrl+V" Command="{Binding $parent[TextBox].Paste}" IsEnabled="{Binding $parent[TextBox].CanPaste}"
-                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Paste.svg'}"/>
+                                                                   Glyph="{x:Static icons:Basic.Paste}"/>
                                             <mxb:ToolbarSeparatorItem/>
                                             <mxb:ToolbarButtonItem Header="Undo" HotKeyDisplayString="Ctrl+Z" Command="{Binding $parent[TextBox].Undo}" IsEnabled="{Binding $parent[TextBox].CanUndo}"
-                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Undo.svg'}"/>
+                                                                   Glyph="{x:Static icons:Basic.Undo}"/>
                                             <mxb:ToolbarButtonItem Header="Redo" HotKeyDisplayString="Ctrl+Y"  Command="{Binding $parent[TextBox].Redo}" IsEnabled="{Binding $parent[TextBox].CanRedo}"
-                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Redo.svg'}"/>
+                                                                   Glyph="{x:Static icons:Basic.Redo}"/>
                                             <mxb:ToolbarSeparatorItem/>
                                             <mxb:ToolbarButtonItem Header="Select All" HotKeyDisplayString="Ctrl+A" Command="{Binding $parent[TextBox].SelectAll}"/>
                                             <mxb:ToolbarButtonItem Header="Clear" Command="{Binding $parent[TextBox].Clear}"
-                                                                   Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Delete.svg'}"/>
+                                                                   Glyph="{x:Static icons:Basic.Remove}"/>
                                         </mxb:PopupMenu>
                                     </Template>
                                 </Setter.Value>
@@ -58,7 +59,7 @@
                     <Label Content="Button editor" VerticalAlignment="Bottom" Classes="LayoutItem"/>
                     <mxe:ButtonEditor EditorValue="Majestic Mariner" Grid.Row="1" Classes="LayoutItem">
                         <mxe:ButtonEditor.Buttons>
-                            <mxe:ButtonSettings ToolTip.Tip="Delete" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Context Menu, Icon=Delete.svg'}"/>
+                            <mxe:ButtonSettings ToolTip.Tip="Delete" Glyph="{x:Static icons:Basic.Remove}"/>
                         </mxe:ButtonEditor.Buttons>
                     </mxe:ButtonEditor>
 
@@ -73,13 +74,13 @@
                                 ShowIconStrip="{Binding #ShowIconsStripSelector.IsChecked}"
                                 IsVisible="{Binding #IsVisibleSelector.IsChecked}" >
                                 <mxb:ToolbarButtonItem Header="Reload" Command="{Binding Reload}"
-                                                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Update.svg'}"/>
+                                                       Glyph="{x:Static icons:Basic.Update}"/>
                                 <mxb:ToolbarSeparatorItem/>
                                 <mxb:ToolbarCheckItem Header="Order by Ascending" IsChecked="{Binding OrderByAscending, Mode=TwoWay}" />
                                 <mxb:ToolbarCheckItem Header="Order by Descending" IsChecked="{Binding OrderByDescending, Mode=TwoWay}"/>
                                 <mxb:ToolbarSeparatorItem/>
                                 <mxb:ToolbarButtonItem Header="Clear all but the first" Command="{Binding ClearAllButTheFirst}"
-                                                       Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Clear.svg'}"/>
+                                                       Glyph="{x:Static icons:Basic.Table_Clear}"/>
                             </mxb:PopupMenu>
                         </mxb:ToolbarManager.ContextPopup>
                     </mxe:SegmentedEditor>

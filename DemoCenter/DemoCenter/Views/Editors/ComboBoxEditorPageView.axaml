@@ -43,7 +43,7 @@
     </UserControl.Resources>
 
     <Grid ColumnDefinitions="*, 250">
-        <ContentControl Classes="DemoUserControl">
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
         <Grid RowDefinitions="Auto, Auto, 80, Auto, 80, Auto, 80, Auto" Width="250"
               Margin="30"
               HorizontalAlignment="Center">

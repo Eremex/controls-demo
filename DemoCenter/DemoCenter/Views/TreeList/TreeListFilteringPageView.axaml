@@ -8,6 +8,7 @@
 			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
              xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
 			 xmlns:views="using:DemoCenter.Views"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -23,24 +24,25 @@
 	<UserControl.Resources>
 		<views:NullValueConverter x:Key="nullValueConverter"/>
 		<views:ProjectTaskImageSelector x:Key="imageSelector"
-									 ProjectImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Docs.svg'}"
-									 TaskImage="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=File.svg'}" />
+									 ProjectImage="{x:Static icons:Basic.Docs}"
+									 TaskImage="{x:Static icons:Basic.Doc}" />
 	</UserControl.Resources>
 
 	<Grid ColumnDefinitions="*, 250">
-		<mxtl:TreeListControl x:Name="treeList"
-							  BorderThickness="1,0"
-							  ChildrenFieldName="Tasks"
-							  AllowEditing="False"
-							  FilterMode="ShowMatchesWithAncestors"
-							  ItemsSource="{Binding Tasks}"
-							  ShowNodeImages="True"
-							  NodeImageSelector="{StaticResource imageSelector}"
-							  IsSearchPanelVisible="True"
-							  TreeColumnFieldName="Description"
-							  SearchPanelDisplayMode="HotKey"
-							  ShowAutoFilterRow="True"
-							  AutoExpandAllNodes="True">
+		<Border x:Name="DemoControl">
+			<mxtl:TreeListControl x:Name="treeList"
+		                      BorderThickness="1,0"
+		                      ChildrenFieldName="Tasks"
+		                      AllowEditing="False"
+		                      FilterMode="ShowMatchesWithAncestors"
+		                      ItemsSource="{Binding Tasks}"
+		                      ShowNodeImages="True"
+		                      NodeImageSelector="{StaticResource imageSelector}"
+		                      IsSearchPanelVisible="True"
+		                      TreeColumnFieldName="Description"
+		                      SearchPanelDisplayMode="HotKey"
+		                      ShowAutoFilterRow="True"
+		                      AutoExpandAllNodes="True">
 			<mxtl:TreeListControl.Styles>
 				<Style Selector="mxtl|TreeListRowControl">
 					<Setter Property="TextBlock.FontWeight">
@@ -65,7 +67,8 @@
 				<mxtl:TreeListColumn.CellTemplate>
 					<DataTemplate>
 						<Border ToolTip.Tip="High Priority" Background="Transparent">
-							<Image Width="16" Height="16" Stretch="None" IsVisible="{Binding Value, Converter={StaticResource nullValueConverter}}" Source="{SvgImage 'avares://DemoCenter/Images/HighPriority.svg'}" />
+							<Image Width="16" Height="16" Stretch="None" IsVisible="{Binding Value, Converter={StaticResource nullValueConverter}}" 
+							       Source="{x:Static icons:Basic.Error}" />
 						</Border>
 					</DataTemplate>
 				</mxtl:TreeListColumn.CellTemplate>
@@ -84,7 +87,7 @@
 			</mxtl:TreeListColumn>
 			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="90" />
 		</mxtl:TreeListControl>
-
+		</Border>
         <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
             <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
                 <StackPanel>

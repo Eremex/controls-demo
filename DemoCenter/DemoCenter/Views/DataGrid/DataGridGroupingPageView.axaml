@@ -30,15 +30,17 @@
     </UserControl.Resources>
 
     <Grid ColumnDefinitions="*, 250">
-        <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Sales}" AutoGenerateColumns="True" AutoExpandAllGroups="True" AllowEditing="False" GroupCount="1" BorderThickness="1,0">
-            <mxdg:GridColumn FieldName="Year" SortIndex="0" SortDirection="Descending"/>
-            <mxdg:GridColumn FieldName="Employee" SortIndex="1" Width="200"/>
-            <mxdg:GridColumn FieldName="Quarter1" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
-            <mxdg:GridColumn FieldName="Quarter2" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
-            <mxdg:GridColumn FieldName="Quarter3" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
-            <mxdg:GridColumn FieldName="Quarter4" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
-            <mxdg:GridColumn FieldName="Total" Width="*" CellTemplate="{StaticResource totalTemplate}"/>
-        </mxdg:DataGridControl>
+        <Border x:Name="DemoControl">
+            <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Sales}" AutoGenerateColumns="True" AutoExpandAllGroups="True" AllowEditing="False" GroupCount="1" BorderThickness="1,0">
+                <mxdg:GridColumn FieldName="Year" SortIndex="0" SortDirection="Descending"/>
+                <mxdg:GridColumn FieldName="Employee" SortIndex="1" Width="200"/>
+                <mxdg:GridColumn FieldName="Quarter1" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
+                <mxdg:GridColumn FieldName="Quarter2" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
+                <mxdg:GridColumn FieldName="Quarter3" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
+                <mxdg:GridColumn FieldName="Quarter4" Width="*" CellTemplate="{StaticResource quarterTemplate}"/>
+                <mxdg:GridColumn FieldName="Total" Width="*" CellTemplate="{StaticResource totalTemplate}"/>
+            </mxdg:DataGridControl>
+        </Border>
 
         <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
             <mxe:GroupBox Header="Properties" VerticalAlignment="Top">

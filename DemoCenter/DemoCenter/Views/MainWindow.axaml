@@ -14,7 +14,7 @@
         d:DesignHeight="450"
         WindowStartupLocation="CenterScreen"
         x:Class="DemoCenter.Views.MainWindow"
-        Icon="/Assets/eremex-logo.ico"
+        Icon="/Assets/EMXControls.ico"
         Title="{Binding Title, ElementName=mainView}">
         <views:MainView x:Name="mainView" />
 </common:MxWindow>

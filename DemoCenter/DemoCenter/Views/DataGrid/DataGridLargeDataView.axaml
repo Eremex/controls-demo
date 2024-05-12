@@ -13,27 +13,28 @@
 	</UserControl.Resources>
 
 	<Grid ColumnDefinitions="*, 250">
-		<mxdg:DataGridControl ItemsSource="{Binding Orders}" BorderThickness="1,0">
-			<mxdg:GridColumn FieldName="OrderId" Width="*"/>
-			<mxdg:GridColumn FieldName="Manager" Width="*">
-				<mxdg:GridColumn.EditorProperties>
-					<mxe:ComboBoxEditorProperties ItemsSource="{x:Static data:EmployeesData.EmployeeNames}"/>
-				</mxdg:GridColumn.EditorProperties>
-			</mxdg:GridColumn>
-			<mxdg:GridColumn FieldName="Count" Width="*"/>
-			<mxdg:GridColumn FieldName="Price" Width="*">
-				<mxdg:GridColumn.EditorProperties>
-					<mxe:SpinEditorProperties Mask="c" MaskType="Numeric"/>
-				</mxdg:GridColumn.EditorProperties>
-			</mxdg:GridColumn>
-			<mxdg:GridColumn FieldName="Date" Width="*"/>
-			<mxdg:GridColumn FieldName="TotalPrice" Width="*">
-				<mxdg:GridColumn.EditorProperties>
-					<mxe:SpinEditorProperties Mask="c" MaskType="Numeric"/>
-				</mxdg:GridColumn.EditorProperties>
-			</mxdg:GridColumn>
-		</mxdg:DataGridControl>
-
+		<Border x:Name="DemoControl">
+			<mxdg:DataGridControl ItemsSource="{Binding Orders}" BorderThickness="1,0">
+				<mxdg:GridColumn FieldName="OrderId" Width="*"/>
+				<mxdg:GridColumn FieldName="Manager" Width="*">
+					<mxdg:GridColumn.EditorProperties>
+						<mxe:ComboBoxEditorProperties ItemsSource="{x:Static data:EmployeesData.EmployeeNames}"/>
+					</mxdg:GridColumn.EditorProperties>
+				</mxdg:GridColumn>
+				<mxdg:GridColumn FieldName="Count" Width="*"/>
+				<mxdg:GridColumn FieldName="Price" Width="*">
+					<mxdg:GridColumn.EditorProperties>
+						<mxe:SpinEditorProperties Mask="c" MaskType="Numeric"/>
+					</mxdg:GridColumn.EditorProperties>
+				</mxdg:GridColumn>
+				<mxdg:GridColumn FieldName="Date" Width="*"/>
+				<mxdg:GridColumn FieldName="TotalPrice" Width="*">
+					<mxdg:GridColumn.EditorProperties>
+						<mxe:SpinEditorProperties Mask="c" MaskType="Numeric"/>
+					</mxdg:GridColumn.EditorProperties>
+				</mxdg:GridColumn>
+			</mxdg:DataGridControl>
+		</Border>
 		<Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
 			<StackPanel>
 				<mxe:GroupBox Header="Item Count">

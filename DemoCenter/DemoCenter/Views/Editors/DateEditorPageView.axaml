@@ -15,7 +15,7 @@
 	</Design.DataContext>
 
     <Grid ColumnDefinitions="*, 250">
-        <ContentControl Classes="DemoUserControl">
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
                         <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, 26, Auto"
                               Margin="30"
                           IsEnabled="{Binding #IsEnabledSelector.IsChecked}">

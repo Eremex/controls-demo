@@ -11,7 +11,8 @@
              x:Class="DemoCenter.Views.DataGridDataEditorsView">
     
     <Grid ColumnDefinitions="*, 250">
-        <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" BorderThickness="1,0">
+	    <Border x:Name="DemoControl">
+			<mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" BorderThickness="1,0">
 			<mxdg:GridColumn FieldName="FirstName" Width="*" MinWidth="80"/>
 			<mxdg:GridColumn FieldName="LastName" Width="*" MinWidth="80"/>
 			<mxdg:GridColumn FieldName="HiredAt" Header="Hire Date" Width="*" MinWidth="80">
@@ -41,6 +42,7 @@
 			</mxdg:GridColumn>
 			<mxdg:GridColumn FieldName="Married" Width="80" MinWidth="80"/>
         </mxdg:DataGridControl>
+	    </Border>
 
         <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
             <mxe:GroupBox Header="Properties" VerticalAlignment="Top">

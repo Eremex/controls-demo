@@ -5,7 +5,7 @@
              xmlns:mxct="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
              x:Class="DemoCenter.Views.CartesianChartAxesPageView">
     <Grid ColumnDefinitions="* 250">
-        <mxc:CartesianChart Grid.Column="0">
+        <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl">
             <mxc:CartesianSeries DataAdapter="{Binding Data1}" AxisXKey="1" AxisYKey="1">
                 <mxc:CartesianLineSeriesView Color="{Binding Color1}" Thickness="2" />
             </mxc:CartesianSeries>

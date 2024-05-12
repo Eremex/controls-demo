@@ -12,7 +12,7 @@ namespace DemoCenter.ViewModels
 {
     public partial class ComboBoxEditorPageViewModel : PageViewModelBase
     {
-        [ObservableProperty] string yachtValue = "Aquamarine";
+        [ObservableProperty] string yachtValue = CsvSources.YachtNames[3];
         [ObservableProperty] FilterCondition editableViewFilterCondition = FilterCondition.StartsWith;
 
         [ObservableProperty] List<ElementInfo> elements;

@@ -24,7 +24,7 @@
 	</Design.DataContext>
 
 
-	<ContentControl Classes="DemoUserControl">
+	<ContentControl x:Name="DemoControl" Classes="DemoUserControl">
 		<Grid RowDefinitions="Auto, 20, Auto" Margin="30" HorizontalAlignment="Center" Width="560">
 			<mxe:GroupBox Header="ComboBox Editor">
 				<Grid ColumnDefinitions="3*, 20, *" RowDefinitions="*, Auto">

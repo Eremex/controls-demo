@@ -1,5 +1,6 @@
 ﻿using Avalonia.Media;
 using DemoCenter.Helpers;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DemoCenter.DemoData
 {
@@ -9,11 +10,11 @@ namespace DemoCenter.DemoData
         public ElementCategory Category { get; init; }
         public IImage Icon { get; init; }
 
-        public ElementInfo(string name, ElementCategory category, string iconName)
+        public ElementInfo(string name, ElementCategory category, IImage icon)
         {
             Name = name;
             Category = category;
-            Icon = SvgImageHelper.CreateSvgImage($"avares://DemoCenter/Images/{iconName}.svg");
+            Icon = icon;
         }
     }
 
@@ -42,47 +43,47 @@ namespace DemoCenter.DemoData
         {
             return new List<ElementInfo>()
             {
-                new ElementInfo("Arsenide-gallium transistor", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - arsenid-gallievyj polevoj tranzistor"),
-                new ElementInfo("N-Type bypolar transistor with base", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - bipoljarnyj tranzistor n-tipa s podlozhkoj"),
-                new ElementInfo("N-Type bypolar transistor", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - bipoljarnyj tranzistor n-tipa"),
-                new ElementInfo("P-Type bypolar transistor with base", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - bipoljarnyj tranzistor p-tipa s podlozhkoj"),
-                new ElementInfo("P-Type bypolar transistor", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - bipoljarnyj tranzistor p-tipa"),
+                new ElementInfo("Arsenide-gallium transistor", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___arsenid_gallievyj_polevoj_tranzistor), //"Group=Models, Icon=aktivnye komponenty - arsenid-gallievyj polevoj tranzistor"),
+                new ElementInfo("N-Type bypolar transistor with base", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___bipoljarnyj_tranzistor_n_tipa_s_podlozhkoj),
+                new ElementInfo("N-Type bypolar transistor", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___bipoljarnyj_tranzistor_n_tipa),
+                new ElementInfo("P-Type bypolar transistor with base", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___bipoljarnyj_tranzistor_p_tipa_s_podlozhkoj),
+                new ElementInfo("P-Type bypolar transistor", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___bipoljarnyj_tranzistor_p_tipa),
 
-                new ElementInfo("MOS transistor (DN type)", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - mop tranzistor DN-tipa"),
-                new ElementInfo("MOS transistor (DP type)", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - mop tranzistor DP-tipa"),
-                new ElementInfo("MOS transistor (N type)", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - mop tranzistor N-tipa"),
-                new ElementInfo("MOS transistor (P type)", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - mop tranzistor P-tipa"),
+                new ElementInfo("MOS transistor (DN type)", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___mop_tranzistor_DN_tipa),
+                new ElementInfo("MOS transistor (DP type)", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___mop_tranzistor_DP_tipa),
+                new ElementInfo("MOS transistor (N type)", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___mop_tranzistor_N_tipa),
+                new ElementInfo("MOS transistor (P type)", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___mop_tranzistor_P_tipa),
 
-                new ElementInfo("Operational amplifier", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - operacionnyj usilitel"),
-                new ElementInfo("Field-effect transistor (N type)", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - polevoj tranzistor n-tipa"),
-                new ElementInfo("Field-effect transistor (P type)", ElementCategory.Active, "Group=Models, Icon=aktivnye komponenty - polevoj tranzistor p-tipa"),
+                new ElementInfo("Operational amplifier", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___operacionnyj_usilitel),
+                new ElementInfo("Field-effect transistor (N type)", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___polevoj_tranzistor_n_tipa),
+                new ElementInfo("Field-effect transistor (P type)", ElementCategory.Active, Eremex.Avalonia.Icons.Models.Aktivnye_komponenty___polevoj_tranzistor_p_tipa),
 
-                new ElementInfo("Functional voltage source", ElementCategory.IndependentSource, "Group=Models, Icon=funkcionalnye istochniki - funkcionalnyj istochnik naprjazhenija"),
-                new ElementInfo("Functional current source", ElementCategory.IndependentSource, "Group=Models, Icon=funkcionalnye istochniki - funkcionalnyj istochnik toka"),
+                new ElementInfo("Functional voltage source", ElementCategory.IndependentSource, Eremex.Avalonia.Icons.Models.Funkcionalnye_istochniki___funkcionalnyj_istochnik_naprjazhenija),
+                new ElementInfo("Functional current source", ElementCategory.IndependentSource, Eremex.Avalonia.Icons.Models.Funkcionalnye_istochniki___funkcionalnyj_istochnik_toka),
 
-                new ElementInfo("Four-pole", ElementCategory.Multipole, "Group=Models, Icon=mnogopolosniki - chetyrehpolosnik"),
-                new ElementInfo("Two-pole", ElementCategory.Multipole, "Group=Models, Icon=mnogopolosniki - dvuhpolosnik"),
-                new ElementInfo("Six-pole", ElementCategory.Multipole, "Group=Models, Icon=mnogopolosniki - shestipolosnik"),
-                new ElementInfo("Eight-pole", ElementCategory.Multipole, "Group=Models, Icon=mnogopolosniki - vosmipolosnik"),
+                new ElementInfo("Four-pole", ElementCategory.Multipole, Eremex.Avalonia.Icons.Models.Mnogopolosniki___chetyrehpolosnik),
+                new ElementInfo("Two-pole", ElementCategory.Multipole, Eremex.Avalonia.Icons.Models.Mnogopolosniki___dvuhpolosnik),
+                new ElementInfo("Six-pole", ElementCategory.Multipole, Eremex.Avalonia.Icons.Models.Mnogopolosniki___shestipolosnik),
+                new ElementInfo("Eight-pole", ElementCategory.Multipole,Eremex.Avalonia.Icons.Models.Mnogopolosniki___vosmipolosnik),
 
-                new ElementInfo("Battery", ElementCategory.IndependentSource, "Group=Models, Icon=nezavisimye istochniki - batareja"),
-                new ElementInfo("Voltage source", ElementCategory.IndependentSource, "Group=Models, Icon=nezavisimye istochniki - istochnik naprjazhenija"),
-                new ElementInfo("Current source", ElementCategory.IndependentSource, "Group=Models, Icon=nezavisimye istochniki - istochnik toka"),
+                new ElementInfo("Battery", ElementCategory.IndependentSource, Eremex.Avalonia.Icons.Models.Nezavisimye_istochniki___batareja),
+                new ElementInfo("Voltage source", ElementCategory.IndependentSource, Eremex.Avalonia.Icons.Models.Nezavisimye_istochniki___istochnik_naprjazhenija),
+                new ElementInfo("Current source", ElementCategory.IndependentSource, Eremex.Avalonia.Icons.Models.Nezavisimye_istochniki___istochnik_toka),
 
-                new ElementInfo("Diod", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - diod"),
-                new ElementInfo("Long line", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - dlinnaja linija"),
-                new ElementInfo("Transformator", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - dvuhobmotochnyj transformator"),
-                new ElementInfo("Inductor", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - induktivnost"),
-                new ElementInfo("Capacitor", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - kondensator"),
-                new ElementInfo("Voltage-controlled switch", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - perekljuchatel upravljaemyj naprjazheniem"),
-                new ElementInfo("Current-controlled switch", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - perekljuchatel upravljaemyj tokom"),
-                new ElementInfo("Resistor", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - rezistor"),
-                new ElementInfo("Variable resistor", ElementCategory.Passive, "Group=Models, Icon=passivnye elementy - rezistor-potenciometr"),
+                new ElementInfo("Diod", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___diod),
+                new ElementInfo("Long line", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___dlinnaja_linija),
+                new ElementInfo("Transformator", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___dvuhobmotochnyj_transformator),
+                new ElementInfo("Inductor", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___induktivnost),
+                new ElementInfo("Capacitor", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___kondensator),
+                new ElementInfo("Voltage-controlled switch", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___perekljuchatel_upravljaemyj_naprjazheniem),
+                new ElementInfo("Current-controlled switch", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___perekljuchatel_upravljaemyj_tokom),
+                new ElementInfo("Resistor", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___rezistor),
+                new ElementInfo("Variable resistor", ElementCategory.Passive, Eremex.Avalonia.Icons.Models.Passivnye_elementy___rezistor_potenciometr),
 
-                new ElementInfo("Voltage-controlled voltage source", ElementCategory.ControlledSource, "Group=Models, Icon=upravljaemye istochniki - istochnik naprjazhenija upravljaemyj naprjazheniem"),
-                new ElementInfo("Current-controlled voltage source", ElementCategory.ControlledSource, "Group=Models, Icon=upravljaemye istochniki - istochnik naprjazhenija upravljaemyj tokom"),
-                new ElementInfo("Voltage-controlled current source", ElementCategory.ControlledSource, "Group=Models, Icon=upravljaemye istochniki - istochnik toka upravljaemyj naprjazheniem"),
-                new ElementInfo("Current-controlled current source", ElementCategory.ControlledSource, "Group=Models, Icon=upravljaemye istochniki - istochnik toka upravljaemyj tokom"),
+                new ElementInfo("Voltage-controlled voltage source", ElementCategory.ControlledSource, Eremex.Avalonia.Icons.Models.Upravljaemye_istochniki___istochnik_naprjazhenija_upravljaemyj_naprjazheniem),
+                new ElementInfo("Current-controlled voltage source", ElementCategory.ControlledSource, Eremex.Avalonia.Icons.Models.Upravljaemye_istochniki___istochnik_naprjazhenija_upravljaemyj_tokom),
+                new ElementInfo("Voltage-controlled current source", ElementCategory.ControlledSource, Eremex.Avalonia.Icons.Models.Upravljaemye_istochniki___istochnik_toka_upravljaemyj_naprjazheniem),
+                new ElementInfo("Current-controlled current source", ElementCategory.ControlledSource, Eremex.Avalonia.Icons.Models.Upravljaemye_istochniki___istochnik_toka_upravljaemyj_tokom),
             };
         }
     }

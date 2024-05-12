@@ -13,8 +13,8 @@ public partial class CartesianChartAxesPageViewModel : ChartsPageViewModel
 
     [ObservableProperty] FormulaDataAdapter data1 = new(0, 1, 100, Formula1);
     [ObservableProperty] FormulaDataAdapter data2 = new(0, 1, 200, Formula2);
-    [ObservableProperty] Color color1 = Colors.Red;
-    [ObservableProperty] Color color2 = Colors.Blue;
+    [ObservableProperty] private Color color1 = Color.FromArgb(255, 189, 20, 54);
+    [ObservableProperty] Color color2 = Color.FromArgb(255, 0, 120, 122);
     [ObservableProperty] AxisViewModel axisX1 = new() { Title = "First Axis X", ShowInterlacing = true, ShowMajorGridlines = true, ShowMinorGridlines = true };
     [ObservableProperty] AxisViewModel axisX2 = new() { Title = "Second Axis X", Position = AxisPosition.Far };
     [ObservableProperty] AxisViewModel axisY1 = new() { Title = "First Axis Y", ShowInterlacing = true, ShowMajorGridlines = true, ShowMinorGridlines = true };

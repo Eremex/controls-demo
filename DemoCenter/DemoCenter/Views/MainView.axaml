@@ -10,6 +10,7 @@
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
 			 xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:aEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:views="clr-namespace:DemoCenter.Views"
              xmlns:helpers="clr-namespace:DemoCenter.Helpers"
@@ -88,13 +89,13 @@
             </mxtl:TreeViewControl>
             <mxb:ToolbarContainerControl Grid.Column="1" BorderBrush="Transparent">
                 <mxb:Toolbar ShowCustomizationButton="False" AllowDragToolbar="False" StretchToolbar="True">
-                    <mxb:ToolbarButtonItem Header="Previous" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Arrow Back.svg'}" GlyphSize="20, 20"
+                    <mxb:ToolbarButtonItem Header="Previous" Glyph="{x:Static icons:Basic.Arrow_Left}" GlyphSize="20, 20"
                                            Command="{Binding PreviousViewCommand}" IsEnabled="{Binding IsPreviousButtonEnabled}"/>
-                    <mxb:ToolbarButtonItem Header="Next" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Arrow Next.svg'}" GlyphSize="20, 20"
+                    <mxb:ToolbarButtonItem Header="Next" Glyph="{x:Static icons:Basic.Arrow_Right}" GlyphSize="20, 20"
                                            Command="{Binding NextViewCommand}" IsEnabled="{Binding IsNextButtonEnabled}"/>
-                    <mxb:ToolbarCheckItem x:Name="ShowCodeSelector" Header="Show Code" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Painting, Icon=Text.svg'}" GlyphSize="20, 20"
+                    <mxb:ToolbarCheckItem x:Name="ShowCodeSelector" Header="Show Code" Glyph="{x:Static icons:Painting.Text}" GlyphSize="20, 20"
                                           IsChecked="{Binding ShowCode, Mode=TwoWay}"/>
-                    <mxb:ToolbarButtonItem Header="Search" Glyph="{SvgImage 'avares://DemoCenter/Images/Group=Basic, Icon=Search.svg'}"
+                    <mxb:ToolbarButtonItem Header="Search" Glyph="{x:Static icons:Basic.Search}"
                                            Click="OnShowSearchPanel" Alignment="Far"
                                            IsVisible="{Binding #ShowCodeSelector.IsChecked}"/>
                     <mxb:ToolbarEditorItem IsVisible="{Binding #ShowCodeSelector.IsChecked}" Alignment="Far" GlyphSize="20, 20">

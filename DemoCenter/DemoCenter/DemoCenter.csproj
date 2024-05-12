@@ -7,8 +7,6 @@
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
     <AvaloniaResource Include="DemoData\csv\**" />
-    <AvaloniaResource Include="Images\*.svg" />
-    <EmbeddedResource Include="Images\css\**" />
     <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Dark.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Light.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\CSharp-Highlight-Dark.xshd" />
@@ -38,6 +36,7 @@
     <PackageReference Include="TextMateSharp.Grammars" />
     <PackageReference Include="Eremex.Avalonia.Controls" />
     <PackageReference Include="Eremex.Avalonia.Charts" />
+	<PackageReference Include="Eremex.Avalonia.Icons" />
   </ItemGroup>
     
   <ItemGroup>

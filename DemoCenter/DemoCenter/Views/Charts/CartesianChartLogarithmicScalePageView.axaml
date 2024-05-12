@@ -4,17 +4,31 @@
              xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
              x:Class="DemoCenter.Views.CartesianChartLogarithmicScalePageView">
     <Grid ColumnDefinitions="* 250">
-        <mxc:CartesianChart Grid.Column="0">
-            <mxc:CartesianSeries DataAdapter="{Binding Data1}">
-                <mxc:CartesianLineSeriesView Color="{Binding Color1}" Thickness="2" />
-            </mxc:CartesianSeries>
+        <mxc:CartesianChart Grid.Column="0" Classes="DemoChartWithNoOptions" x:Name="DemoControl">
             <mxc:CartesianSeries DataAdapter="{Binding Data2}">
-                <mxc:CartesianLineSeriesView Color="{Binding Color2}" Thickness="2" />
+                <mxc:CartesianLineSeriesView Color="#4F007E90" Thickness="1" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data3}">
+                <mxc:CartesianLineSeriesView Color="#4F007E90" Thickness="1" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data4}">
+                <mxc:CartesianLineSeriesView Color="#6F007E90" Thickness="1" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data5}">
+                <mxc:CartesianLineSeriesView Color="#8F007E90" Thickness="1" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data6}">
+                <mxc:CartesianLineSeriesView Color="#8F007E90" Thickness="1" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data1}">
+                <mxc:CartesianLineSeriesView Color="#DF005F60" Thickness="1" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries DataAdapter="{Binding Data7}">
+                <mxc:CartesianLineSeriesView Color="#FF005F60" Thickness="2" />
             </mxc:CartesianSeries>
             
             <mxc:CartesianChart.AxesX>
                 <mxc:AxisX Title="Frequency">
-                    <mxc:AxisXRange MinSideMargin="0" MaxSideMargin="0" />
                     <mxc:AxisX.ScaleOptions>
                         <mxc:NumericScaleOptions LogarithmicBase="{Binding AxisX.LogarithmicBase}"
                                                  LabelFormatter="{Binding FrequencyFormatter}" />
@@ -22,11 +36,8 @@
                 </mxc:AxisX>
             </mxc:CartesianChart.AxesX>
             <mxc:CartesianChart.AxesY>
-                <mxc:AxisY Title="Total Harmonic Distortion">
-                    <mxc:AxisY.ScaleOptions>
-                        <mxc:NumericScaleOptions LogarithmicBase="{Binding AxisY.LogarithmicBase}"
-                                                 LabelFormatter="{Binding PercentFormatter}" />
-                    </mxc:AxisY.ScaleOptions>
+                <mxc:AxisY Title="Amplitude (dB SPL)">
+                    <mxc:AxisYRange AlwaysShowZeroLevel="False" MaxSideMargin="15" MinSideMargin="15" />
                 </mxc:AxisY>
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
@@ -36,7 +47,6 @@
                 <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
                     <StackPanel Classes="LayoutGroup">
                         <mxe:CheckEditor Content="Logarithmic X-Axis" IsChecked="{Binding LogarithmicX}" />
-                        <mxe:CheckEditor Content="Logarithmic Y-Axis" IsChecked="{Binding LogarithmicY}" />
                     </StackPanel>
                 </mxe:GroupBox>
             </StackPanel>

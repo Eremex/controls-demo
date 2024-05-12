@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DemoCenter.Views;
 
 namespace DemoCenter.ProductsData
 {
@@ -44,11 +45,15 @@ namespace DemoCenter.ProductsData
 
                 new PageInfo(name: "Hyperlink Editor", title: "Hyperlink Editor",
                 description: "The Hyperlink Editor displays its contents as a hyperlink. Bind a command to the editor to process hyperlink clicks.",
-                viewModelGetter: () => new HyperlinkEditorPageViewModel(), bageType: ProductBageType.Updated),
+                viewModelGetter: () => new HyperlinkEditorPageViewModel(), badgeType: ProductBageType.Updated),
 
                 new PageInfo(name: "Enum Source", title: "Enum Source", 
                 description: "You can create ComboBox and Segmented Editors' items from enumeration type values. Dedicated Data Annotation attributes applied to the enumeration values allow you to populate the controls' items with images, display text and tooltips.",
                 viewModelGetter: () => new EnumSourcePageViewModel()),
+                
+                new PageInfo(name: "Memo Editor", title: "Memo Editor", 
+                    description: "You can create MemoEditor to edit multi-line text in its popup window.",
+                    viewModelGetter: () => new MemoEditorPageViewModel(), badgeType: ProductBageType.New),
             };
         }
     }

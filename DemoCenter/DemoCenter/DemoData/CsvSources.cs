@@ -1,14 +1,6 @@
-﻿using Avalonia;
-using Avalonia.Platform;
-using DynamicData;
-using System;
-using System.Collections.Generic;
+﻿using Avalonia.Platform;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Microsoft.VisualBasic.FileIO;
 
 namespace DemoCenter.DemoData
@@ -64,7 +56,10 @@ namespace DemoCenter.DemoData
                 return yachts;
             }
         }
-        
+
+        static List<CsvDoubleColumn> logarithmic;
+        public static List<CsvDoubleColumn> Logarithmic => logarithmic ??= GetLogarithmic();
+
         static List<CarInfo> GetCars()
         {
             var culture = new CultureInfo("en-US");
@@ -91,14 +86,12 @@ namespace DemoCenter.DemoData
                 };
             }
         }
-
         static List<MechInfo> GetMechs()
         {
             var regex = new Regex(@"\d{1,}");
             return GetInfo<MechInfo>(GetUriString("mechs"), 
                 values => new MechInfo(values[0], int.Parse(regex.Match(values[1]).Value), new List<string>() { values[2], values[3], values[4] }));
         }
-
         static List<SpaceLaunchInfo> GetLaunches()
         {
             var provider = CultureInfo.InvariantCulture;
@@ -110,7 +103,6 @@ namespace DemoCenter.DemoData
                 });
         }
         static List<string> GetYachtNames() => GetInfo<string>(GetUriString("yachtNames"), values => values[0]);
-
         static List<YachtInfo> GetYachts()
         {
             var provider = CultureInfo.InvariantCulture;
@@ -121,6 +113,7 @@ namespace DemoCenter.DemoData
                     return new YachtInfo(values[0], double.Parse(values[1]), int.Parse(values[2]), double.Parse(values[3]), decimal.Parse(values[4]), price, int.Parse(values[8]), values[9], values[10], values[11]);
                 });
         }
+        static List<CsvDoubleColumn> GetLogarithmic() => GetColumnInfo<CsvDoubleColumn>(GetUriString("logarithmic"));
 
         static List<T> GetInfo<T>(string uriString, Func<string[], T> getInfo)
         {
@@ -142,6 +135,40 @@ namespace DemoCenter.DemoData
                     {
                         string[] values = parser.ReadFields();
                         result.Add(getInfo(values));
+                    }
+                }
+            }
+
+            return result;
+        }
+        static List<T> GetColumnInfo<T>(string uriString) where T : CsvColumn
+        {
+            const char separator = ',';
+            
+            var result = new List<T>();
+            var uri = new Uri(uriString);
+
+            if (!AssetLoader.Exists(uri))
+                return result;
+
+            using (var reader = new StreamReader(AssetLoader.Open(uri)))
+            {
+                string[] headers = reader.ReadLine()!.Split(separator);
+                foreach (string header in headers)
+                    result.Add((T)Activator.CreateInstance(typeof(T), header.Trim()));
+
+                using (var parser = new TextFieldParser(reader))
+                {
+                    parser.HasFieldsEnclosedInQuotes = false;
+                    parser.Delimiters = new[] { separator.ToString() };
+                    while (!parser.EndOfData)
+                    {
+                        string[] values = parser.ReadFields();
+                        if (values != null)
+                        {
+                            for(int i = 0; i < result.Count; i++)
+                                result[i].AddValue(values[i]);
+                        }
                     }
                 }
             }

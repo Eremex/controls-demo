@@ -13,7 +13,7 @@
         <Grid ColumnDefinitions="*, 2*, *, 250">
             <Border Grid.ColumnSpan="3" Background="{DynamicResource Fill/Neutral/Secondary/Enabled}"/>
 
-            <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding SelectedObject}" UseModernAppearance="True" Margin="16" BorderThickness="1"
+            <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding SelectedObject}" Margin="16" BorderThickness="1"
                                       Background="{DynamicResource Fill/Neutral/Primary/Enabled}" Grid.Column="1">
                 <mxpg:PropertyGridCategoryRow Caption="General">
                     <mxpg:PropertyGridRow FieldName="FirstName"  Caption="First Name"/>

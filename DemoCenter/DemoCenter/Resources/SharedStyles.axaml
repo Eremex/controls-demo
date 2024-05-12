@@ -2,7 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ae="clr-namespace:AvaloniaEdit.Editing;assembly=AvaloniaEdit"
         xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
-        xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls">
+        xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+        xmlns:charts="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts">
 
   <!-- Add Styles Here -->
   <Style Selector="Label.LayoutItem">
@@ -220,4 +221,15 @@
       </Setter.Value>
     </Setter>
   </Style>
+  
+  <Style Selector="charts|CartesianChart.DemoChart">
+    <Setter Property="BorderThickness" Value="1,0,1,0"/> 
+    <Setter Property="CornerRadius" Value="0"/>
+  </Style>
+  
+  <Style Selector="charts|CartesianChart.DemoChartWithNoOptions">
+    <Setter Property="BorderThickness" Value="1,0,1,0"/> 
+    <Setter Property="CornerRadius" Value="0"/>
+  </Style>
+  
 </Styles>
