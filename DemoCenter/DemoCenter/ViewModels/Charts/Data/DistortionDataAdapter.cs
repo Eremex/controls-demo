@@ -39,10 +39,10 @@ public class DistortionDataAdapter : ISeriesDataAdapter
 		remove { }
 	}
 
-	Dictionary<SeriesDataMemberType, ScaleType> ISeriesDataAdapter.GetScaleTypes() => new()
+	Dictionary<AxisType, ScaleType> ISeriesDataAdapter.GetScaleTypes() => new()
 	{
-		{ SeriesDataMemberType.Argument, ScaleType.Numeric },
-		{ SeriesDataMemberType.Value, ScaleType.Numeric },
+		{ AxisType.Argument, ScaleType.Numeric },
+		{ AxisType.Value, ScaleType.Numeric },
 	};
 	double ISeriesDataAdapter.GetNumericalValue(int index, SeriesDataMemberType dataMember) => dataMember switch
 	{
@@ -53,6 +53,6 @@ public class DistortionDataAdapter : ISeriesDataAdapter
 	DateTime ISeriesDataAdapter.GetDateTimeValue(int index, SeriesDataMemberType dataMember) => throw new NotImplementedException();
 	TimeSpan ISeriesDataAdapter.GetTimeSpanValue(int index, SeriesDataMemberType dataMember) => throw new NotImplementedException();
 	string ISeriesDataAdapter.GetQualitativeValue(int index, SeriesDataMemberType dataMember) => throw new NotImplementedException();
-	
-	#endregion
+
+    #endregion
 }
