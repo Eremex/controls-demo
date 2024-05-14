@@ -9,12 +9,10 @@
              xmlns:data="clr-namespace:DemoCenter.DemoData"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Border BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" BorderThickness="1,0,0,0">
+    <Border BorderThickness="0">
         <Grid ColumnDefinitions="*, 2*, *, 250">
-            <Border Grid.ColumnSpan="3" Background="{DynamicResource Fill/Neutral/Secondary/Enabled}"/>
-
-            <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding SelectedObject}" Margin="16" BorderThickness="1"
-                                      Background="{DynamicResource Fill/Neutral/Primary/Enabled}" Grid.Column="1">
+            <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding SelectedObject}" 
+                                      Margin="16" BorderThickness="1" Grid.Column="1">
                 <mxpg:PropertyGridCategoryRow Caption="General">
                     <mxpg:PropertyGridRow FieldName="FirstName"  Caption="First Name"/>
                     <mxpg:PropertyGridRow FieldName="LastName" Caption="Last Name"/>
@@ -45,25 +43,25 @@
                 </mxpg:PropertyGridCategoryRow>
             </mxpg:PropertyGridControl>
 
-            <Border Grid.Column="3" BorderThickness="1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-                <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
-                    <StackPanel>
-                        <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #propertyGrid.AllowEditing}" Classes="LayoutItem"/>
-
-                        <DockPanel IsEnabled="{Binding #propertyGrid.AllowEditing}">
-                            <Label Content="Editor Show Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                            <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxpg:EditorShowMode}"
-                                                EditorValue="{Binding #propertyGrid.EditorShowMode}"
-                                                Classes="LayoutItem"/>
-                        </DockPanel>
-
-                        <DockPanel IsEnabled="{Binding #propertyGrid.AllowEditing}">
-                            <Label Content="Editor Button Show Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                            <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxpg:EditorButtonShowMode}"
-                                                EditorValue="{Binding #propertyGrid.EditorButtonShowMode}"
-                                                Classes="LayoutItem"/>
-                        </DockPanel>
-                    </StackPanel>
+            <Border Grid.Column="3" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+                <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                        <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #propertyGrid.AllowEditing}" Classes="PropertyEditor"/>
+                        <Label Grid.Row="1" Content="Editor Show Mode" IsEnabled="{Binding #propertyGrid.AllowEditing}" Classes="PropertyLabel"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxpg:EditorShowMode}"
+                                            EditorValue="{Binding #propertyGrid.EditorShowMode}"
+                                            IsEnabled="{Binding #propertyGrid.AllowEditing}"
+                                            Grid.Row="2"
+                                            Grid.ColumnSpan="2"
+                                            Classes="PropertyEditor"/>
+                        <Label Grid.Row="3" Content="Editor Button Show Mode" IsEnabled="{Binding #propertyGrid.AllowEditing}" Classes="PropertyLabel"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxpg:EditorButtonShowMode}"
+                                            EditorValue="{Binding #propertyGrid.EditorButtonShowMode}"
+                                            IsEnabled="{Binding #propertyGrid.AllowEditing}"
+                                            Grid.Row="4"
+                                            Grid.ColumnSpan="2" 
+                                            Classes="PropertyEditor"/>
+                    </Grid>
                 </mxe:GroupBox>
             </Border>
         </Grid>

@@ -13,7 +13,7 @@ namespace DemoCenter.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {   
-    [ObservableProperty, NotifyCanExecuteChangedFor(nameof(PreviousViewCommand)), NotifyCanExecuteChangedFor(nameof(NextViewCommand))] 
+    [ObservableProperty] 
     ProductInfoBase currentProductItem;
     [ObservableProperty]
     PageViewModelBase currentProductItemViewModel;
@@ -22,17 +22,10 @@ public partial class MainViewModel : ViewModelBase
     string title;
 
     [ObservableProperty]
-    bool isNextButtonEnabled; // TODO Remove after fix bars
-    [ObservableProperty]
-    bool isPreviousButtonEnabled;  // TODO Remove after fix bars
-
-    [ObservableProperty]
     List<PaletteTypeInfo> palettes;
 
     [ObservableProperty]
     PaletteType selectedPalette;
-    [ObservableProperty]
-    IPageTransition pageTransition;
 
     [ObservableProperty] 
     List<ProductInfoBase> products;
@@ -44,7 +37,13 @@ public partial class MainViewModel : ViewModelBase
     string sourceFile;
 
     [ObservableProperty]
-    bool showCode;
+    string selectedCode;
+
+    [ObservableProperty]
+    bool allowCode = true;
+
+    [ObservableProperty]
+    bool isDemoSelected = true;
 
     public MainViewModel()
     {
@@ -56,59 +55,38 @@ public partial class MainViewModel : ViewModelBase
         SelectedPalette = Palettes[0].PaletteType;
         Products = ProductsData.Products.GetOrCreate();
         CreateFlatCollection();
-        CurrentProductItem = flatProducts.FirstOrDefault(x => x is PageInfo);
-        PageTransition = new PageSlide(TimeSpan.FromMilliseconds(200), PageSlide.SlideAxis.Horizontal);
+        CurrentProductItem = flatProducts.FirstOrDefault(x => x is PageInfo && AllowDemoContent(x));
     }
 
     public void SelectProduct(string productName) => CurrentProductItem = flatProducts.FirstOrDefault(x => string.Equals(x.Name, productName));
-
-    [RelayCommand(CanExecute = nameof(CanExecutePreviousViewCommand))]
-    private void PreviousView(object parameter) => Navigate(-1);
-
-    [RelayCommand(CanExecute = nameof(CanExecuteNextViewCommand))]
-    private void NextView(object parameter) => Navigate(1);
-
-    private bool CanExecutePreviousViewCommand(object parameter) => AllowPreviousNavigation();
-
-    private bool CanExecuteNextViewCommand(object parameter) => AllowNextNavigation();
-
-    private void Navigate(int delta)
-    {
-        if(CurrentProductItem != null)
-        {
-            var newIndex = flatProducts.IndexOf(CurrentProductItem) + delta;
-            if (flatProducts[newIndex] is GroupInfo)
-                newIndex += delta;
-            CurrentProductItem = flatProducts[newIndex];
-        }
-    }
 
     partial void OnCurrentProductItemChanged(ProductInfoBase value)
     {
         if (value is GroupInfo)
             return;
         CreateTitle(value);
-        IsNextButtonEnabled = AllowNextNavigation();
-        IsPreviousButtonEnabled = AllowPreviousNavigation();
-        CurrentProductItemViewModel = CurrentProductItem?.ViewModelGetter?.Invoke();
 
+        var allowContent = AllowDemoContent(value);
+        CurrentProductItemViewModel = allowContent ? CurrentProductItem?.ViewModelGetter?.Invoke() : new DesktopOnlyViewModel();
+        AllowCode = allowContent;
+        if (!AllowCode)
+            IsDemoSelected = true;
         var viewModelName = CurrentProductItemViewModel?.GetType().Name;
         var viewName = viewModelName.Replace("ViewModel", "View");
 
         SourceFiles = new ObservableCollection<string> { $"{viewName}.axaml", $"{viewName}.axaml.cs", $"{viewModelName}.cs", };
         SourceFile = SourceFiles.First();
-        ShowCode = false;
     }
 
     private void CreateTitle(ProductInfoBase product)
     {
-        var prefix = "Demo Center v.1.0";
+        var prefix = "Demo Center v.1.1";
         var groupPrefix = string.Empty;
         var title = string.Empty;
 
         if (product is PageInfo page)
         {
-            var group = Products.OfType<GroupInfo>().FirstOrDefault(x => x.Pages.Contains(page));
+            var group = GetGroupInfo(page);
             if (group != null)
                 groupPrefix = $" - {group.Title}";
             title = $" - {page.Title}";
@@ -117,6 +95,15 @@ public partial class MainViewModel : ViewModelBase
             title = $" - {product?.Title}";
         Title = $"{prefix}{groupPrefix}{title}";
     }
+
+    private GroupInfo GetGroupInfo(ProductInfoBase value)
+    {
+        if (value is PageInfo info)
+            return Products.OfType<GroupInfo>().FirstOrDefault(x => x.Pages.Contains(info));
+        return null;
+    }
+
+    private bool AllowDemoContent(ProductInfoBase product) => !App.IsWebApp || (product.ShowInWeb && GetGroupInfo(product) is { } group && group.ShowInWeb);
 
     private void CreateFlatCollection()
     {
@@ -128,10 +115,6 @@ public partial class MainViewModel : ViewModelBase
                     flatProducts.Add(page);
         }
     }
-
-    private bool AllowPreviousNavigation() => CurrentProductItem != null && flatProducts.Any() && CurrentProductItem != flatProducts[1];
-
-    private bool AllowNextNavigation() => CurrentProductItem != null && flatProducts.Any() && CurrentProductItem != flatProducts.Last();
 }
 
 public class PaletteTypeInfo

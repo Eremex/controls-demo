@@ -16,6 +16,7 @@ namespace DemoCenter.ProductsData
         public virtual bool HasChildren => false;
         public ProductBageType? BageType { get; init; }
         public bool ShowInWeb { get; init; }
+        public bool IsWebApp => App.IsWebApp;
     }
 
     public enum ProductBageType

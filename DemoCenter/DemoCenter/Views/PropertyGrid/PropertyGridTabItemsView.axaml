@@ -35,7 +35,7 @@
 
 
     <Grid ColumnDefinitions="3*, 2*">
-        <Border BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+        <Border>
             <ContentControl x:Name="contentControl" Content="ContentControl" Classes="Animation"
                             Width="150" Height="50" BorderBrush="LightPink" BorderThickness="5" FontFamily="Arial"
                             Background="{DynamicResource Fill/Accent/Primary/Enabled}"
@@ -44,7 +44,7 @@
                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Border>
 
-        <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding}" ImmediatePostEditor="True" BorderThickness="1,0" Grid.Column="1">
+        <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding}" ImmediatePostEditor="True" BorderThickness="1,0,0,0" Grid.Column="1">
             <mxpg:PropertyGridRow FieldName="Content"/>
 
             <mxpg:PropertyGridTabRow Caption="Appearance">

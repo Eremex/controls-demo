@@ -90,7 +90,7 @@
 				</mxb:ToolbarContainerControl>
 			</Grid>
 			<mxd:DockManager Grid.Column="0" Grid.Row="1"
-			                 BorderThickness="1,0" 
+			                 BorderThickness="0" 
 			                 ItemsSource="{Binding Documents}"
 			                 ItemContentTemplate="{views:IdeLayoutDocumentContentTemplate}">
 				<mxd:DockManager.ItemContainerTemplate>

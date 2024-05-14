@@ -92,11 +92,11 @@
         </mxb:ToolbarManager>
         <!--Options-->
         <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Segmented Editor Properties">
+            <mxe:GroupBox Header="Segmented Editor Properties"  Classes="PropertiesGroup">
                 <StackPanel>
-                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Menu Enabled" IsChecked="True" Classes="LayoutItem"/>
-                    <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Menu Visible" IsChecked="True" Classes="LayoutItem"/>
-                    <mxe:CheckEditor x:Name="ShowIconsStripSelector" Content="Show Icon Strip" IsChecked="True" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Menu Enabled" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Menu Visible" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor x:Name="ShowIconsStripSelector" Content="Show Icon Strip" IsChecked="True" Classes="PropertyEditor"/>
                 </StackPanel>
             </mxe:GroupBox>
         </StackPanel>

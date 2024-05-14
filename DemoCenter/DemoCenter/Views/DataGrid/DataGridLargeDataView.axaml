@@ -14,7 +14,7 @@
 
 	<Grid ColumnDefinitions="*, 250">
 		<Border x:Name="DemoControl">
-			<mxdg:DataGridControl ItemsSource="{Binding Orders}" BorderThickness="1,0">
+			<mxdg:DataGridControl ItemsSource="{Binding Orders}" BorderThickness="0,0,1,0">
 				<mxdg:GridColumn FieldName="OrderId" Width="*"/>
 				<mxdg:GridColumn FieldName="Manager" Width="*">
 					<mxdg:GridColumn.EditorProperties>
@@ -35,15 +35,15 @@
 				</mxdg:GridColumn>
 			</mxdg:DataGridControl>
 		</Border>
-		<Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+		<Border Grid.Column="1">
 			<StackPanel>
-				<mxe:GroupBox Header="Item Count">
+				<mxe:GroupBox Header="Item Count" Classes="PropertiesGroup">
 					<StackPanel>
-						<RadioButton Content="100 000" GroupName="ItemsCount" Classes="LayoutItem"
+						<RadioButton Content="100 000" GroupName="ItemsCount" Classes="PropertyEditor"
 									 IsChecked="{Binding SelectedItemsSourceSize, Converter={StaticResource enumRadioButtonConverter}, ConverterParameter=Small}"/>
-						<RadioButton Content="500 000" GroupName="ItemsCount" Classes="LayoutItem"
+						<RadioButton Content="500 000" GroupName="ItemsCount" Classes="PropertyEditor"
 									 IsChecked="{Binding SelectedItemsSourceSize, Converter={StaticResource enumRadioButtonConverter}, ConverterParameter=Medium}"/>
-						<RadioButton Content="1 000 000" GroupName="ItemsCount" Classes="LayoutItem"
+						<RadioButton Content="1 000 000" GroupName="ItemsCount" Classes="PropertyEditor"
 									 IsChecked="{Binding SelectedItemsSourceSize, Converter={StaticResource enumRadioButtonConverter}, ConverterParameter=Large}"/>
 					</StackPanel>
 				</mxe:GroupBox>

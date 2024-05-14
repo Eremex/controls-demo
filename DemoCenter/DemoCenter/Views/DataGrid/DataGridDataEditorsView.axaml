@@ -12,7 +12,7 @@
     
     <Grid ColumnDefinitions="*, 250">
 	    <Border x:Name="DemoControl">
-			<mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" BorderThickness="1,0">
+			<mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" BorderThickness="0,0,1,0">
 			<mxdg:GridColumn FieldName="FirstName" Width="*" MinWidth="80"/>
 			<mxdg:GridColumn FieldName="LastName" Width="*" MinWidth="80"/>
 			<mxdg:GridColumn FieldName="HiredAt" Header="Hire Date" Width="*" MinWidth="80">
@@ -44,25 +44,23 @@
         </mxdg:DataGridControl>
 	    </Border>
 
-        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-            <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
-                <StackPanel>
-                    <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #dataGrid.AllowEditing}" Classes="LayoutItem"/>
-
-                    <DockPanel IsEnabled="{Binding #dataGrid.AllowEditing}">
-                        <Label Content="Editor Show Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorShowMode}"
-                                            EditorValue="{Binding #dataGrid.EditorShowMode}"
-                                            Classes="LayoutItem"/>
-                    </DockPanel>
-
-                    <DockPanel IsEnabled="{Binding #dataGrid.AllowEditing}">
-                        <Label Content="Editor Button Show Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorButtonShowMode}"
-                                            EditorValue="{Binding #dataGrid.EditorButtonShowMode}"
-                                            Classes="LayoutItem"/>
-                    </DockPanel>
-                </StackPanel>
+        <Border Grid.Column="1">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #dataGrid.AllowEditing}" Classes="PropertyEditor"/>
+                    <Label Grid.Row="1" Content="Editor Show Mode" DockPanel.Dock="Top" Classes="PropertyLabel" IsEnabled="{Binding #dataGrid.AllowEditing}"/>
+                    <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorShowMode}"
+                                        EditorValue="{Binding #dataGrid.EditorShowMode}"
+                                        IsEnabled="{Binding #dataGrid.AllowEditing}"
+                                        Grid.Row="2"
+                                        Classes="PropertyEditor"/>
+                    <Label Grid.Row="3" Content="Editor Button Show Mode" IsEnabled="{Binding #dataGrid.AllowEditing}" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorButtonShowMode}"
+                                        EditorValue="{Binding #dataGrid.EditorButtonShowMode}"
+                                        IsEnabled="{Binding #dataGrid.AllowEditing}"
+                                        Grid.Row="4"
+                                        Classes="PropertyEditor"/>
+                </Grid>
             </mxe:GroupBox>
         </Border>
     </Grid>

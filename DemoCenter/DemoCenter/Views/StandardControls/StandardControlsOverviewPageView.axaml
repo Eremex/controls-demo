@@ -32,7 +32,7 @@
         </Style>
     </UserControl.Styles>
 
-	<StackPanel HorizontalAlignment="Center" MinWidth="400" Margin="0,100,0,0">
+	<StackPanel HorizontalAlignment="Center" MinWidth="400" VerticalAlignment="Center">
         <mxe:GroupBox Header="Primary View">
             <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*, 20, *">
                 <Button Content="Button" Classes="LayoutItem" />

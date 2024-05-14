@@ -6,25 +6,25 @@
     <Grid ColumnDefinitions="* 250">
         <mxc:CartesianChart Grid.Column="0" Classes="DemoChartWithNoOptions" x:Name="DemoControl">
             <mxc:CartesianSeries DataAdapter="{Binding Data2}">
-                <mxc:CartesianLineSeriesView Color="#4F007E90" Thickness="1" />
+                <mxc:CartesianLineSeriesView Color="#4F007E90" Thickness="1" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data3}">
-                <mxc:CartesianLineSeriesView Color="#4F007E90" Thickness="1" />
+                <mxc:CartesianLineSeriesView Color="#4F007E90" Thickness="1" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data4}">
-                <mxc:CartesianLineSeriesView Color="#6F007E90" Thickness="1" />
+                <mxc:CartesianLineSeriesView Color="#6F007E90" Thickness="1" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data5}">
-                <mxc:CartesianLineSeriesView Color="#8F007E90" Thickness="1" />
+                <mxc:CartesianLineSeriesView Color="#8F007E90" Thickness="1" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data6}">
-                <mxc:CartesianLineSeriesView Color="#8F007E90" Thickness="1" />
+                <mxc:CartesianLineSeriesView Color="#8F007E90" Thickness="1" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data1}">
-                <mxc:CartesianLineSeriesView Color="#DF005F60" Thickness="1" />
+                <mxc:CartesianLineSeriesView Color="#DF005F60" Thickness="1" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data7}">
-                <mxc:CartesianLineSeriesView Color="#FF005F60" Thickness="2" />
+                <mxc:CartesianLineSeriesView Color="#FF005F60" Thickness="2" ShowMarkers="False" />
             </mxc:CartesianSeries>
             
             <mxc:CartesianChart.AxesX>
@@ -37,19 +37,15 @@
             </mxc:CartesianChart.AxesX>
             <mxc:CartesianChart.AxesY>
                 <mxc:AxisY Title="Amplitude (dB SPL)">
-                    <mxc:AxisYRange AlwaysShowZeroLevel="False" MaxSideMargin="15" MinSideMargin="15" />
+                    <mxc:AxisYRange AlwaysShowZeroLevel="False" />
                 </mxc:AxisY>
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
-        
-        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-            <StackPanel>
-                <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
-                    <StackPanel Classes="LayoutGroup">
-                        <mxe:CheckEditor Content="Logarithmic X-Axis" IsChecked="{Binding LogarithmicX}" />
-                    </StackPanel>
-                </mxe:GroupBox>
-            </StackPanel>
-        </Border>
+
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <mxe:CheckEditor Content="Logarithmic X-Axis" IsChecked="{Binding LogarithmicX}" Classes="PropertyEditor"/>
+            </mxe:GroupBox>
+        </StackPanel>
     </Grid>
 </UserControl>

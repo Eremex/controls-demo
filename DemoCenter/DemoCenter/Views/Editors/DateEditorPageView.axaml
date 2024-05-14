@@ -45,31 +45,25 @@
                     </Grid>
             </ContentControl>
         <!--Options-->
-        <Grid Grid.Column="1" ColumnDefinitions="Auto, *">
-            <Border Width="1" Background="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
-            <StackPanel Grid.Column="1">
-                <mxe:GroupBox Header="Properties">
-                    <StackPanel>
-                        <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="LayoutItem"/>
-                        <mxe:CheckEditor x:Name="IsTextEditableSelector" Content="Is Text Editable" IsChecked="True" Classes="LayoutItem"/>
-                        <mxe:CheckEditor x:Name="ShowTodaySelector" Content="Highlight Today Date" IsChecked="True" Classes="LayoutItem"/>
-                        <mxe:CheckEditor x:Name="ShowNullValueButtonSelector" Content="Show Clear Button in Popup" IsChecked="{Binding ShowNullButton, Mode=TwoWay}" Classes="LayoutItem"/>
-
-                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
-                            <Label Content="Date:" Classes="LayoutItem" Grid.Row="0"/>
-                            <mxe:TextEditor x:Name="DateTimeValueViewer" Grid.Row="0" Grid.Column="1" MaskType="DateTime" Mask="d" ReadOnly="True" EditorValue="{Binding #DateEditor.DateTime}" Classes="LayoutItem"/>
-                            <Label Content="Maximum:" Classes="LayoutItem" Grid.Row="1"/>
-                            <mxe:DateEditor x:Name="MaximumValueEditor" Grid.Row="1" Grid.Column="1" DateTime="{Binding Maximum, Mode=TwoWay}" Classes="LayoutItem"/>
-                            <Label Content="Minimum:" Classes="LayoutItem" Grid.Row="2"/>
-                            <mxe:DateEditor x:Name="MinimumValueEditor" Grid.Row="2" Grid.Column="1" DateTime="{Binding Minimum, Mode=TwoWay}" Classes="LayoutItem"/>
-                            <Label Content="Mask:" Grid.Row="3" Classes="LayoutItem"/>
-                            <mxe:ComboBoxEditor x:Name="ProgressTextFormatSelector" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Left"
-                                                ItemsSource="{Binding Formats}" IsTextEditable="False"
-                                                SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="LayoutItem"/>
-                        </Grid>
-                    </StackPanel>
-                </mxe:GroupBox>
-            </StackPanel>
-        </Grid>
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Grid.Row="1" x:Name="IsTextEditableSelector" Content="Is Text Editable" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Grid.Row="2" x:Name="ShowTodaySelector" Content="Highlight Today Date" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Grid.Row="3" x:Name="ShowNullValueButtonSelector" Content="Show Clear Button in Popup" IsChecked="{Binding ShowNullButton, Mode=TwoWay}" Classes="PropertyEditor"/>
+                    <Label Grid.Row="4" Content="Date" Classes="PropertyLabel"/>
+                    <mxe:TextEditor Grid.Row="5" x:Name="DateTimeValueViewer" MaskType="DateTime" Mask="d" ReadOnly="True" EditorValue="{Binding #DateEditor.DateTime}" Classes="PropertyEditor"/>
+                    <Label Grid.Row="6" Content="Maximum" Classes="PropertyLabel" />
+                    <mxe:DateEditor Grid.Row="7" x:Name="MaximumValueEditor" DateTime="{Binding Maximum, Mode=TwoWay}" Classes="PropertyEditor"/>
+                    <Label Grid.Row="8" Content="Minimum" Classes="PropertyLabel" />
+                    <mxe:DateEditor Grid.Row="9" x:Name="MinimumValueEditor" DateTime="{Binding Minimum, Mode=TwoWay}" Classes="PropertyEditor"/>
+                    <Label Grid.Row="10" Content="Mask" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor Grid.Row="11" x:Name="ProgressTextFormatSelector" HorizontalContentAlignment="Left"
+                                            ItemsSource="{Binding Formats}" IsTextEditable="False"
+                                            SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="PropertyEditor"/>
+                </Grid>
+            </mxe:GroupBox>
+        </StackPanel>
     </Grid>
 </UserControl>

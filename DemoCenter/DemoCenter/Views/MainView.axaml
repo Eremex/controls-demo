@@ -9,11 +9,14 @@
              xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
 			 xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:localization="clr-namespace:Eremex.AvaloniaUI.Controls.Localization;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
              xmlns:aEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
              xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:views="clr-namespace:DemoCenter.Views"
              xmlns:helpers="clr-namespace:DemoCenter.Helpers"
+             xmlns:data="clr-namespace:DemoCenter.ProductsData"
              mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="620"
              x:Class="DemoCenter.Views.MainView"
              x:DataType="vm:MainViewModel">
@@ -43,76 +46,138 @@
             </mx:BoolToObjectConverter.FalseValue>
         </mx:BoolToObjectConverter>
     </UserControl.Resources>
-    <Border Background="{DynamicResource Fill/Neutral/Primary/Enabled}" Padding="8">
-        <Grid ColumnDefinitions="250, *, Auto" RowDefinitions="Auto, *, Auto">
+    <UserControl.Styles>
+        <Style Selector="ContentControl.Bage">
+            <Setter Property="CornerRadius" Value="2"/>
+            <Setter Property="DockPanel.Dock" Value="Right"/>
+            <Setter Property="Margin" Value="4,4,0,4"/>
+            <Setter Property="Padding" Value="4,0"/>
+            <Setter Property="MinWidth" Value="18"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style Selector="mxe|HyperlinkEditor.resourceLink">
+            <Setter Property="AllowAutoNavigate" Value="True"/>
+            <Setter Property="Margin" Value="0,6,0,0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="MinHeight" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource Icons/Outline/Blue}"/>
+        </Style>
+        <Style Selector="mxe|HyperlinkEditor.resourceLink /template/ TextBlock#PART_RealEditor">
+            <Setter Property="TextDecorations" Value="Underline" />
+        </Style>       
+    </UserControl.Styles>
+    <Border Background="{DynamicResource Fill/Neutral/Secondary/Enabled}" Padding="8">
+        <Grid ColumnDefinitions="244, 0, *" RowDefinitions="*, Auto">
             <mxtl:TreeViewControl x:Name="pageSelector"
-                                  Grid.RowSpan="3"
                                   ItemsSource="{Binding Products}"
                                   SearchPanelDisplayMode="Always"
                                   DataFieldName="Name"
-                                  AutoExpandAllNodes="True"
+                                  RowLevelIndent="16"
+                                  ShowRootIndent="False" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                  AutoExpandAllNodes="True" ShowExpandButtons="False"
+                                  FontSize="{StaticResource EditorFontSize}"
                                   ChildrenSelector="{StaticResource childNodesSelector}"
                                   FocusedItem="{Binding CurrentProductItem, Mode=TwoWay}"
                                   FocusedNodeChanged="OnPageSelectorFocusedNodeChanged"
                                   Margin="0,0,8,0">
                 <mxtl:TreeViewControl.CellTemplate>
                     <DataTemplate>
-                        <Grid ColumnDefinitions="Auto, *">
-                            <Grid.Styles>
-                                <Style Selector="TextBlock">
-                                    <Setter Property="FontSize" Value="{StaticResource EditorFontSize}"/>
-                                </Style>
-                            </Grid.Styles>
-                            <TextBlock Text="{Binding Row.Name}" VerticalAlignment="Center" 
-                                       FontWeight="{Binding Row.HasChildren, Converter={StaticResource FontWeightConverter}}"/>
-                            <Border Grid.Column="1" Margin="8,0,0,0"
-                                    Padding="0,0,0,1"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    IsVisible="{Binding Row.BageType, Converter={x:Static ObjectConverters.IsNotNull}}"
-                                    CornerRadius="{StaticResource PopupCornerRadius}"
-                                    Background="{DynamicResource Fill/Accent/Primary/Pressed}">
-                                <TextBlock Margin="4,0" VerticalAlignment="Center" 
-                                           Text="{Binding Row.BageType}" 
-                                           Foreground="#ffffffff"/>
-                            </Border>
-                        </Grid>
+                        <DockPanel Margin="8,0,4,0" >
+                            <ContentControl Content="Desktop only"
+                                            Classes="Bage"
+                                            IsVisible="{Binding !Row.ShowInWeb}"
+                                            Background="{DynamicResource Icons/Fill/Gray}"
+                                            Foreground="{DynamicResource Icons/Outline/Gray}">
+                                <ContentControl.IsVisible>
+                                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                        <Binding Path="!Row.ShowInWeb"/>
+                                        <Binding Path="Row.IsWebApp"/>
+                                    </MultiBinding>
+                                </ContentControl.IsVisible>
+                            </ContentControl>
+                            <ContentControl Content="Updated"
+                                            Classes="Bage"
+                                            IsVisible="{Binding Row.BageType, Converter={views:BageVisibilityConverter BageType=Updated}}"
+                                            Background="{DynamicResource Icons/Fill/Yellow}"
+                                            Foreground="{DynamicResource Icons/Outline/Yellow}"/>
+                            <ContentControl Content="New"
+                                            Classes="Bage"
+                                            IsVisible="{Binding Row.BageType, Converter={views:BageVisibilityConverter BageType=New}}"
+                                            Background="{DynamicResource Icons/Fill/Red}"
+                                            Foreground="{DynamicResource Icons/Outline/Red}"/>
+                            <TextBlock Text="{Binding Row.Name}"
+                                       VerticalAlignment="Center"
+                                       TextBlock.TextTrimming="CharacterEllipsis"
+                                       mxc:TextBlockHelper.ShowTooltipWhenTrimming="True"
+                                       FontWeight="{Binding Row.HasChildren, Converter={StaticResource FontWeightConverter}}" Margin="0,0,4,0"/>
+                        </DockPanel>
                     </DataTemplate>
                 </mxtl:TreeViewControl.CellTemplate>           
                 <mxtl:TreeViewControl.Styles>
 					<Style Selector="mxdcv|SearchPanel">
-						<Setter Property="Padding" Value="0, 6, 0, 10" />
-						<Setter Property="BorderThickness" Value="0,0,0,1" />
-						<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+						<Setter Property="Padding" Value="0, 0, 0, 10" />
+                        <Setter Property="SearchDelay" Value="0" />
 					</Style>
+                    <Style Selector="mxdcv|SearchPanel /template/ mxe|ButtonEditor:activeMode">
+                        <Setter Property="Background" Value="{DynamicResource Fill/Neutral/Primary/Enabled}"/>
+                    </Style>
+                    <Style Selector="mxdcv|SearchPanel /template/ mxe|ButtonEditor:activeMode /template/ TextBox:pointerover /template/ Border#PART_BorderElement">
+                        <Setter Property="Background" Value="{DynamicResource Fill/Neutral/Primary/Hover}" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource Outline/Neutral/Transparent/Light}"/>
+                    </Style>
+
+                    <Style Selector="mxdcv|SearchPanel /template/ mxe|ButtonEditor:activeMode /template/ TextBox:focus /template/ Border#PART_BorderElement">
+                        <Setter Property="Background" Value="{DynamicResource Fill/Neutral/Primary/Enabled}" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource Outline/Accent/Focus}"/>
+                        <Setter Property="BorderThickness" Value="{StaticResource EditorBorderThickness}" />
+                    </Style>
                 </mxtl:TreeViewControl.Styles>
             </mxtl:TreeViewControl>
-            <mxb:ToolbarContainerControl Grid.Column="1" BorderBrush="Transparent">
-                <mxb:Toolbar ShowCustomizationButton="False" AllowDragToolbar="False" StretchToolbar="True">
-                    <mxb:ToolbarButtonItem Header="Previous" Glyph="{x:Static icons:Basic.Arrow_Left}" GlyphSize="20, 20"
-                                           Command="{Binding PreviousViewCommand}" IsEnabled="{Binding IsPreviousButtonEnabled}"/>
-                    <mxb:ToolbarButtonItem Header="Next" Glyph="{x:Static icons:Basic.Arrow_Right}" GlyphSize="20, 20"
-                                           Command="{Binding NextViewCommand}" IsEnabled="{Binding IsNextButtonEnabled}"/>
-                    <mxb:ToolbarCheckItem x:Name="ShowCodeSelector" Header="Show Code" Glyph="{x:Static icons:Painting.Text}" GlyphSize="20, 20"
-                                          IsChecked="{Binding ShowCode, Mode=TwoWay}"/>
-                    <mxb:ToolbarButtonItem Header="Search" Glyph="{x:Static icons:Basic.Search}"
-                                           Click="OnShowSearchPanel" Alignment="Far"
-                                           IsVisible="{Binding #ShowCodeSelector.IsChecked}"/>
-                    <mxb:ToolbarEditorItem IsVisible="{Binding #ShowCodeSelector.IsChecked}" Alignment="Far" GlyphSize="20, 20">
-                        <mxb:ToolbarEditorItem.Editor>
-                            <mxe:ComboBoxEditor
-                                Width="250"
-                                ItemsSource="{Binding SourceFiles}"
-                                SelectedItem="{Binding SourceFile, Mode=TwoWay}" />
-                        </mxb:ToolbarEditorItem.Editor>
-                    </mxb:ToolbarEditorItem>
-                </mxb:Toolbar>
-            </mxb:ToolbarContainerControl>
-            <StackPanel Orientation="Horizontal" Grid.Column="2">
-                <Label Content="Theme:" VerticalAlignment="Center" Margin="8"/>
-                <mxe:SegmentedEditor ItemsSource="{Binding Palettes}" Width="64" Height="32"
-                 ValueMember="PaletteType"
-                 EditorValue="{Binding SelectedPalette}">
+            <Border Grid.Row="1" CornerRadius="6" BorderThickness="1" TextElement.FontSize="12" Margin="0,8,8,0" 
+                    BorderBrush="{DynamicResource Outline/Neutral/On Secondary/Light}"
+                    Background="{DynamicResource Fill/Neutral/Primary/Hover}">
+                <Grid RowDefinitions="*,*,*" ColumnDefinitions="2*, *" Margin="6">
+                    <TextBlock Grid.ColumnSpan="2" Text="More resources" FontWeight="Bold"/>
+                    <mxe:HyperlinkEditor Grid.Row="1" Text="Website" NavigationUrl="https://eremexcontrols.net" Classes="resourceLink"/>
+                    <mxe:HyperlinkEditor Grid.Row="1" Grid.Column="1" Text="Support" NavigationUrl="https://t.me/emxControls" Classes="resourceLink"/>
+                    <mxe:HyperlinkEditor Grid.Row="2" Text="Documentation" NavigationUrl="https://eremexcontrols.net" Classes="resourceLink"/>
+                    <mxe:HyperlinkEditor Grid.Column="1" Grid.Row="2" Text="Telegram" NavigationUrl="https://t.me/emxControls" Classes="resourceLink"/>
+                </Grid>
+            </Border>
+            <mx:MxTabControl Grid.Column="2" Grid.RowSpan="2" Padding="0">
+                <mx:MxTabItem Header="Demo" IsSelected="{Binding IsDemoSelected, Mode=TwoWay}">
+                    <Grid RowDefinitions="*, Auto">
+                        <ContentControl Content="{Binding CurrentProductItemViewModel}"/>
+                        <Border Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+                            <TextBlock Text="{Binding CurrentProductItem.Description}"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       FontSize="{StaticResource EditorFontSize}"
+                                       Foreground="{DynamicResource Text/Neutral/Primary}"
+                                       Margin="16,8" MinHeight="34"
+                                       IsVisible="{Binding CurrentProductItem.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        </Border>
+                    </Grid>
+                </mx:MxTabItem>
+                <mx:MxTabItem Header="Code" IsVisible="{Binding AllowCode}">
+                    <Grid RowDefinitions="Auto, *" ColumnDefinitions="260, *, 260">
+                        <mxe:ComboBoxEditor ItemsSource="{Binding SourceFiles}" SelectedItem="{Binding SourceFile, Mode=TwoWay}" Margin="8" />
+                        <mxdcv:SearchPanel Grid.Column="2" SearchText="{Binding SelectedCode, Mode=TwoWay}" SearchDelay="0" Margin="8" Padding="0" BorderThickness="0"  />
+                        <Border BorderThickness="0,1,0,0" Grid.ColumnSpan="3" Grid.Row="1" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+                            <aEdit:TextEditor x:Name="CodeViewEditor" IsReadOnly="True" WordWrap="True"
+                                               SearchResultsBrush="{DynamicResource Fill/Accent/Highlighting/Text}"
+                                              Margin="16,8,16,2"
+                                              ActualThemeVariantChanged="CodeViewEditor_OnActualThemeVariantChanged"/>
+                        </Border>
+                    </Grid>
+                </mx:MxTabItem>
+            </mx:MxTabControl>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="2">
+                <mxe:SegmentedEditor ItemsSource="{Binding Palettes}" Height="28" Width="56" 
+                                     Margin="0,-1,0,0"
+                                     ValueMember="PaletteType"
+                                     EditorValue="{Binding SelectedPalette}">
                     <mxe:SegmentedEditor.ItemTemplate>
                         <DataTemplate>
                             <PathIcon Width="16" Height="16" Foreground="{DynamicResource Text/Neutral/Secondary}"
@@ -127,33 +192,13 @@
                             </PathIcon>
                         </DataTemplate>
                     </mxe:SegmentedEditor.ItemTemplate>
+                    <mxe:SegmentedEditor.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="MinHeight" Value="0"/>
+                        </Style>
+                    </mxe:SegmentedEditor.Styles>
                 </mxe:SegmentedEditor>
             </StackPanel>
-            <TransitioningContentControl Name="TransitionsControl" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"
-                                         Content="{Binding CurrentProductItemViewModel}"
-                                         PageTransition="{Binding PageTransition}"
-                                         IsVisible="{Binding !#ShowCodeSelector.IsChecked}"
-                                         BorderThickness="0,1,0,0"
-                                         BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
-            <aEdit:TextEditor x:Name="CodeViewEditor" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"
-                              IsVisible="{Binding #ShowCodeSelector.IsChecked}"
-                              IsReadOnly="True" 
-                              WordWrap="True" 
-                              FontSize="14"
-                              SearchResultsBrush="{DynamicResource Fill/Accent/Highlighting/Text}"
-                              Margin="16"
-                              ActualThemeVariantChanged="CodeViewEditor_OnActualThemeVariantChanged"/>
-            <Border Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="0,1,0,0"
-                    BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-                <!--TODO Add modules description text-->
-                <TextBlock Text="{Binding CurrentProductItem.Description}" 
-                           VerticalAlignment="Center"
-						   TextWrapping="Wrap"
-                           FontSize="{StaticResource EditorFontSize}"
-                           Foreground="{DynamicResource Text/Neutral/Primary}"
-                           Margin="8" MinHeight="34"
-                           IsVisible="{Binding CurrentProductItem.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
-            </Border>
         </Grid>
     </Border>
 </UserControl>

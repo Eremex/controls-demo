@@ -3,7 +3,7 @@ using System.Globalization;
 using Avalonia.Controls;
 using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
-using DemoCenter.Helpers;
+using Eremex.Avalonia.Icons;
 
 namespace DemoCenter.Views
 {
@@ -25,8 +25,7 @@ namespace DemoCenter.Views
         {
             if (value == null)
                 return null;
-            var uri = $"avares://DemoCenter/Images/Group=PCB, Icon=Lock {((bool)value ? "True" : "False")}.svg";
-            return SvgImageHelper.CreateSvgImage(uri);
+            return (bool)value ? Basic.Lock_True : Basic.Lock_False;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

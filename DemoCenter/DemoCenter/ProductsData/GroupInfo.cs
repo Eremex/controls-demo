@@ -15,15 +15,13 @@ namespace DemoCenter.ProductsData
 
         public GroupInfo(string name, string title, string description, Func<PageViewModelBase> viewModel, List<PageInfo> pages, ProductBageType? bageType = null, bool showInWeb = true)
         {
-            Name = name.ToUpper();
+            Name = name;
             Title = title;
             Description = description;
             ViewModelGetter = viewModel;
-            Pages = GetAppProducts(pages);
+            Pages = pages;
             BageType = bageType;
             ShowInWeb = showInWeb;
         }
-        public static List<T> GetAppProducts<T>(List<T> source, bool checkHasChildren = false) where T : ProductInfoBase
-            => source.Where(x => (!App.IsWebApp || x.ShowInWeb) && (!checkHasChildren || x.HasChildren)).ToList();
     }
 }

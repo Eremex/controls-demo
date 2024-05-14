@@ -11,26 +11,25 @@
     <Grid RowDefinitions="Auto Auto *">
         <TextBlock Grid.Row="0" Margin="12, 12, 12, 0" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Real-Time data</TextBlock>
         <TextBlock Grid.Row="1" Margin="12, 4, 12, 12" HorizontalAlignment="Center" FontSize="14">6 series with 500 points each</TextBlock>
-        <Border Grid.Row="0" Grid.RowSpan="2" BorderThickness="1,0,1,0" BorderBrush="{Binding #DemoControl.BorderBrush}"/>
         
         <mxc:CartesianChart Grid.Row="2" Classes="DemoChartWithNoOptions" x:Name="DemoControl">
             <mxc:CartesianSeries DataAdapter="{Binding Data1}">
-                <mxc:CartesianLineSeriesView Color="#CC193A" />
+                <mxc:CartesianLineSeriesView Color="#CC193A" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data2}">
-                <mxc:CartesianLineSeriesView Color="#FF6A00" />
+                <mxc:CartesianLineSeriesView Color="#FF6A00" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data3}">
-                <mxc:CartesianLineSeriesView Color="#0094FF" />
+                <mxc:CartesianLineSeriesView Color="#0094FF" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data4}">
-                <mxc:CartesianLineSeriesView Color="#7785FF" />
+                <mxc:CartesianLineSeriesView Color="#7785FF" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data5}">
-                <mxc:CartesianLineSeriesView Color="#007F80" />
+                <mxc:CartesianLineSeriesView Color="#007F80" ShowMarkers="False" />
             </mxc:CartesianSeries>
             <mxc:CartesianSeries DataAdapter="{Binding Data6}">
-                <mxc:CartesianLineSeriesView Color="#a0007F80" />
+                <mxc:CartesianLineSeriesView Color="#a0007F80" ShowMarkers="False" />
             </mxc:CartesianSeries>
             
             <mxc:CartesianChart.AxesX>

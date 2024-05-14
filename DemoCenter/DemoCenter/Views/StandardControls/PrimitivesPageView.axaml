@@ -26,41 +26,40 @@
     </UserControl.Styles>
 
     <Grid ColumnDefinitions="*, 250">
-        <Grid RowDefinitions="Auto, 20, Auto, 60, *"
-              ColumnDefinitions="*, 20, *"
-              HorizontalAlignment="Center"
-              Margin="0,100,0,0"
-              MinWidth="400"
-              IsEnabled="{Binding IsChecked, ElementName=IsEnabledSelector}">
-            <Button Content="Ordinary Button" Classes="localStyle" />
-            <Button Grid.Row="2" Content="Accent Button" Classes="accent localStyle" />
-            <Button Grid.Column="2" Content="Warning Button" Classes="warning localStyle" />
-            <Button Grid.Row="2" Grid.Column="2" Content="Warning Accent Button" Classes="warning accent localStyle" />
-            <mxe:GroupBox Header="Check boxes" Grid.Row="4" VerticalAlignment="Top">
-                <StackPanel>
-                    <CheckBox Content="Unchecked"/>
-                    <CheckBox Content="Checked" IsChecked="True"/>
-                    <CheckBox Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"/>
-                    <CheckBox Content="Warning Unchecked" Classes="warning"/>
-                    <CheckBox Content="Warning Checked" IsChecked="True" Classes="warning"/>
-                </StackPanel>
-            </mxe:GroupBox>
-            <mxe:GroupBox Header="Radio Buttons" Grid.Row="4" Grid.Column="2" VerticalAlignment="Top">
-                <StackPanel>
-                    <RadioButton Content="Item 1" GroupName="G1"/>
-                    <RadioButton Content="Item 2" IsChecked="True" GroupName="G1" Margin="0,0,0,28"/>
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
+            <Grid RowDefinitions="Auto, 20, Auto, 60, *"
+                  ColumnDefinitions="*, 20, *"
+                  HorizontalAlignment="Center"
+                  MinWidth="400"
+                  IsEnabled="{Binding IsChecked, ElementName=IsEnabledSelector}">
+                <Button Content="Ordinary Button" Classes="localStyle" />
+                <Button Grid.Row="2" Content="Accent Button" Classes="accent localStyle" />
+                <Button Grid.Column="2" Content="Warning Button" Classes="warning localStyle" />
+                <Button Grid.Row="2" Grid.Column="2" Content="Warning Accent Button" Classes="warning accent localStyle" />
+                <mxe:GroupBox Header="Check boxes" Grid.Row="4" VerticalAlignment="Top">
+                    <StackPanel>
+                        <CheckBox Content="Unchecked"/>
+                        <CheckBox Content="Checked" IsChecked="True"/>
+                        <CheckBox Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"/>
+                        <CheckBox Content="Warning Unchecked" Classes="warning"/>
+                        <CheckBox Content="Warning Checked" IsChecked="True" Classes="warning"/>
+                    </StackPanel>
+                </mxe:GroupBox>
+                <mxe:GroupBox Header="Radio Buttons" Grid.Row="4" Grid.Column="2" VerticalAlignment="Top">
+                    <StackPanel>
+                        <RadioButton Content="Item 1" GroupName="G1"/>
+                        <RadioButton Content="Item 2" IsChecked="True" GroupName="G1" Margin="0,0,0,28"/>
 
-                    <RadioButton Content="Warning Item 1" IsChecked="True" Classes="warning" GroupName="G2"/>
-                    <RadioButton Content="Warning Item 2" Classes="warning" GroupName="G2"/>
-                </StackPanel>
-            </mxe:GroupBox>
-        </Grid>
+                        <RadioButton Content="Warning Item 1" IsChecked="True" Classes="warning" GroupName="G2"/>
+                        <RadioButton Content="Warning Item 2" Classes="warning" GroupName="G2"/>
+                    </StackPanel>
+                </mxe:GroupBox>
+            </Grid>            
+        </ContentControl>
         <!--Options-->
         <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Properties">
-                <StackPanel>
-                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="LayoutItem"/>
-                </StackPanel>
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="PropertyEditor"/>
             </mxe:GroupBox>
         </StackPanel>
     </Grid>

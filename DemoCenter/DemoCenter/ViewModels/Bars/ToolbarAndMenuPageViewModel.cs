@@ -8,7 +8,7 @@ namespace DemoCenter.ViewModels
     {
         [ObservableProperty] string message;
         [ObservableProperty] private bool isSyncing;
-        [ObservableProperty] private string syncText = "Syncrhonization completed...";
+        [ObservableProperty] private string syncText = "Sync Completed";
         [ObservableProperty] private double syncProgress = 100;
         [ObservableProperty] private string text = "Text Editor (please type here)";
 
@@ -50,11 +50,11 @@ namespace DemoCenter.ViewModels
             {
                 if(SyncProgress == 100)
                 {
-                    SyncText = "Syncrhonization completed...";   
+                    SyncText = "Sync Completed";   
                 }
                 else
                 {
-                    SyncText = "Click on circle to sync document.";
+                    SyncText = "Click the circle to sync the document";
                 }
 
                 StopSyncrhonization();

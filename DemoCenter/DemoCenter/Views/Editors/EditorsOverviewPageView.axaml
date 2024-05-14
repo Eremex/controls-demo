@@ -85,8 +85,7 @@
             <mxe:HyperlinkEditor Grid.Column="1" Grid.Row="7" EditorValue="www.eremex.ru" Command="{Binding ShowPageCommand}" 
                                  CommandParameter="www.eremex.ru" Classes="LayoutItem"/>
 
-            <Image Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Static icons:Basic.Binoculars}" Width="105"/>
-            <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Content="See product pages for details." HorizontalAlignment="Center" FontSize="16" Margin="0,16,0,0"/>
+            <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Content="See product pages for details" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="0,16,0,0"/>
             <Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Content="Secondary view" 
                    HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"
                    Foreground="{DynamicResource Fill/Neutral/Primary/Enabled}"/>

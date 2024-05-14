@@ -21,47 +21,46 @@
 	</Design.DataContext>
 
     <Grid ColumnDefinitions="*, 250">
-        <Grid RowDefinitions="Auto, 30, Auto"
-              HorizontalAlignment="Center"
-              Margin="0,100,0,0"
-              MinWidth="400">
-            <ProgressBar x:Name="HorizontalProgressBar" HorizontalAlignment="Stretch"
-                         IsIndeterminate="{Binding #IsIndeterminateSelector.IsChecked}"
-                         ShowProgressText="{Binding #ShowProgressTextSelector.IsChecked}"
-                         Minimum="{Binding #MinimumSelector.Value}"
-                         Maximum="{Binding #MaximumSelector.Value}"
-                         Value="{Binding #ValueSelector.Value}"
-                         ProgressTextFormat="{Binding SelectedTextFormat}"
-                         MinHeight="16"/>
-            <ProgressBar x:Name="VerticalProgressBar" Grid.Row="2" 
-                         Height="340" HorizontalAlignment="Center" Orientation="Vertical"
-                         IsIndeterminate="{Binding #IsIndeterminateSelector.IsChecked}"
-                         ShowProgressText="{Binding #ShowProgressTextSelector.IsChecked}"
-                         Minimum="{Binding #MinimumSelector.Value}"
-                         Maximum="{Binding #MaximumSelector.Value}"
-                         Value="{Binding #ValueSelector.Value}"
-                         ProgressTextFormat="{Binding SelectedTextFormat}"
-                         MinWidth="16"/>
-        </Grid>
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
+            <Grid RowDefinitions="Auto, 30, Auto"
+                  HorizontalAlignment="Center"
+                  MinWidth="400">
+                <ProgressBar x:Name="HorizontalProgressBar" HorizontalAlignment="Stretch"
+                             IsIndeterminate="{Binding #IsIndeterminateSelector.IsChecked}"
+                             ShowProgressText="{Binding #ShowProgressTextSelector.IsChecked}"
+                             Minimum="{Binding #MinimumSelector.Value}"
+                             Maximum="{Binding #MaximumSelector.Value}"
+                             Value="{Binding #ValueSelector.Value}"
+                             ProgressTextFormat="{Binding SelectedTextFormat}"
+                             MinHeight="16"/>
+                <ProgressBar x:Name="VerticalProgressBar" Grid.Row="2"
+                             Height="340" HorizontalAlignment="Center" Orientation="Vertical"
+                             IsIndeterminate="{Binding #IsIndeterminateSelector.IsChecked}"
+                             ShowProgressText="{Binding #ShowProgressTextSelector.IsChecked}"
+                             Minimum="{Binding #MinimumSelector.Value}"
+                             Maximum="{Binding #MaximumSelector.Value}"
+                             Value="{Binding #ValueSelector.Value}"
+                             ProgressTextFormat="{Binding SelectedTextFormat}"
+                             MinWidth="16"/>
+            </Grid>  
+        </ContentControl>
         <!--Options-->
         <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Properties">
-                <StackPanel>
-                    <mxe:CheckEditor x:Name="ShowProgressTextSelector" Content="Show Progress Text" IsChecked="True" Classes="LayoutItem"/>
-                    <mxe:CheckEditor x:Name="IsIndeterminateSelector" Content="Indeterminate" Classes="LayoutItem"/>
-                    <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto">
-                        <Label Content="Maximum:" Grid.Row="1" Classes="LayoutItem"/>
-                        <mxe:SpinEditor x:Name="MaximumSelector" Grid.Row="1" Grid.Column="1" Value="100" HorizontalContentAlignment="Left" Classes="LayoutItem"/>
-                        <Label Content="Value:" Grid.Row="2" Classes="LayoutItem"/>
-                        <mxe:SpinEditor x:Name="ValueSelector" Grid.Row="2" Grid.Column="1" Value="41" HorizontalContentAlignment="Left" Classes="LayoutItem"/>
-                        <Label Content="Minimum:" Grid.Row="3" Classes="LayoutItem"/>
-                        <mxe:SpinEditor x:Name="MinimumSelector" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Left" Classes="LayoutItem"/>
-                        <Label Content="Text Format:" Grid.Row="4" Classes="LayoutItem"/>                        
-                        <mxe:ComboBoxEditor x:Name="ProgressTextFormatSelector" Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Left"
-                                            ItemsSource="{Binding Formats}"
-                                            SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="LayoutItem"/>
-                    </Grid>
-                </StackPanel>
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <mxe:CheckEditor x:Name="ShowProgressTextSelector" Content="Show Progress Text" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Grid.Row="1" x:Name="IsIndeterminateSelector" Content="Indeterminate" Classes="PropertyEditor"/>
+                    <Label Grid.Row="2" Content="Maximum" Classes="PropertyLabel"/>
+                    <mxe:SpinEditor Grid.Row="3" x:Name="MaximumSelector" Value="100" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
+                    <Label Grid.Row="4" Content="Value" Classes="PropertyLabel"/>
+                    <mxe:SpinEditor Grid.Row="5" x:Name="ValueSelector" Value="41" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
+                    <Label Grid.Row="6" Content="Minimum" Classes="PropertyLabel"/>
+                    <mxe:SpinEditor Grid.Row="7" x:Name="MinimumSelector" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
+                    <Label Grid.Row="8" Content="Text Format" Classes="PropertyLabel"/>                        
+                    <mxe:ComboBoxEditor Grid.Row="9" x:Name="ProgressTextFormatSelector" HorizontalContentAlignment="Left"
+                                        ItemsSource="{Binding Formats}"
+                                        SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="PropertyEditor"/>
+                </Grid>
             </mxe:GroupBox>
         </StackPanel>
     </Grid>

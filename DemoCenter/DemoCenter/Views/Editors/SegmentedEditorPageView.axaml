@@ -24,7 +24,7 @@
     </Design.DataContext>
 
     <Grid ColumnDefinitions="*">
-        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl" BorderThickness="0">
             <Border>
                 <Border.Background>
                     <MultiBinding Converter="{view:SegmentedEditorViewBackgroundConverter}">

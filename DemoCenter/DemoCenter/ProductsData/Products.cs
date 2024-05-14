@@ -18,6 +18,6 @@ namespace DemoCenter.ProductsData
             new GroupInfo("Standard Controls", "Standard Controls", "Standard Controls description", () => new StandardControlsGroupViewModel(), StandardControlsGroupInfo.Create()),
         };
 
-        public static List<ProductInfoBase> GetOrCreate() => products ??= GroupInfo.GetAppProducts(CreateProducts(), checkHasChildren: true);
+        public static List<ProductInfoBase> GetOrCreate() => products ??= CreateProducts();
     }
 }

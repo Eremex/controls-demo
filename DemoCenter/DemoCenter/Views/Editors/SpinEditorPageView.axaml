@@ -76,31 +76,29 @@
         </ContentControl>
         <!--Options-->
         <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Properties">
-                <StackPanel>
-                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="LayoutItem"/>
-                    <mxe:CheckEditor x:Name="ShowButtonsSelector" Content="Show Buttons" IsChecked="True" Classes="LayoutItem"/>
-                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, *">
-                        <Label Content="Value:" Classes="LayoutItem"/>
-                        <mxe:TextEditor Grid.Column="1" EditorValue="{Binding #SpinEditor.Value}" Classes="LayoutItem" HorizontalContentAlignment="Right"/>
-                        <Label Content="Maximum:" Classes="LayoutItem" Grid.Row="1"/>
-                        <mxe:SpinEditor x:Name="MaximumValueEditor" Grid.Row="1" Grid.Column="1" Value="15" Classes="LayoutItem"/>
-                        <Label Content="Minimum:" Classes="LayoutItem" Grid.Row="2"/>
-                        <mxe:SpinEditor x:Name="MinimumValueEditor" Grid.Row="2" Grid.Column="1" Value="-15" Classes="LayoutItem"/>
-                        <Label Content="Increment:" Classes="LayoutItem" Grid.Row="3"/>
-                        <mxe:SpinEditor x:Name="IncrementValueEditor" Grid.Row="3" Grid.Column="1" Value="1" Classes="LayoutItem"/>
-                        <Label Content="Mask:" Classes="LayoutItem" Grid.Row="4"/>
-                        <mxe:TextEditor x:Name="MaskEditor" Grid.Row="4" Grid.Column="1" EditorValue="##.##" Classes="LayoutItem" HorizontalContentAlignment="Right"/>
-                    </Grid>
-                </StackPanel>
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Grid.Row="1" x:Name="ShowButtonsSelector" Content="Show Buttons" IsChecked="True" Classes="PropertyEditor"/>
+                    <Label Grid.Row="2" Content="Value" Classes="PropertyLabel"/>
+                    <mxe:TextEditor Grid.Row="3" EditorValue="{Binding #SpinEditor.Value}" Classes="PropertyEditor" HorizontalContentAlignment="Right"/>
+                    <Label Grid.Row="4" Content="Maximum" Classes="PropertyLabel"/>
+                    <mxe:SpinEditor Grid.Row="5" x:Name="MaximumValueEditor" Value="15" Classes="PropertyEditor"/>
+                    <Label Grid.Row="6" Content="Minimum" Classes="PropertyLabel" />
+                    <mxe:SpinEditor Grid.Row="7" x:Name="MinimumValueEditor" Value="-15" Classes="PropertyEditor"/>
+                    <Label Grid.Row="8" Content="Increment" Classes="PropertyLabel"/>
+                    <mxe:SpinEditor Grid.Row="9" x:Name="IncrementValueEditor" Value="1" Classes="PropertyEditor"/>
+                    <Label Grid.Row="10" Content="Mask" Classes="PropertyLabel"/>
+                    <mxe:TextEditor Grid.Row="11" x:Name="MaskEditor" EditorValue="##.##" Classes="PropertyEditor" HorizontalContentAlignment="Right"/>
+                </Grid>
             </mxe:GroupBox>
-            <mxe:GroupBox Header="Commands">
-                <Grid ColumnDefinitions="*,*">
-                    <Button Classes="LayoutItem" Command="{Binding #SpinEditor.DecreaseCommand}" ToolTip.Tip="Decrease">
+            <mxe:GroupBox Header="Commands" Classes="PropertiesGroup">
+                <Grid ColumnDefinitions="*, 16, *">
+                    <Button Command="{Binding #SpinEditor.DecreaseCommand}" ToolTip.Tip="Decrease" Margin="0,12" HorizontalAlignment="Stretch">
                         <Image Source="{x:Static icons:_12.Chevron_Left}" Width="16" Height="16"/>
                     </Button>
-                    <Button Grid.Column="1"  Command="{Binding #SpinEditor.IncreaseCommand}" ToolTip.Tip="Increase" Classes="LayoutItem">
-                        <Image Source="{x:Static icons:_12.Chevron_Left}" Width="16" Height="16"/>
+                    <Button Grid.Column="2"  Command="{Binding #SpinEditor.IncreaseCommand}" ToolTip.Tip="Increase" Margin="0,12" HorizontalAlignment="Stretch">
+                        <Image Source="{x:Static icons:_12.Chevron_Right}" Width="16" Height="16"/>
                     </Button>
                 </Grid>
             </mxe:GroupBox>

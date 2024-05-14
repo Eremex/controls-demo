@@ -24,10 +24,10 @@
         <ResourceDictionary>
             <ControlTemplate x:Key="DemoToolbarBorderTemplate">
                 <Grid>
-                    <Border CornerRadius="4" Margin="1, 2" Background="LightPink" Classes.highlight="{Binding $parent[mxb:Toolbar].(view:ToolbarAndMenuPageView.IsToolbarSelected)}" Opacity="0"/>
                     <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="22" Padding="1">
                         <ContentPresenter Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
                     </Border>
+                    <Border CornerRadius="4" Margin="1, 2" IsHitTestVisible="False" Background="LightPink" Classes.highlight="{Binding $parent[mxb:Toolbar].(view:ToolbarAndMenuPageView.IsToolbarSelected)}" Opacity="0"/>
                 </Grid>
             </ControlTemplate>
         </ResourceDictionary>
@@ -37,10 +37,10 @@
             <Style.Animations>
                 <Animation Duration="0:0:2" IterationCount="1">
                     <KeyFrame Cue="20%">
-                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="Opacity" Value="0.3"/>
                     </KeyFrame>
                     <KeyFrame Cue="80%">
-                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="Opacity" Value="0.6"/>
                     </KeyFrame>
                     <KeyFrame Cue="100%">
                         <Setter Property="Opacity" Value="0"/>
@@ -59,9 +59,9 @@
         </Style>
     </UserControl.Styles>
 
-    <Border BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" BorderThickness="1,0">
+    <Border BorderThickness="0">
         <Grid ColumnDefinitions="*, 250">
-            <mxb:ToolbarManager IsWindowManager="True" x:Name="DemoControl">
+            <mxb:ToolbarManager IsWindowManager="True" x:Name="DemoControl" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" BorderThickness="0,0,1,0">
                 <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="Auto, *, Auto">
                     <mxb:ToolbarContainerControl Grid.ColumnSpan="3" DockType="Top">
                         <mxb:Toolbar x:Name="MainMenu" ToolbarName="Main Menu" DisplayMode="MainMenu" ShowCustomizationButton="False">
@@ -118,7 +118,7 @@
                             <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static icons:Basic.Binoculars}" Category="Font"/>
                             <!--Does not work with TextBox-->
 
-                            <mxb:ToolbarEditorItem Header="Font Color:" Category="Font" EditorWidth="150" EditorValue="{Binding #textBox.Foreground, Converter={helpers:ColorToBrushConverter}}">
+                            <mxb:ToolbarEditorItem Header="Font Color:" Category="Font" EditorWidth="150" EditorValue="{Binding #textBox.Foreground, Converter={helpers:ColorToBrushConverter}, Mode=TwoWay}">
                                 <mxb:ToolbarEditorItem.EditorProperties>
                                     <mxe:PopupColorEditorProperties />
                                 </mxb:ToolbarEditorItem.EditorProperties>
@@ -146,11 +146,12 @@
                         <mxb:Toolbar DisplayMode="StatusBar" ToolbarName="Status Bar" x:Name="StatusBar" ShowCustomizationButton="False">
                             <mxb:ToolbarButtonItem 
                                                   DisplayMode="Glyph" Command="{Binding ToggleSyncCommand}"
-                                                  Hint="{Binding SyncText}">
+                                                  Header="{Binding SyncText}">
                                 <mxb:ToolbarButtonItem.GlyphTemplate>
                                     <DataTemplate>
                                         <common:CircleProgressIndicator Value="{Binding $parent[mxb:ToolbarButtonItem].DataContext.SyncProgress}" 
                                                                         IsAnimated="{Binding $parent[mxb:ToolbarButtonItem].DataContext.IsSyncing}"
+                                                                        Thickness="1"
                                                                         Foreground="{DynamicResource Fill/Accent/Primary/Enabled}"/>
                                     </DataTemplate>
                                 </mxb:ToolbarButtonItem.GlyphTemplate>
@@ -170,38 +171,36 @@
             </mxb:ToolbarManager>
             
             <!--Options-->
-            <Border BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" BorderThickness="1,0,0,0" Grid.Column="1">
-                <StackPanel>
-                    <mxe:GroupBox Grid.Row="2" Header="Selected Toolbar" Classes="LayoutItem" HorizontalAlignment="Left">
-                        <StackPanel Spacing="10">
-                            <RadioButton x:Name="MainMenuSelector" Classes="LayoutItem" GroupName="G1" IsChecked="True" Content="Main Menu" IsCheckedChanged="OnRadioButtonCheckedChanged"/>
-                            <RadioButton x:Name="FileToolbarSelector" Classes="LayoutItem" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="File Toolbar"/>
-                            <RadioButton x:Name="EditToolbarSelector" Classes="LayoutItem" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Edit Toolbar"/>
-                            <RadioButton x:Name="FontToolbarSelector" Classes="LayoutItem" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Font Toolbar"/>
-                            <RadioButton x:Name="StatusBarSelector" Classes="LayoutItem" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Status Bar"/>
-                        </StackPanel>
-                    </mxe:GroupBox>
+            <StackPanel Grid.Column="1">
+                <mxe:GroupBox Grid.Row="2" Header="Selected Toolbar" Classes="PropertiesGroup">
+                    <StackPanel>
+                        <RadioButton x:Name="MainMenuSelector" Classes="PropertyEditor" GroupName="G1" IsChecked="True" Content="Main Menu" IsCheckedChanged="OnRadioButtonCheckedChanged"/>
+                        <RadioButton x:Name="FileToolbarSelector" Classes="PropertyEditor" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="File Toolbar"/>
+                        <RadioButton x:Name="EditToolbarSelector" Classes="PropertyEditor" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Edit Toolbar"/>
+                        <RadioButton x:Name="FontToolbarSelector" Classes="PropertyEditor" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Font Toolbar"/>
+                        <RadioButton x:Name="StatusBarSelector" Classes="PropertyEditor" GroupName="G1" IsCheckedChanged="OnRadioButtonCheckedChanged" Content="Status Bar"/>
+                    </StackPanel>
+                </mxe:GroupBox>
 
-                    <mxe:GroupBox x:Name="PropertiesSelector" Header="Selected toolbar properties">
-                        <StackPanel>
-                            <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Visible" IsChecked="{Binding IsVisible, Mode=TwoWay}" Classes="LayoutItem"/>
-                            <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="{Binding IsEnabled, Mode=TwoWay}" Classes="LayoutItem"/>
-                            <mxe:CheckEditor x:Name="AllowDragToolbarSelector" Content="Allow Drag" IsChecked="{Binding AllowDragToolbar, Mode=TwoWay}" IsThreeState="True" Classes="LayoutItem"/>
-                            <mxe:CheckEditor x:Name="ShowCustomizationButtonSelector" Content="Allow Customization" IsChecked="{Binding ShowCustomizationButton, Mode=TwoWay}" Classes="LayoutItem"/>
-                            <mxe:CheckEditor x:Name="StretchToolbarSelector" Content="Stretch Toolbar" IsChecked="{Binding StretchToolbar, Mode=TwoWay}" Classes="LayoutItem">
-                                <mxe:CheckEditor.IsVisible>
-                                    <MultiBinding Converter="{x:Static BoolConverters.Or}">
-                                        <Binding ElementName="FileToolbarSelector"
-                                                 Path="IsChecked"/>
-                                        <Binding ElementName="EditToolbarSelector"
-                                                 Path="IsChecked"/>
-                                    </MultiBinding>
-                                </mxe:CheckEditor.IsVisible>
-                            </mxe:CheckEditor>
-                        </StackPanel>
-                    </mxe:GroupBox>
-                </StackPanel>
-            </Border>
+                <mxe:GroupBox x:Name="PropertiesSelector" Header="Selected toolbar properties" Classes="PropertiesGroup">
+                    <StackPanel>
+                        <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Visible" IsChecked="{Binding IsVisible, Mode=TwoWay}" Classes="PropertyEditor"/>
+                        <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="{Binding IsEnabled, Mode=TwoWay}" Classes="PropertyEditor"/>
+                        <mxe:CheckEditor x:Name="AllowDragToolbarSelector" Content="Allow Drag" IsChecked="{Binding AllowDragToolbar, Mode=TwoWay}" IsThreeState="True" Classes="PropertyEditor"/>
+                        <mxe:CheckEditor x:Name="ShowCustomizationButtonSelector" Content="Allow Customization" IsChecked="{Binding ShowCustomizationButton, Mode=TwoWay}" Classes="PropertyEditor"/>
+                        <mxe:CheckEditor x:Name="StretchToolbarSelector" Content="Stretch Toolbar" IsChecked="{Binding StretchToolbar, Mode=TwoWay}" Classes="PropertyEditor">
+                            <mxe:CheckEditor.IsVisible>
+                                <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                    <Binding ElementName="FileToolbarSelector"
+                                             Path="IsChecked"/>
+                                    <Binding ElementName="EditToolbarSelector"
+                                             Path="IsChecked"/>
+                                </MultiBinding>
+                            </mxe:CheckEditor.IsVisible>
+                        </mxe:CheckEditor>
+                    </StackPanel>
+                </mxe:GroupBox>
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>

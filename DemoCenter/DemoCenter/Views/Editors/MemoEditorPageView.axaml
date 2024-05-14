@@ -25,36 +25,38 @@
                                         MemoVerticalScrollBarVisibility="{Binding VerticalScrollbarVisibility}"
                                         Margin="0,8"
                                         Width="256"
+                                        PopupMinWidth="200"
+                                        PopupWidth="300"
+                                        PopupMinHeight="200"
+                                        PopupHeight="350"
+                                        PopupMaxHeight="3920"
                                         VerticalAlignment="Top"
                                         EditorValue="{Binding Text}"
                                         Grid.Row="1"/>
                     </Grid>
             </ContentControl>
         <!--Options-->
-        <Grid Grid.Column="1" ColumnDefinitions="Auto, *">
-            <Border Width="1" Background="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
-            <StackPanel Grid.Column="1">
-                <mxe:GroupBox Header="Properties">
-                    <StackPanel>
-                        <mxe:CheckEditor x:Name="WordWrapCheck" Content="Word Wrap" IsChecked="False" Classes="LayoutItem"/>
-                        <mxe:CheckEditor x:Name="IsTextEditableSelector" Content="Is Text Editable" IsChecked="True" Classes="LayoutItem"/>
-                        <mxe:CheckEditor x:Name="ShowSizeGripCheck" Content="Popup Sizeable" IsChecked="True" Classes="LayoutItem"/>
-                        <mxe:CheckEditor x:Name="ShowIconCheck" Content="Show Icon" IsChecked="True" Classes="LayoutItem"/>
-                    </StackPanel>
-                </mxe:GroupBox>
-                <mxe:GroupBox Header="ScrollBars">
-                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
-                        <Label Content="Horizontal:" Grid.Row="0" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor x:Name="HorizontalScrollbarVisibilityCombo" Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Left"
-                                            ItemsSource="{Binding ScrollbarVisibilityItems}" IsTextEditable="False"
-                                            SelectedItem="{Binding HorizontalScrollbarVisibility, Mode=TwoWay}" Classes="LayoutItem"/>
-                        <Label Content="Vertival:" Grid.Row="1" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor x:Name="VerticalScrollbarVisibilityCombo" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Left"
-                                            ItemsSource="{Binding ScrollbarVisibilityItems}" IsTextEditable="False"
-                                            SelectedItem="{Binding VerticalScrollbarVisibility, Mode=TwoWay}" Classes="LayoutItem"/>
-                    </Grid>
-                </mxe:GroupBox>
-            </StackPanel>
-        </Grid>
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="WordWrapCheck" Content="Word Wrap" IsChecked="False" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor x:Name="IsTextEditableSelector" Content="Is Text Editable" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor x:Name="ShowSizeGripCheck" Content="Popup Sizeable" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor x:Name="ShowIconCheck" Content="Show Icon" IsChecked="True" Classes="PropertyEditor"/>
+                </StackPanel>
+            </mxe:GroupBox>
+            <mxe:GroupBox Header="ScrollBars" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <Label Content="Horizontal" Classes="TopPropertyLabel"/>
+                    <mxe:ComboBoxEditor x:Name="HorizontalScrollbarVisibilityCombo" Grid.Row="1"
+                                        ItemsSource="{Binding ScrollbarVisibilityItems}" IsTextEditable="False"
+                                        SelectedItem="{Binding HorizontalScrollbarVisibility, Mode=TwoWay}" Classes="PropertyEditor"/>
+                    <Label Content="Vertical" Grid.Row="2" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor x:Name="VerticalScrollbarVisibilityCombo" Grid.Row="3"
+                                        ItemsSource="{Binding ScrollbarVisibilityItems}" IsTextEditable="False"
+                                        SelectedItem="{Binding VerticalScrollbarVisibility, Mode=TwoWay}" Classes="PropertyEditor"/>
+                </Grid>
+            </mxe:GroupBox>
+        </StackPanel>
     </Grid>
 </UserControl>

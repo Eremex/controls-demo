@@ -23,7 +23,7 @@
     </Design.DataContext>
 
     <Grid ColumnDefinitions="*">
-        <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
+        <ContentControl x:Name="DemoControl" Classes="DemoUserControl" BorderThickness="0">
             <Grid RowDefinitions="40, 40, 40, Auto"
               ColumnDefinitions="Auto, *"
               HorizontalAlignment="Center"

@@ -45,6 +45,7 @@ public partial class MainView : UserControl
         if(viewModel == null)
             return;
         titleSubscriber = this.Bind(TitleProperty, new Binding() { Source = viewModel, Path = "Title" });
+        UpdateDocument();
         viewModel.PropertyChanged += OnMainViewModelPropertyChanged;
     }
 
@@ -62,11 +63,12 @@ public partial class MainView : UserControl
         if(e.PropertyName == nameof(MainViewModel.SelectedPalette) && ViewModel?.SelectedPalette != null)
             (Application.Current as App)?.UpdatePalette(ViewModel.SelectedPalette);
 
-        else if((e.PropertyName == nameof(MainViewModel.ShowCode) ||
-                 e.PropertyName == nameof(MainViewModel.SourceFile)) && ViewModel.ShowCode)
-        {
+        else if(e.PropertyName == nameof(MainViewModel.SourceFile))
             UpdateDocument();
-            Dispatcher.UIThread.Post(() => CodeViewEditor.Focus());
+        else if (e.PropertyName == nameof(MainViewModel.SelectedCode))
+        {
+            CodeViewEditor.SearchPanel?.Open();
+            CodeViewEditor.SearchPanel.SearchPattern = ViewModel.SelectedCode ?? string.Empty;
         }
     }
 
@@ -97,12 +99,6 @@ public partial class MainView : UserControl
                 CodeViewEditor.ScrollToHome();
                 loadedResource = name;
             }
-    }
-
-    private void OnShowSearchPanel(object sender, RoutedEventArgs e)
-    {
-        CodeViewEditor.Focus();
-        CodeViewEditor.SearchPanel?.Open();
     }
 
     public static readonly StyledProperty<string> TitleProperty =
@@ -169,5 +165,23 @@ public class PaletteTypeToIconDataConverter : MarkupExtension, IMultiValueConver
         else if(type == PaletteType.Black)
             return values[2];
         return null;
+    }
+}
+
+public class BageVisibilityConverter : MarkupExtension, IValueConverter
+{
+    public ProductBageType BageType { get; set; }
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
+    }
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return (value is ProductBageType bageType) && BageType == bageType;
+    }
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
     }
 }

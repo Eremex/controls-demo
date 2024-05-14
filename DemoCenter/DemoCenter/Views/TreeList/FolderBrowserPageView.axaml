@@ -34,7 +34,7 @@
 	<Grid x:Name="DemoControl">
 		<mxtl:TreeListControl x:Name="folderBrowserTreeList"
 							  ItemsSource="{Binding Drives}" 
-							  BorderThickness="1,0" 
+							  BorderThickness="0" 
 							  ShowNodeImages="True"
 							  ChildrenSelector="{StaticResource childrenSelector}" 
 							  NodeImageSelector="{StaticResource imageSelector}" 

@@ -3,14 +3,39 @@
         xmlns:ae="clr-namespace:AvaloniaEdit.Editing;assembly=AvaloniaEdit"
         xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
         xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-        xmlns:charts="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts">
+        xmlns:charts="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
+        xmlns:mxti="clr-namespace:Eremex.AvaloniaUI.Controls.Bars.Internal;assembly=Eremex.Avalonia.Controls">
 
   <!-- Add Styles Here -->
   <Style Selector="Label.LayoutItem">
     <Setter Property="Margin" Value="6"/>
     <Setter Property="VerticalAlignment" Value="Center"/>
   </Style>
-  <Style Selector="mxtl|TreeListControl.LayoutItem">
+  <Style Selector="Label.PropertyLabel">
+      <Setter Property="Margin" Value="0,12,0,0"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="Grid.ColumnSpan" Value="2"/>
+   </Style>
+    <Style Selector="Label.TopPropertyLabel">
+        <Setter Property="Margin" Value="0,8,0,0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Grid.ColumnSpan" Value="2"/>
+    </Style>
+   <Style Selector="mxe|TextEditor.PropertyEditor, mxe|ComboBoxEditor.PropertyEditor, mxe|DateEditor.PropertyEditor, mxe|SpinEditor.PropertyEditor">
+       <Setter Property="Margin" Value="0,4,0,0"/>
+       <Setter Property="VerticalAlignment" Value="Center"/>
+   </Style>
+    <Style Selector="mxe|CheckEditor.PropertyEditor">
+        <Setter Property="Margin" Value="0,8,0,0"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="Grid.ColumnSpan" Value="2"/>
+    </Style>
+    <Style Selector="RadioButton.PropertyEditor">
+        <Setter Property="Margin" Value="0,8,0,0"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="Grid.ColumnSpan" Value="2"/>
+    </Style>
+    <Style Selector="mxtl|TreeListControl.LayoutItem">
     <Setter Property="Margin" Value="6,0,6,0"/>
   </Style>
   <Style Selector="mxtl|TreeViewControl.LayoutItem">
@@ -194,28 +219,18 @@
   <Style Selector="ContentControl.DemoUserControl">
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
     <Setter Property="VerticalAlignment" Value="Stretch"/>
+    <Setter Property="BorderThickness" Value="0,0,1,0"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate>
-          <Border Background="{DynamicResource Fill/Neutral/Secondary/Enabled}"
+          <Border Background="Transparent"
                   BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
-                  BorderThickness="1,0,1,0">
-            <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
-              <!-- <Border IsHitTestVisible="False" BoxShadow="0 0.39 1.45 #06000000" Margin="30" CornerRadius="7"/> -->
-              <!-- <Border IsHitTestVisible="False" BoxShadow="0 1.8 4.06 0 #09000000" Margin="30" CornerRadius="7"/> -->
-              <!-- <Border IsHitTestVisible="False" BoxShadow="0 4.56 10.9 0 #12000000" Margin="30" CornerRadius="7"/> -->
-              <!-- <Border IsHitTestVisible="False" BoxShadow="0 0 1 0 #52000000" Margin="30" CornerRadius="7"/> -->
-              <Border Background="{DynamicResource Fill/Neutral/Primary/Enabled}"
-                      BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
-                      BorderThickness="1"
-                      Margin="30"
-                      CornerRadius="0"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      Padding="26">
-                <ContentPresenter Content="{TemplateBinding Content}"/>
-              </Border>
-            </Panel>
+                  BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter Content="{TemplateBinding Content}" 
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
           </Border>
         </ControlTemplate>
       </Setter.Value>
@@ -223,13 +238,55 @@
   </Style>
   
   <Style Selector="charts|CartesianChart.DemoChart">
-    <Setter Property="BorderThickness" Value="1,0,1,0"/> 
+    <Setter Property="BorderThickness" Value="0,0,1,0"/> 
     <Setter Property="CornerRadius" Value="0"/>
   </Style>
   
   <Style Selector="charts|CartesianChart.DemoChartWithNoOptions">
-    <Setter Property="BorderThickness" Value="1,0,1,0"/> 
+    <Setter Property="BorderThickness" Value="0"/> 
     <Setter Property="CornerRadius" Value="0"/>
   </Style>
+
+    <Style Selector="mxe|GroupBox.PropertiesGroup">
+        <Setter Property="Padding" Value="8,16,8,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid RowDefinitions="Auto, *">
+                                <Border BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" BorderThickness="0,0,0,1">
+                                    <ContentPresenter Name="PART_HeaderPresenter"
+                                                      Background="Transparent"
+                                                      BorderBrush="Transparent"
+                                                      BorderThickness="0"
+                                                      CornerRadius="{TemplateBinding CornerRadius}"
+                                                      ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                      Content="{TemplateBinding Header}"
+                                                      Margin="0,0,0,8"
+                                                      RecognizesAccessKey="True"
+                                                      IsVisible="{TemplateBinding ShowHeader}"
+                                                      TextBlock.Foreground="{DynamicResource Text/Neutral/Primary}"
+                                                      TextElement.FontWeight="Bold"
+                                                      HorizontalAlignment="{TemplateBinding HeaderHorizontalAlignment}"
+                                                      VerticalAlignment="{TemplateBinding HeaderVerticalAlignment}"
+                                                      VerticalContentAlignment="{TemplateBinding HeaderVerticalContentAlignment}"
+                                                      HorizontalContentAlignment="{TemplateBinding HeaderHorizontalContentAlignment}"/>                                    
+                                </Border>
+                                <ContentPresenter Grid.Row="1" Name="PART_ContentPresenter"
+                                                  Margin="0"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                            </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
   
 </Styles>

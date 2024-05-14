@@ -30,7 +30,7 @@
 	<Grid ColumnDefinitions="*, 250">
 		<Border x:Name="DemoControl">
 			<mxtl:TreeListControl x:Name="treeList"
-		                      BorderThickness="1,0"
+		                      BorderThickness="0,0,1,0"
 		                      ChildrenFieldName="Tasks"
 		                      ItemsSource="{Binding Tasks}"
 		                      ShowNodeImages="True"
@@ -69,28 +69,24 @@
 			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="*" />
 		</mxtl:TreeListControl>
 		</Border>
-        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-            <mxe:GroupBox Header="Properties" VerticalAlignment="Top">
-                <StackPanel>
-                    <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #treeList.AllowEditing}" Classes="LayoutItem"/>
-
-                    <DockPanel IsEnabled="{Binding #treeList.AllowEditing}">
-                        <Label Content="Editor Show Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorShowMode}"
-											EditorValue="{Binding #treeList.EditorShowMode}"
-											Classes="LayoutItem"/>
-                    </DockPanel>
-
-                    <DockPanel IsEnabled="{Binding #treeList.AllowEditing}">
-                        <Label Content="Editor Button Show Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorButtonShowMode}"
-											EditorValue="{Binding #treeList.EditorButtonShowMode}"
-											Classes="LayoutItem"/>
-                    </DockPanel>
-                </StackPanel>
-            </mxe:GroupBox>
-        </Border>
-
+        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup">
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #treeList.AllowEditing}" Classes="PropertyEditor"/>
+                <Label Grid.Row="1" Content="Editor Show Mode" IsEnabled="{Binding #treeList.AllowEditing}" Classes="PropertyLabel"/>
+                <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorShowMode}"
+                                    EditorValue="{Binding #treeList.EditorShowMode}"
+                                    IsEnabled="{Binding #treeList.AllowEditing}"
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    Classes="PropertyEditor"/>
+                <Label Grid.Row="3" Content="Editor Button Show Mode" IsEnabled="{Binding #treeList.AllowEditing}" Classes="PropertyLabel"/>
+                <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorButtonShowMode}"
+                                    EditorValue="{Binding #treeList.EditorButtonShowMode}"
+                                    IsEnabled="{Binding #treeList.AllowEditing}"
+                                    Grid.Row="4"
+                                    Grid.ColumnSpan="2"
+                                    Classes="PropertyEditor"/>
+            </Grid>
+        </mxe:GroupBox>
 	</Grid>
-
 </UserControl>

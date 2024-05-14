@@ -13,7 +13,7 @@
              xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:vm="using:DemoCenter.ViewModels"
-             d:DesignHeight="600"
+             d:DesignHeight="800"
              d:DesignWidth="800"
              x:CompileBindings="False"
              x:DataType="vm:ComboBoxEditorPageViewModel"
@@ -92,48 +92,40 @@
         </ContentControl>
             <!--Options-->
         <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Simple view">
-                <StackPanel>
-                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, *">
-                        <Label Content="Selected Item:" Classes="LayoutItem" Grid.Row="0"/>
-                        <mxe:TextEditor Grid.Row="0" Grid.Column="1" EditorValue="{Binding #SimpleViewComboBox.SelectedItem}" ReadOnly="True" Classes="LayoutItem"/>
-                        <Label Content="Editor Value:" Classes="LayoutItem" Grid.Row="1"/>
-                        <mxe:TextEditor Grid.Row="1" Grid.Column="1" EditorValue="{Binding #SimpleViewComboBox.EditorValue}" ReadOnly="True" Classes="LayoutItem"/>
-                    </Grid>
-                </StackPanel>
+            <mxe:GroupBox Header="Simple view" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <Label Content="Selected Item" Classes="TopPropertyLabel" Grid.Row="0"/>
+                    <mxe:TextEditor Grid.Row="1" EditorValue="{Binding #SimpleViewComboBox.SelectedItem}" ReadOnly="True" Classes="PropertyEditor"/>
+                    <Label Content="Editor Value" Classes="PropertyLabel" Grid.Row="2"/>
+                    <mxe:TextEditor Grid.Row="3" EditorValue="{Binding #SimpleViewComboBox.EditorValue}" ReadOnly="True" Classes="PropertyEditor"/>
+                </Grid>
             </mxe:GroupBox>
-            <mxe:GroupBox Header="Text editing enabled">
-                <StackPanel>
-                    <mxe:CheckEditor x:Name="AutoCompleteSelector" Content="Auto-Complete" IsChecked="True" Classes="LayoutItem"/>
-                    <DockPanel>
-                        <Label Content="Filter:" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor x:Name="FilerSelector" EditorValue="{Binding #EditableViewComboBox.FilterCondition, Mode=TwoWay}"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxe:FilterCondition}" Classes="LayoutItem"/>
-                    </DockPanel>
-                </StackPanel>
+            <mxe:GroupBox Header="Text editing enabled" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <mxe:CheckEditor x:Name="AutoCompleteSelector" Content="Auto-Complete" IsChecked="True" Classes="PropertyEditor"/>
+                    <Label Grid.Row="1" Content="Filter" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor Grid.Row="2" x:Name="FilerSelector" EditorValue="{Binding #EditableViewComboBox.FilterCondition, Mode=TwoWay}"
+                                        ItemsSource="{mxc:EnumItemsSource EnumType=mxe:FilterCondition}" Classes="PropertyEditor"/>
+                </Grid>                    
             </mxe:GroupBox>
-            <mxe:GroupBox Header="None-editable view">
-                <StackPanel>
-                    <mxe:CheckEditor x:Name="ShowApplyItemTemplateToEditBoxSelector" Content="Apply ItemTemplate" IsChecked="True" Classes="LayoutItem"/>
-                    <mxe:CheckEditor x:Name="ShowUnselectSelector" Content="Show 'Unselect' in Popup" Classes="LayoutItem"/>
-                    <mxe:CheckEditor x:Name="ReadOnlySelector" Content="Read Only" Classes="LayoutItem"/>
-                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
-                        <Label Content="Value Member:" Classes="LayoutItem" Grid.Row="0"/>
-                        <mxe:TextEditor Grid.Row="0" Grid.Column="1" EditorValue="Category" ReadOnly="True" Classes="LayoutItem"/>
-                        <Label Content="Editor Value:" Classes="LayoutItem" Grid.Row="1"/>
-                        <mxe:TextEditor Grid.Row="1" Grid.Column="1" EditorValue="{Binding #NonEditableComboBox.EditorValue}" ReadOnly="True" Classes="LayoutItem"/>
-                    </Grid>
-                </StackPanel>
+            <mxe:GroupBox Header="None-editable view" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <mxe:CheckEditor Grid.Row="0" x:Name="ShowApplyItemTemplateToEditBoxSelector" Content="Apply ItemTemplate" IsChecked="True"  Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Grid.Row="1" x:Name="ShowUnselectSelector" Content="Show 'Unselect' in Popup" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Grid.Row="2" x:Name="ReadOnlySelector" Content="Read Only" Classes="PropertyEditor"/>
+                    <Label Grid.Row="3" Content="Value Member" Classes="PropertyLabel"/>
+                    <mxe:TextEditor Grid.Row="4" EditorValue="Category" ReadOnly="True" Classes="PropertyEditor"/>
+                    <Label Grid.Row="5" Content="Editor Value" Classes="PropertyLabel"/>
+                    <mxe:TextEditor Grid.Row="6" EditorValue="{Binding #NonEditableComboBox.EditorValue}" ReadOnly="True" Classes="PropertyEditor"/>
+                </Grid>
             </mxe:GroupBox>
-            <mxe:GroupBox Header="Multi-select mode">
-                <StackPanel>
-                    <mxe:CheckEditor x:Name="ShowSelectAllSelector" Content="Show 'Select All' in Popup" IsChecked="True" Classes="LayoutItem"/>
-                    <DockPanel>
-                        <Label Content="Separator:" Classes="LayoutItem"/>
-                        <mxe:ComboBoxEditor x:Name="SeparatorSelector" EditorValue="{Binding SelectedSeparator, Mode=TwoWay}"
-                                            ItemsSource="{Binding Separators}" Classes="LayoutItem"/>
-                    </DockPanel>
-                </StackPanel>
+            <mxe:GroupBox Header="Multi-select mode" Classes="PropertiesGroup">
+                <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                    <mxe:CheckEditor x:Name="ShowSelectAllSelector" Content="Show 'Select All' in Popup" IsChecked="True" Classes="PropertyEditor"/>
+                    <Label Grid.Row="1" Content="Separator" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor Grid.Row="2" x:Name="SeparatorSelector" EditorValue="{Binding SelectedSeparator, Mode=TwoWay}"
+                                        ItemsSource="{Binding Separators}" Classes="PropertyEditor"/>
+                </Grid>
             </mxe:GroupBox>          
         </StackPanel>
     </Grid>

@@ -17,7 +17,7 @@
 		<vm:TabControlPageViewModel />
 	</Design.DataContext>
 	
-	<Grid ColumnDefinitions="*, 300">
+	<Grid ColumnDefinitions="*, 250">
 		<Grid RowDefinitions="*" Margin="0,40">
 			<mx:MxTabControl ItemsSource="{Binding Cars}"
 			                 TabStripPlacement="{Binding Placement}"
@@ -29,6 +29,8 @@
 			                 NewCommand="{Binding NewCommand}"
 			                 SelectedItem="{Binding SelectedCar}"
 			                 IsTabPanelVisible="{Binding IsTabPanelVisible}"
+                             Margin="8" 
+                             CornerRadius="6"
 			                 x:Name="TabControl">
 				<mx:MxTabControl.Styles>
 					<Style Selector="mx|MxTabItem">
@@ -131,84 +133,66 @@
 			</mx:MxTabControl>
 		</Grid>
 		<!--Options-->
-		<StackPanel Grid.Column="1">
-			<mxe:GroupBox Header="Properties">
-				<Grid RowDefinitions="Auto Auto Auto Auto Auto"
-				      ColumnDefinitions="Auto *">
-					<Label Grid.Column="0"
-					       Grid.Row="0"
-					       Content="Layout Type:"
-					       Classes="LayoutItem">
-					</Label>
-					<mxe:ComboBoxEditor Grid.Row="0"
-					                    Grid.Column="1"
-					                    EditorValue="{Binding LayoutType, Mode=TwoWay}"
-					                    ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabStripLayoutType}"
-					                    Classes="LayoutItem" />
+        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <StackPanel>
+                <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                    <Grid RowDefinitions="Auto Auto Auto Auto Auto Auto Auto Auto Auto"
+                          ColumnDefinitions="3* *">
+                        <Label Grid.Row="0"
+                               Content="Layout Type"
+                               Classes="TopPropertyLabel"/>                        
+                        <mxe:ComboBoxEditor Grid.Row="1"
+                                            EditorValue="{Binding LayoutType, Mode=TwoWay}"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabStripLayoutType}"
+                                            Classes="PropertyEditor" />
+                        <Label Grid.Row="2"
+                               Content="Tab Placement"
+                               Classes="PropertyLabel" />
+                        <mxe:ComboBoxEditor Grid.Row="3"
+                                            EditorValue="{Binding Placement, Mode=TwoWay}"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=Dock}"
+                                            Classes="PropertyEditor" />
 
-					<Label Grid.Row="1"
-					       Grid.Column="0"
-					       Content="Tab Placement:"
-					       Classes="LayoutItem" />
-					<mxe:ComboBoxEditor Grid.Row="1"
-					                    Grid.Column="1"
-					                    EditorValue="{Binding Placement, Mode=TwoWay}"
-					                    ItemsSource="{mxc:EnumItemsSource EnumType=Dock}"
-					                    Classes="LayoutItem" />
-					
-					<Label Grid.Row="2"
-					       Grid.Column="0"
-					       Content="Tab Orientation:"
-					       Classes="LayoutItem" />
-					<mxe:ComboBoxEditor Grid.Row="2"
-					                    Grid.Column="1"
-					                    EditorValue="{Binding HeaderOrientation, Mode=TwoWay}"
-					                    ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabHeaderOrientation}"
-					                    Classes="LayoutItem" />
+                        <Label Grid.Row="4"
+                               Content="Tab Orientation"
+                               Classes="PropertyLabel" />
+                        <mxe:ComboBoxEditor Grid.Row="5"
+                                            EditorValue="{Binding HeaderOrientation, Mode=TwoWay}"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabHeaderOrientation}"
+                                            Classes="PropertyEditor" />
+                        <mxe:CheckEditor Grid.Row="6"
+                                         Content="Is Tab Panel Visible"
+                                         EditorValue="{Binding IsTabPanelVisible, Mode=TwoWay}"
+                                         Classes="PropertyEditor" />
+                        <Label Grid.Row="7"
+                               Content="Tab Drag Mode"
+                               Classes="PropertyLabel" />
+                        <mxe:ComboBoxEditor Grid.Row="8"
+                                            EditorValue="{Binding DragMode, Mode=TwoWay}"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabDragMode}"
+                                            Classes="PropertyEditor" />
+                    </Grid>
+                </mxe:GroupBox>
+                <mxe:GroupBox ShowHeader="False" Classes="PropertiesGroup">
+                    <Grid RowDefinitions="Auto Auto Auto Auto"
+                          ColumnDefinitions="3* *">
+                        <Label Grid.Row="0"
+                               Content="Close Button Show Mode" Classes="PropertyLabel" />
+                        <mxe:ComboBoxEditor Grid.Row="1"
+                                            EditorValue="{Binding CloseButtonShowMode, Mode=TwoWay}"
+                                            ItemsSource="{Binding CloseButtonShowModes}"
+                                            Classes="PropertyEditor" />
 
-					<Label Grid.Row="3"
-					       Grid.Column="0"
-					       Content="Is Tab Panel Visible:"
-					       Classes="LayoutItem" />
-					<mxe:CheckEditor Grid.Row="3"
-					                    Grid.Column="1"
-					                    EditorValue="{Binding IsTabPanelVisible, Mode=TwoWay}"
-					                    Classes="LayoutItem" />
-					
-					<Label Grid.Row="4"
-					       Grid.Column="0"
-					       Content="Tab Drag Mode:"
-					       Classes="LayoutItem" />
-					<mxe:ComboBoxEditor Grid.Row="4" Grid.Column="1"
-					                    EditorValue="{Binding DragMode, Mode=TwoWay}"
-					                    ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabDragMode}"
-					                    Classes="LayoutItem" />
-				</Grid>
-			</mxe:GroupBox>
-
-			<mxe:GroupBox ShowHeader="False">
-				<Grid RowDefinitions="Auto Auto"
-				      ColumnDefinitions="Auto *">
-					<Label Grid.Row="0"
-					       Grid.Column="0"
-					       Content="Close Button Show Mode:" Classes="LayoutItem" />
-					<mxe:ComboBoxEditor Grid.Row="0"
-					                    Grid.Column="1"
-					                    EditorValue="{Binding CloseButtonShowMode, Mode=TwoWay}"
-					                    ItemsSource="{Binding CloseButtonShowModes}"
-					                    Classes="LayoutItem" />
-
-					<Label Grid.Row="1"
-					       Grid.Column="0"
-					       Content="New Button Show Mode:"
-					       Classes="LayoutItem" />
-					<mxe:ComboBoxEditor Grid.Row="1"
-					                    Grid.Column="1"
-					                    EditorValue="{Binding NewButtonShowMode, Mode=TwoWay}"
-					                    ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabControlNewButtonShowMode}"
-					                    Classes="LayoutItem" />
-				</Grid>
-			</mxe:GroupBox>
-		</StackPanel>
+                        <Label Grid.Row="2"
+                               Content="New Button Show Mode"
+                               Classes="PropertyLabel" />
+                        <mxe:ComboBoxEditor Grid.Row="3"
+                                            EditorValue="{Binding NewButtonShowMode, Mode=TwoWay}"
+                                            ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabControlNewButtonShowMode}"
+                                            Classes="PropertyEditor" />
+                    </Grid>
+                </mxe:GroupBox>
+            </StackPanel>            
+        </Border>
 	</Grid>
 </UserControl>
