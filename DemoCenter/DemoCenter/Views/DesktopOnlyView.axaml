@@ -1,0 +1,44 @@
+<UserControl x:Class="DemoCenter.Views.DesktopOnlyView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="600"
+             d:DesignWidth="800"
+             x:CompileBindings="True"
+             x:DataType="vm:DesktopOnlyViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+        <vm:DesktopOnlyViewModel />
+	</Design.DataContext>
+
+    <UserControl.Styles>
+        <Style Selector="mxe|HyperlinkEditor.resourceLink">
+            <Setter Property="AllowAutoNavigate" Value="True"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="MinHeight" Value="0"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="{DynamicResource Icons/Outline/Blue}"/>
+        </Style>
+        <Style Selector="mxe|HyperlinkEditor.resourceLink /template/ TextBlock#PART_RealEditor">
+            <Setter Property="TextDecorations" Value="Underline" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto" HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontSize="16">
+        <TextBlock Text="This demo is only available in Desktop mode. Download the "/>
+        <mxe:HyperlinkEditor Grid.Column="1" Text="Demo Center" NavigationUrl="https://github.com/Eremex/controls-demo/tree/main/DemoCenter" Classes="resourceLink"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center"
+           Text="solution and run the DemoCenter.Desktop project to see this demo."/>
+    </Grid>
+
+</UserControl>
