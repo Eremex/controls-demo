@@ -1,0 +1,41 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.CartesianStripsAndConstantLinesView"
+             x:DataType="vm:CartesianStripsAndConstantLinesViewModel"
+             x:CompileBindings="True">
+    <Grid RowDefinitions="Auto *">
+        <TextBlock Grid.Row="0" Margin="12, 12, 12, 0" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Temperature Data</TextBlock>
+        
+        <mxc:CartesianChart Grid.Row="1" Classes="DemoChartWithNoOptions" x:Name="DemoControl" ScrollMouseButton="Left" PointerPressed="DemoControl_OnPointerPressed">
+            <mxc:CartesianChart.Series>
+                <mxc:CartesianSeries DataAdapter="{Binding Series.DataAdapter}">
+                    <mxc:CartesianLineSeriesView Color="{Binding Series.Color}" Thickness="2" />
+                </mxc:CartesianSeries>
+            </mxc:CartesianChart.Series>
+
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX ShowTitle="False" ConstantLinesSource="{Binding ConstantLines}">
+                    <mxc:AxisX.ConstantLineTemplate>
+                        <DataTemplate x:DataType="vm:ConstantLineViewModel">
+                            <mxc:ConstantLine Color="#BD1436" Title="{Binding Title}" AxisValue="{Binding AxisValue}" />
+                        </DataTemplate>
+                    </mxc:AxisX.ConstantLineTemplate>
+                </mxc:AxisX>
+            </mxc:CartesianChart.AxesX>
+            
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY Title="t(°C)" TitlePosition="WithLabels">
+                    <mxc:AxisYRange AlwaysShowZeroLevel="False" />
+                    <mxc:AxisY.ConstantLines>
+                        <mxc:ConstantLine Title="Overheat 85°C" AxisValue="85" Color="#BD1436" />
+                    </mxc:AxisY.ConstantLines>
+                    <mxc:AxisY.Strips>
+                        <mxc:Strip AxisValue1="40" AxisValue2="65" Color="#4043C927" />
+                    </mxc:AxisY.Strips>
+                </mxc:AxisY>
+            </mxc:CartesianChart.AxesY>
+        </mxc:CartesianChart>
+    </Grid>
+</UserControl>

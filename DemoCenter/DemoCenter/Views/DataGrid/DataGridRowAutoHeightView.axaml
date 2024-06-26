@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridRowAutoHeightView">
+    
+    <mxdg:DataGridControl ItemsSource="{Binding Cars}" AllowEditing="False" ShowGroupPanel="False">
+        <mxdg:DataGridControl.Styles>
+            <Style Selector="mxdg|DataGridControl /template/ ScrollViewer#PART_ScrollViewer">
+                <Setter Property="ScrollViewer.AllowAutoHide" Value="False"/>
+            </Style>
+        </mxdg:DataGridControl.Styles>
+        <mxdg:GridColumn FieldName="Image" Width="120" AllowResizing="False">
+            <mxdg:GridColumn.CellTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Value}"/>
+                </DataTemplate>
+            </mxdg:GridColumn.CellTemplate>
+        </mxdg:GridColumn>
+        <mxdg:GridColumn FieldName="Trademark" Width="3*"/>
+        <mxdg:GridColumn FieldName="TransmissionType" Width="3*"/>
+        <mxdg:GridColumn FieldName="MPG" Width="*"/>
+        <mxdg:GridColumn FieldName="HP" Width="*"/>
+        <mxdg:GridColumn FieldName="Description" Width="300" MinWidth="200" MaxWidth="400">
+            <mxdg:GridColumn.EditorProperties>
+                <mxe:TextEditorProperties TextWrapping="Wrap"/>
+            </mxdg:GridColumn.EditorProperties>
+        </mxdg:GridColumn>
+        <mxdg:GridColumn FieldName="Price" Width="2*">
+            <mxdg:GridColumn.EditorProperties>
+                <mxe:TextEditorProperties DisplayFormatString="c"/>
+            </mxdg:GridColumn.EditorProperties>
+        </mxdg:GridColumn>
+    </mxdg:DataGridControl>
+</UserControl>

@@ -1,0 +1,28 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.CartesianSideBySideBarSeriesViewView"
+             x:DataType="vm:CartesianSideBySideBarSeriesViewViewModel"
+             x:CompileBindings="True">
+    <mxc:CartesianChart Classes="DemoChartWithNoOptions" SeriesSource="{Binding Series}" x:Name="DemoControl">
+        <mxc:CartesianChart.SeriesTemplate>
+            <DataTemplate x:DataType="vm:SeriesViewModel">
+                <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
+                    <mxc:CartesianSideBySideBarSeriesView Color="{Binding Color}" BarWidth="0.7" />
+                </mxc:CartesianSeries>
+            </DataTemplate>
+        </mxc:CartesianChart.SeriesTemplate>
+
+        <mxc:CartesianChart.AxesX>
+            <mxc:AxisX ShowTitle="False">
+                <mxc:AxisX.ScaleOptions>
+                    <mxc:DateTimeScaleOptions MeasureUnit="Day" GridSpacingUnit="Day" GridSpacingFactor="1" />
+                </mxc:AxisX.ScaleOptions>
+            </mxc:AxisX>
+        </mxc:CartesianChart.AxesX>
+        <mxc:CartesianChart.AxesY>
+            <mxc:AxisY ShowTitle="False" />
+        </mxc:CartesianChart.AxesY>
+    </mxc:CartesianChart>
+</UserControl>

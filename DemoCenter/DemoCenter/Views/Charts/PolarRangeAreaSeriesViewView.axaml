@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.PolarRangeAreaSeriesViewView"
+             x:DataType="vm:PolarRangeAreaSeriesViewViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:PolarChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl">
+            <mxc:PolarSeries DataAdapter="{Binding DataAdapter}">
+                <mxc:PolarRangeAreaSeriesView Color="{Binding Color}"
+                                              Color1="{Binding Color1}"
+                                              Color2="{Binding Color2}"
+                                              Transparency="{Binding ElementName=SlTransparency, Path=Value}"
+                                              ShowMarkers1="{Binding ElementName=CheShowMarkers1, Path=IsChecked}"
+                                              ShowMarkers2="{Binding ElementName=CheShowMarkers2, Path=IsChecked}"
+                                              Marker1Size="{Binding ElementName=SlMarkerSize1, Path=Value}"
+                                              Marker2Size="{Binding ElementName=SlMarkerSize2, Path=Value}"
+                                              Thickness1="{Binding ElementName=SlLineThickness1, Path=Value}"
+                                              Thickness2="{Binding ElementName=SlLineThickness2, Path=Value}" />
+            </mxc:PolarSeries>
+        </mxc:PolarChart>
+        
+        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Transparency" Classes="TopPropertyLabel" />
+
+                <Slider x:Name="SlTransparency" Minimum="0" Maximum="1" Value="0.3" Classes="PropertyEditor" />
+                <Label Content="Line 1 Thickness" Classes="TopPropertyLabel" />
+                <Slider x:Name="SlLineThickness1" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
+                <mxe:CheckEditor x:Name="CheShowMarkers1" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
+                <Label Content="Marker 1 Size" Classes="TopPropertyLabel" />
+                <Slider x:Name="SlMarkerSize1" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers1, Path=IsChecked}" />
+                
+                <Label Content="Line 2 Thickness" Classes="TopPropertyLabel" />
+                <Slider x:Name="SlLineThickness2" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
+                <mxe:CheckEditor x:Name="CheShowMarkers2" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
+                <Label Content="Marker 1 Size" Classes="TopPropertyLabel" />
+                <Slider x:Name="SlMarkerSize2" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers2, Path=IsChecked}" />
+            </StackPanel>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>

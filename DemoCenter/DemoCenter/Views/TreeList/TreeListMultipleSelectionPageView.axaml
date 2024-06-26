@@ -1,0 +1,78 @@
+<UserControl x:Class="DemoCenter.Views.TreeListMultipleSelectionPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:mxtlv="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
+			 xmlns:views="using:DemoCenter.Views"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="900"
+             x:CompileBindings="False"
+             x:DataType="vm:TreeListMultipleSelectionPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+		<vm:TreeListMultipleSelectionPageViewModel />
+	</Design.DataContext>
+
+	<UserControl.Resources>
+		<views:ProjectTaskImageSelector x:Key="imageSelector"
+									 ProjectImage="{x:Static mxi:Basic.Docs}"
+									 TaskImage="{x:Static mxi:Basic.Doc}" />
+	</UserControl.Resources>
+
+	<Grid ColumnDefinitions="*, 250">
+		<Border x:Name="DemoControl">
+			<mxtl:TreeListControl x:Name="treeList"
+		                      BorderThickness="0,0,1,0"
+		                      ChildrenFieldName="Tasks"
+		                      ItemsSource="{Binding Tasks}"
+		                      ShowNodeImages="True"
+							  NavigationMode="Row"
+							  SelectionMode="Multiple"
+							  SelectedItems="{Binding SelectedTasks}"
+		                      NodeImageSelector="{StaticResource imageSelector}"
+		                      AutoExpandAllNodes="True">
+			<mxtl:TreeListControl.Styles>
+				<Style Selector="mxtlv|TreeListRowControl">
+					<Setter Property="TextBlock.FontWeight">
+						<Setter.Value>
+							<Binding Path="HasTasks">
+								<Binding.Converter>
+									<mx:BoolToObjectConverter>
+										<mx:BoolToObjectConverter.TrueValue>
+											<FontWeight>Bold</FontWeight>
+										</mx:BoolToObjectConverter.TrueValue>
+										<mx:BoolToObjectConverter.FalseValue>
+											<FontWeight>Normal</FontWeight>
+										</mx:BoolToObjectConverter.FalseValue>
+									</mx:BoolToObjectConverter>
+								</Binding.Converter>
+							</Binding>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</mxtl:TreeListControl.Styles>
+			<mxtl:TreeListColumn FieldName="Description" Width="2*" />
+			<mxtl:TreeListColumn FieldName="Assignee" Width="*" />
+			<mxtl:TreeListColumn FieldName="HighPriority" Header="High Priority" AllowSorting="False" Width="90" />
+			<mxtl:TreeListColumn FieldName="Status" Width="*" />
+			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="*" />
+			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="*" />
+		</mxtl:TreeListControl>
+		</Border>
+        <mxe:GroupBox Grid.Column="1" Header="Selected Assignees" Classes="PropertiesGroup">
+			<ListBox ItemsSource="{Binding SelectedTasks}" VerticalAlignment="Top">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Path=Assignee}" />
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+        </mxe:GroupBox> 
+	</Grid>
+</UserControl>

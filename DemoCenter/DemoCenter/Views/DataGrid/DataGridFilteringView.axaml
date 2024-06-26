@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+			 xmlns:data="clr-namespace:DemoCenter.DemoData"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridFilteringView">
+    
+    <Grid ColumnDefinitions="*, 250">
+        <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" ShowGroupPanel="False" AllowEditing="False" SearchPanelDisplayMode="HotKey" BorderThickness="1,0" IsSearchPanelVisible="True" ShowAutoFilterRow="True">
+			<mxdg:GridColumn FieldName="FirstName" Width="*" MinWidth="80"/>
+			<mxdg:GridColumn FieldName="LastName" Width="*" MinWidth="80"/>
+			<mxdg:GridColumn FieldName="HireDate" Header="Hire Date" Width="*" MinWidth="80">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:DateEditorProperties/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+			<mxdg:GridColumn FieldName="Experience" Width="90" MinWidth="80">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:SpinEditorProperties Increment="0.5" Minimum="0"/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+			<mxdg:GridColumn FieldName="Position" Width="*" MinWidth="150">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:ComboBoxEditorProperties ItemsSource="{Binding Source={x:Static data:EmployeesData.Positions}}" />
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+			<mxdg:GridColumn FieldName="EmploymentType" Width="*" MinWidth="150">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:ComboBoxEditorProperties ItemsSource="{mx:EnumItemsSource EnumType=data:EmploymentType}"/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+			<mxdg:GridColumn FieldName="City" Width="*" MinWidth="150" />
+			<mxdg:GridColumn FieldName="BirthDate" Width="*" MinWidth="80">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:DateEditorProperties/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+        </mxdg:DataGridControl>
+
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+			<mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+				<StackPanel>
+					<mxe:CheckEditor Content="Show Auto Filter Row" IsChecked="{Binding #dataGrid.ShowAutoFilterRow}" Classes="LayoutItem"/>
+					<mxe:CheckEditor Content="Highlight Search Results" IsChecked="{Binding #dataGrid.SearchPanelHighlightResults}" Classes="LayoutItem"/>
+					<DockPanel>
+						<Label Content="Search Panel Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+						<mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:SearchPanelDisplayMode}"
+                                            EditorValue="{Binding #dataGrid.SearchPanelDisplayMode}"
+                                            Classes="LayoutItem"/>
+					</DockPanel>
+				</StackPanel>
+			</mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,61 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.PolarStripsAndConstantLinesView"
+             x:DataType="vm:PolarStripsAndConstantLinesViewModel"
+             x:CompileBindings="True">
+    <Grid RowDefinitions="Auto *" ColumnDefinitions="* 250">
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="12, 12, 12, 0" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Radiation Pattern</TextBlock>
+        
+        <mxc:PolarChart Grid.Row="1" Grid.Column="0" Classes="DemoChartWithNoOptions" x:Name="DemoControl" PointerPressed="DemoControl_OnPointerPressed">
+            <mxc:PolarChart.Series>
+                <mxc:PolarSeries DataAdapter="{Binding Series.DataAdapter}">
+                    <mxc:PolarLineSeriesView Color="{Binding Series.Color}" Thickness="2" />
+                </mxc:PolarSeries>
+            </mxc:PolarChart.Series>
+
+            <mxc:PolarChart.AxisX>
+                <mxc:PolarAxisX x:Name="AxisX"
+                                ConstantLinesSource="{Binding ConstantLinesX}"
+                                StartAngle="{Binding ElementName=SlStartAngle, Path=Value}">
+                    <mxc:PolarAxisX.ConstantLineTemplate>
+                        <DataTemplate x:DataType="vm:ConstantLineViewModel">
+                            <mxc:ConstantLine Color="#00787A" Title="{Binding Title}" ShowTitle="False" AxisValue="{Binding AxisValue}" />
+                        </DataTemplate>
+                    </mxc:PolarAxisX.ConstantLineTemplate>
+                    <mxc:PolarAxisX.Strips>
+                        <mxc:Strip AxisValue1="0" AxisValue2="13" Color="#4043C927" />
+                        <mxc:Strip AxisValue1="347" AxisValue2="360" Color="#4043C927" />
+                    </mxc:PolarAxisX.Strips>
+                </mxc:PolarAxisX>
+            </mxc:PolarChart.AxisX>
+            
+            <mxc:PolarChart.AxisY>
+                <mxc:PolarAxisY ConstantLinesSource="{Binding ConstantLinesY}">
+                    <mxc:PolarAxisY.ConstantLineTemplate>
+                        <DataTemplate x:DataType="vm:ConstantLineViewModel">
+                            <mxc:ConstantLine Color="#00787A" Title="{Binding Title}" ShowTitle="False" AxisValue="{Binding AxisValue}" />
+                        </DataTemplate>
+                    </mxc:PolarAxisY.ConstantLineTemplate>
+                    <mxc:AxisY.Strips>
+                        <mxc:Strip AxisValue1="3.6" AxisValue2="15.8" Color="#4043C927" />
+                    </mxc:AxisY.Strips>
+                </mxc:PolarAxisY>
+            </mxc:PolarChart.AxisY>
+        </mxc:PolarChart>
+        
+        <mxe:GroupBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Header="Properties" Classes="PropertiesGroup">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Start Angle" Classes="TopPropertyLabel" />
+                <Slider x:Name="SlStartAngle" Minimum="0" Maximum="360" Value="270" Classes="PropertyEditor" />
+                <Label Content="Sweep Direction" Classes="TopPropertyLabel" />
+                <mxe:ComboBoxEditor EditorValue="{Binding ElementName=AxisX, Path=SweepDirection, Mode=TwoWay}"
+                                    ItemsSource="{mx:EnumItemsSource EnumType=SweepDirection}" />
+                <Button Command="{Binding ClearConstantLinesCommand}" Margin="0, 8, 0, 0" HorizontalAlignment="Stretch">Clear Constant Lines</Button>
+            </StackPanel>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridValidationView">
+    
+    <Grid ColumnDefinitions="*, 250">
+        <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" ValidateCellValue="OnValidateCellValue" ShowGroupPanel="False" BorderThickness="1,0">
+			<mxdg:GridColumn FieldName="FirstName" Width="*" MinWidth="80"/>
+			<mxdg:GridColumn FieldName="LastName" Width="*" MinWidth="80"/>
+			<mxdg:GridColumn FieldName="HireDate" Header="Hire Date" Width="*" MinWidth="80">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:DateEditorProperties/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+			<mxdg:GridColumn FieldName="Experience" x:Name="experienceColumn"  Width="90" MinWidth="80" />
+			<mxdg:GridColumn FieldName="City" Width="*" MinWidth="150" />
+			<mxdg:GridColumn FieldName="Phone" Width="*" MinWidth="150" />
+			<mxdg:GridColumn FieldName="BirthDate" x:Name="birthDateColumn" Width="*" MinWidth="80">
+				<mxdg:GridColumn.EditorProperties>
+					<mxe:DateEditorProperties/>
+				</mxdg:GridColumn.EditorProperties>
+			</mxdg:GridColumn>
+        </mxdg:DataGridControl>
+
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+			<mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+				<StackPanel>
+					<mxe:CheckEditor Content="Show ItemsSource Errors" IsChecked="{Binding #dataGrid.ShowItemsSourceErrors}" Classes="LayoutItem"/>
+
+					<Label Content="Validate User Input" Classes="LayoutItem" FontWeight="SemiBold" />
+					<StackPanel Margin="16,0,0,0">
+						<mxe:CheckEditor x:Name="chkValidateHireDate" Content="HireDate > BirthDate" Classes="LayoutItem" IsChecked="True" />
+						<mxe:CheckEditor x:Name="chkValidateExperience" Content="Experience >= 1" Classes="LayoutItem" IsChecked="True" />
+					</StackPanel>
+				</StackPanel>
+			</mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>

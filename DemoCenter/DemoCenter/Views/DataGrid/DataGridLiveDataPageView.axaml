@@ -1,0 +1,115 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:local="using:DemoCenter.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridLiveDataPageView">
+    <UserControl.Styles>
+        <Style Selector="local|LiveDataColumnHeaderControl">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{TemplateBinding DisplayText}" FontSize="18" HorizontalAlignment="Right" Margin="0,4,0,0"/>
+                            <TextBlock Text="{TemplateBinding Header}" HorizontalAlignment="Right" FontWeight="Bold" Margin="0,2,0,4"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style Selector="local|LiveDataBorder">
+            <Setter Property="Value" Value="{Binding Value}"/>
+            <Setter Property="BasicBrush" Value="{DynamicResource Icons/Fill/Yellow}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <mxdg:DataGridControl ItemsSource="{Binding Processes}" ShowGroupPanel="False" NavigationMode="Row" AutoScrollToFocusedRow="False">
+        <mxdg:GridColumn FieldName="Name" Width="400">
+            <mxdg:GridColumn.HeaderTemplate>
+                <DataTemplate>
+                    <local:LiveDataColumnHeaderControl Value="{x:Null}" Header="Name"/>
+                </DataTemplate>
+            </mxdg:GridColumn.HeaderTemplate>
+        </mxdg:GridColumn>
+
+        <mxdg:GridColumn FieldName="CpuLoad" Width="*" HeaderHorizontalAlignment="Right">
+            <mxdg:GridColumn.HeaderTemplate>
+                <DataTemplate>
+                    <local:LiveDataColumnHeaderControl Value="{Binding $parent[mxdg:DataGridControl].DataContext.TotalCpuLoad}" MaxValue="100" Header="CPU"/>
+                </DataTemplate>
+            </mxdg:GridColumn.HeaderTemplate>
+            <mxdg:GridColumn.CellTemplate>
+                <DataTemplate>
+                    <local:LiveDataBorder Threshold="10">
+                        <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=%}" HorizontalContentAlignment="Right"/>
+                    </local:LiveDataBorder>
+                </DataTemplate>
+            </mxdg:GridColumn.CellTemplate>
+        </mxdg:GridColumn>
+
+        <mxdg:GridColumn FieldName="MemoryLoad" Width="*" HeaderHorizontalAlignment="Right">
+            <mxdg:GridColumn.HeaderTemplate>
+                <DataTemplate>
+                    <local:LiveDataColumnHeaderControl Value="{Binding $parent[mxdg:DataGridControl].DataContext.TotalMemoryLoad}" MaxValue="65536" Header="Memory"/>
+                </DataTemplate>
+            </mxdg:GridColumn.HeaderTemplate>
+            <mxdg:GridColumn.CellTemplate>
+                <DataTemplate>
+                    <local:LiveDataBorder Threshold="1024">
+                        <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=' MB'}" HorizontalContentAlignment="Right"/>
+                    </local:LiveDataBorder>
+                </DataTemplate>
+            </mxdg:GridColumn.CellTemplate>
+        </mxdg:GridColumn>
+
+        <mxdg:GridColumn FieldName="DiskLoad" Width="*" HeaderHorizontalAlignment="Right">
+            <mxdg:GridColumn.HeaderTemplate>
+                <DataTemplate>
+                    <local:LiveDataColumnHeaderControl Value="{Binding $parent[mxdg:DataGridControl].DataContext.TotalDiskLoad}" MaxValue="100" Header="Disk"/>
+                </DataTemplate>
+            </mxdg:GridColumn.HeaderTemplate>
+            <mxdg:GridColumn.CellTemplate>
+                <DataTemplate>
+                    <local:LiveDataBorder Threshold="1">
+                        <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=' MB/s'}" HorizontalContentAlignment="Right"/>
+                    </local:LiveDataBorder>
+                </DataTemplate>
+            </mxdg:GridColumn.CellTemplate>
+        </mxdg:GridColumn>
+
+        <mxdg:GridColumn FieldName="NetworkLoad" Width="*" HeaderHorizontalAlignment="Right">
+            <mxdg:GridColumn.HeaderTemplate>
+                <DataTemplate>
+                    <local:LiveDataColumnHeaderControl Value="{Binding $parent[mxdg:DataGridControl].DataContext.TotalNetworkLoad}" MaxValue="100" Header="Network"/>
+                </DataTemplate>
+            </mxdg:GridColumn.HeaderTemplate>
+            <mxdg:GridColumn.CellTemplate>
+                <DataTemplate>
+                    <local:LiveDataBorder Threshold="1">
+                        <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=' Mbps'}" HorizontalContentAlignment="Right"/>
+                    </local:LiveDataBorder>
+                </DataTemplate>
+            </mxdg:GridColumn.CellTemplate>
+        </mxdg:GridColumn>
+
+        <mxdg:GridColumn FieldName="GpuLoad" Width="*" HeaderHorizontalAlignment="Right">
+            <mxdg:GridColumn.HeaderTemplate>
+                <DataTemplate>
+                    <local:LiveDataColumnHeaderControl Value="{Binding $parent[mxdg:DataGridControl].DataContext.TotalGpuLoad}" MaxValue="100" Header="GPU"/>
+                </DataTemplate>
+            </mxdg:GridColumn.HeaderTemplate>
+            <mxdg:GridColumn.CellTemplate>
+                <DataTemplate>
+                    <local:LiveDataBorder Threshold="2.5">
+                        <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=%}" HorizontalContentAlignment="Right"/>
+                    </local:LiveDataBorder>
+                </DataTemplate>
+            </mxdg:GridColumn.CellTemplate>
+        </mxdg:GridColumn>
+    </mxdg:DataGridControl>
+    
+</UserControl>

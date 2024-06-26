@@ -1,0 +1,30 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.PolarPointSeriesViewView"
+             x:DataType="vm:PolarPointSeriesViewViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:PolarChart Grid.Column="0" Classes="DemoChart" SeriesSource="{Binding Series}" x:Name="DemoControl">
+            <mxc:PolarChart.SeriesTemplate>
+                <DataTemplate x:DataType="vm:SeriesViewModel">
+                    <mxc:PolarSeries DataAdapter="{Binding DataAdapter}">
+                        <mxc:PolarPointSeriesView Color="{Binding Color}" MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}"
+                                                  MarkerImageCss=".base_color{{fill:#{0};}}">
+                            <SvgImage Source="avares://DemoCenter/Resources/Svg/Ring.svg" />
+                        </mxc:PolarPointSeriesView>
+                    </mxc:PolarSeries>
+                </DataTemplate>
+            </mxc:PolarChart.SeriesTemplate>
+        </mxc:PolarChart>
+        
+        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Marker Size" Classes="TopPropertyLabel" />
+                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="12" Classes="PropertyEditor" />
+            </StackPanel>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>
