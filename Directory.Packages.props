@@ -25,7 +25,6 @@
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageVersion Include="System.Resources.Extensions" Version="6.0.0" />
     <PackageVersion Include="Eremex.Avalonia.Controls" Version="$(EMXControlsVersion)" />
-    <PackageVersion Include="Eremex.Avalonia.Charts" Version="$(EMXControlsVersion)" />
-    <PackageVersion Include="Eremex.Avalonia.Icons" Version="$(EMXControlsVersion)" />
+    <PackageVersion Include="Eremex.Avalonia.Themes.DeltaDesign" Version="$(EMXControlsVersion)" />
   </ItemGroup>
 </Project>

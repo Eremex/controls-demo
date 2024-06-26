@@ -6,6 +6,8 @@ namespace DemoCenter.DemoData
 {
     public static class EmployeesData
     {
+        public const string PhoneRegex = @"^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$";
+
         static List<string> employeeNames = new List<string>()
         {
             "Angelica Grace", "Janet Francis", "Lance Phillips", "Herbert Gilmore", "Jose Horn",
@@ -13,7 +15,10 @@ namespace DemoCenter.DemoData
             "Pat Dudley", "Jodi Funk", "Taylor Monroe", "Vicki Stevenson", "Roman Bridges",
             "Bradley Maloney", "Craig MacDonald", "Cora Cameron", "Katherine Tyler", "Rachel Shah",
             "Earl Lee", "Merle Williamson", "Gene Morse", "Steven Dodd", "Julius Peck",
-            "Trevor Chaney", "Lon Schneider", "Julio Hammond", "Rosario Kirby", "Janice Perry" };
+            "Trevor Chaney", "Lon Schneider", "Julio Hammond", "Rosario Kirby", "Janice Perry", "Lana Carey", 
+            "Terrell Wells", "Herbert Hardy", "Thomas Downs", "Audrey Shields", "Davis Buchanan", "Cassie Barron",
+            "Kirsten Huff", "Gregg Wood", "Lily Alvarado", "Cruz Johns", "Michele Clark", "Jasper Ward"
+        };
 
         public static List<string> EmployeeNames => employeeNames;
 
@@ -27,9 +32,9 @@ namespace DemoCenter.DemoData
 
         public static IReadOnlyList<string> Positions { get; } = new List<string>()
         {
-            "Accountant", "Sales Representative", "Management", "Project manager", "Sales Management",
-            "Human Resources", "Operations management", "Account Manager", "Electrical engineer", "Customer Service",
-            "Software Engineer", "Engineer", "Program management", "Administrative assistant", "Financial Analyst"
+            "Accountant", "Sales Representative", "Manager", "Project Manager", "Sales Manager",
+            "HR Manager", "Operations Manager", "Account Manager", "Electrical Engineer", "Customer Service Engineer",
+            "Software Engineer", "Engineer", "Program Manager", "Administrative Assistant", "Financial Analyst"
         };
 
         public static IList<EmployeeSale> GenerateEmployeeSales()
@@ -40,7 +45,7 @@ namespace DemoCenter.DemoData
             {
                 foreach (var name in employeeNames)
                 {
-                    var employee = new EmployeeSale() { Employee = name, Year = 2023 - i + 1 };
+                    var employee = new EmployeeSale() { Employee = name, Year = DateTime.Now.Year - i + 1 };
                     employee.Quarter1 = GetQuarterSale();
                     employee.Quarter2 = GetQuarterSale();
                     employee.Quarter3 = GetQuarterSale();
@@ -68,8 +73,8 @@ namespace DemoCenter.DemoData
                 var employee = new EmployeeInfo() { FirstName = name[0], LastName = name[1] };
                 var age = 20 + random.Next(40);
                 employee.BirthDate = new DateTime(DateTime.Now.Year - age, random.Next(12) + 1, random.Next(28) + 1);
-                employee.HiredAt = new DateTime(DateTime.Now.Year - random.Next(20) - 1, random.Next(12) + 1, random.Next(28) + 1);
-                employee.Experience = Math.Max(age - 20 - random.Next(age - 20), DateTime.Now.Year - employee.HiredAt.Year);
+                employee.HireDate = new DateTime(DateTime.Now.Year - random.Next(20) - 1, random.Next(12) + 1, random.Next(28) + 1);
+                employee.Experience = Math.Max(age - 20 - random.Next(age - 20), DateTime.Now.Year - employee.HireDate.Year);
                 employee.Position = Positions[random.Next(Positions.Count)];
                 employee.EmploymentType = (EmploymentType)random.Next(3);
                 employee.Married = random.Next(3) != 0;
@@ -79,6 +84,37 @@ namespace DemoCenter.DemoData
             }
 
             return employees;
+        }
+
+        public static IList<EmployeeValidationInfo> GenerateValidationEmployeeInfo()
+        {            
+            Random rnd = new();
+
+            var employees = GenerateEmployeeInfo();
+
+            GetRandomEmployee(rnd, employees).FirstName = string.Empty;
+            GetRandomEmployee(rnd, employees).LastName = string.Empty;
+            GetRandomEmployee(rnd, employees).FirstName = string.Empty;
+            GetRandomEmployee(rnd, employees).LastName = string.Empty;
+            GetRandomEmployee(rnd, employees).City = string.Empty;
+            GetRandomEmployee(rnd, employees).City = string.Empty;
+            GetRandomEmployee(rnd, employees).City = string.Empty;
+            GetRandomEmployee(rnd, employees).Phone = "123 456";
+            GetRandomEmployee(rnd, employees).Phone = "(2994)345-235";
+            GetRandomEmployee(rnd, employees).Phone = "(574)786";
+            GetRandomEmployee(rnd, employees).BirthDate = DateTime.Now.AddDays(10);
+            GetRandomEmployee(rnd, employees).HireDate = DateTime.Now.AddDays(4);
+            
+            var employee = GetRandomEmployee(rnd, employees);
+            employee.HireDate = employee.BirthDate - TimeSpan.FromDays(10);
+            employee.Experience = 0;
+
+            return employees.Select(x => new EmployeeValidationInfo(x)).ToList();
+
+            EmployeeInfo GetRandomEmployee(Random rnd, IList<EmployeeInfo> employees)
+            {
+                return employees[rnd.Next(20)];
+            }
         }
 
         private static string GetPhoneNumber()
@@ -110,8 +146,6 @@ namespace DemoCenter.DemoData
         public decimal Total { get; set; }
     }
 
-
-
     public class EmployeeInfo
     {
         public string FirstName { get; set; }
@@ -120,7 +154,7 @@ namespace DemoCenter.DemoData
 
         public DateTime BirthDate { get; set; }
 
-        public DateTime HiredAt { get; set; }
+        public DateTime HireDate { get; set; }
 
         public int Experience { get; set; }
 
@@ -133,6 +167,52 @@ namespace DemoCenter.DemoData
         public string City { get; set; }
 
         public string Phone { get; set; }
+    }
+
+    public class EmployeeValidationInfo
+    {
+        static readonly DateTime MinDate = new DateTime(1900, 1, 1);
+
+        public EmployeeValidationInfo(EmployeeInfo employee)
+        {
+            FirstName = employee.FirstName;
+            LastName = employee.LastName;
+            BirthDate = employee.BirthDate;
+            HireDate = employee.HireDate;
+            Experience = employee.Experience;   
+            City = employee.City;
+            Phone = employee.Phone;  
+        }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        [CustomValidation(typeof(EmployeeValidationInfo), nameof(ValidateDate))]
+        public DateTime BirthDate { get; set; }
+
+        [CustomValidation(typeof(EmployeeValidationInfo), nameof(ValidateDate))]
+        public DateTime HireDate { get; set; }
+
+        [Required]
+        public int Experience { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [RegularExpression(EmployeesData.PhoneRegex, ErrorMessage = "The phone number is not valid")]
+        public string Phone { get; set; }
+
+        public static ValidationResult ValidateDate(DateTime date)
+        {
+            if(date > DateTime.Today)
+                return new ValidationResult("The date cannot be in the future.");
+            if (date < MinDate)
+                return new ValidationResult($"The date cannot be less than {MinDate:d}");
+            return ValidationResult.Success; 
+        } 
     }
 
     public enum EmploymentType

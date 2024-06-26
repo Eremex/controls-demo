@@ -19,3 +19,7 @@
 - Column Header Templates – Allow you to display custom content in column headers, including images.
 - Multiple Row Selection (Highlight) — You can enable multiple row selection mode to allow a user to select (highlight) multiple rows at one time.
 - Data Annotation Attribute Support — The Data Grid control takes into account dedicated Data Annotation attributes applied to the data source's properties. You can use Data Annotation attributes to specify custom visibility, position, read-only state, and display name for auto-generated columns.
+
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net/articles/datagrid.html)

@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:vm="using:DemoCenter.ViewModels"
-             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
              xmlns:demoData="clr-namespace:DemoCenter.DemoData"
              d:DesignHeight="450"
              d:DesignWidth="800"
@@ -143,14 +142,14 @@
                                Classes="TopPropertyLabel"/>                        
                         <mxe:ComboBoxEditor Grid.Row="1"
                                             EditorValue="{Binding LayoutType, Mode=TwoWay}"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabStripLayoutType}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mx:TabStripLayoutType}"
                                             Classes="PropertyEditor" />
                         <Label Grid.Row="2"
                                Content="Tab Placement"
                                Classes="PropertyLabel" />
                         <mxe:ComboBoxEditor Grid.Row="3"
                                             EditorValue="{Binding Placement, Mode=TwoWay}"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=Dock}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=Dock}"
                                             Classes="PropertyEditor" />
 
                         <Label Grid.Row="4"
@@ -158,7 +157,7 @@
                                Classes="PropertyLabel" />
                         <mxe:ComboBoxEditor Grid.Row="5"
                                             EditorValue="{Binding HeaderOrientation, Mode=TwoWay}"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabHeaderOrientation}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mx:TabHeaderOrientation}"
                                             Classes="PropertyEditor" />
                         <mxe:CheckEditor Grid.Row="6"
                                          Content="Is Tab Panel Visible"
@@ -169,7 +168,7 @@
                                Classes="PropertyLabel" />
                         <mxe:ComboBoxEditor Grid.Row="8"
                                             EditorValue="{Binding DragMode, Mode=TwoWay}"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabDragMode}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mx:TabDragMode}"
                                             Classes="PropertyEditor" />
                     </Grid>
                 </mxe:GroupBox>
@@ -188,7 +187,7 @@
                                Classes="PropertyLabel" />
                         <mxe:ComboBoxEditor Grid.Row="3"
                                             EditorValue="{Binding NewButtonShowMode, Mode=TwoWay}"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mx:TabControlNewButtonShowMode}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mx:TabControlNewButtonShowMode}"
                                             Classes="PropertyEditor" />
                     </Grid>
                 </mxe:GroupBox>

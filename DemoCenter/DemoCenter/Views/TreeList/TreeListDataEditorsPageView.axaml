@@ -3,14 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:mxtlv="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
 			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
 			 xmlns:views="using:DemoCenter.Views"
-             xmlns:data="using:DemoCenter.DemoData"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="450"
              d:DesignWidth="900"
@@ -23,8 +22,8 @@
 
 	<UserControl.Resources>
 		<views:ProjectTaskImageSelector x:Key="imageSelector"
-									 ProjectImage="{x:Static icons:Basic.Docs}"
-									 TaskImage="{x:Static icons:Basic.Doc}" />
+									 ProjectImage="{x:Static mxi:Basic.Docs}"
+									 TaskImage="{x:Static mxi:Basic.Doc}" />
 	</UserControl.Resources>
 
 	<Grid ColumnDefinitions="*, 250">
@@ -38,7 +37,7 @@
 		                      NodeImageSelector="{StaticResource imageSelector}"
 		                      AutoExpandAllNodes="True">
 			<mxtl:TreeListControl.Styles>
-				<Style Selector="mxtl|TreeListRowControl">
+				<Style Selector="mxtlv|TreeListRowControl">
 					<Setter Property="TextBlock.FontWeight">
 						<Setter.Value>
 							<Binding Path="HasTasks">
@@ -61,11 +60,7 @@
 			<mxtl:TreeListColumn FieldName="Assignee" Width="*" />
 			<mxtl:TreeListColumn FieldName="HighPriority" Header="High Priority" AllowSorting="False" Width="90" />
 			<mxtl:TreeListColumn FieldName="Status" Width="*" />
-			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="*">
-				<mxtl:TreeListColumn.EditorProperties>
-					<mxe:SpinEditorProperties Minimum="1" Maximum="100" />
-				</mxtl:TreeListColumn.EditorProperties>
-			</mxtl:TreeListColumn>
+			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="*" />
 			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="*" />
 		</mxtl:TreeListControl>
 		</Border>
@@ -73,14 +68,14 @@
             <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
                 <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #treeList.AllowEditing}" Classes="PropertyEditor"/>
                 <Label Grid.Row="1" Content="Editor Show Mode" IsEnabled="{Binding #treeList.AllowEditing}" Classes="PropertyLabel"/>
-                <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorShowMode}"
+                <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:EditorShowMode}"
                                     EditorValue="{Binding #treeList.EditorShowMode}"
                                     IsEnabled="{Binding #treeList.AllowEditing}"
                                     Grid.Row="2"
                                     Grid.ColumnSpan="2"
                                     Classes="PropertyEditor"/>
                 <Label Grid.Row="3" Content="Editor Button Show Mode" IsEnabled="{Binding #treeList.AllowEditing}" Classes="PropertyLabel"/>
-                <mxe:ComboBoxEditor ItemsSource="{mxc:EnumItemsSource EnumType=mxdc:EditorButtonShowMode}"
+                <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:EditorButtonShowMode}"
                                     EditorValue="{Binding #treeList.EditorButtonShowMode}"
                                     IsEnabled="{Binding #treeList.AllowEditing}"
                                     Grid.Row="4"

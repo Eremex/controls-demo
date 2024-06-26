@@ -3,7 +3,7 @@ using System.Globalization;
 using Avalonia.Controls;
 using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
-using Eremex.Avalonia.Icons;
+using Eremex.AvaloniaUI.Icons;
 
 namespace DemoCenter.Views
 {

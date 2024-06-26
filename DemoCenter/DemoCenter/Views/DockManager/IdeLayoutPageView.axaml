@@ -4,14 +4,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:DemoCenter.ViewModels"
-             xmlns:mxd="clr-namespace:Eremex.AvaloniaUI.Controls.Docking;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxd="https://schemas.eremexcontrols.net/avalonia/docking"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
              xmlns:views="clr-namespace:DemoCenter.Views"
-             xmlns:dataGrid="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:propertyGrid="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxpg="https://schemas.eremexcontrols.net/avalonia/propertygrid"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              d:DesignHeight="450"
              d:DesignWidth="900"
              x:CompileBindings="False"
@@ -23,72 +23,85 @@
 
 	<UserControl.Resources>
 		<views:SolutionItemImageSelector x:Key="imageSelector"
-		                                 ClosedFolderImage="{x:Static icons:Basic.Folder }"
-		                                 OpenedFolderImage="{x:Static icons:Basic.Folder_Open }"
-		                                 FileImage="{x:Static icons:Basic.Doc }"
-		                                 CSharpFileImage="{x:Static icons:Code.Doc_CSharp }"
-		                                 ProjectImage="{x:Static icons:Code.Folder_CSharp }"
-		                                 DependenciesImage="{x:Static icons:Code.Storage}"/>
+		                                 ClosedFolderImage="{x:Static mxi:Basic.Folder }"
+		                                 OpenedFolderImage="{x:Static mxi:Basic.Folder_Open }"
+		                                 FileImage="{x:Static mxi:Basic.Doc }"
+		                                 CSharpFileImage="{x:Static mxi:Code.Doc_CSharp }"
+		                                 ProjectImage="{x:Static mxi:Code.Folder_CSharp }"
+		                                 DependenciesImage="{x:Static mxi:Code.Storage}"/>
+		<DataTemplate x:Key="DockPaneTabHeaderTemplate">
+			<Border Background="Transparent"
+			        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
+			        ToolTip.ShowDelay="500">
+				<Image Source="{Binding $self.(mxd:DockManager.DockItem).TabGlyph}"
+				       Width="16"
+				       Height="16">
+				</Image>
+			</Border>
+		</DataTemplate>
 	</UserControl.Resources>
-
+	<UserControl.Styles>
+		<Style Selector="mxd|DockPane.Tab">
+			<Setter Property="ShowTabGlyphMode" Value="Hidden"/>
+			<Setter Property="TabHeaderTemplate" Value="{StaticResource DockPaneTabHeaderTemplate}"/>
+		</Style>
+	</UserControl.Styles>
 	<mxb:ToolbarManager>
 		<Grid ColumnDefinitions="*" RowDefinitions="Auto * Auto">
-			<Grid>
-				<mxb:ToolbarContainerControl>
-					<mxb:Toolbar x:Name="MainMenu" DisplayMode="MainMenu" ShowCustomizationButton="False">
-						<mxb:ToolbarMenuItem Header="File">
-							<mxb:ToolbarButtonItem Header="New"
-							                       Glyph="{x:Static icons:Basic.Doc_Add }" />
-							<mxb:ToolbarButtonItem Header="Open"
-							                       Glyph="{x:Static icons:Basic.Folder_Open }" />
-							<mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save }" />
-							<mxb:ToolbarSeparatorItem />
-							<mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static icons:Basic.Print }" />
-						</mxb:ToolbarMenuItem>
-						<mxb:ToolbarMenuItem Header="Edit">
-							<mxb:ToolbarButtonItem Header="Undo" Glyph="{x:Static icons:Basic.Undo }" />
-							<mxb:ToolbarButtonItem Header="Redo" Glyph="{x:Static icons:Basic.Redo }" />
-							<mxb:ToolbarSeparatorItem />
-							<mxb:ToolbarButtonItem Header="Cut"
-							                       Glyph="{x:Static icons:Basic.Cut }" />
-							<mxb:ToolbarButtonItem Header="Copy"
-							                       Glyph="{x:Static icons:Basic.Copy }" />
-							<mxb:ToolbarButtonItem Header="Paste"
-							                       Glyph="{x:Static icons:Basic.Paste }" />
-							<mxb:ToolbarSeparatorItem />
-							<mxb:ToolbarButtonItem Header="Select All" />
-							<mxb:ToolbarButtonItem Header="Clear all"
-							                       Glyph="{x:Static icons:Basic.Remove }" />
-						</mxb:ToolbarMenuItem>
-						<mxb:ToolbarMenuItem Header="Options">
-							<mxb:ToolbarButtonItem Header="Check for Updates" />
-							<mxb:ToolbarSeparatorItem />
-							<mxb:ToolbarButtonItem Header="About" />
-						</mxb:ToolbarMenuItem>
-					</mxb:Toolbar>
-					<mxb:Toolbar x:Name="FileToolbar" ShowCustomizationButton="False">
+			<mxb:ToolbarContainerControl>
+				<mxb:Toolbar x:Name="MainMenu" DisplayMode="MainMenu" ShowCustomizationButton="False" ToolbarName="Main Menu">
+					<mxb:ToolbarMenuItem Header="File">
 						<mxb:ToolbarButtonItem Header="New"
-						                       Glyph="{x:Static icons:Basic.Doc_Add }" />
+						                       Glyph="{x:Static mxi:Basic.Doc_Add }" />
 						<mxb:ToolbarButtonItem Header="Open"
-						                       Glyph="{x:Static icons:Basic.Folder_Open }" />
-						<mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save }" />
-						<mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static icons:Basic.Print }"
-						                       Alignment="Far" />
-					</mxb:Toolbar>
-					<mxb:Toolbar x:Name="EditToolbar" ShowCustomizationButton="False">
+						                       Glyph="{x:Static mxi:Basic.Folder_Open }" />
+						<mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static mxi:Basic.Save }" />
+						<mxb:ToolbarSeparatorItem />
+						<mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static mxi:Basic.Print }" />
+					</mxb:ToolbarMenuItem>
+					<mxb:ToolbarMenuItem Header="Edit">
+						<mxb:ToolbarButtonItem Header="Undo" Glyph="{x:Static mxi:Basic.Undo }" />
+						<mxb:ToolbarButtonItem Header="Redo" Glyph="{x:Static mxi:Basic.Redo }" />
+						<mxb:ToolbarSeparatorItem />
 						<mxb:ToolbarButtonItem Header="Cut"
-						                       Glyph="{x:Static icons:Basic.Cut }" />
+						                       Glyph="{x:Static mxi:Basic.Cut }" />
 						<mxb:ToolbarButtonItem Header="Copy"
-						                       Glyph="{x:Static icons:Basic.Copy }" />
+						                       Glyph="{x:Static mxi:Basic.Copy }" />
 						<mxb:ToolbarButtonItem Header="Paste"
-						                       Glyph="{x:Static icons:Basic.Paste }" />
-						<mxb:ToolbarButtonItem Header="Undo" Glyph="{x:Static icons:Basic.Undo }"
-						                       Alignment="Far" />
-						<mxb:ToolbarButtonItem Header="Redo" Glyph="{x:Static icons:Basic.Redo }"
-						                       Alignment="Far" />
-					</mxb:Toolbar>
-				</mxb:ToolbarContainerControl>
-			</Grid>
+						                       Glyph="{x:Static mxi:Basic.Paste }" />
+						<mxb:ToolbarSeparatorItem />
+						<mxb:ToolbarButtonItem Header="Select All" />
+						<mxb:ToolbarButtonItem Header="Clear all"
+						                       Glyph="{x:Static mxi:Basic.Remove }" />
+					</mxb:ToolbarMenuItem>
+					<mxb:ToolbarMenuItem Header="Options">
+						<mxb:ToolbarButtonItem Header="Check for Updates" />
+						<mxb:ToolbarSeparatorItem />
+						<mxb:ToolbarButtonItem Header="About" />
+					</mxb:ToolbarMenuItem>
+				</mxb:Toolbar>
+				<mxb:Toolbar x:Name="FileToolbar" ShowCustomizationButton="False" ToolbarName="File">
+					<mxb:ToolbarButtonItem Header="New"
+					                       Glyph="{x:Static mxi:Basic.Doc_Add }" />
+					<mxb:ToolbarButtonItem Header="Open"
+					                       Glyph="{x:Static mxi:Basic.Folder_Open }" />
+					<mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static mxi:Basic.Save }" />
+					<mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static mxi:Basic.Print }"
+					                       Alignment="Far" />
+				</mxb:Toolbar>
+				<mxb:Toolbar x:Name="EditToolbar" ShowCustomizationButton="False" ToolbarName="Edit">
+					<mxb:ToolbarButtonItem Header="Cut"
+					                       Glyph="{x:Static mxi:Basic.Cut }" />
+					<mxb:ToolbarButtonItem Header="Copy"
+					                       Glyph="{x:Static mxi:Basic.Copy }" />
+					<mxb:ToolbarButtonItem Header="Paste"
+					                       Glyph="{x:Static mxi:Basic.Paste }" />
+					<mxb:ToolbarButtonItem Header="Undo" Glyph="{x:Static mxi:Basic.Undo }"
+					                       Alignment="Far" />
+					<mxb:ToolbarButtonItem Header="Redo" Glyph="{x:Static mxi:Basic.Redo }"
+					                       Alignment="Far" />
+				</mxb:Toolbar>
+			</mxb:ToolbarContainerControl>
 			<mxd:DockManager Grid.Column="0" Grid.Row="1"
 			                 BorderThickness="0" 
 			                 ItemsSource="{Binding Documents}"
@@ -104,19 +117,9 @@
 					<mxd:DockGroup Orientation="Vertical">
 						<mxd:DockGroup DockHeight="3*">
 							<mxd:TabbedGroup DockWidth="2*" TabStripPlacement="Left" TabHeaderOrientation="Horizontal">
-								<mxd:DockPane Header="Explorer">
-									<mxd:TabbedGroup.TabHeaderTemplate>
-										<DataTemplate>
-											<Border Background="Transparent"
-											        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
-											        ToolTip.ShowDelay="500">
-												<Image Source="{x:Static icons:Basic.Docs }"
-												       Width="16"
-												       Height="16">
-												</Image>
-											</Border>
-										</DataTemplate>
-									</mxd:TabbedGroup.TabHeaderTemplate>
+								<mxd:DockPane Header="Explorer" 
+								              TabGlyph="{x:Static mxi:Basic.Docs}"
+								              Classes="Tab">
 									<mxtl:TreeListControl ItemsSource="{Binding SolutionNodes}"
 									                      ParentFieldName="ParentId"
 									                      KeyFieldName="Id"
@@ -132,28 +135,18 @@
 										<mxtl:TreeListColumn FieldName="Name" Width="*" SortMode="Custom" SortDirection="Ascending" />
 									</mxtl:TreeListControl>
 								</mxd:DockPane>
-								<mxd:DockPane Header="Search">
-									<mxd:TabbedGroup.TabHeaderTemplate>
-										<DataTemplate>
-											<Border Background="Transparent"
-											        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
-											        ToolTip.ShowDelay="500">
-												<Image Source="{x:Static icons:Basic.Search }"
-												       Width="16"
-												       Height="16">
-												</Image>
-											</Border>
-										</DataTemplate>
-									</mxd:TabbedGroup.TabHeaderTemplate>
+								<mxd:DockPane Header="Search"
+								              TabGlyph="{x:Static mxi:Basic.Search}"
+								              Classes="Tab">
 									<Grid RowDefinitions="Auto *">
 										<StackPanel Classes="LayoutGroup Vertical">
 											<mxe:ButtonEditor Watermark="Search" >
 												<mxe:ButtonEditor.Buttons>
 													<mxe:ButtonSettings ToolTip.Tip="Match case"
-													                    Glyph="{x:Static icons:Filter.Starts_with }"
+													                    Glyph="{x:Static mxi:Filter.Starts_with }"
 													                    ButtonKind="Toggle"/>
 													<mxe:ButtonSettings ToolTip.Tip="Match whole word"
-													                    Glyph="{x:Static icons:Painting.Report_text_column }"
+													                    Glyph="{x:Static mxi:Painting.Report_text_column }"
 													                    ButtonKind="Toggle"/>
 												</mxe:ButtonEditor.Buttons>
 											</mxe:ButtonEditor>
@@ -168,19 +161,9 @@
 									</Grid>
 									
 								</mxd:DockPane>
-								<mxd:DockPane Header="Debug">
-									<mxd:TabbedGroup.TabHeaderTemplate>
-										<DataTemplate>
-											<Border Background="Transparent"
-											        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
-											        ToolTip.ShowDelay="500">
-												<Image Source="{x:Static icons:Code.CSharp_Play }"
-												       Width="16"
-												       Height="16">
-												</Image>
-											</Border>
-										</DataTemplate>
-									</mxd:TabbedGroup.TabHeaderTemplate>
+								<mxd:DockPane Header="Debug"
+								              TabGlyph="{x:Static mxi:Code.CSharp_Play}"
+								              Classes="Tab">
 									<Grid RowDefinitions="200 *">
 										<Button Content="Debug and Run"
 										        HorizontalAlignment="Center"
@@ -194,19 +177,9 @@
 										</TextBlock>
 									</Grid>
 								</mxd:DockPane>
-								<mxd:DockPane Header="Source Control">
-									<mxd:TabbedGroup.TabHeaderTemplate>
-										<DataTemplate>
-											<Border Background="Transparent"
-											        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
-											        ToolTip.ShowDelay="500">
-												<Image Source="{x:Static icons:Basic.Docs }"
-												       Width="16"
-												       Height="16">
-												</Image>
-											</Border>
-										</DataTemplate>
-									</mxd:TabbedGroup.TabHeaderTemplate>
+								<mxd:DockPane Header="Source Control"
+								              TabGlyph="{x:Static mxi:Basic.Docs}"
+								              Classes="Tab">
 									<TextBlock Text="Not a git repository (or any of the parent directories)"
 									           TextAlignment="Center"
 									           TextWrapping="Wrap"
@@ -221,52 +194,32 @@
 						</mxd:DockGroup>
 
 						<mxd:TabbedGroup TabStripPlacement="Left" TabHeaderOrientation="Horizontal">
-							<mxd:DockPane Header="Error List">
-								<mxd:TabbedGroup.TabHeaderTemplate>
-									<DataTemplate>
-										<Border Background="Transparent"
-										        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
-										        ToolTip.ShowDelay="500">
-											<Image Source="{x:Static icons:Basic.Warning }"
-											       Width="16"
-											       Height="16">
-											</Image>
-										</Border>
-									</DataTemplate>
-								</mxd:TabbedGroup.TabHeaderTemplate>
+							<mxd:DockPane Header="Error List"
+							              TabGlyph="{x:Static mxi:Basic.Warning}"
+							              Classes="Tab">
 								<Grid RowDefinitions="Auto *">
-									<mxb:ToolbarContainerControl DockType="Top">
-										<mxb:Toolbar x:Name="ErrorListBar" ShowCustomizationButton="False" AllowDragToolbar="False">
+									<mxb:ToolbarContainerControl DockType="Top" AllowCustomizationMenu="False">
+										<mxb:Toolbar x:Name="ErrorListBar" ShowCustomizationButton="False" AllowDragToolbar="False" ToolbarName="Error List">
 											<mxb:ToolbarCheckItem Header="0 Errors" GlyphSize="16,16" DisplayMode="Both"
-											                      Glyph="{x:Static icons:Basic.Warning }"
+											                      Glyph="{x:Static mxi:Basic.Warning }"
 											                      IsChecked="true" />
 											<mxb:ToolbarCheckItem Header="0 Warnings" GlyphSize="16,16" DisplayMode="Both"
-											                      Glyph="{x:Static icons:Basic.Warning}"/>
+											                      Glyph="{x:Static mxi:Basic.Warning}"/>
 											<mxb:ToolbarCheckItem Header="0 Messages" GlyphSize="16,16" DisplayMode="Both"
-											                      Glyph="{x:Static icons:Basic.Info }" />
+											                      Glyph="{x:Static mxi:Basic.Info }" />
 										</mxb:Toolbar>
 									</mxb:ToolbarContainerControl>
-									<dataGrid:DataGridControl Grid.Row="1" ShowGroupPanel="False">
-										<dataGrid:GridColumn FieldName="Code"></dataGrid:GridColumn>
-										<dataGrid:GridColumn FieldName="Description" Width="*"></dataGrid:GridColumn>
-										<dataGrid:GridColumn FieldName="File"></dataGrid:GridColumn>
-										<dataGrid:GridColumn FieldName="Line"></dataGrid:GridColumn>
-									</dataGrid:DataGridControl>
+									<mxdg:DataGridControl Grid.Row="1" ShowGroupPanel="False">
+										<mxdg:GridColumn FieldName="Code"></mxdg:GridColumn>
+										<mxdg:GridColumn FieldName="Description" Width="*"></mxdg:GridColumn>
+										<mxdg:GridColumn FieldName="File"></mxdg:GridColumn>
+										<mxdg:GridColumn FieldName="Line"></mxdg:GridColumn>
+									</mxdg:DataGridControl>
 								</Grid>
 							</mxd:DockPane>
-							<mxd:DockPane Header="Output">
-								<mxd:TabbedGroup.TabHeaderTemplate>
-									<DataTemplate>
-										<Border Background="Transparent"
-										        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
-										        ToolTip.ShowDelay="500">
-											<Image Source="{x:Static icons:Basic.Info}"
-											       Width="16"
-											       Height="16">
-											</Image>
-										</Border>
-									</DataTemplate>
-								</mxd:TabbedGroup.TabHeaderTemplate>
+							<mxd:DockPane Header="Output"
+							              TabGlyph="{x:Static mxi:Basic.Info}"
+							              Classes="Tab">
 								<TextBlock Text="Build finished successfully"
 								           HorizontalAlignment="Center"
 								           VerticalAlignment="Center"></TextBlock>
@@ -274,12 +227,12 @@
 						</mxd:TabbedGroup>
 					</mxd:DockGroup>
 					<mxd:DockPane Header="Properties" DockWidth="300">
-						<propertyGrid:PropertyGridControl SelectedObject="{Binding FocusedSolutionItem}"/>
+						<mxpg:PropertyGridControl SelectedObject="{Binding FocusedSolutionItem}"/>
 					</mxd:DockPane>
 				</mxd:DockGroup>
 			</mxd:DockManager>
 			<mxb:ToolbarContainerControl Grid.Column="0" Grid.Row="2" DockType="Bottom">
-				<mxb:Toolbar DisplayMode="StatusBar" x:Name="StatusBar" ShowCustomizationButton="False">
+				<mxb:Toolbar DisplayMode="StatusBar" x:Name="StatusBar" ShowCustomizationButton="False" ToolbarName="Status Bar">
 					<mxb:ToolbarTextItem Header="Ready" ShowBorder="False" />
 				</mxb:Toolbar>
 			</mxb:ToolbarContainerControl>

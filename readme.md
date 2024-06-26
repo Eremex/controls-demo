@@ -1,44 +1,184 @@
-# Eremex Avalonia UI Controls
+# Eremex Avalonia UI Controls Demo Application
 
-The Eremex Avalonia Controls Library includes powerful UI controls for the cross-platform Avalonia UI framework to help you deliver cutting-edge applications with enhanced UX.
+The Eremex Avalonia Controls Library includes a powerful collection of UI controls to help you deliver cutting-edge applications for the cross-platform Avalonia UI framework.
+The advanced controls - from Data Grid and Tree List to Charts and Docking UI - provide rich capabilities to visualize, shape, edit data, create classic navigation interfaces, and more. 
+
+
 
 ## About
 
-The Eremex Controls Library ships with advanced controls to meet the most demanding desktop application requirements. The Eremex Grid and Tree List controls feature rich capabilities to display, shape, and edit data from a bound object/data source. The Toolbar Manager and Dock Manager components let you create classic toolbar and docking UIs inspired by popular Office and IDE products. Small controls included in the library, such as data editors, and various utility controls, provide comprehensive data editing and control layout functionality. 
+The current repository contains the Demo project that allows you to get to test all the features of the Eremex Controls for Avalonia UI. The demo includes the full-functional version of the Eremex Controls Library, which you can use in your projects for evaluation purposes as long as you need. An unlicensed version of the Library displays trial messages. 
+
+Please [contact us](#contact-us) to find out how to get a licensed version of the Eremex Controls Library for Avalonia UI.
 
 [![Controls - Light Theme](docs/images/controls-light-sm.png)](docs/images/controls-light.png)
   
-[![Controls - Dark Theme](docs/images/controls-dark-sm.png)](docs/images/controls-dark.png)
+<!-- [![Controls - Dark Theme](docs/images/controls-dark-sm.png)](docs/images/controls-dark.png) -->
 
-## Grids
-- [Data Grid](docs/datagrid.md)
-- [Tree List and Tree View](docs/treelist.md)
-- [Property Grid](docs/propertygrid.md)
 
-## Charts
-- [Chart Control](docs/charts.md)
 
-## Classic Office and IDE-Inspired UI
+## Data Management Controls
 
-- [Toolbars and Menus](docs/toolbars.md)
-- [Docking UI](docs/docking.md)
+
+
+### Data Grid
+
+Displays data from an item source as a two-dimensional table, providing rich data shaping and editing functionality.
+
+![thumb-datagrid](docs/images/thumb-datagrid.png) 
+
+- Large data sources support
+- Unbound data
+- Data soring and grouping
+- In-place editors
+- Search and data filtration
+- Data validation
+- Built-in and custom context menus
+- Styles
+
+[Learn more...](docs/datagrid.md)
+
+### Tree List and Tree View
+
+Renders hierarchical data in the form of a tree. Tree List supports multiple data columns, while Tree View is a single-column control.
+
+![thumb-treelist](docs/images/thumb-treelist.png) 
+
+- Binding to self-referential (flat) and hierarchical data sources
+- Unbound mode (allows you to manually supply data)
+- Built-in node checkboxes for row selection
+- Data sorting
+- In-place editors
+- Data search and filtering
+- Data validation
+- Built-in and custom context menus
+- Styles
+
+[Learn more...](docs/treelist.md)
+
+### Property Grid
+
+An efficient solution for browsing and editing properties of one or more objects.
+
+![thumb-propertygrid](docs/images/thumb-propertygrid.png)  
+
+- Automatic generation of rows from public properties of a bound object(s)
+- Manual row creation mode
+- Combining rows in categories
+- Combining rows in tabs
+- Search panel (for quick row location)
+- In-place editors
+
+[Learn more...](docs/propertygrid.md)
+
+
+
+## Data Visualization Controls
+
+### Chart Control
+
+Allows you to integrate the most popular interactive graphs into your application's UI.
+
+![thumb-chartcontrol](docs/images/thumb-chartcontrol.png) 
+
+- An unlimited number of data series
+- Multiple axis types: Numeric, Date-Time, Time Span, Qualitative, and Logarithmic
+- Scrolling and zooming the entire view and individual axes
+- High-performance when displaying large data.
+- Real-time data visualization
+
+[Learn more...](docs/charts.md) 
+
+
+## Navigation and Layout Controls
+
+### Toolbars and Menus
+
+Traditional toolbars and menus for your applications.
+
+![thumb-bars](docs/images/thumb-bars.png) 
+
+- Supported toolbar item types: buttons, check buttons, sub-menus, item groups, and more
+- Docking toolbars at the edges of a container
+- Placing toolbars at any position within the window (for example, at the top of client controls)
+- Horizontal and vertical toolbar orientations
+- Adaptive layout of commands
+- Toolbar layout customization at runtime using drag-and-drop operations
+- Runtime customization mode for advanced toolbar personalization
+- Quick customization (without the need to activate customization mode)
+- Show values in toolbars, and allow users to edit them using in-place editors
+- Hotkey support, including complex shortcuts, such as Ctrl+R, Ctrl+K
+- Context menus for external controls
+
+[Learn more...](docs/toolbars.md)
+
+### Docking UI
+
+Classic docking interface inspired by the Microsoft Visual Studio IDE.
+
+![thumb-docking](docs/images/thumb-docking.png) 
+
+- Dock panels help you create tool panes
+- Documents (embedded dock windows) allow you to display the main content of your UI
+- Floating panels
+- Panel auto-hide functionality
+- Tab containers
+- Panel resizing and drag-and-drop
+- Dock hints
+- Built-in context menus to perform operations on panels and Documents
+- MVVM support
+- Docking on multiple monitors
+- Save and restore layouts of dock panels between applicaion runs
+
+[Learn more...](docs/docking.md)
 
 
 ## Editors and Utility Controls
-- [Data Editors](docs/editors.md)
-- [Utility Controls](docs/commoncontrols.md)
+
+### Data Editors
+
+Simple and advanced editors that allow users to edit almost everything - from text and numbers to date/time values and colors. You can use them as standalone controls, or as in-place editors.
+
+![thumb-editors](docs/images/thumb-editors.png)  
+
+- ButtonEditor
+- CheckEditor
+- ComboBoxEditor
+- DateEditor
+- HyperlinkEditor
+- MemoEditor
+- PopupColorEditor
+- SegmentedEditor
+- SpinEditor
+- TextEditor
+
+[Learn more...](docs/editors.md) 
+
+### Utility Controls
+
+A collection of useful controls shipped with the Eremex Controls library allow you to create feature-rich applications.
+
+![thumb-utilitycontrols](docs/images/thumb-utilitycontrols.png) 
+
+- TabControl
+- SplitContainerControl
+- GroupBox
+- CalendarControl
+
+[Learn more...](docs/commoncontrols.md)
+
 
 ## Themes
 
 The Eremex Avalonia Controls library includes two switchable paint themes that allow you to deliver interfaces with light and dark color palettes. The included themes are also applied to a set of standard Avalonia controls: Button, CalendarControl, CheckBox, Label, ListBox, ProgressBar, RadioButton, Slider, TextBox, and ToolTip.
 
-## The Repository
 
-The current repository contains the Demo project that allows you to get to test all the features of the Eremex Controls for Avalonia UI.
-The demo uses the free trial version of the Eremex Avalonia Controls Library. 
-The trial version includes all the functionality of the full version, but it displays small watermarks and has some minor restrictions that will not affect your evaluation of the product.
+| **Light Theme** | **Dark Theme** |
+|---|---|
+| ![thumb-lighttheme](docs/images/thumb-lighttheme.png) | ![thumb-darktheme](docs/images/thumb-darktheme.png) |
+| ![thumb-lighttheme2](docs/images/thumb-lighttheme2.png) | ![thumb-darktheme2](docs/images/thumb-darktheme2.png) |
 
-Please contact us via email for information about the full version of the Eremex Avalonia UI Controls.
+
 
 ## Supported Operating Systems
 
@@ -69,23 +209,59 @@ The following are system requirements to run the current Demo project, and use t
 
 ## Get Started
 
+### Run Demo
+
 - Clone the repository with the `git clone` command.
 - Go to the `DemoCenter/DemoCenter.Desktop` directory for a classic desktop application, or the `DemoCenter/DemoCenter.Web` directory for a Web Assembly project.
 - Run the selected project with the `dotnet run` command.
 
+### Create New Application
+
+- [Get Started with Eremex Avalonia UI Controls](https://eremexcontrols.net/articles/get-started.html)
+
+### Migrate to Avalonia UI
+
+- [Convert Windows Forms Applications to Avalonia UI](#convert-windows-forms-applications-to-avalonia-ui)
+
 ## Documentation
 
 - [English Documentation](https://eremexcontrols.net)
-- [Документация на русском](https://eremexcontrols.net/docsru/)
+- [Документация на Русском](https://eremexcontrols.net/docsru/)
 
 ## Product Licensing
 
 The source code included in the current repository is distributed under the terms of the MIT license. 
 
-The Eremex End-User License Agreement (EULA) fully outlines the usage rules of the trial and commercial versions of the Eremex Avalonia Controls Library.
+The Eremex End-User License Agreement (EULA) fully outlines the usage rules of the Eremex Avalonia UI Controls Library.
+
 
 
 ## Contact Us
 
-Have a question or feedback? Please contact us at: https://t.me/emxControls
- 
+Have a question or feedback? Please contact us at: 
+
+- https://t.me/emxControls (Русский)
+- https://t.me/emxControlsEn (English )
+
+
+## More Resources
+
+### Convert Windows Forms Applications to Avalonia UI
+
+The `WinForms2AvaloniaConverter` tool helps you migrate your existing Windows Forms projects to Avalonia UI. The Converter can convert entire projects or individual files.
+
+- [WinForms2AvaloniaConverter](https://github.com/MICVGLOB/WinForms2AvaloniaConverter)
+
+## Eremex Avalonia UI Controls Gallery
+
+| <div style="width:400px"></div> | <div style="width:400px"></div> | 
+| --- | --- | 
+| **Data Grid (Dark Theme)** <br> [![Data Grid (Dark Theme)](docs/images/controls-gallery/datagrid-editorsmodule-darktheme-sm.png)](docs/images/controls-gallery/datagrid-editorsmodule-darktheme.png) | **Data Grid (Light Theme)** <br> [![Data Grid (Light Theme)](docs/images/controls-gallery/datagrid-editorsmodule-grouping-lighttheme-sm.png)](docs/images/controls-gallery/datagrid-editorsmodule-grouping-lighttheme.png) | 
+| **Data Grid - Grouping** <br> [![Data Grid - Grouping](docs/images/controls-gallery/datagrid-grouping-lighttheme-sm.png)](docs/images/controls-gallery/datagrid-grouping-lighttheme.png) | **Tree List (Light Theme)** <br> [![Tree List (Light Theme)](docs/images/controls-gallery/treelist-lighttheme-sm.png)](docs/images/controls-gallery/treelist-lighttheme.png) | 
+| **Tree List (Dark Theme)** <br> [![Tree List (Dark Theme)](docs/images/controls-gallery/treelist-search-darktheme-sm.png)](docs/images/controls-gallery/treelist-search-darktheme.png) | **Tree List - Data Searching** <br> [![Tree List - Data Searching](docs/images/controls-gallery/treelist-search-lighttheme-sm.png)](docs/images/controls-gallery/treelist-search-lighttheme.png) |
+| **Toolbars&Menus (Dark Theme)** <br> [![Toolbars&Menus (Dark Theme)](docs/images/controls-gallery/bars-darktheme-sm.png)](docs/images/controls-gallery/bars-darktheme.png) | **Toolbars&Menus (Light Theme)** <br> [![bars](docs/images/controls-gallery/bars-sm.png)](docs/images/controls-gallery/bars-sm.png) | 
+| **Editors** <br> [![Editors](docs/images/controls-gallery/editors-sm.png)](docs/images/controls-gallery/editors.png) | **Tab Control** <br> [![Tab Control](docs/images/controls-gallery/utilitycontrols-darktheme-sm.png)](docs/images/controls-gallery/utilitycontrols-darktheme.png) |
+| **Property Grid** <br> [![Property Grid](docs/images/controls-gallery/propertyGrid-sm.png)](docs/images/controls-gallery/propertyGrid.png) | **Property Grid - Inplace Editing** <br> [![Property Grid - Inplace Editing](docs/images/controls-gallery/propertyGrid-inplaceeditor-sm.png)](docs/images/controls-gallery/propertyGrid-inplaceeditor.png) |
+| **Docking (Dark Theme)** <br> [![Docking (Dark Theme)](docs/images/controls-gallery/docking-darktheme-sm.png)](docs/images/controls-gallery/docking-darktheme.png) | **Docking (Light Theme)** <br> [![Docking (Light Theme)](docs/images/controls-gallery/docking-lighttheme-sm.png)](docs/images/controls-gallery/docking-lighttheme.png) | 
+| **Charts** <br> [![Charts](docs/images/controls-gallery/chart-axes-lighttheme-sm.png)](docs/images/controls-gallery/chart-axes-lighttheme.png) | **Charts (Logarithmic)** <br> [![Charts (logarithmic)](docs/images/controls-gallery/charts-logarithmic-sm.png)](docs/images/controls-gallery/charts-logarithmic.png) | 
+| **Charts (Real-Time Data)** <br> [![Charts (Real-time data)](docs/images/controls-gallery/charts-realtimedata-sm.png)](docs/images/controls-gallery/charts-realtimedata.png) | |

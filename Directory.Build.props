@@ -3,7 +3,6 @@
     <Company>Eremex</Company>
     <Copyright>©2010-2024 Eremex</Copyright>
     <Product>Eremex Controls</Product>
-    <Version>0.9.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -20,9 +19,10 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <AvaloniaVersion>11.0.10</AvaloniaVersion>
-    <AvaloniaSvgSkiaVersion>11.0.0.16</AvaloniaSvgSkiaVersion>
+    <AvaloniaSvgSkiaVersion>11.0.0.18</AvaloniaSvgSkiaVersion>
     <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
-    <EMXControlsVersion>0.0.123-demo</EMXControlsVersion>
+    <EMXControlsVersion>1.0.28</EMXControlsVersion>
+    <Version>$(EMXControlsVersion)</Version>
   </PropertyGroup>
 
   <PropertyGroup>

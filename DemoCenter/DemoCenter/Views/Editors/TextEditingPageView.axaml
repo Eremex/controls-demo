@@ -3,19 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
-             xmlns:cicons="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:data="using:DemoCenter.DemoData"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:view="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              d:DesignHeight="450"
              d:DesignWidth="800"
              x:CompileBindings="False"
@@ -34,11 +26,11 @@
             <mxe:TextEditor EditorValue="10.04.2024" SelectionStart="4" SelectionEnd="10" MaskType="DateTime"/>
             <mxe:ButtonEditor Grid.Row="2" EditorValue="ButtonEditor sample">
                 <mxe:ButtonEditor.Buttons>
-                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{x:Static icons:Basic.Undo}"
+                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{x:Static mxi:Basic.Undo}"
                                         Command="{Binding AddLogLineCommand}" CommandParameter="Undo"/>
-                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{x:Static icons:Basic.Redo}"
+                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{x:Static mxi:Basic.Redo}"
                                         Command="{Binding AddLogLineCommand}" CommandParameter="Redo"/>
-                    <mxe:ButtonSettings ToolTip.Tip="Delete" Glyph="{x:Static icons:Basic.Remove}"
+                    <mxe:ButtonSettings ToolTip.Tip="Delete" Glyph="{x:Static mxi:Basic.Remove}"
                                         Command="{Binding AddLogLineCommand}" CommandParameter="Delete"/>
                 </mxe:ButtonEditor.Buttons>
             </mxe:ButtonEditor>
@@ -54,9 +46,9 @@
                               ReadOnly="True"
                               HorizontalContentAlignment="Center">
                 <mxe:ButtonEditor.Buttons>
-                    <mxe:ButtonSettings ToolTip.Tip="Previous" Glyph="{x:Static cicons:_12.Chevron_Left}"
+                    <mxe:ButtonSettings ToolTip.Tip="Previous" Glyph="{x:Static mxi:_12.Chevron_Left}"
                                         Command="{Binding ShowPreviousCommand}" CommandParameter="Previous" IsLeft="True"/>
-                    <mxe:ButtonSettings ToolTip.Tip="Next" Glyph="{x:Static cicons:_12.Chevron_Right}"
+                    <mxe:ButtonSettings ToolTip.Tip="Next" Glyph="{x:Static mxi:_12.Chevron_Right}"
                                         Command="{Binding ShowNextCommand}" CommandParameter="Next"/>
                 </mxe:ButtonEditor.Buttons>
             </mxe:ButtonEditor>
@@ -74,7 +66,7 @@
                     <mxe:CheckEditor Grid.Row="1" x:Name="ShowErrorSelector" Content="Show Error" IsChecked="{Binding ShowError}" Classes="PropertyEditor"/>
                     <Label Grid.Row="2" Content="Error Show Mode" Classes="PropertyLabel"/>
                     <mxe:ComboBoxEditor Grid.Row="3" x:Name="ErrorShowModeSelector" EditorValue="{Binding ErrorShowMode, ElementName=EmptyTextEditor, Mode=TwoWay}" 
-                                        ItemsSource="{mxc:EnumItemsSource EnumType=mxe:EditorErrorShowMode}" Classes="PropertyEditor"/>
+                                        ItemsSource="{mx:EnumItemsSource EnumType=mxe:EditorErrorShowMode}" Classes="PropertyEditor"/>
                 </Grid>
             </mxe:GroupBox>
             <mxe:GroupBox Header="Button Click Log" Classes="PropertiesGroup">

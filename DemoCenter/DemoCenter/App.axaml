@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:DemoCenter"
              x:Class="DemoCenter.App"
+             xmlns:theme="clr-namespace:Eremex.AvaloniaUI.Themes.DeltaDesign;assembly=Eremex.Avalonia.Themes.DeltaDesign"
              RequestedThemeVariant="Light">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
     <Application.DataTemplates>
@@ -15,15 +16,11 @@
                 <ResourceInclude Source="/Resources/SharedResources.axaml"/>
                 <ResourceInclude Source="/Resources/SearchPanel.axaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <StyleInclude x:Key="EremexLightTheme" Source="avares://Eremex.Avalonia.Controls/Themes/Light/Theme.axaml"/>
-            <StyleInclude x:Key="EremexDarkTheme" Source="avares://Eremex.Avalonia.Controls/Themes/Dark/Theme.axaml"/>
         </ResourceDictionary>
     </Application.Resources>
     <Application.Styles>
-        <FluentTheme />
+        <theme:DeltaDesignTheme/>
         <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
-        <StyleInclude Source="avares://Eremex.Avalonia.Controls/Themes/Generic.axaml"/>
-        <StyleInclude Source="avares://Eremex.Avalonia.Charts/Themes/Generic.axaml"/>
         <StyleInclude Source="/Resources/SharedStyles.axaml"/>
     </Application.Styles>
 </Application>

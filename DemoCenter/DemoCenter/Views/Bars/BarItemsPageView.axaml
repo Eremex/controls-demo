@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="640"
              d:DesignWidth="850"
@@ -26,28 +26,28 @@
                 <mxb:ToolbarContainerControl>
                     <mxb:Toolbar ShowCustomizationButton="False" AllowDragToolbar="False">
                         <mxb:ToolbarButtonItem Name="ButtonItem" Header="Create" 
-                                               Glyph="{x:Static icons:Basic.Folder_Add}" 
+                                               Glyph="{x:Static mxi:Basic.Folder_Add}" 
                                                GlyphSize="32,32"/>
                         <mxb:ToolbarCheckItem x:Name="ButtonCheckItem" Header="Lock" 
-                                              Glyph="{x:Static icons:PCB.Layer_Lock}" GlyphSize="32,32"/>
+                                              Glyph="{x:Static mxi:PCB.Layer_Lock}" GlyphSize="32,32"/>
                         
                         <mxb:ToolbarButtonItem x:Name="ButtonDropDownItem"
                                                Header="Save" 
-                                               Glyph="{x:Static icons:Basic.Save}" GlyphSize="32,32">
+                                               Glyph="{x:Static mxi:Basic.Save}" GlyphSize="32,32">
                             <mxb:ToolbarButtonItem.DropDownControl>
                                 <mxb:PopupMenu>
                                     <mxb:ToolbarButtonItem Header="Save All" 
-                                                           Glyph="{x:Static icons:Basic.Save_All}"/>
+                                                           Glyph="{x:Static mxi:Basic.Save_All}"/>
                                     <mxb:ToolbarButtonItem Header="Save 3D model" 
-                                                           Glyph="{x:Static icons:_3D.Save}"/>
+                                                           Glyph="{x:Static mxi:_3D.Save}"/>
                                 </mxb:PopupMenu>
                             </mxb:ToolbarButtonItem.DropDownControl>
                         </mxb:ToolbarButtonItem>
 
-                        <mxb:ToolbarEditorItem>
-                            <mxb:ToolbarEditorItem.Editor>
-                                <mxe:ButtonEditor Width="200" NullValueButtonPosition="EditorBox" EditorValue="Toolbar editor item"/>
-                            </mxb:ToolbarEditorItem.Editor>
+                        <mxb:ToolbarEditorItem EditorValue="Toolbar editor item" EditorWidth="200">
+                            <mxb:ToolbarEditorItem.EditorProperties>
+                                <mxe:ButtonEditorProperties/>
+                            </mxb:ToolbarEditorItem.EditorProperties>
                         </mxb:ToolbarEditorItem>
                     </mxb:Toolbar>
                 </mxb:ToolbarContainerControl>
@@ -58,7 +58,7 @@
                                      IsCheckedChanged="OnRadioButtonCheckedChanged">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{x:Static icons:Basic.Folder_Add}" Width="32" Height="32"/>
+                                    <Image Source="{x:Static mxi:Basic.Folder_Add}" Width="32" Height="32"/>
                                     <Label Content="BarButtonItem" Classes="LayoutItem"/>
                                 </StackPanel>
                             </RadioButton.Content>
@@ -67,7 +67,7 @@
                                      IsCheckedChanged="OnRadioButtonCheckedChanged">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{x:Static icons:PCB.Layer_Lock}" Width="32" Height="32"/>
+                                    <Image Source="{x:Static mxi:PCB.Layer_Lock}" Width="32" Height="32"/>
                                     <Label Content="BarCheckItem" Classes="LayoutItem"/>
                                 </StackPanel>
                             </RadioButton.Content>
@@ -76,7 +76,7 @@
                                      IsCheckedChanged="OnRadioButtonCheckedChanged">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{x:Static icons:Basic.Save}" Width="32" Height="32"/>
+                                    <Image Source="{x:Static mxi:Basic.Save}" Width="32" Height="32"/>
                                     <Label Content="BarButtonItem with DropDown" Classes="LayoutItem"/>
                                 </StackPanel>
                             </RadioButton.Content>
@@ -85,7 +85,7 @@
                                      IsCheckedChanged="OnRadioButtonCheckedChanged">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{x:Static icons:Basic.Info}" Width="32" Height="32"/>
+                                    <Image Source="{x:Static mxi:Basic.Info}" Width="32" Height="32"/>
                                     <Label Content="BarTextItem" Classes="LayoutItem"/>
                                 </StackPanel>
                             </RadioButton.Content>
@@ -97,7 +97,7 @@
                         <mxb:ToolbarTextItem x:Name="TextItem"
                                              DisplayMode="Both" Header="Info"
                                              ShowBorder="False"
-                                             Glyph="{x:Static icons:Basic.Info}"
+                                             Glyph="{x:Static mxi:Basic.Info}"
                                              GlyphSize="32,32"/>
                     </mxb:Toolbar>
                 </mxb:ToolbarContainerControl>
@@ -112,12 +112,12 @@
                     <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
                         <Label Content="Display Mode:" Classes="LayoutItem" Grid.Row="0"/>
                         <mxe:ComboBoxEditor x:Name="DisplayModeSelector" Grid.Row="0" Grid.Column="1"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:ToolbarItemDisplayMode}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mxb:ToolbarItemDisplayMode}"
                                             EditorValue="{Binding DisplayMode, Mode=TwoWay}"
                                             Classes="LayoutItem" />                        
                         <Label Content="Glyph Alignment:" Classes="LayoutItem" Grid.Row="1"/>
                         <mxe:ComboBoxEditor x:Name="AlignmentSelector" Grid.Row="1" Grid.Column="1"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:Alignment}" 
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mxb:Alignment}" 
                                             EditorValue="{Binding GlyphAlignment, Mode=TwoWay}" 
                                             Classes="LayoutItem"/>
                         <Label Content="Glyph Size:" Classes="LayoutItem" Grid.Row="2"/>
@@ -128,21 +128,21 @@
                         <Label Content="Open Mode:" Classes="LayoutItem" Grid.Row="3"
                                IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
                         <mxe:ComboBoxEditor x:Name="DropDownOpenModeSelector" Grid.Row="3" Grid.Column="1"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:DropDownOpenMode}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mxb:DropDownOpenMode}"
                                             EditorValue="{Binding #ButtonDropDownItem.DropDownOpenMode, Mode=TwoWay}"
                                             Classes="LayoutItem"
                                             IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
                         <Label Content="Arrow Visibility:" Classes="LayoutItem" Grid.Row="4"
                                IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
                         <mxe:ComboBoxEditor x:Name="DropDownArrowVisibilitySelector" Grid.Row="4" Grid.Column="1"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:DropDownArrowVisibility}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mxb:DropDownArrowVisibility}"
                                             EditorValue="{Binding #ButtonDropDownItem.DropDownArrowVisibility, Mode=TwoWay}"
                                             Classes="LayoutItem"
                                             IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
                         <Label Content="Arrow Alignment:" Classes="LayoutItem" Grid.Row="5"
                                IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>
                         <mxe:ComboBoxEditor x:Name="DropDownArrowAlignmentSelector" Grid.Row="5" Grid.Column="1" IsTextEditable="False"
-                                            ItemsSource="{mxc:EnumItemsSource EnumType=mxb:DropDownArrowAlignment}"
+                                            ItemsSource="{mx:EnumItemsSource EnumType=mxb:DropDownArrowAlignment}"
                                             EditorValue="{Binding #ButtonDropDownItem.DropDownArrowAlignment, Mode=TwoWay}"
                                             Classes="LayoutItem"
                                             IsVisible="{Binding #ButtonDropDownItemSelector.IsChecked}"/>

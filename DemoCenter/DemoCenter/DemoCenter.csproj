@@ -15,6 +15,8 @@
     <None Remove="Resources\Axaml-Highlight-Light.xshd" />
     <None Remove="Resources\CSharp-Highlight-Dark.xshd" />
     <None Remove="Resources\CSharp-Highlight-Light.xshd" />
+    <None Remove="Resources\Svg\Ring.svg" />
+    <AvaloniaResource Include="Resources\Svg\Ring.svg" />
   </ItemGroup>
     
   <ItemGroup>
@@ -27,7 +29,6 @@
 
     <PackageReference Include="CommunityToolkit.Mvvm" Version="$(CommunityToolkitMvvmVersion)" />
     <PackageReference Include="Avalonia.Svg.Skia" />
-    <PackageReference Include="MessageBox.Avalonia" Version="$(MessageBoxAvaloniaVersion)" />
     <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
     <PackageReference Include="SkiaSharp" Version="$(SkiaSharpVersion)" />
     <PackageReference Include="System.Resources.Extensions" Version="$(SystemResourcesExtensionsVersion)" />
@@ -35,13 +36,95 @@
     <PackageReference Include="AvaloniaEdit.TextMate" />
     <PackageReference Include="TextMateSharp.Grammars" />
     <PackageReference Include="Eremex.Avalonia.Controls" />
-    <PackageReference Include="Eremex.Avalonia.Charts" />
-	<PackageReference Include="Eremex.Avalonia.Icons" />
+    <PackageReference Include="Eremex.Avalonia.Themes.DeltaDesign" />
   </ItemGroup>
     
   <ItemGroup>
     <Compile Update="Views\Charts\CartesianChartLogarithmicScalePageView.axaml.cs">
       <DependentUpon>CartesianChartLogarithmicScalePageView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DataGrid\DataGridLiveDataPageView.axaml.cs">
+      <DependentUpon>DataGridLiveDataPageView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataGrid\DataGridFilteringView.axaml.cs">
+      <DependentUpon>DataGridFilteringView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataGrid\DataGridValidationView.axaml.cs">
+      <DependentUpon>DataGridValidationView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataGrid\DataGridRowAutoHeightView.axaml.cs">
+      <DependentUpon>DataGridRowAutoHeightView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TreeList\TreeListMultipleSelectionPageView.axaml.cs">
+      <DependentUpon>TreeListMultipleSelectionPageView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianPointSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianPointSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianLineSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianLineSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianAreaSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianAreaSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianScatterLineSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianScatterLineSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianStepLineSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianStepLineSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianStepAreaSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianStepAreaSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianRangeAreaSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianRangeAreaSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianSideBySideBarSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianSideBySideBarSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianSideBySideRangeBarSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianSideBySideRangeBarSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\PolarStripsAndConstantLinesView.axaml.cs">
+      <DependentUpon>PolarStripsAndConstantLinesView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\PolarPointSeriesViewView.axaml.cs">
+      <DependentUpon>PolarPointSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\PolarLineSeriesViewView.axaml.cs">
+      <DependentUpon>PolarLineSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\PolarAreaSeriesViewView.axaml.cs">
+      <DependentUpon>PolarAreaSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\PolarScatterLineSeriesViewView.axaml.cs">
+      <DependentUpon>PolarScatterLineSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\PolarRangeAreaSeriesViewView.axaml.cs">
+      <DependentUpon>PolarRangeAreaSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\SmithPointSeriesViewView.axaml.cs">
+      <DependentUpon>SmithPointSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\SmithLineSeriesViewView.axaml.cs">
+      <DependentUpon>SmithLineSeriesViewView.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

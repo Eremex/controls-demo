@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Eremex.AvaloniaUI.Charts;
 
 namespace DemoCenter.Views;
 

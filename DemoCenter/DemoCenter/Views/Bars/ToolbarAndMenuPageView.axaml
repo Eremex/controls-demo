@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
              xmlns:view="clr-namespace:DemoCenter.Views;assembly=DemoCenter"
              xmlns:vm="using:DemoCenter.ViewModels"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              xmlns:helpers="clr-namespace:DemoCenter.Views.Bars.Helpers;assembly=DemoCenter"
-             xmlns:common="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
              d:DesignHeight="640"
              d:DesignWidth="800"
              x:CompileBindings="False"
@@ -66,18 +66,18 @@
                     <mxb:ToolbarContainerControl Grid.ColumnSpan="3" DockType="Top">
                         <mxb:Toolbar x:Name="MainMenu" ToolbarName="Main Menu" DisplayMode="MainMenu" ShowCustomizationButton="False">
                             <mxb:ToolbarMenuItem Header="File" Category="File">
-                                <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static icons:Basic.Doc_Add}" Category="File"/>
-                                <mxb:ToolbarButtonItem Header="Open" Glyph="{x:Static icons:Basic.Folder_Open}" Category="File"/>
-                                <mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save}" Category="File"/>
-                                <mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static icons:Basic.Print}" ShowSeparator="True"  Category="File"/>
+                                <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static mxi:Basic.Doc_Add}" Category="File"/>
+                                <mxb:ToolbarButtonItem Header="Open" Glyph="{x:Static mxi:Basic.Folder_Open}" Category="File"/>
+                                <mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static mxi:Basic.Save}" Category="File"/>
+                                <mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static mxi:Basic.Print}" ShowSeparator="True"  Category="File"/>
                             </mxb:ToolbarMenuItem>
 
                             <mxb:ToolbarMenuItem Header="Edit" Category="Edit">
-                                <mxb:ToolbarButtonItem Header="Cut" Glyph="{x:Static icons:Basic.Cut}" Category="Edit"/>
-                                <mxb:ToolbarButtonItem Header="Copy" Glyph="{x:Static icons:Basic.Copy}" Category="Edit"/>
-                                <mxb:ToolbarButtonItem Header="Paste" Glyph="{x:Static icons:Basic.Paste}" Category="Edit"/>
+                                <mxb:ToolbarButtonItem Header="Cut" Glyph="{x:Static mxi:Basic.Cut}" Category="Edit"/>
+                                <mxb:ToolbarButtonItem Header="Copy" Glyph="{x:Static mxi:Basic.Copy}" Category="Edit"/>
+                                <mxb:ToolbarButtonItem Header="Paste" Glyph="{x:Static mxi:Basic.Paste}" Category="Edit"/>
                                 <mxb:ToolbarButtonItem Header="Select All" Command="{Binding #textBox.SelectAll}" Category="Edit" ShowSeparator="True"/>
-                                <mxb:ToolbarButtonItem Header="Clear all" Command="{Binding #textBox.Clear}" Glyph="{x:Static icons:Basic.Table_Clear}" Category="Edit"/>
+                                <mxb:ToolbarButtonItem Header="Clear all" Command="{Binding #textBox.Clear}" Glyph="{x:Static mxi:Basic.Table_Clear}" Category="Edit"/>
                             </mxb:ToolbarMenuItem>
 
                             <mxb:ToolbarMenuItem Header="View" Category="View">
@@ -90,8 +90,8 @@
                             </mxb:ToolbarMenuItem>
                             
                             <mxb:ToolbarMenuItem Header="Format" Category="Format">
-                                <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{x:Static icons:Basic.Binoculars}" Category="Font"/>
-                                <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static icons:Basic.Binoculars}" Category="Font"/>
+                                <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Binoculars}" Category="Font"/>
+                                <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Binoculars}" Category="Font"/>
                             </mxb:ToolbarMenuItem>
 
                             <mxb:ToolbarMenuItem Alignment="Far" Header="Options" Category="Options">
@@ -101,21 +101,21 @@
                         </mxb:Toolbar>
 
                         <mxb:Toolbar x:Name="FileToolbar" ToolbarName="File" ShowCustomizationButton="False">
-                            <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static icons:Basic.Doc_Add}" Category="File"/>
-                            <mxb:ToolbarButtonItem Header="Open" Glyph="{x:Static icons:Basic.Folder_Open}" Category="File"/>
-                            <mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save}" Category="File"/>
-                            <mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static icons:Basic.Print}" Alignment="Far" Category="File"/>
+                            <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static mxi:Basic.Doc_Add}" Category="File"/>
+                            <mxb:ToolbarButtonItem Header="Open" Glyph="{x:Static mxi:Basic.Folder_Open}" Category="File"/>
+                            <mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static mxi:Basic.Save}" Category="File"/>
+                            <mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static mxi:Basic.Print}" Alignment="Far" Category="File"/>
                         </mxb:Toolbar>
 
                         <mxb:Toolbar x:Name="EditToolbar" ToolbarName="Edit" ShowCustomizationButton="False">
-                            <mxb:ToolbarButtonItem Header="Cut" Command="{Binding #textBox.Cut}" IsEnabled="{Binding #textBox.CanCut}" Glyph="{x:Static icons:Basic.Cut}" Category="Edit"/>
-                            <mxb:ToolbarButtonItem Header="Copy" Command="{Binding #textBox.Copy}" IsEnabled="{Binding #textBox.CanCopy}" Glyph="{x:Static icons:Basic.Copy}" Category="Edit"/>
-                            <mxb:ToolbarButtonItem Header="Paste" Command="{Binding #textBox.Paste}" IsEnabled="{Binding #textBox.CanPaste}" Glyph="{x:Static icons:Basic.Paste}" Category="Edit"/>
+                            <mxb:ToolbarButtonItem Header="Cut" Command="{Binding #textBox.Cut}" IsEnabled="{Binding #textBox.CanCut}" Glyph="{x:Static mxi:Basic.Cut}" Category="Edit"/>
+                            <mxb:ToolbarButtonItem Header="Copy" Command="{Binding #textBox.Copy}" IsEnabled="{Binding #textBox.CanCopy}" Glyph="{x:Static mxi:Basic.Copy}" Category="Edit"/>
+                            <mxb:ToolbarButtonItem Header="Paste" Command="{Binding #textBox.Paste}" IsEnabled="{Binding #textBox.CanPaste}" Glyph="{x:Static mxi:Basic.Paste}" Category="Edit"/>
                         </mxb:Toolbar>
                         
                         <mxb:Toolbar x:Name="FontToolbar" ToolbarName="Font" ShowCustomizationButton="False">
-                            <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{x:Static icons:Basic.Binoculars}" Category="Font"/>
-                            <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static icons:Basic.Binoculars}" Category="Font"/>
+                            <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Binoculars}" Category="Font"/>
+                            <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Binoculars}" Category="Font"/>
                             <!--Does not work with TextBox-->
 
                             <mxb:ToolbarEditorItem Header="Font Color:" Category="Font" EditorWidth="150" EditorValue="{Binding #textBox.Foreground, Converter={helpers:ColorToBrushConverter}, Mode=TwoWay}">
@@ -149,7 +149,7 @@
                                                   Header="{Binding SyncText}">
                                 <mxb:ToolbarButtonItem.GlyphTemplate>
                                     <DataTemplate>
-                                        <common:CircleProgressIndicator Value="{Binding $parent[mxb:ToolbarButtonItem].DataContext.SyncProgress}" 
+                                        <mx:CircleProgressIndicator Value="{Binding $parent[mxb:ToolbarButtonItem].DataContext.SyncProgress}" 
                                                                         IsAnimated="{Binding $parent[mxb:ToolbarButtonItem].DataContext.IsSyncing}"
                                                                         Thickness="1"
                                                                         Foreground="{DynamicResource Fill/Accent/Primary/Enabled}"/>

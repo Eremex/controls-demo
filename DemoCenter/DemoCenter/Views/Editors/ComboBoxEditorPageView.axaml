@@ -3,14 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxei="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Visuals;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="800"
@@ -105,7 +99,7 @@
                     <mxe:CheckEditor x:Name="AutoCompleteSelector" Content="Auto-Complete" IsChecked="True" Classes="PropertyEditor"/>
                     <Label Grid.Row="1" Content="Filter" Classes="PropertyLabel"/>
                     <mxe:ComboBoxEditor Grid.Row="2" x:Name="FilerSelector" EditorValue="{Binding #EditableViewComboBox.FilterCondition, Mode=TwoWay}"
-                                        ItemsSource="{mxc:EnumItemsSource EnumType=mxe:FilterCondition}" Classes="PropertyEditor"/>
+                                        ItemsSource="{mx:EnumItemsSource EnumType=mxe:FilterCondition}" Classes="PropertyEditor"/>
                 </Grid>                    
             </mxe:GroupBox>
             <mxe:GroupBox Header="None-editable view" Classes="PropertiesGroup">

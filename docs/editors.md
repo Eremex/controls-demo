@@ -110,3 +110,7 @@ You can embed the Eremex data editors in cells in container controls (Data Grid,
 - Data Validation
     - The built-in value validation mechanism allows you to show errors to users in all text editors and CheckEditor.
     - Text editors can display validation errors within edit boxes or below them.
+
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net/articles/editors.html)

@@ -37,3 +37,7 @@ The Eremex Avalonia Controls library ships with many multi-purpose utility contr
 - `GroupBox` — A container for a group of controls.
     - Displays a customizable header.
     - Displays a line below the client region.
+
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net/articles/utility-controls.html)

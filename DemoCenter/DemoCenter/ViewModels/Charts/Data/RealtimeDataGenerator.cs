@@ -1,4 +1,4 @@
-﻿using Eremex.Avalonia.Charts;
+﻿using Eremex.AvaloniaUI.Charts;
 
 namespace DemoCenter.ViewModels.DataAdapters;
 

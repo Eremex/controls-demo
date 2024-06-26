@@ -16,3 +16,7 @@ The main features of the Docking library include:
 - Combining multiple Documents in a tabbed UI.
 - Built-in context commands to perform operations on panels and Documents.
 - MVVM support.
+
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net/articles/docking.html)

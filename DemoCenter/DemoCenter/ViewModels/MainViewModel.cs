@@ -1,10 +1,6 @@
 ﻿using System.Collections.ObjectModel;
-
-using Avalonia.Animation;
-using Avalonia.Threading;
+using System.Reflection;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-
 using DemoCenter.ProductsData;
 using Eremex.AvaloniaUI.Controls.Common;
 using Eremex.AvaloniaUI.Themes;
@@ -44,9 +40,14 @@ public partial class MainViewModel : ViewModelBase
 
     [ObservableProperty]
     bool isDemoSelected = true;
+    
+    private readonly string titlePrefix;
 
     public MainViewModel()
     {
+        var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0";
+        titlePrefix = $"Demo Center v.{version}";
+        
         Palettes = new List<PaletteTypeInfo>()
         {
             new PaletteTypeInfo(PaletteType.White, "Light"),
@@ -80,7 +81,6 @@ public partial class MainViewModel : ViewModelBase
 
     private void CreateTitle(ProductInfoBase product)
     {
-        var prefix = "Demo Center v.1.1";
         var groupPrefix = string.Empty;
         var title = string.Empty;
 
@@ -93,7 +93,7 @@ public partial class MainViewModel : ViewModelBase
         }
         else
             title = $" - {product?.Title}";
-        Title = $"{prefix}{groupPrefix}{title}";
+        Title = $"{titlePrefix}{groupPrefix}{title}";
     }
 
     private GroupInfo GetGroupInfo(ProductInfoBase value)

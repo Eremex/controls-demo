@@ -1,58 +1,52 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mxc="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxct="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             x:Class="DemoCenter.Views.CartesianChartAxesPageView">
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.CartesianChartAxesPageView"
+             x:DataType="vm:CartesianChartAxesPageViewModel"
+             x:CompileBindings="True">
     <Grid ColumnDefinitions="* 250">
-        <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl">
-            <mxc:CartesianSeries DataAdapter="{Binding Data1}" AxisXKey="1" AxisYKey="1">
-                <mxc:CartesianLineSeriesView Color="{Binding Color1}" Thickness="2" ShowMarkers="False" />
-            </mxc:CartesianSeries>
-            <mxc:CartesianSeries DataAdapter="{Binding Data2}" AxisXKey="2" AxisYKey="2">
-                <mxc:CartesianLineSeriesView Color="{Binding Color2}" Thickness="2" ShowMarkers="False" />
-            </mxc:CartesianSeries>
+        <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl"
+                            SeriesSource="{Binding Series}" AxesXSource="{Binding AxesX}" AxesYSource="{Binding AxesY}">
+            <mxc:CartesianChart.SeriesTemplate>
+                <DataTemplate x:DataType="vm:SeriesViewModel">
+                    <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}" AxisXKey="{Binding AxisXKey}" AxisYKey="{Binding AxisYKey}">
+                        <mxc:CartesianLineSeriesView Color="{Binding Color}" Thickness="2" />
+                    </mxc:CartesianSeries>
+                </DataTemplate>
+            </mxc:CartesianChart.SeriesTemplate>
             
-            <mxc:CartesianChart.AxesX>
-                <mxc:AxisX Key="1" Color="{Binding Color1}" 
-                           Position="{Binding AxisX1.Position}"
-                           Title="{Binding AxisX1.Title}"
-                           ShowTitle="{Binding AxisX1.ShowTitle}"
-                           ShowLabels="{Binding AxisX1.ShowLabels}"
-                           ShowInterlacing="{Binding AxisX1.ShowInterlacing}"
-                           ShowMajorGridlines="{Binding AxisX1.ShowMajorGridlines}"
-                           ShowMinorGridlines="{Binding AxisX1.ShowMinorGridlines}"
-                           MinorCount="{Binding AxisX1.MinorCount}"/>
-                <mxc:AxisX Key="2" Color="{Binding Color2}"
-                           Position="{Binding AxisX2.Position}"
-                           Title="{Binding AxisX2.Title}"
-                           ShowTitle="{Binding AxisX2.ShowTitle}"
-                           ShowLabels="{Binding AxisX2.ShowLabels}"
-                           ShowInterlacing="{Binding AxisX2.ShowInterlacing}"
-                           ShowMajorGridlines="{Binding AxisX2.ShowMajorGridlines}"
-                           ShowMinorGridlines="{Binding AxisX2.ShowMinorGridlines}"
-                           MinorCount="{Binding AxisX2.MinorCount}"/>
-            </mxc:CartesianChart.AxesX>
-            <mxc:CartesianChart.AxesY>
-                <mxc:AxisY Key="1" Color="{Binding Color1}"
-                           Position="{Binding AxisY1.Position}"
-                           Title="{Binding AxisY1.Title}"
-                           ShowTitle="{Binding AxisY1.ShowTitle}"
-                           ShowLabels="{Binding AxisY1.ShowLabels}"
-                           ShowInterlacing="{Binding AxisY1.ShowInterlacing}"
-                           ShowMajorGridlines="{Binding AxisY1.ShowMajorGridlines}"
-                           ShowMinorGridlines="{Binding AxisY1.ShowMinorGridlines}"
-                           MinorCount="{Binding AxisY1.MinorCount}"/>
-                <mxc:AxisY Key="2" Color="{Binding Color2}"
-                           Position="{Binding AxisY2.Position}"
-                           Title="{Binding AxisY2.Title}"
-                           ShowTitle="{Binding AxisY2.ShowTitle}"
-                           ShowLabels="{Binding AxisY2.ShowLabels}"
-                           ShowInterlacing="{Binding AxisY2.ShowInterlacing}"
-                           ShowMajorGridlines="{Binding AxisY2.ShowMajorGridlines}"
-                           ShowMinorGridlines="{Binding AxisY2.ShowMinorGridlines}"
-                           MinorCount="{Binding AxisY2.MinorCount}"/>
-            </mxc:CartesianChart.AxesY>
+            <mxc:CartesianChart.AxisXTemplate>
+                <DataTemplate x:DataType="vm:AxisViewModel">
+                    <mxc:AxisX Key="{Binding Key}"
+                               Color="{Binding Color}" 
+                               Position="{Binding Position}"
+                               Title="{Binding Title}"
+                               ShowTitle="{Binding ShowTitle}"
+                               ShowLabels="{Binding ShowLabels}"
+                               ShowInterlacing="{Binding ShowInterlacing}"
+                               ShowMajorGridlines="{Binding ShowMajorGridlines}"
+                               ShowMinorGridlines="{Binding ShowMinorGridlines}"
+                               MinorCount="{Binding MinorCount}"/>
+                </DataTemplate>
+            </mxc:CartesianChart.AxisXTemplate>
+            
+            <mxc:CartesianChart.AxisYTemplate>
+                <DataTemplate x:DataType="vm:AxisViewModel">
+                    <mxc:AxisY Key="{Binding Key}"
+                               Color="{Binding Color}"
+                               Position="{Binding Position}"
+                               Title="{Binding Title}"
+                               ShowTitle="{Binding ShowTitle}"
+                               ShowLabels="{Binding ShowLabels}"
+                               ShowInterlacing="{Binding ShowInterlacing}"
+                               ShowMajorGridlines="{Binding ShowMajorGridlines}"
+                               ShowMinorGridlines="{Binding ShowMinorGridlines}"
+                               MinorCount="{Binding MinorCount}"/>
+                </DataTemplate>
+            </mxc:CartesianChart.AxisYTemplate>
         </mxc:CartesianChart>
 
         <StackPanel Grid.Column="1">
@@ -67,7 +61,7 @@
             <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
                 <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
                     <Label Content="Position" Classes="TopPropertyLabel" />
-                    <mxe:ComboBoxEditor Grid.Row="1" ItemsSource="{mxct:EnumItemsSource EnumType=mxc:AxisPosition}"
+                    <mxe:ComboBoxEditor Grid.Row="1" ItemsSource="{mx:EnumItemsSource EnumType=mxc:AxisPosition}"
                                         EditorValue="{Binding SelectedAxis.Position}"
                                         Classes="PropertyEditor"/>
 

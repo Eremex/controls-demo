@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:DemoCenter.ViewModels"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="DemoCenter.Views.MemoEditorPageView">
     <Design.DataContext>
@@ -40,7 +40,7 @@
             <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
                 <StackPanel>
                     <mxe:CheckEditor x:Name="WordWrapCheck" Content="Word Wrap" IsChecked="False" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor x:Name="IsTextEditableSelector" Content="Is Text Editable" IsChecked="True" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor x:Name="IsTextEditableSelector" Content="Is Text Editable" IsChecked="False" Classes="PropertyEditor"/>
                     <mxe:CheckEditor x:Name="ShowSizeGripCheck" Content="Popup Sizeable" IsChecked="True" Classes="PropertyEditor"/>
                     <mxe:CheckEditor x:Name="ShowIconCheck" Content="Show Icon" IsChecked="True" Classes="PropertyEditor"/>
                 </StackPanel>

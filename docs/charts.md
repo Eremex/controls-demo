@@ -28,3 +28,7 @@ The chart control supports instant display of rapidly changing real-time data. Y
 * Bar Series View
 * Range Bar Series View 
 
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net/articles/charts.html)
+

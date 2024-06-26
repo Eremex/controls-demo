@@ -168,9 +168,9 @@ public class PaletteTypeToIconDataConverter : MarkupExtension, IMultiValueConver
     }
 }
 
-public class BageVisibilityConverter : MarkupExtension, IValueConverter
+public class BadgeVisibilityConverter : MarkupExtension, IValueConverter
 {
-    public ProductBageType BageType { get; set; }
+    public ProductBadgeType BadgeType { get; set; }
 
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
@@ -178,7 +178,7 @@ public class BageVisibilityConverter : MarkupExtension, IValueConverter
     }
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        return (value is ProductBageType bageType) && BageType == bageType;
+        return (value is ProductBadgeType badgeType) && BadgeType == badgeType;
     }
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {

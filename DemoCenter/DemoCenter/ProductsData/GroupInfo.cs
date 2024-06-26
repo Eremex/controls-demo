@@ -13,14 +13,14 @@ namespace DemoCenter.ProductsData
 
         public override bool HasChildren => Pages.Count > 0;
 
-        public GroupInfo(string name, string title, string description, Func<PageViewModelBase> viewModel, List<PageInfo> pages, ProductBageType? bageType = null, bool showInWeb = true)
+        public GroupInfo(string name, string title, string description, Func<PageViewModelBase> viewModel, List<PageInfo> pages, ProductBadgeType? badgeType = null, bool showInWeb = true)
         {
             Name = name;
             Title = title;
             Description = description;
             ViewModelGetter = viewModel;
             Pages = pages;
-            BageType = bageType;
+            BadgeType = badgeType;
             ShowInWeb = showInWeb;
         }
     }

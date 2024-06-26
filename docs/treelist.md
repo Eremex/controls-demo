@@ -36,3 +36,7 @@ TreeList-specific features include:
 - Column Header Templates – Allow you to display custom content in column headers, including images.
 - Multiple Node Selection (Highlight) — You can enable multiple node selection mode to allow a user to select (highlight) multiple nodes at one time.
 
+
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net/articles/treelist.html)

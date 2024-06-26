@@ -3,7 +3,7 @@
         xmlns:ae="clr-namespace:AvaloniaEdit.Editing;assembly=AvaloniaEdit"
         xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
         xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-        xmlns:charts="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
+        xmlns:charts="clr-namespace:Eremex.AvaloniaUI.Charts;assembly=Eremex.Avalonia.Charts"
         xmlns:mxti="clr-namespace:Eremex.AvaloniaUI.Controls.Bars.Internal;assembly=Eremex.Avalonia.Controls">
 
   <!-- Add Styles Here -->
@@ -201,11 +201,6 @@
       <Setter Property="Margin" Value="6"/>
   </Style>
 
-	<Style Selector="TextBlock.ColumnHeaderControlCaption">
-		<Setter Property="Text" Value="{Binding Converter={mxe:StringUpperCaseConverter}}" />
-		<Setter Property="FontSize" Value="11" />
-	</Style>
-    
     <Style Selector="ae|TextArea">
         <Setter Property="SelectionBrush" Value="{DynamicResource Fill/Accent/Highlighting/Text}" />
     </Style>   
@@ -242,7 +237,27 @@
     <Setter Property="CornerRadius" Value="0"/>
   </Style>
   
+  <Style Selector="charts|PolarChart.DemoChart">
+    <Setter Property="BorderThickness" Value="0,0,1,0"/> 
+    <Setter Property="CornerRadius" Value="0"/>
+  </Style>
+  
+  <Style Selector="charts|SmithChart.DemoChart">
+    <Setter Property="BorderThickness" Value="0,0,1,0"/> 
+    <Setter Property="CornerRadius" Value="0"/>
+  </Style>
+  
   <Style Selector="charts|CartesianChart.DemoChartWithNoOptions">
+    <Setter Property="BorderThickness" Value="0"/> 
+    <Setter Property="CornerRadius" Value="0"/>
+  </Style>
+  
+  <Style Selector="charts|PolarChart.DemoChartWithNoOptions">
+    <Setter Property="BorderThickness" Value="0"/> 
+    <Setter Property="CornerRadius" Value="0"/>
+  </Style>
+
+  <Style Selector="charts|SmithChart.DemoChartWithNoOptions">
     <Setter Property="BorderThickness" Value="0"/> 
     <Setter Property="CornerRadius" Value="0"/>
   </Style>

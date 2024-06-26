@@ -5,18 +5,11 @@
              xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
              xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
 			 xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
-             xmlns:localization="clr-namespace:Eremex.AvaloniaUI.Controls.Localization;assembly=Eremex.Avalonia.Controls"
              xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
              xmlns:aEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:views="clr-namespace:DemoCenter.Views"
-             xmlns:helpers="clr-namespace:DemoCenter.Helpers"
-             xmlns:data="clr-namespace:DemoCenter.ProductsData"
              mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="620"
              x:Class="DemoCenter.Views.MainView"
              x:DataType="vm:MainViewModel">
@@ -47,7 +40,7 @@
         </mx:BoolToObjectConverter>
     </UserControl.Resources>
     <UserControl.Styles>
-        <Style Selector="ContentControl.Bage">
+        <Style Selector="ContentControl.Badge">
             <Setter Property="CornerRadius" Value="2"/>
             <Setter Property="DockPanel.Dock" Value="Right"/>
             <Setter Property="Margin" Value="4,4,0,4"/>
@@ -85,8 +78,7 @@
                     <DataTemplate>
                         <DockPanel Margin="8,0,4,0" >
                             <ContentControl Content="Desktop only"
-                                            Classes="Bage"
-                                            IsVisible="{Binding !Row.ShowInWeb}"
+                                            Classes="Badge"
                                             Background="{DynamicResource Icons/Fill/Gray}"
                                             Foreground="{DynamicResource Icons/Outline/Gray}">
                                 <ContentControl.IsVisible>
@@ -97,13 +89,13 @@
                                 </ContentControl.IsVisible>
                             </ContentControl>
                             <ContentControl Content="Updated"
-                                            Classes="Bage"
-                                            IsVisible="{Binding Row.BageType, Converter={views:BageVisibilityConverter BageType=Updated}}"
+                                            Classes="Badge"
+                                            IsVisible="{Binding Row.BadgeType, Converter={views:BadgeVisibilityConverter BadgeType=Updated}}"
                                             Background="{DynamicResource Icons/Fill/Yellow}"
                                             Foreground="{DynamicResource Icons/Outline/Yellow}"/>
                             <ContentControl Content="New"
-                                            Classes="Bage"
-                                            IsVisible="{Binding Row.BageType, Converter={views:BageVisibilityConverter BageType=New}}"
+                                            Classes="Badge"
+                                            IsVisible="{Binding Row.BadgeType, Converter={views:BadgeVisibilityConverter BadgeType=New}}"
                                             Background="{DynamicResource Icons/Fill/Red}"
                                             Foreground="{DynamicResource Icons/Outline/Red}"/>
                             <TextBlock Text="{Binding Row.Name}"

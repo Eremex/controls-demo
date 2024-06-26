@@ -3,14 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxei="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Visuals;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
              xmlns:data="using:DemoCenter.DemoData"
              xmlns:view="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
@@ -28,7 +22,7 @@
 		<Grid RowDefinitions="Auto, 20, Auto" Margin="30" HorizontalAlignment="Center" Width="560">
 			<mxe:GroupBox Header="ComboBox Editor">
 				<Grid ColumnDefinitions="3*, 20, *" RowDefinitions="*, Auto">
-					<mxe:ComboBoxEditor x:Name="ComboBoxSelector" ItemsSource="{mxc:EnumItemsSource EnumType=data:GraphicPosition, ShowImages=True, ImageSize='32,32'}"
+					<mxe:ComboBoxEditor x:Name="ComboBoxSelector" ItemsSource="{mx:EnumItemsSource EnumType=data:GraphicPosition, ShowImages=True, ImageSize='32,32'}"
 										EditorValue="{Binding GraphicPosition}" VerticalAlignment="Center" Grid.RowSpan="2"/>
 					<Image Grid.Column="2" Width="96" Height="96" Source="{Binding SelectedItem.Image, ElementName=ComboBoxSelector}"/>
 					<Label Grid.Row="1" Grid.Column="2" Content="{Binding SelectedItem.Name, ElementName=ComboBoxSelector}" FontWeight="Bold" Classes="LayoutItem" HorizontalAlignment="Center"/>
@@ -37,7 +31,7 @@
 			<mxe:GroupBox Grid.Row="2" Header="Segmented Editor">
 				<Grid ColumnDefinitions="3*, 20, *" RowDefinitions="*, Auto">
 					<mxe:SegmentedEditor x:Name="SegmentedEditorSelector" EditorValue="{Binding GraphicView}"
-										 ItemsSource="{mxc:EnumItemsSource EnumType=data:GraphicView, ShowImages=True, ShowNames=False, ImageSize='32,32', NameToDescriptionConverter={view:EnumDescriptionConverter}}"
+										 ItemsSource="{mx:EnumItemsSource EnumType=data:GraphicView, ShowImages=True, ShowNames=False, ImageSize='32,32', NameToDescriptionConverter={view:EnumDescriptionConverter}}"
 										 VerticalAlignment="Center" Grid.RowSpan="2"/>
 					<Image Grid.Column="2" Width="96" Height="96" Source="{Binding SelectedItem.Image, ElementName=SegmentedEditorSelector}"/>
 					<Label Grid.Row="1" Grid.Column="2" Content="{Binding SelectedItem.Name, ElementName=SegmentedEditorSelector}" FontWeight="Bold" Classes="LayoutItem" HorizontalAlignment="Center"/>

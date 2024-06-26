@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="450"
              d:DesignWidth="800"
@@ -63,7 +63,7 @@
                     <mxe:CheckEditor x:Name="IsCollapsedSelector" Content="IsCollapsed" Classes="PropertyEditor"/>
                     <mxe:CheckEditor Grid.Row="1" x:Name="IsSplitterVisibleSelector" Content="Is Splitter Visible" IsChecked="True" Classes="PropertyEditor"/>
                     <Label Grid.Row="2" Content="Collapsed Panel" Classes="PropertyLabel"/>
-                    <mxe:ComboBoxEditor Grid.Row="3" EditorValue="{Binding CollapsedPanel, Mode=TwoWay}" ItemsSource="{mxc:EnumItemsSource EnumType=mxe:SplitContainerControlCollapsePanel}"
+                    <mxe:ComboBoxEditor Grid.Row="3" EditorValue="{Binding CollapsedPanel, Mode=TwoWay}" ItemsSource="{mx:EnumItemsSource EnumType=mxe:SplitContainerControlCollapsePanel}"
                                         Classes="PropertyEditor"/>
                 </Grid>
             </mxe:GroupBox>

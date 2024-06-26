@@ -13,3 +13,7 @@ The control's main features include:
 - Category Rows — Allow you to combine rows into expandable groups.
 - Tab Rows — Allow you to combine rows into a tabbed UI.
 - Search Panel — Helps a user quickly locate rows by names
+
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net/articles/propertygrid.html)

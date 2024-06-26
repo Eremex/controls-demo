@@ -25,3 +25,7 @@ The main features of the Toolbar&amp;Menu controls include:
     
 - Supported bar items: ButtonItem, CheckItem, TextItem, EditorItem, MenuItem, GroupItem, and CheckGroupItem.
 - Context menus — You can create context menus for external controls. The style settings of all Eremex context menus are consistent with other Eremex Toolbar&amp;Menu controls.
+
+## Documentation
+
+- [English Documentation](https://eremexcontrols.net/articles/toolbars-and-menus.html)

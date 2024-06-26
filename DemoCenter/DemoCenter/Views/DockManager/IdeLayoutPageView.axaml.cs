@@ -23,7 +23,7 @@ namespace DemoCenter.Views
 
         private void TreeListControlBase_OnNodeClick(object sender, TreeListNodeClickEventArgs e)
         {
-            if(e.ClickCount == 2 && e.Node.Content is SolutionFile solutionFile)
+            if(e.IsLeftButtonPressed && e.ClickCount == 2 && e.Node.Content is SolutionFile solutionFile)
             {
                 (DataContext as IdeLayoutPageViewModel)?.Open(solutionFile);
             }

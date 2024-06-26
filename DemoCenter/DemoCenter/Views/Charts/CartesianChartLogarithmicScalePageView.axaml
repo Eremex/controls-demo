@@ -1,31 +1,22 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mxc="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             x:Class="DemoCenter.Views.CartesianChartLogarithmicScalePageView">
-    <Grid ColumnDefinitions="* 250">
-        <mxc:CartesianChart Grid.Column="0" Classes="DemoChartWithNoOptions" x:Name="DemoControl">
-            <mxc:CartesianSeries DataAdapter="{Binding Data2}">
-                <mxc:CartesianLineSeriesView Color="#4F007E90" Thickness="1" ShowMarkers="False" />
-            </mxc:CartesianSeries>
-            <mxc:CartesianSeries DataAdapter="{Binding Data3}">
-                <mxc:CartesianLineSeriesView Color="#4F007E90" Thickness="1" ShowMarkers="False" />
-            </mxc:CartesianSeries>
-            <mxc:CartesianSeries DataAdapter="{Binding Data4}">
-                <mxc:CartesianLineSeriesView Color="#6F007E90" Thickness="1" ShowMarkers="False" />
-            </mxc:CartesianSeries>
-            <mxc:CartesianSeries DataAdapter="{Binding Data5}">
-                <mxc:CartesianLineSeriesView Color="#8F007E90" Thickness="1" ShowMarkers="False" />
-            </mxc:CartesianSeries>
-            <mxc:CartesianSeries DataAdapter="{Binding Data6}">
-                <mxc:CartesianLineSeriesView Color="#8F007E90" Thickness="1" ShowMarkers="False" />
-            </mxc:CartesianSeries>
-            <mxc:CartesianSeries DataAdapter="{Binding Data1}">
-                <mxc:CartesianLineSeriesView Color="#DF005F60" Thickness="1" ShowMarkers="False" />
-            </mxc:CartesianSeries>
-            <mxc:CartesianSeries DataAdapter="{Binding Data7}">
-                <mxc:CartesianLineSeriesView Color="#FF005F60" Thickness="2" ShowMarkers="False" />
-            </mxc:CartesianSeries>
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.CartesianChartLogarithmicScalePageView"
+             x:DataType="vm:CartesianChartLogarithmicScalePageViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* 250" RowDefinitions="Auto *">
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="12" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Raw Frequency Response</TextBlock>
+
+        <mxc:CartesianChart Grid.Column="0" Grid.Row="1" Classes="DemoChartWithNoOptions" x:Name="DemoControl" SeriesSource="{Binding Series}">
+            <mxc:CartesianChart.SeriesTemplate>
+                <DataTemplate x:DataType="vm:SeriesViewModel">
+                    <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
+                        <mxc:CartesianLineSeriesView Color="{Binding Color}" />
+                    </mxc:CartesianSeries>
+                </DataTemplate>
+            </mxc:CartesianChart.SeriesTemplate>
             
             <mxc:CartesianChart.AxesX>
                 <mxc:AxisX Title="Frequency">
@@ -42,7 +33,7 @@
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
 
-        <StackPanel Grid.Column="1">
+        <StackPanel Grid.Column="1" Grid.RowSpan="2">
             <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
                 <mxe:CheckEditor Content="Logarithmic X-Axis" IsChecked="{Binding LogarithmicX}" Classes="PropertyEditor"/>
             </mxe:GroupBox>

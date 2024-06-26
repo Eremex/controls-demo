@@ -27,6 +27,10 @@ namespace DemoCenter.ProductsData
                 new PageInfo(name: "Folder Browser", title: "Folder Browser",
                 description: "You can bind Tree List to a hierarchical data source, which returns child data through a collection property or special data selector. This demo shows how to create a selector that supplies the hierarchical structure of folders on your disk.",
                 viewModelGetter: () => new FolderBrowserPageViewModel()),
+
+                new PageInfo(name: "Multiple Node Selection", title: "Multiple Node Selection",
+                description: "The TreeList and TreeView controls support multiple node selection mode, which allows you and your user to select (highlight) multiple nodes at one time. Users can select multiple nodes with the mouse and keyboard. Click nodes while holding the CTRL and/or SHIFT key down for node selection.",
+                viewModelGetter: () => new TreeListMultipleSelectionPageViewModel(), badgeType: ProductBadgeType.New),                
             };
         }
     }

@@ -3,17 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              xmlns:data="using:DemoCenter.DemoData"
-             xmlns:view="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="800"
              d:DesignWidth="800"
@@ -55,8 +48,8 @@
             <Label Content="ButtonEditor" Grid.Column="3" Classes="EditorName"/>
             <mxe:ButtonEditor Grid.Row="1" Grid.Column="3" EditorValue="Capacitor" Classes="LayoutItem secondary">
                 <mxe:ButtonEditor.Buttons>
-                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{x:Static icons:Basic.Undo}"/>
-                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{x:Static icons:Basic.Redo}"/>
+                    <mxe:ButtonSettings ToolTip.Tip="Undo" Glyph="{x:Static mxi:Basic.Undo}"/>
+                    <mxe:ButtonSettings ToolTip.Tip="Redo" Glyph="{x:Static mxi:Basic.Redo}"/>
                 </mxe:ButtonEditor.Buttons>
             </mxe:ButtonEditor>
 
@@ -77,7 +70,7 @@
             <mxe:DateEditor Grid.Column="4" Grid.Row="5" DateTime="{Binding SelectedDate}" Classes="LayoutItem secondary"/>
 
             <Label Content="SegmentedEditor" Grid.Column="3" Grid.Row="6" Classes="EditorName"/>
-            <mxe:SegmentedEditor Grid.Column="3" Grid.Row="7" ItemsSource="{mxc:EnumItemsSource EnumType=data:GraphicView, ShowImages=True, ShowNames=False, ImageSize='16,16'}"
+            <mxe:SegmentedEditor Grid.Column="3" Grid.Row="7" ItemsSource="{mx:EnumItemsSource EnumType=data:GraphicView, ShowImages=True, ShowNames=False, ImageSize='16,16'}"
                                  EditorValue="{Binding GraphicView}"
                                  Classes="LayoutItem  secondary"/>
 

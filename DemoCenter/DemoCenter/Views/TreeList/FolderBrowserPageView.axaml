@@ -3,17 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxei="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Visuals;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
 			 xmlns:views="using:DemoCenter.Views"
-             xmlns:data="using:DemoCenter.DemoData"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="450"
              d:DesignWidth="800"
@@ -25,9 +18,9 @@
 	</Design.DataContext>
 	<UserControl.Resources>
 		<views:FileSystemImageSelector x:Key="imageSelector" 
-									   ClosedFolderImage="{x:Static icons:Basic.Folder}" 
-									   OpenedFolderImage="{x:Static icons:Basic.Folder_Open}"
-									   FileImage="{x:Static icons:Basic.Doc}" />
+									   ClosedFolderImage="{x:Static mxi:Basic.Folder}" 
+									   OpenedFolderImage="{x:Static mxi:Basic.Folder_Open}"
+									   FileImage="{x:Static mxi:Basic.Doc}" />
 		<views:FileSystemItemChildrenSelector x:Key="childrenSelector" />
 	</UserControl.Resources>
 

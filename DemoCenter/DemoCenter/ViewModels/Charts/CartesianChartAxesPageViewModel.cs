@@ -1,30 +1,48 @@
 ﻿using System.Collections.ObjectModel;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
-using DemoCenter.ViewModels.DataAdapters;
-using Eremex.Avalonia.Charts;
+using Eremex.AvaloniaUI.Charts;
 
 namespace DemoCenter.ViewModels;
 
 public partial class CartesianChartAxesPageViewModel : ChartsPageViewModel
 {
+    static readonly Color Color1 = Color.FromArgb(255, 189, 20, 54);
+    static readonly Color Color2 = Color.FromArgb(255, 0, 120, 122);
+    
     static double Formula1(double argument) => Math.Pow(argument, 2);
     static double Formula2(double argument) => Math.Pow(argument, 1.7);
 
-    [ObservableProperty] FormulaDataAdapter data1 = new(0, 1, 100, Formula1);
-    [ObservableProperty] FormulaDataAdapter data2 = new(0, 1, 200, Formula2);
-    [ObservableProperty] private Color color1 = Color.FromArgb(255, 189, 20, 54);
-    [ObservableProperty] Color color2 = Color.FromArgb(255, 0, 120, 122);
-    [ObservableProperty] AxisViewModel axisX1 = new() { Title = "First Axis X", ShowInterlacing = true, ShowMajorGridlines = true, ShowMinorGridlines = true };
-    [ObservableProperty] AxisViewModel axisX2 = new() { Title = "Second Axis X", Position = AxisPosition.Far };
-    [ObservableProperty] AxisViewModel axisY1 = new() { Title = "First Axis Y", ShowInterlacing = true, ShowMajorGridlines = true, ShowMinorGridlines = true };
-    [ObservableProperty] AxisViewModel axisY2 = new() { Title = "Second Axis Y", Position = AxisPosition.Far };
     [ObservableProperty] AxisViewModel selectedAxis;
-    [ObservableProperty] ObservableCollection<AxisViewModel> axes;
+    [ObservableProperty] ObservableCollection<AxisViewModel> axesX = new()
+    {
+        new AxisViewModel { Key = "1", Title = "First Axis X", Color = Color1, ShowInterlacing = true, ShowMajorGridlines = true, ShowMinorGridlines = true },
+        new AxisViewModel { Key = "2", Title = "Second Axis X", Color = Color2, Position = AxisPosition.Far }
+    };
+    [ObservableProperty] ObservableCollection<AxisViewModel> axesY = new()
+    {
+        new AxisViewModel { Key = "1", Title = "First Axis Y", Color = Color1, ShowInterlacing = true, ShowMajorGridlines = true, ShowMinorGridlines = true },
+        new AxisViewModel { Key = "2", Title = "Second Axis Y", Color = Color2, Position = AxisPosition.Far }
+    };
+    [ObservableProperty] ObservableCollection<SeriesViewModel> series = new()
+    {
+        new SeriesViewModel { Color = Color1, AxisXKey = "1", AxisYKey = "1", DataAdapter = new FormulaDataAdapter(0, 1, 100, Formula1)},
+        new SeriesViewModel { Color = Color2, AxisXKey = "2", AxisYKey = "2", DataAdapter = new FormulaDataAdapter(0, 1, 200, Formula2)},
+    };
+
+    public IEnumerable<AxisViewModel> Axes
+    {
+        get
+        {
+            foreach (var axis in AxesX)
+                yield return axis;
+            foreach (var axis in AxesY)
+                yield return axis;
+        }
+    }
 
     public CartesianChartAxesPageViewModel()
     {
-        SelectedAxis = AxisX1;
-        Axes = new ObservableCollection<AxisViewModel>() { AxisX1, AxisX2, AxisY1, AxisY2 };
+        SelectedAxis = AxesX.First();
     }
 }

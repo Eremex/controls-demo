@@ -3,16 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxtl="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxpg="clr-namespace:Eremex.AvaloniaUI.Controls.PropertyGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxdg="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxb="clr-namespace:Eremex.AvaloniaUI.Controls.Bars;assembly=Eremex.Avalonia.Controls"
-             xmlns:mxu="clr-namespace:Eremex.AvaloniaUI.Controls.Utils;assembly=Eremex.Avalonia.Controls"
-             xmlns:icons="clr-namespace:Eremex.Avalonia.Icons;assembly=Eremex.Avalonia.Icons"
-             xmlns:data="using:DemoCenter.DemoData"
-             xmlns:view="using:DemoCenter.Views"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="700"
              d:DesignWidth="800"
@@ -33,24 +26,24 @@
                         <mxb:ToolbarMenuItem Header="Options" Alignment="Far"/>
                     </mxb:Toolbar>
                     <mxb:Toolbar x:Name="FileToolbar" ShowCustomizationButton="False" AllowDragToolbar="False" StretchToolbar="True">
-                        <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static icons:Basic.Doc_Add}" GlyphSize="48,48"/>
-                        <mxb:ToolbarEditorItem>
-                            <mxb:ToolbarEditorItem.Editor>
-                                <mxe:ButtonEditor MinWidth="200" HorizontalContentAlignment="Center" EditorValue="Editor item"/>
-                            </mxb:ToolbarEditorItem.Editor>
+                        <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static mxi:Basic.Doc_Add}" GlyphSize="48,48"/>
+                        <mxb:ToolbarEditorItem EditorWidth="200" EditorValue="Editor item">
+                            <mxb:ToolbarEditorItem.EditorProperties>
+                                <mxe:ButtonEditorProperties HorizontalContentAlignment="Center"/>
+                            </mxb:ToolbarEditorItem.EditorProperties>
                         </mxb:ToolbarEditorItem>
 
                         <mxb:ToolbarButtonItem x:Name="ButtonDropDownItem"
                                                Header="Save"
-                                               Glyph="{x:Static icons:Basic.Save}" GlyphSize="48,48">
+                                               Glyph="{x:Static mxi:Basic.Save}" GlyphSize="48,48">
                             <mxb:ToolbarButtonItem.DropDownControl>
                                 <mxb:PopupMenu>
-                                    <mxb:ToolbarButtonItem Header="Save All" Glyph="{x:Static icons:Basic.Save_All}" GlyphSize="32,32"/>
-                                    <mxb:ToolbarButtonItem Header="Save 3D model" Glyph="{x:Static icons:Basic.Save}" GlyphSize="32,32"/>
+                                    <mxb:ToolbarButtonItem Header="Save All" Glyph="{x:Static mxi:Basic.Save_All}" GlyphSize="32,32"/>
+                                    <mxb:ToolbarButtonItem Header="Save 3D model" Glyph="{x:Static mxi:Basic.Save}" GlyphSize="32,32"/>
                                 </mxb:PopupMenu>
                             </mxb:ToolbarButtonItem.DropDownControl>
                         </mxb:ToolbarButtonItem>
-                        <mxb:ToolbarButtonItem Header="Clear" Glyph="{x:Static icons:Basic.Table_Clear}" GlyphSize="48,48"/>
+                        <mxb:ToolbarButtonItem Header="Clear" Glyph="{x:Static mxi:Basic.Table_Clear}" GlyphSize="48,48"/>
                     </mxb:Toolbar>
                 </mxb:ToolbarContainerControl>           
                 <mxb:ToolbarContainerControl Grid.Row="1" DockType="Left"/>
@@ -61,7 +54,7 @@
                 <mxb:ToolbarContainerControl Grid.Row="2" Grid.ColumnSpan="3" DockType="Bottom">
                     <mxb:Toolbar DisplayMode="StatusBar" x:Name="StatusBar" ShowCustomizationButton="False">
                         <mxb:ToolbarTextItem ShowBorder="False"
-                         Glyph="{x:Static icons:Basic.Info}"
+                         Glyph="{x:Static mxi:Basic.Info}"
                          GlyphSize="32,32"/>
                         <mxb:ToolbarTextItem Header="Status Bar" ShowBorder="False" Alignment="Far"/>
                     </mxb:Toolbar>

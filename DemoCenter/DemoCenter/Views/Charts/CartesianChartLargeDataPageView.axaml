@@ -1,20 +1,23 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mxc="clr-namespace:Eremex.Avalonia.Charts;assembly=Eremex.Avalonia.Charts"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianChartLargeDataPageView"
-             xmlns:vm="clr-namespace:DemoCenter.ViewModels">
+             x:DataType="vm:CartesianChartLargeDataPageViewModel"
+             x:CompileBindings="True">
     <Grid RowDefinitions="Auto Auto *">
         <TextBlock Grid.Row="0" Margin="12, 12, 12, 0" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Large data</TextBlock>
         <TextBlock Grid.Row="1" Margin="12, 4, 12, 12" HorizontalAlignment="Center" FontSize="14">2 series with 1 million points each</TextBlock>
         
-        <mxc:CartesianChart Grid.Row="2" Classes="DemoChartWithNoOptions" x:Name="DemoControl">
-            <mxc:CartesianSeries DataAdapter="{Binding Data1}">
-                <mxc:CartesianLineSeriesView Color="#BD1436" />
-            </mxc:CartesianSeries>
-            <mxc:CartesianSeries DataAdapter="{Binding Data2}">
-                <mxc:CartesianLineSeriesView Color="#00787A" />
-            </mxc:CartesianSeries>
-            
+        <mxc:CartesianChart Grid.Row="2" Classes="DemoChartWithNoOptions" SeriesSource="{Binding Series}" x:Name="DemoControl">
+            <mxc:CartesianChart.SeriesTemplate>
+                <DataTemplate x:DataType="vm:SeriesViewModel">
+                    <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
+                        <mxc:CartesianLineSeriesView Color="{Binding Color}" />
+                    </mxc:CartesianSeries>
+                </DataTemplate>
+            </mxc:CartesianChart.SeriesTemplate>
+
             <mxc:CartesianChart.AxesX>
                 <mxc:AxisX ShowTitle="False" />
             </mxc:CartesianChart.AxesX>

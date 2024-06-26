@@ -18,18 +18,12 @@ namespace DemoCenter;
 
 public partial class App : Application
 {
-    private IStyle lightTheme;
-    private IStyle darkTheme;
 
     public static bool IsWebApp { get; private set; }
 
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
-
-        lightTheme = (IStyle)Resources["EremexLightTheme"];
-        darkTheme = (IStyle)Resources["EremexDarkTheme"];
-
         UpdatePalette(PaletteType.White);
     }
 
@@ -59,12 +53,10 @@ public partial class App : Application
         if (newPalette == PaletteType.White) 
         { 
             RequestedThemeVariant = ThemeVariant.Light;
-            SetPaletteStyle(darkTheme, lightTheme);
         }
         else if(newPalette == PaletteType.Black)
         {
             RequestedThemeVariant = ThemeVariant.Dark;
-            SetPaletteStyle(lightTheme, darkTheme);
         }            
     }
 
@@ -87,10 +79,10 @@ public partial class App : Application
     {
         SetCultureInfo();
     }
+
     private static void SetCultureInfo()
     {
         var cultureInfo = CultureInfo.GetCultureInfo("en-US");
-        Thread.CurrentThread.CurrentUICulture = cultureInfo;
         Thread.CurrentThread.CurrentCulture = cultureInfo;
     }
 }
