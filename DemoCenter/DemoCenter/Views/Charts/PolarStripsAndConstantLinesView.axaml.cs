@@ -18,7 +18,7 @@ public partial class PolarStripsAndConstantLinesView : UserControl
             return;
         
         var point = e.GetCurrentPoint(DemoControl);
-        var coords = DemoControl.ScreenToDiagram(point.Position);
+        var coords = DemoControl.ScreenPointToDiagramPoint(point.Position);
         if (coords.InsideViewport && coords.Argument.HasValue && coords.Value is not null)
         {
             if (point.Properties.IsLeftButtonPressed)

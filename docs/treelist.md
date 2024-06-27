@@ -39,4 +39,4 @@ TreeList-specific features include:
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/treelist.html)
+- [English Documentation](https://eremexcontrols.net/articles/controls/treelist.html)

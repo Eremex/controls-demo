@@ -9,7 +9,7 @@ The advanced controls - from Data Grid and Tree List to Charts and Docking UI - 
 
 The current repository contains the Demo project that allows you to get to test all the features of the Eremex Controls for Avalonia UI. The demo includes the full-functional version of the Eremex Controls Library, which you can use in your projects for evaluation purposes as long as you need. An unlicensed version of the Library displays trial messages. 
 
-Please [contact us](#contact-us) to find out how to get a licensed version of the Eremex Controls Library for Avalonia UI.
+Please [contact us](#contact-us) for information on licensing.
 
 [![Controls - Light Theme](docs/images/controls-light-sm.png)](docs/images/controls-light.png)
   
@@ -75,9 +75,9 @@ An efficient solution for browsing and editing properties of one or more objects
 
 ## Data Visualization Controls
 
-### Chart Control
+### Chart Controls
 
-Allows you to integrate the most popular interactive graphs into your application's UI.
+The `CartesianChart`, `PolarChart` and `SmithChart` controls allow you to integrate the most popular interactive graphs into your application's UI.
 
 ![thumb-chartcontrol](docs/images/thumb-chartcontrol.png) 
 
@@ -170,10 +170,10 @@ A collection of useful controls shipped with the Eremex Controls library allow y
 
 ## Themes
 
-The Eremex Avalonia Controls library includes two switchable paint themes that allow you to deliver interfaces with light and dark color palettes. The included themes are also applied to a set of standard Avalonia controls: Button, CalendarControl, CheckBox, Label, ListBox, ProgressBar, RadioButton, Slider, TextBox, and ToolTip.
+The Eremex Controls Library ships with the `Eremex.Avalonia.Themes.DeltaDesign` package that contains the 'DeltaDesign' paint theme for the controls. The 'DeltaDesign' paint theme supports two theme variants that help you deliver interfaces with the light and dark color palettes. The theme is also applied to a set of standard Avalonia controls: Button, CalendarControl, CheckBox, Label, ListBox, ProgressBar, RadioButton, Slider, TextBox, and ToolTip.
 
 
-| **Light Theme** | **Dark Theme** |
+| **DeltaDesign Light Theme** | **DeltaDesign Dark Theme** |
 |---|---|
 | ![thumb-lighttheme](docs/images/thumb-lighttheme.png) | ![thumb-darktheme](docs/images/thumb-darktheme.png) |
 | ![thumb-lighttheme2](docs/images/thumb-lighttheme2.png) | ![thumb-darktheme2](docs/images/thumb-darktheme2.png) |
@@ -182,22 +182,26 @@ The Eremex Avalonia Controls library includes two switchable paint themes that a
 
 ## Supported Operating Systems
 
-### Windows
+**Windows**
 
 - Windows 11
 - Windows 10
 
-### Linux
+**Linux**
 
 - Ubuntu
 - Debian
 
-### Russian Linux-based OSs
+**Russian Linux-based OSs**
 
 - [Astra Linux <img src="docs/images/os-logo-astra_linux.svg" height=23>](https://astralinux.ru) <sup>*</sup>
 - [RedOS <img src="docs/images/os-logo-RED_OS.png" height=23>](https://redos.red-soft.ru) <sup>*</sup>
 
 <sup>*</sup> Including OS editions optimized for the Elbrus CPU.
+
+**macOS**
+
+**WebAssembly**
 
 ## System Requirements
 

@@ -16,4 +16,4 @@ The control's main features include:
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/propertygrid.html)
+- [English Documentation](https://eremexcontrols.net/articles/controls/propertygrid.html)

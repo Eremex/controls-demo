@@ -16,7 +16,7 @@ namespace DemoCenter.ViewModels
 
         [ObservableProperty] DateTime? current;
         [ObservableProperty] DateTime? minimum;
-        [ObservableProperty] DateTime maximum;
+        [ObservableProperty] DateTime? maximum;
 
         [ObservableProperty] string[] formats = new[] { "d", "D", "MMMM dd" };
         [ObservableProperty] string selectedTextFormat;

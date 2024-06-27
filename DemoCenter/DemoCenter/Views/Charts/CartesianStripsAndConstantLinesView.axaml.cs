@@ -17,7 +17,7 @@ public partial class CartesianStripsAndConstantLinesView : UserControl
         var point = e.GetCurrentPoint(DemoControl);
         if (point.Properties.IsRightButtonPressed && ViewModel is not null)
         {
-            var coords = DemoControl.ScreenToDiagram(point.Position);
+            var coords = DemoControl.ScreenPointToDiagramPoint(point.Position);
             if (coords.InsideViewport)
             {
                 object argument = coords.AxesX.First().Value;

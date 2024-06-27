@@ -21,6 +21,14 @@
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Grid.ColumnSpan" Value="2"/>
     </Style>
+    <Style Selector="ContentControl.ContentViewer">
+        <Setter Property="Margin" Value="0,8,0,0"/>
+        <Setter Property="Padding" Value="8,0,8,0"/>
+        <Setter Property="MinHeight" Value="{StaticResource EditorMinHeight}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Outline/Neutral/Transparent/Medium}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
    <Style Selector="mxe|TextEditor.PropertyEditor, mxe|ComboBoxEditor.PropertyEditor, mxe|DateEditor.PropertyEditor, mxe|SpinEditor.PropertyEditor">
        <Setter Property="Margin" Value="0,4,0,0"/>
        <Setter Property="VerticalAlignment" Value="Center"/>

@@ -40,4 +40,4 @@ The Eremex Avalonia Controls library ships with many multi-purpose utility contr
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/utility-controls.html)
+- [English Documentation](https://eremexcontrols.net/articles/controls/utility-controls.html)
