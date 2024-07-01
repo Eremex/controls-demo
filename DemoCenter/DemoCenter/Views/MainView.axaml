@@ -129,12 +129,15 @@
             <Border Grid.Row="1" CornerRadius="6" BorderThickness="1" TextElement.FontSize="12" Margin="0,8,8,0" 
                     BorderBrush="{DynamicResource Outline/Neutral/On Secondary/Light}"
                     Background="{DynamicResource Fill/Neutral/Primary/Hover}">
-                <Grid RowDefinitions="*,*,*" ColumnDefinitions="2*, *" Margin="6">
+                <Grid RowDefinitions="*,*,*" ColumnDefinitions="3*, 2*" Margin="6">
                     <TextBlock Grid.ColumnSpan="2" Text="More resources" FontWeight="Bold"/>
                     <mxe:HyperlinkEditor Grid.Row="1" Text="Website" NavigationUrl="https://eremexcontrols.net" Classes="resourceLink"/>
                     <mxe:HyperlinkEditor Grid.Row="1" Grid.Column="1" Text="Support" NavigationUrl="https://t.me/emxControls" Classes="resourceLink"/>
                     <mxe:HyperlinkEditor Grid.Row="2" Text="Documentation" NavigationUrl="https://eremexcontrols.net" Classes="resourceLink"/>
-                    <mxe:HyperlinkEditor Grid.Column="1" Grid.Row="2" Text="Telegram" NavigationUrl="https://t.me/emxControls" Classes="resourceLink"/>
+                    <StackPanel Grid.Column="1" Grid.Row="2" Spacing="4" Orientation="Horizontal">
+                        <mxe:HyperlinkEditor Text="Telegram" NavigationUrl="https://t.me/emxControls" Classes="resourceLink"/>
+                        <mxe:HyperlinkEditor Grid.Column="2" Text="(En)" NavigationUrl="https://t.me/emxControlsEn" Classes="resourceLink"/>
+                    </StackPanel>
                 </Grid>
             </Border>
             <mx:MxTabControl Grid.Column="2" Grid.RowSpan="2" Padding="0">

@@ -23,12 +23,11 @@
                                 StartAngle="{Binding ElementName=SlStartAngle, Path=Value}">
                     <mxc:PolarAxisX.ConstantLineTemplate>
                         <DataTemplate x:DataType="vm:ConstantLineViewModel">
-                            <mxc:ConstantLine Color="#00787A" Title="{Binding Title}" ShowTitle="False" AxisValue="{Binding AxisValue}" />
+                            <mxc:ConstantLine Color="#00787A" Title="{Binding Title}" AxisValue="{Binding AxisValue}" />
                         </DataTemplate>
                     </mxc:PolarAxisX.ConstantLineTemplate>
                     <mxc:PolarAxisX.Strips>
-                        <mxc:Strip AxisValue1="0" AxisValue2="13" Color="#4043C927" />
-                        <mxc:Strip AxisValue1="347" AxisValue2="360" Color="#4043C927" />
+                        <mxc:Strip AxisValue1="-13" AxisValue2="13" Color="#4043C927" />
                     </mxc:PolarAxisX.Strips>
                 </mxc:PolarAxisX>
             </mxc:PolarChart.AxisX>
@@ -37,7 +36,7 @@
                 <mxc:PolarAxisY ConstantLinesSource="{Binding ConstantLinesY}">
                     <mxc:PolarAxisY.ConstantLineTemplate>
                         <DataTemplate x:DataType="vm:ConstantLineViewModel">
-                            <mxc:ConstantLine Color="#00787A" Title="{Binding Title}" ShowTitle="False" AxisValue="{Binding AxisValue}" />
+                            <mxc:ConstantLine Color="#00787A" Title="{Binding Title}" AxisValue="{Binding AxisValue}" />
                         </DataTemplate>
                     </mxc:PolarAxisY.ConstantLineTemplate>
                     <mxc:AxisY.Strips>

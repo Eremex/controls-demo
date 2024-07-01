@@ -1,10 +1,11 @@
 ﻿using Avalonia;
+using Eremex.AvaloniaUI.Charts;
 
 namespace DemoCenter.ViewModels.DataAdapters;
 
-public class SmithSampleDataAdapter : ScatterPointsDataAdapter
+public class SmithSampleDataAdapter : ScatterDataAdapter
 {
-    static List<Point> CreatePoints() => new List<Point>
+    static List<(double, double)> CreatePoints() => new()
     {
         new(4.0927416947323625, 5.039470338092902),
         new(3.92510559125759, 5.038444841265609),

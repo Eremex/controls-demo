@@ -9,12 +9,12 @@ public static class SmithChartGroupInfo
         return new List<PageInfo>
         {
             new (name: "Point", title: "Point Series View",
-                description: "TODO",
+                description: "This example demonstrates the Point series view, which allows you to plot individual points on the Smith diagram.",
                 viewModelGetter: () => new SmithPointSeriesViewViewModel(),
                 ProductBadgeType.New),
             
             new (name: "Scatter Line", title: "Scatter Line Series View",
-                description: "TODO",
+                description: "The Scatter Line series view is useful when you need to connect points in the order in which they appear in the data series.",
                 viewModelGetter: () => new SmithLineSeriesViewViewModel(),
                 ProductBadgeType.New)
         };

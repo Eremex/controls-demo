@@ -17,7 +17,7 @@
         <mxc:CartesianChart.AxesX>
             <mxc:AxisX ShowTitle="False">
                 <mxc:AxisX.ScaleOptions>
-                    <mxc:DateTimeScaleOptions MeasureUnit="Day" GridSpacingUnit="Day" GridSpacingFactor="1" />
+                    <mxc:DateTimeScaleOptions MeasureUnit="Day" />
                 </mxc:AxisX.ScaleOptions>
             </mxc:AxisX>
         </mxc:CartesianChart.AxesX>
