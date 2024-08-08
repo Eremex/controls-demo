@@ -18,13 +18,11 @@ namespace DemoCenter;
 
 public partial class App : Application
 {
-
     public static bool IsWebApp { get; private set; }
 
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
-        UpdatePalette(PaletteType.White);
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -33,7 +31,7 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(RequestedThemeVariant)
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
@@ -41,23 +39,11 @@ public partial class App : Application
             IsWebApp = true;
             singleViewPlatform.MainView = new MainView
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(RequestedThemeVariant)
             };
         }
-
+        
         base.OnFrameworkInitializationCompleted();
-    }
-
-    public void UpdatePalette(PaletteType newPalette)
-    {
-        if (newPalette == PaletteType.White) 
-        { 
-            RequestedThemeVariant = ThemeVariant.Light;
-        }
-        else if(newPalette == PaletteType.Black)
-        {
-            RequestedThemeVariant = ThemeVariant.Dark;
-        }            
     }
 
     private static string[] embeddedResources;

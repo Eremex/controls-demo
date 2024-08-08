@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.SmithPointSeriesViewView"
              x:DataType="vm:SmithPointSeriesViewViewModel"
-             x:CompileBindings="True">
+>
     <Grid ColumnDefinitions="* 250">
         <mxc:SmithChart Grid.Column="0" Classes="DemoChart" SeriesSource="{Binding Series}" x:Name="DemoControl">
             <mxc:SmithChart.SeriesTemplate>

@@ -1,0 +1,8 @@
+<Window
+xmlns="https://github.com/avaloniaui"
+xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
+>
+	<Grid>
+		<Image Source="@@NAME@@" />
+	</Grid>
+</Window>

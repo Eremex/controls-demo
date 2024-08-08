@@ -10,7 +10,6 @@
              xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             x:CompileBindings="False"
              x:DataType="vm:TextEditingPageViewModel"
              mc:Ignorable="d">
 	<Design.DataContext>

@@ -18,12 +18,16 @@
     <LangVersion>10.0</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <AvaloniaVersion>11.0.10</AvaloniaVersion>
+    <AvaloniaVersion>11.1.1</AvaloniaVersion>
     <AvaloniaSvgSkiaVersion>11.0.0.18</AvaloniaSvgSkiaVersion>
     <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
-    <EMXControlsVersion>1.0.33</EMXControlsVersion>
+    <EMXControlsVersion>1.0.69</EMXControlsVersion>
     <Version>$(EMXControlsVersion)</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+	<TrimmerRootAssembly Include="DemoCenter" />
+  </ItemGroup>
 
   <PropertyGroup>
     <NoWarn>NU1803;</NoWarn>

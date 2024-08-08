@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianStepAreaSeriesViewView"
              x:DataType="vm:CartesianStepAreaSeriesViewViewModel"
-             x:CompileBindings="True">
+>
     <Grid ColumnDefinitions="* 250">
         <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" SeriesSource="{Binding Series}" x:Name="DemoControl">
             <mxc:CartesianChart.SeriesTemplate>

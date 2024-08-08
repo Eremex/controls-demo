@@ -10,7 +10,6 @@
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="600"
              d:DesignWidth="800"
-             x:CompileBindings="False"
              x:DataType="vm:EnumSourcePageViewModel"
              mc:Ignorable="d">
 	<Design.DataContext>

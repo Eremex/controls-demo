@@ -9,7 +9,6 @@
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="800"
              d:DesignWidth="800"
-             x:CompileBindings="False"
              x:DataType="vm:ComboBoxEditorPageViewModel"
              mc:Ignorable="d">
     <Design.DataContext>

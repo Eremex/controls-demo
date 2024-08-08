@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianSideBySideBarSeriesViewView"
              x:DataType="vm:CartesianSideBySideBarSeriesViewViewModel"
-             x:CompileBindings="True">
+>
     <mxc:CartesianChart Classes="DemoChartWithNoOptions" SeriesSource="{Binding Series}" x:Name="DemoControl">
         <mxc:CartesianChart.SeriesTemplate>
             <DataTemplate x:DataType="vm:SeriesViewModel">

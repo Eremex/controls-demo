@@ -12,7 +12,6 @@
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="450"
              d:DesignWidth="900"
-             x:CompileBindings="False"
              x:DataType="vm:TreeListMultipleSelectionPageViewModel"
              mc:Ignorable="d">
 	<Design.DataContext>

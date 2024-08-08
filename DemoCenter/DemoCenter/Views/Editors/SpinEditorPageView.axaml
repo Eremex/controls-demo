@@ -9,7 +9,6 @@
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="500"
              d:DesignWidth="800"
-             x:CompileBindings="True"
              x:DataType="vm:SpinEditorPageViewModel"
              mc:Ignorable="d">
 	<Design.DataContext>

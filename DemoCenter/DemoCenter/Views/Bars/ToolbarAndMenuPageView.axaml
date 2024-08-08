@@ -12,7 +12,6 @@
              xmlns:helpers="clr-namespace:DemoCenter.Views.Bars.Helpers;assembly=DemoCenter"
              d:DesignHeight="640"
              d:DesignWidth="800"
-             x:CompileBindings="False"
              x:Name="Page"
              x:DataType="vm:ToolbarAndMenuPageViewModel"
              mc:Ignorable="d">
@@ -90,8 +89,8 @@
                             </mxb:ToolbarMenuItem>
                             
                             <mxb:ToolbarMenuItem Header="Format" Category="Format">
-                                <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Binoculars}" Category="Font"/>
-                                <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Binoculars}" Category="Font"/>
+                                <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Font_Bold}" Category="Font"/>
+                                <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Font_Italic}" Category="Font"/>
                             </mxb:ToolbarMenuItem>
 
                             <mxb:ToolbarMenuItem Alignment="Far" Header="Options" Category="Options">
@@ -114,8 +113,8 @@
                         </mxb:Toolbar>
                         
                         <mxb:Toolbar x:Name="FontToolbar" ToolbarName="Font" ShowCustomizationButton="False">
-                            <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Binoculars}" Category="Font"/>
-                            <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Binoculars}" Category="Font"/>
+                            <mxb:ToolbarCheckItem Header="Bold" IsChecked="{Binding #textBox.FontWeight, Converter={helpers:BoolToFontWeightConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Font_Bold}" Category="Font"/>
+                            <mxb:ToolbarCheckItem Header="Italic" IsChecked="{Binding #textBox.FontStyle, Converter={helpers:BoolToFontStyleConverter}, Mode=TwoWay}" Glyph="{x:Static mxi:Basic.Font_Italic}" Category="Font"/>
                             <!--Does not work with TextBox-->
 
                             <mxb:ToolbarEditorItem Header="Font Color:" Category="Font" EditorWidth="150" EditorValue="{Binding #textBox.Foreground, Converter={helpers:ColorToBrushConverter}, Mode=TwoWay}">

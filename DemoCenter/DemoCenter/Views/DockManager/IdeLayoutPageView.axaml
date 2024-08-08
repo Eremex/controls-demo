@@ -14,7 +14,6 @@
              xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              d:DesignHeight="450"
              d:DesignWidth="900"
-             x:CompileBindings="False"
              x:DataType="vm:IdeLayoutPageViewModel"
              mc:Ignorable="d">
 	<Design.DataContext>
@@ -106,13 +105,13 @@
 			                 BorderThickness="0" 
 			                 ItemsSource="{Binding Documents}"
 			                 ItemContentTemplate="{views:IdeLayoutDocumentContentTemplate}">
-				<mxd:DockManager.ItemContainerTemplate>
+				<mxd:DockManager.ItemTemplate>
 					<DataTemplate DataType="vm:IdeLayoutDocumentViewModel">
 						<mxd:DocumentPane Header="{Binding Header}"
 						                  IsActive="{Binding IsActive}"
 						                  CloseCommand="{Binding CloseCommand}"/>
 					</DataTemplate>
-				</mxd:DockManager.ItemContainerTemplate>
+				</mxd:DockManager.ItemTemplate>
 				<mxd:DockGroup>
 					<mxd:DockGroup Orientation="Vertical">
 						<mxd:DockGroup DockHeight="3*">

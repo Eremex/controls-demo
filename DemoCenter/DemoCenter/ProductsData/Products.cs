@@ -18,6 +18,7 @@ namespace DemoCenter.ProductsData
             new GroupInfo("Property Grid", "Property Grid", "Property Grid description", () => new PropertyGridGroupViewModel(), PropertyGridGroupInfo.Create()),
             new GroupInfo("Common Controls", "Common Controls", "Common Controls description", () => new CommonControlsGroupViewModel(), CommonControlsGroupInfo.Create()),
             new GroupInfo("Standard Controls", "Standard Controls", "Standard Controls description", () => new StandardControlsGroupViewModel(), StandardControlsGroupInfo.Create()),
+	    new GroupInfo("Tools", "Tools", "Developer Tools", () => new DeveloperToolsGroupViewModel(), DeveloperToolsGroupInfo.Create()),
         };
 
         public static List<ProductInfoBase> GetOrCreate() => products ??= CreateProducts();

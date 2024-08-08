@@ -10,7 +10,6 @@
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="640"
              d:DesignWidth="850"
-             x:CompileBindings="False"
              x:DataType="vm:BarItemsPageViewModel"
              mc:Ignorable="d">
     <Design.DataContext>

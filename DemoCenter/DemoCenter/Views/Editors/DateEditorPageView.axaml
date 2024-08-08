@@ -7,7 +7,6 @@
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="550"
              d:DesignWidth="1000"
-             x:CompileBindings="False"
              x:DataType="vm:DateEditorPageViewModel"
              mc:Ignorable="d">
 	<Design.DataContext>

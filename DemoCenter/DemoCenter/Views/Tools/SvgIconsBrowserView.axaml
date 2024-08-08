@@ -1,0 +1,131 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="clr-namespace:Eremex.AvaloniaUI.Controls.Editors;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:icons="clr-namespace:Eremex.AvaloniaUI.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:res="clr-namespace:DemoCenter.Views.Resources"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mxlv="https://schemas.eremexcontrols.net/avalonia/listview"
+             xmlns:aEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.SvgIconsBrowserView">
+    <UserControl.Styles>
+        <Style Selector="mxlv|ListViewItemControl.Detail/template/Rectangle#PART_Border">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="RadiusX" Value="0"/>
+            <Setter Property="RadiusY" Value="0"/>
+        </Style>
+        
+        <Style Selector="Border.SimpleBorder">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Outline/Neutral/Transparent/Light}"/>
+            <Setter Property="Margin" Value="0,6,0,0"/>
+        </Style>
+        
+        <Style Selector="GridSplitter.SplitContainerControlSplitter/template/Border#PART_SplitterBorder">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        
+        <Style Selector="Border.IconPathBorder">
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Outline/Neutral/Transparent/Light}" />
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="2, 2, 0, 2"/>
+            <Setter Property="Background" Value="{DynamicResource Fill/Neutral/Secondary/Enabled}"/>
+            <Setter Property="Cursor" Value="IBeam"/>
+        </Style>
+        
+        <Style Selector="TextBlock.IconPath">
+            <Setter Property="IsHitTestVisible" Value="False"/>
+            <Setter Property="Padding" Value="4, 4"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="IBeam"/>
+        </Style>
+        
+        <Style Selector="mxe|ButtonEditor.SearchText">
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        
+    </UserControl.Styles>
+    
+    <Design.DataContext>
+        <vm:SvgIconsBrowserViewModel/>
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto, *" Margin="12">
+        <mxe:ButtonEditor Width="250" Classes="SearchText" EditorValue="{Binding SearchText}" NullValueButtonPosition="EditorBox">
+            <mxe:ButtonEditor.Buttons>
+                <mxe:ButtonSettings Glyph="{x:Static icons:Basic.Search}" BorderBrush="Transparent" Background="Transparent" BorderThickness="0" IsVisible="{Binding !IsClearCommandVisible}" IsEnabled="False"/>
+            </mxe:ButtonEditor.Buttons>
+        </mxe:ButtonEditor>
+        <Grid Grid.Row="1" RowDefinitions="*, Auto">
+            <mxe:SplitContainerControl Orientation="Horizontal" Panel1Length="30*" Panel2Length="70*">
+                <mxe:SplitContainerControl.Panel1>
+                    <Grid RowDefinitions="Auto, *">
+                        <Label Content="{x:Static res:SvgIconsBrowserViewResources.CategoriesCaption}"/>
+                        <Border Grid.Row="1" Classes="SimpleBorder">
+                            <mxlv:ListViewControl ItemLayoutMode="Stack" ItemHeight="28" 
+                                                 ItemClass="Detail" 
+                                                 ItemsSource="{Binding Categories}" 
+                                                 FocusedItem="{Binding FocusedCategory, Mode=TwoWay}">
+                                <mxlv:ListViewControl.SortInfo>
+                                    <mxlv:ListViewSortInfo FieldName="DisplayName"/>
+                                </mxlv:ListViewControl.SortInfo>
+                                <mxlv:ListViewControl.ItemTemplate>
+                                    <DataTemplate DataType="vm:SvgIconCategoryViewModel">
+                                        <Grid ColumnDefinitions="Auto, *">
+                                            <CheckBox IsChecked="{Binding IsChecked}" Margin="0,0,4,0" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding DisplayName}" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </mxlv:ListViewControl.ItemTemplate>
+                            </mxlv:ListViewControl>
+                        </Border>
+                    </Grid>
+                </mxe:SplitContainerControl.Panel1>
+                <mxe:SplitContainerControl.Panel2>
+                    <Grid RowDefinitions="Auto, *">
+                        <Label Content=" "/>
+                        <Border Grid.Row="1" Classes="SimpleBorder">
+                            <mxlv:ListViewControl
+                                x:Name="IconsListControl"
+                                                 GroupClass="Icon"
+                                                 ItemsSource="{Binding Items}"
+                                                 FocusedItem="{Binding FocusedItem, Mode=TwoWay}"
+                                                 SearchText="{Binding SearchText}"
+                                                 FilterItem="ListViewControl_OnFilterItem"
+                                                 GroupCount="1">
+                                <mxlv:ListViewControl.SortInfo>
+                                    <mxlv:ListViewSortInfo FieldName="CategoryName"/>
+                                </mxlv:ListViewControl.SortInfo>
+                                <mxlv:ListViewControl.DataTemplates>
+                                    <DataTemplate DataType="vm:SvgIconViewModel">
+                                        <Image Width="32" Height="32" Margin="16" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Icon}" ToolTip.Tip="{Binding Path}"/>
+                                    </DataTemplate>
+                                </mxlv:ListViewControl.DataTemplates>
+                            </mxlv:ListViewControl>
+                        </Border>
+                    </Grid>
+                </mxe:SplitContainerControl.Panel2>
+            </mxe:SplitContainerControl>
+			<Grid Grid.Row="1" IsVisible="{Binding HintVisible}">
+				<mx:MxTabControl MinHeight="250">
+					<mx:MxTabControl.Items>
+						<mx:MxTabItem Header="XAML">
+							<aEdit:TextEditor IsReadOnly="True" WordWrap="True" Name="xamlCodeEditor" PointerPressed="OnAxamlPathEditorPointerPressed"/>
+						</mx:MxTabItem>
+						<mx:MxTabItem Header="C#">
+							<aEdit:TextEditor IsReadOnly="True" WordWrap="True" Name="sharpCodeEditor" PointerPressed="OnPathEditorPointerPressed" />
+						</mx:MxTabItem>
+					</mx:MxTabControl.Items>
+				</mx:MxTabControl>
+			</Grid>
+        </Grid>
+    </Grid>
+    
+</UserControl>

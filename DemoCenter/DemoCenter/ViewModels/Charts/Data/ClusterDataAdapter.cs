@@ -50,4 +50,6 @@ public class ClusterDataAdapter : ISeriesDataAdapter
     public DateTime GetDateTimeValue(int index, SeriesDataMemberType dataMember) => throw new NotImplementedException();
     public TimeSpan GetTimeSpanValue(int index, SeriesDataMemberType dataMember) => throw new NotImplementedException();
     public string GetQualitativeValue(int index, SeriesDataMemberType dataMember) => throw new NotImplementedException();
+
+    public string GetUnderlyingData(int index) => null;
 }

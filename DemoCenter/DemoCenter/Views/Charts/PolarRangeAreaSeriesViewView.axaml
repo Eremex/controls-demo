@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.PolarRangeAreaSeriesViewView"
              x:DataType="vm:PolarRangeAreaSeriesViewViewModel"
-             x:CompileBindings="True">
+>
     <Grid ColumnDefinitions="* 250">
         <mxc:PolarChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl">
             <mxc:PolarSeries DataAdapter="{Binding DataAdapter}">

@@ -6,7 +6,7 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianChartAxesPageView"
              x:DataType="vm:CartesianChartAxesPageViewModel"
-             x:CompileBindings="True">
+>
     <Grid ColumnDefinitions="* 250">
         <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl"
                             SeriesSource="{Binding Series}" AxesXSource="{Binding AxesX}" AxesYSource="{Binding AxesY}">

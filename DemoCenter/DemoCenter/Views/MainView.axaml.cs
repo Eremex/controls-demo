@@ -9,6 +9,7 @@ using Avalonia.Data.Converters;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using Avalonia.Threading;
 using AvaloniaEdit.Highlighting;
 using DemoCenter.Helpers;
@@ -60,8 +61,8 @@ public partial class MainView : UserControl
 
     private void OnMainViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName == nameof(MainViewModel.SelectedPalette) && ViewModel?.SelectedPalette != null)
-            (Application.Current as App)?.UpdatePalette(ViewModel.SelectedPalette);
+        if (e.PropertyName == nameof(MainViewModel.SelectedThemeVariant) && ViewModel?.SelectedThemeVariant != null && Application.Current is App application)
+            application.RequestedThemeVariant = ViewModel.SelectedThemeVariant;
 
         else if(e.PropertyName == nameof(MainViewModel.SourceFile))
             UpdateDocument();
@@ -116,11 +117,11 @@ public partial class MainView : UserControl
     {
         if(e.Key == Key.Up)
         {
-            var currentIndex = ViewModel.flatProducts.IndexOf(ViewModel.CurrentProductItem);
-            if(ViewModel.flatProducts[--currentIndex] is GroupInfo)
+            var currentIndex = ViewModel.FlatProducts.IndexOf(ViewModel.CurrentProductItem);
+            if(ViewModel.FlatProducts[--currentIndex] is GroupInfo)
             {
                 if(--currentIndex > 0)
-                    ViewModel.CurrentProductItem = ViewModel.flatProducts[currentIndex];
+                    ViewModel.CurrentProductItem = ViewModel.FlatProducts[currentIndex];
                 e.Handled = true;
             }
         }
@@ -149,7 +150,7 @@ internal class PagesChildrenSelector : ITreeListChildrenSelector
     }
 }
 
-public class PaletteTypeToIconDataConverter : MarkupExtension, IMultiValueConverter
+public class ThemeVariantToIconDataConverter : MarkupExtension, IMultiValueConverter
 {
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
@@ -159,10 +160,10 @@ public class PaletteTypeToIconDataConverter : MarkupExtension, IMultiValueConver
     {
         if (values[0] == null || values[0] == AvaloniaProperty.UnsetValue || values.Count != 3)
             return null;
-        var type = (PaletteType)values[0]!;
-        if(type == PaletteType.White)
+        var variant = (ThemeVariant)values[0]!;
+        if(variant == ThemeVariant.Light)
             return values[1];
-        else if(type == PaletteType.Black)
+        else if(variant == ThemeVariant.Dark)
             return values[2];
         return null;
     }

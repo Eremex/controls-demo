@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianRangeAreaSeriesViewView"
              x:DataType="vm:CartesianRangeAreaSeriesViewViewModel"
-             x:CompileBindings="True">
+>
     <Grid ColumnDefinitions="* 250">
         <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl">
             <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">

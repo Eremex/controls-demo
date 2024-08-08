@@ -15,7 +15,6 @@
              xmlns:vm="using:DemoCenter.ViewModels"
              d:DesignHeight="700"
              d:DesignWidth="800"
-             x:CompileBindings="True"
              x:DataType="vm:BarsGroupViewModel"
              mc:Ignorable="d">
     <Design.DataContext>

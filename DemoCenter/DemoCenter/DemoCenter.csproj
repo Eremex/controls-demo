@@ -7,10 +7,14 @@
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
     <AvaloniaResource Include="DemoData\csv\**" />
+    <AvaloniaXaml Remove="Views\Tools\Templates\svgXamlExample.axaml" />
+    <Compile Remove="Views\Tools\Templates\svgCodeExample.cs" />
     <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Dark.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Light.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\CSharp-Highlight-Dark.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\CSharp-Highlight-Light.xshd" />
+    <Resource Include="Views\Tools\Templates\svgCodeExample.cs" />
+    <Resource Include="Views\Tools\Templates\svgXamlExample.axaml" />
     <None Remove="Resources\Axaml-Highlight-Dark.xshd" />
     <None Remove="Resources\Axaml-Highlight-Light.xshd" />
     <None Remove="Resources\CSharp-Highlight-Dark.xshd" />
@@ -21,7 +25,6 @@
     
   <ItemGroup>
     <PackageReference Include="Avalonia" />
-    <PackageReference Include="Avalonia.Themes.Fluent" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
     <PackageReference Include="Avalonia.ReactiveUI" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
@@ -126,6 +129,11 @@
     <Compile Update="Views\Charts\SmithLineSeriesViewView.axaml.cs">
       <DependentUpon>SmithLineSeriesViewView.axaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\SvgIconsBrowserViewResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SvgIconsBrowserViewResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 

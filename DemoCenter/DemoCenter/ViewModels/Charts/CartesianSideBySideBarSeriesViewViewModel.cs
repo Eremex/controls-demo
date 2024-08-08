@@ -22,7 +22,7 @@ public partial class CartesianSideBySideBarSeriesViewViewModel : ChartsPageViewM
             adapter2.Add(argument, random.NextDouble() * 100 - 30);
         }
         
-        series.Add(new SeriesViewModel { Color = Color.FromArgb(255, 189, 20, 54), DataAdapter = adapter1 });
-        series.Add(new SeriesViewModel { Color = Color.FromArgb(255, 0, 120, 122), DataAdapter = adapter2 });
+        series.Add(new SeriesViewModel { Color = Color.FromArgb(180, 189, 20, 54), DataAdapter = adapter1 });
+        series.Add(new SeriesViewModel { Color = Color.FromArgb(180, 0, 120, 122), DataAdapter = adapter2 });
     }
 }

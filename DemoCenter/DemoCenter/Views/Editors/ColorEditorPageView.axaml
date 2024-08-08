@@ -9,7 +9,6 @@
              xmlns:mxei="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Visuals;assembly=Eremex.Avalonia.Controls"
              d:DesignHeight="750"
              d:DesignWidth="900"
-             x:CompileBindings="True"
              x:DataType="vm:ColorEditorPageViewModel"
              mc:Ignorable="d">
     <Design.DataContext>

@@ -169,17 +169,17 @@
                 </mx:MxTabItem>
             </mx:MxTabControl>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="2">
-                <mxe:SegmentedEditor ItemsSource="{Binding Palettes}" Height="28" Width="56" 
+                <mxe:SegmentedEditor ItemsSource="{Binding ThemeVariants}" Height="28" Width="56" 
                                      Margin="0,-1,0,0"
-                                     ValueMember="PaletteType"
-                                     EditorValue="{Binding SelectedPalette}">
+                                     ValueMember="ThemeVariant"
+                                     EditorValue="{Binding SelectedThemeVariant}">
                     <mxe:SegmentedEditor.ItemTemplate>
                         <DataTemplate>
                             <PathIcon Width="16" Height="16" Foreground="{DynamicResource Text/Neutral/Secondary}"
-                                      ToolTip.Tip="{Binding PaletteTypeName}">
+                                      ToolTip.Tip="{Binding ThemeVariantName}">
                                 <PathIcon.Data>
-                                    <MultiBinding Converter="{views:PaletteTypeToIconDataConverter}">
-                                        <Binding Path="PaletteType"/>
+                                    <MultiBinding Converter="{views:ThemeVariantToIconDataConverter}">
+                                        <Binding Path="ThemeVariant"/>
                                         <DynamicResourceExtension ResourceKey="SunPath"/>
                                         <DynamicResourceExtension ResourceKey="MoonPath"/>
                                     </MultiBinding>

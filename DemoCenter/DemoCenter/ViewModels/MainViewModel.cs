@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Reflection;
+using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DemoCenter.ProductsData;
 using Eremex.AvaloniaUI.Controls.Common;
@@ -18,14 +19,14 @@ public partial class MainViewModel : ViewModelBase
     string title;
 
     [ObservableProperty]
-    List<PaletteTypeInfo> palettes;
+    List<ThemeVariantInfo> themeVariants;
 
     [ObservableProperty]
-    PaletteType selectedPalette;
+    ThemeVariant selectedThemeVariant;
 
     [ObservableProperty] 
     List<ProductInfoBase> products;
-    public List<ProductInfoBase> flatProducts = new List<ProductInfoBase>();
+    public List<ProductInfoBase> FlatProducts = new List<ProductInfoBase>();
 
     [ObservableProperty]
     ObservableCollection<string> sourceFiles;
@@ -43,23 +44,23 @@ public partial class MainViewModel : ViewModelBase
     
     private readonly string titlePrefix;
 
-    public MainViewModel()
+    public MainViewModel(ThemeVariant startupThemeVariant = null)
     {
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0";
         titlePrefix = $"Demo Center v.{version}";
         
-        Palettes = new List<PaletteTypeInfo>()
+        ThemeVariants = new List<ThemeVariantInfo>()
         {
-            new PaletteTypeInfo(PaletteType.White, "Light"),
-            new PaletteTypeInfo(PaletteType.Black, "Dark"),
+            new ThemeVariantInfo("Light", ThemeVariant.Light),
+            new ThemeVariantInfo("Dark", ThemeVariant.Dark),
         };
-        SelectedPalette = Palettes[0].PaletteType;
+        SelectedThemeVariant = startupThemeVariant == ThemeVariant.Dark ? ThemeVariant.Dark : ThemeVariant.Light;
         Products = ProductsData.Products.GetOrCreate();
-        CreateFlatCollection();
-        CurrentProductItem = flatProducts.FirstOrDefault(x => x is PageInfo && AllowDemoContent(x));
+        PopulateFlatCollection();
+        CurrentProductItem = FlatProducts.FirstOrDefault(x => x is PageInfo && AllowDemoContent(x));
     }
 
-    public void SelectProduct(string productName) => CurrentProductItem = flatProducts.FirstOrDefault(x => string.Equals(x.Name, productName));
+    public void SelectProduct(string productName) => CurrentProductItem = FlatProducts.FirstOrDefault(x => string.Equals(x.Name, productName));
 
     partial void OnCurrentProductItemChanged(ProductInfoBase value)
     {
@@ -105,27 +106,28 @@ public partial class MainViewModel : ViewModelBase
 
     private bool AllowDemoContent(ProductInfoBase product) => !App.IsWebApp || (product.ShowInWeb && GetGroupInfo(product) is { } group && group.ShowInWeb);
 
-    private void CreateFlatCollection()
+    private void PopulateFlatCollection()
     {
+        FlatProducts.Clear();
         foreach (var product in Products)
         {
-            flatProducts.Add(product);
+            FlatProducts.Add(product);
             if (product is GroupInfo productGroup)
                 foreach (var page in productGroup.Pages)
-                    flatProducts.Add(page);
+                    FlatProducts.Add(page);
         }
     }
 }
 
-public class PaletteTypeInfo
+public class ThemeVariantInfo
 {
-    public PaletteType PaletteType { get; set; }
+    public string ThemeVariantName { get; init; } 
 
-    public string PaletteTypeName { get; set; } 
+    public ThemeVariant ThemeVariant { get; init; }
 
-    public PaletteTypeInfo(PaletteType paletteType, string paletteTypeName)
+    public ThemeVariantInfo(string name, ThemeVariant themeVariant)
     {
-        PaletteType = paletteType;
-        PaletteTypeName = paletteTypeName;
+        ThemeVariantName = name;
+        ThemeVariant = themeVariant;
     }
 }

@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianChartLogarithmicScalePageView"
              x:DataType="vm:CartesianChartLogarithmicScalePageViewModel"
-             x:CompileBindings="True">
+>
     <Grid ColumnDefinitions="* 250" RowDefinitions="Auto *">
         <TextBlock Grid.Row="0" Grid.Column="0" Margin="12" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Raw Frequency Response</TextBlock>
 
