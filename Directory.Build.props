@@ -21,7 +21,7 @@
     <AvaloniaVersion>11.1.1</AvaloniaVersion>
     <AvaloniaSvgSkiaVersion>11.0.0.18</AvaloniaSvgSkiaVersion>
     <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
-    <EMXControlsVersion>1.0.74</EMXControlsVersion>
+    <EMXControlsVersion>1.0.88</EMXControlsVersion>
     <Version>$(EMXControlsVersion)</Version>
   </PropertyGroup>
 

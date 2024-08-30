@@ -272,6 +272,7 @@
 
     <Style Selector="mxe|GroupBox.PropertiesGroup">
         <Setter Property="Padding" Value="8,16,8,0"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>

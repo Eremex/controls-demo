@@ -26,7 +26,7 @@
                     <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="22" Padding="1">
                         <ContentPresenter Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
                     </Border>
-                    <Border CornerRadius="4" Margin="1, 2" IsHitTestVisible="False" Background="LightPink" Classes.highlight="{Binding $parent[mxb:Toolbar].(view:ToolbarAndMenuPageView.IsToolbarSelected)}" Opacity="0"/>
+                    <Border CornerRadius="4" Margin="1, 2" IsHitTestVisible="False" Background="LightPink" Classes.highlight="{Binding $parent[mxb:Toolbar].(view:ToolbarAndMenuPageView.IsToolbarSelected)}" Opacity="0" IsVisible="False"/>
                 </Grid>
             </ControlTemplate>
         </ResourceDictionary>
@@ -35,6 +35,9 @@
         <Style Selector="Border.highlight">
             <Style.Animations>
                 <Animation Duration="0:0:2" IterationCount="1">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="IsVisible" Value="True"/>
+                    </KeyFrame>
                     <KeyFrame Cue="20%">
                         <Setter Property="Opacity" Value="0.3"/>
                     </KeyFrame>
