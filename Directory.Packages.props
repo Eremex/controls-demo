@@ -46,6 +46,6 @@
     <PackageVersion Include="Serilog.Sinks.Console" Version="4.1.0" />
     <PackageVersion Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageVersion Include="Serilog.Sinks.XUnit" Version="3.0.5" />
-
+    <PackageVersion Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 </Project>

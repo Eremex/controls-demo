@@ -31,6 +31,7 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
 
     <PackageReference Include="CommunityToolkit.Mvvm" Version="$(CommunityToolkitMvvmVersion)" />
+    <PackageReference Include="System.Text.Json" />
     <PackageReference Include="Avalonia.Svg.Skia" />
     <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
     <PackageReference Include="SkiaSharp" Version="$(SkiaSharpVersion)" />
