@@ -1,0 +1,64 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx3d="clr-namespace:Eremex.AvaloniaUI.Controls3D;assembly=Eremex.Avalonia.Controls3D"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+
+             x:Class="DemoCenter.Views.Graphics3DControlOverviewView"
+             x:DataType="vm:Graphics3DControlOverviewViewModel">
+    <Grid ColumnDefinitions="* 250">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ModelsSource="{Binding Models}" Grid.Column="0">
+            <mx3d:Graphics3DControl.Gizmo>
+                <mx3d:Gizmo x:Name="Gizmo" />
+            </mx3d:Graphics3DControl.Gizmo>
+            <mx3d:Graphics3DControl.Materials>
+                <mx3d:SimplePbrMaterial Metallic="0.6" />
+            </mx3d:Graphics3DControl.Materials>
+        </mx3d:Graphics3DControl>
+        
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <mxe:CheckEditor Content="Multisampling" IsChecked="{Binding ElementName=DemoControl, Path=EnableMultisampling}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor  Content="Show Hit" IsChecked="{Binding ElementName=DemoControl, Path=ShowHitInfo}" Classes="PropertyEditor"/>
+                    <Label Content="Cull Mode" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mx3d:CullMode}"
+                                        EditorValue="{Binding ElementName=DemoControl, Path=CullMode}"
+                                        Classes="PropertyEditor"/>
+                    <Label Content="Composition Mode" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mx3d:CompositionMode}"
+                                        EditorValue="{Binding ElementName=DemoControl, Path=CompositionMode}"
+                                        Classes="PropertyEditor"/>
+                </StackPanel>
+            </mxe:GroupBox>
+            
+            <mxe:GroupBox Header="Axes and Grid"  Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <mxe:CheckEditor x:Name="ShowAxes" Content="Show Axes" IsChecked="{Binding ElementName=DemoControl, Path=ShowAxes}" Classes="PropertyEditor"/>
+                    <Label Content="Axes Thickness" Classes="PropertyLabel"/>
+                    <Slider Minimum="1" Maximum="10" Value="{Binding ElementName=DemoControl, Path=AxisThickness}" IsEnabled="{Binding ElementName=ShowAxes, Path=IsChecked}" />
+                    <mxe:CheckEditor x:Name="ShowGrid" Content="Show Grid" IsChecked="{Binding ElementName=DemoControl, Path=ShowGrid}" Classes="PropertyEditor"/>
+                    <Label Content="Grid Thickness" Classes="PropertyLabel"/>
+                    <Slider Minimum="1" Maximum="10" Value="{Binding ElementName=DemoControl, Path=GridThickness}" IsEnabled="{Binding ElementName=ShowGrid, Path=IsChecked}" />
+                </StackPanel>
+            </mxe:GroupBox>
+
+            <mxe:GroupBox Header="Gizmo" Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <mxe:CheckEditor Content="Show Gizmo" IsChecked="{Binding ElementName=Gizmo, Path=IsVisible}" Classes="PropertyEditor"/>
+                    <Label Content="Horizontal Alignment" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=HorizontalAlignment}"
+                                        EditorValue="{Binding ElementName=Gizmo, Path=HorizontalAlignment}"
+                                        Classes="PropertyEditor"
+                                        IsEnabled="{Binding ElementName=Gizmo, Path=IsVisible}" />
+                    <Label Content="Vertical Alignment" Classes="PropertyLabel"/>
+                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=VerticalAlignment}"
+                                        EditorValue="{Binding ElementName=Gizmo, Path=VerticalAlignment}"
+                                        Classes="PropertyEditor"
+                                        IsEnabled="{Binding ElementName=Gizmo, Path=IsVisible}" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

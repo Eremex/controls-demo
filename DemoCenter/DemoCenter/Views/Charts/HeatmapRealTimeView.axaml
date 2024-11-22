@@ -1,0 +1,53 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.HeatmapRealTimeView"
+             x:DataType="vm:HeatmapRealTimeViewModel"
+             x:CompileBindings="True">
+    <UserControl.Resources>
+        <Thickness x:Key="DiagramMargin">100 8 20 8</Thickness>
+    </UserControl.Resources>
+    <Grid RowDefinitions="* 3*">
+        <mxc:CartesianChart Grid.Row="0" Classes="DemoChart" DiagramMargin="{StaticResource DiagramMargin}">
+            <mxc:CartesianSeries SeriesName="Signal" DataAdapter="{Binding SignalAdapter}">
+                <mxc:CartesianAreaSeriesView Color="#BB268F" Thickness="2" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianChart.CrosshairOptions>
+                <mxc:CrosshairOptions ShowValueLine="False" ShowValueLabel="False" />
+            </mxc:CartesianChart.CrosshairOptions>
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX Title="Frequency" EnableZooming="False" EnableScrolling="False">
+                    <mxc:AxisXRange MinSideMargin="0" MaxSideMargin="0" />
+                    <mxc:AxisX.ScaleOptions>
+                        <mxc:NumericScaleOptions GridSpacing="100" />
+                    </mxc:AxisX.ScaleOptions>
+                </mxc:AxisX>
+            </mxc:CartesianChart.AxesX>
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY Title="Amplitude" EnableZooming="False" EnableScrolling="False">
+                    <mxc:AxisYRange WholeMin="0" WholeMax="100" AutoCorrectWholeRange="False" />
+                </mxc:AxisY>
+            </mxc:CartesianChart.AxesY>
+        </mxc:CartesianChart>
+
+        <mxc:Heatmap Classes="DemoChart" Grid.Row="1" x:Name="DemoControl" DataAdapter="{Binding WaterfallAdapter}" DiagramMargin="{StaticResource DiagramMargin}">
+            <mxc:HeatmapRangeColorProvider>
+                <mxc:HeatmapRangeStop Value="0" Color="#2A1070" />
+                <mxc:HeatmapRangeStop Value="50" Color="#BB268F" />
+                <mxc:HeatmapRangeStop Value="75" Color="#F8DA0C" />
+                <mxc:HeatmapRangeStop Value="100" Color="#FFFFFF" />
+            </mxc:HeatmapRangeColorProvider>
+            <mxc:Heatmap.AxisX>
+                <mxc:HeatmapAxisX Title="Frequency" EnableZooming="False" EnableScrolling="False">
+                    <mxc:HeatmapAxisX.ScaleOptions>
+                        <mxc:QualitativeScaleOptions GridSpacing="100" />
+                    </mxc:HeatmapAxisX.ScaleOptions>
+                </mxc:HeatmapAxisX>
+            </mxc:Heatmap.AxisX>
+            <mxc:Heatmap.AxisY>
+                <mxc:HeatmapAxisY ShowTitle="False" EnableZooming="False" EnableScrolling="False" />
+            </mxc:Heatmap.AxisY>
+        </mxc:Heatmap>
+    </Grid>
+</UserControl>

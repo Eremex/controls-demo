@@ -21,8 +21,8 @@
                   MinWidth="400"
                   IsEnabled="{Binding IsChecked, ElementName=IsEnabledSelector}">
 
-                <Label Content="Slider:"/>
-                <Label Grid.Row="2" Content="Color slider:"/>
+                <Label Content="Slider:" VerticalAlignment="Center"/>
+                <Label Grid.Row="2" Content="Color slider:" VerticalAlignment="Center"/>
                 <Slider Grid.Column="1" Grid.ColumnSpan="5"
                         Value="80"
                         IsSnapToTickEnabled="{Binding IsChecked, ElementName=IsSnapToTickEnabledSelector}"
@@ -31,7 +31,7 @@
                 <Slider Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5"
                         Value="120"
                         TickPlacement="{Binding TickPlacement}"
-                        Classes="color"/>
+                        Theme="{StaticResource ColorSliderTheme}"/>
 
                 <Slider x:Name="VerticalSlider" Grid.Row="4" Grid.Column="1" TickPlacement="{Binding TickPlacement}" TickFrequency="10" Value="30" Orientation="Vertical" Height="200"/>
                 <mxe:TextEditor Grid.Row="4" Grid.Column="2" MinWidth="50"
@@ -46,7 +46,7 @@
                                 EditorValue="{Binding Minimum, ElementName=VerticalSlider}"/>
 
                 <Slider x:Name="VerticalColorSlider" Value="250" Orientation="Vertical" Grid.Row="4" Grid.Column="5"
-                        TickPlacement="{Binding TickPlacement}" Classes="color"
+                        TickPlacement="{Binding TickPlacement}" Theme="{StaticResource ColorSliderTheme}"
                         Height="200" />
                 <mxe:TextEditor Grid.Row="4" Grid.Column="4" VerticalAlignment="Center" MinWidth="50" DisplayFormatString="{}{0:N1}"
                                 ReadOnly="True" EditorValue="{Binding Value, ElementName=VerticalColorSlider}"/>

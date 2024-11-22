@@ -30,7 +30,7 @@ namespace DemoCenter.ProductsData
 
                 new PageInfo(name: "Multiple Node Selection", title: "Multiple Node Selection",
                 description: "The TreeList and TreeView controls support multiple node selection mode, which allows you and your user to select (highlight) multiple nodes at one time. Users can select multiple nodes with the mouse and keyboard. Click nodes while holding the CTRL and/or SHIFT key down for node selection.",
-                viewModelGetter: () => new TreeListMultipleSelectionPageViewModel(), badgeType: ProductBadgeType.New),                
+                viewModelGetter: () => new TreeListMultipleSelectionPageViewModel(), new VersionInfo(1, 0)),                
             };
         }
     }

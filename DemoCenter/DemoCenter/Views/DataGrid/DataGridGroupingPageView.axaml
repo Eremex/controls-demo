@@ -10,12 +10,13 @@
     <UserControl.Resources>
         <views:NullValueConverter x:Key="nullValueConverter"/>
         <DataTemplate x:Key="quarterTemplate">
-            <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Pressed}" 
+            <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Pressed}"
                          MinWidth="0"
                          Background="Transparent"
                          CornerRadius="2"
                          VerticalAlignment="Stretch"
-                         Padding="1, 1" Minimum="0" Maximum="100000" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
+                         Margin="1"
+                         Minimum="0" Maximum="100000" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
         </DataTemplate>
         <DataTemplate x:Key="totalTemplate">
             <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Text}"
@@ -24,7 +25,8 @@
                          CornerRadius="2"
                          VerticalAlignment="Stretch"
                          Opacity="1"
-                         Padding="1, 1" Minimum="0" Maximum="400000" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
+                         Margin="1"
+                         Minimum="0" Maximum="400000" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
         </DataTemplate>
     </UserControl.Resources>
 

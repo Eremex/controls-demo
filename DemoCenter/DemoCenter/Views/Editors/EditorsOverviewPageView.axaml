@@ -20,7 +20,6 @@
         <Style Selector="Label.EditorName">
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Margin" Value="6,0,6,4"/>
-            <Setter Property="FontSize" Value="12"/>
         </Style>
     </UserControl.Styles>
     <UserControl.Resources>

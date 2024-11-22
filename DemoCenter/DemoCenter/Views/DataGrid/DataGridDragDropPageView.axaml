@@ -1,0 +1,91 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mxdgv="clr-namespace:Eremex.AvaloniaUI.Controls.DataGrid.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+			 xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+			 xmlns:data="clr-namespace:DemoCenter.DemoData"
+			 xmlns:view="using:DemoCenter.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridDragDropPageView">
+
+	<Grid ColumnDefinitions="*, 20, 20, *" RowDefinitions="Auto, *">
+		<Grid.Resources>
+			<view:SmallQuantityToVisibilityConverter x:Key="quantityToVisibilityConverter" />
+			<view:SmallQuantityToColorConverter x:Key="quantityToColorConverter" />
+			<DataTemplate x:Key="quantityTemplate">
+				<Grid ColumnDefinitions="Auto, *" Margin="8,0">
+					<Border ToolTip.Tip="Small quantity" IsVisible="{Binding Value, Converter={StaticResource quantityToVisibilityConverter}}" VerticalAlignment="Center">
+						<Image Source="{x:Static mxi:Basic.Warning}" />
+					</Border>
+					<TextBlock Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding Value}"/>
+				</Grid>
+			</DataTemplate>
+		</Grid.Resources>
+		<Grid.Styles>
+			<Style Selector="Label">
+				<Setter Property="FontWeight" Value="Bold" />
+				<Setter Property="FontSize" Value="16" />
+				<Setter Property="Margin" Value="0,12,0,0" />			
+			</Style>
+			<Style Selector="mxdg|DataGridControl">
+				<Setter Property="Margin" Value="16" />
+				<Setter Property="BorderThickness" Value="1" />
+				<Setter Property="SelectionMode" Value="Multiple" />
+				<Setter Property="NavigationMode" Value="Row" />
+				<Setter Property="AllowDragDrop" Value="True" /> 
+				<Setter Property="AllowDragDropSortedRows" Value="True" />
+				<Setter Property="AutoExpandAllGroups" Value="True" />
+			</Style>
+			<Style Selector="mxdgv|DataGridRowControl">
+				<Setter Property="Background">
+					<Setter.Value>
+						<MultiBinding Converter="{StaticResource quantityToColorConverter}">
+							<MultiBinding.Bindings>
+								<Binding Path="Quantity" />
+								<DynamicResourceExtension ResourceKey="TransparentBrush"/>
+								<DynamicResourceExtension ResourceKey="Icons/Fill/Yellow"/>
+							</MultiBinding.Bindings>
+						</MultiBinding>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</Grid.Styles>
+		<Label Content="In warehouse" HorizontalAlignment="Center" />
+		<mxdg:DataGridControl x:Name="productsInWarehouseGrid"
+							  Grid.Row="1"
+							  GroupCount="1"
+							  ItemsSource="{Binding ProductsInWarehouse}">
+			<mxdg:GridColumn FieldName="Id" Width="50" />
+			<mxdg:GridColumn FieldName="Name" Width="*" />
+			<mxdg:GridColumn FieldName="Color" Width="*" />
+			<mxdg:GridColumn FieldName="Size" Width="70" />
+			<mxdg:GridColumn FieldName="Category" Width="*" SortDirection="Descending" />
+			<mxdg:GridColumn FieldName="Cost" Width="70" />
+			<mxdg:GridColumn FieldName="Quantity" Width="70" CellTemplate="{StaticResource quantityTemplate}" />
+		</mxdg:DataGridControl>
+		
+		<Image Source="{x:Static mxi:_12.Chevron_Left}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2" />
+		<Image Source="{x:Static mxi:_12.Chevron_Right}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"/>
+
+		<Label Content="In stock" Grid.Column="3" HorizontalAlignment="Center"/>
+		<mxdg:DataGridControl x:Name="productsInStockGrid"
+						  Grid.Column="3"
+						  Grid.Row="1"
+						  GroupCount="1"
+						  ItemsSource="{Binding ProductsInStock}">
+			<mxdg:GridColumn FieldName="Id" Width="50" />
+			<mxdg:GridColumn FieldName="Name" Width="*" />
+			<mxdg:GridColumn FieldName="Color" Width="*" />
+			<mxdg:GridColumn FieldName="Size" Width="70" />
+			<mxdg:GridColumn FieldName="Category" Width="*" SortDirection="Descending" />
+			<mxdg:GridColumn FieldName="Cost" Width="70" />
+			<mxdg:GridColumn FieldName="Quantity" Width="70" CellTemplate="{StaticResource quantityTemplate}" />
+		</mxdg:DataGridControl>
+	</Grid>
+</UserControl>

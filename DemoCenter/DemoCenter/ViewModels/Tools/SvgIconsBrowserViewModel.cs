@@ -40,7 +40,7 @@ public partial class SvgIconsBrowserViewModel : PageViewModelBase
         {
             if(prohibitedCategories.Contains(c.Name))
                 continue;
-            var icons = c.GetProperties(BindingFlags.Static | BindingFlags.Public).Where(p => p.PropertyType == typeof(Avalonia.Svg.Skia.SvgImage)).ToList();
+            var icons = c.GetProperties(BindingFlags.Static | BindingFlags.Public).Where(p => p.PropertyType == typeof(IImage)).ToList();
             if(icons.Count == 0)
                 continue;
             string name = c.Name;

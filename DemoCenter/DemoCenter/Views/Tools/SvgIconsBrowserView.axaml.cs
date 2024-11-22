@@ -77,7 +77,7 @@ public partial class SvgIconsBrowserView : UserControl
 
     private void VmOnRequestScrollToCategory(SvgIconCategoryViewModel obj)
     {
-        var groupIndex = IconsListControl.GetGroupIndex(obj.DisplayName);
+        var groupIndex = IconsListControl.GetGroupIndex(nameof(SvgIconViewModel.CategoryName), obj.DisplayName);
         IconsListControl.ScrollTo(groupIndex);
         Dispatcher.UIThread.Post(() => IconsListControl.FocusedItemIndex = groupIndex);
     }

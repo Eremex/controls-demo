@@ -44,6 +44,8 @@ public partial class MainViewModel : ViewModelBase
     
     private readonly string titlePrefix;
 
+    public MainViewModel() { }
+
     public MainViewModel(ThemeVariant startupThemeVariant = null)
     {
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0";

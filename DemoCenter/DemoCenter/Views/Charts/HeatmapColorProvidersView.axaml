@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.HeatmapColorProvidersView"
+             x:DataType="vm:HeatmapColorProvidersViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:Heatmap Grid.Column="0" Classes="DemoChart" x:Name="DemoControl"
+                     DataAdapter="{Binding DataAdapter}"
+                     ColorProvider="{Binding SelectedColorProvider.ColorProvider}">
+
+            <mxc:Heatmap.AxisX>
+                <mxc:HeatmapAxisX ShowTitle="False">
+                    <mxc:HeatmapAxisX.ConstantLines>
+                        <mxc:ConstantLine AxisValue="{Binding MiddleX}" ShowTitle="False" Color="#A0FFFFFF" ShowBehind="False" />
+                    </mxc:HeatmapAxisX.ConstantLines>
+                </mxc:HeatmapAxisX>
+            </mxc:Heatmap.AxisX>
+            
+            <mxc:Heatmap.AxisY>
+                <mxc:HeatmapAxisY ShowTitle="False">
+                    <mxc:HeatmapAxisY.ConstantLines>
+                        <mxc:ConstantLine AxisValue="{Binding MiddleY}" ShowTitle="False" Color="#A0FFFFFF" ShowBehind="False" />
+                    </mxc:HeatmapAxisY.ConstantLines>
+                </mxc:HeatmapAxisY>
+            </mxc:Heatmap.AxisY>
+        </mxc:Heatmap>
+        
+        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
+            <ListBox ItemsSource="{Binding ColorProviders}" SelectedItem="{Binding SelectedColorProvider}" Padding="8">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="vm:HeatmapColorProviderItem">
+                        <StackPanel Orientation="Vertical" Margin="0 8 0 8">
+                            <TextBlock Text="{Binding Name}" />
+                            <Image Source="{Binding PreviewImage}" HorizontalAlignment="Stretch" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>

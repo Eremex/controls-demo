@@ -1,0 +1,287 @@
+﻿<UserControl
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels.Ribbon"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxr="https://schemas.eremexcontrols.net/avalonia/ribbon"
+             xmlns:icons="https://schemas.eremexcontrols.net/avalonia/icons"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns="https://github.com/avaloniaui"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.Ribbon.WordPadExampleView">
+    <UserControl.DataTemplates>
+        <DataTemplate DataType="vm:NormalGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:HeadingGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="22"
+                           Foreground="SteelBlue"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:Heading2GalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="18"
+                           Foreground="SteelBlue"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:TitleGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="24"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:SubtitleGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="14"
+                           Foreground="DimGray"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:SubtleEmphaGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="14"
+                           FontStyle="Italic"
+                           Foreground="DimGray"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:EmphasisGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="14"
+                           FontStyle="Italic"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:IntenseEmphasisGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="14"
+                           FontStyle="Italic"
+                           Foreground="SteelBlue"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:StrongGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:QuoteGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="14"
+                           FontStyle="Italic"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:IntenseReferGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Foreground="SteelBlue"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:BookTitleGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="12"
+                           FontStyle="Italic"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="vm:ListParagraphGalleryItem">
+            <Grid>
+                <TextBlock Text="{Binding Header}"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.DataTemplates>
+    <mxb:ToolbarManager IsWindowManager="True">
+        <mxr:RibbonControl ApplicationButtonContent="File" ApplicationButtonKeyTip="F">
+            <mxr:RibbonControl.ApplicationButtonDropDownControl>
+                <mxb:PopupMenu MinWidth="250" ContentRightIndent="30">
+                    <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static icons:Basic.Doc}" GlyphSize="32,32" HotKey="Ctrl+N"/>
+                    <mxb:ToolbarButtonItem Header="Open" Glyph="{x:Static icons:Basic.Folder_Open}" GlyphSize="32,32" HotKey="Ctrl+O"/>
+                    <mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save}" GlyphSize="32,32"  HotKey="Ctrl+S"/>
+                    <mxb:ToolbarButtonItem Header="Save All" Glyph="{x:Static icons:Basic.Save_All}" GlyphSize="32,32"/>
+                    <mxb:ToolbarButtonItem Header="Exit" Glyph="{x:Static icons:Basic.Cancel}" ShowSeparator="True" GlyphSize="32,32"  HotKey="Ctrl+X"/>
+                </mxb:PopupMenu>
+            </mxr:RibbonControl.ApplicationButtonDropDownControl>
+            <mxr:RibbonControl.QuickAccessToolbarItems>
+                <mxb:ToolbarButtonItem Header="Cut" KeyTip="CT"
+                                       Glyph="{x:Static icons:Basic.Cut}" />
+                <mxb:ToolbarButtonItem Header="Copy" KeyTip="CP"
+                                       Glyph="{x:Static icons:Basic.Copy}" />
+                <mxb:ToolbarButtonItem Header="Paste" KeyTip="P"
+                                       Glyph="{x:Static icons:Basic.Paste}" />
+            </mxr:RibbonControl.QuickAccessToolbarItems>
+            <mxr:RibbonControl.PageHeaderItems>
+                <mxb:ToolbarEditorItem EditorWidth="100">
+                    <mxb:ToolbarEditorItem.EditorProperties>
+                        <mxe:ButtonEditorProperties>
+                            <mxe:ButtonEditorProperties.Buttons>
+                                <mxe:ButtonSettings Glyph="{x:Static icons:Basic.Search}" GlyphSize="12, 12"/>
+                            </mxe:ButtonEditorProperties.Buttons>
+                        </mxe:ButtonEditorProperties>
+                    </mxb:ToolbarEditorItem.EditorProperties>
+                </mxb:ToolbarEditorItem>
+            </mxr:RibbonControl.PageHeaderItems>
+            <mxr:RibbonPage Header="Home" KeyTip="H">
+                <mxr:RibbonPageGroup Header="File" IsHeaderButtonVisible="True">
+                    <mxb:ToolbarButtonItem Header="New" KeyTip="N" Glyph="{x:Static icons:Basic.Docs_Add}"
+                                           mxr:RibbonControl.DisplayMode="Large"
+                                           DropDownArrowVisibility="ShowSplitArrow">
+                        <mxb:ToolbarButtonItem.DropDownControl>
+                            <mxb:PopupMenu>
+                                <mxb:ToolbarButtonItem Header="New Document" KeyTip="ND" Glyph="{x:Static icons:Basic.Doc_Add}" />
+                                <mxb:ToolbarButtonItem Header="New Excel Document" KeyTip="NX"
+                                                       Glyph="{x:Static icons:Basic.Doc_Excel}" />
+                            </mxb:PopupMenu>
+                        </mxb:ToolbarButtonItem.DropDownControl>
+                    </mxb:ToolbarButtonItem>
+                    <mxb:ToolbarButtonItem Header="Open" KeyTip="O"
+                                           Glyph="{x:Static icons:Basic.Folder_Open}" />
+                    <mxb:ToolbarButtonItem Header="Exit" KeyTip="E"
+                                           Glyph="{x:Static icons:Basic.Remove}" />
+                </mxr:RibbonPageGroup>
+                <mxr:RibbonPageGroup Header="Clipboard" IsHeaderButtonVisible="True">
+                    <mxb:ToolbarButtonItem Header="Paste" KeyTip="PA" Glyph="{x:Static icons:Basic.Paste}"
+                                           mxr:RibbonControl.DisplayMode="Large"
+                                           DropDownArrowVisibility="ShowSplitArrow">
+                        <mxb:ToolbarButtonItem.DropDownControl>
+                            <mxb:PopupMenu>
+                                <mxb:ToolbarButtonItem Header="Paste Special" KeyTip="PS" Glyph="{x:Static icons:Basic.Paste}" />
+                                <mxb:ToolbarButtonItem Header="Set Default Paste..." KeyTip="SP" />
+                            </mxb:PopupMenu>
+                        </mxb:ToolbarButtonItem.DropDownControl>
+                    </mxb:ToolbarButtonItem>
+                    <mxb:ToolbarButtonItem Header="Cut" KeyTip="CT"
+                                           Glyph="{x:Static icons:Basic.Cut}" />
+                    <mxb:ToolbarButtonItem Header="Copy" KeyTip="CP"
+                                           Glyph="{x:Static icons:Basic.Copy}" />
+                    <mxb:ToolbarButtonItem Header="Paste" KeyTip="P"
+                                           Glyph="{x:Static icons:Basic.Paste}" />
+                </mxr:RibbonPageGroup>
+                <mxr:RibbonPageGroup Header="Font" IsHeaderButtonVisible="True">
+                    <mxb:ToolbarItemGroup>
+                        <mxb:ToolbarEditorItem Header="Font" KeyTip="FN" EditorWidth="150"
+                                               EditorValue="{Binding SelectedFont, Mode=TwoWay}">
+                            <mxb:ToolbarEditorItem.EditorProperties>
+                                <mxe:ComboBoxEditorProperties ItemsSource="{Binding Fonts}" />
+                            </mxb:ToolbarEditorItem.EditorProperties>
+                        </mxb:ToolbarEditorItem>
+                    </mxb:ToolbarItemGroup>
+                    <mxb:ToolbarItemGroup>
+                        <mxb:ToolbarEditorItem Header="Font Size" KeyTip="FS" EditorWidth="75" EditorValue="{Binding SelectedSize}">
+                            <mxb:ToolbarEditorItem.EditorProperties>
+                                <mxe:ComboBoxEditorProperties ItemsSource="{Binding FontSizes}" />
+                            </mxb:ToolbarEditorItem.EditorProperties>
+                        </mxb:ToolbarEditorItem>
+                    </mxb:ToolbarItemGroup>
+                    <mxb:ToolbarCheckItemGroup ShowSeparator="True">
+                        <mxb:ToolbarCheckItem Header="Bold" KeyTip="B" Glyph="{x:Static icons:Basic.Font_Bold}" />
+                        <mxb:ToolbarCheckItem Header="Italic" KeyTip="I" Glyph="{x:Static icons:Basic.Font_Italic}" />
+                        <mxb:ToolbarCheckItem Header="Underline" KeyTip="U" Glyph="{x:Static icons:Basic.Font_Underline}" />
+                    </mxb:ToolbarCheckItemGroup>
+                    <mxb:ToolbarItemGroup ShowSeparator="True">
+                        <mxb:ToolbarEditorItem Header="FontColor" KeyTip="FC" Glyph="{x:Static icons:Basic.Rules}" EditorWidth="50">
+                            <mxb:ToolbarEditorItem.EditorProperties>
+                                <mxe:PopupColorEditorProperties />
+                            </mxb:ToolbarEditorItem.EditorProperties>
+                        </mxb:ToolbarEditorItem>
+                        <mxb:ToolbarButtonItem Header="BackColor" KeyTip="BC" Glyph="{x:Static icons:Alignment.Move_to_Back}"
+                                               DropDownArrowVisibility="ShowArrow" />
+                    </mxb:ToolbarItemGroup>
+                </mxr:RibbonPageGroup>
+                <mxr:RibbonPageGroup Header="Paragraph" IsHeaderButtonVisible="True">
+                    <mxb:ToolbarCheckItemGroup>
+                        <mxb:ToolbarCheckItem Header="AlignLeft" KeyTip="AL" Glyph="{x:Static icons:Alignment.Align_Left}" />
+                        <mxb:ToolbarCheckItem Header="AlignCenter" KeyTip="AC"
+                                              Glyph="{x:Static icons:Alignment.Align_Horizontal_Centers}" />
+                        <mxb:ToolbarCheckItem Header="AlignRight" KeyTip="AR" Glyph="{x:Static icons:Alignment.Align_Right}" />
+                    </mxb:ToolbarCheckItemGroup>
+                    <mxb:ToolbarCheckItemGroup ShowSeparator="True">
+                        <mxb:ToolbarCheckItem Header="AlignTop" KeyTip="AT" Glyph="{x:Static icons:Alignment.Align_Top}" />
+                        <mxb:ToolbarCheckItem Header="AlignCenter" KeyTip="AM"
+                                              Glyph="{x:Static icons:Alignment.Align_Vertical_Centers}" />
+                        <mxb:ToolbarCheckItem Header="AlignBottom" KeyTip="AB" Glyph="{x:Static icons:Alignment.Align_Bottom}" />
+                    </mxb:ToolbarCheckItemGroup>
+                    <mxb:ToolbarItemGroup ShowSeparator="True">
+                        <mxb:ToolbarButtonItem Header="Increase" KeyTip="CR" Glyph="{x:Static icons:Basic.Level_Increase}" />
+                        <mxb:ToolbarButtonItem Header="Decrease" KeyTip="DC" Glyph="{x:Static icons:Basic.Level_Reduce}" />
+                    </mxb:ToolbarItemGroup>
+                    <mxb:ToolbarItemGroup ShowSeparator="True">
+                        <mxb:ToolbarButtonItem Header="Collapse" KeyTip="CL" Glyph="{x:Static icons:Basic.List_Collapse}" />
+                        <mxb:ToolbarButtonItem Header="Expand" KeyTip="EX" Glyph="{x:Static icons:Basic.List_Expand}" />
+                    </mxb:ToolbarItemGroup>
+                </mxr:RibbonPageGroup>
+                <mxr:RibbonPageGroup Header="Styles" IsHeaderButtonVisible="True">
+                    <mxr:RibbonGalleryItem StretchItemVertically="True" MaxColumnCount="4" ItemWidth="108"
+                                           ItemHeight="74"
+                                           Header="Styles"
+                                           MaxDropDownColumnCount="4"
+                                           ItemsSource="{Binding FontStyles}">
+                        <mxr:RibbonGalleryItem.DropDownItems>
+                            <mxb:ToolbarButtonItem Header="Create A Style..." Glyph="{x:Static icons:Basic.Add}" />
+                            <mxb:ToolbarButtonItem Header="Clear Formatting"
+                                                   Glyph="{x:Static icons:Filter.Does_not_contain}" />
+                            <mxb:ToolbarButtonItem Header="Apply Styles" Glyph="{x:Static icons:Filter.Starts_with}" />
+                        </mxr:RibbonGalleryItem.DropDownItems>
+                    </mxr:RibbonGalleryItem>
+                </mxr:RibbonPageGroup>
+                <mxr:RibbonPageGroup Header="Editing" IsHeaderButtonVisible="False">
+                    <mxb:ToolbarButtonItem Header="Find" KeyTip="FN" Glyph="{x:Static icons:Basic.Search}" />
+                    <mxb:ToolbarButtonItem Header="Replace" KeyTip="RP" Glyph="{x:Static icons:Basic.Update}" />
+                    <mxb:ToolbarButtonItem Header="Clear" KeyTip="CL" Glyph="{x:Static icons:Basic.Table_Clear}" />
+                </mxr:RibbonPageGroup>
+            </mxr:RibbonPage>
+            <mxr:RibbonPage Header="Insert"  KeyTip="I" />
+            <mxr:RibbonPage Header="Draw" KeyTip="D" />
+            <mxr:RibbonPage Header="Design" KeyTip="S" />
+            <mxr:RibbonPage Header="Layout" KeyTip="L" />
+            <mxr:RibbonPage Header="View" KeyTip="V" />
+            <mxr:RibbonPage Header="Help" KeyTip="H">
+                <mxr:RibbonPageGroup Header="Help" IsHeaderButtonVisible="False">
+                    <mxb:ToolbarButtonItem Header="Help" KeyTip="LP" Glyph="{x:Static icons:Basic.Info}"
+                                           mxr:RibbonControl.DisplayMode="Large" />
+                    <mxb:ToolbarButtonItem Header="Send Message" KeyTip="SM" Glyph="{x:Static icons:Basic.Horizontal_Doc_Text}"
+                                           mxr:RibbonControl.DisplayMode="Large" />
+                </mxr:RibbonPageGroup>
+            </mxr:RibbonPage>
+        </mxr:RibbonControl>
+    </mxb:ToolbarManager>
+</UserControl>

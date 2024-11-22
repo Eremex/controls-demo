@@ -1,0 +1,36 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx3d="clr-namespace:Eremex.AvaloniaUI.Controls3D;assembly=Eremex.Avalonia.Controls3D"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:views="using:DemoCenter.Views"
+             x:Class="DemoCenter.Views.Graphics3DControlSimpleMaterialsView"
+             x:DataType="vm:Graphics3DControlSimpleMaterialsViewModel">
+    <UserControl.Resources>
+        <views:ColorToVector3Converter x:Key="ColorToVector3Converter"/>
+    </UserControl.Resources>
+    <Grid ColumnDefinitions="* Auto">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHitInfo="False" ModelsSource="{Binding Models}" Grid.Column="0">
+            <mx3d:Graphics3DControl.Materials>
+                <mx3d:SimplePbrMaterial x:Name="Material" />
+            </mx3d:Graphics3DControl.Materials>
+        </mx3d:Graphics3DControl>
+        
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Material Properties"  Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Albedo" Classes="PropertyLabel"/>
+                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Albedo, Converter={StaticResource ColorToVector3Converter}}" />
+                    <Label Content="Emission" Classes="PropertyLabel"/>
+                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Emission, Converter={StaticResource ColorToVector3Converter}}" />
+                    <Label Content="Metallic" Classes="PropertyLabel"/>
+                    <Slider Minimum="0" Maximum="1" Value="{Binding ElementName=Material, Path=Metallic}" />
+                    <Label Content="Roughness" Classes="PropertyLabel"/>
+                    <Slider Minimum="0" Maximum="1" Value="{Binding ElementName=Material, Path=Roughness}" />
+                    <Label Content="Ambient Occlusion" Classes="PropertyLabel"/>
+                    <Slider Minimum="0" Maximum="1" Value="{Binding ElementName=Material, Path=AmbientOcclusion}" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

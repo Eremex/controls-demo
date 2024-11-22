@@ -45,7 +45,7 @@ namespace DemoCenter.ProductsData
 
                 new PageInfo(name: "Hyperlink Editor", title: "Hyperlink Editor",
                 description: "The Hyperlink Editor displays its content as a hyperlink. The editor supports manual (default) and automatic hyperlink processing. A dedicated command or event allows you to manually handle hyperlink clicks. Enable automatic hyperlink navigation to allow the editor to automatically execute a link on a click.",
-                viewModelGetter: () => new HyperlinkEditorPageViewModel(), badgeType: ProductBadgeType.Updated),
+                viewModelGetter: () => new HyperlinkEditorPageViewModel(), new VersionInfo(1, 0)),
 
                 new PageInfo(name: "Enum Source", title: "Enum Source", 
                 description: "You can create ComboBox and Segmented Editors' items from enumeration type values. Dedicated Data Annotation attributes applied to the enumeration values allow you to populate the controls' items with images, display text and tooltips.",
@@ -53,7 +53,7 @@ namespace DemoCenter.ProductsData
                 
                 new PageInfo(name: "Memo Editor", title: "Memo Editor", 
                     description: "Use MemoEditor to display and edit large text in a popup window, with or without text wrapping enabled. The IsTextEditable property allows you to prevent text editing in the edit box. When the property is false, the edit box can display a special icon that indicates the presence of text in the popup.",
-                    viewModelGetter: () => new MemoEditorPageViewModel(), badgeType: ProductBadgeType.New),
+                    viewModelGetter: () => new MemoEditorPageViewModel(), new VersionInfo(1, 0)),
             };
         }
     }

@@ -65,13 +65,7 @@
 		</mxtl:TreeListControl>
 		</Border>
         <mxe:GroupBox Grid.Column="1" Header="Selected Assignees" Classes="PropertiesGroup">
-			<ListBox ItemsSource="{Binding SelectedTasks}" VerticalAlignment="Top">
-				<ListBox.ItemTemplate>
-					<DataTemplate>
-						<TextBlock Text="{Binding Path=Assignee}" />
-					</DataTemplate>
-				</ListBox.ItemTemplate>
-			</ListBox>
+			<ListBox ItemsSource="{Binding SelectedTasks}" DisplayMemberBinding="{Binding Assignee}" VerticalAlignment="Top" />
         </mxe:GroupBox> 
 	</Grid>
 </UserControl>

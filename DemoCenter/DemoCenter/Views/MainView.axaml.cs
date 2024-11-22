@@ -75,7 +75,7 @@ public partial class MainView : UserControl
 
     private void UpdateDocument()
     {
-        if(ViewModel == null)
+        if(ViewModel == null || string.IsNullOrEmpty(ViewModel.SourceFile))
             return;
         var name = App.EmbeddedResources.FirstOrDefault(x =>
             x.EndsWith(ViewModel.SourceFile, StringComparison.InvariantCultureIgnoreCase));
@@ -163,26 +163,8 @@ public class ThemeVariantToIconDataConverter : MarkupExtension, IMultiValueConve
         var variant = (ThemeVariant)values[0]!;
         if(variant == ThemeVariant.Light)
             return values[1];
-        else if(variant == ThemeVariant.Dark)
+        if(variant == ThemeVariant.Dark)
             return values[2];
         return null;
-    }
-}
-
-public class BadgeVisibilityConverter : MarkupExtension, IValueConverter
-{
-    public ProductBadgeType BadgeType { get; set; }
-
-    public override object ProvideValue(IServiceProvider serviceProvider)
-    {
-        return this;
-    }
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return (value is ProductBadgeType badgeType) && BadgeType == badgeType;
-    }
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
     }
 }

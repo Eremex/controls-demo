@@ -1,0 +1,42 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.CartesianCandlestickSeriesViewView"
+             x:DataType="vm:CartesianCandlestickSeriesViewViewModel"
+             x:CompileBindings="True">
+    <Grid RowDefinitions="Auto *">
+        <TextBlock Grid.Row="0" Margin="12" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold">Bitcoin Historical Data</TextBlock>
+
+        <mxc:CartesianChart Grid.Row="1" Classes="DemoChart" x:Name="DemoControl">
+            <mxc:CartesianSeries AxisYKey="Volume" DataAdapter="{Binding VolumeData}" SeriesName="Volume">
+                <mxc:CartesianSideBySideBarSeriesView Color="#A0A0A0A0" BorderThickness="0" BarWidth="1" />
+            </mxc:CartesianSeries>
+            <mxc:CartesianSeries AxisYKey="Price" DataAdapter="{Binding StockData}" SeriesName="Price">
+                <mxc:CartesianCandlestickSeriesView Color="#00787A" ReductionColor="#BD1436" />
+            </mxc:CartesianSeries>
+
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX ShowTitle="False">
+                    <mxc:AxisXRange MinSideMargin="0.01" MaxSideMargin="0.01" />
+                    <mxc:AxisX.ScaleOptions>
+                        <mxc:DateTimeScaleOptions MeasureUnit="Day" />
+                    </mxc:AxisX.ScaleOptions>
+                </mxc:AxisX>
+            </mxc:CartesianChart.AxesX>
+            
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY Title="Price" Position="Far" Key="Price">
+                    <mxc:AxisYRange AlwaysShowZeroLevel="False" />
+                </mxc:AxisY>
+                <mxc:AxisY Title="Volume" Position="Near" Key="Volume">
+                    <mxc:AxisYRange />
+                </mxc:AxisY>
+            </mxc:CartesianChart.AxesY>
+            
+            <mxc:CartesianChart.CrosshairOptions>
+                <mxc:CrosshairOptions SeriesLabelMode="OneForAllSeries" />
+            </mxc:CartesianChart.CrosshairOptions>
+        </mxc:CartesianChart>
+    </Grid>
+</UserControl>

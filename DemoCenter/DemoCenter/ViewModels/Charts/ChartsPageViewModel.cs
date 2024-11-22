@@ -1,9 +1,8 @@
-﻿namespace DemoCenter.ViewModels
+﻿namespace DemoCenter.ViewModels;
+
+public partial class ChartsPageViewModel : PageViewModelBase
 {
-    public partial class ChartsPageViewModel : PageViewModelBase
+    public ChartsPageViewModel()
     {
-        public ChartsPageViewModel()
-        {
-        }
     }
 }

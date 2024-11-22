@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+			 xmlns:data="clr-namespace:DemoCenter.DemoData"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridMultipleSelectionPageView">
+
+	<Grid ColumnDefinitions="*, 250">
+		<mxdg:DataGridControl x:Name="dataGrid" 
+							  ItemsSource="{Binding Employees}" 
+							  SelectionMode="Multiple" 
+							  SelectedItems="{Binding SelectedEmployees}"
+							  ShowGroupPanel="False" 
+							  AllowEditing="False" 
+							  BorderThickness="1,0">
+			<mxdg:GridColumn FieldName="FirstName" Width="*" MinWidth="80"/>
+			<mxdg:GridColumn FieldName="LastName" Width="*" MinWidth="80"/>
+			<mxdg:GridColumn FieldName="HireDate" Header="Hire Date" Width="*" MinWidth="80" />			
+			<mxdg:GridColumn FieldName="Experience" Width="90" MinWidth="80" />		
+			<mxdg:GridColumn FieldName="Position" Width="*" MinWidth="150" />
+			<mxdg:GridColumn FieldName="EmploymentType" Width="*" MinWidth="150"/>
+			<mxdg:GridColumn FieldName="City" Width="*" MinWidth="150" />
+			<mxdg:GridColumn FieldName="BirthDate" Width="*" MinWidth="80" />
+		</mxdg:DataGridControl>
+
+		<Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+			<mxe:GroupBox Header="Selected Employees" VerticalAlignment="Top" Classes="PropertiesGroup">
+				<ListBox ItemsSource="{Binding SelectedEmployees}" VerticalAlignment="Top">
+					<ListBox.DisplayMemberBinding>
+						<MultiBinding StringFormat="{}{0} {1}">
+							<Binding Path="FirstName" />
+							<Binding Path="LastName" />
+						</MultiBinding>
+					</ListBox.DisplayMemberBinding>
+				</ListBox>
+			</mxe:GroupBox>
+		</Border>
+	</Grid>
+</UserControl>

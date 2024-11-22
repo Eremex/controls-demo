@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Microsoft.VisualBasic.FileIO;
+using DemoCenter.DemoData.CsvClasses;
 
 namespace DemoCenter.DemoData
 {
@@ -57,9 +58,22 @@ namespace DemoCenter.DemoData
             }
         }
 
+        static List<StockProduct> stockProducts;
+        public static List<StockProduct> StockProducts
+        {
+            get
+            {
+                stockProducts ??= GetStockProducts();
+                return stockProducts;
+            }
+        }
+
         static List<CsvDoubleColumn> logarithmic;
         public static List<CsvDoubleColumn> Logarithmic => logarithmic ??= GetLogarithmic();
 
+        static List<StockInfo> stock;
+        public static List<StockInfo> Stock => stock ??= GetStock();
+       
         static List<CarInfo> GetCars()
         {
             var culture = new CultureInfo("en-US");
@@ -114,6 +128,17 @@ namespace DemoCenter.DemoData
                 });
         }
         static List<CsvDoubleColumn> GetLogarithmic() => GetColumnInfo<CsvDoubleColumn>(GetUriString("logarithmic"));
+        static List<StockInfo> GetStock() => GetInfo(GetUriString("Bitcoin Historical Data"),
+            values =>
+            {
+                var date = DateTime.Parse(values[0], CultureInfo.InvariantCulture);
+                var close = double.Parse(values[1], CultureInfo.InvariantCulture);
+                var open = double.Parse(values[2], CultureInfo.InvariantCulture);
+                var high = double.Parse(values[3], CultureInfo.InvariantCulture);
+                var low = double.Parse(values[4], CultureInfo.InvariantCulture);
+                var volume = double.Parse(values[5].Substring(0, values[5].Length - 1), CultureInfo.InvariantCulture) * 1000;
+                return new StockInfo(date, close, open, high, low, volume);
+            });
 
         static List<T> GetInfo<T>(string uriString, Func<string[], T> getInfo)
         {
@@ -174,6 +199,25 @@ namespace DemoCenter.DemoData
             }
 
             return result;
+        }
+
+        static List<StockProduct> GetStockProducts()
+        {
+            return GetInfo<StockProduct>(GetUriString("stockProducts"), GetStockProduct);
+
+            StockProduct GetStockProduct(string[] values)
+            {
+                return new StockProduct()
+                {
+                    Id = int.Parse(values[0]),
+                    Name = values[1],
+                    Color = values[2],
+                    Size = values[3],
+                    Category = values[4],
+                    Cost = decimal.Parse(values[5]),
+                    Quantity = int.Parse(values[6]),
+                };
+            }
         }
 
         static string GetUriString(string path) => $"avares://DemoCenter/DemoData/csv/{path}.csv";

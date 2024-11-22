@@ -1,0 +1,71 @@
+ProductId,Name,Color,Size,Category,Cost,Qnt
+1,T-shirt,Red,M,Clothing,10.00,100
+2,Jeans,Blue,L,Clothing,30.00,50
+3,Jacket,Black,XL,Clothing,50.00,30
+4,Dress,Green,S,Clothing,25.00,40
+5,Skirt,Pink,M,Clothing,20.00,60
+6,Sweater,Gray,L,Clothing,35.00,25
+7,Shorts,Yellow,M,Clothing,15.00,70
+8,Blouse,White,S,Clothing,18.00,80
+9,Coat,Navy,L,Clothing,60.00,20
+10,Hoodie,Black,XL,Clothing,40.00,35
+11,Sneakers,Red,10,Footwear,55.00,45
+12,Boots,Brown,9,Footwear,70.00,25
+13,Sandals,Tan,8,Footwear,25.00,60
+14,Flip Flops,Blue,11,Footwear,15.00,50
+15,Loafers,Black,10,Footwear,65.00,30
+16,Anorak,Olive,M,Clothing,45.00,20
+17,Cardigan,Burgundy,L,Clothing,40.00,30
+18,Jumpsuit,Black,S,Clothing,55.00,15
+19,Tank Top,White,M,Clothing,12.00,85
+20,Leggings,Gray,L,Clothing,25.00,75
+21,Khakis,Beige,34,Clothing,35.00,40
+22,Chinos,Olive,32,Clothing,38.00,25
+23,V-neck T-shirt,Black,S,Clothing,22.00,65
+24,Cargo Pants,Khaki,M,Clothing,28.00,50
+25,Ballet Flats,Pink,8,Footwear,30.00,55
+26,Cowboy Boots,Brown,9,Footwear,80.00,10
+27,Raincoat,Yellow,L,Clothing,55.00,20
+28,Windbreaker,Red,M,Clothing,42.00,30
+29,High-Top Sneakers,White,10,Footwear,65.00,15
+30,Dress Shoes,Black,11,Footwear,75.00,12
+31,Baseball Cap,Gray,One Size,Accessories,15.00,50
+32,Beanie,Black,One Size,Accessories,12.00,45
+33,Scarf,Blue,One Size,Accessories,18.00,40
+34,Belt,Brown,36,Accessories,20.00,60
+35,Sunglasses,Black,One Size,Accessories,25.00,70
+36,Gloves,Red,M,Accessories,15.00,35
+37,Socks,Multicolor,10-12,Accessories,5.00,100
+38,Running Shoes,Neon Green,9,Footwear,70.00,25
+39,Work Boots,Black,10,Footwear,85.00,15
+40,Slippers,Gray,L,Footwear,30.00,40
+41,Tracksuit,Red,M,Clothing,60.00,20
+42,Pajamas,Blue,L,Clothing,30.00,30
+43,Swim Shorts,Black,M,Clothing,25.00,50
+44,Sport Bra,Pink,M,Clothing,20.00,60
+45,Tankini,Blue,M,Clothing,50.00,15
+46,Evening Gown,Red,S,Clothing,100.00,10
+47,Overalls,Denim,L,Clothing,45.00,20
+48,Bow Tie,Black,One Size,Accessories,12.00,50
+49,Cufflinks,Silver,One Size,Accessories,20.00,25
+50,Fedora,Beige,One Size,Accessories,30.00,20
+51,Puffer Jacket,Black,L,Clothing,65.00,15
+52,Sports Bra,Black,M,Clothing,22.00,50
+53,Wind Pants,Red,M,Clothing,38.00,30
+54,Cargo Shorts,Camouflage,L,Clothing,24.00,40
+55,Platform Shoes,Black,8,Footwear,45.00,25
+56,Water Shoes,Blue,9,Footwear,30.00,60
+57,Featherweight Vest,Yellow,M,Clothing,35.00,20
+58,Executive Blazer,Gray,L,Clothing,95.00,10
+59,Slip-On Sneakers,White,10,Footwear,60.00,15
+60,Evening Dress,Blue,M,Clothing,75.00,12
+61,Cycling Jersey,Black,L,Clothing,40.00,30
+62,Hiking Boots,Brown,11,Footwear,90.00,8
+63,Ballet Outfit,Pink,S,Clothing,55.00,20
+64,Running Shorts,Gray,M,Clothing,28.00,50
+65,Kitten Heels,Red,7,Footwear,35.00,30
+66,Dressy Sandals,Gold,8,Footwear,45.00,25
+67,Casual Trousers,Black,L,Clothing,50.00,15
+68,Tight-Fitting Jeans,Dark Blue,32,Clothing,40.00,20
+69,Leisure Shoes,White,9,Footwear,34.00,30
+70,Boxy Crop Top,Coral,S,Clothing,20.00,50

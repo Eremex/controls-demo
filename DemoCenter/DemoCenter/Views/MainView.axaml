@@ -69,7 +69,6 @@
                                   RowLevelIndent="16"
                                   ShowRootIndent="False" ScrollViewer.VerticalScrollBarVisibility="Hidden"
                                   AutoExpandAllNodes="True" ShowExpandButtons="False"
-                                  FontSize="{StaticResource EditorFontSize}"
                                   ChildrenSelector="{StaticResource childNodesSelector}"
                                   FocusedItem="{Binding CurrentProductItem, Mode=TwoWay}"
                                   FocusedNodeChanged="OnPageSelectorFocusedNodeChanged"
@@ -90,12 +89,12 @@
                             </ContentControl>
                             <ContentControl Content="Updated"
                                             Classes="Badge"
-                                            IsVisible="{Binding Row.BadgeType, Converter={views:BadgeVisibilityConverter BadgeType=Updated}}"
+                                            IsVisible="{Binding Row.IsUpdated}"
                                             Background="{DynamicResource Icons/Fill/Yellow}"
                                             Foreground="{DynamicResource Icons/Outline/Yellow}"/>
                             <ContentControl Content="New"
                                             Classes="Badge"
-                                            IsVisible="{Binding Row.BadgeType, Converter={views:BadgeVisibilityConverter BadgeType=New}}"
+                                            IsVisible="{Binding Row.IsNew}"
                                             Background="{DynamicResource Icons/Fill/Red}"
                                             Foreground="{DynamicResource Icons/Outline/Red}"/>
                             <TextBlock Text="{Binding Row.Name}"
@@ -126,7 +125,7 @@
                     </Style>
                 </mxtl:TreeViewControl.Styles>
             </mxtl:TreeViewControl>
-            <Border Grid.Row="1" CornerRadius="6" BorderThickness="1" TextElement.FontSize="12" Margin="0,8,8,0" 
+            <Border Grid.Row="1" CornerRadius="6" BorderThickness="1" Margin="0,8,8,0" 
                     BorderBrush="{DynamicResource Outline/Neutral/On Secondary/Light}"
                     Background="{DynamicResource Fill/Neutral/Primary/Hover}">
                 <Grid RowDefinitions="*,*,*" ColumnDefinitions="3*, 2*" Margin="6">
@@ -148,7 +147,6 @@
                             <TextBlock Text="{Binding CurrentProductItem.Description}"
                                        VerticalAlignment="Center"
                                        TextWrapping="Wrap"
-                                       FontSize="{StaticResource EditorFontSize}"
                                        Foreground="{DynamicResource Text/Neutral/Primary}"
                                        Margin="16,8" MinHeight="34"
                                        IsVisible="{Binding CurrentProductItem.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>

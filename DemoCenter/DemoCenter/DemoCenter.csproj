@@ -15,12 +15,33 @@
     <EmbeddedResource Include="Resources\Highlighters\CSharp-Highlight-Light.xshd" />
     <Resource Include="Views\Tools\Templates\svgCodeExample.cs" />
     <Resource Include="Views\Tools\Templates\svgXamlExample.axaml" />
+    <None Remove="DemoData\csv\stockProducts.csv" />
     <None Remove="Resources\Axaml-Highlight-Dark.xshd" />
     <None Remove="Resources\Axaml-Highlight-Light.xshd" />
     <None Remove="Resources\CSharp-Highlight-Dark.xshd" />
     <None Remove="Resources\CSharp-Highlight-Light.xshd" />
     <None Remove="Resources\Svg\Ring.svg" />
     <AvaloniaResource Include="Resources\Svg\Ring.svg" />
+    <Compile Update="Views\Charts\CartesianCandlestickAggregationView.axaml.cs">
+      <DependentUpon>CartesianCandlestickAggregationView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CommonControls\MessageBoxPageView.axaml.cs">
+      <DependentUpon>MessageBoxPageView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Graphics3DControl\Graphics3DControlOverviewView.axaml.cs">
+      <DependentUpon>Graphics3DControlOverviewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Graphics3DControl\Graphics3DControlSimpleMaterialsView.axaml.cs">
+      <DependentUpon>Graphics3DControlSimpleMaterialView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Graphics3DControl\Graphics3DControlTexturedMaterialsView.axaml.cs">
+      <DependentUpon>Graphics3DControlTexturedMaterialsView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
     
   <ItemGroup>
@@ -31,22 +52,38 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
 
     <PackageReference Include="CommunityToolkit.Mvvm" Version="$(CommunityToolkitMvvmVersion)" />
-    <PackageReference Include="System.Text.Json" />
     <PackageReference Include="Avalonia.Svg.Skia" />
+    <PackageReference Include="Eremex.Avalonia.Controls3D" />
     <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
     <PackageReference Include="SkiaSharp" Version="$(SkiaSharpVersion)" />
+    <PackageReference Include="System.IO.Compression.ZipFile" />
     <PackageReference Include="System.Resources.Extensions" Version="$(SystemResourcesExtensionsVersion)" />
     <PackageReference Include="Avalonia.AvaloniaEdit" />
     <PackageReference Include="AvaloniaEdit.TextMate" />
     <PackageReference Include="TextMateSharp.Grammars" />
     <PackageReference Include="Eremex.Avalonia.Controls" />
     <PackageReference Include="Eremex.Avalonia.Themes.DeltaDesign" />
+    <PackageReference Include="STLDotNet6.Formats.StereoLithography" />
+    <PackageReference Include="JeremyAnsel.Media.WavefrontObj" />    
+  </ItemGroup>
+    
+  <ItemGroup>
+    <AvaloniaXaml Update="Views\DataGrid\DataGridMultipleSelectionPageView.axaml">
+      <SubType>Designer</SubType>
+    </AvaloniaXaml>
   </ItemGroup>
     
   <ItemGroup>
     <Compile Update="Views\Charts\CartesianChartLogarithmicScalePageView.axaml.cs">
       <DependentUpon>CartesianChartLogarithmicScalePageView.axaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DataGrid\DataGridDragDropPageView.axaml.cs">
+      <DependentUpon>DataGridDragDropPageView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataGrid\DataGridMultipleSelectionPageView.axaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>DataGridMultipleSelectionPageView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\DataGrid\DataGridLiveDataPageView.axaml.cs">
       <DependentUpon>DataGridLiveDataPageView.axaml</DependentUpon>
@@ -137,11 +174,17 @@
       <DependentUpon>SvgIconsBrowserViewResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+    
+  <ItemGroup>
+    <Folder Include="Resources\Graphics3D\Textures\" />
+  </ItemGroup>
 
   <Target Name="SourceCode" BeforeTargets="PreBuildEvent">
     <ItemGroup>
       <EmbeddedResource Include="Views\**" />
       <EmbeddedResource Include="ViewModels\**" />
+      <EmbeddedResource Include="Resources\Png\**" />
+      <EmbeddedResource Include="Resources\Graphics3D\**" />
     </ItemGroup>
   </Target>
     

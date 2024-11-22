@@ -1,27 +1,54 @@
-﻿using DemoCenter.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
+using DemoCenter.ViewModels;
 
-namespace DemoCenter.ProductsData
+namespace DemoCenter.ProductsData;
+
+public abstract class ProductInfoBase
 {
-    public class ProductInfoBase
-    {
-        public string Name { get; init; }
-        public string Title { get; init; }
-        public string Description { get; set; }
-        public Func<PageViewModelBase> ViewModelGetter { get; init; }
-        public virtual bool HasChildren => false;
-        public ProductBadgeType? BadgeType { get; init; }
-        public bool ShowInWeb { get; init; }
-        public bool IsWebApp => App.IsWebApp;
-    }
+    public string Name { get; }
+    public string Title { get; }
+    public string Description { get; set; }
+    public Func<PageViewModelBase> ViewModelGetter { get; }
+    public bool ShowInWeb { get; }
+    public bool IsNew => Introduced.Matches(App.Version) && !IsUpdated;
+    public bool IsUpdated => Updated?.Matches(App.Version) is true;
+    public VersionInfo Introduced { get; }
+    public VersionInfo? Updated { get; }
+    public abstract bool HasChildren { get; }
+    public bool IsWebApp => App.IsWebApp;
 
-    public enum ProductBadgeType
+    protected ProductInfoBase(string name, string title, string description, Func<PageViewModelBase> viewModelGetter, VersionInfo? introduced, VersionInfo? updated, bool showInWeb)
     {
-        New,
-        Updated
+        Name = name;
+        Title = title;
+        Description = description;
+        ViewModelGetter = viewModelGetter;
+        ShowInWeb = showInWeb;
+        Introduced = introduced ?? new VersionInfo(0, 0);
+        Updated = updated;
     }
+}
+
+public readonly struct VersionInfo
+{
+    public int Major { get; } = 0;
+    public int Minor { get; } = 0;
+
+    public VersionInfo(int major, int minor)
+    {
+        Major = major;
+        Minor = minor;
+    }
+    public VersionInfo(Assembly assembly)
+    {
+        if (assembly.GetCustomAttributes(typeof(AssemblyFileVersionAttribute), true).SingleOrDefault() is AssemblyFileVersionAttribute attribute)
+        {
+            var parts = attribute.Version.Split('.', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            if (parts.Length > 0 && int.TryParse(parts[0], out var major))
+                Major = major;
+            if (parts.Length > 1 && int.TryParse(parts[1], out var minor))
+                Minor = minor;
+        }
+    }
+    public bool Matches(VersionInfo version) => version.Major == Major && version.Minor == Minor;
 }

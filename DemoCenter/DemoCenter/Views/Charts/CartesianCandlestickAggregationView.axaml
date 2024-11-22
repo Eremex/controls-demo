@@ -1,0 +1,69 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.CartesianCandlestickAggregationView"
+             x:DataType="vm:CartesianCandlestickAggregationViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl">
+            <mxc:CartesianSeries DataAdapter="{Binding StockData}" SeriesName="Price">
+                <mxc:CartesianCandlestickSeriesView Color="#00787A" ReductionColor="#BD1436" />
+            </mxc:CartesianSeries>
+
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX ShowTitle="False">
+                    <mxc:AxisX.ScaleOptions>
+                        <mxc:DateTimeScaleOptions MeasureUnit="{Binding MeasureUnit}" MeasureUnitFactor="{Binding MeasureUnitFactor}" />
+                    </mxc:AxisX.ScaleOptions>
+                </mxc:AxisX>
+            </mxc:CartesianChart.AxesX>
+            
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY Title="Price" Position="Far">
+                    <mxc:AxisYRange AlwaysShowZeroLevel="False" />
+                </mxc:AxisY>
+            </mxc:CartesianChart.AxesY>
+            
+            <mxc:CartesianChart.CrosshairOptions>
+                <mxc:CrosshairOptions SeriesLabelMode="OneForAllSeries" />
+            </mxc:CartesianChart.CrosshairOptions>
+        </mxc:CartesianChart>
+        
+        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
+            <StackPanel Orientation="Vertical">
+                <RadioButton Command="{Binding SetMeasureUnitCommand}">
+                    15 Minutes
+                    <RadioButton.CommandParameter>
+                        <vm:DateTimeUnitItem Unit="Minute" Factor="15" />
+                    </RadioButton.CommandParameter>
+                </RadioButton>
+                <RadioButton Command="{Binding SetMeasureUnitCommand}">
+                    30 Minutes
+                    <RadioButton.CommandParameter>
+                        <vm:DateTimeUnitItem Unit="Minute" Factor="30" />
+                    </RadioButton.CommandParameter>
+                </RadioButton>
+                <RadioButton Command="{Binding SetMeasureUnitCommand}" IsChecked="True">
+                    1 Hour
+                    <RadioButton.CommandParameter>
+                        <vm:DateTimeUnitItem Unit="Hour" Factor="1" />
+                    </RadioButton.CommandParameter>
+                </RadioButton>
+                <RadioButton Command="{Binding SetMeasureUnitCommand}">
+                    5 Hours
+                    <RadioButton.CommandParameter>
+                        <vm:DateTimeUnitItem Unit="Hour" Factor="5" />
+                    </RadioButton.CommandParameter>
+                </RadioButton>
+                <RadioButton Command="{Binding SetMeasureUnitCommand}">
+                    1 Day
+                    <RadioButton.CommandParameter>
+                        <vm:DateTimeUnitItem Unit="Day" Factor="1" />
+                    </RadioButton.CommandParameter>
+                </RadioButton>
+            </StackPanel>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>
