@@ -26,7 +26,12 @@ public class Graphics3DControlGroupInfo
             new (name: "Textured Materials", title: "Textured Materials",
                 description: "In this example, a Graphics3DControl displays a 3D model with a textured material. Use the Materials pane on the right to choose the texture.",
                 viewModelGetter: () => new Graphics3DControlTexturedMaterialsViewModel(),
-                new VersionInfo(1, 1))
+                new VersionInfo(1, 1)),
+            
+            new (name: "Camera", title: "Camera",
+            description: "TODO",
+            viewModelGetter: () => new Graphics3DControlCameraViewModel(),
+            new VersionInfo(1, 1))
         };
     }
 }

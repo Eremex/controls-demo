@@ -11,8 +11,9 @@ Allows you to plot a diagram on a Cartesian coordinate system.
 ### Features
 
 - An unlimited number of data series within each chart
-- Multiple axes support
-- Multiple axis types: Numeric, Date-Time, Time Span, Qualitative, and Logarithmic
+- Supported series views: Line, Scatter Line, Point, Area, Step Line, Bar, Range Bar, Candlestick, and more.
+- Displaying multiple axes simultaneously
+- Available axis types: Numeric, Date-Time, Time Span, Qualitative, and Logarithmic
 - Scrolling and zooming a View (all axes at the same time)
 - Scrolling and zooming individual axes
 - High-performance when displaying large data

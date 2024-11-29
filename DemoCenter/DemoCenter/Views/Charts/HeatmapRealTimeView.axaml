@@ -11,7 +11,7 @@
     <Grid RowDefinitions="* 3*">
         <mxc:CartesianChart Grid.Row="0" Classes="DemoChart" DiagramMargin="{StaticResource DiagramMargin}">
             <mxc:CartesianSeries SeriesName="Signal" DataAdapter="{Binding SignalAdapter}">
-                <mxc:CartesianAreaSeriesView Color="#BB268F" Thickness="2" />
+                <mxc:CartesianLineSeriesView Color="#2D55CE" Thickness="2" />
             </mxc:CartesianSeries>
             <mxc:CartesianChart.CrosshairOptions>
                 <mxc:CrosshairOptions ShowValueLine="False" ShowValueLabel="False" />
@@ -26,17 +26,18 @@
             </mxc:CartesianChart.AxesX>
             <mxc:CartesianChart.AxesY>
                 <mxc:AxisY Title="Amplitude" EnableZooming="False" EnableScrolling="False">
-                    <mxc:AxisYRange WholeMin="0" WholeMax="100" AutoCorrectWholeRange="False" />
+                    <mxc:AxisYRange WholeMax="0" WholeMin="-50" AutoCorrectWholeRange="False" />
                 </mxc:AxisY>
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
 
         <mxc:Heatmap Classes="DemoChart" Grid.Row="1" x:Name="DemoControl" DataAdapter="{Binding WaterfallAdapter}" DiagramMargin="{StaticResource DiagramMargin}">
             <mxc:HeatmapRangeColorProvider>
-                <mxc:HeatmapRangeStop Value="0" Color="#2A1070" />
-                <mxc:HeatmapRangeStop Value="50" Color="#BB268F" />
-                <mxc:HeatmapRangeStop Value="75" Color="#F8DA0C" />
-                <mxc:HeatmapRangeStop Value="100" Color="#FFFFFF" />
+                <mxc:HeatmapRangeStop Value="-50" Color="#000026" />
+                <mxc:HeatmapRangeStop Value="-37.5" Color="#2D55CE" />
+                <mxc:HeatmapRangeStop Value="-25" Color="#FFFFFF" />
+                <mxc:HeatmapRangeStop Value="-12.5" Color="#FFEE62" />
+                <mxc:HeatmapRangeStop Value="0" Color="#7A0100" />
             </mxc:HeatmapRangeColorProvider>
             <mxc:Heatmap.AxisX>
                 <mxc:HeatmapAxisX Title="Frequency" EnableZooming="False" EnableScrolling="False">

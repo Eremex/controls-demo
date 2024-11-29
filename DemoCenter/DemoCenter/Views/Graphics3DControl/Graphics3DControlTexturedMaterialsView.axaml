@@ -1,20 +1,24 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
-             xmlns:mx3d="clr-namespace:Eremex.AvaloniaUI.Controls3D;assembly=Eremex.Avalonia.Controls3D"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              x:Class="DemoCenter.Views.Graphics3DControlTexturedMaterialsView"
              x:DataType="vm:Graphics3DControlTexturedMaterialsViewModel"
              x:CompileBindings="True">
     <Grid ColumnDefinitions="* Auto">
-        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHitInfo="False" ModelsSource="{Binding Models}" MaterialsSource="{Binding Materials}" Grid.Column="0" />
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHitInfo="False" MaterialsSource="{Binding Materials}" Grid.Column="0">
+            <mx3d:GeometryModel3D>
+                <mx3d:MeshGeometry3D Vertices="{Binding Vertices}" Indices="{Binding Indices}" MaterialKey="{Binding SelectedMaterial.Key}" />
+            </mx3d:GeometryModel3D>
+        </mx3d:Graphics3DControl>
         
         <StackPanel Grid.Column="1">
             <mxe:GroupBox Header="Materials"  Classes="PropertiesGroup">
                 <ListBox ItemsSource="{Binding Materials}" SelectedItem="{Binding SelectedMaterial}">
                     <ListBox.ItemTemplate>
                         <DataTemplate x:DataType="mx3d:TexturedPbrMaterial">
-                            <Image Source="{Binding Albedo}" Width="100" Height="100" Margin="8" />
+                            <Image Source="{Binding Albedo}" Width="80" Height="80" Margin="8" />
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

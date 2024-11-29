@@ -16,6 +16,8 @@
 - Column Chooser — Allows a user to access all columns, manage the column visibility, and rearrange the columns.
 - Search Panel — Helps a user quickly locate rows by the data they contain.
 - Auto Filter Row — A special row that allows a user to filter data against columns.
+- Row Drag-and-Drop
+- High Performance for Large Volumes of Data — The data virtualization mechanism for vertical and horizontal scrolling boosts the control's performance when displaying large numbers of rows and columns.
 - Column Header Templates – Allow you to display custom content in column headers, including images.
 - Multiple Row Selection (Highlight) — You can enable multiple row selection mode to allow a user to select (highlight) multiple rows at one time.
 - Data Annotation Attribute Support — The Data Grid control takes into account dedicated Data Annotation attributes applied to the data source's properties. You can use Data Annotation attributes to specify custom visibility, position, read-only state, and display name for auto-generated columns.

@@ -11,7 +11,7 @@ The current repository contains the Demo project that allows you to get to test 
 
 Please [contact us](#contact-us) for information on licensing.
 
-[![Controls - Light Theme](docs/images/controls-light-sm.png)](docs/images/controls-light.png)
+[![Controls - Light Theme](docs/images/controls-light-sm-v1.1.png)](docs/images/controls-light-v1.1.png)
   
 <!-- [![Controls - Dark Theme](docs/images/controls-dark-sm.png)](docs/images/controls-dark.png) -->
 
@@ -81,8 +81,9 @@ The `CartesianChart`, `PolarChart` and `SmithChart` controls allow you to integr
 
 ![thumb-chartcontrol](docs/images/thumb-chartcontrol.png) 
 
-- An unlimited number of data series
-- Multiple axis types: Numeric, Date-Time, Time Span, Qualitative, and Logarithmic
+- Displaying an unlimited number of data series simultaneously.
+- Supported series views: Line, Scatter Line, Point, Area, Step Line, Bar, Range Bar, Candlestick, and more.
+- Available axis types: Numeric, Date-Time, Time Span, Qualitative, and Logarithmic
 - Scrolling and zooming the entire view and individual axes
 - High-performance when displaying large data.
 - Real-time data visualization
@@ -90,7 +91,42 @@ The `CartesianChart`, `PolarChart` and `SmithChart` controls allow you to integr
 [Learn more...](docs/charts.md) 
 
 
+### Heatmap
+
+The Heatmap control allows you to create a two-dimensional [heat map](https://en.wikipedia.org/wiki/Heat_map), a chart that visualizes data using color. The control paints each data point within a 2D "map" with a color that corresponds to a value at this point.
+
+![thumb-chartcontrol](docs/images/thumb-heatmap.png) 
+
+- Custom color encoding
+- Grayscale colorization
+- Customization of the X and Y axes
+- Crosshair 
+- Strips and constant lines
+- Scroll and zoom with the mouse
+- Export the result of the data colorization to a bitmap
+
+[Learn more...](docs/charts.md) 
+
+
+
 ## Navigation and Layout Controls
+
+### Ribbon
+
+The menu inspired by the ribbon UI found in Microsoft Office products.
+
+![thumb-ribbon](docs/images/thumb-ribbon.png) 
+
+- Simplified and Classic views
+- Supported items: small and large buttons, toggle buttons, button groups, sub-menus, and more.
+- Inline and dropdown galleries
+- Quick Access Toolbar
+- Tab colorization
+- Keyboard navigation
+- Adaptive layout
+
+
+[Learn more...](docs/ribbon.md)
 
 ### Toolbars and Menus
 
@@ -133,6 +169,25 @@ Classic docking interface inspired by the Microsoft Visual Studio IDE.
 [Learn more...](docs/docking.md)
 
 
+## 3D Graphics
+
+### Graphics3DControl
+
+`Graphics3DControl` can visualize 3D models in your Avalonia applications.
+
+![thumb-docking](docs/images/thumb-graphics3dcontrol.png) 
+
+- API to specify 3D models
+- Simple materials 
+- Textured materials in PBR format
+- Displaying multiple 3D models simultaneously
+- Perspective and isometric camera modes
+- Model rotation, panning and zooming with the mouse and keyboard at runtime
+- Rendering on a video card with the Vulkan SDK
+- MVVM pattern support for specifying 3D models
+
+[Learn more...](docs/graphics3dcontrol.md)
+
 ## Editors and Utility Controls
 
 ### Data Editors
@@ -164,6 +219,8 @@ A collection of useful controls shipped with the Eremex Controls library allow y
 - SplitContainerControl
 - GroupBox
 - CalendarControl
+- MxMessageBox
+- CircleProgressIndicator
 
 [Learn more...](docs/commoncontrols.md)
 

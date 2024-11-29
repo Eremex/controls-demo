@@ -20,6 +20,8 @@ The Eremex Controls library includes two data-aware controls to display hierarch
 - Built-in Node Checkboxes — Allow you to select individual nodes.
 - Data Sorting — Allows you to sort sibling nodes in ascending or descending order. TreeList supports data sorting against one or multiple columns. 
 - Node Images — Allow you to display custom images before cell values in the hierarchy column.
+- Node Drag-and-Drop
+- High Performance for Large Volumes of Data — The data virtualization mechanism for vertical and horizontal scrolling boosts the control's performance when displaying large numbers of rows and columns.
 - Styles — Allow you to customize the appearance settings of the controls' elements in various states.
 - Search Panel — Helps a user quickly locate nodes by the data they contain.
 - Data Edit Operations — The controls use default Eremex editors to present and edit cell values of common data types. You can embed custom editors in cells to render and edit cell values in a specific manner.

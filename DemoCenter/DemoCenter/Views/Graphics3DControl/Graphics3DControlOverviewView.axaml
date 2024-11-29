@@ -1,21 +1,27 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
-             xmlns:mx3d="clr-namespace:Eremex.AvaloniaUI.Controls3D;assembly=Eremex.Avalonia.Controls3D"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
-
              x:Class="DemoCenter.Views.Graphics3DControlOverviewView"
              x:DataType="vm:Graphics3DControlOverviewViewModel">
     <Grid ColumnDefinitions="* 250">
-        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ModelsSource="{Binding Models}" Grid.Column="0">
-            <mx3d:Graphics3DControl.Gizmo>
-                <mx3d:Gizmo x:Name="Gizmo" />
-            </mx3d:Graphics3DControl.Gizmo>
-            <mx3d:Graphics3DControl.Materials>
-                <mx3d:SimplePbrMaterial Metallic="0.6" />
-            </mx3d:Graphics3DControl.Materials>
-        </mx3d:Graphics3DControl>
+        <mxe:SplitContainerControl Grid.Column="0" Panel1Length="2*" Orientation="Vertical" HorizontalAlignment="Stretch" CollapsePanel="Panel2" IsCollapsed="True">
+            <mxe:SplitContainerControl.Panel1>
+                <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" Logger="{Binding Logger}" ModelsSource="{Binding Models}">
+                    <mx3d:Graphics3DControl.Gizmo>
+                        <mx3d:Gizmo x:Name="Gizmo" />
+                    </mx3d:Graphics3DControl.Gizmo>
+                    <mx3d:Graphics3DControl.Materials>
+                        <mx3d:SimplePbrMaterial Metallic="0.6" />
+                    </mx3d:Graphics3DControl.Materials>
+                </mx3d:Graphics3DControl>
+            </mxe:SplitContainerControl.Panel1>
+            <mxe:SplitContainerControl.Panel2>
+                <TextBox Text="{Binding Logger.Text}" IsReadOnly="True" />
+            </mxe:SplitContainerControl.Panel2>
+        </mxe:SplitContainerControl>
         
         <StackPanel Grid.Column="1">
             <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">

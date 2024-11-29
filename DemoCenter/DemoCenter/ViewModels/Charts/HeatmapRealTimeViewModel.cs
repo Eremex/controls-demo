@@ -10,6 +10,7 @@ public partial class HeatmapRealTimeViewModel : ChartsPageViewModel
     const int TimeSize = 500;
     const int StartFrequency = 2000;
     const int TimeInterval = 20;
+    const double Amplitude = -50;
     
     static double Interpolate(double y1, double y2, double mu)
     {
@@ -36,6 +37,11 @@ public partial class HeatmapRealTimeViewModel : ChartsPageViewModel
         {
             arguments[i] = StartFrequency + i;
             argumentsX[i] = $"{((StartFrequency + i) * 0.001):#.###}k";
+        }
+        for (int i = 0; i < TimeSize; i++)
+        {
+            for (int j = 0; j < BandSize; j++)
+                values[i, j] = Amplitude;
         }
         var now = DateTime.Now;
         for (int i = 0; i < TimeSize; i++)
@@ -67,7 +73,7 @@ public partial class HeatmapRealTimeViewModel : ChartsPageViewModel
         {
             double relativePosition = (double)i * (bands.Length - 1) / signalValues.Length;
             double value = Interpolate(bands[(int)relativePosition], bands[(int)relativePosition + 1], relativePosition - Math.Floor(relativePosition));
-            value = Math.Round(Math.Max(0, Math.Min(1, value + (random.NextDouble() - 0.5) * 0.05)) * 100);
+            value = Math.Round((1 - Math.Min(1, Math.Max(0, value + (random.NextDouble() - 0.5) * 0.05))) * Amplitude);
             signalValues[i] = value;
             values[TimeSize - 1, i] = value;
         }

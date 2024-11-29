@@ -1,0 +1,49 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             x:Class="DemoCenter.Views.Graphics3DControlCameraView">
+  <Grid ColumnDefinitions="* 250">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" MaterialsSource="{Binding Materials}" Camera="{Binding SelectedCamera.Camera}" Grid.Column="0">
+            <mx3d:Graphics3DControl.Models>
+                <mx3d:GeometryModel3D x:Name="Cube" MeshesSource="{Binding Meshes}">
+                    <mx3d:GeometryModel3D.MeshTemplate>
+                        <DataTemplate x:DataType="vm:MeshViewModel">
+                            <mx3d:MeshGeometry3D Name="{Binding Name}" Vertices="{Binding Vertices}" Indices="{Binding Indices}" MaterialKey="{Binding MaterialKey}" />
+                        </DataTemplate>
+                    </mx3d:GeometryModel3D.MeshTemplate>
+                </mx3d:GeometryModel3D>
+            </mx3d:Graphics3DControl.Models>
+            
+            <mx3d:Graphics3DControl.Gizmo>
+                <mx3d:Gizmo x:Name="Gizmo" />
+            </mx3d:Graphics3DControl.Gizmo>
+        </mx3d:Graphics3DControl>
+        
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Camera" Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <ListBox ItemsSource="{Binding Cameras}" SelectedItem="{Binding SelectedCamera}" Classes="PropertyEditor">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="vm:CameraItem">
+                                <Label Content="{Binding Name}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Label Content="Perspective Field Of View" Classes="PropertyLabel"/>
+                    <Slider Minimum="0.1" Maximum="2.1" Value="{Binding SelectedCamera.FieldOfView}" IsEnabled="{Binding SelectedCamera.IsPerspective}" Classes="PropertyEditor" />
+
+                    <Button Click="Button_OnClick" HorizontalAlignment="Stretch" Classes="PropertyEditor">Look At Scene</Button>
+                    <mxe:ComboBoxEditor x:Name="CameraPosition" ItemsSource="{mx:EnumItemsSource EnumType=mx3d:CameraPosition}" Classes="PropertyEditor">
+                        <mxe:ComboBoxEditor.EditorValue>
+                            <mx3d:CameraPosition>IsoXYZ</mx3d:CameraPosition>
+                        </mxe:ComboBoxEditor.EditorValue>
+                    </mxe:ComboBoxEditor>
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

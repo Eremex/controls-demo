@@ -38,6 +38,13 @@ The Eremex Avalonia Controls library ships with many multi-purpose utility contr
     - Displays a customizable header.
     - Displays a line below the client region.
 
+- `MxMessageBox` - Displays a message box as a modal window.
+    - The dialog can display a text message, an icon, and a set of standard buttons.
+    - Full support for the Eremex visual themes.
+    - Simple and consistent API.
+
+- `CircleProgressIndicator` - Displays the progress of an operation as a rotating circle.
+
 ## Documentation
 
 - [English Documentation](https://eremexcontrols.net/articles/controls/utility-controls.html)

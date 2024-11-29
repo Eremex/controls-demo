@@ -1,7 +1,7 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
-             xmlns:mx3d="clr-namespace:Eremex.AvaloniaUI.Controls3D;assembly=Eremex.Avalonia.Controls3D"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:views="using:DemoCenter.Views"
              x:Class="DemoCenter.Views.Graphics3DControlSimpleMaterialsView"
