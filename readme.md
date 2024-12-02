@@ -3,7 +3,9 @@
 The Eremex Avalonia Controls Library includes a powerful collection of UI controls to help you deliver cutting-edge applications for the cross-platform Avalonia UI framework.
 The advanced controls - from Data Grid and Tree List to Charts and Docking UI - provide rich capabilities to visualize, shape, edit data, create classic navigation interfaces, and more. 
 
-
+[![Latest](https://img.shields.io/nuget/v/Eremex.Avalonia.Controls?label=Latest&logo=nuget)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
+[![Downloads](https://img.shields.io/nuget/dt/Eremex.Avalonia.Controls?label=Downloads)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
+[![Follow @EMXControls](https://img.shields.io/twitter/follow/EMXControls?style=social)](https://twitter.com/intent/follow?screen_name=EMXControls)
 
 ## About
 
