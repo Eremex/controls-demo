@@ -3,7 +3,7 @@ using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DynamicData;
 
-namespace DemoCenter.ViewModels.Ribbon;
+namespace DemoCenter.ViewModels;
 
 public partial class WordPadExampleViewModel : PageViewModelBase
 {
@@ -20,53 +20,35 @@ public partial class WordPadExampleViewModel : PageViewModelBase
 		selectedFont = fonts.FirstOrDefault(f => f == "Arial");
 		if (selectedFont == null)
 			selectedFont = fonts[0];
-		var fs = new[] { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
-		fontSizes = new ObservableCollection<int>(fs);
+		fontSizes = new ObservableCollection<int>
+		{
+			8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72
+		};
 		selectedSize = 14;
-		fontStyles = new ObservableCollection<FontStyleGalleryItem>();
-		fontStyles.Add(new NormalGalleryItem() { Header = "Normal" });
-		fontStyles.Add(new HeadingGalleryItem() { Header = "Heading" });
-		fontStyles.Add(new Heading2GalleryItem() { Header = "Heading 2" });
-		fontStyles.Add(new TitleGalleryItem() { Header = "Title" });
-		fontStyles.Add(new SubtitleGalleryItem() { Header = "Subtitle" });
-		fontStyles.Add(new SubtleEmphaGalleryItem() { Header = "Subtle Empha" });
-		fontStyles.Add(new EmphasisGalleryItem() { Header = "Emphasis" });
-		fontStyles.Add(new IntenseEmphasisGalleryItem() { Header = "Intense Emphasis" });
-		fontStyles.Add(new StrongGalleryItem() { Header = "Strong" });
-		fontStyles.Add(new QuoteGalleryItem() { Header = "Quote" });
-		fontStyles.Add(new IntenseReferGalleryItem() { Header = "Intense Refer" });
-		fontStyles.Add(new BookTitleGalleryItem() { Header = "Book Title" });
-		fontStyles.Add(new ListParagraphGalleryItem() { Header = "List Paragraph" });
+		fontStyles = new ObservableCollection<FontStyleGalleryItem>
+		{
+			new FontStyleGalleryItem { Header = "Normal", FontSize = 14 },
+			new FontStyleGalleryItem { Header = "Heading", FontSize = 22, Foreground = Brushes.SteelBlue },
+			new FontStyleGalleryItem { Header = "Heading 2", FontSize = 18, Foreground = Brushes.SteelBlue },
+			new FontStyleGalleryItem { Header = "Title", FontSize = 24 },
+			new FontStyleGalleryItem { Header = "Subtitle", FontSize = 14, Foreground = Brushes.DimGray },
+			new FontStyleGalleryItem { Header = "Subtle Empha", FontSize = 14, FontStyle = FontStyle.Italic, Foreground = Brushes.DimGray },
+			new FontStyleGalleryItem { Header = "Emphasis", FontSize = 14, FontStyle = FontStyle.Italic },
+			new FontStyleGalleryItem { Header = "Intense Emphasis", FontSize = 14, FontStyle = FontStyle.Italic, Foreground = Brushes.SteelBlue },
+			new FontStyleGalleryItem { Header = "Strong", FontSize = 14, FontWeight = FontWeight.Bold },
+			new FontStyleGalleryItem { Header = "Quote", FontSize = 14, FontStyle = FontStyle.Italic },
+			new FontStyleGalleryItem { Header = "Intense Refer", FontSize = 16, FontWeight = FontWeight.Bold, Foreground = Brushes.SteelBlue },
+			new FontStyleGalleryItem { Header = "Book Title", FontSize = 12, FontWeight = FontWeight.Bold, FontStyle = FontStyle.Italic },
+			new FontStyleGalleryItem { Header = "List Paragraph", FontSize = 14 }
+		};
 	}
 }
 
-public partial class FontStyleGalleryItem : ObservableObject
+public class FontStyleGalleryItem : ObservableObject
 {
-	[ObservableProperty] private string header;
+	public string Header { get; set; }
+	public double FontSize { get; set; }
+	public FontWeight FontWeight { get; set; } = FontWeight.Normal;
+	public FontStyle FontStyle { get; set; } = FontStyle.Normal;
+	public IBrush Foreground { get; set; }
 }
-
-public class NormalGalleryItem : FontStyleGalleryItem { }
-
-public class HeadingGalleryItem : FontStyleGalleryItem { }
-
-public class Heading2GalleryItem : FontStyleGalleryItem { }
-
-public class TitleGalleryItem : FontStyleGalleryItem { }
-
-public class SubtitleGalleryItem : FontStyleGalleryItem { }
-
-public class SubtleEmphaGalleryItem : FontStyleGalleryItem { }
-
-public class EmphasisGalleryItem : FontStyleGalleryItem { }
-
-public class IntenseEmphasisGalleryItem : FontStyleGalleryItem { }
-
-public class StrongGalleryItem : FontStyleGalleryItem { }
-
-public class QuoteGalleryItem : FontStyleGalleryItem { }
-
-public class IntenseReferGalleryItem : FontStyleGalleryItem { }
-
-public class BookTitleGalleryItem : FontStyleGalleryItem { }
-
-public class ListParagraphGalleryItem : FontStyleGalleryItem { }

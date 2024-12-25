@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
-using DemoCenter.ViewModels.Ribbon;
+using DemoCenter.ViewModels;
 
-namespace DemoCenter.Views.Ribbon;
+namespace DemoCenter.Views;
 
 public partial class WordPadExampleView : UserControl
 {

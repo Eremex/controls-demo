@@ -1,0 +1,29 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:views="using:DemoCenter.Views"
+             x:Class="DemoCenter.Views.Graphics3DControlLinesView"
+             x:DataType="vm:Graphics3DControlLinesViewModel">
+    <UserControl.Resources>
+        <views:Vector3ToColorConverter x:Key="Vector3ToColorConverter"/>
+    </UserControl.Resources>
+    <Grid ColumnDefinitions="* Auto">
+        <mx3d:Graphics3DControl Grid.Column="0" Classes="DemoGraphics3DControl" x:Name="DemoControl" ModelsSource="{Binding Models}">
+            <mx3d:Graphics3DControl.Materials>
+                <mx3d:SimplePbrMaterial x:Name="Material" />
+            </mx3d:Graphics3DControl.Materials>
+        </mx3d:Graphics3DControl>
+        
+        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Line Width" Classes="PropertyLabel"/>
+                <Slider Minimum="1" Maximum="10" Value="{Binding LineWidth}" />
+
+                <Label Content="Albedo" Classes="PropertyLabel"/>
+                <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Albedo, Converter={StaticResource Vector3ToColorConverter}}" />
+            </StackPanel>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>

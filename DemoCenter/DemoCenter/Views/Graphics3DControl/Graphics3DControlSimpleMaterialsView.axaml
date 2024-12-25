@@ -7,7 +7,7 @@
              x:Class="DemoCenter.Views.Graphics3DControlSimpleMaterialsView"
              x:DataType="vm:Graphics3DControlSimpleMaterialsViewModel">
     <UserControl.Resources>
-        <views:ColorToVector3Converter x:Key="ColorToVector3Converter"/>
+        <views:Vector3ToColorConverter x:Key="Vector3ToColorConverter"/>
     </UserControl.Resources>
     <Grid ColumnDefinitions="* Auto">
         <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHitInfo="False" ModelsSource="{Binding Models}" Grid.Column="0">
@@ -20,9 +20,9 @@
             <mxe:GroupBox Header="Material Properties"  Classes="PropertiesGroup">
                 <StackPanel Orientation="Vertical">
                     <Label Content="Albedo" Classes="PropertyLabel"/>
-                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Albedo, Converter={StaticResource ColorToVector3Converter}}" />
+                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Albedo, Converter={StaticResource Vector3ToColorConverter}}" />
                     <Label Content="Emission" Classes="PropertyLabel"/>
-                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Emission, Converter={StaticResource ColorToVector3Converter}}" />
+                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Emission, Converter={StaticResource Vector3ToColorConverter}}" />
                     <Label Content="Metallic" Classes="PropertyLabel"/>
                     <Slider Minimum="0" Maximum="1" Value="{Binding ElementName=Material, Path=Metallic}" />
                     <Label Content="Roughness" Classes="PropertyLabel"/>

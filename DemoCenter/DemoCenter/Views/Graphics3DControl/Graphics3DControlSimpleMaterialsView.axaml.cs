@@ -14,21 +14,21 @@ public partial class Graphics3DControlSimpleMaterialsView : UserControl
     }
 }
 
-public class ColorToVector3Converter : IValueConverter
+public class Vector3ToColorConverter : IValueConverter
 {
     static byte ToByte(float value) => (byte)(value * byte.MaxValue);
     static float ToFloat(byte value) => (float)value / byte.MaxValue;
     
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is Vector3 vector && targetType == typeof(Color))
+        if (value is Vector3 vector)
             return new Color(byte.MaxValue, ToByte(vector.X), ToByte(vector.Y), ToByte(vector.Z));
-        return targetType.IsValueType ? Activator.CreateInstance(targetType) : null;
+        return null;
     }
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is Color color && targetType == typeof(Vector3))
+        if (value is Color color)
             return new Vector3(ToFloat(color.R), ToFloat(color.G), ToFloat(color.B));
-        return targetType.IsValueType ? Activator.CreateInstance(targetType) : null;
+        return null;
     }
 }

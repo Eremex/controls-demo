@@ -1,0 +1,8 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
+             x:Class="DemoCenter.Views.Graphics3DControlTransformationView"
+             x:DataType="vm:Graphics3DControlTransformationViewModel">
+    <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ModelsSource="{Binding Models}" MaterialsSource="{Binding Materials}" />
+</UserControl>

@@ -17,7 +17,6 @@
     <PackageVersion Include="AvaloniaEdit.TextMate" Version="11.0.6" />
     <PackageVersion Include="System.IO.Compression.ZipFile" Version="4.3.0" />
     <PackageVersion Include="TextMateSharp.Grammars" Version="1.0.56" />
-    <PackageVersion Include="MessageBox.Avalonia" Version="3.1.5.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="XamlNameReferenceGenerator" Version="1.3.4" />
     <PackageVersion Include="SkiaSharp" Version="2.88.8" />

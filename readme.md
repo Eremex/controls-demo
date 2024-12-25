@@ -267,7 +267,7 @@ The Eremex Controls Library ships with the `Eremex.Avalonia.Themes.DeltaDesign` 
 The following are system requirements to run the current Demo project, and use the Eremex Controls Library for Avalonia UI in your projects.
 
 - [.NET](https://dotnet.microsoft.com/en-us/download/dotnet) 6.0+
-- [Avalonia UI Framework](https://avaloniaui.net) v11.0.6+
+- [Avalonia UI Framework](https://avaloniaui.net) v11.2.2+
 - Developement: IDEs that have Avalonia UI support (Visual Studio 2022 and higher, JetBrains Rider 2021.3 and higher).
 
 ## Get Started
@@ -297,14 +297,21 @@ The source code included in the current repository is distributed under the term
 
 The Eremex End-User License Agreement (EULA) fully outlines the usage rules of the Eremex Avalonia UI Controls Library.
 
-
-
 ## Contact Us
+
+### Website
+
+Visit our official website for pricing details and frequently asked questions:
+
+- https://eremexcontrols.ru (Русский)
+- https://eremexcontrols.com (English)
+
+### Telegram
 
 Have a question or feedback? Please contact us at: 
 
 - https://t.me/emxControls (Русский)
-- https://t.me/emxControlsEn (English )
+- https://t.me/emxControlsEn (English)
 
 
 ## More Resources

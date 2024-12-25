@@ -13,6 +13,21 @@ public class Graphics3DControlGroupInfo
                 viewModelGetter: () => new Graphics3DControlOverviewViewModel(),
                 new VersionInfo(1, 1)),
             
+            new (name: "Lines", title: "Line",
+                description: "This example demonstrates a Graphics3DControl that renders a 3D model using lines.",
+                viewModelGetter: () => new Graphics3DControlLinesViewModel(),
+                new VersionInfo(1, 1)),
+
+            new (name: "Points", title: "Points",
+                description: "This example demonstrates a Graphics3DControl that renders a 3D model using points.",
+                viewModelGetter: () => new Graphics3DControlPointsViewModel(),
+                new VersionInfo(1, 1)),
+            
+            new (name: "Transformations", title: "Transformations",
+                description: "This example demonstrates dynamic transformations applied to 3D Models in a Graphics3DControl.",
+                viewModelGetter: () => new Graphics3DControlTransformationViewModel(),
+                new VersionInfo(1, 1)),
+
             new (name: "STL Model", title: "STL Model",
                 description: "This example demonstrates a Graphics3DControl displaying a large 3D model loaded from an STL file. The STLDotNet6.Formats.StereoLithography library is used to parse the STL file, and to obtain data to initialize vertices and materials of the created model.",
                 viewModelGetter: () => new Graphics3DControlStlViewModel(),
@@ -29,9 +44,9 @@ public class Graphics3DControlGroupInfo
                 new VersionInfo(1, 1)),
             
             new (name: "Camera", title: "Camera",
-            description: "TODO",
-            viewModelGetter: () => new Graphics3DControlCameraViewModel(),
-            new VersionInfo(1, 1))
+                description: "This example demonstrates the isometric and perspective cameras supported by Graphics3DControl. Use the Camera pane on the right to choose camera mode and one of predefined camera views.",
+                viewModelGetter: () => new Graphics3DControlCameraViewModel(),
+                new VersionInfo(1, 1))
         };
     }
 }

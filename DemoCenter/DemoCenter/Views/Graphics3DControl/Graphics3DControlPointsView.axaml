@@ -1,0 +1,35 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:views="using:DemoCenter.Views"
+             x:Class="DemoCenter.Views.Graphics3DControlPointsView"
+             x:DataType="vm:Graphics3DControlPointsViewModel">
+    <UserControl.Resources>
+        <views:ColorToVector3Converter x:Key="ColorToVector3Converter"/>
+    </UserControl.Resources>
+    <Grid ColumnDefinitions="* Auto">
+        <mx3d:Graphics3DControl Grid.Column="0" Classes="DemoGraphics3DControl" x:Name="DemoControl">
+            <mx3d:GeometryModel3D>
+                <mx3d:MeshGeometry3D FillType="Points" Vertices="{Binding Vertices}" Indices="{Binding Indices}" PrimitiveSize="{Binding PointSize}" />
+            </mx3d:GeometryModel3D>
+            <mx3d:Graphics3DControl.Materials>
+                <mx3d:SimplePbrMaterial Emission="{Binding Color, Converter={StaticResource ColorToVector3Converter}}" Roughness="0" AmbientOcclusion="0" Metallic="0" Albedo="{Binding Albedo}" />
+            </mx3d:Graphics3DControl.Materials>
+            <mx3d:Graphics3DControl.Camera>
+                <mx3d:PerspectiveCamera MinDistance="1" />
+            </mx3d:Graphics3DControl.Camera>
+        </mx3d:Graphics3DControl>
+        
+        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Point Size" Classes="PropertyLabel"/>
+                <Slider Minimum="1" Maximum="5" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding PointSize}" />
+
+                <Label Content="Albedo" Classes="PropertyLabel"/>
+                <mxe:ColorEditor Color="{Binding Color}" />
+            </StackPanel>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>

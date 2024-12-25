@@ -4,5 +4,9 @@
              xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
              x:Class="DemoCenter.Views.Graphics3DControlStlView"
              x:DataType="vm:Graphics3DControlStlViewModel">
-    <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ModelsSource="{Binding Models}" MaterialsSource="{Binding Materials}" />
+    <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ModelsSource="{Binding Models}" MaterialsSource="{Binding Materials}">
+        <mx3d:Graphics3DControl.Camera>
+            <mx3d:PerspectiveCamera DefaultCameraPosition="Up" />
+        </mx3d:Graphics3DControl.Camera>
+    </mx3d:Graphics3DControl>
 </UserControl>

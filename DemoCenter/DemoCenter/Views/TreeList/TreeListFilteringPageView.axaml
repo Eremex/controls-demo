@@ -61,7 +61,7 @@
 					</Setter>
 				</Style>
 			</mxtl:TreeListControl.Styles>
-			<mxtl:TreeListColumn FieldName="HighPriority" ColumnChooserHeader="High Priority" AllowSorting="False" AllowResizing="False" Header=" " Width="32">
+			<mxtl:TreeListColumn FieldName="HighPriority" ColumnChooserHeader="High Priority" AllowSorting="False" AllowResizing="False" Header=" " Width="38">
 				<mxtl:TreeListColumn.CellTemplate>
 					<DataTemplate>
 						<Border ToolTip.Tip="High Priority" Background="Transparent">

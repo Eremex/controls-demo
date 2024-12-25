@@ -3,9 +3,6 @@
     <TargetFrameworks>net6.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <NoWarn>NU1803;NU1903;</NoWarn>
-  </PropertyGroup>
   
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
@@ -43,6 +40,18 @@
     </Compile>
     <Compile Update="Views\Graphics3DControl\Graphics3DControlTexturedMaterialsView.axaml.cs">
       <DependentUpon>Graphics3DControlTexturedMaterialsView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Graphics3DControl\Graphics3DControlLinesView.axaml.cs">
+      <DependentUpon>Graphics3DControlLinesView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Graphics3DControl\Graphics3DControlPointsView.axaml.cs">
+      <DependentUpon>Graphics3DControlPointsView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Graphics3DControl\Graphics3DControlTransformationView.axaml.cs">
+      <DependentUpon>Graphics3DControlTransformationView.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

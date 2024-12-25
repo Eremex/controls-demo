@@ -25,7 +25,7 @@ public partial class SvgIconsBrowserViewModel : PageViewModelBase
         focusedItem = Items[1];
     }
 
-    private readonly string[] prohibitedCategories = new[] { "Library", "Logo", "Painting", "PCB", "Scheme", "SimOne", "SimPCB", "Simtera", "Status", "_8" };
+    private readonly string[] prohibitedCategories = new[] { "Library", "Logo", "Painting", "PCB", "Scheme", "SimOne", "SimPCB", "Simtera", "Status", "_8", "_144" };
     private readonly Dictionary<string, string> mappingCategories = new()
     {
         {"_3D", "3D"}, {"Dimensional_lines", "Dimensions"}, {"Drawing", "Graphical Editor"},

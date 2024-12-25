@@ -22,23 +22,24 @@
                       HorizontalAlignment="Center" Width="400">
                     <Grid.Styles>
                         <Style Selector="TextBox">
+                            <Setter Property="ClearSelectionOnLostFocus" Value="False"/>
                             <Setter Property="mxb:ToolbarManager.ContextPopup">
                                 <Setter.Value>
                                     <Template>
-                                        <mxb:PopupMenu Focusable="False" Header="Edit Menu" ShowHeader="True">
+                                        <mxb:PopupMenu Header="Edit Menu" ShowHeader="True">
                                             <mxb:ToolbarButtonItem Header="Cut" HotKeyDisplayString="Ctrl+X" Command="{Binding $parent[TextBox].Cut}" IsEnabled="{Binding $parent[TextBox].CanCut}"
                                                                    Glyph="{x:Static mxi:Basic.Cut}"/>
                                             <mxb:ToolbarButtonItem Header="Copy" HotKeyDisplayString="Ctrl+C" Command="{Binding $parent[TextBox].Copy}" IsEnabled="{Binding $parent[TextBox].CanCopy}"
                                                                    Glyph="{x:Static mxi:Basic.Copy}"/>
                                             <mxb:ToolbarButtonItem Header="Paste" HotKeyDisplayString="Ctrl+V" Command="{Binding $parent[TextBox].Paste}" IsEnabled="{Binding $parent[TextBox].CanPaste}"
                                                                    Glyph="{x:Static mxi:Basic.Paste}"/>
-                                            <mxb:ToolbarSeparatorItem/>
                                             <mxb:ToolbarButtonItem Header="Undo" HotKeyDisplayString="Ctrl+Z" Command="{Binding $parent[TextBox].Undo}" IsEnabled="{Binding $parent[TextBox].CanUndo}"
-                                                                   Glyph="{x:Static mxi:Basic.Undo}"/>
+                                                                   Glyph="{x:Static mxi:Basic.Undo}"
+                                                                   ShowSeparator="True"/>
                                             <mxb:ToolbarButtonItem Header="Redo" HotKeyDisplayString="Ctrl+Y"  Command="{Binding $parent[TextBox].Redo}" IsEnabled="{Binding $parent[TextBox].CanRedo}"
                                                                    Glyph="{x:Static mxi:Basic.Redo}"/>
-                                            <mxb:ToolbarSeparatorItem/>
-                                            <mxb:ToolbarButtonItem Header="Select All" HotKeyDisplayString="Ctrl+A" Command="{Binding $parent[TextBox].SelectAll}"/>
+                                            <mxb:ToolbarButtonItem Header="Select All" HotKeyDisplayString="Ctrl+A" Command="{Binding $parent[TextBox].SelectAll}"
+                                                                   ShowSeparator="True"/>
                                             <mxb:ToolbarButtonItem Header="Clear" Command="{Binding $parent[TextBox].Clear}"
                                                                    Glyph="{x:Static mxi:Basic.Remove}"/>
                                         </mxb:PopupMenu>
@@ -61,18 +62,17 @@
                     <Label Content="Segmented editor" Grid.Row="4" VerticalAlignment="Bottom" Classes="LayoutItem"/>
                     <mxe:SegmentedEditor Grid.Row="5" ItemsSource="{Binding Mechs}" DisplayMember="Name" Classes="LayoutItem" MinHeight="28">
                         <mxb:ToolbarManager.ContextPopup>
-                            <mxb:PopupMenu
-                                IsEnabled="{Binding #IsEnabledSelector.IsChecked}"
-                                ShowIconStrip="{Binding #ShowIconsStripSelector.IsChecked}"
-                                IsVisible="{Binding #IsVisibleSelector.IsChecked}" >
+                            <mxb:PopupMenu IsEnabled="{Binding #IsEnabledSelector.IsChecked}"
+                                           ShowIconStrip="{Binding #ShowIconsStripSelector.IsChecked}"
+                                           IsVisible="{Binding #IsVisibleSelector.IsChecked}" >
                                 <mxb:ToolbarButtonItem Header="Reload" Command="{Binding Reload}"
                                                        Glyph="{x:Static mxi:Basic.Update}"/>
-                                <mxb:ToolbarSeparatorItem/>
-                                <mxb:ToolbarCheckItem Header="Order by Ascending" IsChecked="{Binding OrderByAscending, Mode=TwoWay}" />
+                                <mxb:ToolbarCheckItem Header="Order by Ascending" IsChecked="{Binding OrderByAscending, Mode=TwoWay}"
+                                                      ShowSeparator="True"/>
                                 <mxb:ToolbarCheckItem Header="Order by Descending" IsChecked="{Binding OrderByDescending, Mode=TwoWay}"/>
-                                <mxb:ToolbarSeparatorItem/>
                                 <mxb:ToolbarButtonItem Header="Clear all but the first" Command="{Binding ClearAllButTheFirst}"
-                                                       Glyph="{x:Static mxi:Basic.Table_Clear}"/>
+                                                       Glyph="{x:Static mxi:Basic.Table_Clear}"
+                                                       ShowSeparator="True"/>
                             </mxb:PopupMenu>
                         </mxb:ToolbarManager.ContextPopup>
                     </mxe:SegmentedEditor>

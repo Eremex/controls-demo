@@ -36,6 +36,12 @@
                     <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mx3d:CompositionMode}"
                                         EditorValue="{Binding ElementName=DemoControl, Path=CompositionMode}"
                                         Classes="PropertyEditor"/>
+                    
+                    <Label Content="Gamma" Classes="PropertyLabel"/>
+                    <Slider Minimum="0.1" Maximum="12" Value="{Binding ElementName=DemoControl, Path=Gamma}" />
+
+                    <Label Content="Exposure" Classes="PropertyLabel"/>
+                    <Slider Minimum="0.1" Maximum="12" Value="{Binding ElementName=DemoControl, Path=Exposure}" />
                 </StackPanel>
             </mxe:GroupBox>
             
