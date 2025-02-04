@@ -158,6 +158,10 @@
                                     </DataTemplate>
                                 </mxb:ToolbarButtonItem.GlyphTemplate>
                             </mxb:ToolbarButtonItem>
+                            <mxb:ToolbarCheckItem ShowSeparator="True"
+                                                  Header="Auto Sync Enabled"
+                                                  CheckBoxStyle="CheckBox"
+                                                  IsChecked="{Binding AutoSyncEnabled}"/>
                             <mxb:ToolbarTextItem Alignment="Far" ShowSeparator="True" ShowBorder="False" Category="Info" CustomizationName="Position Info">
                                 <mxb:ToolbarTextItem.Header>
                                     <MultiBinding Converter="{helpers:LineAndColumnToTextConverter}">

@@ -8,7 +8,7 @@ public static class Products
 
     static List<ProductInfoBase> CreateProducts() => new()
     {
-        new GroupInfo("Data Grid", "Data Grid", "Data Grid description", () => new DataGridPageViewModel(), DataGridGroupInfo.Create(), showInWeb: false),
+        new GroupInfo("Data Grid", "Data Grid", "Data Grid description", () => new DataGridPageViewModel(), DataGridGroupInfo.Create(), showInWeb: true),
         new GroupInfo("Tree List", "Tree List", "Tree List description", () => new TreeListGroupViewModel(), TreeListGroupInfo.Create()),
         new GroupInfo("Ribbon", "Ribbon", "Ribbon description", () => new RibbonGroupViewModel(), RibbonGroupInfo.Create()),
         new GroupInfo("Graphics3D Control", "Graphics3D Control", "Graphics3D Control description", () => new Graphics3DControlViewModel(), Graphics3DControlGroupInfo.Create(), new VersionInfo(1, 1), showInWeb: false),

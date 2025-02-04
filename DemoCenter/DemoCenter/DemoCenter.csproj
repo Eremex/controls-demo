@@ -56,6 +56,10 @@
   </ItemGroup>
     
   <ItemGroup>
+    <PackageReference Include="System.Text.Json"/>
+    <PackageReference Include="System.Net.Http"/>
+    <PackageReference Include="System.Text.RegularExpressions"/>
+
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
     <PackageReference Include="Avalonia.ReactiveUI" />

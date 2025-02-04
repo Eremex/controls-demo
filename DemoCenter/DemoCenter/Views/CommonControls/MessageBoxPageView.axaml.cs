@@ -20,7 +20,6 @@ namespace DemoCenter.Views
                 configure: msgBox =>
                 {
                     msgBox.ButtonAlignment = viewModel.ButtonAlignment;
-                    msgBox.Window.Icon = new WindowIcon(AssetLoader.Open(new Uri("avares://DemoCenter/Assets/EMXControls.ico")));
                 });
         }
     }

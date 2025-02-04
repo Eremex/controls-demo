@@ -11,6 +11,7 @@ namespace DemoCenter.ViewModels
         [ObservableProperty] private string syncText = "Sync Completed";
         [ObservableProperty] private double syncProgress = 100;
         [ObservableProperty] private string text = "Text Editor (please type here)";
+        [ObservableProperty] private bool autoSyncEnabled = true;
 
         public ToolbarAndMenuPageViewModel()
         {
@@ -36,7 +37,10 @@ namespace DemoCenter.ViewModels
 
         partial void OnTextChanged(string value)
         {
-            IsSyncing = true;
+            if(AutoSyncEnabled)
+            {
+                IsSyncing = true;
+            }
         }
         
         partial void OnIsSyncingChanged(bool value)
@@ -57,20 +61,28 @@ namespace DemoCenter.ViewModels
                     SyncText = "Click the circle to sync the document";
                 }
 
-                StopSyncrhonization();
+                StopSynchronization();
             }
         }
 
         private readonly DispatcherTimer timer;
-        public void StartSynchronization()
+        private void StartSynchronization()
         {
             SyncProgress = 0;
             timer.Start();
         }
 
-        public void StopSyncrhonization()
+        private void StopSynchronization()
         {
             timer.Stop();
+        }
+
+        partial void OnAutoSyncEnabledChanged(bool value)
+        {
+            if (value)
+            {
+                IsSyncing = true;
+            }
         }
     }
 }

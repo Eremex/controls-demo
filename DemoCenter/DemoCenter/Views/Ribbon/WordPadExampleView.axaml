@@ -152,12 +152,12 @@
                                               Hint="Type very small letters just above the line of text"/>
                     </mxb:ToolbarCheckItemGroup>
                     <mxb:ToolbarItemGroup ShowSeparator="True">
-                        <mxb:ToolbarButtonItem Header="FontColor" KeyTip="FC"
+                        <mxb:ToolbarButtonItem Header="Text Color" KeyTip="FC"
                                                Glyph="{x:Static icons:Office.Font_Color}"
                                                Hint="Change the color of your text"
                                                DropDownArrowVisibility="ShowArrow">
                         </mxb:ToolbarButtonItem>
-                        <mxb:ToolbarButtonItem Header="BackColor" KeyTip="BC" Glyph="{x:Static icons:Office.Fill}"
+                        <mxb:ToolbarButtonItem Header="Text Highlight Color" KeyTip="BC" Glyph="{x:Static icons:Office.Fill}"
                                                Hint="Change the color behind the selected text"
                                                DropDownArrowVisibility="ShowArrow" />
                     </mxb:ToolbarItemGroup>
@@ -184,8 +184,7 @@
                     <mxb:ToolbarCheckItemGroup CheckType="Radio">
                         <mxb:ToolbarCheckItem Header="AlignLeft" KeyTip="AL" Glyph="{x:Static icons:Alignment.Align_Left}" 
                                               HotKey="Ctrl+L"
-                                              Hint="Align content with the left margin"
-                        />
+                                              Hint="Align content with the left margin"/>
                         <mxb:ToolbarCheckItem Header="AlignCenter" KeyTip="AC"
                                               Glyph="{x:Static icons:Alignment.Align_Horizontal_Centers}"
                                               HotKey="Ctrl+E"
@@ -219,11 +218,72 @@
                                            Hint="Clear selection"/>
                 </mxr:RibbonPageGroup>
             </mxr:RibbonPage>
-            <mxr:RibbonPage Header="Insert"  KeyTip="I" />
-            <mxr:RibbonPage Header="Draw" KeyTip="D" />
-            <mxr:RibbonPage Header="Design" KeyTip="S" />
-            <mxr:RibbonPage Header="Layout" KeyTip="L" />
-            <mxr:RibbonPage Header="View" KeyTip="V" />
+            <mxr:RibbonPage Header="Layout" KeyTip="L">
+                <mxr:RibbonPageGroup Header="Paragraph">
+                    <mxb:ToolbarTextItem Header="Indent"
+                                         ShowBorder="False" />
+                    <mxb:ToolbarEditorItem Glyph="{x:Static icons:Basic.Level_Increase}"
+                                           Header="Left: "
+                                           EditorWidth="100"
+                                           EditorValue="0">
+                            <mxb:ToolbarEditorItem.EditorProperties>
+                                <mxe:SpinEditorProperties Minimum="0" MaskUseAsDisplayFormat="True" Mask="##''" HorizontalContentAlignment="Left"/>
+                            </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Glyph="{x:Static icons:Basic.Level_Reduce}"
+                                           Header="Right:"
+                                           EditorWidth="100"
+                                           EditorValue="0">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:SpinEditorProperties Minimum="0" MaskUseAsDisplayFormat="True" Mask="##''" HorizontalContentAlignment="Left"/>
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarTextItem Header="Spacing"
+                                         ShowBorder="False"/>
+                    <mxb:ToolbarEditorItem Glyph="{x:Static icons:Basic.Level_Increase}"
+                                           Header="Before:"
+                                           EditorWidth="100"
+                                           EditorValue="0">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:SpinEditorProperties Minimum="0" MaskUseAsDisplayFormat="True" Mask="## pt" HorizontalContentAlignment="Left"/>
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                    <mxb:ToolbarEditorItem Glyph="{x:Static icons:Basic.Level_Reduce}"
+                                           Header="After:  "
+                                           EditorWidth="100"
+                                           EditorValue="8">
+                        <mxb:ToolbarEditorItem.EditorProperties>
+                            <mxe:SpinEditorProperties Minimum="0" MaskUseAsDisplayFormat="True" Mask="## pt" HorizontalContentAlignment="Left"/>
+                        </mxb:ToolbarEditorItem.EditorProperties>
+                    </mxb:ToolbarEditorItem>
+                </mxr:RibbonPageGroup>
+            </mxr:RibbonPage>
+            <mxr:RibbonPage Header="View" KeyTip="V">
+                <mxr:RibbonPageGroup Header="Zoom">
+                    <mxb:ToolbarButtonItem Header="Zoom In"
+                                          KeyTip="ZI"
+                                          Glyph="{x:Static icons:Scaling.Zoom_In}"
+                                          Hint="Zoom in on the document"/>
+                    <mxb:ToolbarButtonItem Header="Zoom Out"
+                                           KeyTip="ZO"
+                                           Glyph="{x:Static icons:Scaling.Zoom_Out}"
+                                           Hint="Zoom in on the document"/>
+                    <mxb:ToolbarButtonItem Header="100 %"
+                                           KeyTip="ZJ"
+                                           Glyph="{x:Static icons:Scaling.Zoom_Selected}"
+                                           Hint="Zoom the document to 100% of the normal size"/>
+                </mxr:RibbonPageGroup>
+                <mxr:RibbonPageGroup Header="Show or hide">
+                    <mxb:ToolbarCheckItem Header="Rulers"
+                                          KeyTip="RL"
+                                          CheckBoxStyle="CheckBox"
+                                          Hint="Show and hide ruler. You can use ruler to measure and line up text and objects in the document"/>
+                    <mxb:ToolbarCheckItem Header="Status bar"
+                                          KeyTip="SB"
+                                          CheckBoxStyle="CheckBox"
+                                          Hint="Show and hide status bar at the bottom of the window"/>
+                </mxr:RibbonPageGroup>
+            </mxr:RibbonPage>
             <mxr:RibbonPage Header="Help" KeyTip="H">
                 <mxr:RibbonPageGroup Header="Help" IsHeaderButtonVisible="False">
                     <mxb:ToolbarButtonItem Header="Help" KeyTip="LP" Glyph="{x:Static icons:Basic.Info}"
