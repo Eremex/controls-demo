@@ -10,7 +10,7 @@
         <views:Vector3ToColorConverter x:Key="Vector3ToColorConverter"/>
     </UserControl.Resources>
     <Grid ColumnDefinitions="* Auto">
-        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHitInfo="False" ModelsSource="{Binding Models}" Grid.Column="0">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHints="False" ModelsSource="{Binding Models}" Grid.Column="0">
             <mx3d:Graphics3DControl.Materials>
                 <mx3d:SimplePbrMaterial x:Name="Material" />
             </mx3d:Graphics3DControl.Materials>

@@ -7,7 +7,7 @@
              x:DataType="vm:Graphics3DControlTexturedMaterialsViewModel"
              x:CompileBindings="True">
     <Grid ColumnDefinitions="* Auto">
-        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHitInfo="False" MaterialsSource="{Binding Materials}" Grid.Column="0">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHints="False" MaterialsSource="{Binding Materials}" Grid.Column="0">
             <mx3d:GeometryModel3D>
                 <mx3d:MeshGeometry3D Vertices="{Binding Vertices}" Indices="{Binding Indices}" MaterialKey="{Binding SelectedMaterial.Key}" />
             </mx3d:GeometryModel3D>

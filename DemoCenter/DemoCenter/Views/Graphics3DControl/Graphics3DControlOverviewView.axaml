@@ -27,7 +27,7 @@
             <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
                 <StackPanel Orientation="Vertical">
                     <mxe:CheckEditor Content="Multisampling" IsChecked="{Binding ElementName=DemoControl, Path=EnableMultisampling}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor  Content="Show Hit" IsChecked="{Binding ElementName=DemoControl, Path=ShowHitInfo}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor  Content="Show Hit" IsChecked="{Binding ElementName=DemoControl, Path=ShowHints}" Classes="PropertyEditor"/>
                     <Label Content="Cull Mode" Classes="PropertyLabel"/>
                     <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mx3d:CullMode}"
                                         EditorValue="{Binding ElementName=DemoControl, Path=CullMode}"
