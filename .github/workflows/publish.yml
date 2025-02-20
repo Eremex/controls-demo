@@ -1,0 +1,61 @@
+name: Publish Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform to publish'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - 'windows'
+          - 'linux'
+          - 'all'
+
+jobs:
+  windows:
+    if: ${{ github.event.inputs.platform == 'windows' || github.event.inputs.platform == 'all' }}
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Make upload directory
+        run: mkdir upload
+
+      - name: Publish win-x64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r win-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/win64
+
+      - name: Zip win-x64
+        run: |
+          $files = Get-ChildItem -Path ./publish/win64/* -Recurse -Exclude *.pdb
+          Compress-Archive -Path $files.FullName -DestinationPath ./upload/EMX.Demo.Desktop.win-x64.zip
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: windows
+          path: ./upload
+
+  linux:
+    if: ${{ github.event.inputs.platform == 'linux' || github.event.inputs.platform == 'all' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Make upload directory
+        run: mkdir upload
+
+      - name: Publish linux-x64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r linux-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linux64
+
+      - name: Zip linux-x64
+        run: zip -j -r ./upload/EMX.Demo.Desktop.linux-x64.zip ./publish/linux64 -x "*.pdb"
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: linux
+          path: ./upload

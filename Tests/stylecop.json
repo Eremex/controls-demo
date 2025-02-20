@@ -1,0 +1,47 @@
+﻿{
+    "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+    "settings": {
+        "indentation": {
+            "useTabs": false,
+            "indentationSize": 4
+        },
+        "documentationRules": {
+            "companyName": "Eremex",
+            "xmlHeader": false,
+            "documentationCulture": "ru-RU",
+            "documentInterfaces": true,
+            "documentExposedElements": true,
+            "documentInternalElements": false,
+            "documentPrivateElements": false,
+            "documentPrivateFields": false,
+            "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the {licenseName} license. See {licenseFile} file in the project root for full license information.",
+            "variables": {
+                "licenseName": "TODO",
+                "licenseFile": "LICENSE"
+            }
+        },
+        "layoutRules": {
+            "allowDoWhileOnClosingBrace": true,
+            "newlineAtEndOfFile": "allow",
+            "allowConsecutiveUsings": true
+
+        },
+        "orderingRules": {
+            "usingDirectivesPlacement": "outsideNamespace",
+            "systemUsingDirectivesFirst": true
+        },
+        "namingRules": {
+            "includeInferredTupleElementNames": true,
+            "tupleElementNameCasing": "camelCase"
+        },
+        "maintainabilityRules": {
+            "topLevelTypes": [
+                "class",
+                "interface",
+                "struct",
+                "enum",
+                "delegate"
+            ]
+        }
+    }
+}

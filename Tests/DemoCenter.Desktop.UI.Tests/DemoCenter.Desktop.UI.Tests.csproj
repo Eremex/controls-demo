@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <IsPackable>false</IsPackable>
+        <RootNamespace>Eremex.Avalonia.Controls.UITests</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+      <AvaloniaXaml Remove="App.axaml" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="App.axaml.cs" />
+    </ItemGroup>
+    <ItemGroup>
+		<PackageReference Include="Eremex.Avalonia.Controls" />
+		<PackageReference Include="Eremex.Avalonia.Themes.DeltaDesign" />
+
+		<PackageReference Include="Avalonia" />
+        <PackageReference Include="Avalonia.Desktop" />
+        <PackageReference Include="Avalonia.Themes.Fluent" />
+        <PackageReference Include="Avalonia.Fonts.Inter" />
+        <PackageReference Include="Avalonia.Headless" />
+
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
+        <PackageReference Include="CommunityToolkit.Mvvm" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\DemoCenter\DemoCenter\DemoCenter.csproj" />
+    </ItemGroup>
+
+</Project>
