@@ -52,7 +52,7 @@ jobs:
           path: ./upload
 
   draft-release:
-    needs: [ pack, publish-windows, publish-linux, publish-android ]
+    needs: [ pack, publish-windows, publish-linux ]
     runs-on: ubuntu-latest
     steps:
       - name: Download windows Artifacts
