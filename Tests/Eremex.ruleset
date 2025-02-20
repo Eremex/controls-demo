@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Microsoft Managed Recommended Rules" Description="These rules focus on the most critical problems in your code, including potential security holes, application crashes, and other important logic and design errors. It is recommended to include this rule set in any custom rule set you create for your projects." ToolsVersion="15.0">
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.SpecialRules">
+        <Rule Id="SA0001"  Action="None" />          <!-- XML comment analysis disabled -->
+        <Rule Id="SA0002"  Action="None" />          <!-- Invalid settings file -->
+    </Rules>
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.SpacingRules">
+        <Rule Id="SA1000"  Action="None" />          <!-- Keywords should be spaced correctly -->
+        <Rule Id="SA1001"  Action="None" />          <!-- Commas should be spaced correctly -->
+        <Rule Id="SA1002"  Action="None" />          <!-- Semicolons should be spaced correctly -->
+        <Rule Id="SA1003"  Action="None" />          <!-- Symbols should be spaced correctly -->
+        <Rule Id="SA1004"  Action="None" />          <!-- Documentation lines should begin with single space -->
+        <Rule Id="SA1005"  Action="None" />          <!-- Single line comments should begin with single space -->
+        <Rule Id="SA1006"  Action="None" />          <!-- Preprocessor keywords should not be preceded by space -->
+        <Rule Id="SA1007"  Action="None" />          <!-- Operator keyword should be followed by space -->
+        <Rule Id="SA1008"  Action="None" />          <!-- Opening parenthesis should be spaced correctly -->
+        <Rule Id="SA1009"  Action="None" />          <!-- Closing parenthesis should be spaced correctly -->
+        <Rule Id="SA1010"  Action="None" />          <!-- Opening square brackets should be spaced correctly -->
+        <Rule Id="SA1011"  Action="None" />          <!-- Closing square brackets should be spaced correctly -->
+        <Rule Id="SA1012"  Action="None" />          <!-- Opening braces should be spaced correctly -->
+        <Rule Id="SA1013"  Action="None" />          <!-- Closing braces should be spaced correctly -->
+        <Rule Id="SA1014"  Action="None" />          <!-- Opening generic brackets should be spaced correctly -->
+        <Rule Id="SA1015"  Action="None" />          <!-- Closing generic brackets should be spaced correctly -->
+        <Rule Id="SA1016"  Action="None" />          <!-- Opening attribute brackets should be spaced correctly -->
+        <Rule Id="SA1017"  Action="None" />          <!-- Closing attribute brackets should be spaced correctly -->
+        <Rule Id="SA1018"  Action="None" />          <!-- Nullable type symbols should be spaced correctly -->
+        <Rule Id="SA1019"  Action="None" />          <!-- Member access symbols should be spaced correctly -->
+        <Rule Id="SA1020"  Action="None" />          <!-- Increment decrement symbols should be spaced correctly -->
+        <Rule Id="SA1021"  Action="None" />          <!-- Negative signs should be spaced correctly -->
+        <Rule Id="SA1022"  Action="None" />          <!-- Positive signs should be spaced correctly -->
+        <Rule Id="SA1023"  Action="None" />          <!-- Dereference and access of symbols should be spaced correctly -->
+        <Rule Id="SA1024"  Action="None" />          <!-- Colons should be spaced correctly -->
+        <Rule Id="SA1025"  Action="None" />          <!-- Code should not contain multiple whitespace in a row -->
+        <Rule Id="SA1026"  Action="None" />          <!-- Code should not contain space after new or stackalloc keyword in implicitly typed array allocation -->
+        <Rule Id="SA1027"  Action="None" />          <!-- Use tabs correctly -->
+        <Rule Id="SA1028"  Action="None" />          <!-- Code should not contain trailing whitespace -->
+    </Rules>
+   
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.ReadabilityRules">
+        <Rule Id="SA1100"  Action="None" />          <!-- Do not prefix calls with base unless local implementation exists -->
+        <Rule Id="SA1101"  Action="None" />          <!-- Prefix local calls with this -->
+        <Rule Id="SA1102"  Action="None" />          <!-- Query clause should follow previous clause -->
+        <Rule Id="SA1103"  Action="None" />          <!-- Query clauses should be on separate lines or all on one line -->
+        <Rule Id="SA1104"  Action="None" />          <!-- Query clause should begin on new line when previous clause spans multiple lines -->
+        <Rule Id="SA1105"  Action="None" />          <!-- Query clauses spanning multiple lines should begin on own line -->
+        <Rule Id="SA1106"  Action="Error"/>          <!-- Code should not contain empty statements -->
+        <Rule Id="SA1107"  Action="None" />          <!-- Code should not contain multiple statements on one line -->
+        <Rule Id="SA1108"  Action="None" />          <!-- Block statements should not contain embedded comments -->
+        <Rule Id="SA1109"  Action="None" />             <!-- Block statements should not contain embedded regions -->
+        <Rule Id="SA1110"  Action="None" />          <!-- Opening parenthesis or bracket should be on declaration line -->
+        <Rule Id="SA1111"  Action="None" />          <!-- Closing parenthesis should be on line of last parameter -->
+        <Rule Id="SA1112"  Action="None" />          <!-- Closing parenthesis should be on line of opening parenthesis -->
+        <Rule Id="SA1113"  Action="None" />          <!-- Comma should be on the same line as previous parameter -->
+        <Rule Id="SA1114"  Action="None" />          <!-- Parameter list should follow declaration -->
+        <Rule Id="SA1115"  Action="None" />          <!-- Parameter should follow comma -->
+        <Rule Id="SA1116"  Action="None" />          <!-- Split parameters should start on line after declaration -->
+        <Rule Id="SA1117"  Action="None" />          <!-- Parameters should be on same line or separate lines -->
+        <Rule Id="SA1118"  Action="None" />          <!-- Parameter should not span multiple lines -->
+        <Rule Id="SA1120"  Action="Error" />         <!-- Comments should contain text -->
+        <Rule Id="SA1121"  Action="None" />          <!-- Use built-in type alias -->
+        <Rule Id="SA1122"  Action="None"/>          <!-- Use string.Empty for empty strings -->
+        <Rule Id="SA1123"  Action="None" />          <!-- Do not place regions within elements -->
+        <Rule Id="SA1124"  Action="None" />          <!-- Do not use regions -->
+        <Rule Id="SA1125"  Action="None" />          <!-- Use shorthand for nullable types -->
+        <Rule Id="SA1126"  Action="None" />             <!-- Prefix calls correctly -->
+        <Rule Id="SA1127"  Action="None" />          <!-- Generic type constraints should be on their own line -->
+        <Rule Id="SA1128"  Action="None" />          <!-- Put constructor initializers on their own line -->
+        <Rule Id="SA1129"  Action="None" />          <!-- Do not use default value type constructor -->
+        <Rule Id="SA1130"  Action="None" />          <!-- Use lambda syntax -->
+        <Rule Id="SA1131"  Action="None" />          <!-- Use readable conditions -->
+        <Rule Id="SA1132"  Action="None" />          <!-- Do not combine fields -->
+        <Rule Id="SA1133"  Action="None" />          <!-- Do not combine attributes -->
+        <Rule Id="SA1134"  Action="None" />          <!-- Attributes should not share line -->
+        <Rule Id="SA1135"  Action="None" />          <!-- Using directives should be qualified -->
+        <Rule Id="SA1136"  Action="None" />          <!-- Enum values should be on separate lines -->
+        <Rule Id="SA1137"  Action="None" />          <!-- Elements should have the same indentation -->
+        <Rule Id="SA1139"  Action="None" />          <!-- Use literal suffix notation instead of casting -->
+
+        <Rule Id="SA1141"  Action="None" />          
+        <Rule Id="SA1142"  Action="None" />          
+        <Rule Id="SX1101"  Action="None" />             <!-- Do not prefix local calls with 'this.' -->
+    </Rules>
+	
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.OrderingRules">
+        <Rule Id="SA1200"  Action="None" />          <!-- Using directives should be placed correctly -->
+        <Rule Id="SA1201"  Action="None" />          <!-- Elements should appear in the correct order -->
+        <Rule Id="SA1202"  Action="None" />          <!-- Elements should be ordered by access -->
+        <Rule Id="SA1203"  Action="None" />          <!-- Constants should appear before fields -->
+        <Rule Id="SA1204"  Action="None" />          <!-- Static elements should appear before instance elements -->
+        <Rule Id="SA1205"  Action="None" />          <!-- Partial elements should declare access -->
+        <Rule Id="SA1206"  Action="None" />          <!-- Declaration keywords should follow order -->
+        <Rule Id="SA1207"  Action="None" />          <!-- Protected should come before internal -->
+        <Rule Id="SA1208"  Action="None" />          <!-- System using directives should be placed before other using directives -->
+        <Rule Id="SA1209"  Action="None" />          <!-- Using alias directives should be placed after other using directives -->
+        <Rule Id="SA1210"  Action="None" />          <!-- Using directives should be ordered alphabetically by namespace -->
+        <Rule Id="SA1211"  Action="None" />          <!-- Using alias directives should be ordered alphabetically by alias name -->
+        <Rule Id="SA1212"  Action="None" />          <!-- Property accessors should follow order -->
+        <Rule Id="SA1213"  Action="None" />          <!-- Event accessors should follow order -->
+        <Rule Id="SA1214"  Action="None" />          <!-- Readonly fields should appear before non-readonly fields -->
+        <Rule Id="SA1216"  Action="None" />          <!-- Using static directives should be placed at the correct location -->
+        <Rule Id="SA1217"  Action="None" />          <!-- Using static directives should be ordered alphabetically -->
+    </Rules>
+
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.NamingRules">
+        <Rule Id="SA1300"  Action="None" />          <!-- Element should begin with upper-case letter -->
+        <Rule Id="SA1301"  Action="None" />             <!-- Element should begin with lower-case letter -->
+        <Rule Id="SA1302"  Action="None" />          <!-- Interface names should begin with I -->
+        <Rule Id="SA1303"  Action="None" />          <!-- Const field names should begin with upper-case letter -->
+        <Rule Id="SA1304"  Action="None" />          <!-- Non-private readonly fields should begin with upper-case letter -->
+        <Rule Id="SA1305"  Action="None" />             <!-- Field names should not use Hungarian notation -->
+        <Rule Id="SA1306"  Action="None" />          <!-- Field names should begin with lower-case letter -->
+        <Rule Id="SA1307"  Action="None" />          <!-- Accessible fields should begin with upper-case letter -->
+        <Rule Id="SA1308"  Action="None" />          <!-- Variable names should not be prefixed -->
+        <Rule Id="SA1309"  Action="None" />          <!-- Field names should not begin with underscore -->
+        <Rule Id="SA1310"  Action="None" />          <!-- Field names should not contain underscore -->
+        <Rule Id="SA1311"  Action="None" />          <!-- Static readonly fields should begin with upper-case letter -->
+        <Rule Id="SA1312"  Action="None" />          <!-- Variable names should begin with lower-case letter -->
+        <Rule Id="SA1313"  Action="None" />          <!-- Parameter names should begin with lower-case letter -->
+        <Rule Id="SA1314"  Action="None" />          <!-- Type parameter names should begin with T -->
+        <Rule Id="SA1316"  Action="None" />          
+        <Rule Id="SX1309"  Action="None" />             <!-- Field names should begin with underscore -->
+        <Rule Id="SX1309S" Action="None" />             <!-- Static field names should begin with underscore -->
+        <Rule Id="SA1329" Action="Error" />            
+    </Rules>
+
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.MaintainabilityRules">
+        <Rule Id="SA1119"  Action="None" />          <!-- Statement should not use unnecessary parenthesis -->
+        <Rule Id="SA1400"  Action="None" />          <!-- Access modifier should be declared -->
+        <Rule Id="SA1401"  Action="None" />          <!-- Fields should be private -->
+        <Rule Id="SA1402"  Action="None" />          <!-- File may only contain a single type -->
+        <Rule Id="SA1403"  Action="None" />          <!-- File may only contain a single namespace -->
+        <Rule Id="SA1404"  Action="None" />          <!-- Code analysis suppression should have justification -->
+        <Rule Id="SA1405"  Action="None" />          <!-- Debug.Assert should provide message text -->
+        <Rule Id="SA1406"  Action="None" />          <!-- Debug.Fail should provide message text -->
+        <Rule Id="SA1407"  Action="None" />          <!-- Arithmetic expressions should declare precedence -->
+        <Rule Id="SA1408"  Action="None" />          <!-- Conditional expressions should declare precedence -->
+        <Rule Id="SA1409"  Action="None"    />          <!-- Remove unnecessary code -->
+        <Rule Id="SA1410"  Action="None" />          <!-- Remove delegate parenthesis when possible -->
+        <Rule Id="SA1411"  Action="None" />          <!-- Attribute constructor should not use unnecessary parenthesis -->
+        <Rule Id="SA1412"  Action="Error"/>          <!-- Store files as UTF-8 with byte order mark -->
+        <Rule Id="SA1413"  Action="None" />          <!-- Use trailing comma in multi-line initializers -->
+        <Rule Id="SA1414"  Action="None" />          
+    </Rules>
+	
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.LayoutRules">
+        <Rule Id="SA1500"  Action="Error" />          <!-- Braces for multi-line statements should not share line -->
+        <Rule Id="SA1501"  Action="None" />          <!-- Statement should not be on a single line -->
+        <Rule Id="SA1502"  Action="None" />          <!-- Element should not be on a single line -->
+        <Rule Id="SA1503"  Action="None" />          <!-- Braces should not be omitted -->
+        <Rule Id="SA1504"  Action="None" />          <!-- All accessors should be single-line or multi-line -->
+        <Rule Id="SA1505"  Action="None" />          <!-- Opening braces should not be followed by blank line -->
+        <Rule Id="SA1506"  Action="None" />          <!-- Element documentation headers should not be followed by blank line -->
+        <Rule Id="SA1507"  Action="Error" />         <!-- Code should not contain multiple blank lines in a row -->
+        <Rule Id="SA1508"  Action="None" />          <!-- Closing braces should not be preceded by blank line -->
+        <Rule Id="SA1509"  Action="None" />          <!-- Opening braces should not be preceded by blank line -->
+        <Rule Id="SA1510"  Action="None" />          <!-- Chained statement blocks should not be preceded by blank line -->
+        <Rule Id="SA1511"  Action="None" />          <!-- While-do footer should not be preceded by blank line -->
+        <Rule Id="SA1512"  Action="None" />          <!-- Single-line comments should not be followed by blank line -->
+        <Rule Id="SA1513"  Action="None" />          <!-- Closing brace should be followed by blank line -->
+        <Rule Id="SA1514"  Action="None" />          <!-- Element documentation header should be preceded by blank line -->
+        <Rule Id="SA1515"  Action="None" />          <!-- Single-line comment should be preceded by blank line -->
+        <Rule Id="SA1516"  Action="None" />          <!-- Elements should be separated by blank line -->
+        <Rule Id="SA1517"  Action="Error"/>          <!-- Code should not contain blank lines at start of file -->
+        <Rule Id="SA1518"  Action="None"/>          <!-- Use line endings correctly at end of file -->
+        <Rule Id="SA1519"  Action="None" />          <!-- Braces should not be omitted from multi-line child statement -->
+        <Rule Id="SA1520"  Action="None" />          <!-- Use braces consistently -->
+    </Rules>
+	
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.DocumentationRules">
+        <Rule Id="SA1600"  Action="None" />          <!-- Elements should be documented -->
+        <Rule Id="SA1601"  Action="None" />          <!-- Partial elements should be documented -->
+        <Rule Id="SA1602"  Action="None" />          <!-- Enumeration items should be documented -->
+        <Rule Id="SA1603"  Action="None" />             <!-- Documentation should contain valid XML -->
+        <Rule Id="SA1604"  Action="None" />          <!-- Element documentation should have summary -->
+        <Rule Id="SA1605"  Action="None" />          <!-- Partial element documentation should have summary -->
+        <Rule Id="SA1606"  Action="None" />          <!-- Element documentation should have summary text -->
+        <Rule Id="SA1607"  Action="None" />          <!-- Partial element documentation should have summary text -->
+        <Rule Id="SA1608"  Action="None" />          <!-- Element documentation should not have default summary -->
+        <Rule Id="SA1609"  Action="None" />             <!-- Property documentation should have value -->
+        <Rule Id="SA1610"  Action="None" />          <!-- Property documentation should have value text -->
+        <Rule Id="SA1611"  Action="None" />          <!-- Element parameters should be documented -->
+        <Rule Id="SA1612"  Action="None" />          <!-- Element parameter documentation should match element parameters -->
+        <Rule Id="SA1613"  Action="None" />          <!-- Element parameter documentation should declare parameter name -->
+        <Rule Id="SA1614"  Action="None" />          <!-- Element parameter documentation should have text -->
+        <Rule Id="SA1615"  Action="None" />          <!-- Element return value should be documented -->
+        <Rule Id="SA1616"  Action="None" />          <!-- Element return value documentation should have text -->
+        <Rule Id="SA1617"  Action="None" />          <!-- Void return value should not be documented -->
+        <Rule Id="SA1618"  Action="None" />          <!-- Generic type parameters should be documented -->
+        <Rule Id="SA1619"  Action="None" />          <!-- Generic type parameters should be documented partial class -->
+        <Rule Id="SA1620"  Action="None" />          <!-- Generic type parameter documentation should match type parameters -->
+        <Rule Id="SA1621"  Action="None" />          <!-- Generic type parameter documentation should declare parameter name -->
+        <Rule Id="SA1622"  Action="None" />          <!-- Generic type parameter documentation should have text -->
+        <Rule Id="SA1623"  Action="None" />          <!-- Property summary documentation should match accessors -->
+        <Rule Id="SA1624"  Action="None" />          <!-- Property summary documentation should omit accessor with restricted access -->
+        <Rule Id="SA1625"  Action="None" />          <!-- Element documentation should not be copied and pasted -->
+        <Rule Id="SA1626"  Action="None" />          <!-- Single-line comments should not use documentation style slashes -->
+        <Rule Id="SA1627"  Action="None" />          <!-- Documentation text should not be empty -->
+        <Rule Id="SA1628"  Action="None" />             <!-- Documentation text should begin with a capital letter -->
+        <Rule Id="SA1629"  Action="None" />          <!-- Documentation text should end with a period -->
+        <Rule Id="SA1630"  Action="None" />             <!-- Documentation text should contain whitespace -->
+        <Rule Id="SA1631"  Action="None" />             <!-- Documentation should meet character percentage -->
+        <Rule Id="SA1632"  Action="None" />             <!-- Documentation text should meet minimum character length -->
+        <Rule Id="SA1633"  Action="None" />          <!-- File should have header -->
+        <Rule Id="SA1634"  Action="None" />          <!-- File header should show copyright -->
+        <Rule Id="SA1635"  Action="None" />          <!-- File header should have copyright text -->
+        <Rule Id="SA1636"  Action="None" />          <!-- File header copyright text should match -->
+        <Rule Id="SA1637"  Action="None" />          <!-- File header should contain file name -->
+        <Rule Id="SA1638"  Action="None" />          <!-- File header file name documentation should match file name -->
+        <Rule Id="SA1639"  Action="None" />          <!-- File header should have summary -->
+        <Rule Id="SA1640"  Action="None" />          <!-- File header should have valid company text -->
+        <Rule Id="SA1641"  Action="None" />          <!-- File header company name text should match -->
+        <Rule Id="SA1642"  Action="None" />          <!-- Constructor summary documentation should begin with standard text -->
+        <Rule Id="SA1643"  Action="None" />          <!-- Destructor summary documentation should begin with standard text -->
+        <Rule Id="SA1644"  Action="None" />             <!-- Documentation headers should not contain blank lines -->
+        <Rule Id="SA1645"  Action="None" />             <!-- Included documentation file does not exist -->
+        <Rule Id="SA1646"  Action="None" />             <!-- Included documentation XPath does not exist -->
+        <Rule Id="SA1647"  Action="None" />             <!-- Include node does not contain valid file and path -->
+        <Rule Id="SA1648"  Action="None" />          <!-- Inheritdoc should be used with inheriting class -->
+        <Rule Id="SA1649"  Action="None" />          <!-- File name should match first type name -->
+        <Rule Id="SA1650"  Action="None" />             <!-- Element documentation should be spelled correctly -->
+        <Rule Id="SA1651"  Action="None" />          <!-- Do not use placeholder elements -->
+    </Rules>
+
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1001" Action="None" />   <!-- Dispose диагностика. Работает плохо -->
+    <Rule Id="CS0067" Action="Info" />   <!--An event was declared but never used in the class in which it was declared. Временно отключили потому что при портировании на net будет много такого кода. Потом надо будет включить -->
+    <Rule Id="CS0649" Action="Info" />   <!--Field 'field' is never assigned to, and will always have its default value 'value' Временно отключили потому что при портировании на net будет много такого кода. Потом надо будет включить -->
+    <Rule Id="CS0169" Action="Info" />   <!--The private field 'class member' is never used Временно отключили потому что при портировании на net будет много такого кода. Потом надо будет включить -->
+    <Rule Id="CS0414" Action="Info" />   <!--The private field 'field' is assigned but its value is never used Временно отключили потому что при портировании на net будет много такого кода. Потом надо будет включить -->
+    <Rule Id="CS0219" Action="Info" />   <!--The variable 'variable' is assigned but its value is never used Временно отключили потому что при портировании на net будет много такого кода. Потом надо будет включить -->
+
+    <Rule Id="CA1009" Action="Warning" />
+    <Rule Id="CA1016" Action="Warning" />
+    <Rule Id="CA1049" Action="Warning" />
+    <Rule Id="CA1060" Action="None" />
+    <Rule Id="CA1061" Action="Warning" />
+    <Rule Id="CA1063" Action="None" />
+    <Rule Id="CA1301" Action="Warning" />
+    <Rule Id="CA1400" Action="Warning" />
+    <Rule Id="CA1401" Action="Warning" />
+    <Rule Id="CA1403" Action="Warning" />
+    <Rule Id="CA1404" Action="Warning" />
+    <Rule Id="CA1405" Action="Warning" />
+    <Rule Id="CA1410" Action="Warning" />
+    <Rule Id="CA1415" Action="Warning" />
+    <Rule Id="CA1821" Action="Warning" />
+    <Rule Id="CA1900" Action="Warning" />
+    <Rule Id="CA1901" Action="Warning" />
+    <Rule Id="CA2002" Action="None" />
+    <Rule Id="CA2100" Action="Warning" />
+    <Rule Id="CA2101" Action="Warning" />
+    <Rule Id="CA2108" Action="Warning" />
+    <Rule Id="CA2111" Action="Warning" />
+    <Rule Id="CA2112" Action="Warning" />
+    <Rule Id="CA2114" Action="Warning" />
+    <Rule Id="CA2116" Action="Warning" />
+    <Rule Id="CA2117" Action="Warning" />
+    <Rule Id="CA2122" Action="Warning" />
+    <Rule Id="CA2123" Action="Warning" />
+    <Rule Id="CA2124" Action="Warning" />
+    <Rule Id="CA2126" Action="Warning" />
+    <Rule Id="CA2131" Action="Warning" />
+    <Rule Id="CA2132" Action="Warning" />
+    <Rule Id="CA2133" Action="Warning" />
+    <Rule Id="CA2134" Action="Warning" />
+    <Rule Id="CA2137" Action="Warning" />
+    <Rule Id="CA2138" Action="Warning" />
+    <Rule Id="CA2140" Action="Warning" />
+    <Rule Id="CA2141" Action="Warning" />
+    <Rule Id="CA2146" Action="Warning" />
+    <Rule Id="CA2147" Action="Warning" />
+    <Rule Id="CA2149" Action="Warning" />
+    <Rule Id="CA2200" Action="Warning" />
+    <Rule Id="CA2202" Action="Warning" />
+    <Rule Id="CA2207" Action="Warning" />
+    <Rule Id="CA2212" Action="Warning" />
+    <Rule Id="CA2213" Action="Warning" />
+    <Rule Id="CA2214" Action="None" />
+    <Rule Id="CA2216" Action="Warning" />
+    <Rule Id="CA2220" Action="Warning" />
+    <Rule Id="CA2229" Action="Warning" />
+    <Rule Id="CA2231" Action="Warning" />
+    <Rule Id="CA2232" Action="Warning" />
+    <Rule Id="CA2235" Action="Warning" />
+    <Rule Id="CA2236" Action="Warning" />
+    <Rule Id="CA2237" Action="Warning" />
+    <Rule Id="CA2238" Action="Warning" />
+    <Rule Id="CA2240" Action="Warning" />
+    <Rule Id="CA2241" Action="Warning" />
+    <Rule Id="CA2242" Action="Warning" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+   <Rule Id="AD0001" Action="None" />
+    <Rule Id="CA1033" Action="None" />
+    <Rule Id="CA1065" Action="None" />
+    <Rule Id="CS0078" Action="None" />
+    <Rule Id="CS0105" Action="None" />
+    <Rule Id="CS0109" Action="None" />
+    <Rule Id="CS0114" Action="None" />
+    <Rule Id="CS0162" Action="None" />
+    <Rule Id="CS0164" Action="None" />
+    <Rule Id="CS0168" Action="None" />
+    <Rule Id="CS0183" Action="None" />
+    <Rule Id="CS0184" Action="None" />
+    <Rule Id="CS0197" Action="None" />
+    <Rule Id="CS0251" Action="None" />
+    <Rule Id="CS0252" Action="None" />
+    <Rule Id="CS0253" Action="None" />
+    <Rule Id="CS0278" Action="None" />
+    <Rule Id="CS0279" Action="None" />
+    <Rule Id="CS0280" Action="None" />
+    <Rule Id="CS0282" Action="None" />
+    <Rule Id="CS0419" Action="None" />
+    <Rule Id="CS0420" Action="None" />
+    <Rule Id="CS0435" Action="None" />
+    <Rule Id="CS0436" Action="None" />
+    <Rule Id="CS0437" Action="None" />
+    <Rule Id="CS0440" Action="None" />
+    <Rule Id="CS0458" Action="None" />
+    <Rule Id="CS0464" Action="None" />
+    <Rule Id="CS0465" Action="None" />
+    <Rule Id="CS0469" Action="None" />
+    <Rule Id="CS0472" Action="None" />
+    <Rule Id="CS0473" Action="None" />
+    <Rule Id="CS0612" Action="None" />
+    <Rule Id="CS0626" Action="None" />
+    <Rule Id="CS0628" Action="None" />
+    <Rule Id="CS0642" Action="None" />
+    <Rule Id="CS0652" Action="None" />
+    <Rule Id="CS0657" Action="None" />
+    <Rule Id="CS0658" Action="None" />
+    <Rule Id="CS0659" Action="None" />
+    <Rule Id="CS0660" Action="None" />
+    <Rule Id="CS0661" Action="None" />
+    <Rule Id="CS0665" Action="None" />
+    <Rule Id="CS0672" Action="None" />
+    <Rule Id="CS0675" Action="None" />
+    <Rule Id="CS0684" Action="None" />
+    <Rule Id="CS0693" Action="None" />
+    <Rule Id="CS0728" Action="None" />
+    <Rule Id="CS0809" Action="None" />
+    <Rule Id="CS0811" Action="None" />
+    <Rule Id="CS0824" Action="None" />
+    <Rule Id="CS1030" Action="None" />
+    <Rule Id="CS1058" Action="None" />
+    <Rule Id="CS1062" Action="None" />
+    <Rule Id="CS1064" Action="None" />
+    <Rule Id="CS1066" Action="None" />
+    <Rule Id="CS1072" Action="None" />
+    <Rule Id="CS1522" Action="None" />
+    <Rule Id="CS1570" Action="None" />
+    <Rule Id="CS1571" Action="None" />
+    <Rule Id="CS1572" Action="None" />
+    <Rule Id="CS1573" Action="None" />
+    <Rule Id="CS1574" Action="None" />
+    <Rule Id="CS1580" Action="None" />
+    <Rule Id="CS1581" Action="None" />
+    <Rule Id="CS1584" Action="None" />
+    <Rule Id="CS1587" Action="None" />
+    <Rule Id="CS1589" Action="None" />
+    <Rule Id="CS1590" Action="None" />
+    <Rule Id="CS1591" Action="None" />
+    <Rule Id="CS1592" Action="None" />
+    <Rule Id="CS1616" Action="None" />
+    <Rule Id="CS1633" Action="None" />
+    <Rule Id="CS1634" Action="None" />
+    <Rule Id="CS1635" Action="None" />
+    <Rule Id="CS1645" Action="None" />
+    <Rule Id="CS1658" Action="None" />
+    <Rule Id="CS1668" Action="None" />
+    <Rule Id="CS1685" Action="None" />
+    <Rule Id="CS1687" Action="None" />
+    <Rule Id="CS1690" Action="None" />
+    <Rule Id="CS1692" Action="None" />
+    <Rule Id="CS1695" Action="None" />
+    <Rule Id="CS1696" Action="None" />
+    <Rule Id="CS1697" Action="None" />
+    <Rule Id="CS1700" Action="None" />
+    <Rule Id="CS1701" Action="None" />
+    <Rule Id="CS1702" Action="None" />
+    <Rule Id="CS1710" Action="None" />
+    <Rule Id="CS1711" Action="None" />
+    <Rule Id="CS1712" Action="None" />
+    <Rule Id="CS1717" Action="None" />
+    <Rule Id="CS1718" Action="None" />
+    <Rule Id="CS1720" Action="None" />
+    <Rule Id="CS1723" Action="None" />
+    <Rule Id="CS1734" Action="None" />
+    <Rule Id="CS1735" Action="None" />
+    <Rule Id="CS1762" Action="None" />
+    <Rule Id="CS1927" Action="None" />
+    <Rule Id="CS1956" Action="None" />
+    <Rule Id="CS1957" Action="None" />
+    <Rule Id="CS1974" Action="None" />
+    <Rule Id="CS1981" Action="None" />
+    <Rule Id="CS1998" Action="None" />
+    <Rule Id="CS2002" Action="None" />
+    <Rule Id="CS2008" Action="None" />
+    <Rule Id="CS2023" Action="None" />
+    <Rule Id="CS2029" Action="None" />
+    <Rule Id="CS2038" Action="None" />
+    <Rule Id="CS3000" Action="None" />
+    <Rule Id="CS3001" Action="None" />
+    <Rule Id="CS3002" Action="None" />
+    <Rule Id="CS3003" Action="None" />
+    <Rule Id="CS3005" Action="None" />
+    <Rule Id="CS3006" Action="None" />
+    <Rule Id="CS3007" Action="None" />
+    <Rule Id="CS3008" Action="None" />
+    <Rule Id="CS3009" Action="None" />
+    <Rule Id="CS3010" Action="None" />
+    <Rule Id="CS3011" Action="None" />
+    <Rule Id="CS3012" Action="None" />
+    <Rule Id="CS3013" Action="None" />
+    <Rule Id="CS3014" Action="None" />
+    <Rule Id="CS3015" Action="None" />
+    <Rule Id="CS3016" Action="None" />
+    <Rule Id="CS3017" Action="None" />
+    <Rule Id="CS3018" Action="None" />
+    <Rule Id="CS3019" Action="None" />
+    <Rule Id="CS3021" Action="None" />
+    <Rule Id="CS3022" Action="None" />
+    <Rule Id="CS3023" Action="None" />
+    <Rule Id="CS3024" Action="None" />  
+    <Rule Id="CS3026" Action="None" />
+    <Rule Id="CS3027" Action="None" />
+    <Rule Id="CS4014" Action="None" />
+    <Rule Id="CS4024" Action="None" />
+    <Rule Id="CS4025" Action="None" />
+    <Rule Id="CS4026" Action="None" />
+    <Rule Id="CS7033" Action="None" />
+    <Rule Id="CS7035" Action="None" />
+    <Rule Id="CS7080" Action="None" />
+    <Rule Id="CS7081" Action="None" />
+    <Rule Id="CS7082" Action="None" />
+    <Rule Id="CS7090" Action="None" />  
+    <Rule Id="CS7095" Action="None" />  
+    <Rule Id="CS8001" Action="None" />
+    <Rule Id="CS8002" Action="None" />
+    <Rule Id="CS8009" Action="None" />
+    <Rule Id="CS8012" Action="None" />
+    <Rule Id="CS8018" Action="None" />  
+    <Rule Id="CS8019" Action="Info" />  <!--нельзя трогать этот. Ломает рефакторинги студии-->   
+    <Rule Id="CS8020" Action="None" />
+    <Rule Id="CS8021" Action="None" />
+    <Rule Id="CS8029" Action="None" />
+    <Rule Id="CS8032" Action="None" />   
+    <Rule Id="CS8033" Action="None" />
+    <Rule Id="CS8034" Action="None" />
+    <Rule Id="CS8040" Action="None" />
+    <Rule Id="CS8073" Action="None" />
+    <Rule Id="CS8094" Action="None" />
+    <Rule Id="CS8105" Action="None" />
+    <Rule Id="CS8123" Action="None" />
+    <Rule Id="CS8305" Action="None" />
+    <Rule Id="CS8313" Action="None" />
+    <Rule Id="CS8887" Action="None" /> 
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.EditorFeatures" RuleNamespace="Microsoft.CodeAnalysis.CSharp.EditorFeatures">
+    <Rule Id="IDE0032" Action="None" />
+    <Rule Id="IDE0032WithoutSuggestion" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+    <Rule Id="IDE0001" Action="None" />
+    <Rule Id="IDE0002" Action="None" />
+    <Rule Id="IDE0003" Action="None" />
+    <Rule Id="IDE0004" Action="None" />
+    <Rule Id="IDE0005" Action="None" />
+    <Rule Id="IDE0007" Action="None" />
+    <Rule Id="IDE0007WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0008" Action="None" />
+    <Rule Id="IDE0008WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0009" Action="None" />
+    <Rule Id="IDE0009WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0011" Action="None" />
+    <Rule Id="IDE0011WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0012" Action="None" />
+    <Rule Id="IDE0013" Action="None" />
+    <Rule Id="IDE0014" Action="None" />
+    <Rule Id="IDE0015" Action="None" />
+    <Rule Id="IDE0016" Action="None" />
+    <Rule Id="IDE0016WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0017" Action="None" />
+    <Rule Id="IDE0017WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0018" Action="None" />
+    <Rule Id="IDE0018WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0019" Action="None" />
+    <Rule Id="IDE0019WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0020" Action="None" />
+    <Rule Id="IDE0020WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0021" Action="None" />
+    <Rule Id="IDE0022" Action="None" />
+    <Rule Id="IDE0023" Action="None" />
+    <Rule Id="IDE0024" Action="None" />
+    <Rule Id="IDE0025" Action="None" />
+    <Rule Id="IDE0026" Action="None" />
+    <Rule Id="IDE0027" Action="None" />
+    <Rule Id="IDE0028" Action="None" />
+    <Rule Id="IDE0028WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0029" Action="None" />
+    <Rule Id="IDE0029WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0030" Action="None" />
+    <Rule Id="IDE0030WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0031" Action="None" />
+    <Rule Id="IDE0031WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0034" Action="None" />
+    <Rule Id="IDE0034WithoutSuggestion" Action="None" />
+    <Rule Id="IDE1005" Action="None" />
+    <Rule Id="IDE1005WithoutSuggestion" Action="None" />
+    <Rule Id="IDE1006" Action="None" />
+    <Rule Id="IDE1006WithoutSuggestion" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.Features" RuleNamespace="Microsoft.CodeAnalysis.Features">
+    <Rule Id="IDE0010" Action="None" />
+    <Rule Id="IDE0010WithoutSuggestion" Action="None" />
+    <Rule Id="IDE0033" Action="None" />
+    <Rule Id="IDE0033WithoutSuggestion" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.VisualStudio.Threading" RuleNamespace="Microsoft.VisualStudio.Threading.Analyzers">
+<Rule Id="VSTHRD001" Action="None" /><!-- Avoid legacy thread switching methods | Critical | [1st rule" ../threading_rules.md#Rule1) | 🔡 Warning -->
+<Rule Id="VSTHRD002" Action="None" /><!-- Avoid problematic synchronous waits | Critical | [2nd rule" ../threading_rules.md#Rule2) | Warning-->
+<Rule Id="VSTHRD003" Action="None" /><!-- Avoid awaiting foreign Tasks | Critical | [3rd rule" ../threading_rules.md#Rule3) | Warning-->
+<Rule Id="VSTHRD004" Action="None" /><!-- Await SwitchToMainThreadAsync | Critical | [1st rule" ../threading_rules.md#Rule1) | Error-->
+<Rule Id="VSTHRD010" Action="None" /><!-- Invoke single-threaded types on Main thread | Critical | [1st rule" ../threading_rules.md#Rule1) | Warning-->
+<Rule Id="VSTHRD011" Action="None" /><!-- Use `AsyncLazy<T>` | Critical | [3rd rule" ../threading_rules.md#Rule3) | Error-->
+<Rule Id="VSTHRD012" Action="None" /><!-- Provide JoinableTaskFactory where allowed | Critical | [All rules" ../threading_rules.md) | Warning-->
+<Rule Id="VSTHRD100" Action="None" /><!-- Avoid `async void` methods | Advisory | | Warning-->
+<Rule Id="VSTHRD101" Action="None" /><!-- Avoid unsupported async delegates | Advisory | [VSTHRD100" VSTHRD100.md) | Warning-->
+<Rule Id="VSTHRD102" Action="None" /><!-- Implement internal logic asynchronously | Advisory | [2nd rule" ../threading_rules.md#Rule2) | Info-->
+<Rule Id="VSTHRD103" Action="None" /><!-- Call async methods when in an async method | Advisory | | Warning-->
+<Rule Id="VSTHRD104" Action="None" /><!-- Offer async option | Advisory | | Info-->
+<Rule Id="VSTHRD105" Action="None" /><!-- Avoid method overloads that assume `TaskScheduler.Current` | Advisory | | Warning-->
+<Rule Id="VSTHRD106" Action="None" /><!-- Use `InvokeAsync` to raise async events | Advisory | | Warning-->
+<Rule Id="VSTHRD107" Action="None" /><!-- Await Task within using expression | Advisory | | Error-->
+<Rule Id="VSTHRD108" Action="None" /><!-- Assert thread affinity unconditionally | Advisory | [1st rule" ../threading_rules.md#Rule1), [VSTHRD010" VSTHRD010.md) | Warning-->
+<Rule Id="VSTHRD109" Action="None" /><!-- Switch instead of assert in async methods | Advisory | [1st rule" ../threading_rules.md#Rule1) | Error-->
+<Rule Id="VSTHRD110" Action="None" /><!-- Observe result of async calls | Advisory | | Warning-->
+<Rule Id="VSTHRD111" Action="None" /><!-- Use `.ConfigureAwait(bool)` | Advisory | | Hidden-->
+<Rule Id="VSTHRD112" Action="None" /><!-- Implement `System.IAsyncDisposable` | Advisory | | Info-->
+<Rule Id="VSTHRD113" Action="None" /><!-- Check for `System.IAsyncDisposable` | Advisory | | Info-->
+<Rule Id="VSTHRD114" Action="None" /><!-- Avoid returning null from a `Task`-returning method. | Advisory | | Warning-->
+<Rule Id="VSTHRD200" Action="None" /><!-- Use `Async` naming convention | Guideline | [VSTHRD103](VSTHRD103.md) | Warning-->
+  </Rules>
+</RuleSet>

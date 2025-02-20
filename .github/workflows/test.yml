@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  push:
+    branches: [ "main", "action/publish" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: EMXDemo Unit Test
+        run: dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj 
+
+  ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: EMXDemo Unit Test
+        run: dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj 
