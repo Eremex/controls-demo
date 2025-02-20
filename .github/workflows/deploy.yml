@@ -22,7 +22,7 @@ jobs:
         run: dotnet workload install wasm-tools
 
       - name: Publish .NET Project
-        run: dotnet publish $PROJECT_PATH -c Release --nologo
+        run: dotnet publish $PROJECT_PATH -c Release --nologo -p:PublishTrimmed=false
 
       - name: Add .nojekyll file
         run: touch $OUTPUT_PATH/.nojekyll
