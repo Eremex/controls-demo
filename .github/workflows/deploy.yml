@@ -24,6 +24,9 @@ jobs:
       - name: Publish .NET Project
         run: dotnet publish $PROJECT_PATH -c Release --nologo -p:PublishTrimmed=false
 
+      - name: Change base-tag in index.html
+        run: sed -i 's#<base href="/" />#<base href="/controls-demo/" />#g' $OUTPUT_PATH/index.html
+
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
