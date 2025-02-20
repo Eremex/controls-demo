@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 env:
   PROJECT_PATH: DemoCenter/DemoCenter.Web/DemoCenter.Web.csproj
-  OUTPUT_PATH: DemoCenter/DemoCenter.Web/bin/Release/net8.0-browser/publish/wwwroot
+  OUTPUT_PATH: DemoCenter/DemoCenter.Web/bin/Release/publish/wwwroot
 on:
   workflow_dispatch:
 
