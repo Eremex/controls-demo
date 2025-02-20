@@ -27,6 +27,9 @@ jobs:
       - name: Change base-tag in index.html
         run: sed -i 's#<base href="/" />#<base href="/controls-demo/" />#g' $OUTPUT_PATH/index.html
 
+      - name: Add .nojekyll file
+        run: touch $OUTPUT_PATH/.nojekyll
+
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
