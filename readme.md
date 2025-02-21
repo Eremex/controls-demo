@@ -9,14 +9,39 @@ The advanced controls - from Data Grid and Tree List to Charts and Docking UI - 
 
 ## About
 
-The current repository contains the Demo project that allows you to get to test all the features of the Eremex Controls for Avalonia UI. The demo includes the full-functional version of the Eremex Controls Library, which you can use in your projects for evaluation purposes as long as you need. An unlicensed version of the Library displays trial messages. 
+The current repository includes a Demo project that enables you to explore and test all the features of the Eremex Controls for Avalonia UI. The demo provides access to the fully functional version of the Eremex Controls Library, which you can use in your projects for evaluation purposes without time restrictions. Note that an unlicensed version of the Library displays trial messages.
 
-Please [contact us](#contact-us) for information on licensing.
+For more details about the Controls Library, [licensing options](#product-licensing), or any other inquiries, please feel free to [contact us](#contact-us).
+
 
 [![Controls - Light Theme](docs/images/controls-light-sm-v1.1.png)](docs/images/controls-light-v1.1.png)
   
 <!-- [![Controls - Dark Theme](docs/images/controls-dark-sm.png)](docs/images/controls-dark.png) -->
 
+## Get Started
+
+### Run Demo Online
+
+We've created a WASM (WebAssembly) version of this Demo, which you can run directly in your browser. You can access it here:
+
+- [Online Demo](https://eremex.github.io/controls-demo/)
+
+
+Certain example modules are disabled in the Online Demo, including:
+- Examples that demonstrate features not supported in WASM (for instance, the 3D engine).
+- Examples not optimized for display and interaction in a web browser.
+
+Known limitations: Hyperlinks are not supported.
+
+### Run Demo Offline
+
+- Clone the repository with the `git clone` command.
+- Go to the `DemoCenter/DemoCenter.Desktop` directory for a classic desktop application, or the `DemoCenter/DemoCenter.Web` directory for a Web Assembly project.
+- Run the selected project with the `dotnet run` command.
+
+### Create New Application
+
+- [Get Started with Eremex Avalonia UI Controls](https://eremexcontrols.net/articles/get-started.html)
 
 
 ## Data Management Controls
@@ -270,21 +295,6 @@ The following are system requirements to run the current Demo project, and use t
 - [Avalonia UI Framework](https://avaloniaui.net) v11.2.2+
 - Developement: IDEs that have Avalonia UI support (Visual Studio 2022 and higher, JetBrains Rider 2021.3 and higher).
 
-## Get Started
-
-### Run Demo
-
-- Clone the repository with the `git clone` command.
-- Go to the `DemoCenter/DemoCenter.Desktop` directory for a classic desktop application, or the `DemoCenter/DemoCenter.Web` directory for a Web Assembly project.
-- Run the selected project with the `dotnet run` command.
-
-### Create New Application
-
-- [Get Started with Eremex Avalonia UI Controls](https://eremexcontrols.net/articles/get-started.html)
-
-### Migrate to Avalonia UI
-
-- [Convert Windows Forms Applications to Avalonia UI](#convert-windows-forms-applications-to-avalonia-ui)
 
 ## Documentation
 
@@ -293,9 +303,9 @@ The following are system requirements to run the current Demo project, and use t
 
 ## Product Licensing
 
-The source code included in the current repository is distributed under the terms of the MIT license. 
+The [Eremex End-User License Agreement (EULA)](https://eremexcontrols.net/articles/licensing/eula.html) fully outlines the terms and conditions for using the Eremex Avalonia UI Controls Library.
 
-The Eremex End-User License Agreement (EULA) fully outlines the usage rules of the Eremex Avalonia UI Controls Library.
+The source code included in the current repository is distributed under the terms of the MIT license. 
 
 ## Contact Us
 
