@@ -50,6 +50,7 @@ jobs:
 
       - name: Publish linux-x64
         run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r linux-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linux64
+        run: mv ./publish/linux64/DemoCenter.Desktop ./publish/linux64/DemoCenter.App
 
       - name: Zip linux-x64
         run: zip -j -r ./upload/EMX.Demo.Desktop.linux-x64.zip ./publish/linux64 -x "*.pdb"
@@ -58,4 +59,27 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: linux
+          path: ./upload
+
+  linux-rpi:
+    if: ${{ github.event.inputs.platform == 'linux' || github.event.inputs.platform == 'all' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Make upload directory
+        run: mkdir upload
+
+      - name: Publish linux-arm64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r linux-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linuxArm64
+        run: mv ./publish/linuxArm64/DemoCenter.Desktop ./publish/linuxArm64/DemoCenter.App
+
+      - name: Zip linux-x64
+        run: zip -j -r ./upload/EMX.Demo.Desktop.linux-arm64.zip ./publish/linuxArm64 -x "*.pdb"
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: linux-rpi
           path: ./upload
