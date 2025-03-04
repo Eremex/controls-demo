@@ -11,6 +11,7 @@ on:
         options:
           - 'windows'
           - 'linux'
+          - 'linux-rpi'
           - 'all'
 
 jobs:
@@ -62,7 +63,7 @@ jobs:
           path: ./upload
 
   linux-rpi:
-    if: ${{ github.event.inputs.platform == 'linux' || github.event.inputs.platform == 'all' }}
+    if: ${{ github.event.inputs.platform == 'linux-rpi' || github.event.inputs.platform == 'all' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
