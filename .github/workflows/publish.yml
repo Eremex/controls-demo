@@ -51,6 +51,7 @@ jobs:
 
       - name: Publish linux-x64
         run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r linux-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linux64
+      - name: Rename app
         run: mv ./publish/linux64/DemoCenter.Desktop ./publish/linux64/DemoCenter.App
 
       - name: Zip linux-x64
