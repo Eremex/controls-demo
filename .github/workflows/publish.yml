@@ -101,8 +101,6 @@ jobs:
 
       - name: Publish linux-arm64
         run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-x64
-      - name: Rename app
-        run: mv ./publish/osx-x64/DemoCenter.Desktop ./publish/linuxArm64/DemoCenter.App
 
       - name: Zip osx-x64
         run: zip -j -r ./upload/EMX.Demo.Desktop.osx-x64.zip ./publish/osx-x64 -x "*.pdb"
@@ -125,8 +123,6 @@ jobs:
 
       - name: Publish osx-arm64
         run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-arm64
-      - name: Rename app
-        run: mv ./publish/osx-arm64/DemoCenter.Desktop ./publish/osx-arm64/DemoCenter.App
 
       - name: Zip osx-arm64
         run: zip -j -r ./upload/EMX.Demo.Desktop.osx-arm64.zip ./publish/osx-arm64 -x "*.pdb"
