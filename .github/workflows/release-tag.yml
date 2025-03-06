@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish-windows:
+  windows:
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -30,7 +30,7 @@ jobs:
           name: windows
           path: ./upload
 
-  publish-linux:
+  linux:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -41,6 +41,8 @@ jobs:
 
       - name: Publish linux-x64
         run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r linux-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linux64
+      - name: Rename app
+        run: mv ./publish/linux64/DemoCenter.Desktop ./publish/linux64/DemoCenter.App
 
       - name: Zip linux-x64
         run: zip -j -r ./upload/EMX.Demo.Desktop.linux-x64.zip ./publish/linux64 -x "*.pdb"
@@ -51,8 +53,74 @@ jobs:
           name: linux
           path: ./upload
 
+  linux-rpi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make upload directory
+        run: mkdir upload
+
+      - name: Publish linux-arm64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r linux-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linuxArm64
+      - name: Rename app
+        run: mv ./publish/linuxArm64/DemoCenter.Desktop ./publish/linuxArm64/DemoCenter.App
+
+      - name: Zip linux-x64
+        run: zip -j -r ./upload/EMX.Demo.Desktop.linux-arm64.zip ./publish/linuxArm64 -x "*.pdb"
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: linux-rpi
+          path: ./upload
+
+  osx-x64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make upload directory
+        run: mkdir upload
+
+      - name: Publish linux-arm64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-x64
+
+      - name: Zip osx-x64
+        run: zip -j -r ./upload/EMX.Demo.Desktop.osx-x64.zip ./publish/osx-x64 -x "*.pdb"
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: osx-x64
+          path: ./upload
+
+  osx-arm64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make upload directory
+        run: mkdir upload
+
+      - name: Publish osx-arm64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-arm64
+
+      - name: Zip osx-arm64
+        run: zip -j -r ./upload/EMX.Demo.Desktop.osx-arm64.zip ./publish/osx-arm64 -x "*.pdb"
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: osx-arm64
+          path: ./upload
+
+
   draft-release:
-    needs: [ publish-windows, publish-linux ]
+    needs: [ windows, linux, linux-rpi, osx-x64, osx-arm64 ]
     runs-on: ubuntu-latest
     steps:
       - name: Download windows Artifacts
@@ -64,6 +132,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: linux
+
+      - name: Download linux-rpi Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-rpi
+
 
       - name: Release
         uses: softprops/action-gh-release@v2
