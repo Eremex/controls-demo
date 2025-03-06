@@ -139,16 +139,6 @@ jobs:
           name: linux-rpi
 
 
-      - name: Download osx-x64 Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: osx-x64
-
-      - name: Download osx-arm64 Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: osx-arm64
-
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
