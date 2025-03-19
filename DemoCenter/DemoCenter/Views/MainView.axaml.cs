@@ -1,7 +1,6 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Globalization;
-using System.Xml;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Data;
@@ -10,14 +9,11 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
-using Avalonia.Threading;
-using AvaloniaEdit.Highlighting;
 using DemoCenter.Helpers;
 using DemoCenter.ProductsData;
 using DemoCenter.ViewModels;
 
 using Eremex.AvaloniaUI.Controls.TreeList;
-using Eremex.AvaloniaUI.Themes;
 
 namespace DemoCenter.Views;
 
@@ -63,8 +59,9 @@ public partial class MainView : UserControl
     {
         if (e.PropertyName == nameof(MainViewModel.SelectedThemeVariant) && ViewModel?.SelectedThemeVariant != null && Application.Current is App application)
             application.RequestedThemeVariant = ViewModel.SelectedThemeVariant;
-
-        else if(e.PropertyName == nameof(MainViewModel.SourceFile))
+        else if (e.PropertyName == nameof(MainViewModel.SelectedLocale))
+            UpdateLocale();
+        else if (e.PropertyName == nameof(MainViewModel.SourceFile))
             UpdateDocument();
         else if (e.PropertyName == nameof(MainViewModel.SelectedCode))
         {
@@ -72,7 +69,19 @@ public partial class MainView : UserControl
             CodeViewEditor.SearchPanel.SearchPattern = ViewModel.SelectedCode ?? string.Empty;
         }
     }
+    private void UpdateLocale() 
+    {
+        if (ViewModel == null || ViewModel.SelectedLocale == null)
+            return;
 
+        CultureInfo.CurrentUICulture = ViewModel.SelectedLocale;
+
+        Products.Reset();
+        ViewModel.Products = Products.GetOrCreate();
+        ViewModel.PopulateFlatCollection();
+
+        ViewModel.UpdateDemo();
+    }
     private void UpdateDocument()
     {
         if(ViewModel == null || string.IsNullOrEmpty(ViewModel.SourceFile))

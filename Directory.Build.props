@@ -18,10 +18,10 @@
     <LangVersion>10.0</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <AvaloniaVersion>11.2.2</AvaloniaVersion>
+    <AvaloniaVersion>11.2.5</AvaloniaVersion>
     <AvaloniaSvgSkiaVersion>11.2.0.2</AvaloniaSvgSkiaVersion>
     <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
-    <EMXControlsVersion>1.1.99</EMXControlsVersion>
+    <EMXControlsVersion>1.1.112</EMXControlsVersion>
     <Version>$(EMXControlsVersion)</Version>
   </PropertyGroup>
 

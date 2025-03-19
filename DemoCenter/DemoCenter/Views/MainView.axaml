@@ -167,7 +167,12 @@
                 </mx:MxTabItem>
             </mx:MxTabControl>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="2">
-                <mxe:SegmentedEditor ItemsSource="{Binding ThemeVariants}" Height="28" Width="56" 
+				<mxe:SegmentedEditor ItemsSource="{Binding Locales}" DisplayMember="LocaleName" ValueMember="Locale" EditorValue="{Binding SelectedLocale}" Height="28" Width="120"
+                                     Margin="0,-1,10,0">
+					
+				</mxe:SegmentedEditor>
+
+					<mxe:SegmentedEditor ItemsSource="{Binding ThemeVariants}" Height="28" Width="56" 
                                      Margin="0,-1,0,0"
                                      ValueMember="ThemeVariant"
                                      EditorValue="{Binding SelectedThemeVariant}">

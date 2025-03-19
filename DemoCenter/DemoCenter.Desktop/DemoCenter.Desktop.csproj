@@ -7,6 +7,21 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
   </PropertyGroup>
 
+<PropertyGroup>
+    <CFBundleName>DemoCenter.Desktop</CFBundleName> 
+    <CFBundleDisplayName>DemoCenter.Desktop</CFBundleDisplayName>
+    <CFBundleIdentifier>net.eremexcontrols</CFBundleIdentifier>
+    <CFBundleVersion>1.0.0</CFBundleVersion>
+    <CFBundlePackageType>APPL</CFBundlePackageType>
+    <CFBundleSignature>????</CFBundleSignature>
+    <CFBundleExecutable>DemoCenter.Desktop</CFBundleExecutable>
+    <CFBundleIconFile>DemoCenter.Desktop.icns</CFBundleIconFile>
+    <CFBundleShortVersionString>1.0.0</CFBundleShortVersionString>
+
+    <NSPrincipalClass>NSApplication</NSPrincipalClass>
+    <NSHighResolutionCapable>true</NSHighResolutionCapable>
+</PropertyGroup>
+
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -15,6 +30,7 @@
     <PackageReference Include="Avalonia.Desktop"/>
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics"/>
+    <PackageReference Include="Dotnet.Bundle"/>
   </ItemGroup>
 
   <ItemGroup>

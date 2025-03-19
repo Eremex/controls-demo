@@ -21,6 +21,11 @@
     <None Remove="Resources\CSharp-Highlight-Light.xshd" />
     <None Remove="Resources\Svg\Ring.svg" />
     <AvaloniaResource Include="Resources\Svg\Ring.svg" />
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\Charts\CartesianCandlestickAggregationView.axaml.cs">
       <DependentUpon>CartesianCandlestickAggregationView.axaml</DependentUpon>
       <SubType>Code</SubType>
@@ -56,9 +61,9 @@
   </ItemGroup>
     
   <ItemGroup>
-    <PackageReference Include="System.Text.Json"/>
-    <PackageReference Include="System.Net.Http"/>
-    <PackageReference Include="System.Text.RegularExpressions"/>
+    <PackageReference Include="System.Text.Json" />
+    <PackageReference Include="System.Net.Http" />
+    <PackageReference Include="System.Text.RegularExpressions" />
 
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
@@ -192,6 +197,13 @@
     
   <ItemGroup>
     <Folder Include="Resources\Graphics3D\Textures\" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <Target Name="SourceCode" BeforeTargets="PreBuildEvent">

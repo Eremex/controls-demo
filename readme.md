@@ -5,7 +5,10 @@ The advanced controls - from Data Grid and Tree List to Charts and Docking UI - 
 
 [![Latest](https://img.shields.io/nuget/v/Eremex.Avalonia.Controls?label=Latest&logo=nuget)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
 [![Downloads](https://img.shields.io/nuget/dt/Eremex.Avalonia.Controls?label=Downloads)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
-[![Follow @EMXControls](https://img.shields.io/twitter/follow/EMXControls?style=social)](https://twitter.com/intent/follow?screen_name=EMXControls)
+[![Follow @EMXControls](https://img.shields.io/twitter/follow/EMXControls?style=social)](https://x.com/intent/follow?screen_name=EMXControls)
+[![Telegram En](https://img.shields.io/badge/chat-on_Telegram_(En)-E4287C)](https://t.me/emxControlsEn)
+[![Telegram Ru](https://img.shields.io/badge/chat-on_Telegram_(Ru)-FF33AA)](https://t.me/emxControls)
+![repo size](https://img.shields.io/github/repo-size/Eremex/controls-demo)
 
 ## About
 

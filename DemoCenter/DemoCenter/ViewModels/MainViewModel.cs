@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Reflection;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -17,6 +18,12 @@ public partial class MainViewModel : ViewModelBase
 
     [ObservableProperty] 
     string title;
+
+    [ObservableProperty]
+    List<LocaleInfo> locales;
+
+    [ObservableProperty]
+    CultureInfo selectedLocale;
 
     [ObservableProperty]
     List<ThemeVariantInfo> themeVariants;
@@ -56,7 +63,15 @@ public partial class MainViewModel : ViewModelBase
             new ThemeVariantInfo("Light", ThemeVariant.Light),
             new ThemeVariantInfo("Dark", ThemeVariant.Dark),
         };
+
+        Locales = new List<LocaleInfo>()
+        {
+           new LocaleInfo("En", new CultureInfo("En-us")),
+           new LocaleInfo("Ru", new CultureInfo("Ru-ru")),
+           new LocaleInfo("CN", new CultureInfo("zh-Hans")),
+        };
         SelectedThemeVariant = startupThemeVariant == ThemeVariant.Dark ? ThemeVariant.Dark : ThemeVariant.Light;
+        SelectedLocale = Locales.First().Locale;//EN
         Products = ProductsData.Products.GetOrCreate();
         PopulateFlatCollection();
         CurrentProductItem = FlatProducts.FirstOrDefault(x => x is PageInfo && AllowDemoContent(x));
@@ -64,6 +79,10 @@ public partial class MainViewModel : ViewModelBase
 
     public void SelectProduct(string productName) => CurrentProductItem = FlatProducts.FirstOrDefault(x => string.Equals(x.Name, productName));
 
+    public void UpdateDemo() 
+    {
+        OnCurrentProductItemChanged(CurrentProductItem);
+    }
     partial void OnCurrentProductItemChanged(ProductInfoBase value)
     {
         if (value is GroupInfo)
@@ -108,7 +127,7 @@ public partial class MainViewModel : ViewModelBase
 
     private bool AllowDemoContent(ProductInfoBase product) => !App.IsWebApp || (product.ShowInWeb && GetGroupInfo(product) is { } group && group.ShowInWeb);
 
-    private void PopulateFlatCollection()
+    internal void PopulateFlatCollection()
     {
         FlatProducts.Clear();
         foreach (var product in Products)
@@ -133,3 +152,17 @@ public class ThemeVariantInfo
         ThemeVariant = themeVariant;
     }
 }
+
+public class LocaleInfo
+{
+    public string LocaleName { get; init; }
+
+    public CultureInfo Locale { get; init; }
+
+    public LocaleInfo(string name, CultureInfo culture)
+    {
+        LocaleName = name;
+        Locale = culture;
+    }
+}
+

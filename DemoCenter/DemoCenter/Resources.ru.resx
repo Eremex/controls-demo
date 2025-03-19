@@ -1,0 +1,216 @@
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EremexTabControlCanOrganizeTheContentsOfAB" xml:space="preserve">
+    <value>MXTabControl позволяет организовать содержимое связанного источника элементов в виде интерфейса с вкладками. Он поддерживает возможность перестановки вкладок, различные варианты их отображения, а также встроенные кнопки для добавления и закрытия вкладок.</value>
+  </data>
+  <data name="TheMxMessageBoxDialogAllowsYouToDisplayMes" xml:space="preserve">
+    <value>MxMessageBox — диалоговое окно, которое позволяет показывать сообщения и задавать вопросы пользователям. Оно поддерживает темы оформления Eremex и гармонично сочетается с другими элементами управления EMX в вашем проекте. С помощью элементов управления справа вы можете настроить диалоговое окно и затем показать его.</value>
+  </data>
+  <data name="SplitContainerControlAllowsYouToPlaceConte" xml:space="preserve">
+    <value>Split Container Control состоит из разделенных сплиттером двух панелей, на которых вы можете размещать другие контролы. Пользователь может перетаскивать сплиттер, чтобы изменять размер панелей. Если функция сворачивания панелей активна, можно щелкнуть по сплиттеру, чтобы свернуть или развернуть нужную панель.</value>
+  </data>
+  <data name="TheDockManagerComponentAllowsYouToImplemen" xml:space="preserve">
+    <value>Компонент Dock Manager позволяет реализовать классический интерфейс Докинга, аналогичный тому, что используется в популярных средах разработки (IDE). С его помощью можно создавать панели инструментов, которые можно закреплять, переводить в режим свободного перемещения (плавающий режим) или настроить на автоматическое скрытие. Для отображения основного содержимого окна предусмотрены специальные контейнеры документов. Вы можете добавлять несколько документов и организовывать их в виде интерфейса с вкладками.</value>
+  </data>
+  <data name="TheToolbarManagerComponentAllowsYouToImple" xml:space="preserve">
+    <value>Компонент ToolbarManager позволяет создать классические панели инструментов и меню. Панели инструментов можно закреплять не только по краям, но и в любом месте родительского контейнера. Пользователи могут изменять расположение элементов на панели инструментов с помощью перетаскивания. Также доступно окно настройки, где можно управлять всеми элементами панели инструментов (как скрытыми, так и видимыми) и перемещать их с помощью перетаскивания.</value>
+  </data>
+  <data name="TheToolbarsMenuLibraryContainsAPopupMenuCo" xml:space="preserve">
+    <value>Библиотека Toolbars&amp;Menus содержит компонент PopupMenu, с помощью которого можно добавить контекстное меню к любому элементу управления. Дизайн контекстного меню выполнен в едином стиле и гармонично сочетается с другими компонентами библиотеки EMX Controls.</value>
+  </data>
+  <data name="TheChartControlSupportsInstantDisplayOfRap" xml:space="preserve">
+    <value>Chart Control позволяет мгновенно отображать данные, которые быстро меняются в реальном времени. В данном примере показано, как с помощью специального адаптера данных можно реализовать движущееся окно просмотра.</value>
+  </data>
+  <data name="TheChartControlSGraphicsRenderingIsOptimiz" xml:space="preserve">
+    <value>Механизм отрисовки в элементе управления Chart Control оптимизирован для обработки больших объемов данных. Он обеспечивает высокую производительность и плавное отображение, даже если серии содержат миллионы точек.</value>
+  </data>
+  <data name="ThisExampleDemonstratesACartesianChartCont" xml:space="preserve">
+    <value>Данный пример показывает элемент управления CartesianChart, в котором содержатся несколько серий данных и осей. Используйте мышку для прокрутки и масштабирования всей области диаграммы или отдельных осей. Для изменения основных настроек оси воспользуйтесь панелью параметров.</value>
+  </data>
+  <data name="ChartControlSupportsLogarithmicScalesForAn" xml:space="preserve">
+    <value>Элемент управления Chart Control позволяет использовать логарифмические шкалы для любых числовых осей. По умолчанию применяется логарифм по основанию 10. Вы также можете задать собственное основание логарифма, чтобы изменить масштабирование данных.</value>
+  </data>
+  <data name="ThisDemoShowsConstantLinesAndStripsUsedToH" xml:space="preserve">
+    <value>Этот пример показывает, как использовать постоянные линии и полосы для выделения определенных значений и диапазонов в элементе управления CartesianChart. Чтобы добавить постоянную линию для оси X, щелкните правой кнопкой мыши в области диаграммы.</value>
+  </data>
+  <data name="ThisExampleDemonstratesThePointSeriesViewW" xml:space="preserve">
+    <value>Этот пример показывает, как работает представление данных Point Series View, позволяющее отображать данные в виде точек.</value>
+  </data>
+  <data name="TheLineSeriesViewShownInThisExampleAllowsY" xml:space="preserve">
+    <value>В этом примере демонстрируется представление данных Line Series View, которое позволяет построить график, где точки данных соединены линиями.</value>
+  </data>
+  <data name="TheAreaSeriesViewAllowsYouDisplayFilledAre" xml:space="preserve">
+    <value>Представление данных Area Series View позволяет заполнять области между графиками и осью X. Это представление полезно, когда вам нужно визуально сравнить две или более серии данных.</value>
+  </data>
+  <data name="TheScatterLineSeriesViewIsUsefulWhenYouNee" xml:space="preserve">
+    <value>Представление данных Scatter Line Series View позволяет соединить точки в том порядке, в котором они расположены в серии данных.</value>
+  </data>
+  <data name="ThisExampleDemonstratesTheStepLineSeriesVi" xml:space="preserve">
+    <value>Этот пример демонстрирует представление данных Step Line Series View, в котором точки соединены горизонтальными и вертикальными отрезками.</value>
+  </data>
+  <data name="TheStepAreaSeriesViewConnectsPointsWithHor" xml:space="preserve">
+    <value>В этом примере демонстрируется представление данных Step Area Series View. Оно позволяет соединить точки горизонтальными и вертикальными отрезками, а также залить области между графиками и осью X определенным цветом.</value>
+  </data>
+  <data name="ADataSeriesInThisExampleContainsTwoYValues" xml:space="preserve">
+    <value>Серия данных в этом примере содержит по два значения Y для каждой точки. Представление Range Area используется, чтобы заполнить области между этими значениями Y.</value>
+  </data>
+  <data name="ThisExampleDemonstratesTheSideBySideBarSer" xml:space="preserve">
+    <value>Этот пример показывает, как работает представление данных Side-by-side Bar Series View. С помощью его вы можете отображать данные в виде столбцов, расположенных рядом друг с другом на оси X.</value>
+  </data>
+  <data name="ADataSeriesInThisExampleContainsTwoYValues1" xml:space="preserve">
+    <value>В этом примере серия данных содержит по два значения Y для каждой точки. Представление данных Side-by-side Range Bar отображает столбцы, которые строятся между этими значениями Y.</value>
+  </data>
+  <data name="TheCandlestickSeriesViewAllowsYouToCreateA" xml:space="preserve">
+    <value>Представление данных Candlestick Series View позволяет строить финансовые диаграммы, отображающие изменения цен на актив. Для каждого временного интервала диаграмма показывает набор данных, включающий значения Open (открытие), Close (закрытие), High (максимум) и Low (минимум).
+
+Данные акций: https://www.investing.com/</value>
+  </data>
+  <data name="InThisDemoTheCandlestickSeriesViewUsesASpe" xml:space="preserve">
+    <value>В настоящем примере представление данных Candlestick Series View использует специальный адаптер данных (SummaryCandlestickDataAdapter). Этот адаптер принимает сырые тиковые данные — отдельные значения цены актива, зафиксированные в определенные моменты времени, — и преобразует их в свечи. Адаптер агрегирует сырые данные в свечи в соответствии с заданным временным интервалом. Например, данные могут быть сгруппированы в интервалы 1 секунда, 1 минута, 1 час, 1 день, 1 неделя и т.д., а также в кратные интервалы, такие как 5 секунд, 15 минут, 2 дня и т.д.</value>
+  </data>
+  <data name="TheDataGridSGroupingFeatureMakesItEasyToSu" xml:space="preserve">
+    <value>В этом примере показана функция группировки данных в контроле Data Grid. Она позволяет объединять строки по значениям выбранных столбцов. Пользователи могут группировать данные по любому количеству столбцов, перетаскивая их на панель группировки.</value>
+  </data>
+  <data name="YouCanEmbedAnyControlInDataGridCellsToPres" xml:space="preserve">
+    <value>Вы можете добавлять любые UI-контролы в ячейки контрола Data Grid, чтобы отображать и редактировать данные в ячейках так, как вам удобно. Этот пример демонстрирует встраиваемые редакторы Eremex: DateEditor, SpinEditor и ComboBoxEditor. Data Grid обеспечивает высокую производительность при использовании редакторов Eremex, особенно при работе с большими объемами данных.</value>
+  </data>
+  <data name="TheDataValidationMechanismAllowsYouToCheck" xml:space="preserve">
+    <value>Механизм валидации данных позволяет проверять значения ячеек и отображать ошибки в ячейках, содержащих недопустимые данные. Вы можете использовать атрибуты DataAnnotation и интерфейсы IDataErrorInfo/INotifyDataErrorInfo для проверки данных на уровне источника данных (ItemsSource). В этом примере включите флажок 'Show ItemsSource Errors', чтобы увидеть ошибки валидации, основанные на атрибутах DataAnnotation. Data Grid также поддерживает событие ValidateCellValue, которое позволяет реализовать пользовательские правила проверки ввода.</value>
+  </data>
+  <data name="DataGridSupportsBuiltInDataSearchAndFiltra" xml:space="preserve">
+    <value>Data Grid поддерживает встроенные функции поиска и фильтрации данных. Панель поиска позволяет находить и выделять ячейки строк, содержащие указанный текст. Вы можете сделать панель поиска постоянно видимой или открывать её с помощью комбинации клавиш Ctrl+F. Строка автоматической фильтрации (Auto Filter Row), которая отображается над всеми строками данных, используется для фильтрации данных по отдельным столбцам. В коде вы можете настроить условия фильтрации для ячеек в строке Auto Filter Row.</value>
+  </data>
+  <data name="RegardlessOfTheNumberOfColumnsAndRowsInThe" xml:space="preserve">
+    <value>Независимо от количества столбцов и строк, Data Grid сохраняет высокую отзывчивость при горизонтальной и вертикальной прокрутке, а также при сортировке и группировке данных. Встроенный механизм виртуализации данных обновляет только те ячейки, которые находятся в видимой области, что обеспечивает плавную и быструю прокрутку.</value>
+  </data>
+  <data name="DataGridAdaptsRowHeightToFitCellContentsTe" xml:space="preserve">
+    <value>Data Grid может автоматически изменять высоту строк в зависимости от содержимого ячеек. Текстовые столбцы могут отображать данные в одну или несколько строк. Чтобы включить многострочное отображение текста, назначьте столбцу встроенный редактор TextEditor (или его наследника) и активируйте функцию переноса текста.</value>
+  </data>
+  <data name="InThisDemoDataGridEmulatesTheWindowsTaskMa" xml:space="preserve">
+    <value>В этом примере Data Grid имитирует Диспетчер задач Windows, отображая часто обновляемые фиктивные процессы. Data Grid поддерживает автоматическое обновление данных, если связанный источник данных реализует интерфейс INotifyPropertyChanged. В данном примере уведомления об изменениях реализованы для базового бизнес-объекта с использованием класса ObservableObject (который реализует интерфейс INotifyPropertyChanged) и атрибутов ObservableProperty из библиотеки CommunityToolkit.Mvvm.</value>
+  </data>
+  <data name="DataGridSupportsMultipleRowSelectionModeWh" xml:space="preserve">
+    <value>Data Grid поддерживает режим множественного выбора строк, позволяющий выделять несколько строк одновременно. Пользователи могут выбирать строки с помощью мыши и клавиатуры. Для выделения строк щелкните по ним мышью, удерживая клавиши CTRL и/или SHIFT.</value>
+  </data>
+  <data name="DataGridSupportsDragAndDropOperationsWithi" xml:space="preserve">
+    <value>Data Grid поддерживает операции перетаскивания как внутри себя, так и на внешние контролы (например, Tree List или другой Data Grid). Этот пример демонстрирует функциональность перетаскивания внутри и между контролами Data Grid. Опция AllowDragDrop активирует функцию перетаскивания. {0} Опция AllowDragDropSortedRows должна быть включена, чтобы разрешить перетаскивание в отсортированных или сгруппированных контролах Data Grid. Если данные отсортированы или сгруппированы, операция перетаскивания изменяет значения перетаскиваемой строки в столбцах, используемых для сортировки. {1} В этом примере контролы привязаны к коллекциям, содержащим одинаковые бизнес-объекты. Это позволяет автоматически перемещать строки при перетаскивании из исходного грида в целевой. Когда вы перемещаете строку из одного грида в другой, соответствующий элемент данных перемещается между источниками данных двух гридов.</value>
+  </data>
+  <data name="TheEremexControlsLibraryIncludesMultipleEd" xml:space="preserve">
+    <value>Библиотека контролов Eremex включает несколько редакторов, которые предлагают расширенные возможности для редактирования данных. Эти редакторы позволяют отображать и изменять данные различных типов, такие как числовые, логические, дата-время, перечисления и другие. Они поддерживают механизм валидации, стилизацию и возможность встраивания в контейнеры, такие как Data Grid, Tree List, Property Grid, Ribbon, а также Toolbars&amp;Menus.</value>
+  </data>
+  <data name="TheEditorsLibraryIncludesTheTextEditorAndB" xml:space="preserve">
+    <value>Библиотека редакторов включает элементы управления Text Editor и Button Editor, которые предоставляют базовые функции для редактирования текста: проверку данных (валидацию), водяные знаки (подсказки, которые отображаются, если редактор пуст), а также различные опции для управления выбором текста и операциями редактирования. Button Editor поддерживает неограниченное количество встроенных кнопок, как обычных, так и переключаемых, которые могут отображать текст или изображение и располагаться справа или слева.</value>
+  </data>
+  <data name="TheSpinEditorIsANumericValueEditorWithBuil" xml:space="preserve">
+    <value>Spin Editor — это редактор числовых значений, оснащенный кнопками вверх и вниз, которые позволяют увеличивать или уменьшать число на заданное значение (инкремент). Пользователь может изменять значение, нажимая эти кнопки или используя клавиши со стрелками вверх и вниз на клавиатуре. Spin Editor использует числовую маску, чтобы ограничить ввод только числовыми значениями и отформатировать редактируемое значение в соответствии с указанным шаблоном.</value>
+  </data>
+  <data name="TheComboBoxEditorFeaturesADropdownListOfIt" xml:space="preserve">
+    <value>Редактор ComboBox Editor предоставляет выпадающий список элементов, из которых пользователь может выбрать один или несколько вариантов. Редактор может отображать список строк, список бизнес-объектов или значения перечисления. В режиме множественного выбора флажки рядом с элементами позволяют пользователю выбирать несколько элементов одновременно.</value>
+  </data>
+  <data name="YouCanUseTheSegmentedEditorToPresentASetOf" xml:space="preserve">
+    <value>Вы можете использовать Segmented Editor для отображения набора опций в виде горизонтально расположенных сегментов. Пользователь может щелкнуть по одному из сегментов, чтобы выбрать соответствующую опцию, или нажать CTRL + щелчок на выбранном сегменте, чтобы снять выделение. Редактор позволяет создавать сегменты из списка строк, списка бизнес-объектов или значений перечисления.</value>
+  </data>
+  <data name="TheDateEditorFeaturesADropdownCalendarThat" xml:space="preserve">
+    <value>Редактор Date Editor предоставляет выпадающий календарь, который позволяет пользователям выбирать дату. Панель навигации календаря дает возможность перемещаться между месяцами и годами. Date Editor использует маску даты и времени, чтобы ограничить ввод пользователя только допустимыми значениями даты и времени, а также отформатировать редактируемое значение в соответствии с заданным шаблоном.</value>
+  </data>
+  <data name="TheColorEditorAndPopupColorEditorControlsA" xml:space="preserve">
+    <value>Элементы управления Color Editor и Popup Color Editor позволяют пользователю выбирать цвет. Они поддерживают три цветовые палитры: по умолчанию (которую можно настроить в коде), стандартную (с фиксированными цветами) и пользовательскую (которую может настраивать сам пользователь). Встроенный Color Picker помогает пользователю добавлять пользовательские цвета из цветового пространства или задавать значения цвета в форматах RGB и HSB.</value>
+  </data>
+  <data name="TheHyperlinkEditorDisplaysItsContentAsAHyp" xml:space="preserve">
+    <value>Редактор Hyperlink Editor отображает содержимое в виде гиперссылки. Он поддерживает ручную (по умолчанию) и автоматическую обработку гиперссылок. Специальная команда или событие позволяет обрабатывать клики по гиперссылкам. Вы можете включить автоматическую навигацию, чтобы редактор автоматически переходил по ссылке при клике.</value>
+  </data>
+  <data name="YouCanCreateComboBoxAndSegmentedEditorsIte" xml:space="preserve">
+    <value>Вы можете создавать элементы для контролов ComboBox и Segmented Editor на основе значений типа перечисления. С помощью специальных атрибутов Data Annotation, примененных к значениям перечисления, можно задать изображения, текст и подсказки для этих элементов.</value>
+  </data>
+  <data name="UseMemoEditorToDisplayAndEditLargeTextInAP" xml:space="preserve">
+    <value>Используйте редактор MemoEditor для отображения и редактирования больших текстов в выпадающем окне, с возможностью включения или отключения переноса текста. Свойство IsTextEditable позволяет запретить редактирование текста в поле ввода. Если свойство установлено в значение false, поле ввода может отображать специальный значок, указывающий на наличие текста в выпадающем окне.</value>
+  </data>
+  <data name="Graphics3DControlAllowsYouToVisualizeAndIn" xml:space="preserve">
+    <value>Graphics3DControl позволяет отображать и взаимодействовать с 3D-моделями. С помощью панели свойств справа вы можете настроить основные параметры рендеринга и поведения контрола.</value>
+  </data>
+  <data name="ThisExampleDemonstratesAGraphics3DControlT" xml:space="preserve">
+    <value>Этот пример показывает, как использовать контрол Graphics3DControl для отображения 3D-модели с помощью линий.</value>
+  </data>
+  <data name="ThisExampleDemonstratesAGraphics3DControlT1" xml:space="preserve">
+    <value>Этот пример показывает, как использовать контрол Graphics3DControl для отображения 3D-модели с помощью точек.</value>
+  </data>
+  <data name="ThisExampleDemonstratesDynamicTransformati" xml:space="preserve">
+    <value>Этот пример демонстрирует динамические преобразования, применяемые к 3D-моделям в элементе управления Graphics3DControl.</value>
+  </data>
+  <data name="ThisExampleDemonstratesAGraphics3DControlD" xml:space="preserve">
+    <value>Этот пример показывает, как загрузить модель из файла STL и отобразить ее с помощью контрола Graphics3DControl. Библиотека STLDotNet6.Formats.StereoLithography используется для анализа файла STL и получения данных, необходимых для инициализации вершин и материалов создаваемой модели.</value>
+  </data>
+  <data name="ThisExampleDemonstratesAGraphics3DControlD1" xml:space="preserve">
+    <value>Этот пример показывает, как отобразить 3D-модель с простым материалом в контроле Graphics3DControl. С помощью панели свойств справа вы можете настроить параметры материала.</value>
+  </data>
+  <data name="InThisExampleAGraphics3DControlDisplaysA3D" xml:space="preserve">
+    <value>Этот пример демонстрирует, как отобразить 3D-модель с текстурированным материалом в контроле Graphics3DControl. С помощью панели материалов справа вы можете выбрать текстуру.</value>
+  </data>
+  <data name="ThisExampleDemonstratesTheIsometricAndPers" xml:space="preserve">
+    <value>Этот пример показывает, как работают изометрические и перспективные камеры в контроле Graphics3DControl. С помощью панели справа вы можете выбрать режим камеры и один из предустановленных видов.</value>
+  </data>
+  <data name="AHeatmapRendersA2DimensionalArrayOfValuesA" xml:space="preserve">
+    <value>Тепловая карта визуализирует двумерный массив значений в виде цветовой матрицы, где цвет каждой точки соответствует ее значению. Этот пример демонстрирует контрол Heatmap, позволяющий создавать тепловые карты на основе ваших данных. Щелкните по цветовому градиенту справа, чтобы применить это цветовое кодирование к тепловой карте.
+
+Источник изображения: Webb Space Telescope, https://webbtelescope.org/</value>
+  </data>
+  <data name="InThisExampleTheHeatmapControlUsesCustomCo" xml:space="preserve">
+    <value>В этом примере контрол Heatmap применяет пользовательское цветовое кодирование для отображения интенсивности сигнала, который изменяется в реальном времени. График в верхней части окна показывает амплитуду этого сигнала. Элементы управления плавно обновляются по мере изменения данных с использованием таймера.</value>
+  </data>
+  <data name="InAPolarChartEachDataPointIsDeterminedByAn" xml:space="preserve">
+    <value>В полярной диаграмме каждая точка данных определяется углом и расстоянием. Этот пример показывает, как используются постоянные линии и полосы для выделения конкретных значений и диапазонов. Диапазоны углов и расстояний задаются в коде этого примера. Щелкните левой кнопкой мыши внутри диаграммы, чтобы создать пользовательские постоянные линии для углов. Щелкните правой кнопкой мыши, чтобы создать пользовательские постоянные линии для расстояний.</value>
+  </data>
+  <data name="ThisExampleDemonstratesThePointSeriesViewW1" xml:space="preserve">
+    <value>Этот пример показывает, как работает представление данных Point Series View, позволяющее отображать данные в виде точек.</value>
+  </data>
+  <data name="TheLineSeriesViewShownInThisExampleAllowsY1" xml:space="preserve">
+    <value>В этом примере демонстрируется представление данных Line Series View, которое позволяет построить график, где точки данных соединены линиями.</value>
+  </data>
+  <data name="TheAreaSeriesViewAllowsYouDisplayFilledAre1" xml:space="preserve">
+    <value>Представление данных Area Series View позволяет заполнять области между графиками и осью X. Это представление полезно, когда вам нужно визуально сравнить две или более серии данных.</value>
+  </data>
+  <data name="TheScatterLineSeriesViewIsUsefulWhenYouNee1" xml:space="preserve">
+    <value>Представление данных Scatter Line Series View позволяет соединить точки в том порядке, в котором они расположены в серии данных.</value>
+  </data>
+  <data name="ADataSeriesInThisExampleContainsTwoYValues2" xml:space="preserve">
+    <value>Серия данных в этом примере содержит по два значения Y для каждой точки. Представление Range Area используется, чтобы заполнить области между этими значениями Y.</value>
+  </data>
+  <data name="PropertyGridAutomaticallyDetectsTheTypeOfB" xml:space="preserve">
+    <value>Контрол Property Grid автоматически определяет тип связанных полей и использует соответствующие редакторы Eremex для отображения и редактирования значений ячеек. Вы можете явно назначить редакторы для конкретных полей, чтобы переопределить поведение по умолчанию и настроить параметры редактора.</value>
+  </data>
+  <data name="PropertyGridTabRowsAllowYouToGroupASetOfFi" xml:space="preserve">
+    <value>Строки-вкладки в контроле Property Grid позволяют организовать набор полей в интерфейс с вкладками (Tabbed UI). Каждая вкладка может отображать свой собственный набор полей.</value>
+  </data>
+  <data name="RibbonControlAllowsYouToIntegrateMicrosoft" xml:space="preserve">
+    <value>Контрол RibbonControl позволяет добавлять навигационные меню в стиле Microsoft Office в ваши приложения на Avalonia UI. Элемент управления поддерживает два режима отображения: Классический (три строки элементов) и Упрощенный (одна строка элементов). Нажатие на кнопку в правом нижнем углу контрола открывает список, с помощью которого пользователь может выбрать один из этих двух режимов. {0}RibbonControl поддерживает различные типы элементов: большие и маленькие кнопки, переключаемые кнопки, подменю, встроенные редакторы, встроенные и выпадающие галереи, группы кнопок и многое другое. Вы можете создать любое количество страниц с элементами и разместить элементы на панели быстрого доступа или в области заголовков вкладок. {1}Нажмите клавишу ALT, чтобы перевести фокус на RibbonControl, а затем используйте клавиатуру для навигации между элементами риббона и активации команд.</value>
+  </data>
+  <data name="ThisExampleDemonstratesThePointSeriesViewW2" xml:space="preserve">
+    <value>Этот пример показывает, как работает представление данных Point Series View, позволяющее отображать данные в виде точек на диаграмме Смита.</value>
+  </data>
+  <data name="TheScatterLineSeriesViewIsUsefulWhenYouNee2" xml:space="preserve">
+    <value>Этот пример показывает, как работает представление данных Scatter Line Series View. Оно позволяет соединить точки в том порядке, в котором они расположены в серии данных.</value>
+  </data>
+  <data name="TheTreeListSAutoFilterRowDisplayedAtTheTop" xml:space="preserve">
+    <value>Строка автоматической фильтрации, расположенная в верхней части контрола, позволяет быстро находить строки, содержащие определенные значения. Начните вводить текст в строке автоматической фильтрации  в одном или нескольких столбцах, чтобы отфильтровать данные. Панель поиска — это еще один способ поиска информации в контроле Tree List. Нажмите CTRL+F, чтобы активировать панель поиска, а затем введите текст для поиска по данным.</value>
+  </data>
+  <data name="EremexEditorsAreUsedInTreeListCellsByDefau" xml:space="preserve">
+    <value>Редакторы Eremex по умолчанию применяются в ячейках Tree List для отображения и редактирования значений ячеек стандартных типов данных (логические, целые числа, перечисления и т.д.). Этот пример демонстрирует неявно назначенные встроенные редакторы, а также показывает, как можно явно указать редактор для столбца.</value>
+  </data>
+  <data name="YouCanBindTreeListToAHierarchicalDataSourc" xml:space="preserve">
+    <value>Вы можете привязать Tree List к иерархическому источнику данных, который возвращает дочерние элементы через свойство коллекции или специальный селектор. Этот пример демонстрирует, как создать селектор, который предоставляет иерархическую структуру папок на вашем диске.</value>
+  </data>
+  <data name="TheTreeListAndTreeViewControlsSupportMulti" xml:space="preserve">
+    <value>Контролы TreeList и TreeView поддерживают режим множественного выбора строк, позволяющий выделять несколько строк одновременно. Пользователи могут осуществлять множественный выбор с помощью мыши и клавиатуры. Для выбора строк удерживайте клавиши CTRL и/или SHIFT и нажмите на строки кнопкой мыши.</value>
+  </data>
+</root>
