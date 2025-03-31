@@ -14,8 +14,8 @@ namespace DemoCenter.ProductsData
         {
             return new List<PageInfo>()
             {
-                new PageInfo(name: "Data Editors", title: "Data Editors", description: Resources.PropertyGridAutomaticallyDetectsTheTypeOfB, viewModelGetter: () => new PropertyGridDataEditorsViewModel()),
-                new PageInfo(name: "Tab Items", title: "Tab Items", description: Resources.PropertyGridTabRowsAllowYouToGroupASetOfFi, viewModelGetter: () => new PropertyGridTabItemsViewModel())
+                new PageInfo(name: "Data Editors", title: "Data Editors", viewModelGetter: () => new PropertyGridDataEditorsViewModel(), descriptionGetter: () => Resources.PropertyGridAutomaticallyDetectsTheTypeOfB),
+                new PageInfo(name: "Tab Items", title: "Tab Items", viewModelGetter: () => new PropertyGridTabItemsViewModel(), descriptionGetter: () => Resources.PropertyGridTabRowsAllowYouToGroupASetOfFi)
             };
         }
     }

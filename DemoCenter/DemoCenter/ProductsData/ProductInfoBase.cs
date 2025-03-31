@@ -7,7 +7,9 @@ public abstract class ProductInfoBase
 {
     public string Name { get; }
     public string Title { get; }
-    public string Description { get; set; }
+    public Func<string> DescriptionGetter { get; set; }
+
+    public string Description => DescriptionGetter?.Invoke();
     public Func<PageViewModelBase> ViewModelGetter { get; }
     public bool ShowInWeb { get; }
     public bool IsNew => Introduced.Matches(App.Version) && !IsUpdated;
@@ -16,12 +18,13 @@ public abstract class ProductInfoBase
     public VersionInfo? Updated { get; }
     public abstract bool HasChildren { get; }
     public bool IsWebApp => App.IsWebApp;
+    
 
-    protected ProductInfoBase(string name, string title, string description, Func<PageViewModelBase> viewModelGetter, VersionInfo? introduced, VersionInfo? updated, bool showInWeb)
+    protected ProductInfoBase(string name, string title, Func<PageViewModelBase> viewModelGetter, Func<string> descriptionGetter, VersionInfo? introduced, VersionInfo? updated, bool showInWeb)
     {
         Name = name;
         Title = title;
-        Description = description;
+        DescriptionGetter = descriptionGetter;
         ViewModelGetter = viewModelGetter;
         ShowInWeb = showInWeb;
         Introduced = introduced ?? new VersionInfo(0, 0);

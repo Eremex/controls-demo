@@ -15,22 +15,18 @@ namespace DemoCenter.ProductsData
             return new List<PageInfo>()
             {
                 new PageInfo(name: "Filter & Search", title: "Filter & Search",
-                description: Resources.TheTreeListSAutoFilterRowDisplayedAtTheTop,
                 viewModelGetter: () => new TreeListFilteringPageViewModel(),
-                showInWeb: false),
+                descriptionGetter: () => Resources.TheTreeListSAutoFilterRowDisplayedAtTheTop, showInWeb: false),
 
                 new PageInfo(name: "Data Editors", title: "Data Editors",
-                description: Resources.EremexEditorsAreUsedInTreeListCellsByDefau,
                 viewModelGetter: () => new TreeListDataEditorsPageViewModel(),
-                showInWeb: false),
+                descriptionGetter: () => Resources.EremexEditorsAreUsedInTreeListCellsByDefau, showInWeb: false),
 
                 new PageInfo(name: "Folder Browser", title: "Folder Browser",
-                description: Resources.YouCanBindTreeListToAHierarchicalDataSourc,
-                viewModelGetter: () => new FolderBrowserPageViewModel()),
+                viewModelGetter: () => new FolderBrowserPageViewModel(), descriptionGetter: () => Resources.YouCanBindTreeListToAHierarchicalDataSourc),
 
                 new PageInfo(name: "Multiple Node Selection", title: "Multiple Node Selection",
-                description: Resources.TheTreeListAndTreeViewControlsSupportMulti,
-                viewModelGetter: () => new TreeListMultipleSelectionPageViewModel(), new VersionInfo(1, 0)),                
+                viewModelGetter: () => new TreeListMultipleSelectionPageViewModel(), descriptionGetter: () => Resources.TheTreeListAndTreeViewControlsSupportMulti, introduced: new VersionInfo(1, 0)),                
             };
         }
     }

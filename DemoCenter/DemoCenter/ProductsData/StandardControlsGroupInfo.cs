@@ -15,19 +15,15 @@ namespace DemoCenter.ProductsData
             return new List<PageInfo>()
             {
                 new PageInfo(name: "Overview", title: "Overview",
-                description: "",
                 viewModelGetter: () => new StandardControlsOverviewPageViewModel()),
 
                 new PageInfo(name: "Primitives", title: "Primitives",
-                description: "",
                 viewModelGetter: () => new PrimitivesPageViewModel()),
 
                 new PageInfo(name: "ProgressBar", title: "ProgressBar",
-                description : "",
                 viewModelGetter: () => new ProgressBarPageViewModel()),
 
                 new PageInfo(name: "Slider", title: "Slider",
-                description : "",
                 viewModelGetter: () => new SliderPageViewModel()),
             };
         }

@@ -16,44 +16,34 @@ namespace DemoCenter.ProductsData
             return new List<PageInfo>()
             {
                 new PageInfo(name: "Overview", title: "Overview",
-                description: Resources.TheEremexControlsLibraryIncludesMultipleEd,
-                viewModelGetter: () => new EditorsOverviewPageViewModel()),
+                viewModelGetter: () => new EditorsOverviewPageViewModel(), descriptionGetter: () => Resources.TheEremexControlsLibraryIncludesMultipleEd),
 
-                new PageInfo(name: "Text Editing", title: "Button & Text Editors", 
-                description: Resources.TheEditorsLibraryIncludesTheTextEditorAndB,
-                viewModelGetter: () => new TextEditingPageViewModel()),
+                new PageInfo(name: "Text Editing", title: "Button & Text Editors",
+                viewModelGetter: () => new TextEditingPageViewModel(), descriptionGetter: () => Resources.TheEditorsLibraryIncludesTheTextEditorAndB),
 
                 new PageInfo(name: "Spin Editor", title: "Spin Editor",
-                description: Resources.TheSpinEditorIsANumericValueEditorWithBuil,
-                viewModelGetter: () => new SpinEditorPageViewModel()),
+                viewModelGetter: () => new SpinEditorPageViewModel(), descriptionGetter: () => Resources.TheSpinEditorIsANumericValueEditorWithBuil),
 
                 new PageInfo(name: "ComboBox Editor", title: "ComboBox Editor",
-                description : Resources.TheComboBoxEditorFeaturesADropdownListOfIt,
-                viewModelGetter: () => new ComboBoxEditorPageViewModel()),
+                viewModelGetter: () => new ComboBoxEditorPageViewModel(), descriptionGetter: () => Resources.TheComboBoxEditorFeaturesADropdownListOfIt),
 
                 new PageInfo(name: "Segmented Editor", title: "Segmented Editor",
-                description: Resources.YouCanUseTheSegmentedEditorToPresentASetOf,
-                viewModelGetter: () => new SegmentedEditorPageViewModel()),
+                viewModelGetter: () => new SegmentedEditorPageViewModel(), descriptionGetter: () => Resources.YouCanUseTheSegmentedEditorToPresentASetOf),
 
                 new PageInfo(name: "Date Editor", title: "Date Editor",
-                description: Resources.TheDateEditorFeaturesADropdownCalendarThat,
-                viewModelGetter: () => new DateEditorPageViewModel()),
+                viewModelGetter: () => new DateEditorPageViewModel(), descriptionGetter: () => Resources.TheDateEditorFeaturesADropdownCalendarThat),
 
                 new PageInfo(name: "Color Editor", title: "Color Editor",
-                description: Resources.TheColorEditorAndPopupColorEditorControlsA,
-                viewModelGetter: () => new ColorEditorPageViewModel()),
+                viewModelGetter: () => new ColorEditorPageViewModel(), descriptionGetter: () => Resources.TheColorEditorAndPopupColorEditorControlsA),
 
                 new PageInfo(name: "Hyperlink Editor", title: "Hyperlink Editor",
-                description: Resources.TheHyperlinkEditorDisplaysItsContentAsAHyp,
-                viewModelGetter: () => new HyperlinkEditorPageViewModel(), new VersionInfo(1, 0)),
+                viewModelGetter: () => new HyperlinkEditorPageViewModel(), descriptionGetter: () => Resources.TheHyperlinkEditorDisplaysItsContentAsAHyp, introduced: new VersionInfo(1, 0)),
 
-                new PageInfo(name: "Enum Source", title: "Enum Source", 
-                description: Resources.YouCanCreateComboBoxAndSegmentedEditorsIte,
-                viewModelGetter: () => new EnumSourcePageViewModel()),
+                new PageInfo(name: "Enum Source", title: "Enum Source",
+                viewModelGetter: () => new EnumSourcePageViewModel(), descriptionGetter: () => Resources.YouCanCreateComboBoxAndSegmentedEditorsIte),
                 
-                new PageInfo(name: "Memo Editor", title: "Memo Editor", 
-                    description: Resources.UseMemoEditorToDisplayAndEditLargeTextInAP,
-                    viewModelGetter: () => new MemoEditorPageViewModel(), new VersionInfo(1, 0)),
+                new PageInfo(name: "Memo Editor", title: "Memo Editor",
+                    viewModelGetter: () => new MemoEditorPageViewModel(), descriptionGetter: () => Resources.UseMemoEditorToDisplayAndEditLargeTextInAP, introduced: new VersionInfo(1, 0)),
             };
         }
     }

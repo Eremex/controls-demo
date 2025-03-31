@@ -5,7 +5,6 @@ using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DemoCenter.ProductsData;
 using Eremex.AvaloniaUI.Controls.Common;
-using Eremex.AvaloniaUI.Themes;
 
 namespace DemoCenter.ViewModels;
 
@@ -72,6 +71,7 @@ public partial class MainViewModel : ViewModelBase
         };
         SelectedThemeVariant = startupThemeVariant == ThemeVariant.Dark ? ThemeVariant.Dark : ThemeVariant.Light;
         SelectedLocale = Locales.First().Locale;//EN
+        
         Products = ProductsData.Products.GetOrCreate();
         PopulateFlatCollection();
         CurrentProductItem = FlatProducts.FirstOrDefault(x => x is PageInfo && AllowDemoContent(x));
@@ -79,14 +79,17 @@ public partial class MainViewModel : ViewModelBase
 
     public void SelectProduct(string productName) => CurrentProductItem = FlatProducts.FirstOrDefault(x => string.Equals(x.Name, productName));
 
-    public void UpdateDemo() 
-    {
-        OnCurrentProductItemChanged(CurrentProductItem);
-    }
     partial void OnCurrentProductItemChanged(ProductInfoBase value)
     {
+        if (value is null)
+        {
+            CurrentProductItemViewModel = null;
+            return;
+        }
+        
         if (value is GroupInfo)
             return;
+        
         CreateTitle(value);
 
         var allowContent = AllowDemoContent(value);
@@ -127,7 +130,7 @@ public partial class MainViewModel : ViewModelBase
 
     private bool AllowDemoContent(ProductInfoBase product) => !App.IsWebApp || (product.ShowInWeb && GetGroupInfo(product) is { } group && group.ShowInWeb);
 
-    internal void PopulateFlatCollection()
+    private void PopulateFlatCollection()
     {
         FlatProducts.Clear();
         foreach (var product in Products)
@@ -137,6 +140,15 @@ public partial class MainViewModel : ViewModelBase
                 foreach (var page in productGroup.Pages)
                     FlatProducts.Add(page);
         }
+    }
+
+    partial void OnSelectedLocaleChanged(CultureInfo value)
+    {
+        CultureInfo.CurrentUICulture = SelectedLocale;
+
+        var current = CurrentProductItem;
+        CurrentProductItem = null;
+        CurrentProductItem = current;
     }
 }
 

@@ -9,14 +9,12 @@ public static class SmithChartGroupInfo
         return new List<PageInfo>
         {
             new (name: "Point", title: "Point Series View",
-                description: Resources.ThisExampleDemonstratesThePointSeriesViewW2,
                 viewModelGetter: () => new SmithPointSeriesViewViewModel(),
-                new VersionInfo(1, 0)),
+                descriptionGetter: () => Resources.ThisExampleDemonstratesThePointSeriesViewW2, introduced: new VersionInfo(1, 0)),
             
             new (name: "Scatter Line", title: "Scatter Line Series View",
-                description: Resources.TheScatterLineSeriesViewIsUsefulWhenYouNee2,
                 viewModelGetter: () => new SmithLineSeriesViewViewModel(),
-                new VersionInfo(1, 0))
+                descriptionGetter: () => Resources.TheScatterLineSeriesViewIsUsefulWhenYouNee2, introduced: new VersionInfo(1, 0))
         };
     }
 }

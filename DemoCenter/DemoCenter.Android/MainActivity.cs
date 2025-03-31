@@ -3,7 +3,7 @@ using Avalonia;
 using Avalonia.Android;
 using DemoCenter;
 
-namespace DemoCenter.Android;
+namespace testAndroid.Android;
 
 [Activity(
     Label = "DemoCenter.Android",

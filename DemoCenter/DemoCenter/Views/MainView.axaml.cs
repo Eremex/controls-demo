@@ -20,6 +20,7 @@ namespace DemoCenter.Views;
 public partial class MainView : UserControl
 {
     string loadedResource;
+    IDisposable titleSubscriber;
 
     public MainView()
     {
@@ -59,8 +60,6 @@ public partial class MainView : UserControl
     {
         if (e.PropertyName == nameof(MainViewModel.SelectedThemeVariant) && ViewModel?.SelectedThemeVariant != null && Application.Current is App application)
             application.RequestedThemeVariant = ViewModel.SelectedThemeVariant;
-        else if (e.PropertyName == nameof(MainViewModel.SelectedLocale))
-            UpdateLocale();
         else if (e.PropertyName == nameof(MainViewModel.SourceFile))
             UpdateDocument();
         else if (e.PropertyName == nameof(MainViewModel.SelectedCode))
@@ -69,19 +68,7 @@ public partial class MainView : UserControl
             CodeViewEditor.SearchPanel.SearchPattern = ViewModel.SelectedCode ?? string.Empty;
         }
     }
-    private void UpdateLocale() 
-    {
-        if (ViewModel == null || ViewModel.SelectedLocale == null)
-            return;
 
-        CultureInfo.CurrentUICulture = ViewModel.SelectedLocale;
-
-        Products.Reset();
-        ViewModel.Products = Products.GetOrCreate();
-        ViewModel.PopulateFlatCollection();
-
-        ViewModel.UpdateDemo();
-    }
     private void UpdateDocument()
     {
         if(ViewModel == null || string.IsNullOrEmpty(ViewModel.SourceFile))
@@ -120,17 +107,28 @@ public partial class MainView : UserControl
         set { SetValue(TitleProperty, value); }
     }
 
-    IDisposable titleSubscriber;
-
     private void OnPageSelectorKeyDown(object sender, KeyEventArgs e)
     {
         if(e.Key == Key.Up)
         {
-            var currentIndex = ViewModel.FlatProducts.IndexOf(ViewModel.CurrentProductItem);
-            if(ViewModel.FlatProducts[--currentIndex] is GroupInfo)
+            if (pageSelector.FocusedNode == null)
+                return;
+
+            if(pageSelector.FocusedNode.ParentNode.Nodes.Where(x => x.IsVisible).First() == pageSelector.FocusedNode)
             {
-                if(--currentIndex > 0)
-                    ViewModel.CurrentProductItem = ViewModel.FlatProducts[currentIndex];
+                var parentNode = pageSelector.FocusedNode.ParentNode;
+                var visibleParentNodes = pageSelector.Nodes.Where((x) => x.IsVisible).ToList();
+
+                int parentNodeIndex = visibleParentNodes.IndexOf(parentNode);
+                if (parentNodeIndex > 0)
+                {
+                    parentNodeIndex--;
+
+                    visibleParentNodes[parentNodeIndex].IsExpanded = true;
+                    pageSelector.FocusedNode = visibleParentNodes[parentNodeIndex].Nodes.Where(x => x.IsVisible).Last();
+
+                    parentNode.IsExpanded = false;
+                }
                 e.Handled = true;
             }
         }
@@ -138,8 +136,16 @@ public partial class MainView : UserControl
 
     private void OnPageSelectorFocusedNodeChanged(object sender, TreeListFocusedNodeChangedEventArgs e)
     {
-        if(e.Node.Content is GroupInfo)
-            pageSelector.MoveNextNode();
+        if (e.Node != null && e.Node.ParentNode == null)
+        {
+            if (!e.Node.IsExpanded)
+            {
+                pageSelector.CollapseAllNodes();
+                e.Node.IsExpanded = true;
+            }
+
+            pageSelector.FocusedNode = e.Node.Nodes.Where(x => x.IsVisible).First();
+        }
     }
 
     private void CodeViewEditor_OnActualThemeVariantChanged(object sender, EventArgs e)
@@ -155,7 +161,9 @@ internal class PagesChildrenSelector : ITreeListChildrenSelector
 
     IEnumerable ITreeListChildrenSelector.SelectChildren(object item)
     {
-        return ((GroupInfo)item).Pages;
+        if(item is GroupInfo groupInfo)
+            return groupInfo.Pages;
+        return null;
     }
 }
 

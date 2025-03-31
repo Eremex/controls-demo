@@ -9,14 +9,12 @@ public static class HeatmapGroupInfo
         return new List<PageInfo>
         {
             new (name: "Color Providers", title: "Color Providers",
-                description: Resources.AHeatmapRendersA2DimensionalArrayOfValuesA,
                 viewModelGetter: () => new HeatmapColorProvidersViewModel(),
-                new VersionInfo(1, 1)),
+                descriptionGetter: () => Resources.AHeatmapRendersA2DimensionalArrayOfValuesA, introduced: new VersionInfo(1, 1)),
 
             new(name: "Real-Time Data", title: "Real-Time Data",
-                description: Resources.InThisExampleTheHeatmapControlUsesCustomCo,
                 viewModelGetter: () => new HeatmapRealTimeViewModel(),
-                new VersionInfo(1, 1), showInWeb: false),
+                descriptionGetter: () => Resources.InThisExampleTheHeatmapControlUsesCustomCo, introduced: new VersionInfo(1, 1), showInWeb: false),
         };
     }
 }

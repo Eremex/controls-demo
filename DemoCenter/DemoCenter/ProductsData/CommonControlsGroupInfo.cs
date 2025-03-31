@@ -15,18 +15,15 @@ namespace DemoCenter.ProductsData
             return new List<PageInfo>()
             {
                 new PageInfo(name: "TabControl", title: "TabControl",
-                    description: Resources.EremexTabControlCanOrganizeTheContentsOfAB,
-                    viewModelGetter: () => new TabControlPageViewModel()),
+                    viewModelGetter: () => new TabControlPageViewModel(), descriptionGetter: () => Resources.EremexTabControlCanOrganizeTheContentsOfAB),
                 
                 new PageInfo(name: "MessageBox", title: "MessageBox",
-                    description: Resources.TheMxMessageBoxDialogAllowsYouToDisplayMes,
                     viewModelGetter: () => new MessageBoxPageViewModel(),
-                    introduced: new VersionInfo(1, 1),
-                    showInWeb: false),
+                    descriptionGetter: () => Resources.TheMxMessageBoxDialogAllowsYouToDisplayMes,
+                    introduced: new VersionInfo(1, 1), showInWeb: false),
 
                 new PageInfo(name: "SplitContainerControl", title: "SplitContainerControl",
-                    description: Resources.SplitContainerControlAllowsYouToPlaceConte,
-                    viewModelGetter: () => new SplitContainerControlPageViewModel()),
+                    viewModelGetter: () => new SplitContainerControlPageViewModel(), descriptionGetter: () => Resources.SplitContainerControlAllowsYouToPlaceConte),
             };
         }
     }

@@ -9,9 +9,8 @@ namespace DemoCenter.ProductsData
             return new List<PageInfo>()
             {
                 new PageInfo(name: "WordPad Example", title: "WordPad Example",
-                    description: string.Format(Resources.RibbonControlAllowsYouToIntegrateMicrosoft, Environment.NewLine + Environment.NewLine, Environment.NewLine+ Environment.NewLine),
                     viewModelGetter: () => new WordPadExampleViewModel(),
-                    new VersionInfo(1, 1), null, false)
+                    descriptionGetter: () => string.Format( Resources.RibbonControlAllowsYouToIntegrateMicrosoft, Environment.NewLine + Environment.NewLine, Environment.NewLine+ Environment.NewLine), introduced: new VersionInfo(1, 1), updated: null, showInWeb: false)
             };
         }
     }

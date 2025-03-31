@@ -9,7 +9,6 @@ public class DeveloperToolsGroupInfo
         return new List<PageInfo>()
         {
             new PageInfo(name: "SVG Icons Browser", title: "Svg Icons Browser",
-                description: "",
                 viewModelGetter: () => new SvgIconsBrowserViewModel())
         };
     }

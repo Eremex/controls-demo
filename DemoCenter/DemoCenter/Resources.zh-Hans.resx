@@ -216,4 +216,10 @@
   <data name="TheTreeListAndTreeViewControlsSupportMulti" xml:space="preserve">
     <value>树列表和树视图控件支持多节点选择模式，允许您和用户一次选择（突出显示）多个节点。用户可以使用鼠标和键盘选择多个节点。按住 CTRL 和/或 SHIFT 键单击节点以选择节点。</value>
   </data>
+  <data name="WASMOnlyText1" xml:space="preserve">
+    <value>此演示仅适用于桌面模式。下载应用程序。</value>
+  </data>
+  <data name="WASMOnlyText2" xml:space="preserve">
+    <value>解决方案并运行 DemoCenter.Desktop 项目以查看此演示。</value>
+  </data>
 </root>

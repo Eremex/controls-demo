@@ -213,4 +213,10 @@
   <data name="TheTreeListAndTreeViewControlsSupportMulti" xml:space="preserve">
     <value>Контролы TreeList и TreeView поддерживают режим множественного выбора строк, позволяющий выделять несколько строк одновременно. Пользователи могут осуществлять множественный выбор с помощью мыши и клавиатуры. Для выбора строк удерживайте клавиши CTRL и/или SHIFT и нажмите на строки кнопкой мыши.</value>
   </data>
+  <data name="WASMOnlyText1" xml:space="preserve">
+    <value>Этот демо модуль доступен только в режиме для ПК. Скачайте приложение</value>
+  </data>
+  <data name="WASMOnlyText2" xml:space="preserve">
+    <value>и запустите проект DemoCenter.Desktop</value>
+  </data>
 </root>

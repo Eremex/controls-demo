@@ -19,21 +19,18 @@ namespace DemoCenter.ProductsData
                 //viewModelGetter: () => new BarsOverviewPageViewModel()),
 
                 new PageInfo(name: "IDE Layout", title: "IDE Layout",
-                    description: Resources.TheDockManagerComponentAllowsYouToImplemen,
                     viewModelGetter: () => new IdeLayoutPageViewModel(),
-                    showInWeb: false),
+                    descriptionGetter: () => Resources.TheDockManagerComponentAllowsYouToImplemen, showInWeb: false),
 
                 new PageInfo(name: "Toolbar & Menu", title: "Toolbar & Menu",
-                description: Resources.TheToolbarManagerComponentAllowsYouToImple,
-                viewModelGetter: () => new ToolbarAndMenuPageViewModel()),
+                viewModelGetter: () => new ToolbarAndMenuPageViewModel(), descriptionGetter: () => Resources.TheToolbarManagerComponentAllowsYouToImple),
 
                 //new PageInfo(name: "Bar Items", title: "Bar Items",
                 //description : "",
                 //viewModelGetter: () => new BarItemsPageViewModel()),
 
                 new PageInfo(name: "Context Menu", title: "Context Menu",
-                description : Resources.TheToolbarsMenuLibraryContainsAPopupMenuCo,
-                viewModelGetter: () => new ContextMenuPageViewModel()),
+                viewModelGetter: () => new ContextMenuPageViewModel(), descriptionGetter: () => Resources.TheToolbarsMenuLibraryContainsAPopupMenuCo),
             };
         }
     }

@@ -22,7 +22,7 @@ namespace DemoCenter {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace DemoCenter {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DemoCenter.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace DemoCenter {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to A data series in this example contains two Y-values for each data point. The Range Area view fills the area between these Y-values..
         /// </summary>
-        internal static string ADataSeriesInThisExampleContainsTwoYValues {
+        public static string ADataSeriesInThisExampleContainsTwoYValues {
             get {
                 return ResourceManager.GetString("ADataSeriesInThisExampleContainsTwoYValues", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to A data series in this example contains two Y-values for each data point. The Side-by-side Range Bar view draws rectangular bars between these Y-values..
         /// </summary>
-        internal static string ADataSeriesInThisExampleContainsTwoYValues1 {
+        public static string ADataSeriesInThisExampleContainsTwoYValues1 {
             get {
                 return ResourceManager.GetString("ADataSeriesInThisExampleContainsTwoYValues1", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to A data series in this example contains two Y-values for each data point. The Range Area view fills the area between these Y-values..
         /// </summary>
-        internal static string ADataSeriesInThisExampleContainsTwoYValues2 {
+        public static string ADataSeriesInThisExampleContainsTwoYValues2 {
             get {
                 return ResourceManager.GetString("ADataSeriesInThisExampleContainsTwoYValues2", resourceCulture);
             }
@@ -92,7 +92,7 @@ namespace DemoCenter {
         ///
         ///Image source: Webb Space Telescope, https://webbtelescope.org/.
         /// </summary>
-        internal static string AHeatmapRendersA2DimensionalArrayOfValuesA {
+        public static string AHeatmapRendersA2DimensionalArrayOfValuesA {
             get {
                 return ResourceManager.GetString("AHeatmapRendersA2DimensionalArrayOfValuesA", resourceCulture);
             }
@@ -101,7 +101,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Chart Control supports logarithmic scales for any of its numeric axes. Log base 10 is default. You can specify a custom log base to change data scaling..
         /// </summary>
-        internal static string ChartControlSupportsLogarithmicScalesForAn {
+        public static string ChartControlSupportsLogarithmicScalesForAn {
             get {
                 return ResourceManager.GetString("ChartControlSupportsLogarithmicScalesForAn", resourceCulture);
             }
@@ -110,7 +110,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Data Grid adapts row height to fit cell contents. Text columns can display data in a single or multiple lines. Assign a TextEditor in-place editor (or its descendant) to a column, and enable text wrapping to display text in multiple lines..
         /// </summary>
-        internal static string DataGridAdaptsRowHeightToFitCellContentsTe {
+        public static string DataGridAdaptsRowHeightToFitCellContentsTe {
             get {
                 return ResourceManager.GetString("DataGridAdaptsRowHeightToFitCellContentsTe", resourceCulture);
             }
@@ -119,7 +119,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Data Grid supports built-in data search and filtration. The Search Panel allows you to locate and highlight row cells that contain specific text. You can make the Search Panel always visible, or activate it with the Ctrl+F keyboard shortcut. The Auto Filter Row (displayed above all data rows) is used to filter data against individual columns. In code, you can customize filter conditions used in the auto-filter row for individual columns..
         /// </summary>
-        internal static string DataGridSupportsBuiltInDataSearchAndFiltra {
+        public static string DataGridSupportsBuiltInDataSearchAndFiltra {
             get {
                 return ResourceManager.GetString("DataGridSupportsBuiltInDataSearchAndFiltra", resourceCulture);
             }
@@ -128,7 +128,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Data Grid supports drag-and-drop operations within the control and to external controls (for instance, Tree List or another Data Grid).This example demonstrates drag-and-drop functionality within and between Data Grids. The AllowDragDrop option activates the drag-and-drop feature. {0}The AllowDragDropSortedRows option must be enabled to allow drag-and-drop operations for sorted/grouped Data Grids. When data is sorted or grouped, a drag-and-drop operation modifies values of a dragged row in sort columns. {1} [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DataGridSupportsDragAndDropOperationsWithi {
+        public static string DataGridSupportsDragAndDropOperationsWithi {
             get {
                 return ResourceManager.GetString("DataGridSupportsDragAndDropOperationsWithi", resourceCulture);
             }
@@ -137,7 +137,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to DataGrid supports multiple row selection mode, which allows you and your user to select (highlight) multiple rows at one time. Users can select multiple rows with the mouse and keyboard. Click rows while holding the CTRL and/or SHIFT key down for row selection..
         /// </summary>
-        internal static string DataGridSupportsMultipleRowSelectionModeWh {
+        public static string DataGridSupportsMultipleRowSelectionModeWh {
             get {
                 return ResourceManager.GetString("DataGridSupportsMultipleRowSelectionModeWh", resourceCulture);
             }
@@ -146,7 +146,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Eremex editors are used in Tree List cells by default to display and edit cell values of common data types (Boolean, integer, enumerations, etc.). This demo shows implicitly assigned in-place editors, and demonstrates how you can explicitly specify an editor for a Tree List column..
         /// </summary>
-        internal static string EremexEditorsAreUsedInTreeListCellsByDefau {
+        public static string EremexEditorsAreUsedInTreeListCellsByDefau {
             get {
                 return ResourceManager.GetString("EremexEditorsAreUsedInTreeListCellsByDefau", resourceCulture);
             }
@@ -155,7 +155,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Eremex Tab Control can organize the contents of a bound item source into a tabbed UI. It supports tab re-ordering, multiple tab layout modes, and built-in buttons to add and close tabs..
         /// </summary>
-        internal static string EremexTabControlCanOrganizeTheContentsOfAB {
+        public static string EremexTabControlCanOrganizeTheContentsOfAB {
             get {
                 return ResourceManager.GetString("EremexTabControlCanOrganizeTheContentsOfAB", resourceCulture);
             }
@@ -164,7 +164,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Graphics3DControl allows you to visualize and interact with 3D models. Use the Properties pane on the right to customize the control&apos;s basic rendering and behavior settings..
         /// </summary>
-        internal static string Graphics3DControlAllowsYouToVisualizeAndIn {
+        public static string Graphics3DControlAllowsYouToVisualizeAndIn {
             get {
                 return ResourceManager.GetString("Graphics3DControlAllowsYouToVisualizeAndIn", resourceCulture);
             }
@@ -173,7 +173,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to In a Polar Chart each data point is determined by an angle and a distance. This example demonstrates constant lines and strips used to highlight specific values and value ranges. Angle ranges and distance ranges are set in code of this demo. Left-click within a diagram to create custom constant lines for angles. Right-click to create custom constant lines for distances..
         /// </summary>
-        internal static string InAPolarChartEachDataPointIsDeterminedByAn {
+        public static string InAPolarChartEachDataPointIsDeterminedByAn {
             get {
                 return ResourceManager.GetString("InAPolarChartEachDataPointIsDeterminedByAn", resourceCulture);
             }
@@ -182,7 +182,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to In this demo, Data Grid emulates the Windows Task Manager by showing frequently updated fake processes. Data Grid supports automatic data updates if a bound item source implements the INotifyPropertyChanged interface. In this example, change notifications are supported for the underlying business object using the ObservableObject class (implements the INotifyPropertyChanged interface) and ObservableProperty attributes defined in the CommunityToolkit.Mvvm library..
         /// </summary>
-        internal static string InThisDemoDataGridEmulatesTheWindowsTaskMa {
+        public static string InThisDemoDataGridEmulatesTheWindowsTaskMa {
             get {
                 return ResourceManager.GetString("InThisDemoDataGridEmulatesTheWindowsTaskMa", resourceCulture);
             }
@@ -193,7 +193,7 @@ namespace DemoCenter {
         ///Raw ticks are single price values of an asset, taken at specific points in time. The data adapter aggregates the raw prices into candlesticks according to a specified time (measure) unit.
         ///For instance, data can be aggregated to 1 second, 1 minute, 1 hour, 1 day, 1 week, etc. or to multiples of the selected time unit such as 5 seconds, 15 minutes, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string InThisDemoTheCandlestickSeriesViewUsesASpe {
+        public static string InThisDemoTheCandlestickSeriesViewUsesASpe {
             get {
                 return ResourceManager.GetString("InThisDemoTheCandlestickSeriesViewUsesASpe", resourceCulture);
             }
@@ -202,7 +202,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to In this example, a Graphics3DControl displays a 3D model with a textured material. Use the Materials pane on the right to choose the texture..
         /// </summary>
-        internal static string InThisExampleAGraphics3DControlDisplaysA3D {
+        public static string InThisExampleAGraphics3DControlDisplaysA3D {
             get {
                 return ResourceManager.GetString("InThisExampleAGraphics3DControlDisplaysA3D", resourceCulture);
             }
@@ -211,7 +211,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to In this example the Heatmap control uses custom color encoding to visualize the intensity of a sample signal changing in real time. A chart control at the top displays the amplitude of this signal. The controls update seamlessly as the underlying data changes using a timer..
         /// </summary>
-        internal static string InThisExampleTheHeatmapControlUsesCustomCo {
+        public static string InThisExampleTheHeatmapControlUsesCustomCo {
             get {
                 return ResourceManager.GetString("InThisExampleTheHeatmapControlUsesCustomCo", resourceCulture);
             }
@@ -220,7 +220,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Property Grid automatically detects the type of bound fields, and uses appropriate Eremex data editors to display and edit cell values. You can explicitly assign editors to specific fields to override the default behavior and customize editor settings..
         /// </summary>
-        internal static string PropertyGridAutomaticallyDetectsTheTypeOfB {
+        public static string PropertyGridAutomaticallyDetectsTheTypeOfB {
             get {
                 return ResourceManager.GetString("PropertyGridAutomaticallyDetectsTheTypeOfB", resourceCulture);
             }
@@ -229,7 +229,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Property Grid tab rows allow you to group a set of fields into a tabbed UI. Each tab item in a row displays its own set of bound fields..
         /// </summary>
-        internal static string PropertyGridTabRowsAllowYouToGroupASetOfFi {
+        public static string PropertyGridTabRowsAllowYouToGroupASetOfFi {
             get {
                 return ResourceManager.GetString("PropertyGridTabRowsAllowYouToGroupASetOfFi", resourceCulture);
             }
@@ -238,7 +238,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Regardless of the number of columns and rows in the control, Data Grid remains responsive as you scroll the control horizontally or vertically, or sort/group its data. The built-in data virtualization mechanism updates only cells within the viewport to maintain high-performance scrolling.
         /// </summary>
-        internal static string RegardlessOfTheNumberOfColumnsAndRowsInThe {
+        public static string RegardlessOfTheNumberOfColumnsAndRowsInThe {
             get {
                 return ResourceManager.GetString("RegardlessOfTheNumberOfColumnsAndRowsInThe", resourceCulture);
             }
@@ -247,7 +247,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to RibbonControl allows you to integrate Microsoft Office-inspired navigation menus into your Avalonia UI applications. The control comes with two views: Classic (three item rows) and Simplified (one item row). The dropdown button at the control&apos;s bottom right corner opens a selector between these views. {0}RibbonControl supports multiple item types: large and small buttons, check buttons, sub-menus, in-place editors, inline and dropdown galleries, groups of buttons, and more. You can create as many pages with [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string RibbonControlAllowsYouToIntegrateMicrosoft {
+        public static string RibbonControlAllowsYouToIntegrateMicrosoft {
             get {
                 return ResourceManager.GetString("RibbonControlAllowsYouToIntegrateMicrosoft", resourceCulture);
             }
@@ -256,7 +256,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Split Container Control allows you to place content onto two panels, and separate the panels with a splitter that a user can drag to resize the panels. With the panel collapse feature enabled, the user can click the splitter to collapse and restore a panel..
         /// </summary>
-        internal static string SplitContainerControlAllowsYouToPlaceConte {
+        public static string SplitContainerControlAllowsYouToPlaceConte {
             get {
                 return ResourceManager.GetString("SplitContainerControlAllowsYouToPlaceConte", resourceCulture);
             }
@@ -265,7 +265,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Area series view allows you display filled areas. This view is helpful when you need to visually compare two or more data series..
         /// </summary>
-        internal static string TheAreaSeriesViewAllowsYouDisplayFilledAre {
+        public static string TheAreaSeriesViewAllowsYouDisplayFilledAre {
             get {
                 return ResourceManager.GetString("TheAreaSeriesViewAllowsYouDisplayFilledAre", resourceCulture);
             }
@@ -274,7 +274,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Area series view allows you display filled areas between a chart and point Zero. This view is helpful when you need to visually compare two or more data series..
         /// </summary>
-        internal static string TheAreaSeriesViewAllowsYouDisplayFilledAre1 {
+        public static string TheAreaSeriesViewAllowsYouDisplayFilledAre1 {
             get {
                 return ResourceManager.GetString("TheAreaSeriesViewAllowsYouDisplayFilledAre1", resourceCulture);
             }
@@ -285,7 +285,7 @@ namespace DemoCenter {
         ///
         ///Stock data: https://www.investing.com/.
         /// </summary>
-        internal static string TheCandlestickSeriesViewAllowsYouToCreateA {
+        public static string TheCandlestickSeriesViewAllowsYouToCreateA {
             get {
                 return ResourceManager.GetString("TheCandlestickSeriesViewAllowsYouToCreateA", resourceCulture);
             }
@@ -294,7 +294,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Chart Control&apos;s graphics rendering is optimized to display large data. The control provides high performance even when series contain millions of points.
         /// </summary>
-        internal static string TheChartControlSGraphicsRenderingIsOptimiz {
+        public static string TheChartControlSGraphicsRenderingIsOptimiz {
             get {
                 return ResourceManager.GetString("TheChartControlSGraphicsRenderingIsOptimiz", resourceCulture);
             }
@@ -303,7 +303,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Chart Control supports instant display of rapidly changing real-time data. This example shows how to use a special data adapter to implement a moving viewport..
         /// </summary>
-        internal static string TheChartControlSupportsInstantDisplayOfRap {
+        public static string TheChartControlSupportsInstantDisplayOfRap {
             get {
                 return ResourceManager.GetString("TheChartControlSupportsInstantDisplayOfRap", resourceCulture);
             }
@@ -312,7 +312,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Color Editor and Popup Color Editor controls allow a user to select a color. The controls support three color palettes: default (customizable in code), standard (fixed colors), and custom (customizable by users). The built-in Color Picker helps the user add custom colors from a color space, or specify color values in the RGB and HSB formats..
         /// </summary>
-        internal static string TheColorEditorAndPopupColorEditorControlsA {
+        public static string TheColorEditorAndPopupColorEditorControlsA {
             get {
                 return ResourceManager.GetString("TheColorEditorAndPopupColorEditorControlsA", resourceCulture);
             }
@@ -321,7 +321,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The ComboBox Editor features a dropdown list of items from which a user can select one or more items. The editor can display a list of strings, a list of business objects, or enumeration values. In multi-select mode, item check boxes allow the user to select multiple items at a time..
         /// </summary>
-        internal static string TheComboBoxEditorFeaturesADropdownListOfIt {
+        public static string TheComboBoxEditorFeaturesADropdownListOfIt {
             get {
                 return ResourceManager.GetString("TheComboBoxEditorFeaturesADropdownListOfIt", resourceCulture);
             }
@@ -330,7 +330,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Data Grid&apos;s grouping feature makes it easy to summarize information for users. They can group data by an unlimited number of columns by dragging columns onto the Group Panel..
         /// </summary>
-        internal static string TheDataGridSGroupingFeatureMakesItEasyToSu {
+        public static string TheDataGridSGroupingFeatureMakesItEasyToSu {
             get {
                 return ResourceManager.GetString("TheDataGridSGroupingFeatureMakesItEasyToSu", resourceCulture);
             }
@@ -339,7 +339,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The data validation mechanism allows you to check cell values and show errors in cells that contain invalid data. You can use DataAnnotation attributes and IDataErrorInfo/INotifyDataErrorInfo interface to validate data at the ItemsSource level. Toggle the &apos;Show ItemsSource Errors&apos; checkbox in this demo to see data validation errors from DataAnnotation attributes. Data Grid also allows you to use the ValidateCellValue event to implement custom rules to validate user input..
         /// </summary>
-        internal static string TheDataValidationMechanismAllowsYouToCheck {
+        public static string TheDataValidationMechanismAllowsYouToCheck {
             get {
                 return ResourceManager.GetString("TheDataValidationMechanismAllowsYouToCheck", resourceCulture);
             }
@@ -348,7 +348,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Date Editor features a dropdown calendar that allows users to select a date. The calendar&apos;s navigation bar enables the user to browse through months and years. DateEditor uses a date-time mask to restrict user input to date-time values only, and to format the edit value according to the specified pattern..
         /// </summary>
-        internal static string TheDateEditorFeaturesADropdownCalendarThat {
+        public static string TheDateEditorFeaturesADropdownCalendarThat {
             get {
                 return ResourceManager.GetString("TheDateEditorFeaturesADropdownCalendarThat", resourceCulture);
             }
@@ -357,7 +357,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Dock Manager component allows you to implement the classic docking UI found in popular IDEs. You can create tool panels that support dock, auto-hide, and float operations. Special Document containers are designed to display the main content of your window. You can create multiple Documents and organize them into a tabbed UI..
         /// </summary>
-        internal static string TheDockManagerComponentAllowsYouToImplemen {
+        public static string TheDockManagerComponentAllowsYouToImplemen {
             get {
                 return ResourceManager.GetString("TheDockManagerComponentAllowsYouToImplemen", resourceCulture);
             }
@@ -366,7 +366,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Editors library includes the Text Editor and Button Editor controls that provide base text editing capabilities: data validation, watermarks (hints displayed when the editor is empty), and multiple options to control text selection and data edit operations. The Button Editor supports an unlimited number of built-in regular and check buttons, which can display text or images at the left or right edge of the edit box..
         /// </summary>
-        internal static string TheEditorsLibraryIncludesTheTextEditorAndB {
+        public static string TheEditorsLibraryIncludesTheTextEditorAndB {
             get {
                 return ResourceManager.GetString("TheEditorsLibraryIncludesTheTextEditorAndB", resourceCulture);
             }
@@ -375,7 +375,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Eremex Controls library includes multiple editors that provide you with advanced data editing capabilities. The editors allow you to display and edit data of different data types (numeric, Boolean, date-time, enumerations, etc.). They support the data validation mechanism, styling, and embedding in container controls (Data Grid, Tree List, Property Grid, and Toolbars/Menus)..
         /// </summary>
-        internal static string TheEremexControlsLibraryIncludesMultipleEd {
+        public static string TheEremexControlsLibraryIncludesMultipleEd {
             get {
                 return ResourceManager.GetString("TheEremexControlsLibraryIncludesMultipleEd", resourceCulture);
             }
@@ -384,7 +384,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Hyperlink Editor displays its content as a hyperlink. The editor supports manual (default) and automatic hyperlink processing. A dedicated command or event allows you to manually handle hyperlink clicks. Enable automatic hyperlink navigation to allow the editor to automatically execute a link on a click..
         /// </summary>
-        internal static string TheHyperlinkEditorDisplaysItsContentAsAHyp {
+        public static string TheHyperlinkEditorDisplaysItsContentAsAHyp {
             get {
                 return ResourceManager.GetString("TheHyperlinkEditorDisplaysItsContentAsAHyp", resourceCulture);
             }
@@ -393,7 +393,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Line series view shown in this example allows you to draw a chart by connecting points with lines..
         /// </summary>
-        internal static string TheLineSeriesViewShownInThisExampleAllowsY {
+        public static string TheLineSeriesViewShownInThisExampleAllowsY {
             get {
                 return ResourceManager.GetString("TheLineSeriesViewShownInThisExampleAllowsY", resourceCulture);
             }
@@ -402,7 +402,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Line series view shown in this example allows you to draw a chart by connecting points with lines..
         /// </summary>
-        internal static string TheLineSeriesViewShownInThisExampleAllowsY1 {
+        public static string TheLineSeriesViewShownInThisExampleAllowsY1 {
             get {
                 return ResourceManager.GetString("TheLineSeriesViewShownInThisExampleAllowsY1", resourceCulture);
             }
@@ -411,7 +411,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The MxMessageBox dialog allows you to display messages and ask questions to users. The dialog supports the Eremex paint themes, and it looks consistent with other EMX Controls in your project. Use the visual elements on the right to customize and show a sample message box..
         /// </summary>
-        internal static string TheMxMessageBoxDialogAllowsYouToDisplayMes {
+        public static string TheMxMessageBoxDialogAllowsYouToDisplayMes {
             get {
                 return ResourceManager.GetString("TheMxMessageBoxDialogAllowsYouToDisplayMes", resourceCulture);
             }
@@ -420,7 +420,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Scatter Line series view is useful when you need to connect points in the order in which they appear in the data series..
         /// </summary>
-        internal static string TheScatterLineSeriesViewIsUsefulWhenYouNee {
+        public static string TheScatterLineSeriesViewIsUsefulWhenYouNee {
             get {
                 return ResourceManager.GetString("TheScatterLineSeriesViewIsUsefulWhenYouNee", resourceCulture);
             }
@@ -429,7 +429,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Scatter Line series view is useful when you need to connect points in the order in which they appear in the data series..
         /// </summary>
-        internal static string TheScatterLineSeriesViewIsUsefulWhenYouNee1 {
+        public static string TheScatterLineSeriesViewIsUsefulWhenYouNee1 {
             get {
                 return ResourceManager.GetString("TheScatterLineSeriesViewIsUsefulWhenYouNee1", resourceCulture);
             }
@@ -438,7 +438,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Scatter Line series view is useful when you need to connect points in the order in which they appear in the data series..
         /// </summary>
-        internal static string TheScatterLineSeriesViewIsUsefulWhenYouNee2 {
+        public static string TheScatterLineSeriesViewIsUsefulWhenYouNee2 {
             get {
                 return ResourceManager.GetString("TheScatterLineSeriesViewIsUsefulWhenYouNee2", resourceCulture);
             }
@@ -447,7 +447,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Spin Editor is a numeric value editor with built-in spin buttons used to increase and decrease a number by a specific value (increment). A user can increment and decrement the number by clicking these buttons, or by pressing the Up and Down Arrows on the keyboard. SpinEditor uses a numeric mask to restrict user input to numeric values only, and to format the edit value according to the specified pattern..
         /// </summary>
-        internal static string TheSpinEditorIsANumericValueEditorWithBuil {
+        public static string TheSpinEditorIsANumericValueEditorWithBuil {
             get {
                 return ResourceManager.GetString("TheSpinEditorIsANumericValueEditorWithBuil", resourceCulture);
             }
@@ -456,7 +456,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Step Area series view connects points with horizontal and vertical line segments, and fills the area between the lines and the X-axis with a specified color..
         /// </summary>
-        internal static string TheStepAreaSeriesViewConnectsPointsWithHor {
+        public static string TheStepAreaSeriesViewConnectsPointsWithHor {
             get {
                 return ResourceManager.GetString("TheStepAreaSeriesViewConnectsPointsWithHor", resourceCulture);
             }
@@ -465,7 +465,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The ToolbarManager component allows you to implement a classic toolbar and menu UI. You can dock toolbars not only at the edges of the window, but also at any specified position. Users can customize the toolbar layout using drag-and-drop operations. They can also display the Customization Window to access all (hidden and visible) toolbar items, and move the items using drag-and-drop operations..
         /// </summary>
-        internal static string TheToolbarManagerComponentAllowsYouToImple {
+        public static string TheToolbarManagerComponentAllowsYouToImple {
             get {
                 return ResourceManager.GetString("TheToolbarManagerComponentAllowsYouToImple", resourceCulture);
             }
@@ -474,7 +474,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Toolbars &amp; Menu library contains a PopupMenu component that you can use to attach a context menu to any control. Eremex context menu style settings are consistent with all toolbar library components..
         /// </summary>
-        internal static string TheToolbarsMenuLibraryContainsAPopupMenuCo {
+        public static string TheToolbarsMenuLibraryContainsAPopupMenuCo {
             get {
                 return ResourceManager.GetString("TheToolbarsMenuLibraryContainsAPopupMenuCo", resourceCulture);
             }
@@ -483,7 +483,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The TreeList and TreeView controls support multiple node selection mode, which allows you and your user to select (highlight) multiple nodes at one time. Users can select multiple nodes with the mouse and keyboard. Click nodes while holding the CTRL and/or SHIFT key down for node selection..
         /// </summary>
-        internal static string TheTreeListAndTreeViewControlsSupportMulti {
+        public static string TheTreeListAndTreeViewControlsSupportMulti {
             get {
                 return ResourceManager.GetString("TheTreeListAndTreeViewControlsSupportMulti", resourceCulture);
             }
@@ -492,7 +492,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to The Tree List&apos;s Auto-Filter Row displayed at the top of the control allows you to quickly find rows that contain specific values. Start typing in the Auto-Filter Row in one or multiple columns to filter data. The Search Panel is another way to locate information in the Tree List. Press CTRL+F to activate the Search Panel, and then type text to search through the control&apos;s data..
         /// </summary>
-        internal static string TheTreeListSAutoFilterRowDisplayedAtTheTop {
+        public static string TheTreeListSAutoFilterRowDisplayedAtTheTop {
             get {
                 return ResourceManager.GetString("TheTreeListSAutoFilterRowDisplayedAtTheTop", resourceCulture);
             }
@@ -502,7 +502,7 @@ namespace DemoCenter {
         ///   Looks up a localized string similar to This demo shows constant lines and strips used to highlight specific values and value ranges in the CartesianChart control.
         ///Right-click within the diagram to create a custom constant line for the X-axis..
         /// </summary>
-        internal static string ThisDemoShowsConstantLinesAndStripsUsedToH {
+        public static string ThisDemoShowsConstantLinesAndStripsUsedToH {
             get {
                 return ResourceManager.GetString("ThisDemoShowsConstantLinesAndStripsUsedToH", resourceCulture);
             }
@@ -511,7 +511,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates a CartesianChart control that has multiple data series and axes. You can use the mouse to scroll and zoom the entire chart area or individual axes. Use the options panel to change the main axis settings..
         /// </summary>
-        internal static string ThisExampleDemonstratesACartesianChartCont {
+        public static string ThisExampleDemonstratesACartesianChartCont {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesACartesianChartCont", resourceCulture);
             }
@@ -520,7 +520,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates a Graphics3DControl displaying a large 3D model loaded from an STL file. The STLDotNet6.Formats.StereoLithography library is used to parse the STL file, and to obtain data to initialize vertices and materials of the created model..
         /// </summary>
-        internal static string ThisExampleDemonstratesAGraphics3DControlD {
+        public static string ThisExampleDemonstratesAGraphics3DControlD {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesAGraphics3DControlD", resourceCulture);
             }
@@ -529,7 +529,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates a Graphics3DControl displaying a 3D model with a simple material. Use the Properties pane on the right to customize the material settings..
         /// </summary>
-        internal static string ThisExampleDemonstratesAGraphics3DControlD1 {
+        public static string ThisExampleDemonstratesAGraphics3DControlD1 {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesAGraphics3DControlD1", resourceCulture);
             }
@@ -538,7 +538,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates a Graphics3DControl that renders a 3D model using lines..
         /// </summary>
-        internal static string ThisExampleDemonstratesAGraphics3DControlT {
+        public static string ThisExampleDemonstratesAGraphics3DControlT {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesAGraphics3DControlT", resourceCulture);
             }
@@ -547,7 +547,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates a Graphics3DControl that renders a 3D model using points..
         /// </summary>
-        internal static string ThisExampleDemonstratesAGraphics3DControlT1 {
+        public static string ThisExampleDemonstratesAGraphics3DControlT1 {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesAGraphics3DControlT1", resourceCulture);
             }
@@ -556,7 +556,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates dynamic transformations applied to 3D Models in a Graphics3DControl..
         /// </summary>
-        internal static string ThisExampleDemonstratesDynamicTransformati {
+        public static string ThisExampleDemonstratesDynamicTransformati {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesDynamicTransformati", resourceCulture);
             }
@@ -565,7 +565,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates the isometric and perspective cameras supported by Graphics3DControl. Use the Camera pane on the right to choose camera mode and one of predefined camera views..
         /// </summary>
-        internal static string ThisExampleDemonstratesTheIsometricAndPers {
+        public static string ThisExampleDemonstratesTheIsometricAndPers {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesTheIsometricAndPers", resourceCulture);
             }
@@ -574,7 +574,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates the Point series view, which allows you to plot individual points..
         /// </summary>
-        internal static string ThisExampleDemonstratesThePointSeriesViewW {
+        public static string ThisExampleDemonstratesThePointSeriesViewW {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesThePointSeriesViewW", resourceCulture);
             }
@@ -583,7 +583,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates the Point series view, which allows you to plot individual points..
         /// </summary>
-        internal static string ThisExampleDemonstratesThePointSeriesViewW1 {
+        public static string ThisExampleDemonstratesThePointSeriesViewW1 {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesThePointSeriesViewW1", resourceCulture);
             }
@@ -592,7 +592,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates the Point series view, which allows you to plot individual points on the Smith diagram..
         /// </summary>
-        internal static string ThisExampleDemonstratesThePointSeriesViewW2 {
+        public static string ThisExampleDemonstratesThePointSeriesViewW2 {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesThePointSeriesViewW2", resourceCulture);
             }
@@ -601,7 +601,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates the Side-by-side Bar series view which visualizes data as a set of rectangular bars..
         /// </summary>
-        internal static string ThisExampleDemonstratesTheSideBySideBarSer {
+        public static string ThisExampleDemonstratesTheSideBySideBarSer {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesTheSideBySideBarSer", resourceCulture);
             }
@@ -610,7 +610,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to This example demonstrates the Step Line series view, which connects points with horizontal and vertical line segments..
         /// </summary>
-        internal static string ThisExampleDemonstratesTheStepLineSeriesVi {
+        public static string ThisExampleDemonstratesTheStepLineSeriesVi {
             get {
                 return ResourceManager.GetString("ThisExampleDemonstratesTheStepLineSeriesVi", resourceCulture);
             }
@@ -619,16 +619,34 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to Use MemoEditor to display and edit large text in a popup window, with or without text wrapping enabled. The IsTextEditable property allows you to prevent text editing in the edit box. When the property is false, the edit box can display a special icon that indicates the presence of text in the popup..
         /// </summary>
-        internal static string UseMemoEditorToDisplayAndEditLargeTextInAP {
+        public static string UseMemoEditorToDisplayAndEditLargeTextInAP {
             get {
                 return ResourceManager.GetString("UseMemoEditorToDisplayAndEditLargeTextInAP", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This demo is only available in Desktop mode. Download the .
+        /// </summary>
+        public static string WASMOnlyText1 {
+            get {
+                return ResourceManager.GetString("WASMOnlyText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to solution and run the DemoCenter.Desktop project to see this demo..
+        /// </summary>
+        public static string WASMOnlyText2 {
+            get {
+                return ResourceManager.GetString("WASMOnlyText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can bind Tree List to a hierarchical data source, which returns child data through a collection property or special data selector. This demo shows how to create a selector that supplies the hierarchical structure of folders on your disk..
         /// </summary>
-        internal static string YouCanBindTreeListToAHierarchicalDataSourc {
+        public static string YouCanBindTreeListToAHierarchicalDataSourc {
             get {
                 return ResourceManager.GetString("YouCanBindTreeListToAHierarchicalDataSourc", resourceCulture);
             }
@@ -637,7 +655,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to You can create ComboBox and Segmented Editors&apos; items from enumeration type values. Dedicated Data Annotation attributes applied to the enumeration values allow you to populate the controls&apos; items with images, display text and tooltips..
         /// </summary>
-        internal static string YouCanCreateComboBoxAndSegmentedEditorsIte {
+        public static string YouCanCreateComboBoxAndSegmentedEditorsIte {
             get {
                 return ResourceManager.GetString("YouCanCreateComboBoxAndSegmentedEditorsIte", resourceCulture);
             }
@@ -646,7 +664,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to You can embed any control in Data Grid cells to present and edit cell data in the way you want. This demo demonstrates Eremex in-place editors: DateEditor, SpinEditor, and ComboBoxEditor. Data Grid boasts enhanced performance when you use Eremex editors in cells, particularly for large data sources..
         /// </summary>
-        internal static string YouCanEmbedAnyControlInDataGridCellsToPres {
+        public static string YouCanEmbedAnyControlInDataGridCellsToPres {
             get {
                 return ResourceManager.GetString("YouCanEmbedAnyControlInDataGridCellsToPres", resourceCulture);
             }
@@ -655,7 +673,7 @@ namespace DemoCenter {
         /// <summary>
         ///   Looks up a localized string similar to You can use the Segmented Editor to present a set of options as horizontally arranged segments. A user can click one of the segments to select a corresponding option, or CTRL-click on a selected segment to clear the selection. The editor allows you to populate segments from a list of strings, a list of business objects, or an enumeration type..
         /// </summary>
-        internal static string YouCanUseTheSegmentedEditorToPresentASetOf {
+        public static string YouCanUseTheSegmentedEditorToPresentASetOf {
             get {
                 return ResourceManager.GetString("YouCanUseTheSegmentedEditorToPresentASetOf", resourceCulture);
             }
