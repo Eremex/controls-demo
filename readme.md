@@ -60,7 +60,7 @@ Displays data from an item source as a two-dimensional table, providing rich dat
 
 - Large data sources support
 - Unbound data
-- Data soring and grouping
+- Data sorting and grouping
 - In-place editors
 - Search and data filtration
 - Data validation
@@ -282,10 +282,14 @@ The Eremex Controls Library ships with the `Eremex.Avalonia.Themes.DeltaDesign` 
 
 **Russian Linux-based OSs**
 
-- [Astra Linux <img src="docs/images/os-logo-astra_linux.svg" height=23>](https://astralinux.ru) <sup>*</sup>
-- [RedOS <img src="docs/images/os-logo-RED_OS.png" height=23>](https://redos.red-soft.ru) <sup>*</sup>
+- [ALT Linux <img src="docs/images/os-logo-alt_linux.svg" height=30>](https://www.basealt.ru) 
+- [Astra Linux <img src="docs/images/os-logo-astra_linux.svg" height=30>](https://astralinux.ru) <sup>*</sup>
 
-<sup>*</sup> Including OS editions optimized for the Elbrus CPU.
+  <sup>*</sup> Including OS editions optimized for the Elbrus CPU.
+
+- [RED OS <img src="docs/images/os-logo-RED_OS.png" height=30>](https://redos.red-soft.ru) 
+
+
 
 **macOS**
 
