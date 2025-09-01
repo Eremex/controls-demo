@@ -44,7 +44,7 @@
     <PackageVersion Include="xunit" Version="2.5.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.3" />
     <PackageVersion Include="Xunit.StaFact" Version="1.1.11" />
-    <PackageVersion Include="stylecop.analyzers" Version="1.2.105-beta.0" />
+    <PackageVersion Include="stylecop.analyzers" Version="1.1.118" />
     <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.7.30" />
     <PackageVersion Include="JunitXml.TestLogger" Version="3.0.134" />
     <PackageVersion Include="NuGet.Common" Version="6.7.0" />
