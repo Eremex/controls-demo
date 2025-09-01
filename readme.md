@@ -3,9 +3,10 @@
 The Eremex Avalonia Controls Library includes a powerful collection of UI controls to help you deliver cutting-edge applications for the cross-platform Avalonia UI framework.
 The advanced controls - from Data Grid and Tree List to Charts and Docking UI - provide rich capabilities to visualize, shape, edit data, create classic navigation interfaces, and more. 
 
-[![Latest](https://img.shields.io/nuget/v/Eremex.Avalonia.Controls?label=Latest&logo=nuget)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
-[![Downloads](https://img.shields.io/nuget/dt/Eremex.Avalonia.Controls?label=Downloads)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
-[![Follow @EMXControls](https://img.shields.io/twitter/follow/EMXControls?style=social)](https://x.com/intent/follow?screen_name=EMXControls)
+
+[![Latest Library](https://img.shields.io/nuget/v/Eremex.Avalonia.Controls?label=Latest&nbsp;Library&logo=nuget)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
+[![Library Downloads](https://img.shields.io/nuget/dt/Eremex.Avalonia.Controls?label=Downloads)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
+[![Follow @EMXControls](https://img.shields.io/twitter/follow/EMXControls?style=social)](https://twitter.com/intent/follow?screen_name=EMXControls)
 [![Telegram En](https://img.shields.io/badge/chat-on_Telegram_(En)-E4287C)](https://t.me/emxControlsEn)
 [![Telegram Ru](https://img.shields.io/badge/chat-on_Telegram_(Ru)-FF33AA)](https://t.me/emxControls)
 ![repo size](https://img.shields.io/github/repo-size/Eremex/controls-demo)
@@ -59,7 +60,7 @@ Displays data from an item source as a two-dimensional table, providing rich dat
 
 - Large data sources support
 - Unbound data
-- Data soring and grouping
+- Data sorting and grouping
 - In-place editors
 - Search and data filtration
 - Data validation
@@ -281,10 +282,14 @@ The Eremex Controls Library ships with the `Eremex.Avalonia.Themes.DeltaDesign` 
 
 **Russian Linux-based OSs**
 
-- [Astra Linux <img src="docs/images/os-logo-astra_linux.svg" height=23>](https://astralinux.ru) <sup>*</sup>
-- [RedOS <img src="docs/images/os-logo-RED_OS.png" height=23>](https://redos.red-soft.ru) <sup>*</sup>
+- [ALT Linux <img src="docs/images/os-logo-alt_linux.svg" height=30>](https://www.basealt.ru) 
+- [Astra Linux <img src="docs/images/os-logo-astra_linux.svg" height=30>](https://astralinux.ru) <sup>*</sup>
 
-<sup>*</sup> Including OS editions optimized for the Elbrus CPU.
+  <sup>*</sup> Including OS editions optimized for the Elbrus CPU.
+
+- [RED OS <img src="docs/images/os-logo-RED_OS.png" height=30>](https://redos.red-soft.ru) 
+
+
 
 **macOS**
 
