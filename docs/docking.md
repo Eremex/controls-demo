@@ -6,16 +6,17 @@ The **Dock Manager** component shipped as part of the Eremex Avalonia Controls l
 
 The main features of the Docking library include:
 
-- Visual Studio IDE-inspired UI.
-- Dockable tool panels.
-- Floating panels.
-- Panel auto-hide functionality.
-- Panel drag-and-drop and resize operations.
-- Docking Hints — When you drag a panel over the Dock Manager's area, dock hints appear. They guide you how to dock the panel at a specific position.
-- Integrated support for Documents, which are special containers used to display the main content of your window.
-- Combining multiple Documents in a tabbed UI.
-- Built-in context commands to perform operations on panels and Documents.
-- MVVM support.
+- Visual Studio IDE-inspired UI
+- Document Switcher
+- Dockable tool panels
+- Floating panels
+- Panel auto-hide functionality
+- Runtime layout customization
+- Support for Documents (special containers used to display the main content of your window)
+- Tabbed UI
+- Built-in context commands
+- MVVM support
+- Serialization and deserialization mechanism
 
 ## Documentation
 

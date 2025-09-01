@@ -62,6 +62,7 @@ Displays data from an item source as a two-dimensional table, providing rich dat
 - Unbound data
 - Data sorting and grouping
 - In-place editors
+- Column bands
 - Search and data filtration
 - Data validation
 - Built-in and custom context menus
@@ -80,6 +81,7 @@ Renders hierarchical data in the form of a tree. Tree List supports multiple dat
 - Built-in node checkboxes for row selection
 - Data sorting
 - In-place editors
+- Column bands
 - Data search and filtering
 - Data validation
 - Built-in and custom context menus
@@ -185,9 +187,10 @@ Classic docking interface inspired by the Microsoft Visual Studio IDE.
 
 ![thumb-docking](docs/images/thumb-docking.png) 
 
-- Dock panels help you create tool panes
-- Documents (embedded dock windows) allow you to display the main content of your UI
+- Dockable panels
+- Documents (embedded dock windows)
 - Floating panels
+- Document switcher
 - Panel auto-hide functionality
 - Tab containers
 - Panel resizing and drag-and-drop
@@ -299,8 +302,8 @@ The Eremex Controls Library ships with the `Eremex.Avalonia.Themes.DeltaDesign` 
 
 The following are system requirements to run the current Demo project, and use the Eremex Controls Library for Avalonia UI in your projects.
 
-- [.NET](https://dotnet.microsoft.com/en-us/download/dotnet) 6.0+
-- [Avalonia UI Framework](https://avaloniaui.net) v11.2.2+
+- [.NET](https://dotnet.microsoft.com/en-us/download/dotnet) 8.0+
+- [Avalonia UI Framework](https://avaloniaui.net) v11.3.3+
 - Developement: IDEs that have Avalonia UI support (Visual Studio 2022 and higher, JetBrains Rider 2021.3 and higher).
 
 

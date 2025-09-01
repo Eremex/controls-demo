@@ -33,6 +33,7 @@ Allows you to plot a diagram on a Cartesian coordinate system.
 * Range Area Series View
 * Bar Series View
 * Range Bar Series View 
+* Lollipop Series View
 
 
 ## PolarChart
