@@ -2,22 +2,16 @@
 using System.IO.Compression;
 using System.Numerics;
 using System.Reflection;
+using Assimp;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Eremex.AvaloniaUI.Controls3D;
-using JeremyAnsel.Media.WavefrontObj;
 
 namespace DemoCenter.ViewModels;
 
 public partial class Graphics3DControlTexturedMaterialsViewModel : Graphics3DControlViewModel
 {
-    static Vertex3D ToVertex3D(ObjVertex vertex, ObjVector3 texture, ObjVector3 normal) => new()
-    {
-        Position = new Vector3(vertex.Position.X, vertex.Position.Y, vertex.Position.Z),
-        TextureCoord = new Vector2(texture.X, texture.Y),
-        Normal = new Vector3(normal.X, normal.Y, normal.Z)
-    };
-    static TexturedPbrMaterial LoadMaterial(Assembly assembly, string resourceName)
+    public static TexturedPbrMaterial LoadMaterial(Assembly assembly, string resourceName)
     {
         var stream = assembly!.GetManifestResourceStream(resourceName);
         using var archive = new ZipArchive(stream!, ZipArchiveMode.Read);
@@ -59,19 +53,18 @@ public partial class Graphics3DControlTexturedMaterialsViewModel : Graphics3DCon
         selectedMaterial = Materials.First();
         
         var stream = assembly!.GetManifestResourceStream("DemoCenter.Resources.Graphics3D.Models.Sphere.obj");
-        var obj = ObjFile.FromStream(stream);
-        var verticesList = new List<Vertex3D>();
-        var indicesList = new List<uint>();
-        uint index = 0;
-        foreach (var face in obj.Faces)
-        {
-            foreach (var vertex in face.Vertices)
+        using var context = new AssimpContext();
+        var scene = context.ImportFileFromStream(stream);
+
+        var mesh = scene.Meshes.Single();
+        vertices = new Vertex3D[mesh.VertexCount];
+        for (int i = 0; i < mesh.VertexCount; ++i)
+            vertices[i] = new Vertex3D
             {
-                verticesList.Add(ToVertex3D(obj.Vertices[vertex.Vertex - 1], obj.TextureVertices[vertex.Texture - 1], obj.VertexNormals[vertex.Normal - 1]));
-                indicesList.Add(index++);
-            }
-        }
-        vertices = verticesList.ToArray();
-        indices = indicesList.ToArray();
+                Normal = mesh.Normals[i], 
+                Position = mesh.Vertices[i],
+                TextureCoord = new Vector2(mesh.TextureCoordinateChannels[0][i].X, mesh.TextureCoordinateChannels[0][i].Y)
+            };
+        indices = mesh.GetUnsignedIndices().ToArray();
     }
 }

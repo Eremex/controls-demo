@@ -1,0 +1,33 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             x:Class="DemoCenter.Views.Graphics3DControlSkyboxView"
+             x:DataType="vm:Graphics3DControlSkyboxViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* Auto">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl"
+                                x:Name="DemoControl"
+                                ShowHints="False"
+                                MaterialsSource="{Binding Materials}"
+                                Grid.Column="0"
+                                Skybox="{Binding SelectedSkybox}">
+            <mx3d:GeometryModel3D>
+                <mx3d:MeshGeometry3D Vertices="{Binding Vertices}" Indices="{Binding Indices}" MaterialKey="{Binding MaterialKey}" />
+            </mx3d:GeometryModel3D>
+        </mx3d:Graphics3DControl>
+        
+        <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Skyboxes"  Classes="PropertiesGroup">
+                <ListBox ItemsSource="{Binding Skyboxes}" SelectedItem="{Binding SelectedSkybox}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="mx3d:Skybox">
+                            <Image Source="{Binding Front}" Width="80" Height="80" Margin="8" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

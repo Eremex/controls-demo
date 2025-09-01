@@ -193,7 +193,7 @@
                         <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Visible" IsChecked="{Binding IsVisible, Mode=TwoWay}" Classes="PropertyEditor"/>
                         <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="{Binding IsEnabled, Mode=TwoWay}" Classes="PropertyEditor"/>
                         <mxe:CheckEditor x:Name="AllowDragToolbarSelector" Content="Allow Drag" IsChecked="{Binding AllowDragToolbar, Mode=TwoWay}" IsThreeState="True" Classes="PropertyEditor"/>
-                        <mxe:CheckEditor x:Name="ShowCustomizationButtonSelector" Content="Allow Customization" IsChecked="{Binding ShowCustomizationButton, Mode=TwoWay}" Classes="PropertyEditor"/>
+                        <mxe:CheckEditor x:Name="ShowCustomizationButtonSelector" Content="Show Customization Button" IsChecked="{Binding ShowCustomizationButton, Mode=TwoWay}" Classes="PropertyEditor"/>
                         <mxe:CheckEditor x:Name="StretchToolbarSelector" Content="Stretch Toolbar" IsChecked="{Binding StretchToolbar, Mode=TwoWay}" Classes="PropertyEditor">
                             <mxe:CheckEditor.IsVisible>
                                 <MultiBinding Converter="{x:Static BoolConverters.Or}">

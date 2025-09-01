@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:data="clr-namespace:DemoCenter.DemoData"
+			 xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+			 xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+			 xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+			 xmlns:viewModels="using:DemoCenter.ViewModels"
+			 xmlns:views="using:DemoCenter.Views"
+			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridExportView">
+
+	<Grid ColumnDefinitions="*, 250">
+		<Border x:Name="DemoControl">
+			<mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" AllowEditing="False" GroupCount="1" AutoExpandAllGroups="True" BorderThickness="0,0,1,0">
+				
+				<mxdg:DataGridControl.Bands>
+					<mxdg:GridBand BandName="BasicInformation" Header="Basic Information" />
+					<mxdg:GridBand BandName="Appearance"/>
+					<mxdg:GridBand BandName="PricingAndStock" Header="Pricing &amp; Stock"/>
+					<mxdg:GridBand BandName="AdditionalInformation" Header="Additional Information"/>
+				</mxdg:DataGridControl.Bands>
+
+				<mxdg:GridColumn FieldName="Name" Width="250" BandName="BasicInformation" />
+				<mxdg:GridColumn FieldName="Brand" Width="*" SortIndex="0" BandName="BasicInformation"/>
+				<mxdg:GridColumn FieldName="SubCategory" Width="*" Header="Category" BandName="BasicInformation"/>
+				<mxdg:GridColumn FieldName="Style" Width="*" BandName="Appearance" />
+				<mxdg:GridColumn FieldName="Size" Width="Auto" BandName="Appearance"/>
+				<mxdg:GridColumn FieldName="Color" Width="*" BandName="Appearance"/>
+				<mxdg:GridColumn FieldName="Price" Width="Auto" BandName="PricingAndStock">
+					<mxdg:GridColumn.EditorProperties>
+						<mxe:TextEditorProperties DisplayFormatString="c" />
+					</mxdg:GridColumn.EditorProperties>
+				</mxdg:GridColumn>
+				<mxdg:GridColumn FieldName="Stock" Width="Auto" BandName="PricingAndStock"/>
+				<mxdg:GridColumn FieldName="ReleaseDate" Width="Auto" BandName="AdditionalInformation"/>
+				<mxdg:GridColumn FieldName="IsBestSeller" Header="Best Seller" Width="Auto" BandName="AdditionalInformation"/>
+				
+			</mxdg:DataGridControl>
+		</Border>
+
+		<Border Grid.Column="1">
+			<mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+				<Grid RowDefinitions="Auto, Auto, Auto, Auto">
+					<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding ExportColumnHeaders}" Classes="PropertyEditor"/>
+					<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding ExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
+					<Button Content="Export to Xlsx" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Xlsx}" HorizontalAlignment="Stretch" Grid.Row="2" />
+					<!--<Button Content="Export to Pdf" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Pdf}" HorizontalAlignment="Stretch" Grid.Row="3" />-->
+				</Grid>
+			</mxe:GroupBox>
+		</Border>
+	</Grid>
+</UserControl>

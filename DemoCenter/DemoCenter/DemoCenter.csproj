@@ -8,6 +8,12 @@
     <AvaloniaResource Include="DemoData\csv\**" />
     <AvaloniaXaml Remove="Views\Tools\Templates\svgXamlExample.axaml" />
     <Compile Remove="Views\Tools\Templates\svgCodeExample.cs" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-3-Level.jpg" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-4-Level.jpg" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-5-Level.jpg" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-6-Level.jpg" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-7-Level.jpg" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-Vip.jpg" />
     <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Dark.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Light.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\CSharp-Highlight-Dark.xshd" />
@@ -34,6 +40,12 @@
       <DependentUpon>MessageBoxPageView.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DataGrid\DataGridExportView.axaml.cs">
+      <DependentUpon>DataGridExportView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DataGrid\DataGridExportView.axaml.cs">
+      <DependentUpon>DataGridExportPageView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Graphics3DControl\Graphics3DControlOverviewView.axaml.cs">
       <DependentUpon>Graphics3DControlOverviewView.axaml</DependentUpon>
       <SubType>Code</SubType>
@@ -58,6 +70,10 @@
       <DependentUpon>Graphics3DControlTransformationView.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Graphics3DControl\Graphics3DControlSkyboxView.axaml.cs">
+      <DependentUpon>Graphics3DControlSkyboxView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
     
   <ItemGroup>
@@ -72,10 +88,10 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
 
     <PackageReference Include="CommunityToolkit.Mvvm" Version="$(CommunityToolkitMvvmVersion)" />
-    <PackageReference Include="Avalonia.Svg.Skia" />
+    <PackageReference Include="Svg.Controls.Skia.Avalonia" />
     <PackageReference Include="Eremex.Avalonia.Controls3D" />
     <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
-    <PackageReference Include="SkiaSharp" Version="$(SkiaSharpVersion)" />
+    <PackageReference Include="SkiaSharp" />
     <PackageReference Include="System.IO.Compression.ZipFile" />
     <PackageReference Include="System.Resources.Extensions" Version="$(SystemResourcesExtensionsVersion)" />
     <PackageReference Include="Avalonia.AvaloniaEdit" />
@@ -83,8 +99,11 @@
     <PackageReference Include="TextMateSharp.Grammars" />
     <PackageReference Include="Eremex.Avalonia.Controls" />
     <PackageReference Include="Eremex.Avalonia.Themes.DeltaDesign" />
-    <PackageReference Include="STLDotNet6.Formats.StereoLithography" />
-    <PackageReference Include="JeremyAnsel.Media.WavefrontObj" />    
+	<PackageReference Include="Eremex.Drawing" />
+	<PackageReference Include="Eremex.Drawing.Skia" />
+	<PackageReference Include="Eremex.DocumentProcessing" />
+
+	<PackageReference Include="AssimpNetter" />
   </ItemGroup>
     
   <ItemGroup>
@@ -116,6 +135,9 @@
     </Compile>
     <Compile Update="Views\DataGrid\DataGridRowAutoHeightView.axaml.cs">
       <DependentUpon>DataGridRowAutoHeightView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TreeList\TreeListColumnBandsView.axaml.cs">
+      <DependentUpon>TreeListColumnBandsView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\TreeList\TreeListMultipleSelectionPageView.axaml.cs">
       <DependentUpon>TreeListMultipleSelectionPageView.axaml</DependentUpon>
@@ -196,6 +218,7 @@
   </ItemGroup>
     
   <ItemGroup>
+    <Folder Include="Resources\Graphics3D\Skyboxes\" />
     <Folder Include="Resources\Graphics3D\Textures\" />
   </ItemGroup>
     

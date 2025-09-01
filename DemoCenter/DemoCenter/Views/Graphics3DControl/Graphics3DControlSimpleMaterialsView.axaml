@@ -10,7 +10,7 @@
         <views:Vector3ToColorConverter x:Key="Vector3ToColorConverter"/>
     </UserControl.Resources>
     <Grid ColumnDefinitions="* Auto">
-        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHints="False" ModelsSource="{Binding Models}" Grid.Column="0">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" ShowHints="False" Skybox="{Binding Skybox}" ModelsSource="{Binding Models}" Grid.Column="0">
             <mx3d:Graphics3DControl.Materials>
                 <mx3d:SimplePbrMaterial x:Name="Material" />
             </mx3d:Graphics3DControl.Materials>
@@ -19,16 +19,40 @@
         <StackPanel Grid.Column="1">
             <mxe:GroupBox Header="Material Properties"  Classes="PropertiesGroup">
                 <StackPanel Orientation="Vertical">
-                    <Label Content="Albedo" Classes="PropertyLabel"/>
-                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Albedo, Converter={StaticResource Vector3ToColorConverter}}" />
-                    <Label Content="Emission" Classes="PropertyLabel"/>
-                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Emission, Converter={StaticResource Vector3ToColorConverter}}" />
+                    <Grid ColumnDefinitions="100 150" RowDefinitions="Auto Auto">
+                        <Label Grid.Row="0" Grid.Column="0" Content="Albedo" VerticalAlignment="Center" Margin="0 12 0 0" />
+                        <mxe:PopupColorEditor Grid.Row="0" Grid.Column="1" Margin="0 12 0 0" Color="{Binding ElementName=Material, Path=Albedo, Converter={StaticResource Vector3ToColorConverter}}" VerticalAlignment="Center" />
+                        <Label Grid.Row="1" Grid.Column="0" Content="Emission" Margin="0 12 0 0" VerticalAlignment="Center" />
+                        <mxe:PopupColorEditor Grid.Row="1" Grid.Column="1" Margin="0 12 0 0" Color="{Binding ElementName=Material, Path=Emission, Converter={StaticResource Vector3ToColorConverter}}" VerticalAlignment="Center" />
+                    </Grid>
                     <Label Content="Metallic" Classes="PropertyLabel"/>
                     <Slider Minimum="0" Maximum="1" Value="{Binding ElementName=Material, Path=Metallic}" />
                     <Label Content="Roughness" Classes="PropertyLabel"/>
                     <Slider Minimum="0" Maximum="1" Value="{Binding ElementName=Material, Path=Roughness}" />
                     <Label Content="Ambient Occlusion" Classes="PropertyLabel"/>
                     <Slider Minimum="0" Maximum="1" Value="{Binding ElementName=Material, Path=AmbientOcclusion}" />
+                </StackPanel>
+            </mxe:GroupBox>
+            
+            <mxe:GroupBox Header="Ambient"  Classes="PropertiesGroup">
+                <ListBox x:Name="SkyboxSelector" SelectionChanged="SelectingItemsControl_OnSelectionChanged" >
+                    <ListBox.Items>
+                        <Label>Default</Label>
+                        <Grid ColumnDefinitions="100 150" Margin="0 6 0 6">
+                            <Label Grid.Row="0" Grid.Column="0" Content="Color" VerticalAlignment="Center" />
+                            <mxe:PopupColorEditor x:Name="AmbientColorEditor" Grid.Row="0" Grid.Column="1" Color="White" VerticalAlignment="Center" EditorValueChanged="AmbientColorEditor_OnEditorValueChanged" />
+                        </Grid>
+                    </ListBox.Items>
+                </ListBox>
+            </mxe:GroupBox>
+            
+            <mxe:GroupBox Header="Tone Mapping"  Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Gamma" Classes="PropertyLabel"/>
+                    <Slider Minimum="0.1" Maximum="12" Value="{Binding ElementName=DemoControl, Path=Gamma}" />
+
+                    <Label Content="Exposure" Classes="PropertyLabel"/>
+                    <Slider Minimum="0.1" Maximum="12" Value="{Binding ElementName=DemoControl, Path=Exposure}" />
                 </StackPanel>
             </mxe:GroupBox>
         </StackPanel>

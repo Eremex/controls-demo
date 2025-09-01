@@ -10,7 +10,7 @@ public static class CartesianChartGroupInfo
         {
             new(name: "Real-Time Data", title: "Real-Time Data",
                 viewModelGetter: () => new CartesianChartRealtimePageViewModel(),
-                descriptionGetter: () => Resources.TheChartControlSupportsInstantDisplayOfRap, introduced: new VersionInfo(1, 0), updated: new VersionInfo(1, 0), showInWeb: false),
+                descriptionGetter: () => Resources.TheChartControlSupportsInstantDisplayOfRap, introduced: new VersionInfo(1, 0), updated: new VersionInfo(1, 2), showInWeb: false),
 
             new(name: "Large Data", title: "Large Data",
                 viewModelGetter: () => new CartesianChartLargeDataPageViewModel(),
@@ -31,6 +31,10 @@ public static class CartesianChartGroupInfo
             new(name: "Point", title: "Point Series View",
                 viewModelGetter: () => new CartesianPointSeriesViewViewModel(),
                 descriptionGetter: () => Resources.ThisExampleDemonstratesThePointSeriesViewW, introduced: new VersionInfo(1, 0)),
+
+            new(name: "Lollipop", title: "Lollipop Series View",
+                viewModelGetter: () => new CartesianLollipopSeriesViewViewModel(),
+                descriptionGetter: () => Resources.ChartsLollipop, introduced: new VersionInfo(1, 2)),
 
             new(name: "Line", title: "Line Series View",
                 viewModelGetter: () => new CartesianLineSeriesViewViewModel(),

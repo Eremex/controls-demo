@@ -1,0 +1,94 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:mxtlv="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:views="using:DemoCenter.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.TreeListColumnBandsView">
+    <UserControl.Resources>
+        <views:NullValueConverter x:Key="nullValueConverter"/>
+        <views:RowLevelToMaxValueConverter x:Key="rowLevelConverter"/>
+        <DataTemplate x:Key="quarterTemplate">
+            <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Pressed}"
+                         MinWidth="0"
+                         Background="Transparent"
+                         CornerRadius="2"
+                         VerticalAlignment="Stretch"
+                         Margin="1"
+                         Maximum="{Binding $parent[mxtlv:TreeListRowControl].Level, Converter={StaticResource rowLevelConverter}}"
+                         ShowProgressText="True" 
+                         Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
+            </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid ColumnDefinitions="*, 250">
+        <Border x:Name="DemoControl">
+            <mxtl:TreeListControl x:Name="treeList"
+                                  BorderThickness="0,0,1,0"
+                                  ChildrenFieldName="Children"
+                                  AllowEditing="False"
+                                  ItemsSource="{Binding Sales}"
+                                  AllowDynamicDataLoading="False"
+                                  AutoExpandAllNodes="True">
+                <mxtl:TreeListControl.Bands>
+					<mxtl:TreeListBand Header="Year Sales">
+						<mxtl:TreeListBand BandName="Q1" HeaderHorizontalAlignment="Center"/>
+						<mxtl:TreeListBand BandName="Q2" HeaderHorizontalAlignment="Center"/>
+						<mxtl:TreeListBand BandName="Q3" HeaderHorizontalAlignment="Center"/>
+						<mxtl:TreeListBand BandName="Q4" HeaderHorizontalAlignment="Center"/>
+                    </mxtl:TreeListBand>
+                </mxtl:TreeListControl.Bands>
+                
+                <mxtl:TreeListColumn FieldName="Name" Header="Seller" Width="130"/>
+                
+                <mxtl:TreeListColumn FieldName="Q1" Header="$" Width="*" BandName="Q1">
+                    <mxtl:TreeListColumn.EditorProperties>
+                        <mxe:TextEditorProperties DisplayFormatString="c"/>
+                    </mxtl:TreeListColumn.EditorProperties>
+                </mxtl:TreeListColumn>
+                <mxtl:TreeListColumn FieldName="Q1" Header="%" Width="*" BandName="Q1" CellTemplate="{StaticResource quarterTemplate}"/>
+                
+                <mxtl:TreeListColumn FieldName="Q2" Header="$" Width="*" BandName="Q2">
+                    <mxtl:TreeListColumn.EditorProperties>
+                        <mxe:TextEditorProperties DisplayFormatString="c"/>
+                    </mxtl:TreeListColumn.EditorProperties>
+                </mxtl:TreeListColumn>
+                <mxtl:TreeListColumn FieldName="Q2" Header="%" Width="*" BandName="Q2" CellTemplate="{StaticResource quarterTemplate}"/>
+
+                <mxtl:TreeListColumn FieldName="Q3" Header="$" Width="*" BandName="Q3">
+                    <mxtl:TreeListColumn.EditorProperties>
+                        <mxe:TextEditorProperties DisplayFormatString="c"/>
+                    </mxtl:TreeListColumn.EditorProperties>
+                </mxtl:TreeListColumn>
+                <mxtl:TreeListColumn FieldName="Q3" Header="%" Width="*" BandName="Q3" CellTemplate="{StaticResource quarterTemplate}"/>
+
+                <mxtl:TreeListColumn FieldName="Q4" Header="$" Width="*" BandName="Q4">
+                    <mxtl:TreeListColumn.EditorProperties>
+                        <mxe:TextEditorProperties DisplayFormatString="c"/>
+                    </mxtl:TreeListColumn.EditorProperties>
+                </mxtl:TreeListColumn>
+                <mxtl:TreeListColumn FieldName="Q4" Header="%" Width="*" BandName="Q4" CellTemplate="{StaticResource quarterTemplate}"/>
+
+                <mxtl:TreeListColumn FieldName="Total" Width="100">
+                    <mxtl:TreeListColumn.EditorProperties>
+                        <mxe:TextEditorProperties DisplayFormatString="c"/>
+                    </mxtl:TreeListColumn.EditorProperties>
+                </mxtl:TreeListColumn>
+            </mxtl:TreeListControl>
+        </Border>
+        <Border Grid.Column="1">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Show Bands" IsChecked="{Binding #treeList.ShowBands}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Content="Show Band Separators" IsChecked="{Binding #treeList.ShowBandSeparators}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Content="Allow Band Resizing" IsChecked="{Binding #treeList.AllowBandResizing}"
+									 IsEnabled="{Binding #treeList.ShowBands}" Classes="PropertyEditor"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+
+    </Grid>
+</UserControl>

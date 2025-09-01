@@ -9,7 +9,7 @@
         <mx3d:Graphics3DControl Grid.Column="0" Classes="DemoGraphics3DControl" x:Name="DemoControl">
             <mx3d:GeometryModel3D x:Name="Model3D" MeshesSource="{Binding Meshes}" />
             <mx3d:Graphics3DControl.Materials>
-                <mx3d:TexturedPbrMaterial Emission="{Binding EmissionImage}" Albedo="{Binding AlbedoImage}" Key="material" />
+                <mx3d:TexturedPbrMaterial Emission="{Binding EmissionImage}" Key="material" />
             </mx3d:Graphics3DControl.Materials>
             <mx3d:Graphics3DControl.Camera>
                 <mx3d:PerspectiveCamera MinDistance="0.1" MaxDistance="4" NearClipPlane="0.1" />

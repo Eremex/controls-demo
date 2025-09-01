@@ -1,0 +1,85 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:views="using:DemoCenter.Views"
+             x:Class="DemoCenter.Views.Graphics3DControlHighlightingView"
+             x:DataType="vm:Graphics3DControlHighlightingViewModel">
+    <UserControl.Resources>
+        <views:MeshSelector x:Key="MeshSelector" />
+    </UserControl.Resources>
+    <Grid ColumnDefinitions="* 270">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl"
+                                x:Name="DemoControl"
+                                ShowHints="True"
+                                ModelsSource="{Binding Models}"
+                                HighlightMode="Mesh"
+                                SelectionMode="Mesh"
+                                HighlightedElement="{Binding HighlightedElement, Mode=TwoWay}"
+                                SelectedElement="{Binding SelectedElement, Mode=TwoWay}"
+                                Grid.Column="0">
+        </mx3d:Graphics3DControl>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <Grid ColumnDefinitions="Auto *" RowDefinitions="Auto Auto Auto Auto">
+                    <Label Grid.Column="0" Grid.Row="0" Content="Highlight Mode" VerticalAlignment="Center" />
+                    <mxe:ComboBoxEditor Grid.Column="1" Grid.Row="0"
+                                        ItemsSource="{mx:EnumItemsSource EnumType=mx3d:ElementSelectionMode}"
+                                        EditorValue="{Binding ElementName=DemoControl, Path=HighlightMode}"
+                                        Margin="6" VerticalAlignment="Center" />
+                    <Label Grid.Column="0" Grid.Row="1" Content="Selection Mode" VerticalAlignment="Center"/>
+                    <mxe:ComboBoxEditor Grid.Column="1" Grid.Row="1"
+                                        ItemsSource="{mx:EnumItemsSource EnumType=mx3d:ElementSelectionMode}"
+                                        EditorValue="{Binding ElementName=DemoControl, Path=SelectionMode}"
+                                        Margin="6" VerticalAlignment="Center" />
+                    <Label Grid.Row="2" Grid.Column="0" Content="Highlight Color" VerticalAlignment="Center"/>
+                    <mxe:PopupColorEditor Grid.Row="2" Grid.Column="1"
+                                          Color="{Binding ElementName=DemoControl, Path=HighlightColor}"
+                                          Margin="6" VerticalAlignment="Center" />
+                    <Label Grid.Row="3" Grid.Column="0" Content="Selection Color" VerticalAlignment="Center"/>
+                    <mxe:PopupColorEditor Grid.Row="3" Grid.Column="1"
+                                          Color="{Binding ElementName=DemoControl, Path=SelectionColor}"
+                                          Margin="6" VerticalAlignment="Center" />
+                </Grid>
+            </mxe:GroupBox>
+            <mxe:GroupBox Header="Models" Classes="PropertiesGroup">
+                <mxtl:TreeViewControl ItemsSource="{Binding Models}" 
+                                      ChildrenSelector="{StaticResource MeshSelector}" 
+                                      AllowEditing="False"
+                                      AutoExpandAllNodes="True"
+                                      ShowExpandButtons="False"
+                                      SelectionMode="Single"
+                                      FocusedItem="{Binding SelectedElement, Mode=TwoWay}"
+                                      DataFieldName="Hint">
+                    <mxtl:TreeViewControl.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Row.Hint}"
+                                       VerticalAlignment="Center"
+                                       Margin="0 0 4 0">
+                                <TextBlock.FontWeight>
+                                    <MultiBinding Converter="{views:ModelFontWeightConverter}">
+                                        <Binding Path="Row" />
+                                        <Binding ElementName="DemoControl" Path="HighlightedElement" />
+                                        <Binding ElementName="DemoControl" Path="SelectedElement" />
+                                    </MultiBinding>
+                                </TextBlock.FontWeight>
+                                <TextBlock.Foreground>
+                                    <MultiBinding Converter="{views:ModelHighlightConverter}">
+                                        <Binding Path="Row" />
+                                        <Binding ElementName="DemoControl" Path="HighlightedElement" />
+                                        <Binding ElementName="DemoControl" Path="HighlightColor" />
+                                        <Binding ElementName="DemoControl" Path="SelectedElement" />
+                                        <Binding ElementName="DemoControl" Path="SelectionColor" />
+                                    </MultiBinding>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                        </DataTemplate>
+                    </mxtl:TreeViewControl.CellTemplate>
+                </mxtl:TreeViewControl>
+            </mxe:GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

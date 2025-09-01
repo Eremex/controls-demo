@@ -26,7 +26,10 @@ namespace DemoCenter.ProductsData
                 viewModelGetter: () => new FolderBrowserPageViewModel(), descriptionGetter: () => Resources.YouCanBindTreeListToAHierarchicalDataSourc),
 
                 new PageInfo(name: "Multiple Node Selection", title: "Multiple Node Selection",
-                viewModelGetter: () => new TreeListMultipleSelectionPageViewModel(), descriptionGetter: () => Resources.TheTreeListAndTreeViewControlsSupportMulti, introduced: new VersionInfo(1, 0)),                
+                viewModelGetter: () => new TreeListMultipleSelectionPageViewModel(), descriptionGetter: () => Resources.TheTreeListAndTreeViewControlsSupportMulti, introduced: new VersionInfo(1, 0)),
+
+                new PageInfo(name: "Column Bands", title: "Column Bands",
+                viewModelGetter: () => new TreeListColumnBandsViewModel(), descriptionGetter: () => Resources.TreeListColumnBandsDescription, introduced: new VersionInfo(1, 2)),
             };
         }
     }

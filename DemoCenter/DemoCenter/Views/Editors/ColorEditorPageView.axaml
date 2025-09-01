@@ -26,26 +26,25 @@
                                       Color="#FF00B7B8"
                                       CustomColors="{Binding CustomColors2, Mode=TwoWay}">
                     <mxe:PopupColorEditor.PopupFooterButtons>
-                        <Binding Path="IsChecked" ElementName="AutoUpdateColorSelector">
+                        <Binding Path="IsChecked" ElementName="ShowConfirmationButtonsSelector">
                             <Binding.Converter>
                                 <mx:BoolToObjectConverter>
                                     <mx:BoolToObjectConverter.TrueValue>
-                                        <mxe:PopupFooterButtons>None</mxe:PopupFooterButtons>
+                                        <mxe:PopupFooterButtons>OkCancel</mxe:PopupFooterButtons>
                                     </mx:BoolToObjectConverter.TrueValue>
                                     <mx:BoolToObjectConverter.FalseValue>
-                                        <mxe:PopupFooterButtons>OkCancel</mxe:PopupFooterButtons>
+                                        <mxe:PopupFooterButtons>None</mxe:PopupFooterButtons>
                                     </mx:BoolToObjectConverter.FalseValue>
                                 </mx:BoolToObjectConverter>
                             </Binding.Converter>
                         </Binding>
                     </mxe:PopupColorEditor.PopupFooterButtons>
                 </mxe:PopupColorEditor>
-                <!-- <Label Classes="EditorHeader" Grid.Column="2" Content="STANDALONE COLOR EDITOR"/> -->
                 <mxe:ColorEditor x:Name="ColorEditor" VerticalAlignment="Top"
                                  ReadOnly="{Binding IsChecked, ElementName=ReadOnlySelector}"
                                  ShowAlphaChannel="{Binding IsChecked, ElementName=AlphaChannelSelector}"
                                  ColorsShowMode="{Binding ColorsShowMode}"
-                                 ShowConfirmationButtons="{Binding !IsChecked, ElementName=AutoUpdateColorSelector}"
+                                 ShowConfirmationButtons="{Binding IsChecked, ElementName=ShowConfirmationButtonsSelector}"
                                  Color="#FF37C47F"
                                  CustomColors="{Binding CustomColors1, Mode=TwoWay}"/>
             <Grid Grid.Column="2" RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" MinWidth="135">
@@ -76,7 +75,7 @@
                     <mxe:CheckEditor x:Name="ReadOnlySelector" Content="Read Only" Classes="PropertyEditor"/>
                     <mxe:CheckEditor x:Name="StandardColorsSelector" Content="Show Standard Colors" IsChecked="{Binding ShowStandardColors, Mode=TwoWay}" Classes="PropertyEditor"/>
                     <mxe:CheckEditor x:Name="CustomColorsSelector" Content="Show Custom Colors" IsChecked="{Binding ShowCustomColors, Mode=TwoWay}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor x:Name="AutoUpdateColorSelector" Content="Update Color on Creation" IsChecked="True"
+                    <mxe:CheckEditor x:Name="ShowConfirmationButtonsSelector" Content="Show Confirmation Buttons"
                                      IsEnabled="{Binding IsChecked, ElementName=CustomColorsSelector}" Classes="PropertyEditor"/>
                 </StackPanel>
             </mxe:GroupBox>

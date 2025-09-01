@@ -1,50 +1,45 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Numerics;
 using System.Reflection;
+using Assimp;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Eremex.AvaloniaUI.Controls3D;
-using JeremyAnsel.Media.WavefrontObj;
 
 namespace DemoCenter.ViewModels;
 
 public partial class Graphics3DControlLinesViewModel : Graphics3DControlViewModel
 {
-    static Vertex3D ToVertex3D(ObjVertex vertex, ObjVector3 normal) => new()
-    {
-        Position = new Vector3(vertex.Position.X, vertex.Position.Y, vertex.Position.Z),
-        Normal = new Vector3(normal.X, normal.Y, normal.Z)
-    };
-    static GeometryModel3D LoadModel(string modelName, string resourceName)
+    static GeometryModel3D LoadModel(string modelName, string resourceName, string materialKey = null)
     {
         var assembly = Assembly.GetAssembly(typeof(Graphics3DControlViewModel));
         var stream = assembly!.GetManifestResourceStream(resourceName);
-        var obj = ObjFile.FromStream(stream);
-        var vertices = new List<Vertex3D>();
-        var indices = new List<uint>();
-        uint index = 0;
-        foreach (var face in obj.Faces)
+        using var context = new AssimpContext();
+        var scene = context.ImportFileFromStream(stream);
+
+        var model = new GeometryModel3D();
+        if (!string.IsNullOrEmpty(modelName))
+            model.Hint = modelName;
+        
+        foreach (var mesh in scene.Meshes)
         {
-            for (int i = 0; i < face.Vertices.Count; i++)
+            var vertices = new Vertex3D[mesh.VertexCount];
+            for (int i = 0; i < mesh.VertexCount; ++i)
+                vertices[i] = new Vertex3D { Normal = mesh.Normals[i], Position = mesh.Vertices[i] };
+            var indices = new List<uint>();
+            foreach (var face in mesh.Faces)
             {
-                var vertex = face.Vertices[i];
-                vertices.Add(ToVertex3D(obj.Vertices[vertex.Vertex - 1], obj.VertexNormals[vertex.Normal - 1]));
-                if (i > 0)
+                for (int i = 0; i < face.IndexCount - 1; ++i)
                 {
-                    indices.Add(index - 1);
-                    indices.Add(index);
+                    indices.Add((uint)face.Indices[i]);
+                    indices.Add((uint)face.Indices[i + 1]);
                 }
-                index++;
             }
+            model.Meshes.Add(new MeshGeometry3D { Vertices = vertices, Indices = indices.ToArray(), FillType = MeshFillType.Lines });
         }
 
-        return new GeometryModel3D
-        {
-            Name = modelName,
-            Meshes = { new MeshGeometry3D { Vertices = vertices.ToArray(), Indices = indices.ToArray(), FillType = MeshFillType.Lines } }
-        };
+        return model;
     }
-
+    
     [ObservableProperty] ObservableCollection<GeometryModel3D> models = new();
     [ObservableProperty] float lineWidth = 1;
 
@@ -58,6 +53,9 @@ public partial class Graphics3DControlLinesViewModel : Graphics3DControlViewMode
     {
         base.OnPropertyChanged(e);
         if (e.PropertyName == nameof(LineWidth))
-            Models[0].Meshes[0].PrimitiveSize = LineWidth;
+        {
+            foreach (var mesh in Models.Single().Meshes)
+                mesh.PrimitiveSize = LineWidth;
+        }
     }
 }

@@ -12,7 +12,7 @@
                 <DataTemplate x:DataType="vm:SeriesViewModel">
                     <mxc:SmithSeries DataAdapter="{Binding DataAdapter}">
                         <mxc:SmithPointSeriesView Color="{Binding Color}" MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}"
-                                                  MarkerImageCss=".base_color{{fill:#{0};}}">
+                                                  MarkerImageCss=".base_color{{fill:{0};}}">
                             <SvgImage Source="avares://DemoCenter/Resources/Svg/Ring.svg" />
                         </mxc:SmithPointSeriesView>
                     </mxc:SmithSeries>

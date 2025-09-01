@@ -108,6 +108,9 @@
   <data name="DataGridSupportsDragAndDropOperationsWithi" xml:space="preserve">
     <value>Data Grid 支持在控件内部和外部控件（例如 Tree List 或另一个 Data Grid）之间进行拖放操作。此示例展示了在 Data Grid 内部和之间的拖放功能。AllowDragDrop 选项激活拖放功能。{0}必须启用 AllowDragDropSortedRows 选项以允许对已排序/分组的 Data Grid 进行拖放操作。当数据已排序或分组时，拖放操作会修改拖动行在排序列中的值。{1}在此示例中，控件绑定到包含相同业务对象的集合。这确保了在从源网格到目标网格的拖放操作期间自动移动行。当您将一行从一个网格移动到另一个网格时，相应的项会在两个网格控件的项源之间移动。</value>
   </data>
+  <data name="DataGridColumnBandsDescription" xml:space="preserve">
+    <value>列帶允許您將列直觀地分組在一起。 DataGrid 控制項將帶區顯示為列標題上方的附加標題。帶區標題和列標題都可以包含文字、圖像或自訂內容。您可以建立具有無限數量嵌套層級的分層帶。</value>
+  </data>
   <data name="TheEremexControlsLibraryIncludesMultipleEd" xml:space="preserve">
     <value>Eremex 控件库包括多个编辑器，为您提供高级数据编辑功能。这些编辑器允许您显示和编辑不同数据类型（数字、布尔值、日期时间、枚举等）的数据。它们支持数据验证机制、样式设置以及嵌入到容器控件（Data Grid、Tree List、Property Grid 和工具栏/菜单）中。</value>
   </data>
@@ -216,10 +219,25 @@
   <data name="TheTreeListAndTreeViewControlsSupportMulti" xml:space="preserve">
     <value>树列表和树视图控件支持多节点选择模式，允许您和用户一次选择（突出显示）多个节点。用户可以使用鼠标和键盘选择多个节点。按住 CTRL 和/或 SHIFT 键单击节点以选择节点。</value>
   </data>
+  <data name="TreeListColumnBandsDescription" xml:space="preserve">
+    <value>列帶允許您將列直觀地分組在一起。 TreeList 控制項將帶區顯示為列標題上方的附加標題。帶區標題和列標題都可以包含文字、圖像或自訂內容。您可以建立具有無限數量嵌套層級的分層帶。</value>
+  </data>
   <data name="WASMOnlyText1" xml:space="preserve">
     <value>此演示仅适用于桌面模式。下载应用程序。</value>
   </data>
   <data name="WASMOnlyText2" xml:space="preserve">
     <value>解决方案并运行 DemoCenter.Desktop 项目以查看此演示。</value>
+  </data>
+  <data name="Skybox" xml:space="preserve">
+    <value>Graphics3DControl支持天空盒(Skybox)功能，为3D场景提供背景。天空盒是一个包围整个场景的巨大立方体，具有六个纹理面（前、后、左、右、顶和底）。这些纹理被映射到立方体的内侧，营造出遥远的天空、地平线或背景的视觉效果。</value>
+  </data>
+  <data name="Lights" xml:space="preserve">
+    <value>Graphics3DControl 允许为3D场景指定自定义光源。支持的光源类型包括：点光源（Point）、平行光（Directional）、相机点光源（Camera Point）和相机平行光（Camera Directional）。使用自定义光源时，默认光源会自动关闭。</value>
+  </data>
+  <data name="HighlightingAndSelection3D" xml:space="preserve">
+    <value>Graphics3DControl 支持模型和网格的高亮与选中功能。高亮功能会在鼠标悬停在模型或网格上时，为其绘制彩色边框。选中功能则在点击模型或网格时为其添加彩色边框。通过 HighlightMode 和 SelectionMode 属性，可选择高亮/选中是应用于模型还是网格。ShowHints 属性控制模型和网格的提示信息是否可见。</value>
+  </data>
+  <data name="ChartsLollipop" xml:space="preserve">
+    <value>棒棒糖系列视图是一种时尚、节省空间的传统条形图替代方案。它不使用笨重的条形，而是采用顶端带有标记的细线来可视化数据点。您可以使用默认标记，或以SVG格式指定自定义标记。通过“方向”设置，您可以指定棒棒糖线条的方向（水平或垂直）。</value>
   </data>
 </root>

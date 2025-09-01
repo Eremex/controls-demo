@@ -1,0 +1,41 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Charts;assembly=Eremex.Avalonia.Charts"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.CartesianLollipopSeriesViewView"
+             x:DataType="vm:CartesianLollipopSeriesViewViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl">
+            <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
+                <mxc:CartesianLollipopSeriesView Color="#BD1436"
+                                                 LineColor="#00787A"
+                                                 LineThickness="{Binding LineThickness}"
+                                                 MarkerSize="{Binding MarkerSize}"
+                                                 LineOrientation="{Binding LineOrientation}"
+                                                 MarkerImageCss=".base_color{{fill:{0};}}">
+                    <SvgImage Source="avares://DemoCenter/Resources/Svg/Ring.svg" />
+                </mxc:CartesianLollipopSeriesView>
+            </mxc:CartesianSeries>
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY ShowTitle="False" />
+            </mxc:CartesianChart.AxesY>
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX ShowTitle="False" />
+            </mxc:CartesianChart.AxesX>
+        </mxc:CartesianChart>
+        
+        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Line Thickness" Classes="TopPropertyLabel" />
+                <Slider Minimum="1" Maximum="8" Value="{Binding LineThickness}" Classes="PropertyEditor" IsSnapToTickEnabled="True" TickFrequency="1" />
+                <Label Content="Marker Size" Classes="TopPropertyLabel" />
+                <Slider Minimum="10" Maximum="20" Value="{Binding MarkerSize}" Classes="PropertyEditor" IsSnapToTickEnabled="True" TickFrequency="1" />
+                <Label Content="Line Orientation" Classes="TopPropertyLabel" />
+                <mxe:ComboBoxEditor EditorValue="{Binding LineOrientation}" ItemsSource="{mx:EnumItemsSource EnumType=mxc:CartesianLollipopOrientation}" />
+            </StackPanel>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>

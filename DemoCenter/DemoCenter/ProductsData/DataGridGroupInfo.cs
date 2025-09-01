@@ -22,7 +22,9 @@ namespace DemoCenter.ProductsData
                 new PageInfo(name: "Row Auto Height", title: "Row Auto Height", viewModelGetter: () => new DataGridRowAutoHeightViewModel(), descriptionGetter: () => Resources.DataGridAdaptsRowHeightToFitCellContentsTe, introduced: new VersionInfo(1, 0)),
                 new PageInfo(name: "Live Data", title: "Live Data", viewModelGetter: () => new DataGridLiveDataPageViewModel(), descriptionGetter: () => Resources.InThisDemoDataGridEmulatesTheWindowsTaskMa, introduced: new VersionInfo(1, 0)),
                 new PageInfo(name: "Multiple Row Selection", title: "Multiple Row Selection", viewModelGetter: () => new DataGridMultipleSelectionPageViewModel(), descriptionGetter: () => Resources.DataGridSupportsMultipleRowSelectionModeWh, introduced: new VersionInfo(1, 1)),
-                new PageInfo(name: "Drag & Drop", title: "Drag & Drop", viewModelGetter: () => new DataGridDragDropPageViewModel(), descriptionGetter: () => string.Format( Resources.DataGridSupportsDragAndDropOperationsWithi, Environment.NewLine + Environment.NewLine, Environment.NewLine + Environment.NewLine), introduced: new VersionInfo(1, 1), showInWeb: false)
+                new PageInfo(name: "Drag & Drop", title: "Drag & Drop", viewModelGetter: () => new DataGridDragDropPageViewModel(), descriptionGetter: () => string.Format( Resources.DataGridSupportsDragAndDropOperationsWithi, Environment.NewLine + Environment.NewLine, Environment.NewLine + Environment.NewLine), introduced: new VersionInfo(1, 1), showInWeb: false),
+                new PageInfo(name: "Column Bands", title: "Column Bands", viewModelGetter: () => new DataGridColumnBandsViewModel(), descriptionGetter: () => Resources.DataGridColumnBandsDescription, introduced: new VersionInfo(1, 2)),
+                new PageInfo(name: "Export", title: "Export", viewModelGetter: () => new DataGridExportViewModel(), descriptionGetter: () => "TODO", introduced: new VersionInfo(1, 2))
             };
         }
     }

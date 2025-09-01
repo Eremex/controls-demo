@@ -11,6 +11,7 @@ public partial class HeatmapRealTimeViewModel : ChartsPageViewModel
     const int StartFrequency = 2000;
     const int TimeInterval = 20;
     const double Amplitude = -50;
+    const int ListingSize = BandSize / 20;
     
     static double Interpolate(double y1, double y2, double mu)
     {
@@ -22,22 +23,30 @@ public partial class HeatmapRealTimeViewModel : ChartsPageViewModel
     readonly DispatcherTimer timer = new(DispatcherPriority.Background);
     readonly double[,] values = new double[TimeSize, BandSize];
     readonly double[] signalValues = new double[BandSize];
-    readonly double[] arguments = new double[BandSize];
-    readonly double[] bands = new double[] { 0, 0.3, 0, 0, 0.2, 0, 0, 0.9, 0, 0, 0.3, 0, 0.01, 0, 0 };
+    readonly double[] bands = new[] { 0, 0.3, 0, 0, 0.2, 0, 0, 0.9, 0, 0, 0.3, 0, 0.01, 0, 0 };
     readonly Random random = new(0);
+    readonly Dictionary<string, int> xArgumentsIndices = new();
     List<string> yArguments = new(TimeSize);
+    public string[] xArguments = new string[BandSize];
+    
 
     [ObservableProperty] HeatmapDataAdapter waterfallAdapter;
-    [ObservableProperty] SortedNumericDataAdapter signalAdapter;
+    [ObservableProperty] QualitativeDataAdapter signalAdapter;
+    [ObservableProperty] string mainFrequency;
+    [ObservableProperty] string bandLeftFrequency;
+    [ObservableProperty] string bandRightFrequency;
 
     public HeatmapRealTimeViewModel()
     {
-        var argumentsX = new string[BandSize];
-        for (int i = 0; i < argumentsX.Length; i++)
+        for (int i = 0; i < xArguments.Length; i++)
         {
-            arguments[i] = StartFrequency + i;
-            argumentsX[i] = $"{((StartFrequency + i) * 0.001):#.###}k";
+            string value = $"{((StartFrequency + i) * 0.001):#.###}k";
+            xArguments[i] = value;
+            xArgumentsIndices.Add(value, i);
         }
+        mainFrequency = xArguments[xArguments.Length / 2];
+        bandLeftFrequency = xArguments[xArguments.Length / 2 - ListingSize];
+        bandRightFrequency = xArguments[xArguments.Length / 2 + ListingSize];
         for (int i = 0; i < TimeSize; i++)
         {
             for (int j = 0; j < BandSize; j++)
@@ -47,8 +56,8 @@ public partial class HeatmapRealTimeViewModel : ChartsPageViewModel
         for (int i = 0; i < TimeSize; i++)
             yArguments.Add(ToYLabel(now.AddMilliseconds((i - TimeSize) * TimeInterval)));
         GenerateData();
-        waterfallAdapter = new HeatmapDataAdapter(argumentsX, yArguments, values);
-        signalAdapter = new SortedNumericDataAdapter(arguments, signalValues);
+        waterfallAdapter = new HeatmapDataAdapter(xArguments, yArguments, values);
+        signalAdapter = new QualitativeDataAdapter(xArguments, signalValues);
 
         timer.Tick += UpdateAdapter;
         timer.Interval = TimeSpan.FromMilliseconds(TimeInterval);
@@ -62,7 +71,7 @@ public partial class HeatmapRealTimeViewModel : ChartsPageViewModel
         WaterfallAdapter.UpdateYArguments(yArguments);
         SignalAdapter.Clear();
         for (int i = 0; i < BandSize; i++)
-            SignalAdapter.Add(arguments[i], signalValues[i]);
+            SignalAdapter.Add(xArguments[i], signalValues[i]);
     }
     void GenerateData()
     {
@@ -80,4 +89,11 @@ public partial class HeatmapRealTimeViewModel : ChartsPageViewModel
     }
     public void Start() => timer.Start();
     public void Stop() => timer.Stop();
+    public void UpdateFrequency(string value)
+    {
+        int index = Math.Min(Math.Max(ListingSize, xArgumentsIndices[value]), BandSize - ListingSize - 1);
+        MainFrequency = xArguments[index];
+        BandLeftFrequency = xArguments[index - ListingSize];
+        BandRightFrequency = xArguments[index + ListingSize];
+    }
 }

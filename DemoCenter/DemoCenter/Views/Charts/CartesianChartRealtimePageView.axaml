@@ -19,10 +19,10 @@
             </mxc:CartesianChart.SeriesTemplate>
             
             <mxc:CartesianChart.AxesX>
-                <mxc:AxisX Title="Time" EnableZooming="False" EnableScrolling="False" ShowInterlacing="False" ShowMajorGridlines="False" ShowMinorGridlines="False" />
+                <mxc:AxisX Title="Time" ShowInterlacing="False" ShowMajorGridlines="False" ShowMinorGridlines="False" />
             </mxc:CartesianChart.AxesX>
             <mxc:CartesianChart.AxesY>
-                <mxc:AxisY ShowTitle="False" EnableZooming="False" EnableScrolling="False" ShowInterlacing="False" ShowMinorGridlines="False" />
+                <mxc:AxisY ShowTitle="False" ShowInterlacing="False" ShowMinorGridlines="False" />
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
     </Grid>

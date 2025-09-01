@@ -18,11 +18,11 @@ public class Graphics3DControlGroupInfo
 
             new (name: "Points", title: "Points",
                 viewModelGetter: () => new Graphics3DControlPointsViewModel(),
-                descriptionGetter: () => Resources.ThisExampleDemonstratesAGraphics3DControlT1, introduced: new VersionInfo(1, 1)),
+                descriptionGetter: () => Resources.ThisExampleDemonstratesAGraphics3DControlT1, introduced: new VersionInfo(1, 1), updated: new VersionInfo(1, 2)),
             
             new (name: "Transformations", title: "Transformations",
                 viewModelGetter: () => new Graphics3DControlTransformationViewModel(),
-                descriptionGetter: () => Resources.ThisExampleDemonstratesDynamicTransformati, introduced: new VersionInfo(1, 1)),
+                descriptionGetter: () => Resources.ThisExampleDemonstratesDynamicTransformati, introduced: new VersionInfo(1, 1), updated: new VersionInfo(1, 2)),
 
             new (name: "STL Model", title: "STL Model",
                 viewModelGetter: () => new Graphics3DControlStlViewModel(),
@@ -30,7 +30,7 @@ public class Graphics3DControlGroupInfo
             
             new (name: "Simple Materials", title: "Simple Materials",
             viewModelGetter: () => new Graphics3DControlSimpleMaterialsViewModel(),
-            descriptionGetter: () => Resources.ThisExampleDemonstratesAGraphics3DControlD1, introduced: new VersionInfo(1, 1)),
+            descriptionGetter: () => Resources.ThisExampleDemonstratesAGraphics3DControlD1, introduced: new VersionInfo(1, 1), updated: new VersionInfo(1, 2)),
             
             new (name: "Textured Materials", title: "Textured Materials",
                 viewModelGetter: () => new Graphics3DControlTexturedMaterialsViewModel(),
@@ -38,7 +38,19 @@ public class Graphics3DControlGroupInfo
             
             new (name: "Camera", title: "Camera",
                 viewModelGetter: () => new Graphics3DControlCameraViewModel(),
-                descriptionGetter: () => Resources.ThisExampleDemonstratesTheIsometricAndPers, introduced: new VersionInfo(1, 1))
+                descriptionGetter: () => Resources.ThisExampleDemonstratesTheIsometricAndPers, introduced: new VersionInfo(1, 1)),
+            
+            new (name: "Skybox", title: "Skybox",
+                viewModelGetter: () => new Graphics3DControlSkyboxViewModel(),
+                descriptionGetter: () => Resources.Skybox, introduced: new VersionInfo(1, 2)),
+
+            new (name: "Lights", title: "Lights",
+                viewModelGetter: () => new Graphics3DControlLightsViewModel(),
+                descriptionGetter: () => Resources.Lights, introduced: new VersionInfo(1, 2)),
+
+            new (name: "Highlighting and Selection", title: "Highlighting and Selection",
+                viewModelGetter: () => new Graphics3DControlHighlightingViewModel(),
+                descriptionGetter: () => Resources.HighlightingAndSelection3D, introduced: new VersionInfo(1, 2)),
         };
     }
 }

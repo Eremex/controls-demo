@@ -15,7 +15,7 @@
                                                         ShowMarkers="{Binding ElementName=CheShowMarkers, Path=IsChecked}"
                                                         MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}"
                                                         Thickness="{Binding ElementName=SlLineThickness, Path=Value}"
-                                                        MarkerImageCss=".base_color{{fill:#{0};}}">
+                                                        MarkerImageCss=".base_color{{fill:{0};}}">
                             <SvgImage Source="avares://DemoCenter/Resources/Svg/Ring.svg" />
                         </mxc:SmithScatterLineSeriesView>
                     </mxc:SmithSeries>

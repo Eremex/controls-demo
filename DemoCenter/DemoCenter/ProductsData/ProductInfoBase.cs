@@ -14,26 +14,34 @@ public abstract class ProductInfoBase
     public bool ShowInWeb { get; }
     public bool IsNew => Introduced.Matches(App.Version) && !IsUpdated;
     public bool IsUpdated => Updated?.Matches(App.Version) is true;
-    public VersionInfo Introduced { get; }
-    public VersionInfo? Updated { get; }
-    public abstract bool HasChildren { get; }
     public bool IsWebApp => App.IsWebApp;
+    public abstract VersionInfo Introduced { get; }
+    public abstract VersionInfo? Updated { get; }
+    public abstract bool HasChildren { get; }
     
-
-    protected ProductInfoBase(string name, string title, Func<PageViewModelBase> viewModelGetter, Func<string> descriptionGetter, VersionInfo? introduced, VersionInfo? updated, bool showInWeb)
+    protected ProductInfoBase(string name, string title, Func<PageViewModelBase> viewModelGetter, Func<string> descriptionGetter, bool showInWeb)
     {
         Name = name;
         Title = title;
         DescriptionGetter = descriptionGetter;
         ViewModelGetter = viewModelGetter;
         ShowInWeb = showInWeb;
-        Introduced = introduced ?? new VersionInfo(0, 0);
-        Updated = updated;
     }
 }
 
-public readonly struct VersionInfo
+public readonly struct VersionInfo : IComparable<VersionInfo>
 {
+    public static VersionInfo Max(VersionInfo v1, VersionInfo? v2)
+    {
+        if (v2.HasValue)
+        {
+            int compare = v1.CompareTo(v2.Value);
+            if (compare < 0)
+                return v2.Value;
+        }
+        return v1;
+    }
+
     public int Major { get; } = 0;
     public int Minor { get; } = 0;
 
@@ -54,4 +62,9 @@ public readonly struct VersionInfo
         }
     }
     public bool Matches(VersionInfo version) => version.Major == Major && version.Minor == Minor;
+    public int CompareTo(VersionInfo other)
+    {
+        int result = Major.CompareTo(other.Major);
+        return result == 0 ? Minor.CompareTo(other.Minor) : result;
+    }
 }

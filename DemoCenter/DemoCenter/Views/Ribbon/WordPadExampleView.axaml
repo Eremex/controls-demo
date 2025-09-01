@@ -40,13 +40,13 @@
             <mxr:RibbonControl.QuickAccessToolbarItems>
                 <mxb:ToolbarButtonItem Header="Cut" KeyTip="CT"
                                        Glyph="{x:Static icons:Basic.Cut}"
-                                       HotKey="Ctrl+V"
+                                       HotKey="Ctrl+X"
                                        Hint="Remove the selection and put it on the Clipboard, so you can paste it somewhere else" />
                 <mxb:ToolbarButtonItem Header="Copy" KeyTip="CP"
                                        HotKey="Ctrl+C"
                                        Glyph="{x:Static icons:Basic.Copy}" Hint="Put a copy of the selection on the Clipboard, so you can paste it somewhere else" />
                 <mxb:ToolbarButtonItem Header="Paste" KeyTip="P"
-                                       HotKey="Ctrl+X"
+                                       HotKey="Ctrl+V"
                                        Glyph="{x:Static icons:Basic.Paste}" Hint="Add content on the Clipboard to your document" />
             </mxr:RibbonControl.QuickAccessToolbarItems>
             <mxr:RibbonControl.PageHeaderItems>

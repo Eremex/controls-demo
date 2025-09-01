@@ -14,7 +14,7 @@ public static class HeatmapGroupInfo
 
             new(name: "Real-Time Data", title: "Real-Time Data",
                 viewModelGetter: () => new HeatmapRealTimeViewModel(),
-                descriptionGetter: () => Resources.InThisExampleTheHeatmapControlUsesCustomCo, introduced: new VersionInfo(1, 1), showInWeb: false),
+                descriptionGetter: () => Resources.InThisExampleTheHeatmapControlUsesCustomCo, introduced: new VersionInfo(1, 1), updated: new VersionInfo(1, 2), showInWeb: false),
         };
     }
 }

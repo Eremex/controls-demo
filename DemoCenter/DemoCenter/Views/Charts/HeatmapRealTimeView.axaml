@@ -9,19 +9,28 @@
         <Thickness x:Key="DiagramMargin">100 8 20 8</Thickness>
     </UserControl.Resources>
     <Grid RowDefinitions="* 3*">
-        <mxc:CartesianChart Grid.Row="0" Classes="DemoChart" DiagramMargin="{StaticResource DiagramMargin}">
+        <mxc:CartesianChart Grid.Row="0" Classes="DemoChart" x:Name="Chart" DiagramMargin="{StaticResource DiagramMargin}"
+                            PointerPressed="DemoChart_OnPointerPressed"
+                            PointerMoved="DemoChart_OnPointerMoved"
+                            PointerReleased="DemoChart_OnPointerReleased">
             <mxc:CartesianSeries SeriesName="Signal" DataAdapter="{Binding SignalAdapter}">
                 <mxc:CartesianLineSeriesView Color="#2D55CE" Thickness="2" />
             </mxc:CartesianSeries>
             <mxc:CartesianChart.CrosshairOptions>
-                <mxc:CrosshairOptions ShowValueLine="False" ShowValueLabel="False" />
+                <mxc:CrosshairOptions ShowCrosshair="False" />
             </mxc:CartesianChart.CrosshairOptions>
             <mxc:CartesianChart.AxesX>
-                <mxc:AxisX Title="Frequency" EnableZooming="False" EnableScrolling="False">
+                <mxc:AxisX x:Name="AxisX" Title="Frequency" EnableZooming="False" EnableScrolling="False">
                     <mxc:AxisXRange MinSideMargin="0" MaxSideMargin="0" />
                     <mxc:AxisX.ScaleOptions>
-                        <mxc:NumericScaleOptions GridSpacing="100" />
+                        <mxc:QualitativeScaleOptions GridSpacing="100" />
                     </mxc:AxisX.ScaleOptions>
+                    <mxc:AxisX.ConstantLines>
+                        <mxc:ConstantLine AxisValue="{Binding MainFrequency}" ShowBehind="False" />
+                    </mxc:AxisX.ConstantLines>
+                    <mxc:AxisX.Strips>
+                        <mxc:Strip AxisValue1="{Binding BandLeftFrequency}" AxisValue2="{Binding BandRightFrequency}" ShowBehind="False" Color="#55A0A0A0" />
+                    </mxc:AxisX.Strips>
                 </mxc:AxisX>
             </mxc:CartesianChart.AxesX>
             <mxc:CartesianChart.AxesY>
@@ -31,7 +40,10 @@
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
 
-        <mxc:Heatmap Classes="DemoChart" Grid.Row="1" x:Name="DemoControl" DataAdapter="{Binding WaterfallAdapter}" DiagramMargin="{StaticResource DiagramMargin}">
+        <mxc:Heatmap Classes="DemoChart" Grid.Row="1" x:Name="DemoControl" DataAdapter="{Binding WaterfallAdapter}" DiagramMargin="{StaticResource DiagramMargin}"
+                     PointerPressed="DemoControl_OnPointerPressed"
+                     PointerMoved="DemoControl_OnPointerMoved"
+                     PointerReleased="DemoControl_OnPointerReleased">
             <mxc:HeatmapRangeColorProvider>
                 <mxc:HeatmapRangeStop Value="-50" Color="#000026" />
                 <mxc:HeatmapRangeStop Value="-37.5" Color="#2D55CE" />
@@ -44,11 +56,20 @@
                     <mxc:HeatmapAxisX.ScaleOptions>
                         <mxc:QualitativeScaleOptions GridSpacing="100" />
                     </mxc:HeatmapAxisX.ScaleOptions>
+                    <mxc:HeatmapAxisX.ConstantLines>
+                        <mxc:ConstantLine AxisValue="{Binding MainFrequency}" ShowBehind="False" />
+                    </mxc:HeatmapAxisX.ConstantLines>
+                    <mxc:HeatmapAxisX.Strips>
+                        <mxc:Strip AxisValue1="{Binding BandLeftFrequency}" AxisValue2="{Binding BandRightFrequency}" ShowBehind="False" Color="#55A0A0A0" />
+                    </mxc:HeatmapAxisX.Strips>
                 </mxc:HeatmapAxisX>
             </mxc:Heatmap.AxisX>
             <mxc:Heatmap.AxisY>
                 <mxc:HeatmapAxisY ShowTitle="False" EnableZooming="False" EnableScrolling="False" />
             </mxc:Heatmap.AxisY>
+            <mxc:Heatmap.CrosshairOptions>
+                <mxc:CrosshairOptions ShowCrosshair="False" />
+            </mxc:Heatmap.CrosshairOptions>
         </mxc:Heatmap>
     </Grid>
 </UserControl>

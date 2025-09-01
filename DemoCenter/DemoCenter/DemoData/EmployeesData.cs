@@ -1,5 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.Dynamic;
+using System.Globalization;
 using System.Text;
 
 namespace DemoCenter.DemoData
@@ -126,6 +129,33 @@ namespace DemoCenter.DemoData
             }
             var phone = stringBuilder.ToString();
             return $"({phone.Substring(0, 3)}) {phone.Substring(3, 3)}-{phone.Substring(6, 4)}";
+        }
+
+        public static IList GenerateComplexEmployeeSales()
+        {
+            var sales = new ObservableCollection<object>();
+            foreach (var name in employeeNames.Order())
+            {
+                IDictionary<string, object> employeeSale = new ExpandoObject();
+                employeeSale["Employee"] = name;
+                for (int i = 1; i < 4; i++)
+                {
+                    var year = DateTime.Now.Year - i;
+                    decimal total = 0;
+                    for (int j = 0; j < 12; j++)
+                    {   
+                        var sale = GetQuarterSale();
+                        total += sale;
+                        var monthName = CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(j + 1);
+                        var propertyName = $"{year}/Q{j / 3 + 1}/{monthName}";
+                        employeeSale[propertyName] = sale;
+                    }
+                    employeeSale[$"{year}/Total"] = total;
+                }
+                sales.Add(employeeSale);
+            }
+
+            return sales;
         }
     }
 

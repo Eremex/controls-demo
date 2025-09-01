@@ -2,8 +2,6 @@
 using System.ComponentModel;
 using System.Numerics;
 using System.Reflection;
-using Avalonia;
-using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Eremex.AvaloniaUI.Controls3D;
@@ -47,30 +45,15 @@ public partial class Graphics3DControlPointsViewModel : Graphics3DControlViewMod
     const float NoiseZ = MaxElevation * 0.5f;
     const float MaxRadius = CenterRadius + LargeArmRadius;
     
-    static uint[] CreateIndices(int count)
-    {
-        var result = new uint[count];
-        for (uint i = 0; i < result.Length; i++)
-            result[i] = i;
-        return result;
-    }
-
     [ObservableProperty] ObservableCollection<MeshGeometry3D> meshes = new();
     [ObservableProperty] float pointSize;
     [ObservableProperty] Bitmap emissionImage;
-    [ObservableProperty] Bitmap albedoImage;
 
     public Graphics3DControlPointsViewModel()
     {
         var assembly = Assembly.GetAssembly(typeof(Graphics3DControlViewModel));
         var stream = assembly!.GetManifestResourceStream("DemoCenter.Resources.Graphics3D.Textures.Galaxy.png");
         EmissionImage = new Bitmap(stream!);
-        var albedo = new RenderTargetBitmap(EmissionImage.PixelSize);
-        using (var context = albedo.CreateDrawingContext())
-        {
-            context.FillRectangle(Brushes.Black, new Rect(0, 0, EmissionImage.PixelSize.Width, EmissionImage.PixelSize.Height));
-        }
-        AlbedoImage = albedo;
 
         var vertices = new Vertex3D[StarsCount];
         var arms = new Dictionary<int, Arm>();
@@ -108,7 +91,6 @@ public partial class Graphics3DControlPointsViewModel : Graphics3DControlViewMod
         {
             FillType = MeshFillType.Points,
             Vertices = vertices,
-            Indices = CreateIndices(StarsCount),
             MaterialKey = "material"
         });
     }
