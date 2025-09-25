@@ -15,3 +15,7 @@ The Ribbon control's main features include:
 - Tab header colorization (allows you to highlight contextual tabs)
 - Ribbon item navigation with the keyboard
 - Adaptive layout of groups and items (adjusts the layout of commands when the Ribbon control's width changes)
+
+## Documentation
+
+- [Ribbon](https://eremexcontrols.net/controls/ribbon/)

@@ -75,5 +75,5 @@ Allows you to create a Smith chart.
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/controls/charts.html)
+- [Charts](https://eremexcontrols.net/controls/charts/)
 

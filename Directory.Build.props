@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
@@ -22,7 +22,7 @@
     <AvaloniaSvgSkiaVersion>11.3.0.3</AvaloniaSvgSkiaVersion>
     <SkiaSharpVersion>2.88.9</SkiaSharpVersion>
     <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
-    <EMXControlsVersion>1.2.63-pre</EMXControlsVersion>
+    <EMXControlsVersion>1.2.77</EMXControlsVersion>
     <Version>$(EMXControlsVersion)</Version>
   </PropertyGroup>
 

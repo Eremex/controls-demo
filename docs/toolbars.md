@@ -28,4 +28,4 @@ The main features of the Toolbar&amp;Menu controls include:
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/controls/toolbars-and-menus.html)
+- [Toolbars and Menus](https://eremexcontrols.net/controls/toolbars-and-menus/)

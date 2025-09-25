@@ -10,7 +10,6 @@
              x:Class="DemoCenter.Views.TreeListColumnBandsView">
     <UserControl.Resources>
         <views:NullValueConverter x:Key="nullValueConverter"/>
-        <views:RowLevelToMaxValueConverter x:Key="rowLevelConverter"/>
         <DataTemplate x:Key="quarterTemplate">
             <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Pressed}"
                          MinWidth="0"
@@ -18,7 +17,7 @@
                          CornerRadius="2"
                          VerticalAlignment="Stretch"
                          Margin="1"
-                         Maximum="{Binding $parent[mxtlv:TreeListRowControl].Level, Converter={StaticResource rowLevelConverter}}"
+                         Maximum="100"
                          ShowProgressText="True" 
                          Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
             </DataTemplate>
@@ -44,33 +43,33 @@
                 
                 <mxtl:TreeListColumn FieldName="Name" Header="Seller" Width="130"/>
                 
-                <mxtl:TreeListColumn FieldName="Q1" Header="$" Width="*" BandName="Q1">
+                <mxtl:TreeListColumn FieldName="Q1Absolute" Header="$" Width="*" BandName="Q1">
                     <mxtl:TreeListColumn.EditorProperties>
                         <mxe:TextEditorProperties DisplayFormatString="c"/>
                     </mxtl:TreeListColumn.EditorProperties>
                 </mxtl:TreeListColumn>
-                <mxtl:TreeListColumn FieldName="Q1" Header="%" Width="*" BandName="Q1" CellTemplate="{StaticResource quarterTemplate}"/>
+                <mxtl:TreeListColumn FieldName="Q1Fraction" Header="%" Width="*" BandName="Q1" CellTemplate="{StaticResource quarterTemplate}"/>
                 
-                <mxtl:TreeListColumn FieldName="Q2" Header="$" Width="*" BandName="Q2">
+                <mxtl:TreeListColumn FieldName="Q2Absolute" Header="$" Width="*" BandName="Q2">
                     <mxtl:TreeListColumn.EditorProperties>
                         <mxe:TextEditorProperties DisplayFormatString="c"/>
                     </mxtl:TreeListColumn.EditorProperties>
                 </mxtl:TreeListColumn>
-                <mxtl:TreeListColumn FieldName="Q2" Header="%" Width="*" BandName="Q2" CellTemplate="{StaticResource quarterTemplate}"/>
+                <mxtl:TreeListColumn FieldName="Q2Fraction" Header="%" Width="*" BandName="Q2" CellTemplate="{StaticResource quarterTemplate}"/>
 
-                <mxtl:TreeListColumn FieldName="Q3" Header="$" Width="*" BandName="Q3">
+                <mxtl:TreeListColumn FieldName="Q3Absolute" Header="$" Width="*" BandName="Q3">
                     <mxtl:TreeListColumn.EditorProperties>
                         <mxe:TextEditorProperties DisplayFormatString="c"/>
                     </mxtl:TreeListColumn.EditorProperties>
                 </mxtl:TreeListColumn>
-                <mxtl:TreeListColumn FieldName="Q3" Header="%" Width="*" BandName="Q3" CellTemplate="{StaticResource quarterTemplate}"/>
+                <mxtl:TreeListColumn FieldName="Q3Fraction" Header="%" Width="*" BandName="Q3" CellTemplate="{StaticResource quarterTemplate}"/>
 
-                <mxtl:TreeListColumn FieldName="Q4" Header="$" Width="*" BandName="Q4">
+                <mxtl:TreeListColumn FieldName="Q4Absolute" Header="$" Width="*" BandName="Q4">
                     <mxtl:TreeListColumn.EditorProperties>
                         <mxe:TextEditorProperties DisplayFormatString="c"/>
                     </mxtl:TreeListColumn.EditorProperties>
                 </mxtl:TreeListColumn>
-                <mxtl:TreeListColumn FieldName="Q4" Header="%" Width="*" BandName="Q4" CellTemplate="{StaticResource quarterTemplate}"/>
+                <mxtl:TreeListColumn FieldName="Q4Fraction" Header="%" Width="*" BandName="Q4" CellTemplate="{StaticResource quarterTemplate}"/>
 
                 <mxtl:TreeListColumn FieldName="Total" Width="100">
                     <mxtl:TreeListColumn.EditorProperties>

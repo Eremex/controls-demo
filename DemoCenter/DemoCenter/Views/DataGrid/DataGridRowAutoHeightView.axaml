@@ -24,7 +24,7 @@
         <mxdg:GridColumn FieldName="TransmissionType" Width="3*"/>
         <mxdg:GridColumn FieldName="MPG" Width="*"/>
         <mxdg:GridColumn FieldName="HP" Width="*"/>
-        <mxdg:GridColumn FieldName="Description" Width="300" MinWidth="200" MaxWidth="400">
+        <mxdg:GridColumn FieldName="Description" Width="300" MinWidth="200" MaxWidth="400" AllowColumnFiltering="False">
             <mxdg:GridColumn.EditorProperties>
                 <mxe:TextEditorProperties TextWrapping="Wrap"/>
             </mxdg:GridColumn.EditorProperties>

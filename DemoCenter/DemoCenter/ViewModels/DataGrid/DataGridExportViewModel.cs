@@ -10,7 +10,7 @@ namespace DemoCenter.ViewModels
     {
         public DataGridExportViewModel()
         {
-            Employees = ApparelProducts.GenerateData(25000);
+            ApparelProducts = DemoData.ApparelProducts.GenerateData(10000);
         }
 
         [ObservableProperty]
@@ -19,7 +19,7 @@ namespace DemoCenter.ViewModels
         [ObservableProperty]
         private bool exportBandHeaders = true;
 
-        public IList<ApparelProduct> Employees { get; }
+        public IList<ApparelProduct> ApparelProducts { get; }
 
         public event Action<ExportType> RequestExport;
 

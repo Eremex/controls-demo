@@ -17,3 +17,6 @@ The control's main features include:
 - Rendering on a video card with the Vulkan SDK
 - MVVM pattern support for specifying 3D models
 
+## Documentation
+
+- [Graphics 3D Control](https://eremexcontrols.net/controls/graphics3dcontrol/)

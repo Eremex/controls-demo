@@ -1,4 +1,110 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -91,7 +197,11 @@
     <value>数据验证机制允许您检查单元格值并显示包含无效数据的单元格中的错误。您可以使用 DataAnnotation 属性和 IDataErrorInfo/INotifyDataErrorInfo 接口在 ItemsSource 级别验证数据。在此演示中切换“显示 ItemsSource 错误”复选框以查看来自 DataAnnotation 属性的数据验证错误。Data Grid 还允许您使用 ValidateCellValue 事件来实现自定义规则以验证用户输入。</value>
   </data>
   <data name="DataGridSupportsBuiltInDataSearchAndFiltra" xml:space="preserve">
-    <value>Data Grid 支持内置的数据搜索和过滤功能。搜索面板允许您定位并突出显示包含特定文本的行单元格。您可以使搜索面板始终可见，或使用 Ctrl+F 键盘快捷键激活它。自动过滤行（显示在所有数据行上方）用于根据各个列过滤数据。在代码中，您可以自定义自动过滤行中用于各个列的过滤条件。</value>
+    <value>Data Grid 提供了多种过滤和搜索数据的方法：
+ - 列过滤菜单： 将鼠标悬停在列标题上，然后单击过滤按钮以打开菜单。您可以同时对一个或多个列应用过滤器。
+ - 自动过滤行： 顶部的这一专用行允许您直接将过滤值输入到任何列中。网格会立即显示仅与您输入的内容匹配的记录。
+ - 搜索面板： 在所有列中搜索文本。搜索面板可以设置为始终可见，或通过 Ctrl+F 快捷键激活。匹配的记录会被显示，并且文本在单元格内高亮显示。
+ - 代码中的过滤： 对于高级场景，您可以创建自定义过滤条件，并使用控件的 API 以编程方式应用它们。</value>
   </data>
   <data name="RegardlessOfTheNumberOfColumnsAndRowsInThe" xml:space="preserve">
     <value>无论控件中有多少列和行，Data Grid 在水平或垂直滚动或排序/分组数据时仍能保持响应。内置的数据虚拟化机制仅更新视口内的单元格，以保持高性能滚动。</value>
@@ -165,7 +275,6 @@
   <data name="ThisExampleDemonstratesTheIsometricAndPers" xml:space="preserve">
     <value>此示例展示了 Graphics3DControl 支持的等距和透视相机。使用右侧的相机窗格选择相机模式和预定义的相机视图之一。</value>
   </data>
-
   <data name="AHeatmapRendersA2DimensionalArrayOfValuesA" xml:space="preserve">
     <value>热力图将二维数组的值渲染为颜色编码的矩阵。每个数据点的颜色对应于数据点的值。此示例展示了热力图控件，它允许您从数据创建热力图。单击右侧的颜色渐变以将此颜色编码应用于热力图。
 
@@ -208,7 +317,11 @@
     <value>散点线系列视图在您需要按数据系列中出现的顺序连接点时非常有用。</value>
   </data>
   <data name="TheTreeListSAutoFilterRowDisplayedAtTheTop" xml:space="preserve">
-    <value>树列表的自动过滤行显示在控件的顶部，允许您快速查找包含特定值的行。在一个或多个列的自动过滤行中开始输入以过滤数据。搜索面板是另一种在树列表中定位信息的方式。按下 CTRL+F 激活搜索面板，然后输入文本以搜索控件的数据。</value>
+    <value>Tree List 控件提供了多种过滤和搜索数据的方法：
+ - 列过滤菜单： 将鼠标悬停在列标题上，然后单击过滤按钮以打开菜单。您可以同时对一个或多个列应用过滤器。
+ - 自动过滤行： 顶部的专用行允许您直接将过滤值输入到任何列中。控件会立即显示仅与您输入内容匹配的记录。
+ - 搜索面板： 在所有列中搜索文本。搜索面板可以设置为始终可见，或通过 Ctrl+F 快捷键激活。匹配的记录会被显示，且文本在单元格内高亮显示。
+ - 代码过滤： 对于高级场景，您可以创建自定义过滤条件，并使用控件的 API 以编程方式应用它们。</value>
   </data>
   <data name="EremexEditorsAreUsedInTreeListCellsByDefau" xml:space="preserve">
     <value>默认情况下，Eremex 编辑器用于树列表单元格中以显示和编辑常见数据类型（布尔值、整数、枚举等）的单元格值。此演示展示了隐式分配的内置编辑器，并演示了如何显式指定树列表列的编辑器。</value>
@@ -239,5 +352,17 @@
   </data>
   <data name="ChartsLollipop" xml:space="preserve">
     <value>棒棒糖系列视图是一种时尚、节省空间的传统条形图替代方案。它不使用笨重的条形，而是采用顶端带有标记的细线来可视化数据点。您可以使用默认标记，或以SVG格式指定自定义标记。通过“方向”设置，您可以指定棒棒糖线条的方向（水平或垂直）。</value>
+  </data>
+  <data name="DataGridExportDescription" xml:space="preserve">
+    <value>此示例演示了 Data Grid 控件的导出功能。Data Grid 可以将数据导出为 XLSX (Microsoft Excel) 和 PDF 格式，同时保留数据整形选项，包括行分组、排序和单元格格式。</value>
+  </data>
+  <data name="ExportProgressTitle" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="ExportProgressMessage" xml:space="preserve">
+    <value>正在导出...</value>
+  </data>
+  <data name="ExportProgressPromptMessage" xml:space="preserve">
+    <value>您想打开导出的文件吗？</value>
   </data>
 </root>

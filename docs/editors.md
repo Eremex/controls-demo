@@ -113,4 +113,4 @@ You can embed the Eremex data editors in cells in container controls (Data Grid,
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/controls/editors.html)
+- [Editors](https://eremexcontrols.net/controls/editors/)

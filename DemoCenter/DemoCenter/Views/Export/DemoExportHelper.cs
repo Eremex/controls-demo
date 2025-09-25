@@ -31,7 +31,7 @@ namespace DemoCenter.Helpers
 
                 window.Close();
 
-                if (MxMessageBox.Show(owner, "Do you want to open the exported file?", "Export", MessageBoxButtons.YesNo, MessageBoxIcon.None) == MessageBoxResult.Yes)
+                if (MxMessageBox.Show(owner, Resources.ExportProgressPromptMessage, Resources.ExportProgressTitle, MessageBoxButtons.YesNo, MessageBoxIcon.None) == MessageBoxResult.Yes)
                     OpenFile(tmpFileName);
 
                 void OnExportProgress(object sender, ExportProgressEventArgs e)
@@ -51,7 +51,7 @@ namespace DemoCenter.Helpers
         {
             return new MxWindow()
             {
-                Title = "Export",
+                Title = Resources.ExportProgressTitle,
                 Width = 300,
                 Height = 160,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,

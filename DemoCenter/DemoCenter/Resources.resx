@@ -1,5 +1,110 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -93,7 +198,11 @@ For instance, data can be aggregated to 1 second, 1 minute, 1 hour, 1 day, 1 wee
     <value>The data validation mechanism allows you to check cell values and show errors in cells that contain invalid data. You can use DataAnnotation attributes and IDataErrorInfo/INotifyDataErrorInfo interface to validate data at the ItemsSource level. Toggle the 'Show ItemsSource Errors' checkbox in this demo to see data validation errors from DataAnnotation attributes. Data Grid also allows you to use the ValidateCellValue event to implement custom rules to validate user input.</value>
   </data>
   <data name="DataGridSupportsBuiltInDataSearchAndFiltra" xml:space="preserve">
-    <value>Data Grid supports built-in data search and filtration. The Search Panel allows you to locate and highlight row cells that contain specific text. You can make the Search Panel always visible, or activate it with the Ctrl+F keyboard shortcut. The Auto Filter Row (displayed above all data rows) is used to filter data against individual columns. In code, you can customize filter conditions used in the auto-filter row for individual columns.</value>
+    <value>The Data Grid offers multiple ways to filter and search for data: 
+ - Column Filter Menus: Hover over a column header and click the filter button to open a menu. You can apply filters to one or multiple columns simultaneously.
+ - Auto Filter Row: This dedicated row at the top allows you to type filter values directly into any column. The grid instantly displays only the records that match your input. 
+ - Search Panel: Search for text across all columns. The Search Panel can be set to remain visible or activated with the Ctrl+F shortcut. Matching records are shown, and the text is highlighted within cells. 
+ - Filtering in Code: For advanced scenarios, you can create custom filter criteria and apply them programmatically using the control's API.</value>
   </data>
   <data name="RegardlessOfTheNumberOfColumnsAndRowsInThe" xml:space="preserve">
     <value>Regardless of the number of columns and rows in the control, Data Grid remains responsive as you scroll the control horizontally or vertically, or sort/group its data. The built-in data virtualization mechanism updates only cells within the viewport to maintain high-performance scrolling</value>
@@ -209,7 +318,11 @@ Image source: Webb Space Telescope, https://webbtelescope.org/</value>
     <value>The Scatter Line series view is useful when you need to connect points in the order in which they appear in the data series.</value>
   </data>
   <data name="TheTreeListSAutoFilterRowDisplayedAtTheTop" xml:space="preserve">
-    <value>The Tree List's Auto-Filter Row displayed at the top of the control allows you to quickly find rows that contain specific values. Start typing in the Auto-Filter Row in one or multiple columns to filter data. The Search Panel is another way to locate information in the Tree List. Press CTRL+F to activate the Search Panel, and then type text to search through the control's data.</value>
+    <value>The Tree List control offers multiple ways to filter and search for data: 
+ - Column Filter Menus: Hover over a column header and click the filter button to open a menu. You can apply filters to one or multiple columns simultaneously.
+ - Auto Filter Row: This dedicated row at the top allows you to type filter values directly into any column. The control instantly displays only the records that match your input.
+ - Search Panel: Search for text across all columns. The Search Panel can be set to remain visible or activated with the Ctrl+F shortcut. Matching records are shown, and the text is highlighted within cells.
+ - Filtering in Code: For advanced scenarios, you can create custom filter criteria and apply them programmatically using the control's API.</value>
   </data>
   <data name="EremexEditorsAreUsedInTreeListCellsByDefau" xml:space="preserve">
     <value>Eremex editors are used in Tree List cells by default to display and edit cell values of common data types (Boolean, integer, enumerations, etc.). This demo shows implicitly assigned in-place editors, and demonstrates how you can explicitly specify an editor for a Tree List column.</value>
@@ -241,5 +354,17 @@ Image source: Webb Space Telescope, https://webbtelescope.org/</value>
   <data name="ChartsLollipop" xml:space="preserve">
     <value>The Lollipop series view is a sleek, space-efficient alternative to traditional bar charts. 
 Instead of bulky bars, it uses thin lines topped with markers to visualize data points. You can use default markers or specify custom markers in SVG format. The Orientation setting allows you to specify the direction of the lollipop lines (horizontal or vertical).</value>
+  </data>
+  <data name="DataGridExportDescription" xml:space="preserve">
+    <value>This example demonstrates the Data Grid control's export functionality. Data Grid can export data to XLSX (Microsoft Excel) and PDF formats, while preserving data shaping options, including row grouping, sorting, and cell formatting.</value>
+  </data>
+  <data name="ExportProgressTitle" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportProgressMessage" xml:space="preserve">
+    <value>Exporting...</value>
+  </data>
+  <data name="ExportProgressPromptMessage" xml:space="preserve">
+    <value>Do you want to open the exported file?</value>
   </data>
 </root>

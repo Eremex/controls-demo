@@ -20,4 +20,4 @@ The main features of the Docking library include:
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/controls/docking.html)
+- [Docking UI](https://eremexcontrols.net/controls/docking/)

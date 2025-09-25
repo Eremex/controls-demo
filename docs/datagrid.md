@@ -25,4 +25,4 @@
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/controls/datagrid.html)
+- [Data Grid](https://eremexcontrols.net/controls/datagrid/)

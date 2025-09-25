@@ -21,4 +21,4 @@ The **Heatmap** control's features include:
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/controls/charts/heatmap.html)
+- [Heatmap](https://eremexcontrols.net/controls/charts/heatmap/)

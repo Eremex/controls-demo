@@ -41,4 +41,4 @@ TreeList-specific features include:
 
 ## Documentation
 
-- [English Documentation](https://eremexcontrols.net/articles/controls/treelist.html)
+- [TreeList and TreeView](https://eremexcontrols.net/controls/treelist/)

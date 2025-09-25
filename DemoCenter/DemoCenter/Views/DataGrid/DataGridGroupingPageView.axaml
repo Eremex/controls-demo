@@ -16,7 +16,7 @@
                          CornerRadius="2"
                          VerticalAlignment="Stretch"
                          Margin="1"
-                         Minimum="0" Maximum="100000" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
+                         Minimum="0" Maximum="100" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
         </DataTemplate>
         <DataTemplate x:Key="totalTemplate">
             <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Text}"
@@ -26,7 +26,7 @@
                          VerticalAlignment="Stretch"
                          Opacity="1"
                          Margin="1"
-                         Minimum="0" Maximum="400000" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
+                         Minimum="0" Maximum="100" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
         </DataTemplate>
     </UserControl.Resources>
 

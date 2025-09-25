@@ -4,6 +4,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Media;
 using Eremex.AvaloniaUI.Controls.DataGrid;
+using Eremex.AvaloniaUI.Controls.Editors;
 using System.Globalization;
 
 namespace DemoCenter.Views;
@@ -35,6 +36,7 @@ public partial class DataGridColumnBandsView : UserControl
             {
                 column.CellTemplate = (DataTemplate)Resources["quarterTemplate"];
             }
+            column.EditorProperties = new TextEditorProperties() { DisplayFormatString = "c" };
         }
     }
 }

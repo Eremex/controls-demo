@@ -1,4 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -89,7 +195,11 @@
     <value>Механизм валидации данных позволяет проверять значения ячеек и отображать ошибки в ячейках, содержащих недопустимые данные. Вы можете использовать атрибуты DataAnnotation и интерфейсы IDataErrorInfo/INotifyDataErrorInfo для проверки данных на уровне источника данных (ItemsSource). В этом примере включите флажок 'Show ItemsSource Errors', чтобы увидеть ошибки валидации, основанные на атрибутах DataAnnotation. Data Grid также поддерживает событие ValidateCellValue, которое позволяет реализовать пользовательские правила проверки ввода.</value>
   </data>
   <data name="DataGridSupportsBuiltInDataSearchAndFiltra" xml:space="preserve">
-    <value>Data Grid поддерживает встроенные функции поиска и фильтрации данных. Панель поиска позволяет находить и выделять ячейки строк, содержащие указанный текст. Вы можете сделать панель поиска постоянно видимой или открывать её с помощью комбинации клавиш Ctrl+F. Строка автоматической фильтрации (Auto Filter Row), которая отображается над всеми строками данных, используется для фильтрации данных по отдельным столбцам. В коде вы можете настроить условия фильтрации для ячеек в строке Auto Filter Row.</value>
+    <value>Data Grid предоставляет несколько способов фильтрации и поиска данных:
+ - Фильтры столбцов: Наведите курсор на заголовок столбца и нажмите кнопку фильтра, чтобы открыть меню. Вы можете применять фильтры к одному или нескольким столбцам одновременно.
+ - Строка автоматического фильтра: Эта специальная строка вверху позволяет вводить значения фильтра непосредственно в любой столбец. Data Grid отобразит только записи, соответствующие вашему вводу.
+ - Панель поиска: Выполняется поиск текста по всем столбцам. Панель поиска можно настроить на постоянное отображение или активировать с помощью сочетания клавиш Ctrl+F. Отобразятся подходящие записи, а текст подсветится внутри ячеек.
+ - Фильтрация в коде: Для сложных сценариев вы можете создавать пользовательские условия фильтрации и применять их программно с помощью API элемента управления.</value>
   </data>
   <data name="RegardlessOfTheNumberOfColumnsAndRowsInThe" xml:space="preserve">
     <value>Независимо от количества столбцов и строк, Data Grid сохраняет высокую отзывчивость при горизонтальной и вертикальной прокрутке, а также при сортировке и группировке данных. Встроенный механизм виртуализации данных обновляет только те ячейки, которые находятся в видимой области, что обеспечивает плавную и быструю прокрутку.</value>
@@ -205,7 +315,11 @@
     <value>Этот пример показывает, как работает представление данных Scatter Line Series View. Оно позволяет соединить точки в том порядке, в котором они расположены в серии данных.</value>
   </data>
   <data name="TheTreeListSAutoFilterRowDisplayedAtTheTop" xml:space="preserve">
-    <value>Строка автоматической фильтрации, расположенная в верхней части контрола, позволяет быстро находить строки, содержащие определенные значения. Начните вводить текст в строке автоматической фильтрации  в одном или нескольких столбцах, чтобы отфильтровать данные. Панель поиска — это еще один способ поиска информации в контроле Tree List. Нажмите CTRL+F, чтобы активировать панель поиска, а затем введите текст для поиска по данным.</value>
+    <value>Tree List предоставляет несколько способов фильтрации и поиска данных:
+ - Фильтры столбцов: Наведите курсор на заголовок столбца и нажмите кнопку фильтра, чтобы открыть меню. Вы можете применять фильтры к одному или нескольким столбцам одновременно.
+ - Строка автоматического фильтра: Эта специальная строка вверху позволяет вводить значения фильтра непосредственно в любой столбец. Tree List отобразит только записи, соответствующие вашему вводу.
+ - Панель поиска: Выполняется поиск текста по всем столбцам. Панель поиска можно настроить на постоянное отображение или активировать с помощью сочетания клавиш Ctrl+F. Отобразятся подходящие записи, а текст подсветится внутри ячеек.
+ - Фильтрация в коде: Для сложных сценариев вы можете создавать пользовательские условия фильтрации и применять их программно с помощью API элемента управления.</value>
   </data>
   <data name="EremexEditorsAreUsedInTreeListCellsByDefau" xml:space="preserve">
     <value>Редакторы Eremex по умолчанию применяются в ячейках Tree List для отображения и редактирования значений ячеек стандартных типов данных (логические, целые числа, перечисления и т.д.). Этот пример демонстрирует неявно назначенные встроенные редакторы, а также показывает, как можно явно указать редактор для столбца.</value>
@@ -236,5 +350,17 @@
   </data>
   <data name="ChartsLollipop" xml:space="preserve">
     <value>Представление серии "Леденцы" — это элегантная и компактная альтернатива традиционным гистограммам. Вместо громоздких столбцов оно использует тонкие линии с маркерами на концах для визуализации точек данных. Вы можете использовать стандартные маркеры или указать собственные маркеры в формате SVG. Настройка "Ориентация" позволяет задать направление линий "леденцов" (горизонтальное или вертикальное).</value>
+  </data>
+  <data name="DataGridExportDescription" xml:space="preserve">
+    <value>Данный пример демонстрирует функциональность экспорта Data Grid. Data Grid может экспортировать данные в форматы XLSX (Microsoft Excel) и PDF, сохраняя при этом настройки группировки строк, сортировки данных и форматирование ячеек.</value>
+  </data>
+  <data name="ExportProgressTitle" xml:space="preserve">
+    <value>Экспорт</value>
+  </data>
+  <data name="ExportProgressMessage" xml:space="preserve">
+    <value>Выполняется экспорт...</value>
+  </data>
+  <data name="ExportProgressPromptMessage" xml:space="preserve">
+    <value>Вы хотите открыть экспортированный файл?</value>
   </data>
 </root>

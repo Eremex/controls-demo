@@ -3,9 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:local="using:DemoCenter"
              x:Class="DemoCenter.ExportProgressControl" x:Name="root">
 	<StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center"> 
-		<TextBlock Text="Exporting..." />
+		<TextBlock Text="{x:Static local:Resources.ExportProgressMessage}" />
 		<ProgressBar Margin="0,6" Value="{Binding #root.Value}" Height="16" Maximum="100" />
 	</StackPanel>
 </UserControl>

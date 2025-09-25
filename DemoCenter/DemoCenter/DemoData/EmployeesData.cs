@@ -49,11 +49,11 @@ namespace DemoCenter.DemoData
                 foreach (var name in employeeNames)
                 {
                     var employee = new EmployeeSale() { Employee = name, Year = DateTime.Now.Year - i + 1 };
-                    employee.Quarter1 = GetQuarterSale();
-                    employee.Quarter2 = GetQuarterSale();
-                    employee.Quarter3 = GetQuarterSale();
-                    employee.Quarter4 = GetQuarterSale();
-                    employee.Total = employee.Quarter1 + employee.Quarter2 + employee.Quarter3 + employee.Quarter4;
+                    employee.Quarter1 = GetQuarterSalePercent();
+                    employee.Quarter2 = GetQuarterSalePercent();
+                    employee.Quarter3 = GetQuarterSalePercent();
+                    employee.Quarter4 = GetQuarterSalePercent();
+                    employee.Total = Math.Round((employee.Quarter1 + employee.Quarter2 + employee.Quarter3 + employee.Quarter4) / 4);
                     sales.Add(employee);
                 }
             }
@@ -64,6 +64,11 @@ namespace DemoCenter.DemoData
         private static decimal GetQuarterSale()
         {
             return random.Next(90000) + 10000;
+        }
+
+        private static decimal GetQuarterSalePercent()
+        {
+            return Math.Round(GetQuarterSale() / 1000);
         }
 
         public static IList<EmployeeInfo> GenerateEmployeeInfo()
