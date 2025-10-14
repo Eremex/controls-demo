@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
         <IsPackable>false</IsPackable>
         <RootNamespace>Eremex.Avalonia.Controls.UITests</RootNamespace>

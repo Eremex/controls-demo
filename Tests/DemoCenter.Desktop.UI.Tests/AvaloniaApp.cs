@@ -22,10 +22,10 @@ namespace DemoCenter.Desktop.UI.Tests
 				Dispatcher.UIThread.Post(() => app.Shutdown());
 		}
 
-		public static Window? GetMainWindow() => GetApp()?.MainWindow;
+		public static Window GetMainWindow() => GetApp()?.MainWindow;
 
-		public static IClassicDesktopStyleApplicationLifetime? GetApp() =>
-			(IClassicDesktopStyleApplicationLifetime?)Application.Current?.ApplicationLifetime;
+		public static IClassicDesktopStyleApplicationLifetime GetApp() =>
+			(IClassicDesktopStyleApplicationLifetime)Application.Current?.ApplicationLifetime;
 
 		public static AppBuilder BuildAvaloniaApp() =>
 			AppBuilder
