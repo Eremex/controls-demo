@@ -1,0 +1,80 @@
+<UserControl x:Class="DemoCenter.Views.TreeListExportView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:mxtlv="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
+			 xmlns:views="using:DemoCenter.Views"
+             xmlns:viewModels="using:DemoCenter.ViewModels"
+             d:DesignHeight="450"
+             d:DesignWidth="900"
+             x:DataType="viewModels:TreeListFilteringPageViewModel"
+             mc:Ignorable="d">
+	<Design.DataContext>
+		<viewModels:TreeListExportViewModel />
+	</Design.DataContext>
+
+	<Grid ColumnDefinitions="*, 250">
+		<Border x:Name="DemoControl">
+			<mxtl:TreeListControl x:Name="treeList" BorderThickness="0,0,1,0" NavigationMode="Row" ChildrenFieldName="Children" HasChildrenFieldName="HasChildren" AutoExpandAllNodes="True" ItemsSource="{Binding InfrastructureItems}">
+				<mxtl:TreeListControl.Bands>
+					<mxtl:TreeListBand BandName="DatesAndStatus" Header="Dates &amp; Status"/>
+					<mxtl:TreeListBand BandName="TechnicalSpecificationsAndFinancials" Header="Technical Specifications &amp; Financials"/>
+				</mxtl:TreeListControl.Bands>
+				
+				<mxtl:TreeListColumn FieldName="Name" Width="1.4*" />
+				<mxtl:TreeListColumn FieldName="LastMaintenance" BandName="DatesAndStatus" Width="1.2*" />
+				<mxtl:TreeListColumn FieldName="IsOperational" BandName="DatesAndStatus" Width="*" />
+				<mxtl:TreeListColumn FieldName="Status" BandName="DatesAndStatus" Width="*" />
+
+				<mxtl:TreeListColumn FieldName="Utilization" BandName="TechnicalSpecificationsAndFinancials" Width="*" >
+					<mxtl:TreeListColumn.EditorProperties>
+						<mxe:TextEditorProperties DisplayFormatString="P0" />
+					</mxtl:TreeListColumn.EditorProperties>
+				</mxtl:TreeListColumn>
+				<mxtl:TreeListColumn FieldName="MaintenanceCost" BandName="TechnicalSpecificationsAndFinancials" Width="1.2*" >
+					<mxtl:TreeListColumn.EditorProperties>
+						<mxe:TextEditorProperties DisplayFormatString="C0" />
+					</mxtl:TreeListColumn.EditorProperties>
+				</mxtl:TreeListColumn>
+				<mxtl:TreeListColumn FieldName="PowerConsumption" BandName="TechnicalSpecificationsAndFinancials" Width="1.2*" >
+					<mxtl:TreeListColumn.EditorProperties>
+						<mxe:TextEditorProperties DisplayFormatString="{}{0:F1} kW" />
+					</mxtl:TreeListColumn.EditorProperties>
+				</mxtl:TreeListColumn>
+			</mxtl:TreeListControl>
+		</Border>
+		
+		<Border Grid.Column="1">
+			<StackPanel>
+				<mxe:GroupBox Header="Xlsx Export Properties" Classes="PropertiesGroup">
+					<Grid RowDefinitions="Auto, Auto, Auto">
+						<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding XlsExportColumnHeaders}" Classes="PropertyEditor"/>
+						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding XlsExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
+						<Button Content="Export" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Xlsx}" HorizontalAlignment="Stretch" Grid.Row="2" />
+					</Grid>
+				</mxe:GroupBox>
+
+				<mxe:GroupBox Header="Pdf Export Properties" Classes="PropertiesGroup">
+					<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+						<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding PdfExportColumnHeaders}" Classes="PropertyEditor"/>
+						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding PdfExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
+						<mxe:CheckEditor Content="Fit To Page Width" IsChecked="{Binding FitToPageWidth}" Classes="PropertyEditor" Grid.Row="2"/>
+						<Label Content="Page Orientation" Margin="0,8,0,0" FontWeight="SemiBold" Grid.Row="3"/>
+						<StackPanel Margin="16,0,0,0" Grid.Row="4">
+							<RadioButton Content="Landscape" IsChecked="{Binding Landscape}" GroupName="G1" Classes="PropertyEditor"/>
+							<RadioButton Content="Portrait" IsChecked="{Binding !Landscape}" GroupName="G1" Classes="PropertyEditor"/>
+						</StackPanel>
+						<Button Content="Export" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Pdf}" HorizontalAlignment="Stretch" Grid.Row="5" />
+					</Grid>
+				</mxe:GroupBox>
+			</StackPanel>
+		</Border>
+	</Grid>
+    
+</UserControl>

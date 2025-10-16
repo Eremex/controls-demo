@@ -158,7 +158,7 @@
                         <mxdcv:SearchPanel Grid.Column="2" SearchText="{Binding SelectedCode, Mode=TwoWay}" SearchDelay="0" Margin="8" Padding="0" BorderThickness="0"  />
                         <Border BorderThickness="0,1,0,0" Grid.ColumnSpan="3" Grid.Row="1" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
                             <aEdit:TextEditor x:Name="CodeViewEditor" IsReadOnly="True" WordWrap="True"
-                                               SearchResultsBrush="{DynamicResource Fill/Accent/Highlighting/Text}"
+                                              SearchResultsBrush="{DynamicResource Fill/Accent/Highlighting/Text}"
                                               Margin="16,8,16,2"
                                               ActualThemeVariantChanged="CodeViewEditor_OnActualThemeVariantChanged"/>
                         </Border>

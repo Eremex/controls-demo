@@ -45,7 +45,7 @@ Known limitations: Hyperlinks are not supported.
 
 ### Create New Application
 
-- [Get Started with Eremex Avalonia UI Controls](https://eremexcontrols.net/articles/get-started.html)
+- [Get Started with Eremex Avalonia UI Controls](https://eremexcontrols.net/get-started/)
 
 
 ## Data Management Controls
@@ -310,11 +310,11 @@ The following are system requirements to run the current Demo project, and use t
 ## Documentation
 
 - [English Documentation](https://eremexcontrols.net)
-- [Документация на Русском](https://eremexcontrols.net/docsru/)
+- [Документация на Русском](https://eremexcontrols.net/ru/)
 
 ## Product Licensing
 
-The [Eremex End-User License Agreement (EULA)](https://eremexcontrols.net/articles/licensing/eula.html) fully outlines the terms and conditions for using the Eremex Avalonia UI Controls Library.
+The [Eremex End-User License Agreement (EULA)](https://eremexcontrols.net/licensing/eula/) fully outlines the terms and conditions for using the Eremex Avalonia UI Controls Library.
 
 The source code included in the current repository is distributed under the terms of the MIT license. 
 

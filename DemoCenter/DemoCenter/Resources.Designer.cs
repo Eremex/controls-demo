@@ -714,6 +714,15 @@ namespace DemoCenter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TreeList can export data to XLSX (Microsoft Excel) and PDF formats. The Excel export feature is data-aware — it preserves the control&apos;s data shaping configuration (node hierarchy, data sorting, and value formatting) in the output XLSX document. The PDF rendering engine follows the WYSIWYG concept, which ensures the layout of TreeList elements is accurately reproduced in the output document..
+        /// </summary>
+        public static string TreeListExportDescription {
+            get {
+                return ResourceManager.GetString("TreeListExportDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use MemoEditor to display and edit large text in a popup window, with or without text wrapping enabled. The IsTextEditable property allows you to prevent text editing in the edit box. When the property is false, the edit box can display a special icon that indicates the presence of text in the popup..
         /// </summary>
         public static string UseMemoEditorToDisplayAndEditLargeTextInAP {

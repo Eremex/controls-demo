@@ -30,6 +30,8 @@ namespace DemoCenter.ProductsData
 
                 new PageInfo(name: "Column Bands", title: "Column Bands",
                 viewModelGetter: () => new TreeListColumnBandsViewModel(), descriptionGetter: () => Resources.TreeListColumnBandsDescription, introduced: new VersionInfo(1, 2)),
+
+                new PageInfo(name: "Export", title: "Export", viewModelGetter: () => new TreeListExportViewModel(), descriptionGetter: () => Resources.TreeListExportDescription, introduced: new VersionInfo(1, 2))
             };
         }
     }

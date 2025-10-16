@@ -4,14 +4,14 @@ using DemoCenter.DemoData;
 
 namespace DemoCenter.ViewModels
 {
-    public enum ExportType { Xlsx, Pdf }
-
-    public partial class DataGridExportViewModel : PageViewModelBase
+    public partial class TreeListExportViewModel : PageViewModelBase
     {
-        public DataGridExportViewModel()
+        public TreeListExportViewModel()
         {
-            ApparelProducts = DemoData.ApparelProducts.GenerateData(10000);
+            InfrastructureItems = InfrastructureData.GenerateData();
         }
+
+        public List<InfrastructureItem> InfrastructureItems { get; }
 
         #region xlsx export properties
 
@@ -35,7 +35,7 @@ namespace DemoCenter.ViewModels
         private bool fitToPageWidth = true;
 
         [ObservableProperty]
-        private bool landscape = true;
+        private bool landscape = false;
 
         #endregion
 

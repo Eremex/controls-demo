@@ -44,12 +44,13 @@ namespace DemoCenter.DemoData
         public decimal Price { get; init; }
         public int LaunchingYear { get; init; }
         public string Builder { get; init; }
-        public string BuilderWebsite { get; init; }
         public string Designer { get; init; }
         public string Flag { get; init; }
+        public string Location { get; init; }
+        public YachtWebInfo Details { get; init; }
 
         public YachtInfo(string name, double length, int numberOfCabins, double maxSpeed, decimal cruisingRange, 
-            decimal price, int launchingYear, string builder, string designer, string flag)
+            decimal price, int launchingYear, string builder, string designer, string flag, string location)
         {
             Name = name;
             Length = length;
@@ -59,9 +60,22 @@ namespace DemoCenter.DemoData
             Price = price;
             LaunchingYear = launchingYear;
             Builder = builder;
-            BuilderWebsite = $"http://www.{Regex.Replace(Builder, "[^A-Za-z]", "")}.com";
             Designer = designer;
             Flag = flag;
+            Location = location.Replace("''", ", ");
+            Details = new YachtWebInfo(Name, Location, $"https://www.google.com/search?q=yacht+{Name.Replace(" ", "+")}");
+        }
+    }
+
+    public class YachtWebInfo
+    {
+        public string Header { get; init; }
+        public string Link { get; init; }
+
+        public YachtWebInfo(string name, string location, string link)
+        {
+            Header = $"{name}, {location}";
+            Link = link;
         }
     }
 }

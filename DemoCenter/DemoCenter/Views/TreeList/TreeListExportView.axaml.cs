@@ -5,14 +5,14 @@ using Eremex.AvaloniaUI.Controls.DataControl;
 
 namespace DemoCenter.Views
 {
-    public partial class DataGridExportView : UserControl
+    public partial class TreeListExportView : UserControl
     {
-        public DataGridExportView()
+        public TreeListExportView()
         {
             InitializeComponent();
         }
 
-        private DataGridExportViewModel ViewModel { get; set; }
+        private TreeListExportViewModel ViewModel { get; set; }
 
         protected override void OnDataContextChanged(EventArgs e)
         {
@@ -20,7 +20,7 @@ namespace DemoCenter.Views
 
             if (ViewModel != null)
                 ViewModel.RequestExport -= OnRequestExport;
-            ViewModel = (DataGridExportViewModel)DataContext;
+            ViewModel = (TreeListExportViewModel)DataContext;
             if (ViewModel != null)
                 ViewModel.RequestExport += OnRequestExport;
         }
@@ -30,17 +30,18 @@ namespace DemoCenter.Views
             if (type == ExportType.Xlsx)
             {
                 var options = new XlsxExportOptions() { ShowColumnHeaders = ViewModel.XlsExportColumnHeaders, ShowBands = ViewModel.XlsExportBandHeaders };
-                DemoExportHelper.Export(dataGrid, options, (stream, control, options) => control.ExportToXlsx(stream, options));
-            } else if(type == ExportType.Pdf)
+                DemoExportHelper.Export(treeList, options, (stream, control, options) => control.ExportToXlsx(stream, options));
+            }
+            else if (type == ExportType.Pdf)
             {
                 var options = new PageExportOptions() 
                 { 
-                    ShowColumnHeaders = ViewModel.PdfExportColumnHeaders,
+                    ShowColumnHeaders = ViewModel.PdfExportColumnHeaders, 
                     ShowBands = ViewModel.PdfExportBandHeaders,
                     FitToPageWidth = ViewModel.FitToPageWidth,
                     Landscape = ViewModel.Landscape,
                 };
-                DemoExportHelper.Export(dataGrid, options, (stream, control, options) => control.ExportToPdf(stream, options));
+                DemoExportHelper.Export(treeList, options, (stream, control, options) => control.ExportToPdf(stream, options));
             }
         }
     }

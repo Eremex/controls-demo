@@ -124,7 +124,7 @@ namespace DemoCenter.DemoData
                 values =>
                 {
                     var price = 1000000m* decimal.Parse(values[5]) + 1000m * decimal.Parse(values[6]) + decimal.Parse(values[7]);
-                    return new YachtInfo(values[0], double.Parse(values[1]), int.Parse(values[2]), double.Parse(values[3]), decimal.Parse(values[4]), price, int.Parse(values[8]), values[9], values[10], values[11]);
+                    return new YachtInfo(values[0], double.Parse(values[1]), int.Parse(values[2]), double.Parse(values[3]), decimal.Parse(values[4]), price, int.Parse(values[8]), values[9], values[10], values[11], values[12]);
                 });
         }
         static List<CsvDoubleColumn> GetLogarithmic() => GetColumnInfo<CsvDoubleColumn>(GetUriString("logarithmic"));

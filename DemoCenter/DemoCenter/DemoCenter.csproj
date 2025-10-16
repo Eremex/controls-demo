@@ -139,6 +139,9 @@
     <Compile Update="Views\TreeList\TreeListColumnBandsView.axaml.cs">
       <DependentUpon>TreeListColumnBandsView.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\TreeList\TreeListExportView.axaml.cs">
+      <DependentUpon>TreeListExportView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TreeList\TreeListMultipleSelectionPageView.axaml.cs">
       <DependentUpon>TreeListMultipleSelectionPageView.axaml</DependentUpon>
     </Compile>

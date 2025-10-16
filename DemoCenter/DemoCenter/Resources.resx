@@ -367,4 +367,7 @@ Instead of bulky bars, it uses thin lines topped with markers to visualize data 
   <data name="ExportProgressPromptMessage" xml:space="preserve">
     <value>Do you want to open the exported file?</value>
   </data>
+  <data name="TreeListExportDescription" xml:space="preserve">
+    <value>TreeList can export data to XLSX (Microsoft Excel) and PDF formats. The Excel export feature is data-aware — it preserves the control's data shaping configuration (node hierarchy, data sorting, and value formatting) in the output XLSX document. The PDF rendering engine follows the WYSIWYG concept, which ensures the layout of TreeList elements is accurately reproduced in the output document.</value>
+  </data>
 </root>

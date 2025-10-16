@@ -42,14 +42,29 @@
 		</Border>
 
 		<Border Grid.Column="1">
-			<mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
-				<Grid RowDefinitions="Auto, Auto, Auto, Auto">
-					<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding ExportColumnHeaders}" Classes="PropertyEditor"/>
-					<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding ExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
-					<Button Content="Export to Xlsx" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Xlsx}" HorizontalAlignment="Stretch" Grid.Row="2" />
-					<Button Content="Export to Pdf" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Pdf}" HorizontalAlignment="Stretch" Grid.Row="3" />
-				</Grid>
-			</mxe:GroupBox>
+			<StackPanel>
+				<mxe:GroupBox Header="Xlsx Export Properties" Classes="PropertiesGroup">
+					<Grid RowDefinitions="Auto, Auto, Auto">
+						<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding XlsExportColumnHeaders}" Classes="PropertyEditor"/>
+						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding XlsExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
+						<Button Content="Export" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Xlsx}" HorizontalAlignment="Stretch" Grid.Row="2" />
+					</Grid>
+				</mxe:GroupBox>
+
+				<mxe:GroupBox Header="Pdf Export Properties" Classes="PropertiesGroup">
+					<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+						<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding PdfExportColumnHeaders}" Classes="PropertyEditor"/>
+						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding PdfExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
+						<mxe:CheckEditor Content="Fit To Page Width" IsChecked="{Binding FitToPageWidth}" Classes="PropertyEditor" Grid.Row="2"/>
+						<Label Content="Page Orientation" Margin="0,8,0,0" FontWeight="SemiBold" Grid.Row="3"/>
+						<StackPanel Margin="16,0,0,0" Grid.Row="4">
+							<RadioButton Content="Landscape" IsChecked="{Binding Landscape}" GroupName="G1" Classes="PropertyEditor"/>
+							<RadioButton Content="Portrait" IsChecked="{Binding !Landscape}" GroupName="G1" Classes="PropertyEditor"/>
+						</StackPanel>
+						<Button Content="Export" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Pdf}" HorizontalAlignment="Stretch" Grid.Row="5" />
+					</Grid>
+				</mxe:GroupBox>
+			</StackPanel>
 		</Border>
 	</Grid>
 </UserControl>

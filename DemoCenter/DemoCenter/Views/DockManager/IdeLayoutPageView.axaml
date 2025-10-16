@@ -30,9 +30,9 @@
 		                                 DependenciesImage="{x:Static mxi:Code.Storage}"/>
 		<DataTemplate x:Key="DockPaneTabHeaderTemplate">
 			<Border Background="Transparent"
-			        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem).Header, FallbackValue={x:Null}}"
+			        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem)?.Header}"
 			        ToolTip.ShowDelay="500">
-				<Image Source="{Binding $self.(mxd:DockManager.DockItem).TabGlyph}"
+				<Image Source="{Binding $self.(mxd:DockManager.DockItem)?.TabGlyph}"
 				       Width="16"
 				       Height="16">
 				</Image>

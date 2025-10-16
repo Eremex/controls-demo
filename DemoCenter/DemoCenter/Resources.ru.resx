@@ -363,4 +363,7 @@
   <data name="ExportProgressPromptMessage" xml:space="preserve">
     <value>Вы хотите открыть экспортированный файл?</value>
   </data>
+  <data name="TreeListExportDescription" xml:space="preserve">
+    <value>Компонент TreeList позволяет экспортировать данные в форматы XLSX (Microsoft Excel) и PDF. Функция экспорта в Excel сохраняет иерархию узлов, сортировку данных и форматирование значений в результирующем XLSX документе. Механизм рендеринга PDF следует концепции WYSIWYG, что гарантирует точное воспроизведение компоновки элементов TreeList в результирующем документе.</value>
+  </data>
 </root>

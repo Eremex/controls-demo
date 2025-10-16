@@ -9,6 +9,7 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:mxlv="https://schemas.eremexcontrols.net/avalonia/listview"
              xmlns:aEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+             xmlns:internal="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Internal;assembly=Eremex.Avalonia.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="DemoCenter.Views.SvgIconsBrowserView">
     <UserControl.Styles>
@@ -25,7 +26,7 @@
             <Setter Property="Margin" Value="0,6,0,0"/>
         </Style>
         
-        <Style Selector="GridSplitter.SplitContainerControlSplitter/template/Border#PART_SplitterBorder">
+        <Style Selector="internal|SplitContainerLayoutSplitter">
             <Setter Property="Background" Value="Transparent"/>
         </Style>
         
@@ -60,7 +61,7 @@
     <Grid RowDefinitions="Auto, *" Margin="12">
         <mxe:ButtonEditor Width="250" Classes="SearchText" EditorValue="{Binding SearchText}" NullValueButtonPosition="EditorBox">
             <mxe:ButtonEditor.Buttons>
-                <mxe:ButtonSettings Glyph="{x:Static icons:Basic.Search}" BorderBrush="Transparent" Background="Transparent" BorderThickness="0" IsVisible="{Binding !IsClearCommandVisible}" IsEnabled="False"/>
+                <mxe:ButtonSettings Glyph="{x:Static icons:Basic.Search}" BorderBrush="Transparent" Background="Transparent" BorderThickness="0" IsEnabled="False"/>
             </mxe:ButtonEditor.Buttons>
         </mxe:ButtonEditor>
         <Grid Grid.Row="1" RowDefinitions="*, Auto">

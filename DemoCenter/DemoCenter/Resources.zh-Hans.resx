@@ -365,4 +365,7 @@
   <data name="ExportProgressPromptMessage" xml:space="preserve">
     <value>您想打开导出的文件吗？</value>
   </data>
+  <data name="TreeListExportDescription" xml:space="preserve">
+    <value>树状列表（TreeList）支持将数据导出为XLSX（Microsoft Excel）和PDF格式。其Excel导出功能具备数据感知特性——可在输出的XLSX文档中保留控件的数据整形配置（节点层级结构、数据排序和数值格式化）。PDF渲染引擎遵循WYSIWYG（所见即所得）原则，确保树状列表元素在输出文档中的布局能够被精确还原。</value>
+  </data>
 </root>

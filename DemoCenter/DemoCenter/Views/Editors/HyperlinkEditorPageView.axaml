@@ -17,21 +17,21 @@
     <Grid ColumnDefinitions="*">
         <ContentControl x:Name="DemoControl" Classes="DemoUserControl" BorderThickness="0">
             <Grid RowDefinitions="40, 40, 40, Auto"
-              ColumnDefinitions="Auto, *"
+              ColumnDefinitions="20, Auto, *"
               HorizontalAlignment="Center"
               Margin="30">           
-            <Label Classes="LayoutItem" Content="Web Page Link:" VerticalAlignment="Center"/>
+            <Label Classes="LayoutItem" Content="Web Page Link:" VerticalAlignment="Center" Grid.Column="1"/>
             <mxe:HyperlinkEditor Text="Eremex link" EditorValue="www.eremex.ru" NavigationUrlFormat="https://{0}" VerticalAlignment="Center" 
-                                 AllowAutoNavigate="True" Classes="LayoutItem" Grid.Column="1"/>
+                                 AllowAutoNavigate="True" Classes="LayoutItem" Grid.Column="2"/>
 
-            <Label Classes="LayoutItem" Content="Demo Link:" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label Classes="LayoutItem" Content="Demo Link:" Grid.Row="1" VerticalAlignment="Center" Grid.Column="1"/>
             <mxe:HyperlinkEditor EditorValue="ComboBox Editor module" ShowNavigationUrlToolTip="False" Command="{Binding ShowDemoCommand}" VerticalAlignment="Center"
-                                 CommandParameter="ComboBox Editor" Classes="LayoutItem" Grid.Column="1" Grid.Row="1"/>
+                                 CommandParameter="ComboBox Editor" Classes="LayoutItem" Grid.Column="2" Grid.Row="1"/>
             
             <mxdg:DataGridControl x:Name="materialsGrid"
                                   Grid.Row="3"
-                                  Grid.ColumnSpan="2"
-                                  Width="540"
+                                  Grid.ColumnSpan="3"
+                                  Width="580"
                                   ShowGroupPanel="False"
                                   AllowSorting="False"
                                   AllowEditing="False"
@@ -43,13 +43,13 @@
                         <mxe:SpinEditorProperties Increment="100" Suffix="miles" HorizontalContentAlignment="Right"/>
                     </mxdg:GridColumn.EditorProperties>
                 </mxdg:GridColumn>
-                <mxdg:GridColumn FieldName="BuilderWebsite" Width="Auto" 
+                <mxdg:GridColumn FieldName="Flag" Width="*"/>
+                <mxdg:GridColumn FieldName="Details" Width="Auto" 
                                  AllowEditing="True" >
                     <mxdg:GridColumn.EditorProperties>
-                        <mxe:HyperlinkEditorProperties/>
+                        <mxe:HyperlinkEditorProperties DisplayMember="Header" NavigationUrlMember="Link" AllowAutoNavigate="True" />
                     </mxdg:GridColumn.EditorProperties>
                 </mxdg:GridColumn>
-                <mxdg:GridColumn FieldName="Flag" Width="*"/>
             </mxdg:DataGridControl>
         </Grid>
         </ContentControl>

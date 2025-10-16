@@ -16,7 +16,7 @@ namespace DemoCenter.ViewModels
 
         public HyperlinkEditorPageViewModel()
         {
-            Yachts = CsvSources.Yachts.Take(new Range(4, 9));
+            Yachts = CsvSources.Yachts;
         }
 
         public event Action<string> SelectDemo;
