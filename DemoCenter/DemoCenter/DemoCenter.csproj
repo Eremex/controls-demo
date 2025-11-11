@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
+    <Configurations>Debug;Release;Release_WASM</Configurations>
   </PropertyGroup>
   
   <ItemGroup>
@@ -77,6 +78,9 @@
   </ItemGroup>
     
   <ItemGroup>
+    <PackageReference Include="StirlingLabs.assimp.native.linux-x64" />
+    <PackageReference Include="StirlingLabs.assimp.native.osx" />
+    <PackageReference Include="StirlingLabs.assimp.native.win-x64" />
     <PackageReference Include="System.Text.Json" />
     <PackageReference Include="System.Net.Http" />
     <PackageReference Include="System.Text.RegularExpressions" />
@@ -103,7 +107,9 @@
 	<PackageReference Include="Eremex.Drawing.Skia" />
 	<PackageReference Include="Eremex.DocumentProcessing" />
 
-	<PackageReference Include="AssimpNetter" />
+   <PackageReference Include="AssimpNetter">
+	  <ExcludeAssets>native</ExcludeAssets>
+   </PackageReference>
   </ItemGroup>
     
   <ItemGroup>
@@ -237,8 +243,12 @@
       <EmbeddedResource Include="Views\**" />
       <EmbeddedResource Include="ViewModels\**" />
       <EmbeddedResource Include="Resources\Png\**" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' != 'Release_WASM'">
       <EmbeddedResource Include="Resources\Graphics3D\**" />
     </ItemGroup>
+
   </Target>
     
 </Project>

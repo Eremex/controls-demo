@@ -3,7 +3,7 @@
 This Demo project source code is licensed under the MIT License
 
 EREMEX JSC
-Copyright (c) 2008-2025
+Copyright (c) 2008-2024
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

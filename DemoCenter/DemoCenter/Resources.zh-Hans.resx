@@ -368,4 +368,7 @@
   <data name="TreeListExportDescription" xml:space="preserve">
     <value>树状列表（TreeList）支持将数据导出为XLSX（Microsoft Excel）和PDF格式。其Excel导出功能具备数据感知特性——可在输出的XLSX文档中保留控件的数据整形配置（节点层级结构、数据排序和数值格式化）。PDF渲染引擎遵循WYSIWYG（所见即所得）原则，确保树状列表元素在输出文档中的布局能够被精确还原。</value>
   </data>
+  <data name="UseCasesGroupInfo_Desc" xml:space="preserve">
+    <value>本演示应用模拟了一个抵押贷款计算器，它使用 Data Grid（数据网格）和 Cartesian Chart（直角坐标图表）控件构建。数据网格以表格形式呈现详细的还款计划。同步的图表会将此数据绘制出来，显示在贷款期限内本金和利息之间的关系。</value>
+  </data>
 </root>

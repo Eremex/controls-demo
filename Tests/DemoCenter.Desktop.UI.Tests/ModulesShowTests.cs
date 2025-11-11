@@ -20,6 +20,8 @@ public class WindowsTests
     }
 
     protected TestMouseEventsHelper MouseEventsHelper { get; }
+
+
     protected void SendLeftMouseDown(Control control)
     {
         MouseEventsHelper.SendLeftMouseDown(control);

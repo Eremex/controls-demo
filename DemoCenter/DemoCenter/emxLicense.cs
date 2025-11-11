@@ -11,6 +11,6 @@ public class LicenseProvider
 #pragma warning restore CA2255 // The 'ModuleInitializer' attribute should not be used in libraries
     public static void RegisterLicense()
 	{
-        ControlsLicenseManager.SetRuntimeLicenseOwner(new LicenseProvider(),"", "A2F7867D", "16 30 05 65 FC 81 56 0A D8 50 5D 2D EE E2 0D A7 97 81 C3 76 50 FC 7B F8 9B 77 0F 46 05 12 D0 D2 66 CE 7C A2 3E 70 18 EA", "C2 61 2D 3B BE 30 79 1A 04 56 5F 0D 14 36 80 93 D7 4F B1 7B 13 B0 AD 83 19 71 85 9F E3 2E 22 A2 4E 9D 7F CB CB 55 C2 A8");
+        ControlsLicenseManager.SetRuntimeLicenseOwner(new LicenseProvider(),"", "A2F7867D", "EE 73 EF ED 30 41 DD 91 F5 74 86 CF F5 45 7D CE 63 B1 42 ED 2D 6A BD 5D 58 9A 9C 6B F3 4C 20 C0 74 C5 83 9D FA 51 90 C6", "60 39 7B 50 F4 04 95 B9 B8 8D 99 B4 E3 D8 92 7C F1 7E 5F DE 39 D4 87 D2 F3 C3 74 0F C8 2E 4D E8 7D 40 86 B8 93 6F 22 DA");
 	}
 }

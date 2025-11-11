@@ -7,6 +7,9 @@
     <PackageVersion Include="Avalonia" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.iOS" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
+    <PackageVersion Include="StirlingLabs.assimp.native.linux-x64" Version="5.2.5.4" />
+    <PackageVersion Include="StirlingLabs.assimp.native.osx" Version="5.2.5.4" />
+    <PackageVersion Include="StirlingLabs.assimp.native.win-x64" Version="5.2.5.4" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
     <PackageVersion Include="Avalonia.Browser" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
@@ -30,11 +33,9 @@
     <PackageVersion Include="Eremex.Drawing" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.Drawing.Skia" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.DocumentProcessing" Version="$(EMXControlsVersion)" />
-
     <PackageVersion Include="Eremex.Avalonia.Controls" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.Avalonia.Controls3D" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.Avalonia.Themes.DeltaDesign" Version="$(EMXControlsVersion)" />
-
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="Avalonia.Headless" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Moq.AutoMock" Version="3.2.0" />
@@ -44,7 +45,7 @@
     <PackageVersion Include="xunit" Version="2.5.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.3" />
     <PackageVersion Include="Xunit.StaFact" Version="1.1.11" />
-    <PackageVersion Include="stylecop.analyzers" Version="1.1.118" />
+    <PackageVersion Include="stylecop.analyzers" Version="1.2.105-beta.0" />
     <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.7.30" />
     <PackageVersion Include="JunitXml.TestLogger" Version="3.0.134" />
     <PackageVersion Include="NuGet.Common" Version="6.7.0" />

@@ -370,4 +370,7 @@ Instead of bulky bars, it uses thin lines topped with markers to visualize data 
   <data name="TreeListExportDescription" xml:space="preserve">
     <value>TreeList can export data to XLSX (Microsoft Excel) and PDF formats. The Excel export feature is data-aware — it preserves the control's data shaping configuration (node hierarchy, data sorting, and value formatting) in the output XLSX document. The PDF rendering engine follows the WYSIWYG concept, which ensures the layout of TreeList elements is accurately reproduced in the output document.</value>
   </data>
+  <data name="UseCasesGroupInfo_Desc" xml:space="preserve">
+    <value>This demo emulates a dynamic mortgage calculator, built with the Data Grid and Cartersian Chart controls. Data Grid presents a detailed payment schedule as a table. The synchronized chart plots this data to show the relationship between principal and interest over the life of the loan.</value>
+  </data>
 </root>

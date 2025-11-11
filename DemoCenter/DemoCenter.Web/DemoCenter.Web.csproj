@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0-browser</TargetFramework>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>	
+                <Configurations>Debug;Release;Release_WASM</Configurations>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia.Browser" />
