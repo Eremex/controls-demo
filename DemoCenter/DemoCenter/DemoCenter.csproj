@@ -81,10 +81,6 @@
     <PackageReference Include="StirlingLabs.assimp.native.linux-x64" />
     <PackageReference Include="StirlingLabs.assimp.native.osx" />
     <PackageReference Include="StirlingLabs.assimp.native.win-x64" />
-    <PackageReference Include="System.Text.Json" />
-    <PackageReference Include="System.Net.Http" />
-    <PackageReference Include="System.Text.RegularExpressions" />
-
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
     <PackageReference Include="Avalonia.ReactiveUI" />
@@ -96,7 +92,6 @@
     <PackageReference Include="Eremex.Avalonia.Controls3D" />
     <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
     <PackageReference Include="SkiaSharp" />
-    <PackageReference Include="System.IO.Compression.ZipFile" />
     <PackageReference Include="System.Resources.Extensions" Version="$(SystemResourcesExtensionsVersion)" />
     <PackageReference Include="Avalonia.AvaloniaEdit" />
     <PackageReference Include="AvaloniaEdit.TextMate" />
