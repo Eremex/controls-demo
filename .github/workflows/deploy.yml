@@ -22,7 +22,7 @@ jobs:
         run: dotnet workload install wasm-tools
 
       - name: Publish .NET Project
-        run: dotnet publish $PROJECT_PATH -c Release_WASM --nologo -p:PublishTrimmed=false
+        run: dotnet publish $PROJECT_PATH -f net9.0 -c Release_WASM --nologo -p:PublishTrimmed=false
 
       - name: Change base-tag in index.html
         run: sed -i 's#<base href="/" />#<base href="/controls-demo/" />#g' $OUTPUT_PATH/index.html

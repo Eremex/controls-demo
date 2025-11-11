@@ -28,7 +28,7 @@ jobs:
         run: mkdir upload
 
       - name: Publish win-x64
-        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r win-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/win64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -f net9.0 -r win-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/win64
 
       - name: Zip win-x64
         run: |
@@ -52,7 +52,7 @@ jobs:
         run: mkdir upload
 
       - name: Publish linux-x64
-        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r linux-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linux64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -f net9.0 -r linux-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linux64
       - name: Rename app
         run: mv ./publish/linux64/DemoCenter.Desktop ./publish/linux64/DemoCenter.App
 
@@ -76,7 +76,7 @@ jobs:
         run: mkdir upload
 
       - name: Publish linux-arm64
-        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r linux-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linuxArm64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -f net9.0 -r linux-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linuxArm64
       - name: Rename app
         run: mv ./publish/linuxArm64/DemoCenter.Desktop ./publish/linuxArm64/DemoCenter.App
 
@@ -100,7 +100,7 @@ jobs:
         run: mkdir upload
 
       - name: Publish linux-arm64
-        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-x64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -f net9.0 -r osx-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-x64
 
       - name: Zip osx-x64
         run: zip -j -r ./upload/EMX.Demo.Desktop.osx-x64.zip ./publish/osx-x64 -x "*.pdb"
@@ -122,7 +122,7 @@ jobs:
         run: mkdir upload
 
       - name: Publish osx-arm64
-        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-arm64
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -f net9.0 -r osx-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-arm64
 
       - name: Zip osx-arm64
         run: zip -j -r ./upload/EMX.Demo.Desktop.osx-arm64.zip ./publish/osx-arm64 -x "*.pdb"
