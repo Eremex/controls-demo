@@ -83,6 +83,30 @@ jobs:
           name: linux-rpi
           path: ./upload
 
+  linux-orangepi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make upload directory
+        run: mkdir upload
+
+      - name: Publish linux-arm
+        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -f net9.0 -r linux-arm -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linuxArm
+      - name: Rename app
+        run: mv ./publish/linuxArm/DemoCenter.Desktop ./publish/linuxArm64/DemoCenter.App
+
+      - name: Zip linux-arm
+        run: zip -j -r ./upload/EMX.Demo.Desktop.linux-arm.zip ./publish/linuxArm -x "*.pdb"
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: linux-arm
+          path: ./upload
+
+
   osx-x64:
     runs-on: ubuntu-latest
     steps:
