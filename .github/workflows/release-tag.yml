@@ -169,6 +169,10 @@ jobs:
         with:
           name: linux-rpi
 
+      - name: Download linux-orangepi Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-orangepi
 
       - name: Release
         uses: softprops/action-gh-release@v2
