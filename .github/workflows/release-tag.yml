@@ -103,7 +103,7 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: linux-arm
+          name: linux-orangepi
           path: ./upload
 
 
@@ -151,7 +151,7 @@ jobs:
 
 
   draft-release:
-    needs: [ windows, linux, linux-rpi, osx-x64, osx-arm64 ]
+    needs: [ windows, linux, linux-rpi, osx-x64, osx-arm64, linux-orangepi ]
     runs-on: ubuntu-latest
     steps:
       - name: Download windows Artifacts
