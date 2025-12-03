@@ -95,7 +95,7 @@ jobs:
       - name: Publish linux-arm
         run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -f net9.0 -r linux-arm -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/linuxArm
       - name: Rename app
-        run: mv ./publish/linuxArm/DemoCenter.Desktop ./publish/linuxArm64/DemoCenter.App
+        run: mv ./publish/linuxArm/DemoCenter.Desktop ./publish/linuxArm/DemoCenter.App
 
       - name: Zip linux-arm
         run: zip -j -r ./upload/EMX.Demo.Desktop.linux-arm.zip ./publish/linuxArm -x "*.pdb"
