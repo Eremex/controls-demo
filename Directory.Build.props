@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <Company>Eremex</Company>
-    <Copyright>©2010-2025 Eremex</Copyright>
+    <Copyright>©2010-2026 Eremex</Copyright>
     <Product>Eremex Controls</Product>
   </PropertyGroup>
 
@@ -20,7 +20,7 @@
     <AvaloniaSvgSkiaVersion>11.3.0.3</AvaloniaSvgSkiaVersion>
     <SkiaSharpVersion>2.88.9</SkiaSharpVersion>
     <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
-    <EMXControlsVersion>1.2.96</EMXControlsVersion>
+    <EMXControlsVersion>1.2.102</EMXControlsVersion>
     <Version>$(EMXControlsVersion)</Version>
   </PropertyGroup>
 
