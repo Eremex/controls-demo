@@ -19,7 +19,7 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Install wasm-tools
-        run: dotnet workload install wasm-tools-net9
+        run: dotnet workload install wasm-tools-net9 wasm-tools-net8
 
       - name: Publish .NET Project
         run: dotnet publish $PROJECT_PATH -f net9.0 -c Release_WASM --nologo -p:PublishTrimmed=false
