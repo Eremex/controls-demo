@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 env:
   PROJECT_PATH: DemoCenter/DemoCenter.Web/DemoCenter.Web.csproj
-  OUTPUT_PATH: DemoCenter/DemoCenter.Web/bin/Release_WASM/publish/wwwroot
+  OUTPUT_PATH: DemoCenter/DemoCenter.Web/bin/Release_WASM/net9.0/publish/wwwroot
 on:
   workflow_dispatch:
 
