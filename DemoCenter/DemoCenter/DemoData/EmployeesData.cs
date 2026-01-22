@@ -143,20 +143,23 @@ namespace DemoCenter.DemoData
             {
                 IDictionary<string, object> employeeSale = new ExpandoObject();
                 employeeSale["Employee"] = name;
+                decimal total = 0;
                 for (int i = 1; i < 4; i++)
                 {
                     var year = DateTime.Now.Year - i;
-                    decimal total = 0;
+                    decimal yearTotal = 0;
                     for (int j = 0; j < 12; j++)
                     {   
                         var sale = GetQuarterSale();
-                        total += sale;
+                        yearTotal += sale;
                         var monthName = CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(j + 1);
                         var propertyName = $"{year}/Q{j / 3 + 1}/{monthName}";
                         employeeSale[propertyName] = sale;
                     }
-                    employeeSale[$"{year}/Total"] = total;
+                    employeeSale[$"{year}/Total"] = yearTotal;
+                    total += yearTotal;
                 }
+                employeeSale["Total"] = total;
                 sales.Add(employeeSale);
             }
 

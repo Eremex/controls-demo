@@ -75,6 +75,18 @@
       <DependentUpon>Graphics3DControlSkyboxView.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Charts\PolarEmptyPointsView.axaml.cs">
+      <DependentUpon>PolarEmptyPointsView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianStackedAreaSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianStackedAreaSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Charts\CartesianFullStackedAreaSeriesViewView.axaml.cs">
+      <DependentUpon>CartesianFullStackedAreaSeriesViewView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
     
   <ItemGroup>

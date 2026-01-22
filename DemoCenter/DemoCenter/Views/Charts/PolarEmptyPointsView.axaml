@@ -1,0 +1,24 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Charts;assembly=Eremex.Avalonia.Charts"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             x:Class="DemoCenter.Views.PolarEmptyPointsView"
+             x:DataType="vm:PolarEmptyPointsViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:PolarChart Grid.Column="0" Classes="DemoChartWithNoOptions" x:Name="DemoControl">
+            <mxc:PolarSeries SeriesName="Series 1" DataAdapter="{Binding DataAdapter}" View="{Binding SelectedView}" />
+        </mxc:PolarChart>
+        
+        <mxe:GroupBox Grid.Column="1" Header="Views"  Classes="PropertiesGroup">
+            <ListBox ItemsSource="{Binding Views}" SelectedIndex="0" SelectionChanged="ViewOnSelectionChanged">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="vm:ViewViewModel">
+                        <Label Content="{Binding Name}" FontWeight="Bold" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListBox>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>

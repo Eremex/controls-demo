@@ -16,7 +16,7 @@ namespace DemoCenter.ProductsData
             {
                 new PageInfo(name: "Filter & Search", title: "Filter & Search",
                 viewModelGetter: () => new TreeListFilteringPageViewModel(),
-                descriptionGetter: () => Resources.TheTreeListSAutoFilterRowDisplayedAtTheTop, showInWeb: false, updated: new VersionInfo(1, 2)),
+                descriptionGetter: () => Resources.TheTreeListSAutoFilterRowDisplayedAtTheTop, showInWeb: false, updated: new VersionInfo(1, 3)),
 
                 new PageInfo(name: "Data Editors", title: "Data Editors",
                 viewModelGetter: () => new TreeListDataEditorsPageViewModel(),

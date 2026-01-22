@@ -5,8 +5,10 @@
 			 xmlns:data="clr-namespace:DemoCenter.DemoData"
 			 xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
 			 xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
 			 xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
 			 xmlns:viewModels="using:DemoCenter.ViewModels"
+			 xmlns:exports="using:Eremex.DocumentProcessing.Exports"
 			 xmlns:views="using:DemoCenter.Views"
 			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -51,8 +53,8 @@
 					</Grid>
 				</mxe:GroupBox>
 
-				<mxe:GroupBox Header="Pdf Export Properties" Classes="PropertiesGroup">
-					<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+				<mxe:GroupBox Header="Pdf/Image Export Properties" Classes="PropertiesGroup">
+					<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 						<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding PdfExportColumnHeaders}" Classes="PropertyEditor"/>
 						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding PdfExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
 						<mxe:CheckEditor Content="Fit To Page Width" IsChecked="{Binding FitToPageWidth}" Classes="PropertyEditor" Grid.Row="2"/>
@@ -61,7 +63,17 @@
 							<RadioButton Content="Landscape" IsChecked="{Binding Landscape}" GroupName="G1" Classes="PropertyEditor"/>
 							<RadioButton Content="Portrait" IsChecked="{Binding !Landscape}" GroupName="G1" Classes="PropertyEditor"/>
 						</StackPanel>
-						<Button Content="Export" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Pdf}" HorizontalAlignment="Stretch" Grid.Row="5" />
+						<Button Content="Export To Pdf" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Pdf}" HorizontalAlignment="Stretch" Grid.Row="5" />
+						<mx:MxSplitButton Content="Export To Image" Margin="0,8,0,0" Command="{Binding ExportImageCommand}" CommandParameter="{x:Static exports:MxImageFormat.Jpeg}" HorizontalAlignment="Stretch" Grid.Row="6">
+							<mx:MxSplitButton.DropDownControl>
+								<mxb:PopupMenu>
+									<mxb:ToolbarButtonItem Header="Jpeg" Command="{Binding ExportImageCommand}" CommandParameter="{x:Static exports:MxImageFormat.Jpeg}"/>
+									<mxb:ToolbarButtonItem Header="Png" Command="{Binding ExportImageCommand}" CommandParameter="{x:Static exports:MxImageFormat.Png}"/>
+									<mxb:ToolbarButtonItem Header="Svg" Command="{Binding ExportImageCommand}" CommandParameter="{x:Static exports:MxImageFormat.Svg}"/>
+									<mxb:ToolbarButtonItem Header="Webp" Command="{Binding ExportImageCommand}" CommandParameter="{x:Static exports:MxImageFormat.Webp}"/>
+								</mxb:PopupMenu>
+							</mx:MxSplitButton.DropDownControl>
+						</mx:MxSplitButton>
 					</Grid>
 				</mxe:GroupBox>
 			</StackPanel>

@@ -3,6 +3,7 @@ using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Media;
+using Eremex.AvaloniaUI.Controls.DataControl;
 using Eremex.AvaloniaUI.Controls.DataGrid;
 using Eremex.AvaloniaUI.Controls.Editors;
 using System.Globalization;
@@ -23,14 +24,25 @@ public partial class DataGridColumnBandsView : UserControl
         {
             int separatorIndex = column.FieldName.LastIndexOf("/");
             if (separatorIndex == -1)
+            {
+                if(column.FieldName == "Total")
+                {
+                    column.FixedMode = FixedMode.Right;
+                    column.CellTemplate = (DataTemplate)Resources["totalTemplate"];
+                }
+                else
+                {
+                    column.FixedMode = FixedMode.Left;
+                }   
                 continue;
+            }
 
             column.BandName = column.FieldName.Substring(0, separatorIndex);
             column.Header = column.FieldName.Substring(separatorIndex + 1);
 
             if (column.FieldName.Contains("Total"))
             {
-                column.CellTemplate = (DataTemplate)Resources["totalTemplate"];
+                column.CellTemplate = (DataTemplate)Resources["yearTotalTemplate"];
             }
             else
             {

@@ -13,12 +13,15 @@ Allows you to plot a diagram on a Cartesian coordinate system.
 - An unlimited number of data series within each chart
 - Supported series views: Line, Scatter Line, Point, Area, Step Line, Bar, Range Bar, Candlestick, and more.
 - Displaying multiple axes simultaneously
+- Swapping X and Y axes
+- Reversing axes
 - Available axis types: Numeric, Date-Time, Time Span, Qualitative, and Logarithmic
 - Scrolling and zooming a View (all axes at the same time)
 - Scrolling and zooming individual axes
 - High-performance when displaying large data
 - Real-time data visualization
 - Strips and constant lines
+- Empty points (gaps)
 - Using the MVVM design pattern to provide data and customize chart options
 - Displaying rapidly changing real-time data. Use a special data adapter to implement a moving viewport
 
@@ -31,9 +34,16 @@ Allows you to plot a diagram on a Cartesian coordinate system.
 * Step Line Series View
 * Step Area Series View
 * Range Area Series View
+* Stacked Area Series View
+* Full-Stacked Area Series View
 * Bar Series View
 * Range Bar Series View 
+* Candlestick Series View
 * Lollipop Series View
+
+### Documentation
+
+- [Cartesian Chart](https://eremexcontrols.net/controls/charts/cartesian-chart/)
 
 
 ## PolarChart

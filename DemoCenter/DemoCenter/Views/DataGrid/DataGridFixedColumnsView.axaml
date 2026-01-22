@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:data="clr-namespace:DemoCenter.DemoData"
+			 xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+			 xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:views="using:DemoCenter.Views"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridFixedColumnsView">
+    
+    <Grid ColumnDefinitions="*, 250">
+	    <Border x:Name="DemoControl">
+            <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" ShowColumnMenuFixedItem="True" BorderThickness="0,0,1,0">
+                <mxdg:DataGridControl.Styles>
+                    <Style Selector="mxdg|DataGridControl /template/ ScrollViewer#PART_ScrollViewer">
+                        <Setter Property="AllowAutoHide" Value="{Binding AutoHideScrollbars}"/>
+                    </Style>
+                </mxdg:DataGridControl.Styles>
+                
+                <mxdg:GridColumn FieldName="FirstName" FixedMode="Left"/>
+                <mxdg:GridColumn FieldName="LastName" FixedMode="Left"/>
+                <mxdg:GridColumn FieldName="BirthDate" Width="200"/>
+                <mxdg:GridColumn FieldName="HireDate" Width="200"/>
+                <mxdg:GridColumn FieldName="Experience"/>
+                <mxdg:GridColumn FieldName="Position" Width="200">
+                    <mxdg:GridColumn.EditorProperties>
+                        <mxe:ComboBoxEditorProperties ItemsSource="{Binding Source={x:Static data:EmployeesData.Positions}}" IsTextEditable="False"/>
+                    </mxdg:GridColumn.EditorProperties>
+                </mxdg:GridColumn>
+                <mxdg:GridColumn FieldName="EmploymentType" Width="200"/>
+                <mxdg:GridColumn FieldName="Married"/>
+                <mxdg:GridColumn FieldName="City" Width="200"/>
+                <mxdg:GridColumn FieldName="Phone" FixedMode="Right"/>
+            </mxdg:DataGridControl>
+	    </Border>
+
+        <Border Grid.Column="1">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Allow 'Fixed' Menu for Columns" IsChecked="{Binding #dataGrid.ShowColumnMenuFixedItem}" Classes="PropertyEditor"/>
+                    <Label Content="Fixed Column Separator Width" Classes="PropertyLabel"/>
+                    <Slider Minimum="1" Maximum="20" Value="{Binding #dataGrid.FixedColumnSeparatorWidth, Converter={views:SeparatorWidthConverter}}"/>
+                    <mxe:CheckEditor Content="Extend Scrollbar to Fixed Columns" IsChecked="{Binding #dataGrid.ExtendScrollbarToFixedColumns}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Content="Auto Hide Scrollbars" IsChecked="{Binding AutoHideScrollbars}" Classes="PropertyEditor"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>

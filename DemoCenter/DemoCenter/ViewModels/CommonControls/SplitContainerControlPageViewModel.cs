@@ -6,16 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DemoCenter.DemoData;
 
 namespace DemoCenter.ViewModels
 {
     public partial class SplitContainerControlPageViewModel : PageViewModelBase
     {
-        [ObservableProperty] SplitContainerControlCollapsePanel collapsedPanel;
-
-        public SplitContainerControlPageViewModel()
-        {
-            CollapsedPanel = SplitContainerControlCollapsePanel.Panel2;
-        }
+        public IList<CarInfo> Cars { get; } = CsvSources.Cars;
     }
 }

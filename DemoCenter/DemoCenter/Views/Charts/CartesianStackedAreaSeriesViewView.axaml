@@ -3,18 +3,18 @@
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
-             x:Class="DemoCenter.Views.CartesianAreaSeriesViewView"
-             x:DataType="vm:CartesianAreaSeriesViewViewModel">
+             x:Class="DemoCenter.Views.CartesianStackedAreaSeriesViewView"
+             x:DataType="vm:CartesianStackedAreaSeriesViewViewModel">
     <Grid ColumnDefinitions="* 250">
         <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" SeriesSource="{Binding Series}" x:Name="DemoControl">
             <mxc:CartesianChart.SeriesTemplate>
                 <DataTemplate x:DataType="vm:SeriesViewModel">
                     <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
-                        <mxc:CartesianAreaSeriesView Color="{Binding Color}"
-                                                     Transparency="{Binding ElementName=SlTransparency, Path=Value}"
-                                                     ShowMarkers="{Binding ElementName=CheShowMarkers, Path=IsChecked}"
-                                                     MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}"
-                                                     Thickness="{Binding ElementName=SlLineThickness, Path=Value}" />
+                        <mxc:CartesianStackedAreaSeriesView Color="{Binding Color}"
+                                                            Transparency="{Binding ElementName=SlTransparency, Path=Value}"
+                                                            ShowMarkers="{Binding ElementName=CheShowMarkers, Path=IsChecked}"
+                                                            MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}"
+                                                            Thickness="{Binding ElementName=SlLineThickness, Path=Value}" />
                     </mxc:CartesianSeries>
                 </DataTemplate>
             </mxc:CartesianChart.SeriesTemplate>
@@ -30,12 +30,12 @@
         <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
             <StackPanel Orientation="Vertical">
                 <Label Content="Line Thickness" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlLineThickness" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
+                <Slider x:Name="SlLineThickness" Minimum="1" Maximum="8" Value="1" Classes="PropertyEditor" />
                 <Label Content="Transparency" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlTransparency" Minimum="0" Maximum="1" Value="0.3" Classes="PropertyEditor" />
+                <Slider x:Name="SlTransparency" Minimum="0" Maximum="1" Value="0.6" Classes="PropertyEditor" />
                 <mxe:CheckEditor x:Name="CheShowMarkers" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
                 <Label Content="Marker Size" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers, Path=IsChecked}" />
+                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="5" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers, Path=IsChecked}" />
             </StackPanel>
         </mxe:GroupBox>
     </Grid>

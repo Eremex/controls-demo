@@ -18,7 +18,7 @@ public static class CartesianChartGroupInfo
 
             new(name: "Multiple Axes", title: "Multiple Axes",
                 viewModelGetter: () => new CartesianChartAxesPageViewModel(),
-                descriptionGetter: () => Resources.ThisExampleDemonstratesACartesianChartCont, introduced: new VersionInfo(1, 0), updated: new VersionInfo(1, 0)),
+                descriptionGetter: () => Resources.CartesianChartMultipleAxes, introduced: new VersionInfo(1, 0), updated: new VersionInfo(1, 3)),
 
             new(name: "Logarithmic Scale", title: "Logarithmic Scale",
                 viewModelGetter: () => new CartesianChartLogarithmicScalePageViewModel(),
@@ -43,6 +43,14 @@ public static class CartesianChartGroupInfo
             new(name: "Area", title: "Area Series View",
                 viewModelGetter: () => new CartesianAreaSeriesViewViewModel(),
                 descriptionGetter: () => Resources.TheAreaSeriesViewAllowsYouDisplayFilledAre, introduced: new VersionInfo(1, 0)),
+
+            new(name: "Stacked Area", title: "Stacked Area Series View",
+                viewModelGetter: () => new CartesianStackedAreaSeriesViewViewModel(),
+                descriptionGetter: () => Resources.StackedArea, introduced: new VersionInfo(1, 3)),
+
+            new(name: "Full Stacked Area", title: "Full Stacked Area Series View",
+                viewModelGetter: () => new CartesianFullStackedAreaSeriesViewViewModel(),
+                descriptionGetter: () => Resources.FullStackedArea, introduced: new VersionInfo(1, 3)),
 
             new(name: "Scatter Line", title: "Scatter Line Series View",
                 viewModelGetter: () => new CartesianScatterLineSeriesViewViewModel(),
@@ -74,7 +82,11 @@ public static class CartesianChartGroupInfo
             
             new(name: "Candlestick Aggregation", title: "Candlestick Aggregation",
                 viewModelGetter: () => new CartesianCandlestickAggregationViewModel(),
-                descriptionGetter: () => Resources.InThisDemoTheCandlestickSeriesViewUsesASpe, introduced: new VersionInfo(1, 1))
+                descriptionGetter: () => Resources.InThisDemoTheCandlestickSeriesViewUsesASpe, introduced: new VersionInfo(1, 1)),
+            
+            new(name: "Empty Points", title: "Empty Points",
+                viewModelGetter: () => new CartesianEmptyPointsViewModel(),
+                descriptionGetter: () => Resources.EmptyPoints, introduced: new VersionInfo(1, 3))
         };
     }
 }

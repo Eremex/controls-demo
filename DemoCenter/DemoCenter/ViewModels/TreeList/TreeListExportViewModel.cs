@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DemoCenter.DemoData;
+using Eremex.DocumentProcessing.Exports;
 
 namespace DemoCenter.ViewModels
 {
@@ -23,13 +24,13 @@ namespace DemoCenter.ViewModels
 
         #endregion
 
-        #region pdf export properties
+        #region page export properties
 
         [ObservableProperty]
-        private bool pdfExportColumnHeaders = true;
+        private bool pageExportColumnHeaders = true;
 
         [ObservableProperty]
-        private bool pdfExportBandHeaders = true;
+        private bool pageExportBandHeaders = true;
 
         [ObservableProperty]
         private bool fitToPageWidth = true;
@@ -42,11 +43,18 @@ namespace DemoCenter.ViewModels
         public IList<ApparelProduct> ApparelProducts { get; }
 
         public event Action<ExportType> RequestExport;
+        public event Action<MxImageFormat> RequestExportImage;
 
         [RelayCommand]
         private void Export(ExportType type)
         {
             RequestExport?.Invoke(type);
+        }
+
+        [RelayCommand]
+        private void ExportImage(MxImageFormat format)
+        {
+            RequestExportImage?.Invoke(format);
         }
     }
 }

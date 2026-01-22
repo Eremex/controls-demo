@@ -141,8 +141,13 @@
   <data name="TheChartControlSGraphicsRenderingIsOptimiz" xml:space="preserve">
     <value>Chart Control 的图形渲染经过优化，可以显示大量数据。即使系列包含数百万个点，控件仍能提供高性能。</value>
   </data>
-  <data name="ThisExampleDemonstratesACartesianChartCont" xml:space="preserve">
-    <value>此示例展示了一个具有多个数据系列和轴的 CartesianChart 控件。您可以使用鼠标滚动和缩放整个图表区域或单个轴。使用选项面板更改主轴设置。</value>
+  <data name="CartesianChartMultipleAxes" xml:space="preserve">
+    <value>这个示例演示了 CartesianChart 控件中的多重坐标轴功能，以及自定义坐标轴布局、位置、标签、网格线等选项。
+• 多重坐标轴 — CartesianChart 控件允许创建多个 X 轴和 Y 轴，并将每个数据序列绑定到各自的坐标轴。
+• 坐标轴位置 — 您可以将特定的 X 轴或 Y 轴显示在默认位置的另一侧：X 轴位于顶部，Y 轴位于右侧。
+• 交换坐标轴 — 通过单个属性即可交换坐标轴，使 Y 轴水平显示，X 轴垂直显示。
+• 反转坐标轴方向 — 对于单个坐标轴，您可以将数值顺序从默认的（从左到右、从下到上）改为反转方向（从右到左、从上到下）。
+• 滚动和缩放坐标轴 — 您可以通过鼠标点击拖拽或在单个坐标轴上使用鼠标滚轮来滚动和缩放这些轴，而不会影响其他坐标轴。</value>
   </data>
   <data name="ChartControlSupportsLogarithmicScalesForAn" xml:space="preserve">
     <value>Chart Control 支持对其任何数值轴使用对数刻度。默认情况下使用以 10 为底的对数。您可以指定自定义对数底数以更改数据缩放比例。</value>
@@ -198,10 +203,10 @@
   </data>
   <data name="DataGridSupportsBuiltInDataSearchAndFiltra" xml:space="preserve">
     <value>Data Grid 提供了多种过滤和搜索数据的方法：
- - 列过滤菜单： 将鼠标悬停在列标题上，然后单击过滤按钮以打开菜单。您可以同时对一个或多个列应用过滤器。
- - 自动过滤行： 顶部的这一专用行允许您直接将过滤值输入到任何列中。网格会立即显示仅与您输入的内容匹配的记录。
- - 搜索面板： 在所有列中搜索文本。搜索面板可以设置为始终可见，或通过 Ctrl+F 快捷键激活。匹配的记录会被显示，并且文本在单元格内高亮显示。
- - 代码中的过滤： 对于高级场景，您可以创建自定义过滤条件，并使用控件的 API 以编程方式应用它们。</value>
+ • 列过滤菜单： 将鼠标悬停在列标题上，然后单击过滤按钮以打开菜单。您可以同时对一个或多个列应用过滤器。
+ • 自动过滤行： 顶部的这一专用行允许您直接将过滤值输入到任何列中。网格会立即显示仅与您输入的内容匹配的记录。
+ • 搜索面板： 在所有列中搜索文本。搜索面板可以设置为始终可见，或通过 Ctrl+F 快捷键激活。匹配的记录会被显示，并且文本在单元格内高亮显示。
+ • 代码中的过滤： 对于高级场景，您可以创建自定义过滤条件，并使用控件的 API 以编程方式应用它们。</value>
   </data>
   <data name="RegardlessOfTheNumberOfColumnsAndRowsInThe" xml:space="preserve">
     <value>无论控件中有多少列和行，Data Grid 在水平或垂直滚动或排序/分组数据时仍能保持响应。内置的数据虚拟化机制仅更新视口内的单元格，以保持高性能滚动。</value>
@@ -215,11 +220,17 @@
   <data name="DataGridSupportsMultipleRowSelectionModeWh" xml:space="preserve">
     <value>DataGrid 支持多行选择模式，允许您和用户一次选择（突出显示）多行。用户可以使用鼠标和键盘选择多行。按住 CTRL 和/或 SHIFT 键单击行以选择行。</value>
   </data>
+  <data name="DataGridFixedColumnsDescription" xml:space="preserve">
+    <value>要在水平滚动期间保留基本数据，您可以将列固定（固定）到左侧或右侧边缘。一旦固定，这些列将保持静止，而其他数据则滚动。启用内置的“固定”列菜单以允许用户在运行时修复列。</value>
+  </data>    
   <data name="DataGridSupportsDragAndDropOperationsWithi" xml:space="preserve">
     <value>Data Grid 支持在控件内部和外部控件（例如 Tree List 或另一个 Data Grid）之间进行拖放操作。此示例展示了在 Data Grid 内部和之间的拖放功能。AllowDragDrop 选项激活拖放功能。{0}必须启用 AllowDragDropSortedRows 选项以允许对已排序/分组的 Data Grid 进行拖放操作。当数据已排序或分组时，拖放操作会修改拖动行在排序列中的值。{1}在此示例中，控件绑定到包含相同业务对象的集合。这确保了在从源网格到目标网格的拖放操作期间自动移动行。当您将一行从一个网格移动到另一个网格时，相应的项会在两个网格控件的项源之间移动。</value>
   </data>
   <data name="DataGridColumnBandsDescription" xml:space="preserve">
-    <value>列帶允許您將列直觀地分組在一起。 DataGrid 控制項將帶區顯示為列標題上方的附加標題。帶區標題和列標題都可以包含文字、圖像或自訂內容。您可以建立具有無限數量嵌套層級的分層帶。</value>
+    <value>列带允许您通过在列上方显示共享标题，将列以可视方式组合在一起。列带和列标题均可包含文本、图像或自定义内容。此演示展示了以下功能：
+ • 从源生成列带 — 您可以从视图模型中定义的列带源填充列带。
+ • 分层列带 — 该控件允许您创建具有无限嵌套级别的分层列带。
+ • 固定列支持 — 列带可以与固定列配合使用。当您固定列时，该列及其列带在水平滚动期间将保持静止。</value>
   </data>
   <data name="TheEremexControlsLibraryIncludesMultipleEd" xml:space="preserve">
     <value>Eremex 控件库包括多个编辑器，为您提供高级数据编辑功能。这些编辑器允许您显示和编辑不同数据类型（数字、布尔值、日期时间、枚举等）的数据。它们支持数据验证机制、样式设置以及嵌入到容器控件（Data Grid、Tree List、Property Grid 和工具栏/菜单）中。</value>
@@ -318,10 +329,10 @@
   </data>
   <data name="TheTreeListSAutoFilterRowDisplayedAtTheTop" xml:space="preserve">
     <value>Tree List 控件提供了多种过滤和搜索数据的方法：
- - 列过滤菜单： 将鼠标悬停在列标题上，然后单击过滤按钮以打开菜单。您可以同时对一个或多个列应用过滤器。
- - 自动过滤行： 顶部的专用行允许您直接将过滤值输入到任何列中。控件会立即显示仅与您输入内容匹配的记录。
- - 搜索面板： 在所有列中搜索文本。搜索面板可以设置为始终可见，或通过 Ctrl+F 快捷键激活。匹配的记录会被显示，且文本在单元格内高亮显示。
- - 代码过滤： 对于高级场景，您可以创建自定义过滤条件，并使用控件的 API 以编程方式应用它们。</value>
+ • 列过滤菜单： 将鼠标悬停在列标题上，然后单击过滤按钮以打开菜单。您可以同时对一个或多个列应用过滤器。
+ • 自动过滤行： 顶部的专用行允许您直接将过滤值输入到任何列中。控件会立即显示仅与您输入内容匹配的记录。
+ • 搜索面板： 在所有列中搜索文本。搜索面板可以设置为始终可见，或通过 Ctrl+F 快捷键激活。匹配的记录会被显示，且文本在单元格内高亮显示。
+ • 代码过滤： 对于高级场景，您可以创建自定义过滤条件，并使用控件的 API 以编程方式应用它们。</value>
   </data>
   <data name="EremexEditorsAreUsedInTreeListCellsByDefau" xml:space="preserve">
     <value>默认情况下，Eremex 编辑器用于树列表单元格中以显示和编辑常见数据类型（布尔值、整数、枚举等）的单元格值。此演示展示了隐式分配的内置编辑器，并演示了如何显式指定树列表列的编辑器。</value>
@@ -333,7 +344,7 @@
     <value>树列表和树视图控件支持多节点选择模式，允许您和用户一次选择（突出显示）多个节点。用户可以使用鼠标和键盘选择多个节点。按住 CTRL 和/或 SHIFT 键单击节点以选择节点。</value>
   </data>
   <data name="TreeListColumnBandsDescription" xml:space="preserve">
-    <value>列帶允許您將列直觀地分組在一起。 TreeList 控制項將帶區顯示為列標題上方的附加標題。帶區標題和列標題都可以包含文字、圖像或自訂內容。您可以建立具有無限數量嵌套層級的分層帶。</value>
+    <value>列带功能允许您通过在列上方显示共享标题，将多列以可视化的方式组合在一起。列标题和列带标题均可包含文本、图像或自定义内容。该控件允许您创建具有无限嵌套级别的分层列带。</value>
   </data>
   <data name="WASMOnlyText1" xml:space="preserve">
     <value>此演示仅适用于桌面模式。下载应用程序。</value>
@@ -370,5 +381,14 @@
   </data>
   <data name="UseCasesGroupInfo_Desc" xml:space="preserve">
     <value>本演示应用模拟了一个抵押贷款计算器，它使用 Data Grid（数据网格）和 Cartesian Chart（直角坐标图表）控件构建。数据网格以表格形式呈现详细的还款计划。同步的图表会将此数据绘制出来，显示在贷款期限内本金和利息之间的关系。</value>
+  </data>
+  <data name="EmptyPoints" xml:space="preserve">
+    <value>本演示展示了图表控件如何借助"空点"处理不完整的数据集。这些点允许您在值缺失的位置创建系列中的可见间隙。要将某个点指定为空点，请将其值设置为 double.NaN、double.PositiveInfinity 或 double.NegativeInfinity。</value>
+  </data>
+  <data name="StackedArea" xml:space="preserve">
+    <value>堆叠面积图系列视图展示所有数据系列之间的绝对关系。每个系列以填充区域的形式层叠在前一个系列之上，其厚度表示该系列的绝对值。顶部的线条显示所有系列的总和。</value>
+  </data>
+  <data name="FullStackedArea" xml:space="preserve">
+    <value>百分比堆叠面积图系列视图（100% 堆叠面积图）展示所有数据系列之间的比例关系。每个系列以填充区域的形式层叠在前一个系列之上，其厚度表示该系列占总体的百分比。顶部线条始终显示为100%。</value>
   </data>
 </root>

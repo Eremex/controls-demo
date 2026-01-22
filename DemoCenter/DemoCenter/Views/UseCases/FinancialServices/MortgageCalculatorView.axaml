@@ -1,17 +1,10 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
 			 xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
 			 xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
 			 xmlns:vm="using:DemoCenter.ViewModels"
-
-xmlns:sys="clr-namespace:System;assembly=mscorlib"
 			 x:DataType="vm:MortgageCalculatorViewModel"
-xmlns:col="using:System.Collections"
-             
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="DemoCenter.Views.MortgageCalculatorView">
     	<Design.DataContext>
 		<vm:MortgageCalculatorViewModel/>
@@ -81,32 +74,36 @@ xmlns:col="using:System.Collections"
 				
 				<mxc:CartesianChart.Series>
 					<mxc:CartesianSeries DataAdapter="{Binding InterestSeriesDataAdapter}" SeriesName="Interest">
-						<mxc:CartesianAreaSeriesView Color="#F9A825" Transparency="0.2" MarkerSize="2" ShowMarkers="True"/>
+						<mxc:CartesianStackedAreaSeriesView Color="#F9A825" Transparency="0.2" MarkerSize="2" ShowMarkers="True" />
 					</mxc:CartesianSeries>
 
 					<mxc:CartesianSeries DataAdapter="{Binding PrincipalSeriesDataAdapter}" SeriesName="Principal">
-						<mxc:CartesianAreaSeriesView Color="#2E7D32" Transparency="0.2" MarkerSize="2" ShowMarkers="True"/>
+						<mxc:CartesianStackedAreaSeriesView Color="#2E7D32" Transparency="0.2" MarkerSize="2" ShowMarkers="True" />
 					</mxc:CartesianSeries>
 
 					<mxc:CartesianSeries DataAdapter="{Binding TotalMonthlyPaymentSeriesDataAdapter}" SeriesName="Payment Amount">
 						<mxc:CartesianLineSeriesView Color="Brown" MarkerSize="4"/>
 					</mxc:CartesianSeries>
-
 				</mxc:CartesianChart.Series>
+				
 				<mxc:CartesianChart.AxesY>
 					<mxc:AxisY ShowTitle="False" Title="Monthly Payment">
 						<mxc:AxisY.ScaleOptions>
-							<mxc:NumericScaleOptions LabelFormatter="{Binding CurrencyFormatter}" CrosshairLabelFormatter="{Binding CurrencyFormatter}"/>
+							<mxc:NumericScaleOptions LabelFormatter="{Binding CurrencyFormatter}" CrosshairLabelFormatter="{Binding CurrencyFormatter}" />
 						</mxc:AxisY.ScaleOptions>
 					</mxc:AxisY>
 				</mxc:CartesianChart.AxesY>
 				<mxc:CartesianChart.AxesX>
 					<mxc:AxisX ShowTitle="True" Title="Month">
 						<mxc:AxisX.ScaleOptions>
-							<mxc:NumericScaleOptions CrosshairLabelFormatter="{Binding ArgumentFormatter}"/>
+							<mxc:NumericScaleOptions CrosshairLabelFormatter="{Binding ArgumentFormatter}" />
 						</mxc:AxisX.ScaleOptions>
 					</mxc:AxisX>
 				</mxc:CartesianChart.AxesX>
+				
+				<mxc:CartesianChart.CrosshairOptions>
+					<mxc:CrosshairOptions SeriesLabelMode="OneForAllSeries" />
+				</mxc:CartesianChart.CrosshairOptions>
 			</mxc:CartesianChart>
 
 		</Grid>

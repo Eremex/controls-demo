@@ -37,7 +37,8 @@ TreeList-specific features include:
 - Column Header Templates – Allow you to display custom content in column headers, including images.
 - Multiple Node Selection (Highlight) — You can enable multiple node selection mode to allow a user to select (highlight) multiple nodes at one time.
 - Column Bands — Allow you to visually group multiple columns under a common header.
-- Export to XLSX Format
+- Fixed Columns — Allow specific columns to remain visible and anchored to the left or right edge of the control while other columns scroll horizontally.
+- Export to XLSX, PDF, CSV, and image formats
 
 ## Documentation
 

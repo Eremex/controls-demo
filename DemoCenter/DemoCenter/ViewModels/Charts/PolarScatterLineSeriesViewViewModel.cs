@@ -9,7 +9,8 @@ public partial class PolarScatterLineSeriesViewViewModel : ChartsPageViewModel
 {
     static IEnumerable<(double, double)> CreateFoliumPart(int minAngle, int maxAngle)
     {
-        for (int i = minAngle; i <= maxAngle; i+=5) {
+        for (int i = minAngle; i <= maxAngle; i += 5)
+        {
             double angleRad = i * Math.PI / 180;
             double sin = Math.Sin(angleRad);
             double cos = Math.Cos(angleRad);

@@ -16,6 +16,7 @@ public partial class AxisViewModel : ObservableObject
     [ObservableProperty] bool? showMinorGridlines = false;
     [ObservableProperty] int minorCount = 3;
     [ObservableProperty] Color color;
+    [ObservableProperty] bool reverse;
 
     public override string ToString() => Title;
 }

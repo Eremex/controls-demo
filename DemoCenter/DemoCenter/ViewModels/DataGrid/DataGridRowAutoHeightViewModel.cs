@@ -5,12 +5,6 @@ namespace DemoCenter.ViewModels
 {
     public partial class DataGridRowAutoHeightViewModel : PageViewModelBase
     {
-        [ObservableProperty]
-        IList<CarInfo> cars;
-
-        public DataGridRowAutoHeightViewModel()
-        {
-            Cars = CsvSources.Cars;
-        }
+        public IList<CarInfo> Cars { get; } = CsvSources.Cars;
     }
 }

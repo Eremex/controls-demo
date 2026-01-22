@@ -30,7 +30,11 @@ public static class PolarChartGroupInfo
             
             new (name: "Range Area", title: "Range Area Series View",
                 viewModelGetter: () => new PolarRangeAreaSeriesViewViewModel(),
-                descriptionGetter: () => Resources.ADataSeriesInThisExampleContainsTwoYValues2, introduced: new VersionInfo(1, 0))
+                descriptionGetter: () => Resources.ADataSeriesInThisExampleContainsTwoYValues2, introduced: new VersionInfo(1, 0)),
+            
+            new(name: "Empty Points", title: "Empty Points",
+                viewModelGetter: () => new PolarEmptyPointsViewModel(),
+                descriptionGetter: () => Resources.EmptyPoints, introduced: new VersionInfo(1, 3))
         };
     }
 }

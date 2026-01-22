@@ -141,8 +141,13 @@
   <data name="TheChartControlSGraphicsRenderingIsOptimiz" xml:space="preserve">
     <value>The Chart Control's graphics rendering is optimized to display large data. The control provides high performance even when series contain millions of points</value>
   </data>
-  <data name="ThisExampleDemonstratesACartesianChartCont" xml:space="preserve">
-    <value>This example demonstrates a CartesianChart control that has multiple data series and axes. You can use the mouse to scroll and zoom the entire chart area or individual axes. Use the options panel to change the main axis settings.</value>
+  <data name="CartesianChartMultipleAxes" xml:space="preserve">
+    <value>This example demonstrates multiple axes in the CartesianChart control, along with the options to customize axis layout, position, labels, gridlines, and more.
+• Multiple Axes — The chart control allows you to create multiple X and Y axes and bind each data series to its own axes.
+• Axis Position — You can display specific X or Y axes opposite their default locations: X axes at the top, and Y axes at the right. 
+• Swap Axes — With a single property, you can transpose the axes, so the Y axes are displayed horizontally and the X axes vertically.
+• Reverse Axis Direction — For individual axes, you can change the order of values from default (left-to-right and bottom-to-top) to reversed (right-to-left and top-to-bottom). 
+• Scroll and Zoom Axes — You can click and drag with the mouse or use the mouse wheel over individual axes to scroll and zoom these axes, without affecting other axes.</value>
   </data>
   <data name="ChartControlSupportsLogarithmicScalesForAn" xml:space="preserve">
     <value>Chart Control supports logarithmic scales for any of its numeric axes. Log base 10 is default. You can specify a custom log base to change data scaling.</value>
@@ -199,10 +204,10 @@ For instance, data can be aggregated to 1 second, 1 minute, 1 hour, 1 day, 1 wee
   </data>
   <data name="DataGridSupportsBuiltInDataSearchAndFiltra" xml:space="preserve">
     <value>The Data Grid offers multiple ways to filter and search for data: 
- - Column Filter Menus: Hover over a column header and click the filter button to open a menu. You can apply filters to one or multiple columns simultaneously.
- - Auto Filter Row: This dedicated row at the top allows you to type filter values directly into any column. The grid instantly displays only the records that match your input. 
- - Search Panel: Search for text across all columns. The Search Panel can be set to remain visible or activated with the Ctrl+F shortcut. Matching records are shown, and the text is highlighted within cells. 
- - Filtering in Code: For advanced scenarios, you can create custom filter criteria and apply them programmatically using the control's API.</value>
+ • Column Filter Menus: Hover over a column header and click the filter button to open a menu. You can apply filters to one or multiple columns simultaneously.
+ • Auto Filter Row: This dedicated row at the top allows you to type filter values directly into any column. The grid instantly displays only the records that match your input. 
+ • Search Panel: Search for text across all columns. The Search Panel can be set to remain visible or activated with the Ctrl+F shortcut. Matching records are shown, and the text is highlighted within cells. 
+ • Filtering in Code: For advanced scenarios, you can create custom filter criteria and apply them programmatically using the control's API.</value>
   </data>
   <data name="RegardlessOfTheNumberOfColumnsAndRowsInThe" xml:space="preserve">
     <value>Regardless of the number of columns and rows in the control, Data Grid remains responsive as you scroll the control horizontally or vertically, or sort/group its data. The built-in data virtualization mechanism updates only cells within the viewport to maintain high-performance scrolling</value>
@@ -216,11 +221,17 @@ For instance, data can be aggregated to 1 second, 1 minute, 1 hour, 1 day, 1 wee
   <data name="DataGridSupportsMultipleRowSelectionModeWh" xml:space="preserve">
     <value>DataGrid supports multiple row selection mode, which allows you and your user to select (highlight) multiple rows at one time. Users can select multiple rows with the mouse and keyboard. Click rows while holding the CTRL and/or SHIFT key down for row selection.</value>
   </data>
+  <data name="DataGridFixedColumnsDescription" xml:space="preserve">
+    <value>To keep essential data in view during horizontal scrolling, you can fix (pin) columns to the left or right edge. Once fixed, these columns remain stationary while other data scrolls. Enable the built-in 'Fixed' column menu to allow users to fix columns at runtime.</value>
+  </data>
   <data name="DataGridSupportsDragAndDropOperationsWithi" xml:space="preserve">
     <value>Data Grid supports drag-and-drop operations within the control and to external controls (for instance, Tree List or another Data Grid).This example demonstrates drag-and-drop functionality within and between Data Grids. The AllowDragDrop option activates the drag-and-drop feature. {0}The AllowDragDropSortedRows option must be enabled to allow drag-and-drop operations for sorted/grouped Data Grids. When data is sorted or grouped, a drag-and-drop operation modifies values of a dragged row in sort columns. {1}In this example, the controls are bound to collections that contain the same business objects. This ensures automatic row movement during drag-and-drop operations from the source to the target grid. When you move a row from one grid to another, a corresponding item is moved between item sources of the two grid controls.</value>
   </data>
   <data name="DataGridColumnBandsDescription" xml:space="preserve">
-    <value>Column bands allow you to visually group columns together. The DataGrid control displays bands as additional headers above column headers. Both band and column headers can include text, images, or custom content. You can create hierarchical bands with an unlimited number of nesting levels.</value>
+    <value>Column bands allow you to visually combine columns together by displaying shared headers above them. Both band and column headers can include text, images, or custom content. This demo showcases the following features:
+ • Band Generation from a Source — You can populate column bands from a band source defined in a View Model.
+ • Hierarchical Bands — The control allows you to create hierarchical bands with an unlimited number of nesting levels.
+ • Fixed Columns Support — Bands can work with fixed columns. When you pin (fix) a column, both the column and its band remain stationary during horizontal scrolling.</value>
   </data>
   <data name="TheEremexControlsLibraryIncludesMultipleEd" xml:space="preserve">
     <value>The Eremex Controls library includes multiple editors that provide you with advanced data editing capabilities. The editors allow you to display and edit data of different data types (numeric, Boolean, date-time, enumerations, etc.). They support the data validation mechanism, styling, and embedding in container controls (Data Grid, Tree List, Property Grid, and Toolbars/Menus).</value>
@@ -319,10 +330,10 @@ Image source: Webb Space Telescope, https://webbtelescope.org/</value>
   </data>
   <data name="TheTreeListSAutoFilterRowDisplayedAtTheTop" xml:space="preserve">
     <value>The Tree List control offers multiple ways to filter and search for data: 
- - Column Filter Menus: Hover over a column header and click the filter button to open a menu. You can apply filters to one or multiple columns simultaneously.
- - Auto Filter Row: This dedicated row at the top allows you to type filter values directly into any column. The control instantly displays only the records that match your input.
- - Search Panel: Search for text across all columns. The Search Panel can be set to remain visible or activated with the Ctrl+F shortcut. Matching records are shown, and the text is highlighted within cells.
- - Filtering in Code: For advanced scenarios, you can create custom filter criteria and apply them programmatically using the control's API.</value>
+ • Column Filter Menus: Hover over a column header and click the filter button to open a menu. You can apply filters to one or multiple columns simultaneously.
+ • Auto Filter Row: This dedicated row at the top allows you to type filter values directly into any column. The control instantly displays only the records that match your input.
+ • Search Panel: Search for text across all columns. The Search Panel can be set to remain visible or activated with the Ctrl+F shortcut. Matching records are shown, and the text is highlighted within cells.
+ • Filtering in Code: For advanced scenarios, you can create custom filter criteria and apply them programmatically using the control's API.</value>
   </data>
   <data name="EremexEditorsAreUsedInTreeListCellsByDefau" xml:space="preserve">
     <value>Eremex editors are used in Tree List cells by default to display and edit cell values of common data types (Boolean, integer, enumerations, etc.). This demo shows implicitly assigned in-place editors, and demonstrates how you can explicitly specify an editor for a Tree List column.</value>
@@ -334,7 +345,7 @@ Image source: Webb Space Telescope, https://webbtelescope.org/</value>
     <value>The TreeList and TreeView controls support multiple node selection mode, which allows you and your user to select (highlight) multiple nodes at one time. Users can select multiple nodes with the mouse and keyboard. Click nodes while holding the CTRL and/or SHIFT key down for node selection.</value>
   </data>
   <data name="TreeListColumnBandsDescription" xml:space="preserve">
-    <value>Column bands allow you to visually group columns together. The TreeList control displays bands as additional headers above column headers. Both band and column headers can include text, images, or custom content. You can create hierarchical bands with an unlimited number of nesting levels.</value>
+    <value>Column bands allow you to visually combine columns together by displaying shared headers above them. Both band and column headers can include text, images, or custom content. The control allows you to create hierarchical bands with an unlimited number of nesting levels.</value>
   </data>
   <data name="WASMOnlyText1" xml:space="preserve">
     <value>This demo is only available in Desktop mode. Download the </value>
@@ -372,5 +383,14 @@ Instead of bulky bars, it uses thin lines topped with markers to visualize data 
   </data>
   <data name="UseCasesGroupInfo_Desc" xml:space="preserve">
     <value>This demo emulates a dynamic mortgage calculator, built with the Data Grid and Cartersian Chart controls. Data Grid presents a detailed payment schedule as a table. The synchronized chart plots this data to show the relationship between principal and interest over the life of the loan.</value>
+  </data>
+  <data name="EmptyPoints" xml:space="preserve">
+    <value>This demo shows how a chart control handles incomplete datasets with the help of "empty points". These points allow you to create visible gaps in the series where values are missing. To specify an empty point, set its value to double.NaN, double.PositiveInfinity, or double.NegativeInfinity.</value>
+  </data>
+  <data name="StackedArea" xml:space="preserve">
+    <value>The Stacked Area series view shows absolute relationships between all data series. Each series is rendered as a filled area stacked on the previous one, with its thickness representing its absolute value. The top line shows the cumulative total of all series.</value>
+  </data>
+  <data name="FullStackedArea" xml:space="preserve">
+    <value>The Full Stacked Area series view (100% Stacked Area) shows proportional relationships between all data series. Each series is rendered as a filled area stacked on the previous one, with its thickness representing its percentage contribution to the total. The top line always indicates 100%.</value>
   </data>
 </root>

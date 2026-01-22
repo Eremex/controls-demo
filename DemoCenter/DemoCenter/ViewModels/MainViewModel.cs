@@ -59,15 +59,15 @@ public partial class MainViewModel : ViewModelBase
         
         ThemeVariants = new List<ThemeVariantInfo>()
         {
-            new ThemeVariantInfo("Light", ThemeVariant.Light),
-            new ThemeVariantInfo("Dark", ThemeVariant.Dark),
+            new("Light", ThemeVariant.Light),
+            new("Dark", ThemeVariant.Dark),
         };
 
         Locales = new List<LocaleInfo>()
         {
-           new LocaleInfo("En", new CultureInfo("En-us")),
-           new LocaleInfo("Ru", new CultureInfo("Ru-ru")),
-           new LocaleInfo("CN", new CultureInfo("zh-Hans")),
+           new("En", new CultureInfo("en-Us")),
+           new("Ru", new CultureInfo("ru-Ru")),
+           new("CN", new CultureInfo("zh-CN")),
         };
         SelectedThemeVariant = startupThemeVariant == ThemeVariant.Dark ? ThemeVariant.Dark : ThemeVariant.Light;
         SelectedLocale = Locales.First().Locale;//EN
@@ -144,7 +144,8 @@ public partial class MainViewModel : ViewModelBase
 
     partial void OnSelectedLocaleChanged(CultureInfo value)
     {
-        CultureInfo.CurrentUICulture = SelectedLocale;
+        CultureInfo.CurrentCulture = value;
+        CultureInfo.CurrentUICulture = value;
 
         var current = CurrentProductItem;
         CurrentProductItem = null;

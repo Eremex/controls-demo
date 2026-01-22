@@ -40,8 +40,10 @@
                                   TreeColumnFieldName="Description"
                                   SearchPanelDisplayMode="HotKey"
                                   ShowAutoFilterRow="True"
+								  ShowConditionInAutoFilterRow="True"
                                   AutoExpandAllNodes="True"
-                                  ColumnFilterButtonDisplayMode="Always">
+                                  ColumnFilterButtonDisplayMode="Always"
+                                  ColumnFilterPopupMode="CheckedList">
 			<mxtl:TreeListControl.Styles>
 				<Style Selector="mxtlv|TreeListRowControl">
 					<Setter Property="TextBlock.FontWeight">
@@ -100,12 +102,18 @@
                         
                         <mxe:CheckEditor Content="Allow Column Filtering" IsChecked="{Binding #treeList.AllowColumnFiltering}" Classes="LayoutItem" Margin="6,6,6,0"/>
                         <DockPanel IsEnabled="{Binding #treeList.AllowColumnFiltering}">
+                            <Label Content="Column Filter Popup Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                            <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPopupMode}"
+                                                EditorValue="{Binding #treeList.ColumnFilterPopupMode}"
+                                                DockPanel.Dock="Top" Classes="LayoutItem"/>
+
                             <Label Content="Column Filter Icon Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
                             <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:ColumnFilterButtonDisplayMode}"
                                                 EditorValue="{Binding #treeList.ColumnFilterButtonDisplayMode}"
                                                 Classes="LayoutItem"/>
                         </DockPanel>
                         <mxe:CheckEditor Content="Show Auto Filter Row" IsChecked="{Binding #treeList.ShowAutoFilterRow}" Classes="LayoutItem" Margin="6,6,6,0"/>
+						<mxe:CheckEditor Content="Show Condition In Auto Filter Row" IsChecked="{Binding #treeList.ShowConditionInAutoFilterRow}" Classes="LayoutItem" Margin="6,6,6,0"/>
                         <DockPanel>
                             <Label Content="Filter Panel Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
                             <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPanelDisplayMode}"

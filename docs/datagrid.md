@@ -17,11 +17,12 @@
 - Auto Filter Row — A special row that allows a user to filter data against columns.
 - Row Drag-and-Drop - A user can drag a row within the control and to another control.
 - Column Bands — Allow you to visually group multiple columns under a common header.
+- Fixed Columns — Allow specific columns to remain visible and anchored to the left or right edge of the control while other columns scroll horizontally.
 - Column Header Templates – Allow you to display custom content in column headers, including images.
 - Multiple Row Selection (Highlight) — You can enable multiple row selection mode to allow a user to select (highlight) multiple rows at one time.
 - Data Annotation Attribute Support — The DataGrid control takes into account dedicated Data Annotation attributes applied to the data source's properties. You can use Data Annotation attributes to specify custom visibility, position, read-only state, and display name for auto-generated columns.
 - High Performance for Large Volumes of Data — The data virtualization mechanism for vertical and horizontal scrolling boosts the control's performance when displaying large numbers of rows and columns.
-- Export to XLSX Format
+- Export to XLSX, PDF, CSV, and image formats
 
 ## Documentation
 

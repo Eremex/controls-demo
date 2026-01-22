@@ -1,24 +1,30 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianSideBySideRangeBarSeriesViewView"
-             x:DataType="vm:CartesianSideBySideRangeBarSeriesViewViewModel"
->
-    <mxc:CartesianChart Classes="DemoChartWithNoOptions" SeriesSource="{Binding Series}" x:Name="DemoControl">
-        <mxc:CartesianChart.SeriesTemplate>
-            <DataTemplate x:DataType="vm:SeriesViewModel">
-                <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
-                    <mxc:CartesianSideBySideRangeBarSeriesView Color="{Binding Color}" />
-                </mxc:CartesianSeries>
-            </DataTemplate>
-        </mxc:CartesianChart.SeriesTemplate>
+             x:DataType="vm:CartesianSideBySideRangeBarSeriesViewViewModel">
+    <Grid ColumnDefinitions="* 250">
+        <mxc:CartesianChart Classes="DemoChartWithNoOptions" SeriesSource="{Binding Series}" x:Name="DemoControl">
+            <mxc:CartesianChart.SeriesTemplate>
+                <DataTemplate x:DataType="vm:SeriesViewModel">
+                    <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
+                        <mxc:CartesianSideBySideRangeBarSeriesView Color="{Binding Color}" />
+                    </mxc:CartesianSeries>
+                </DataTemplate>
+            </mxc:CartesianChart.SeriesTemplate>
 
-        <mxc:CartesianChart.AxesX>
-            <mxc:AxisX ShowTitle="False" />
-        </mxc:CartesianChart.AxesX>
-        <mxc:CartesianChart.AxesY>
-            <mxc:AxisY ShowTitle="False" />
-        </mxc:CartesianChart.AxesY>
-    </mxc:CartesianChart>
+            <mxc:CartesianChart.AxesX>
+                <mxc:AxisX ShowTitle="False" />
+            </mxc:CartesianChart.AxesX>
+            <mxc:CartesianChart.AxesY>
+                <mxc:AxisY ShowTitle="False" />
+            </mxc:CartesianChart.AxesY>
+        </mxc:CartesianChart>
+                
+        <mxe:GroupBox Grid.Column="1" Header="Cartesian Chart" Classes="PropertiesGroup">
+            <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor" VerticalAlignment="Top" />
+        </mxe:GroupBox>        
+    </Grid>
 </UserControl>

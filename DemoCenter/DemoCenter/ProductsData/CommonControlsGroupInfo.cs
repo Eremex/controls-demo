@@ -23,7 +23,8 @@ namespace DemoCenter.ProductsData
                     introduced: new VersionInfo(1, 1), showInWeb: false),
 
                 new PageInfo(name: "SplitContainerControl", title: "SplitContainerControl",
-                    viewModelGetter: () => new SplitContainerControlPageViewModel(), descriptionGetter: () => Resources.SplitContainerControlAllowsYouToPlaceConte),
+                    viewModelGetter: () => new SplitContainerControlPageViewModel(), descriptionGetter: () => Resources.SplitContainerControlAllowsYouToPlaceConte,
+                    updated: new VersionInfo(1,3)),
             };
         }
     }

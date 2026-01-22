@@ -4,8 +4,7 @@
              xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianLineSeriesViewView"
-             x:DataType="vm:CartesianLineSeriesViewViewModel"
->
+             x:DataType="vm:CartesianLineSeriesViewViewModel">
     <Grid ColumnDefinitions="* 250">
         <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" SeriesSource="{Binding Series}" x:Name="DemoControl">
             <mxc:CartesianChart.SeriesTemplate>
@@ -27,14 +26,19 @@
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
         
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Line Thickness" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlLineThickness" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
-                <mxe:CheckEditor x:Name="CheShowMarkers" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
-                <Label Content="Marker Size" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers, Path=IsChecked}" />
-            </StackPanel>
-        </mxe:GroupBox>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <mxe:GroupBox Header="Cartesian Chart" Classes="PropertiesGroup">
+                <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
+            </mxe:GroupBox>
+            <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Line Thickness" Classes="TopPropertyLabel" />
+                    <Slider x:Name="SlLineThickness" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
+                    <mxe:CheckEditor x:Name="CheShowMarkers" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
+                    <Label Content="Marker Size" Classes="TopPropertyLabel" />
+                    <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers, Path=IsChecked}" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
     </Grid>
 </UserControl>

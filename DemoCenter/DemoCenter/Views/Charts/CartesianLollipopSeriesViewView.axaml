@@ -27,15 +27,20 @@
             </mxc:CartesianChart.AxesX>
         </mxc:CartesianChart>
         
-        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Line Thickness" Classes="TopPropertyLabel" />
-                <Slider Minimum="1" Maximum="8" Value="{Binding LineThickness}" Classes="PropertyEditor" IsSnapToTickEnabled="True" TickFrequency="1" />
-                <Label Content="Marker Size" Classes="TopPropertyLabel" />
-                <Slider Minimum="10" Maximum="20" Value="{Binding MarkerSize}" Classes="PropertyEditor" IsSnapToTickEnabled="True" TickFrequency="1" />
-                <Label Content="Line Orientation" Classes="TopPropertyLabel" />
-                <mxe:ComboBoxEditor EditorValue="{Binding LineOrientation}" ItemsSource="{mx:EnumItemsSource EnumType=mxc:CartesianLollipopOrientation}" />
-            </StackPanel>
-        </mxe:GroupBox>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <mxe:GroupBox Header="Cartesian Chart" Classes="PropertiesGroup">
+                <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
+            </mxe:GroupBox>
+            <mxe:GroupBox  Header="Properties" Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Line Thickness" Classes="TopPropertyLabel" />
+                    <Slider Minimum="1" Maximum="8" Value="{Binding LineThickness}" Classes="PropertyEditor" IsSnapToTickEnabled="True" TickFrequency="1" />
+                    <Label Content="Marker Size" Classes="TopPropertyLabel" />
+                    <Slider Minimum="10" Maximum="20" Value="{Binding MarkerSize}" Classes="PropertyEditor" IsSnapToTickEnabled="True" TickFrequency="1" />
+                    <Label Content="Line Orientation" Classes="TopPropertyLabel" />
+                    <mxe:ComboBoxEditor EditorValue="{Binding LineOrientation}" ItemsSource="{mx:EnumItemsSource EnumType=mxc:CartesianLollipopOrientation}" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </StackPanel>
     </Grid>
 </UserControl>

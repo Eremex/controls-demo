@@ -12,7 +12,7 @@
     
     <Grid ColumnDefinitions="*, 250">
         <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" ShowGroupPanel="False" AllowEditing="False" SearchPanelDisplayMode="HotKey"
-                              BorderThickness="1,0" IsSearchPanelVisible="True" ShowAutoFilterRow="True" ColumnFilterButtonDisplayMode="Always">
+                              BorderThickness="1,0" IsSearchPanelVisible="True" ShowAutoFilterRow="True" ShowConditionInAutoFilterRow="True" ColumnFilterButtonDisplayMode="Always" ColumnFilterPopupMode="CheckedList">
 			<mxdg:GridColumn FieldName="FirstName" Width="*" MinWidth="80"/>
 			<mxdg:GridColumn FieldName="LastName" Width="*" MinWidth="80"/>
 			<mxdg:GridColumn FieldName="HireDate" Header="Hire Date" Width="*" MinWidth="80">
@@ -49,12 +49,17 @@
                     <StackPanel>
                         <mxe:CheckEditor Content="Allow Column Filtering" IsChecked="{Binding #dataGrid.AllowColumnFiltering}" Classes="LayoutItem"/>
                         <DockPanel IsEnabled="{Binding #dataGrid.AllowColumnFiltering}">
+                            <Label Content="Column Filter Popup Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                            <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPopupMode}"
+                                                EditorValue="{Binding #dataGrid.ColumnFilterPopupMode}"
+                                                DockPanel.Dock="Top" Classes="LayoutItem"/>
                             <Label Content="Column Filter Icon Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
                             <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:ColumnFilterButtonDisplayMode}"
                                                 EditorValue="{Binding #dataGrid.ColumnFilterButtonDisplayMode}"
                                                 Classes="LayoutItem"/>
                         </DockPanel>
                         <mxe:CheckEditor Content="Show Auto Filter Row" IsChecked="{Binding #dataGrid.ShowAutoFilterRow}" Classes="LayoutItem" Margin="6,6,6,0"/>
+						<mxe:CheckEditor Content="Show Condition In Auto Filter Row" IsChecked="{Binding #dataGrid.ShowConditionInAutoFilterRow}" Classes="LayoutItem" Margin="6,6,6,0"/>
                         <DockPanel>
                             <Label Content="Filter Panel Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
                             <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPanelDisplayMode}"

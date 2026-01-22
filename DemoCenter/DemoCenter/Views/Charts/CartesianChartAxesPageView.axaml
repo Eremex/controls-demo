@@ -6,14 +6,14 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              x:Class="DemoCenter.Views.CartesianChartAxesPageView"
              x:DataType="vm:CartesianChartAxesPageViewModel"
->
+             x:CompileBindings="True">
     <Grid ColumnDefinitions="* 250">
         <mxc:CartesianChart Grid.Column="0" Classes="DemoChart" x:Name="DemoControl"
                             SeriesSource="{Binding Series}" AxesXSource="{Binding AxesX}" AxesYSource="{Binding AxesY}">
             <mxc:CartesianChart.SeriesTemplate>
                 <DataTemplate x:DataType="vm:SeriesViewModel">
                     <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}" AxisXKey="{Binding AxisXKey}" AxisYKey="{Binding AxisYKey}">
-                        <mxc:CartesianLineSeriesView Color="{Binding Color}" Thickness="2" />
+                        <mxc:CartesianAreaSeriesView Color="{Binding Color}" Thickness="2" />
                     </mxc:CartesianSeries>
                 </DataTemplate>
             </mxc:CartesianChart.SeriesTemplate>
@@ -29,7 +29,8 @@
                                ShowInterlacing="{Binding ShowInterlacing}"
                                ShowMajorGridlines="{Binding ShowMajorGridlines}"
                                ShowMinorGridlines="{Binding ShowMinorGridlines}"
-                               MinorCount="{Binding MinorCount}"/>
+                               MinorCount="{Binding MinorCount}"
+                               Reverse="{Binding Reverse} "/>
                 </DataTemplate>
             </mxc:CartesianChart.AxisXTemplate>
             
@@ -44,39 +45,35 @@
                                ShowInterlacing="{Binding ShowInterlacing}"
                                ShowMajorGridlines="{Binding ShowMajorGridlines}"
                                ShowMinorGridlines="{Binding ShowMinorGridlines}"
-                               MinorCount="{Binding MinorCount}"/>
+                               MinorCount="{Binding MinorCount}"
+                               Reverse="{Binding Reverse} "/>
                 </DataTemplate>
             </mxc:CartesianChart.AxisYTemplate>
         </mxc:CartesianChart>
 
         <StackPanel Grid.Column="1">
+            <mxe:GroupBox Header="Cartesian Chart" Classes="PropertiesGroup">
+                <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
+            </mxe:GroupBox>
             <mxe:GroupBox Header="Selected Axis" Classes="PropertiesGroup">
-                <Grid ColumnDefinitions="3*, *">
-                    <mxe:ComboBoxEditor ItemsSource="{Binding Axes}"
-                                        EditorValue="{Binding SelectedAxis}"
-                                        Classes="PropertyEditor"
-                                        Margin="0,12,0,0"/>
-                </Grid>
+                <mxe:ComboBoxEditor ItemsSource="{Binding Axes}" EditorValue="{Binding SelectedAxis}" Classes="PropertyEditor" Margin="0,12,0,0"/>
             </mxe:GroupBox>
             <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                <StackPanel Orientation="Vertical">
                     <Label Content="Position" Classes="TopPropertyLabel" />
-                    <mxe:ComboBoxEditor Grid.Row="1" ItemsSource="{mx:EnumItemsSource EnumType=mxc:AxisPosition}"
-                                        EditorValue="{Binding SelectedAxis.Position}"
-                                        Classes="PropertyEditor"/>
+                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxc:AxisPosition}" EditorValue="{Binding SelectedAxis.Position}" Classes="PropertyEditor"/>
 
-                    <mxe:CheckEditor Grid.Row="2" Content="Show Title" IsChecked="{Binding SelectedAxis.ShowTitle}" Classes="PropertyEditor"/>
-                    <mxe:TextEditor Grid.Row="3" IsEnabled="{Binding SelectedAxis.ShowTitle}" EditorValue="{Binding SelectedAxis.Title}" Margin="0,8,0,0" 
-                                    Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Grid.Row="4" Content="Show Labels" IsChecked="{Binding SelectedAxis.ShowLabels}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Content="Reverse" IsChecked="{Binding SelectedAxis.Reverse}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Content="Show Title" IsChecked="{Binding SelectedAxis.ShowTitle}" Classes="PropertyEditor"/>
+                    <mxe:TextEditor IsEnabled="{Binding SelectedAxis.ShowTitle}" EditorValue="{Binding SelectedAxis.Title}" Margin="0,8,0,0" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Content="Show Labels" IsChecked="{Binding SelectedAxis.ShowLabels}" Classes="PropertyEditor"/>
 
-                    <mxe:CheckEditor Grid.Row="5" Content="Show Major Gridlines" IsChecked="{Binding SelectedAxis.ShowMajorGridlines}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Grid.Row="6" Content="Show Interlacing" IsEnabled="{Binding SelectedAxis.ShowMajorGridlines}" 
-                                     IsChecked="{Binding SelectedAxis.ShowInterlacing}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Grid.Row="7" Content="Show Minor Gridlines" IsChecked="{Binding SelectedAxis.ShowMinorGridlines}" Classes="PropertyEditor"/>
-                    <Label Grid.Row="8" Content="Minor Count" Classes="PropertyLabel"/>
-                    <Slider Grid.Row="9" Minimum="0" Maximum="9" Value="{Binding SelectedAxis.MinorCount}" Grid.ColumnSpan="2" Margin="0,8,0,0" />
-                </Grid>
+                    <mxe:CheckEditor Content="Show Major Gridlines" IsChecked="{Binding SelectedAxis.ShowMajorGridlines}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Content="Show Interlacing" IsEnabled="{Binding SelectedAxis.ShowMajorGridlines}" IsChecked="{Binding SelectedAxis.ShowInterlacing}" Classes="PropertyEditor"/>
+                    <mxe:CheckEditor Content="Show Minor Gridlines" IsChecked="{Binding SelectedAxis.ShowMinorGridlines}" Classes="PropertyEditor"/>
+                    <Label Content="Minor Count" Classes="PropertyLabel"/>
+                    <Slider Minimum="0" Maximum="9" Value="{Binding SelectedAxis.MinorCount}" Margin="0,8,0,0" />
+                </StackPanel>
             </mxe:GroupBox>
         </StackPanel>
     </Grid>

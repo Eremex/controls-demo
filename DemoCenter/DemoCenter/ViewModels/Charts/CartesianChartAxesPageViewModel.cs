@@ -21,7 +21,7 @@ public partial class CartesianChartAxesPageViewModel : ChartsPageViewModel
     };
     [ObservableProperty] ObservableCollection<AxisViewModel> axesY = new()
     {
-        new AxisViewModel { Key = "1", Title = "First Axis Y", Color = Color1, ShowInterlacing = true, ShowMajorGridlines = true, ShowMinorGridlines = true },
+        new AxisViewModel { Key = "1", Title = "First Axis Y", Color = Color1, ShowInterlacing = true, ShowMajorGridlines = true, ShowMinorGridlines = true, Reverse = true },
         new AxisViewModel { Key = "2", Title = "Second Axis Y", Color = Color2, Position = AxisPosition.Far }
     };
     [ObservableProperty] ObservableCollection<SeriesViewModel> series = new()

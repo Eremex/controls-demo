@@ -29,23 +29,28 @@
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
         
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Transparency" Classes="TopPropertyLabel" />
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <mxe:GroupBox Header="Cartesian Chart" Classes="PropertiesGroup">
+                <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
+            </mxe:GroupBox>
+            <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Transparency" Classes="TopPropertyLabel" />
 
-                <Slider x:Name="SlTransparency" Minimum="0" Maximum="1" Value="0.3" Classes="PropertyEditor" />
-                <Label Content="Line 1 Thickness" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlLineThickness1" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
-                <mxe:CheckEditor x:Name="CheShowMarkers1" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
-                <Label Content="Marker 1 Size" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlMarkerSize1" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers1, Path=IsChecked}" />
+                    <Slider x:Name="SlTransparency" Minimum="0" Maximum="1" Value="0.3" Classes="PropertyEditor" />
+                    <Label Content="Line 1 Thickness" Classes="TopPropertyLabel" />
+                    <Slider x:Name="SlLineThickness1" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
+                    <mxe:CheckEditor x:Name="CheShowMarkers1" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
+                    <Label Content="Marker 1 Size" Classes="TopPropertyLabel" />
+                    <Slider x:Name="SlMarkerSize1" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers1, Path=IsChecked}" />
                 
-                <Label Content="Line 2 Thickness" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlLineThickness2" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
-                <mxe:CheckEditor x:Name="CheShowMarkers2" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
-                <Label Content="Marker 1 Size" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlMarkerSize2" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers2, Path=IsChecked}" />
-            </StackPanel>
-        </mxe:GroupBox>
+                    <Label Content="Line 2 Thickness" Classes="TopPropertyLabel" />
+                    <Slider x:Name="SlLineThickness2" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
+                    <mxe:CheckEditor x:Name="CheShowMarkers2" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
+                    <Label Content="Marker 1 Size" Classes="TopPropertyLabel" />
+                    <Slider x:Name="SlMarkerSize2" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers2, Path=IsChecked}" />
+                </StackPanel>
+            </mxe:GroupBox>            
+        </StackPanel>
     </Grid>
 </UserControl>
