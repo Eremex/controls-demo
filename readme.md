@@ -6,7 +6,6 @@ The advanced controls - from Data Grid and Tree List to Charts and Docking UI - 
 
 [![Latest Library](https://img.shields.io/nuget/v/Eremex.Avalonia.Controls?label=Latest&nbsp;Library&logo=nuget)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
 [![Library Downloads](https://img.shields.io/nuget/dt/Eremex.Avalonia.Controls?label=Downloads)](https://www.nuget.org/packages/Eremex.Avalonia.Controls) 
-[![Follow @EMXControls](https://img.shields.io/twitter/follow/EMXControls?style=social)](https://twitter.com/intent/follow?screen_name=EMXControls)
 [![Telegram En](https://img.shields.io/badge/chat-on_Telegram_(En)-E4287C)](https://t.me/emxControlsEn)
 [![Telegram Ru](https://img.shields.io/badge/chat-on_Telegram_(Ru)-FF33AA)](https://t.me/emxControls)
 ![repo size](https://img.shields.io/github/repo-size/Eremex/controls-demo)
@@ -18,7 +17,7 @@ The current repository includes a Demo project that enables you to explore and t
 For more details about the Controls Library, [licensing options](#product-licensing), or any other inquiries, please feel free to [contact us](#contact-us).
 
 
-[![Controls - Light Theme](docs/images/controls-light-sm-v1.1.png)](docs/images/controls-light-v1.1.png)
+[![Controls - Light Theme](docs/images/controls-light-v1.3-sm.png)](docs/images/controls-light-v1.3.png)
   
 <!-- [![Controls - Dark Theme](docs/images/controls-dark-sm.png)](docs/images/controls-dark.png) -->
 
@@ -63,9 +62,12 @@ Displays data from an item source as a two-dimensional table, providing rich dat
 - Data sorting and grouping
 - In-place editors
 - Column bands
+- Fixed (frozen) columns
 - Search and data filtration
 - Data validation
+- Row drag-and-drop
 - Built-in and custom context menus
+- Export to XLSX, PDF, CSV, and image formats
 - Styles
 
 [Learn more...](docs/datagrid.md)
@@ -82,9 +84,12 @@ Renders hierarchical data in the form of a tree. Tree List supports multiple dat
 - Data sorting
 - In-place editors
 - Column bands
+- Fixed (frozen) columns
 - Data search and filtering
 - Data validation
+- Row drag-and-drop
 - Built-in and custom context menus
+- Export to XLSX, PDF, CSV, and image formats
 - Styles
 
 [Learn more...](docs/treelist.md)
@@ -110,7 +115,7 @@ An efficient solution for browsing and editing properties of one or more objects
 
 ### Chart Controls
 
-The `CartesianChart`, `PolarChart` and `SmithChart` controls allow you to integrate the most popular interactive graphs into your application's UI.
+The `CartesianChart`, `PolarChart` and `SmithChart` controls allow you to integrate the most popular interactive charts into your application's UI.
 
 ![thumb-chartcontrol](docs/images/thumb-chartcontrol.png) 
 
@@ -249,6 +254,7 @@ A collection of useful controls shipped with the Eremex Controls library allow y
 
 ![thumb-utilitycontrols](docs/images/thumb-utilitycontrols.png) 
 
+- SplitButton
 - TabControl
 - SplitContainerControl
 - GroupBox
@@ -261,10 +267,15 @@ A collection of useful controls shipped with the Eremex Controls library allow y
 
 ## Themes
 
-The Eremex Controls Library ships with the `Eremex.Avalonia.Themes.DeltaDesign` package that contains the 'DeltaDesign' paint theme for the controls. The 'DeltaDesign' paint theme supports two theme variants that help you deliver interfaces with the light and dark color palettes. The theme is also applied to a set of standard Avalonia controls: Button, CalendarControl, CheckBox, Label, ListBox, ProgressBar, RadioButton, Slider, TextBox, and ToolTip.
+The Eremex Controls Library includes the following paint themes to render the controls shipped with the library:
+
+- 'DeltaDesign' paint theme (included in the `Eremex.Avalonia.Themes.DeltaDesign` package) — Contains visual settings for the Eremex Controls (except `Graphics3DControl`) and a set of standard Avalonia UI controls. 
+- 'Controls3D' paint theme (included in the `Eremex.Avalonia.Controls3D` package) — Contains visual settings for the `Graphics3DControl`.
+
+These paint themes support two theme variants that help you deliver interfaces with the light and dark color palettes. Please note that the 'DeltaDesign' theme also affects a set of standard Avalonia controls used in your project: Button, CalendarControl, CheckBox, Label, ListBox, ProgressBar, RadioButton, Slider, TextBox, ToolTip, and more.
 
 
-| **DeltaDesign Light Theme** | **DeltaDesign Dark Theme** |
+| **Light Theme Variant** | **Dark Theme Variant** |
 |---|---|
 | ![thumb-lighttheme](docs/images/thumb-lighttheme.png) | ![thumb-darktheme](docs/images/thumb-darktheme.png) |
 | ![thumb-lighttheme2](docs/images/thumb-lighttheme2.png) | ![thumb-darktheme2](docs/images/thumb-darktheme2.png) |
@@ -303,7 +314,7 @@ The Eremex Controls Library ships with the `Eremex.Avalonia.Themes.DeltaDesign` 
 The following are system requirements to run the current Demo project, and use the Eremex Controls Library for Avalonia UI in your projects.
 
 - [.NET](https://dotnet.microsoft.com/en-us/download/dotnet) 8.0+
-- [Avalonia UI Framework](https://avaloniaui.net) v11.3.3+
+- [Avalonia UI Framework](https://avaloniaui.net) v11.3.8+
 - Developement: IDEs that have Avalonia UI support (Visual Studio 2022 and higher, JetBrains Rider 2021.3 and higher).
 
 
@@ -317,6 +328,8 @@ The following are system requirements to run the current Demo project, and use t
 The [Eremex End-User License Agreement (EULA)](https://eremexcontrols.net/licensing/eula/) fully outlines the terms and conditions for using the Eremex Avalonia UI Controls Library.
 
 The source code included in the current repository is distributed under the terms of the MIT license. 
+
+If you are developing an open-source project and wish to use the Eremex Controls library within it, you can apply for a free non-commercial license. See [Licensing and Product Evaluation](https://eremexcontrols.net/licensing/).
 
 ## Contact Us
 
