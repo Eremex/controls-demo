@@ -14,7 +14,9 @@ The advanced controls - from Data Grid and Tree List to Charts and Docking UI - 
 
 The current repository includes a Demo project that enables you to explore and test all the features of the Eremex Controls for Avalonia UI. The demo provides access to the fully functional version of the Eremex Controls Library, which you can use in your projects for evaluation purposes without time restrictions. Note that an unlicensed version of the Library displays trial messages.
 
-For more details about the Controls Library, [licensing options](#product-licensing), or any other inquiries, please feel free to [contact us](#contact-us).
+For more details about the Controls Library, [purchasing and licensing options](#product-purchasing-and-licensing), or any other inquiries, please feel free to [contact us](#contact-us).
+
+If you are developing an open-source project and wish to use the Eremex Controls library within it, you can apply for a free non-commercial license. See [Free Non-commercial Licenses for Open-Source Projects](#free-non-commercial-licenses-for-open-source-projects).
 
 
 [![Controls - Light Theme](docs/images/controls-light-v1.3-sm.png)](docs/images/controls-light-v1.3.png)
@@ -298,9 +300,6 @@ These paint themes support two theme variants that help you deliver interfaces w
 
 - [ALT Linux <img src="docs/images/os-logo-alt_linux.svg" height=30>](https://www.basealt.ru) 
 - [Astra Linux <img src="docs/images/os-logo-astra_linux.svg" height=30>](https://astralinux.ru) <sup>*</sup>
-
-  <sup>*</sup> Including OS editions optimized for the Elbrus CPU.
-
 - [RED OS <img src="docs/images/os-logo-RED_OS.png" height=30>](https://redos.red-soft.ru) 
 
 
@@ -323,13 +322,62 @@ The following are system requirements to run the current Demo project, and use t
 - [English Documentation](https://eremexcontrols.net)
 - [Документация на Русском](https://eremexcontrols.net/ru/)
 
-## Product Licensing
+## Product Purchasing and Licensing
 
-The [Eremex End-User License Agreement (EULA)](https://eremexcontrols.net/licensing/eula/) fully outlines the terms and conditions for using the Eremex Avalonia UI Controls Library.
+Each Eremex Controls license provides one year of product updates (including new features and fixes) and technical support. A license is required for each individual developer using the product.
 
-The source code included in the current repository is distributed under the terms of the MIT license. 
+### License Types 
 
-If you are developing an open-source project and wish to use the Eremex Controls library within it, you can apply for a free non-commercial license. See [Licensing and Product Evaluation](https://eremexcontrols.net/licensing/).
+- Perpetual License
+    
+    - Includes one year of updates and support from the purchase date.
+    - After the first year, you retain the perpetual right to build and distribute applications (both existing and new) based on the licensed version.
+    - To continue receiving updates after the first year, purchase the "EMX Controls Update Subscription Renewal for 1 Year".
+
+- Annual License
+
+    - Includes one year of updates and support from the purchase date.
+    - After the license expires, you may continue to build and distribute applications that were created during the active license period.
+    - To develop new projects after license expiration, a new license must be purchased.
+
+- Update Subscription Renewal for 1 Year
+
+    - This product extends access to updates and technical support for one additional year for owners of a valid Perpetual License. 
+
+
+### How to Purchase
+
+Purchasing options vary by region:
+
+- For customers in Russia, Belarus, Kazakhstan, Kyrgyzstan, and Armenia (EAEU):
+
+    - Visit our regional website: [eremexcontrols.ru](https://www.eremexcontrols.ru)
+    - Purchase via the official Softline store: [EMX Controls on Softline](https://store.softline.ru/eremex/biblioteka-kontrolov-emx-controls/)
+
+- For customers in all other countries:
+
+    - Visit our global website: [eremexcontrols.com](https://www.eremexcontrols.com)
+
+### License Agreement
+
+The terms and conditions for using the EMX Controls Library are fully defined in the End-User License Agreement (EULA). Please review it before purchasing.
+
+- [EMX Controls End-User License Agreement (EULA)](https://eremexcontrols.net/licensing/eula/)
+
+
+### Free Non-commercial Licenses for Open-Source Projects
+
+To support open-source development, we offer free non-commercial licenses. If you are the author of an open-source project and wish to use our library within it, you can apply for a non-commecial license using the following service:
+
+- [Apply for an open-source project license](https://eremexcontrols.net/open-source-licensing/)
+
+For more information, please see:
+
+- [Licensing and Product Evaluation](https://eremexcontrols.net/licensing/)
+
+## Source Code of This Demo Project
+
+The source code included in the current repository is distributed under the terms of the MIT license.
 
 ## Contact Us
 
