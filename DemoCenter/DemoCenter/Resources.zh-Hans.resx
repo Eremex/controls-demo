@@ -274,9 +274,6 @@
   <data name="ThisExampleDemonstratesDynamicTransformati" xml:space="preserve">
     <value>此示例展示了应用于 Graphics3DControl 中 3D 模型的动态变换。</value>
   </data>
-  <data name="ThisExampleDemonstratesAGraphics3DControlD" xml:space="preserve">
-    <value>此示例展示了一个 Graphics3DControl，它显示从 STL 文件加载的大型 3D 模型。使用 STLDotNet6.Formats.StereoLithography 库解析 STL 文件，并获取数据以初始化创建的模型的顶点和材质。</value>
-  </data>
   <data name="ThisExampleDemonstratesAGraphics3DControlD1" xml:space="preserve">
     <value>此示例展示了一个显示具有简单材质的 3D 模型的 Graphics3DControl。使用右侧的属性窗格自定义材质设置。</value>
   </data>
@@ -390,5 +387,11 @@
   </data>
   <data name="FullStackedArea" xml:space="preserve">
     <value>百分比堆叠面积图系列视图（100% 堆叠面积图）展示所有数据系列之间的比例关系。每个系列以填充区域的形式层叠在前一个系列之上，其厚度表示该系列占总体的百分比。顶部线条始终显示为100%。</value>
+  </data>
+  <data name="RobotArm" xml:space="preserve">
+    <value>本演示展示了一个从FBX文件加载的3D机械臂。通过右侧的交互面板，您可以对嵌套的3D模型应用变换，从而操控每个关节（从底座到机械爪）。模型由 Ryan King Art 设计 https://sketchfab.com/ryankingart。</value>
+  </data>
+  <data name="STL" xml:space="preserve">
+    <value>本演示展示了在Graphics3DControl中渲染的电路板3D模型。该示例展示了如何使用Assimp库从STL文件导入复杂模型。加载的几何数据用于初始化Graphics3DControl中的网格、顶点和材质。</value>
   </data>
 </root>

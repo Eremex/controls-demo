@@ -275,9 +275,6 @@ For instance, data can be aggregated to 1 second, 1 minute, 1 hour, 1 day, 1 wee
   <data name="ThisExampleDemonstratesDynamicTransformati" xml:space="preserve">
     <value>This example demonstrates dynamic transformations applied to 3D Models in a Graphics3DControl.</value>
   </data>
-  <data name="ThisExampleDemonstratesAGraphics3DControlD" xml:space="preserve">
-    <value>This example demonstrates a Graphics3DControl displaying a large 3D model loaded from an STL file. The STLDotNet6.Formats.StereoLithography library is used to parse the STL file, and to obtain data to initialize vertices and materials of the created model.</value>
-  </data>
   <data name="ThisExampleDemonstratesAGraphics3DControlD1" xml:space="preserve">
     <value>This example demonstrates a Graphics3DControl displaying a 3D model with a simple material. Use the Properties pane on the right to customize the material settings.</value>
   </data>
@@ -392,5 +389,11 @@ Instead of bulky bars, it uses thin lines topped with markers to visualize data 
   </data>
   <data name="FullStackedArea" xml:space="preserve">
     <value>The Full Stacked Area series view (100% Stacked Area) shows proportional relationships between all data series. Each series is rendered as a filled area stacked on the previous one, with its thickness representing its percentage contribution to the total. The top line always indicates 100%.</value>
+  </data>
+  <data name="RobotArm" xml:space="preserve">
+    <value>This demo showcases a 3D robotic arm loaded from an FBX file. Using the interactive panel on the right, you can manipulate each joint (from the base to the claw) by applying transformations to nested 3D models. Model by Ryan King Art https://sketchfab.com/ryankingart.</value>
+  </data>
+  <data name="STL" xml:space="preserve">
+    <value>This demo showcases a 3D model of a circuit board rendered in the Graphics3DControl. The example shows how you can import a complex model from an STL file using the Assimp library. The loaded geometry is used to initialize meshes, vertices and materials in the Graphics3DControl.</value>
   </data>
 </root>

@@ -1,16 +1,15 @@
+using System.Globalization;
 using Avalonia.Controls;
 using Avalonia.Media;
 using DemoCenter.ViewModels;
 using Eremex.AvaloniaUI.Controls.TreeList;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using Avalonia;
 using Avalonia.Controls.Templates;
+using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
 using AvaloniaEdit;
-using AvaloniaEdit.Highlighting;
 using DemoCenter.Helpers;
-using DynamicData;
 
 namespace DemoCenter.Views
 {
@@ -144,4 +143,27 @@ namespace DemoCenter.Views
             return this;
         }
     }
+
+    public class IdeLayoutDocumentTabGlyphImageConverter : MarkupExtension, IValueConverter
+    {
+        public IImage FileImage { get; set; }
+        public IImage CSharpFileImage { get; set; }
+        
+        public override object ProvideValue(IServiceProvider serviceProvider) => this;
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is string path)
+            {
+                return path.EndsWith(".cs") ? CSharpFileImage : FileImage;
+            }
+            
+            return AvaloniaProperty.UnsetValue;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    } 
 }

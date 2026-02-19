@@ -372,6 +372,15 @@ namespace DemoCenter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This demo showcases a 3D robotic arm loaded from an FBX file. Using the interactive panel on the right, you can manipulate each joint (from the base to the claw) by applying transformations to nested 3D models. Model by Ryan King Art https://sketchfab.com/ryankingart..
+        /// </summary>
+        public static string RobotArm {
+            get {
+                return ResourceManager.GetString("RobotArm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Graphics3DControl supports the skybox feature, which provides a background for 3D scenes. The skybox is a large cube surrounding the entire scene, with six textured faces (front, back, left, right, top, and bottom). These textures are mapped to the cube&apos;s inner sides, creating the illusion of a distant sky, horizon, or backdrop..
         /// </summary>
         public static string Skybox {
@@ -395,6 +404,15 @@ namespace DemoCenter {
         public static string StackedArea {
             get {
                 return ResourceManager.GetString("StackedArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This demo showcases a 3D model of a circuit board rendered in the Graphics3DControl. The example shows how you can import a complex model from an STL file using the Assimp library. The loaded geometry is used to initialize meshes, vertices and materials in the Graphics3DControl..
+        /// </summary>
+        public static string STL {
+            get {
+                return ResourceManager.GetString("STL", resourceCulture);
             }
         }
         
@@ -644,15 +662,6 @@ namespace DemoCenter {
         public static string ThisDemoShowsConstantLinesAndStripsUsedToH {
             get {
                 return ResourceManager.GetString("ThisDemoShowsConstantLinesAndStripsUsedToH", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This example demonstrates a Graphics3DControl displaying a large 3D model loaded from an STL file. The STLDotNet6.Formats.StereoLithography library is used to parse the STL file, and to obtain data to initialize vertices and materials of the created model..
-        /// </summary>
-        public static string ThisExampleDemonstratesAGraphics3DControlD {
-            get {
-                return ResourceManager.GetString("ThisExampleDemonstratesAGraphics3DControlD", resourceCulture);
             }
         }
         

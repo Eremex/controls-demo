@@ -1,0 +1,30 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             x:Class="DemoCenter.Views.Graphics3DControlRobotArmView"
+             x:DataType="vm:Graphics3DControlRobotArmViewModel"
+             x:CompileBindings="True">
+    <Grid ColumnDefinitions="* 250">
+        <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" Grid.Column="0" x:Name="DemoControl" ModelsSource="{Binding Models}">
+            <mx3d:Graphics3DControl.Camera>
+                <mx3d:PerspectiveCamera MinDistance="2" />
+            </mx3d:Graphics3DControl.Camera>
+        </mx3d:Graphics3DControl>
+        <mxe:GroupBox Grid.Column="1" Header="Control" Classes="PropertiesGroup">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Claws" Classes="PropertyLabel"/>
+                <Slider Minimum="-1.5" Maximum="0.5" Value="{Binding Claws}" />
+                <Label Content="Wrist" Classes="PropertyLabel"/>
+                <Slider Minimum="-3.14" Maximum="3.14" Value="{Binding Wrist}" />
+                <Label Content="Arm 2" Classes="PropertyLabel"/>
+                <Slider Minimum="-2.4" Maximum="2.4" Value="{Binding Arm2}" />
+                <Label Content="Arm 1" Classes="PropertyLabel"/>
+                <Slider Minimum="-1" Maximum="1" Value="{Binding Arm1X}" />
+                <Slider Minimum="-1" Maximum="1" Value="{Binding Arm1Y}" />
+                <Slider Minimum="-3.14" Maximum="3.14" Value="{Binding Arm1Z}" />
+            </StackPanel>
+        </mxe:GroupBox>
+    </Grid>
+</UserControl>

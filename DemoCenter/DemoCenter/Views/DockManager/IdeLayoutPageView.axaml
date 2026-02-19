@@ -21,13 +21,16 @@
 	</Design.DataContext>
 
 	<UserControl.Resources>
-		<views:SolutionItemImageSelector x:Key="imageSelector"
+		<views:SolutionItemImageSelector x:Key="ImageSelector"
 		                                 ClosedFolderImage="{x:Static mxi:Basic.Folder }"
 		                                 OpenedFolderImage="{x:Static mxi:Basic.Folder_Open }"
 		                                 FileImage="{x:Static mxi:Basic.Doc }"
 		                                 CSharpFileImage="{x:Static mxi:Code.Doc_CSharp }"
 		                                 ProjectImage="{x:Static mxi:Code.Folder_CSharp }"
 		                                 DependenciesImage="{x:Static mxi:Code.Storage}"/>
+		<views:IdeLayoutDocumentTabGlyphImageConverter x:Key="TabImageConverter"
+		                                               FileImage="{x:Static mxi:Basic.Doc }"
+		                                               CSharpFileImage="{x:Static mxi:Code.Doc_CSharp }"/>
 		<DataTemplate x:Key="DockPaneTabHeaderTemplate">
 			<Border Background="Transparent"
 			        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem)?.Header}"
@@ -109,7 +112,10 @@
 					<DataTemplate DataType="vm:IdeLayoutDocumentViewModel">
 						<mxd:DocumentPane Header="{Binding Header}"
 						                  IsActive="{Binding IsActive}"
-						                  CloseCommand="{Binding CloseCommand}"/>
+						                  CloseCommand="{Binding CloseCommand}"
+						                  Glyph="{Binding Header, Converter={StaticResource TabImageConverter}}"
+						                  DocumentSwitcherFooterDescription="{Binding Uri}"
+						                  GlyphSize="16,16"/>
 					</DataTemplate>
 				</mxd:DockManager.ItemTemplate>
 				<mxd:DockGroup>
@@ -126,7 +132,7 @@
 									                      ShowHorizontalLines="False"
 									                      ShowColumnHeaders="False"
 									                      AllowEditing="False"
-									                      NodeImageSelector="{StaticResource imageSelector}"
+									                      NodeImageSelector="{StaticResource ImageSelector}"
 									                      ShowNodeImages="True"
 									                      FocusedItem="{Binding FocusedSolutionItem}"
 									                      NodeClick="TreeListControlBase_OnNodeClick"

@@ -272,9 +272,6 @@
   <data name="ThisExampleDemonstratesDynamicTransformati" xml:space="preserve">
     <value>Этот пример демонстрирует динамические преобразования, применяемые к 3D-моделям в элементе управления Graphics3DControl.</value>
   </data>
-  <data name="ThisExampleDemonstratesAGraphics3DControlD" xml:space="preserve">
-    <value>Этот пример показывает, как загрузить модель из файла STL и отобразить ее с помощью контрола Graphics3DControl. Библиотека STLDotNet6.Formats.StereoLithography используется для анализа файла STL и получения данных, необходимых для инициализации вершин и материалов создаваемой модели.</value>
-  </data>
   <data name="ThisExampleDemonstratesAGraphics3DControlD1" xml:space="preserve">
     <value>Этот пример показывает, как отобразить 3D-модель с простым материалом в контроле Graphics3DControl. С помощью панели свойств справа вы можете настроить параметры материала.</value>
   </data>
@@ -388,5 +385,11 @@
   </data>
   <data name="FullStackedArea" xml:space="preserve">
     <value>Вид серии "Область с полным накоплением" (100% область с накоплением) показывает пропорциональные соотношения между всеми рядами данных. Каждый ряд отображается в виде залитой области, наложенной на предыдущую, где её толщина представляет процентный вклад в общую сумму. Верхняя линия всегда указывает на 100%.</value>
+  </data>
+  <data name="RobotArm" xml:space="preserve">
+    <value>В этой демонстрации представлен 3D-манипулятор, загруженный из файла FBX. С помощью интерактивной панели справа вы можете управлять каждым шарниром (от основания до захватного механизма), применяя преобразования к вложенным 3D-моделям. Модель от Ryan King Art https://sketchfab.com/ryankingart.</value>
+  </data>
+  <data name="STL" xml:space="preserve">
+    <value>Эта демонстрация представляет 3D-модель печатной платы, отображаемую в элементе управления Graphics3DControl. В примере показано, как можно импортировать сложную модель из файла STL с помощью библиотеки Assimp. Загруженная геометрия используется для инициализации сеток, вершин и материалов в Graphics3DControl.</value>
   </data>
 </root>

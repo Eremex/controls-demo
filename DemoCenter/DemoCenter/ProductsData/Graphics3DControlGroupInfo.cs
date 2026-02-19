@@ -26,11 +26,15 @@ public class Graphics3DControlGroupInfo
 
             new (name: "STL Model", title: "STL Model",
                 viewModelGetter: () => new Graphics3DControlStlViewModel(),
-                descriptionGetter: () => Resources.ThisExampleDemonstratesAGraphics3DControlD, introduced: new VersionInfo(1, 1)),
+                descriptionGetter: () => Resources.STL, introduced: new VersionInfo(1, 1)),
             
+            new (name: "Robot Arm", title: "Robot Arm",
+                viewModelGetter: () => new Graphics3DControlRobotArmViewModel(),
+                descriptionGetter: () => Resources.RobotArm, introduced: new VersionInfo(1, 3)),
+
             new (name: "Simple Materials", title: "Simple Materials",
-            viewModelGetter: () => new Graphics3DControlSimpleMaterialsViewModel(),
-            descriptionGetter: () => Resources.ThisExampleDemonstratesAGraphics3DControlD1, introduced: new VersionInfo(1, 1), updated: new VersionInfo(1, 2)),
+                viewModelGetter: () => new Graphics3DControlSimpleMaterialsViewModel(),
+                descriptionGetter: () => Resources.ThisExampleDemonstratesAGraphics3DControlD1, introduced: new VersionInfo(1, 1), updated: new VersionInfo(1, 2)),
             
             new (name: "Textured Materials", title: "Textured Materials",
                 viewModelGetter: () => new Graphics3DControlTexturedMaterialsViewModel(),
