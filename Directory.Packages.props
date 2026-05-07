@@ -55,5 +55,6 @@
     <PackageVersion Include="StirlingLabs.assimp.native.linux-x64" Version="5.2.5.4" />
     <PackageVersion Include="StirlingLabs.assimp.native.osx" Version="5.2.5.4" />
     <PackageVersion Include="StirlingLabs.assimp.native.win-x64" Version="5.2.5.4" />
+    <PackageVersion Include="stylecop.analyzers" Version="1.1.118" />
   </ItemGroup>
 </Project>
