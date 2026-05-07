@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 env:
   PROJECT_PATH: DemoCenter/DemoCenter.Web/DemoCenter.Web.csproj
-  OUTPUT_PATH: DemoCenter/DemoCenter.Web/bin/Release_WASM/net9.0/publish/wwwroot
+  OUTPUT_PATH: DemoCenter/DemoCenter.Web/bin/Release_WASM/net10.0/publish/wwwroot
 on:
   workflow_dispatch:
 
@@ -13,16 +13,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: Setup .NET 9
+      - name: Setup .NET 10
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 9.0.x
+          dotnet-version: 10.0.x
 
       - name: Install wasm-tools
-        run: dotnet workload install wasm-tools-net9 wasm-tools-net8
+        run: dotnet workload install wasm-tools-net10
 
       - name: Publish .NET Project
-        run: dotnet publish $PROJECT_PATH -f net9.0 -c Release_WASM --nologo -p:PublishTrimmed=false
+        run: dotnet publish $PROJECT_PATH -c Release_WASM --nologo -p:PublishTrimmed=false
 
       - name: Change base-tag in index.html
         run: sed -i 's#<base href="/" />#<base href="/controls-demo/" />#g' $OUTPUT_PATH/index.html
