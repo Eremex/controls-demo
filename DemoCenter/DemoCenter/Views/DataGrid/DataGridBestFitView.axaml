@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
+             xmlns:views="using:DemoCenter.Views"
+             xmlns:resources="clr-namespace:DemoCenter"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridBestFitView">
+
+    <Grid ColumnDefinitions="*, 250">
+        <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding ApparelSales}" AutoGenerateColumns="True" BestFitMode="Fast" BorderThickness="0,0,1,0">
+            <mxdg:GridColumn FieldName="Name" Width="2*"/>
+            <mxdg:GridColumn FieldName="City" Header="Ship To" Width="*"/>
+            <mxdg:GridColumn FieldName="SaleDate"/>
+            <mxdg:GridColumn FieldName="Price">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="c"/>
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>
+            <mxdg:GridColumn FieldName="Quantity"/>
+            <mxdg:GridColumn FieldName="Total">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="c"/>
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>
+        </mxdg:DataGridControl>
+
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="allowBestFitCheckEditor" Content="Allow Best Fit" IsChecked="{Binding #dataGrid.AllowBestFit}" Classes="LayoutItem"/>
+
+                    <DockPanel IsEnabled="{Binding #allowBestFitCheckEditor.IsChecked}">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                            <Label Content="Best Fit Mode:" Classes="LayoutItem"/>
+                            <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                                <ToolTip.Tip>
+                                    <TextBlock Text="{x:Static resources:Resources.DataGridBestFitModeTooltip}" MaxWidth="400" TextWrapping="Wrap"/>
+                                </ToolTip.Tip>
+                            </Image>
+                        </StackPanel>
+                        <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:BestFitMode}"
+                                            EditorValue="{Binding #dataGrid.BestFitMode}"
+                                            Classes="LayoutItem"/>
+                    </DockPanel>
+                    
+                    <Button Content="Best Fit All Columns" Command="{Binding #dataGrid.BestFitAllColumns}" IsEnabled="{Binding #allowBestFitCheckEditor.IsChecked}" HorizontalAlignment="Stretch" Classes="LayoutItem"/>
+
+                    <mxe:CheckEditor x:Name="resetColumnWidthCheckEditor" Content="Allow Reset Column Width" IsChecked="{Binding #dataGrid.AllowResetColumnWidth}" Classes="LayoutItem" Margin="6"/>
+
+                    <Button Content="Reset Column Width" Command="{Binding #dataGrid.ResetColumnWidth}" IsEnabled="{Binding #resetColumnWidthCheckEditor.IsChecked}" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>
