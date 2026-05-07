@@ -15,7 +15,7 @@
 	<Grid ColumnDefinitions="*, 250">
 		<Border x:Name="DemoControl">
 			<mxdg:DataGridControl ItemsSource="{Binding Items}" ColumnsSource="{Binding Columns}" AutoGenerateColumns="True" BorderThickness="0,0,1,0"
-                                  CustomUnboundColumnData="DataGridControl_CustomUnboundColumnData" PropertyChanged="DataGridControl_PropertyChanged">
+                                  CustomUnboundColumnData="DataGridControl_CustomUnboundColumnData" PropertyChanged="DataGridControl_PropertyChanged" AllowBestFit="False">
                 <mxdg:DataGridControl.ColumnTemplate>
                     <views:DataGridLargeDataViewColumnTemplate/>
                 </mxdg:DataGridControl.ColumnTemplate>

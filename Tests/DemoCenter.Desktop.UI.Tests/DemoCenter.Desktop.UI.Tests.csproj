@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
         <Nullable>disable</Nullable>
         <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
         <IsPackable>false</IsPackable>
@@ -22,8 +21,6 @@
         <PackageReference Include="Avalonia.Fonts.Inter" />
         <PackageReference Include="Avalonia.Headless" />
 
-        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
         <PackageReference Include="CommunityToolkit.Mvvm" />
     </ItemGroup>
     <ItemGroup>

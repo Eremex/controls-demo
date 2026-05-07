@@ -13,7 +13,7 @@ namespace DemoCenter.Helpers
     {
         public static void Export<C, T>(C control, T options, Action<Stream, C, T> action) where T : ExportOptions where C : Control
         {
-            var owner = control.GetVisualRoot() as Window;
+            var owner = TopLevel.GetTopLevel(control) as Window;
 
             try
             {
@@ -56,7 +56,7 @@ namespace DemoCenter.Helpers
 
         public static void ExportImage<C>(C control, ImageExportOptions options, Action<C, ImageExportOptions, string, string> exec) where C : Control
         {
-            var owner = control.GetVisualRoot() as Window;
+            var owner = TopLevel.GetTopLevel(control) as Window;
 
             try
             {

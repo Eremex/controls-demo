@@ -9,12 +9,13 @@
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
 			 xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:resources="clr-namespace:DemoCenter"
 			 xmlns:data="clr-namespace:DemoCenter.DemoData"
 			 xmlns:view="using:DemoCenter.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="DemoCenter.Views.DataGridDragDropPageView">
 
-	<Grid ColumnDefinitions="*, 20, 20, *" RowDefinitions="Auto, *">
+	<Grid ColumnDefinitions="*, 20, 20, *, 250" RowDefinitions="Auto, *">
 		<Grid.Resources>
 			<view:SmallQuantityToVisibilityConverter x:Key="quantityToVisibilityConverter" />
 			<view:SmallQuantityToColorConverter x:Key="quantityToColorConverter" />
@@ -28,18 +29,15 @@
 			</DataTemplate>
 		</Grid.Resources>
 		<Grid.Styles>
-			<Style Selector="Label">
+			<Style Selector="Label.Title">
 				<Setter Property="FontWeight" Value="Bold" />
-				<Setter Property="FontSize" Value="16" />
-				<Setter Property="Margin" Value="0,12,0,0" />			
+				<Setter Property="FontSize" Value="14" />
+				<Setter Property="Margin" Value="0,12,0,0" />
 			</Style>
 			<Style Selector="mxdg|DataGridControl">
-				<Setter Property="Margin" Value="16" />
+				<Setter Property="Margin" Value="16,5,16,16" />
 				<Setter Property="BorderThickness" Value="1" />
 				<Setter Property="SelectionMode" Value="Multiple" />
-				<Setter Property="NavigationMode" Value="Row" />
-				<Setter Property="AllowDragDrop" Value="True" /> 
-				<Setter Property="AllowDragDropSortedRows" Value="True" />
 				<Setter Property="AutoExpandAllGroups" Value="True" />
 			</Style>
 			<Style Selector="mxdgv|DataGridRowControl">
@@ -56,16 +54,20 @@
 				</Setter>
 			</Style>
 		</Grid.Styles>
-		<Label Content="In warehouse" HorizontalAlignment="Center" />
+		<Label Content="In warehouse" HorizontalAlignment="Center" Classes="Title"/>
 		<mxdg:DataGridControl x:Name="productsInWarehouseGrid"
 							  Grid.Row="1"
 							  GroupCount="1"
-							  ItemsSource="{Binding ProductsInWarehouse}">
+							  ItemsSource="{Binding ProductsInWarehouse}"
+                              AllowDragDrop="{Binding #allowDragDropCheckEditor.IsChecked}"
+                              AllowDragDropSortedRows="{Binding #allowDragDropSortedRowsCheckEditor.IsChecked}"
+                              RowDragMode="{Binding #rowDragModeComboBoxEditor.EditorValue}"
+                              UsePlatformRowDragDrop="{Binding #usePlatformRowDragDropCheckEditor.IsChecked}">
 			<mxdg:GridColumn FieldName="Id" Width="50" />
 			<mxdg:GridColumn FieldName="Name" Width="*" />
 			<mxdg:GridColumn FieldName="Color" Width="*" />
 			<mxdg:GridColumn FieldName="Size" Width="70" />
-			<mxdg:GridColumn FieldName="Category" Width="*" SortDirection="Descending" />
+			<mxdg:GridColumn FieldName="Category" Width="*" SortIndex="0" />
 			<mxdg:GridColumn FieldName="Cost" Width="70" />
 			<mxdg:GridColumn FieldName="Quantity" Width="70" CellTemplate="{StaticResource quantityTemplate}" />
 		</mxdg:DataGridControl>
@@ -73,19 +75,58 @@
 		<Image Source="{x:Static mxi:_12.Chevron_Left}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2" />
 		<Image Source="{x:Static mxi:_12.Chevron_Right}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"/>
 
-		<Label Content="In stock" Grid.Column="3" HorizontalAlignment="Center"/>
+		<Label Content="In stock" Grid.Column="3" HorizontalAlignment="Center" Classes="Title"/>
 		<mxdg:DataGridControl x:Name="productsInStockGrid"
-						  Grid.Column="3"
-						  Grid.Row="1"
-						  GroupCount="1"
-						  ItemsSource="{Binding ProductsInStock}">
+                              Grid.Column="3"
+                              Grid.Row="1"
+                              GroupCount="1"
+                              ItemsSource="{Binding ProductsInStock}"
+                              AllowDragDrop="{Binding #allowDragDropCheckEditor.IsChecked}"
+                              AllowDragDropSortedRows="{Binding #allowDragDropSortedRowsCheckEditor.IsChecked}"
+                              RowDragMode="{Binding #rowDragModeComboBoxEditor.EditorValue}"
+                              UsePlatformRowDragDrop="{Binding #usePlatformRowDragDropCheckEditor.IsChecked}">
 			<mxdg:GridColumn FieldName="Id" Width="50" />
 			<mxdg:GridColumn FieldName="Name" Width="*" />
 			<mxdg:GridColumn FieldName="Color" Width="*" />
 			<mxdg:GridColumn FieldName="Size" Width="70" />
-			<mxdg:GridColumn FieldName="Category" Width="*" SortDirection="Descending" />
+			<mxdg:GridColumn FieldName="Category" Width="*" SortIndex="0" />
 			<mxdg:GridColumn FieldName="Cost" Width="70" />
 			<mxdg:GridColumn FieldName="Quantity" Width="70" CellTemplate="{StaticResource quantityTemplate}" />
 		</mxdg:DataGridControl>
+
+        <Border Grid.RowSpan="2" Grid.Column="4" BorderThickness="1,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+                <StackPanel>
+                    <mxe:CheckEditor x:Name="allowDragDropCheckEditor" Content="Allow Drag Drop" IsChecked="True" Classes="LayoutItem"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <mxe:CheckEditor x:Name="usePlatformRowDragDropCheckEditor" Content="Use Platform Drag Drop" IsChecked="False" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="LayoutItem"/>
+
+                        <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                            <ToolTip.Tip>
+                                <TextBlock Text="{x:Static resources:Resources.DataGridUsePlatformDragDropTooltip}" MaxWidth="400" TextWrapping="Wrap"/>
+                            </ToolTip.Tip>
+                        </Image>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+						<mxe:CheckEditor x:Name="allowDragDropSortedRowsCheckEditor" Content="Allow Drag Drop Sorted Rows" IsChecked="True" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="LayoutItem"/>
+
+                        <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                            <ToolTip.Tip>
+                                <TextBlock Text="{x:Static resources:Resources.DataGridAllowDragDropSortedRowsTooltip}" MaxWidth="400" TextWrapping="Wrap"/>
+                            </ToolTip.Tip>
+                        </Image>
+                    </StackPanel>
+
+                    <Label Content="Row Drag Mode:" Classes="LayoutItem"/>
+                    <mxe:ComboBoxEditor x:Name="rowDragModeComboBoxEditor" ItemsSource="{mx:EnumItemsSource EnumType=mxdc:RowDragMode}" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="LayoutItem">
+                        <mxe:ComboBoxEditor.EditorValue>
+                            <mxdc:RowDragMode>Row</mxdc:RowDragMode>
+                        </mxe:ComboBoxEditor.EditorValue>
+                    </mxe:ComboBoxEditor>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
 	</Grid>
 </UserControl>

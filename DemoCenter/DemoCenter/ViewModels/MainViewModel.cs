@@ -8,7 +8,7 @@ using Eremex.AvaloniaUI.Controls.Common;
 
 namespace DemoCenter.ViewModels;
 
-public partial class MainViewModel : ViewModelBase
+public partial class MainViewModel : ObservableObject
 {   
     [ObservableProperty] 
     ProductInfoBase currentProductItem;
@@ -50,7 +50,10 @@ public partial class MainViewModel : ViewModelBase
     
     private readonly string titlePrefix;
 
-    public MainViewModel() { }
+    public MainViewModel() : this(null)
+    {
+        
+    }
 
     public MainViewModel(ThemeVariant startupThemeVariant = null)
     {
@@ -77,7 +80,9 @@ public partial class MainViewModel : ViewModelBase
         CurrentProductItem = FlatProducts.FirstOrDefault(x => x is PageInfo && AllowDemoContent(x));
     }
 
-    public void SelectProduct(string productName) => CurrentProductItem = FlatProducts.FirstOrDefault(x => string.Equals(x.Name, productName));
+    public void SelectProduct(string productName) => SelectProduct( FlatProducts.FirstOrDefault(x => string.Equals(x.Name, productName)));
+    
+    public void SelectProduct(ProductInfoBase product) => CurrentProductItem = product;
 
     partial void OnCurrentProductItemChanged(ProductInfoBase value)
     {

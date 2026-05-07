@@ -224,15 +224,33 @@ For instance, data can be aggregated to 1 second, 1 minute, 1 hour, 1 day, 1 wee
   <data name="DataGridFixedColumnsDescription" xml:space="preserve">
     <value>To keep essential data in view during horizontal scrolling, you can fix (pin) columns to the left or right edge. Once fixed, these columns remain stationary while other data scrolls. Enable the built-in 'Fixed' column menu to allow users to fix columns at runtime.</value>
   </data>
-  <data name="DataGridSupportsDragAndDropOperationsWithi" xml:space="preserve">
-    <value>Data Grid supports drag-and-drop operations within the control and to external controls (for instance, Tree List or another Data Grid).This example demonstrates drag-and-drop functionality within and between Data Grids. The AllowDragDrop option activates the drag-and-drop feature. {0}The AllowDragDropSortedRows option must be enabled to allow drag-and-drop operations for sorted/grouped Data Grids. When data is sorted or grouped, a drag-and-drop operation modifies values of a dragged row in sort columns. {1}In this example, the controls are bound to collections that contain the same business objects. This ensures automatic row movement during drag-and-drop operations from the source to the target grid. When you move a row from one grid to another, a corresponding item is moved between item sources of the two grid controls.</value>
+  <data name="DataGridDragAndDropDescription" xml:space="preserve">
+    <value>Data Grid supports drag-and-drop operations within the control and to external controls (for instance, Tree List or another Data Grid).This example demonstrates drag-and-drop functionality within and between Data Grids. The AllowDragDrop option activates the drag-and-drop feature.
+In this example, the controls are bound to collections that contain the same business objects. This ensures automatic row movement during drag-and-drop operations from the source to the target grid. When you move a row from one grid to another, a corresponding item is moved between item sources of the two grid controls.</value>
   </data>
-  <data name="DataGridColumnBandsDescription" xml:space="preserve">
+  <data name="DataGridUsePlatformDragDropTooltip" xml:space="preserve">
+    <value>To allow rows to be dragged to other applications, enable the UsePlatformRowDragDrop property. This property activates a drag-and-drop mode in which operations are handled by the Avalonia platform. No row previews are shown during platform-based row drag operations.</value>
+  </data>
+  <data name="DataGridAllowDragDropSortedRowsTooltip" xml:space="preserve">
+    <value>The AllowDragDropSortedRows option must be enabled to allow drag-and-drop operations for sorted/grouped Data Grids. When data is sorted or grouped, a drag-and-drop operation modifies values of a dragged row in sort columns.</value>
+  </data>
+    <data name="DataGridColumnBandsDescription" xml:space="preserve">
     <value>Column bands allow you to visually combine columns together by displaying shared headers above them. Both band and column headers can include text, images, or custom content. This demo showcases the following features:
  • Band Generation from a Source — You can populate column bands from a band source defined in a View Model.
  • Hierarchical Bands — The control allows you to create hierarchical bands with an unlimited number of nesting levels.
  • Fixed Columns Support — Bands can work with fixed columns. When you pin (fix) a column, both the column and its band remain stationary during horizontal scrolling.</value>
   </data>
+  <data name="DataGridBestFitDescription" xml:space="preserve">
+    <value>The Best-Fit feature resizes columns to ensure their contents are fully visible. It calculates and applies the ideal minimum width required for each column to display its values without truncation. Users can invoke Best-Fit in two ways:
+• Double-click a column header's right edge
+• Select "Best Fit" or "Best Fit All Columns" from a column's context menu
+The "Reset Column Width" command (available in column context menus) restores columns to their original widths. This command reverts any manual resizing performed by users, returning columns to the widths that were set in XAML or code-behind. The "Reset Column Width" command is enabled only after a user has modified a column's width.</value>
+  </data>
+  <data name="DataGridBestFitModeTooltip" xml:space="preserve">
+    <value>Two Best-Fit calculation modes are available:
+• Fast mode — Calculates optimal column widths against unique row values, ensuring better performance. This mode may be less accurate in certain scenarios, such as when the grid uses cell templates.
+• Full mode — Calculates optimal column widths against all row values. Although slower than Fast, this mode delivers the most accurate results when the grid uses cell templates or displays data source validation errors in cells.</value>
+  </data>    
   <data name="TheEremexControlsLibraryIncludesMultipleEd" xml:space="preserve">
     <value>The Eremex Controls library includes multiple editors that provide you with advanced data editing capabilities. The editors allow you to display and edit data of different data types (numeric, Boolean, date-time, enumerations, etc.). They support the data validation mechanism, styling, and embedding in container controls (Data Grid, Tree List, Property Grid, and Toolbars/Menus).</value>
   </data>

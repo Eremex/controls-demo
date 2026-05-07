@@ -214,7 +214,7 @@ namespace DemoCenter.DemoData
                     Color = values[2],
                     Size = values[3],
                     Category = values[4],
-                    Cost = decimal.Parse(values[5]),
+                    Cost = decimal.Parse(values[5], CultureInfo.InvariantCulture),
                     Quantity = int.Parse(values[6]),
                 };
             }

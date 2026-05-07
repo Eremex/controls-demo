@@ -4,7 +4,7 @@ using Eremex.AvaloniaUI.Controls.Common;
 
 namespace DemoCenter.ViewModels;
 
-public partial class ViewViewModel : ViewModelBase
+public partial class ViewViewModel : ObservableObject
 {
     [ObservableProperty] string name;
     [ObservableProperty] SeriesViewBase view;

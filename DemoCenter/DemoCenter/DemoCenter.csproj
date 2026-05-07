@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
     <Configurations>Debug;Release;Release_WASM</Configurations>
+    <NoWarn>NU1903;NU1900;NU3025;NU1803;NU5104;NU5128;CS8632</NoWarn>
   </PropertyGroup>
   
   <ItemGroup>
@@ -95,16 +95,14 @@
     <PackageReference Include="StirlingLabs.assimp.native.win-x64" />
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
-    <PackageReference Include="Avalonia.ReactiveUI" />
-    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
+    <PackageReference Include="ReactiveUI.Avalonia" />
 
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="$(CommunityToolkitMvvmVersion)" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Svg.Controls.Skia.Avalonia" />
     <PackageReference Include="Eremex.Avalonia.Controls3D" />
-    <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
+    <PackageReference Include="Newtonsoft.Json"/>
     <PackageReference Include="SkiaSharp" />
-    <PackageReference Include="System.Resources.Extensions" Version="$(SystemResourcesExtensionsVersion)" />
+    <PackageReference Include="System.Resources.Extensions"/>
     <PackageReference Include="Avalonia.AvaloniaEdit" />
     <PackageReference Include="AvaloniaEdit.TextMate" />
     <PackageReference Include="TextMateSharp.Grammars" />
@@ -237,7 +235,7 @@
     <Folder Include="Resources\Graphics3D\Skyboxes\" />
     <Folder Include="Resources\Graphics3D\Textures\" />
   </ItemGroup>
-    
+
   <ItemGroup>
     <EmbeddedResource Update="Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

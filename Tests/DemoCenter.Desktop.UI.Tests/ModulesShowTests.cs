@@ -76,7 +76,7 @@ public class WindowsTests
         {
             try
             {
-                mainViewModel.SelectProduct(product.Name);
+                mainViewModel.SelectProduct(product);
                 await WaitEx(100);
             }
             catch (Exception ex)

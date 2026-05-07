@@ -75,8 +75,7 @@ public class TestMouseEventsHelper
 		CheckVisualTree(win, target, position);
 		
 		var e = V11TestUtils.CreateRawPointerEventArgs(win, eventType, position, modifiers);
-		MethodInfo mi = GetHandleInput(win);
-		mi.Invoke(win, new object[]{ e});
+		win.HandleInput(e);
 	}
 
 	public void SendLeftMouseDown(TopLevel win, Control target, Point position, KeyModifiers modifiers)
@@ -110,14 +109,14 @@ public class TestMouseEventsHelper
 		SendMouseEvent(win, target, RawPointerEventType.LeftButtonDown, position, RawInputModifiers.None);
 	}
 
-	public void SendRightMouseDown(TopLevel win, Control target, Point position, ITestOutputHelper testOutputHelper)
+	public void SendRightMouseDown(TopLevel win, Control target, Point position)
 	{
 		SendMouseEvent(win, target, RawPointerEventType.RightButtonDown, position, RawInputModifiers.None);
 	}
 	
 	public void SendRightMouseDown(Control control)
 	{
-		TopLevel root = (TopLevel)control.GetVisualRoot();
+		TopLevel root = TopLevel.GetTopLevel(control);
 		SendRightMouseDown(root, GetMousePoint(root, control));
 	}
 
@@ -128,7 +127,7 @@ public class TestMouseEventsHelper
 	
 	public void SendRightMouseUp(Control control)
 	{
-		TopLevel root = (TopLevel)control.GetVisualRoot();
+		TopLevel root = TopLevel.GetTopLevel(control);
 		SendRightMouseUp(root, control, GetMousePoint(root, control));
 	}
 
@@ -178,27 +177,18 @@ public class TestMouseEventsHelper
 		SendMouseEvent(win, null, RawPointerEventType.LeftButtonUp, position, RawInputModifiers.None);
 	}
 
-	MethodInfo GetHandleInput(TopLevel win) 
-	{
-		Type type = typeof(TopLevel);
-		var mi = type.GetMethod("HandleInput", BindingFlags.Instance | BindingFlags.NonPublic);
-		return mi;
-	}
-	
 	public void SendMouseMove(TopLevel win, Control target, Point position, RawInputModifiers modifiers = RawInputModifiers.None)
 	{
 		CheckVisualTree(win, target, position);
 		
 		var e = V11TestUtils.CreateRawPointerEventArgs(win, RawPointerEventType.Move, position, modifiers);
-		MethodInfo mi = GetHandleInput(win);
-		mi.Invoke(win, new object[]{ e});
+		win.HandleInput(e);
 	}
 	
 	public void SendMouseOut(TopLevel win, Point position)
 	{
 		var e = V11TestUtils.CreateRawPointerEventArgs(win, RawPointerEventType.Move, position, RawInputModifiers.None);
-		MethodInfo mi = GetHandleInput(win);
-		mi.Invoke(win, new object[]{ e});
+		win.HandleInput(e);
 	}
 
 	public void SendMouseMove(Control control, Point localPosition, RawInputModifiers modifiers = RawInputModifiers.None, bool translatePositionToRoot = true)
@@ -209,14 +199,14 @@ public class TestMouseEventsHelper
 
 	private TopLevel CheckVisualRoot(Control control)
 	{
-		TopLevel root = (TopLevel)control.GetVisualRoot();
+		TopLevel root = TopLevel.GetTopLevel(control);
 		for (int i = 0; i < 20; i++)
 		{
 			if (root != null)
 				break;
 			Dispatcher.UIThread.RunJobs();
 			Thread.Sleep(20);
-			root = (TopLevel)control.GetVisualRoot();
+			root = TopLevel.GetTopLevel(control);
 		}
 
 		Assert.NotNull(root);
@@ -237,31 +227,31 @@ public class TestMouseEventsHelper
 
 	public void SendLeftMouseDown(Control control)
 	{
-		TopLevel root = (TopLevel)control.GetVisualRoot();
+		TopLevel root = TopLevel.GetTopLevel(control);
 		SendLeftMouseDown(root, control, GetMousePoint(root, control));
 	}
 	
 	public void SendLeftMouseDown(Control control, KeyModifiers modifiers)
 	{
-		TopLevel root = (TopLevel)control.GetVisualRoot();
+		TopLevel root = TopLevel.GetTopLevel(control);
 		SendLeftMouseDown(root, control, GetMousePoint(root, control), modifiers);
 	}
 	
 	public void SendLeftMouseDown(Control control, Point pt, KeyModifiers modifiers)
 	{
-		TopLevel root = (TopLevel)control.GetVisualRoot();
+		TopLevel root = TopLevel.GetTopLevel(control);
 		SendLeftMouseDown(root, control, GetMousePoint(root, control, pt), modifiers);
 	}
 
 	public void SendLeftMouseUp(Control control)
 	{
-		TopLevel root = (TopLevel)control.GetVisualRoot();
+		TopLevel root = TopLevel.GetTopLevel(control);
 		SendLeftMouseUp(root, control, GetMousePoint(root, control));
 	}
 	
 	public void SendLeftMouseUp(Control control, KeyModifiers modifiers)
 	{
-		TopLevel root = (TopLevel)control.GetVisualRoot();
+		TopLevel root = TopLevel.GetTopLevel(control);
 		SendLeftMouseUp(root, control, GetMousePoint(root, control), modifiers);
 	}
 

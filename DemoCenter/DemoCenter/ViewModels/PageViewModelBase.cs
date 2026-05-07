@@ -1,4 +1,5 @@
-﻿using Eremex.AvaloniaUI.Controls.Common;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Eremex.AvaloniaUI.Controls.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DemoCenter.ViewModels
 {
-    public abstract partial class PageViewModelBase : ViewModelBase
+    public abstract partial class PageViewModelBase : ObservableObject
     {
     }
 }

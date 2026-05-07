@@ -2,6 +2,7 @@ using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Media;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Eremex.AvaloniaUI.Controls.Common;
 
 namespace DemoCenter;
@@ -28,6 +29,6 @@ public class ViewLocator : IDataTemplate
 
     public bool Match(object data)
     {
-        return data is ViewModelBase;
+        return data is ObservableObject;
     }
 }

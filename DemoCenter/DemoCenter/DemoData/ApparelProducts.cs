@@ -1,4 +1,6 @@
-﻿namespace DemoCenter.DemoData
+﻿using System;
+
+namespace DemoCenter.DemoData
 {
     public class ApparelProduct
     {
@@ -14,6 +16,21 @@
         public DateTime ReleaseDate { get; set; }
         public bool IsNewArrival { get; set; }
         public bool IsBestSeller { get; set; }
+    }
+
+    public class ApparelSale
+    {
+        public string Name { get; set; }
+
+        public DateTime SaleDate { get; set; }
+
+        public string City { get; set; }
+
+        public decimal Price { get; set; }
+
+        public int Quantity { get; set; }
+
+        public decimal Total => Price * Quantity;
     }
 
     public class ApparelProducts
@@ -34,6 +51,8 @@
 
         private static readonly string[] ProductNameModifiers = { "Classic", "Modern", "Essential", "Pro", "Basic", "Standard", "Premium", "Lite", "Air", "Comfort" };
 
+        static readonly string[] cityNames = { "New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Francisco", "Las Vegas" };
+
         public static IList<ApparelProduct> GenerateData(int count)
         {
             var random = new Random();
@@ -42,25 +61,25 @@
 
             for (int i = 0; i < count; i++)
             {
-                bool isClothing = random.Next(2) == 0;
-                var brand = isClothing ? ClothingBrands[random.Next(ClothingBrands.Length)] : FootwearBrands[random.Next(FootwearBrands.Length)];
+                bool isClothing = Random.Shared.Next(2) == 0;
+                var brand = GetBrand(isClothing);
 
                 var category = isClothing ? "Clothing" : "Footwear";
-                var subCategory = isClothing ? ClothingCategories[random.Next(ClothingCategories.Length)] : FootwearCategories[random.Next(FootwearCategories.Length)];
+                var subCategory = GetSubCategory(isClothing);
 
                 var isNewArrival = random.Next(10) == 0;
                 var isBestSeller = random.Next(5) == 0;
 
                 var product = new ApparelProduct
                 {
-                    Name = GenerateProductName(brand, subCategory, i),
+                    Name = GenerateProductName(brand, subCategory),
                     Brand = brand,
                     Category = category,
                     SubCategory = subCategory,
                     Style = Styles[random.Next(Styles.Length)],
                     Color = Colors[random.Next(Colors.Length)],
                     Size = GenerateSize(category, subCategory),
-                    Price = (decimal)Math.Round(15 + random.NextDouble() * 200, 2),
+                    Price = GetPrice(),
                     Stock = random.Next(0, 500),
                     ReleaseDate = isNewArrival ? DateTime.Now.AddDays(-random.Next(30)) : startDate.AddDays(random.Next(365)),
                     IsNewArrival = isNewArrival,
@@ -94,14 +113,47 @@
                     };
                 }
             }
+        }
 
-            string GenerateProductName(string brand, string subCategory, int index)
+        static string GetSubCategory(bool isClothing)
+        {
+            return isClothing ? ClothingCategories[Random.Shared.Next(ClothingCategories.Length)] : FootwearCategories[Random.Shared.Next(FootwearCategories.Length)];
+        }
+
+        static string GetBrand(bool isClothing)
+        {
+            return isClothing ? ClothingBrands[Random.Shared.Next(ClothingBrands.Length)] : FootwearBrands[Random.Shared.Next(FootwearBrands.Length)];
+        }
+
+        static string GenerateProductName(string brand, string subCategory)
+        {
+            string template = ProductNameTemplates[Random.Shared.Next(ProductNameTemplates.Length)];
+            string modifier = ProductNameModifiers[Random.Shared.Next(ProductNameModifiers.Length)];
+
+            return string.Format(template, brand, subCategory, modifier);
+        }
+        static decimal GetPrice()
+        {
+            return (decimal)Math.Round(15 + Random.Shared.NextDouble() * 200, 2);
+        }
+
+        public static IList<ApparelSale> GenerateSales(int count)
+        {
+            var sales = new List<ApparelSale>();
+            for (int i = 0; i < count; i++)
             {
-                string template = ProductNameTemplates[random.Next(ProductNameTemplates.Length)];
-                string modifier = ProductNameModifiers[random.Next(ProductNameModifiers.Length)];
+                bool isClothing = Random.Shared.Next(2) == 0;
+                sales.Add(new ApparelSale()
+                {
+                    Name = GenerateProductName(GetBrand(isClothing), GetSubCategory(isClothing)),
+                    Price = GetPrice(),
+                    Quantity = Random.Shared.Next(200),
+                    SaleDate = DateTime.Now.Date.AddDays(Random.Shared.Next(365 * 3)),
+                    City = cityNames[Random.Shared.Next(cityNames.Length)]
 
-                return string.Format(template, brand, subCategory, modifier);
+                });
             }
+            return sales;
         }
     }
 }

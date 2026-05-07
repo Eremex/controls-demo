@@ -2,7 +2,6 @@
 using System.Numerics;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Eremex.AvaloniaUI.Controls.Common;
 using Eremex.AvaloniaUI.Controls3D;
 
 namespace DemoCenter.ViewModels;
@@ -88,7 +87,7 @@ public partial class Graphics3DControlLightsViewModel : Graphics3DControlViewMod
     }
 }
 
-public partial class LightViewModel : ViewModelBase
+public partial class LightViewModel : ObservableObject
 {
     public const float DefaultRadius = 10;
     public const float DefaultColorIntensity = 1;

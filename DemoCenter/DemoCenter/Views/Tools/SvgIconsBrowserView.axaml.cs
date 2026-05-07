@@ -112,7 +112,7 @@ public partial class SvgIconsBrowserView : UserControl
 
     async Task CopyToClipboard(Control owner, string text)
     {
-        IClipboard clipboard = ((Window)this.GetVisualRoot())?.Clipboard;
+        IClipboard clipboard = ((Window)TopLevel.GetTopLevel(this))?.Clipboard;
         await clipboard?.SetTextAsync(text);
         ToolTip.SetTip(owner, "Copied");
         ToolTip.SetIsOpen(owner, true);

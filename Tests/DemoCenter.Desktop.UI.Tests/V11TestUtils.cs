@@ -1,75 +1,25 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Input.Raw;
+using Avalonia.Rendering;
+using Avalonia.VisualTree;
 
-using Xunit;
+using KeyDeviceType = Avalonia.Input.KeyDeviceType;
 
 namespace Eremex.Avalonia.TestUtls;
 
+#nullable disable
+
 public static class V11TestUtils
 {
-	public static RawTextInputEventArgs CreateRawTextInputEventArgs(IInputRoot root, string text)
+	public static RawPointerEventArgs CreateRawPointerEventArgs(Visual root, RawPointerEventType eventType, Point position, RawInputModifiers modifiers)
 	{
-		// IKeyboardDevice device, ulong timestamp, IInputRoot root,string text
-		var keyboardDevice = GetKeyboardDevice()!;
-		
-		ulong timestamp = (ulong)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds;
-		object[] args =
-		{
-			keyboardDevice,
-			timestamp,
-			root,
-			text
-		};
-		return Create<RawTextInputEventArgs>(args);
-	}
-	
-	public static RawKeyEventArgs CreateRawKeyEventArgs(IInputRoot root, RawKeyEventType eventType, Key key, RawInputModifiers modifiers, string keySymbol = "")
-	{
-		var keyboardDevice = GetKeyboardDevice()!;
-		ulong timestamp = (ulong)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds;
-		var types = new[]
-		{
-			typeof(KeyboardDevice),
-			typeof(ulong),
-			typeof(IInputRoot),
-			typeof(RawKeyEventType),
-			typeof(Key),
-			typeof(RawInputModifiers),
-			typeof(PhysicalKey),
-			typeof(string)
-		};
-		object[] args =
-		{
-			keyboardDevice,
-			timestamp,
-			root,
-			eventType,
-			key,
-			modifiers,
-			PhysicalKey.None,
-			keySymbol
-			
-		};
-		return Create<RawKeyEventArgs>(args, types);
-	}
-	
-	public static RawPointerEventArgs CreateRawPointerEventArgs(IInputRoot root, RawPointerEventType eventType, Point position, RawInputModifiers modifiers)
-	{
-		/*
-		 *  IInputDevice device,
-            ulong timestamp,
-            IInputRoot root,
-            RawPointerEventType type,
-            RawPointerPoint point,
-            RawInputModifiers inputModifiers
-		 */
 		var w = (WindowBase)root;
+		var inputRoot = w.GetInputRoot();
 		var mouseDevice = GetMouseDevice(w)!;
 		ulong timestamp = (ulong)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds;
 		var types = new[]
@@ -85,7 +35,7 @@ public static class V11TestUtils
 		{
 			mouseDevice,
 			timestamp,
-			root,
+			inputRoot,
 			eventType,
 			position,
 			modifiers
@@ -93,17 +43,10 @@ public static class V11TestUtils
 		return Create<RawPointerEventArgs>(args, types);
 	}
 	
-	private static KeyboardDevice GetKeyboardDevice()
-	{
-		var keyboardDevice = GetPropertyValue<KeyboardDevice>(typeof(KeyboardDevice), "Instance");
-		Assert.NotNull(keyboardDevice);
-		return keyboardDevice;
-	}
-	
 	private static IInputDevice GetMouseDevice(WindowBase window)
 	{
 		var mouseDevice = GetPropertyValue<IInputDevice>(window.PlatformImpl!, "MouseDevice");
-		Assert.NotNull(mouseDevice);
+		ArgumentNullException.ThrowIfNull(mouseDevice);
 		return mouseDevice;
 	}
 	
@@ -120,12 +63,6 @@ public static class V11TestUtils
 		object value = GetPropertyInfo(obj, propertyName)?.GetValue(obj);
 		return value is T ? (T)value : default;
 	}
-
-	private static T GetPropertyValue<T>(Type ownerType, string propertyName)
-	{
-		object value = GetPropertyInfo(ownerType, propertyName)?.GetValue(null);
-		return value is T ? (T)value : default;
-	}
 	
 	private static PropertyInfo GetPropertyInfo(object obj, string propertyName)
 	{
@@ -135,5 +72,33 @@ public static class V11TestUtils
 	private static PropertyInfo GetPropertyInfo(Type ownerType, string propertyName)
 	{
 		return ownerType.GetProperty(propertyName, BindingFlags.Static | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+	}
+	
+	public static IInputRoot GetInputRoot(this Visual element)
+	{
+		if (element is PopupRoot popupRoot)
+		{
+			return popupRoot.GetPresentationSource() as IInputRoot; 
+		}
+		
+		return TopLevel.GetTopLevel(element)?.GetPresentationSource() as IInputRoot;
+	}
+	
+	public static void HandleInput(this TopLevel topLevel, object argument)
+	{
+		var source = topLevel is PopupRoot popupRoot ? popupRoot.GetPresentationSource() : topLevel.GetPresentationSource();
+		MethodInfo mi = GetHandleInput(source);
+		mi.Invoke(source, new object[]{ argument});
+		
+		MethodInfo GetHandleInput(IPresentationSource ps)
+		{
+			var mi = ps.GetType().GetMethod("HandleInput", BindingFlags.Instance | BindingFlags.NonPublic);
+			return mi;
+		}
+	}
+
+	public static IPresentationSource GetPresentationSource(this PopupRoot popupRoot)
+	{
+		return GetPropertyValue<IPresentationSource>(popupRoot, "InputRoot");
 	}
 }
