@@ -22,4 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: EMXDemo Unit Test
-        run: dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj
