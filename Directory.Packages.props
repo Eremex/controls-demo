@@ -12,7 +12,7 @@
     <PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="$(MicrosoftCodeAnalysisVersion)" />
-    <PackageVersion Include="ReactiveUI.Avalonia" Version="12.0.1" />
+    <PackageVersion Include="ReactiveUI.Avalonia" Version="12.0.3" />
     <PackageVersion Include="Svg.Controls.Skia.Avalonia" Version="$(AvaloniaSvgSkiaVersion)" />
     <PackageVersion Include="Svg.Controls.Avalonia" Version="$(AvaloniaSvgSkiaVersion)" />
     <PackageVersion Include="Avalonia.BuildServices" Version="$(AvaloniaVersion)" />
