@@ -12,7 +12,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v5
       - name: EMXDemo Unit Test
         run: dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj
 

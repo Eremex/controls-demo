@@ -22,7 +22,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v5
 
       - name: Make upload directory
         run: mkdir upload
@@ -36,7 +36,7 @@ jobs:
           Compress-Archive -Path $files.FullName -DestinationPath ./upload/EMX.Demo.Desktop.win-x64.zip
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v5
         with:
           name: windows
           path: ./upload
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v5
 
       - name: Make upload directory
         run: mkdir upload
@@ -67,7 +67,7 @@ jobs:
         run: zip -j -r ./upload/EMX.Demo.Desktop.linux-x64.zip ./publish/linux64 -x "*.pdb"
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v5
         with:
           name: linux
           path: ./upload
@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v5
 
       - name: Make upload directory
         run: mkdir upload
@@ -91,7 +91,7 @@ jobs:
         run: zip -j -r ./upload/EMX.Demo.Desktop.linux-arm64.zip ./publish/linuxArm64 -x "*.pdb"
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v5
         with:
           name: linux-rpi
           path: ./upload
@@ -101,7 +101,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v5
 
       - name: Make upload directory
         run: mkdir upload
@@ -113,7 +113,7 @@ jobs:
         run: zip -j -r ./upload/EMX.Demo.Desktop.osx-x64.zip ./publish/osx-x64 -x "*.pdb"
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v5
         with:
           name: osx-x64
           path: ./upload
@@ -123,7 +123,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v5
 
       - name: Make upload directory
         run: mkdir upload
@@ -135,7 +135,7 @@ jobs:
         run: zip -j -r ./upload/EMX.Demo.Desktop.osx-arm64.zip ./publish/osx-arm64 -x "*.pdb"
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v5
         with:
           name: osx-arm64
           path: ./upload
