@@ -120,7 +120,7 @@ namespace DemoCenter.Helpers
                 Title = Resources.ExportProgressTitle,
                 Width = 300,
                 Height = 160,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
                 ShowInTaskbar = false,
                 ShowCloseButton = false,
                 ShowMinimizeButton = false,
