@@ -4,6 +4,9 @@ on:
   push:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
+      # The filter has to match the whole tag name, so suffixed tags such as v1.5.52-preview2
+      # need a pattern of their own.
+      - "v[0-9]+.[0-9]+.[0-9]+-*"
   workflow_dispatch:
 
 jobs:
@@ -274,5 +277,6 @@ jobs:
         with:
           generate_release_notes: true
           draft: true
+          prerelease: ${{ contains(github.ref_name, '-') }}
           files: |
             *.zip
