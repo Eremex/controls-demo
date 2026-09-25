@@ -30,7 +30,9 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: test-results-windows
-          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults
+          # Logs only: the screenshots next to them are named after page captions such as
+          # "Experience >= 1=False.png", and upload-artifact rejects < > : | * ? " in file names.
+          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults/*.log
           if-no-files-found: ignore
 
   ubuntu:
@@ -52,7 +54,9 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: test-results-ubuntu
-          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults
+          # Logs only: the screenshots next to them are named after page captions such as
+          # "Experience >= 1=False.png", and upload-artifact rejects < > : | * ? " in file names.
+          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults/*.log
           if-no-files-found: ignore
 
   # The tests open real windows. GitHub's macOS runners execute under a logged in GUI session, so
@@ -84,7 +88,9 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: test-results-macos
-          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults
+          # Logs only: the screenshots next to them are named after page captions such as
+          # "Experience >= 1=False.png", and upload-artifact rejects < > : | * ? " in file names.
+          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults/*.log
           if-no-files-found: ignore
 
   # DemoCenter under WebAssembly: publishes Tests.Wasm/DemoCenter.Wasm.TestHost (Release_WASM,

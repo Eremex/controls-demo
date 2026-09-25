@@ -23,7 +23,7 @@
 
     <Grid ColumnDefinitions="*, 2*, *, 250">
         <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding SelectedObject}"
-                                  Margin="16" BorderThickness="1" Grid.Column="1">
+                                  Margin="16" BorderThickness="1" Grid.Column="1" MinWidth="400">
             <mxpg:PropertyGridCategoryRow Caption="General">
                 <mxpg:PropertyGridRow FieldName="Image" ReadOnly="True">
                     <mxpg:PropertyGridRow.CellTemplate>
