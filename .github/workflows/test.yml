@@ -7,6 +7,12 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+# MSBuild picks environment variables up as properties. With this one "dotnet test" prints each
+# failed test with its message and stack trace instead of only pointing at a log file on the
+# runner. The full logs are uploaded as an artifact when a run fails.
+env:
+  TestingPlatformShowTestsFailure: true
+
 jobs:
   windows:
     runs-on: windows-latest
@@ -19,6 +25,13 @@ jobs:
           dotnet-version: '10.0.x'
       - name: EMXDemo Unit Test
         run: dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj
+      - name: Upload test logs
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-results-windows
+          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults
+          if-no-files-found: ignore
 
   ubuntu:
     runs-on: ubuntu-latest
@@ -34,6 +47,13 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y xvfb
       - name: EMXDemo Unit Test
         run: xvfb-run -a dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj
+      - name: Upload test logs
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-results-ubuntu
+          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults
+          if-no-files-found: ignore
 
   # The tests open real windows. GitHub's macOS runners execute under a logged in GUI session, so
   # that works, but two things are needed that the other platforms do not care about:
@@ -59,6 +79,13 @@ jobs:
         run: cp "$(brew --prefix)/lib/libassimp.dylib" ./Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/
       - name: EMXDemo Unit Test
         run: caffeinate -disu dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj -c Debug --no-build
+      - name: Upload test logs
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-results-macos
+          path: Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/TestResults
+          if-no-files-found: ignore
 
   # DemoCenter under WebAssembly: publishes Tests.Wasm/DemoCenter.Wasm.TestHost (Release_WASM,
   # trimmed, native Skia relink - hence wasm-tools) and drives it with headless Chromium from the
