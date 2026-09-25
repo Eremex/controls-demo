@@ -1,4 +1,4 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DemoCenter.DemoData
 {
@@ -18,17 +18,22 @@ namespace DemoCenter.DemoData
         public bool IsBestSeller { get; set; }
     }
 
-    public class ApparelSale
+    public partial class ApparelSale : ObservableObject
     {
-        public string Name { get; set; }
+        [ObservableProperty]
+        private string name;
 
-        public DateTime SaleDate { get; set; }
+        [ObservableProperty]
+        private DateTime saleDate;
 
-        public string City { get; set; }
+        [ObservableProperty]
+        private string city;
 
-        public decimal Price { get; set; }
+        [ObservableProperty, NotifyPropertyChangedFor(nameof(Total))]
+        private decimal price;
 
-        public int Quantity { get; set; }
+        [ObservableProperty, NotifyPropertyChangedFor(nameof(Total))]
+        private int quantity;
 
         public decimal Total => Price * Quantity;
     }
@@ -148,7 +153,7 @@ namespace DemoCenter.DemoData
                     Name = GenerateProductName(GetBrand(isClothing), GetSubCategory(isClothing)),
                     Price = GetPrice(),
                     Quantity = Random.Shared.Next(200),
-                    SaleDate = DateTime.Now.Date.AddDays(Random.Shared.Next(365 * 3)),
+                    SaleDate = DateTime.Now.Date.AddDays(-Random.Shared.Next(365 * 3)),
                     City = cityNames[Random.Shared.Next(cityNames.Length)]
 
                 });

@@ -12,19 +12,25 @@
                 <mx3d:PerspectiveCamera MinDistance="2" />
             </mx3d:Graphics3DControl.Camera>
         </mx3d:Graphics3DControl>
-        <mxe:GroupBox Grid.Column="1" Header="Control" Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Claws" Classes="PropertyLabel"/>
-                <Slider Minimum="-1.5" Maximum="0.5" Value="{Binding Claws}" />
-                <Label Content="Wrist" Classes="PropertyLabel"/>
-                <Slider Minimum="-3.14" Maximum="3.14" Value="{Binding Wrist}" />
-                <Label Content="Arm 2" Classes="PropertyLabel"/>
-                <Slider Minimum="-2.4" Maximum="2.4" Value="{Binding Arm2}" />
-                <Label Content="Arm 1" Classes="PropertyLabel"/>
-                <Slider Minimum="-1" Maximum="1" Value="{Binding Arm1X}" />
-                <Slider Minimum="-1" Maximum="1" Value="{Binding Arm1Y}" />
-                <Slider Minimum="-3.14" Maximum="3.14" Value="{Binding Arm1Z}" />
-            </StackPanel>
-        </mxe:GroupBox>
+
+        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Control" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <Label Content="Claws" Classes="PropertyEditor EditorLabel"/>
+                    <Slider Minimum="-1.5" Maximum="0.5" Value="{Binding Claws}" />
+                    
+                    <Label Content="Wrist" Classes="PropertyEditor EditorLabel"/>
+                    <Slider Minimum="-3.14" Maximum="3.14" Value="{Binding Wrist}" />
+                    
+                    <Label Content="Arm 2" Classes="PropertyEditor EditorLabel"/>
+                    <Slider Minimum="-2.4" Maximum="2.4" Value="{Binding Arm2}" />
+                    
+                    <Label Content="Arm 1" Classes="PropertyEditor EditorLabel"/>
+                    <Slider Minimum="-1" Maximum="1" Value="{Binding Arm1X}" />
+                    <Slider Minimum="-1" Maximum="1" Value="{Binding Arm1Y}" />
+                    <Slider Minimum="-3.14" Maximum="3.14" Value="{Binding Arm1Z}" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
     </Grid>
 </UserControl>

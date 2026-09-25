@@ -1,0 +1,46 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:data="clr-namespace:DemoCenter.DemoData"
+			 xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+			 xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxpg="https://schemas.eremexcontrols.net/avalonia/propertygrid"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.PropertyGridMultipleObjectsView"
+             x:DataType="vm:PropertyGridMultipleObjectsViewModel">
+
+    <Grid ColumnDefinitions="*, *">
+        <mxdg:DataGridControl ItemsSource="{Binding Employees}" SelectedItems="{Binding SelectedEmployees}" SelectionMode="Multiple" ShowGroupPanel="False"
+                              BorderThickness="1" Margin="{DynamicResource GroupPadding}">
+            <mxdg:GridColumn FieldName="FirstName" Header="First Name" Width="*" MinWidth="80"/>
+            <mxdg:GridColumn FieldName="LastName" Header="Last Name" Width="*" MinWidth="80"/>
+            <mxdg:GridColumn FieldName="Position" Width="*" MinWidth="120">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:ComboBoxEditorProperties ItemsSource="{Binding Source={x:Static data:EmployeesData.Positions}}" IsTextEditable="False"/>
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>
+            <mxdg:GridColumn FieldName="City" Width="*" MinWidth="100"/>
+        </mxdg:DataGridControl>
+
+        <mxpg:PropertyGridControl SelectedObjects="{Binding SelectedEmployees}" Grid.Column="1" BorderThickness="1" Margin="{DynamicResource GroupPadding}">
+            <mxpg:PropertyGridCategoryRow Caption="Employee Details">
+                <mxpg:PropertyGridRow FieldName="Position">
+                    <mxpg:PropertyGridRow.EditorProperties>
+                        <mxe:ComboBoxEditorProperties ItemsSource="{Binding Source={x:Static data:EmployeesData.Positions}}" IsTextEditable="False"/>
+                    </mxpg:PropertyGridRow.EditorProperties>
+                </mxpg:PropertyGridRow>
+                <mxpg:PropertyGridRow FieldName="EmploymentType" Caption="Employment Type"/>
+                <mxpg:PropertyGridRow FieldName="Experience"/>
+                <mxpg:PropertyGridRow FieldName="Married"/>
+            </mxpg:PropertyGridCategoryRow>
+
+            <mxpg:PropertyGridCategoryRow Caption="Contacts">
+                <mxpg:PropertyGridRow FieldName="City"/>
+                <mxpg:PropertyGridRow FieldName="Phone"/>
+            </mxpg:PropertyGridCategoryRow>
+        </mxpg:PropertyGridControl>
+
+    </Grid>
+</UserControl>

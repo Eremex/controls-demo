@@ -4,6 +4,7 @@ using System.Reflection;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DemoCenter.ProductsData;
+using Eremex.AvaloniaUI.Controls.ApplicationServices;
 using Eremex.AvaloniaUI.Controls.Common;
 
 namespace DemoCenter.ViewModels;
@@ -23,12 +24,6 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     CultureInfo selectedLocale;
-
-    [ObservableProperty]
-    List<ThemeVariantInfo> themeVariants;
-
-    [ObservableProperty]
-    ThemeVariant selectedThemeVariant;
 
     [ObservableProperty] 
     List<ProductInfoBase> products;
@@ -57,22 +52,18 @@ public partial class MainViewModel : ObservableObject
 
     public MainViewModel(ThemeVariant startupThemeVariant = null)
     {
+        Appearance = ApplicationServicesContext.GetRequiredService<IAppearanceService>();
+        Appearance.SelectedTheme = FindTheme(startupThemeVariant) ?? Appearance.SelectedTheme;
+
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0";
         titlePrefix = $"Demo Center v.{version}";
         
-        ThemeVariants = new List<ThemeVariantInfo>()
-        {
-            new("Light", ThemeVariant.Light),
-            new("Dark", ThemeVariant.Dark),
-        };
-
         Locales = new List<LocaleInfo>()
         {
-           new("En", new CultureInfo("en-Us")),
-           new("Ru", new CultureInfo("ru-Ru")),
+           new("EN", new CultureInfo("en-US")),
+           new("RU", new CultureInfo("ru-RU")),
            new("CN", new CultureInfo("zh-CN")),
         };
-        SelectedThemeVariant = startupThemeVariant == ThemeVariant.Dark ? ThemeVariant.Dark : ThemeVariant.Light;
         SelectedLocale = Locales.First().Locale;//EN
         
         Products = ProductsData.Products.GetOrCreate();
@@ -147,6 +138,24 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
+    public IAppearanceService Appearance { get; }
+
+    public IReadOnlyList<IAppearanceOption> ThemeOptions =>
+        Appearance.Themes.Where(x => x is ThemeOption { Variant: not null } option
+                                     && option.Variant != ThemeVariant.Default).ToList();
+
+    IAppearanceOption FindTheme(ThemeVariant variant) =>
+        variant == null
+            ? null
+            : Appearance.Themes.FirstOrDefault(x => string.Equals(x.Header, variant.ToString(), StringComparison.OrdinalIgnoreCase));
+
+    public string PurchaseUrl =>
+        string.Equals(CultureInfo.InstalledUICulture.TwoLetterISOLanguageName, "ru", StringComparison.OrdinalIgnoreCase)
+            ? "https://eremexcontrols.ru"
+            : "https://eremexcontrols.com";
+
+    public bool IsLocaleSelectionAvailable => !App.IsWebApp;
+
     partial void OnSelectedLocaleChanged(CultureInfo value)
     {
         CultureInfo.CurrentCulture = value;
@@ -155,19 +164,6 @@ public partial class MainViewModel : ObservableObject
         var current = CurrentProductItem;
         CurrentProductItem = null;
         CurrentProductItem = current;
-    }
-}
-
-public class ThemeVariantInfo
-{
-    public string ThemeVariantName { get; init; } 
-
-    public ThemeVariant ThemeVariant { get; init; }
-
-    public ThemeVariantInfo(string name, ThemeVariant themeVariant)
-    {
-        ThemeVariantName = name;
-        ThemeVariant = themeVariant;
     }
 }
 

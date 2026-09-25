@@ -1,0 +1,69 @@
+<UserControl x:Class="DemoCenter.Views.ApplicationServices.MessageBoxServicePageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:demo="clr-namespace:DemoCenter.Views.ApplicationServices"
+             xmlns:vm="using:DemoCenter.ViewModels.ApplicationServices"
+             d:DesignHeight="600"
+             d:DesignWidth="900"
+             x:CompileBindings="True"
+             x:DataType="vm:MessageBoxServicePageViewModel"
+             mc:Ignorable="d">
+
+    <Grid ColumnDefinitions="*, 320">
+        <ScrollViewer>
+            <StackPanel Margin="24" Spacing="16">
+
+                <demo:DemoPageHeader
+                    Title="IMessageBoxService"
+                    Summary="Standard message boxes. The service picks the owner window through IWindowsManager, so calling code never touches Avalonia windows." />
+
+                <mxe:GroupBox Header="Message" Classes="PropertiesGroup">
+                    <StackPanel Margin="12" Spacing="8">
+                        <TextBlock Text="Text" />
+                        <mxe:TextEditor EditorValue="{Binding MessageText, Mode=TwoWay}" />
+                        <TextBlock Text="Caption" />
+                        <mxe:TextEditor EditorValue="{Binding CaptionText, Mode=TwoWay}" />
+                    </StackPanel>
+                </mxe:GroupBox>
+
+                <demo:DemoScenario
+                    Title="Information"
+                    Description="A single Ok button. The result is always DialogResult.Ok."
+                    ActionCaption="Show information"
+                    Command="{Binding ShowInformationCommand}" />
+
+                <demo:DemoScenario
+                    Title="Confirmation"
+                    Description="Yes and No. The returned DialogResult tells the two answers apart."
+                    ActionCaption="Ask yes / no"
+                    Command="{Binding ShowConfirmationCommand}" />
+
+                <demo:DemoScenario
+                    Title="Three-way choice"
+                    Description="Yes, No and Cancel — the largest standard set for a question."
+                    ActionCaption="Ask yes / no / cancel"
+                    Command="{Binding ShowThreeWayCommand}" />
+
+                <demo:DemoScenario
+                    Title="Error report"
+                    Description="Retry and Cancel with the error icon."
+                    ActionCaption="Report an error"
+                    Command="{Binding ShowErrorCommand}" />
+
+                <demo:DemoScenario
+                    Title="Explicit owner"
+                    Description="An owner window can be passed in. Without it the service asks IWindowsManager for the active window, which is what every button above does."
+                    ActionCaption="Show over the active window"
+                    Command="{Binding ShowOverActiveWindowCommand}" />
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <demo:DemoResultLog Grid.Column="1"
+                            ItemsSource="{Binding Log}"
+                            ClearCommand="{Binding ClearLogCommand}" />
+    </Grid>
+</UserControl>

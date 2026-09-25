@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="DemoCenter.Views.TreeListTotalSummariesView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
+             xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:icons="clr-namespace:Eremex.AvaloniaUI.Icons;assembly=Eremex.Avalonia.Icons"
+             xmlns:demodata="clr-namespace:DemoCenter.DemoData"
+             xmlns:views="clr-namespace:DemoCenter.Views"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+             x:DataType="vm:TreeListTotalSummariesViewModel">
+
+    <Grid ColumnDefinitions="*, 250">
+        <Grid.Resources>
+           <views:StatusToVisibilityConverter x:Key="statusConveter"/> 
+        </Grid.Resources>
+        <mxtl:TreeListControl x:Name="treeList" BorderThickness="0,0,1,0" NavigationMode="Row"
+                              ChildrenFieldName="Children" HasChildrenFieldName="HasChildren" AllowDynamicDataLoading="False"
+                              ItemsSource="{Binding InfrastructureItems}"
+                              ShowTotalSummaries="True"
+                              CustomSummary="OnCustomSummary"
+                              Initialized ="OnTreeListInitialized">
+            <mxtl:TreeListControl.TotalSummaries>
+                <mxdc:SummaryItem FieldName="Name" SummaryType="Count" />
+                <mxdc:SummaryItem FieldName="Utilization" SummaryType="Average" ShowInColumn="PowerConsumption" />
+                <mxdc:SummaryItem FieldName="Utilization" SummaryType="Max" />
+                <mxdc:SummaryItem FieldName="MaintenanceCost" SummaryType="Min" />
+                <mxdc:SummaryItem FieldName="MaintenanceCost" SummaryType="Max" />
+                <mxdc:SummaryItem FieldName="PowerConsumption" SummaryType="Sum" />
+            </mxtl:TreeListControl.TotalSummaries>
+            <mxtl:TreeListColumn FieldName="Name" Width="1.4*" />
+            <mxtl:TreeListColumn FieldName="LastMaintenance" Width="1.2*" />
+            <mxtl:TreeListColumn FieldName="Status" Width="1.4*">
+                <mxtl:TreeListColumn.CellTemplate>
+                    <DataTemplate x:DataType="mxdcv:CellData">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <mxe:TextEditor Name="PART_Editor" />
+                            <Image Grid.Column="1" IsVisible="{Binding Value, Converter={StaticResource statusConveter}}" Source="{x:Static icons:Basic.Warning}" Margin="0,0,6,0"/>
+                        </Grid>
+                    </DataTemplate>                    
+                </mxtl:TreeListColumn.CellTemplate>
+            </mxtl:TreeListColumn>
+            <mxtl:TreeListColumn FieldName="Utilization" Width="*">
+                <mxtl:TreeListColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="P0" />
+                </mxtl:TreeListColumn.EditorProperties>
+            </mxtl:TreeListColumn>
+            <mxtl:TreeListColumn FieldName="MaintenanceCost" Width="1.2*">
+                <mxtl:TreeListColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="C0" />
+                </mxtl:TreeListColumn.EditorProperties>
+            </mxtl:TreeListColumn>
+            <mxtl:TreeListColumn FieldName="PowerConsumption" Width="1.6*">
+                <mxtl:TreeListColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="{}{0:F1} kW" />
+                </mxtl:TreeListColumn.EditorProperties>
+            </mxtl:TreeListColumn>
+        </mxtl:TreeListControl>
+
+        <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Show Total Summaries" IsChecked="{Binding #treeList.ShowTotalSummaries}" Classes="PropertyEditor" />
+                    <mxe:CheckEditor x:Name="customSummaryCheckEditor" Content="Custom Summary (Assets Requiring Attention)"
+                                     TextBlock.TextWrapping="Wrap" EditorValueChanged="OnCustomSummaryCheckChanged" Classes="PropertyEditor" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,104 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:dd="clr-namespace:DemoCenter.DemoData"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxpg="https://schemas.eremexcontrols.net/avalonia/propertygrid"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.PropertyGridValidationView"
+             x:DataType="vm:PropertyGridValidationViewModel">
+
+    <Grid ColumnDefinitions="*, 2*, *, 250">
+        <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding Yacht}" ValidateRowValue="PropertyGridControl_ValidateRowValue"
+                                  Margin="16" BorderThickness="1" Grid.Column="1" CaptionColumnWidth="150">
+            <mxpg:PropertyGridCategoryRow Caption="General">
+                <mxpg:PropertyGridRow FieldName="Image" ReadOnly="True">
+                    <mxpg:PropertyGridRow.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{ReflectionBinding Value}" Height="160" Margin="2,0" HorizontalAlignment="Left"
+                                   RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                        </DataTemplate>
+                    </mxpg:PropertyGridRow.CellTemplate>
+                </mxpg:PropertyGridRow>
+                <mxpg:PropertyGridRow FieldName="Name"/>
+                <mxpg:PropertyGridRow FieldName="Builder"/>
+                <mxpg:PropertyGridRow FieldName="Designer"/>
+                <mxpg:PropertyGridRow FieldName="Price"/>
+            </mxpg:PropertyGridCategoryRow>
+
+            <mxpg:PropertyGridCategoryRow Caption="Vessel">
+                <mxpg:PropertyGridRow FieldName="Length" Caption="Length, ft"/>
+                <mxpg:PropertyGridRow FieldName="NumberOfCabins" Caption="Cabins"/>
+                <mxpg:PropertyGridRow FieldName="MaxSpeed" Caption="Maximum Speed, kn"/>
+                <mxpg:PropertyGridRow FieldName="CruisingRange" Caption="Cruising Range, nm"/>
+            </mxpg:PropertyGridCategoryRow>
+
+            <mxpg:PropertyGridCategoryRow Caption="History and Registry">
+                <mxpg:PropertyGridRow FieldName="LaunchingYear" Caption="Launching Year"/>
+                <mxpg:PropertyGridRow FieldName="RefitYear" Caption="Refit Year"/>
+                <mxpg:PropertyGridRow FieldName="Flag"/>
+                <mxpg:PropertyGridRow FieldName="Location"/>
+            </mxpg:PropertyGridCategoryRow>
+        </mxpg:PropertyGridControl>
+
+        <Border Grid.Column="3" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <StackPanel>
+                <mxe:GroupBox Header="Data Annotation Attributes" Classes="PropertiesGroup">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <mxe:CheckEditor Content="Show Data Errors" IsChecked="{Binding #propertyGrid.ShowDataErrors}" Classes="PropertyEditor"/>
+
+                            <Border Margin="{DynamicResource PropertyEditorPadding}"/>
+
+                            <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                                <ToolTip.Tip>
+                                    <TextBlock Text="Specifies whether to display validation errors produced by rules applied at the bound object level (DataAnnotation attributes in this example)."
+                                               MaxWidth="400" TextWrapping="Wrap"/>
+                                </ToolTip.Tip>
+                            </Image>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <mxe:CheckEditor Content="Ignore Attributes on Commit" IsChecked="{Binding #propertyGrid.IgnoreValidationAttributesOnCommit}" Classes="PropertyEditor"/>
+
+                            <Border Margin="{DynamicResource PropertyEditorPadding}"/>
+
+                            <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                                <ToolTip.Tip>
+                                    <TextBlock Text="Specifies whether the control allows committing a value even if it violates DataAnnotation attributes."
+                                               MaxWidth="400" TextWrapping="Wrap"/>
+                                </ToolTip.Tip>
+                            </Image>
+                        </StackPanel>
+                    </StackPanel>
+                </mxe:GroupBox>
+
+                <mxe:GroupBox Header="Custom Validation Using Event" Classes="PropertiesGroup Last">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <mxe:CheckEditor Content="Validate on Show/Update" IsChecked="{Binding #propertyGrid.ValidateRowValuesOnShowAndUpdate}" Classes="PropertyEditor"/>
+
+                            <Border Margin="{DynamicResource PropertyEditorPadding}"/>
+                            
+                            <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                                <ToolTip.Tip>
+                                    <TextBlock Text="Specifies whether to invoke custom validation on value commits, when cells are displayed, or when data is updated. If this option is disabled, the grid invokes custom validation only on value commits."
+                                               MaxWidth="400" TextWrapping="Wrap"/>
+                                </ToolTip.Tip>
+                            </Image>
+                        </StackPanel>
+
+                        <Label Content="Rules:" Classes="PropertyEditor EditorLabel"/>
+                        <StackPanel Margin="6,0">
+                            <mxe:CheckEditor x:Name="checkBoxCabins" Content="Cabins fit the length" IsChecked="True" Classes="PropertyEditor"/>
+                            <mxe:CheckEditor x:Name="checkBoxRefitLaunchingYear" Content="RefitYear &lt; LaunchingYear" IsChecked="True" Classes="PropertyEditor"/>
+                        </StackPanel>
+                    </StackPanel>
+                </mxe:GroupBox>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -28,13 +28,13 @@
             </mxc:Heatmap.AxisY>
         </mxc:Heatmap>
         
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <ListBox ItemsSource="{Binding ColorProviders}" SelectedItem="{Binding SelectedColorProvider}" Padding="8">
+        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup Last" Margin="{DynamicResource OptionsMargin}">
+            <ListBox ItemsSource="{Binding ColorProviders}" SelectedItem="{Binding SelectedColorProvider}">
                 <ListBox.ItemTemplate>
                     <DataTemplate x:DataType="vm:HeatmapColorProviderItem">
-                        <StackPanel Orientation="Vertical" Margin="0 8 0 8">
+                        <StackPanel Orientation="Vertical" Margin="{DynamicResource GroupPadding}">
                             <TextBlock Text="{Binding Name}" />
-                            <Image Source="{Binding PreviewImage}" HorizontalAlignment="Stretch" />
+                            <Image Source="{Binding PreviewImage}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

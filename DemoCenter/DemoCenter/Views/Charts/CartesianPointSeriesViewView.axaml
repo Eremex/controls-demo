@@ -23,12 +23,14 @@
                 <mxc:AxisY ShowTitle="False" />
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
-        
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Marker Size" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="6" Classes="PropertyEditor" />
-            </StackPanel>
-        </mxe:GroupBox>
+
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <Label Content="Marker Size" Classes="PropertyEditor EditorLabel" />
+                    <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="6" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
     </Grid>
 </UserControl>

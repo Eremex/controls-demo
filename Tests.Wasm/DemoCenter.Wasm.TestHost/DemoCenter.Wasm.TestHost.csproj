@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-browser</TargetFramework>
+    <TargetFrameworks></TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DemoCenter.Wasm.TestHost</RootNamespace>
+    <IsTestProject>false</IsTestProject>
+    <WasmMainJSPath>wwwroot\main.js</WasmMainJSPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!--
+      The demo declares Debug;Release;Release_WASM, and without this line a reference to
+      it from the Debug configuration does not resolve.
+    -->
+    <Configurations>Debug;Release;Release_WASM</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Our own entry point, not the generated one">
+    <!--
+      Microsoft.Testing.Platform does not work in browser-wasm: its runner looks for a JSON
+      config on the file system next to the assembly (testfx#2196). That is why both the
+      generated MTP entry point and the xunit Program file are disabled - Main is ours.
+    -->
+    <GenerateTestingPlatformEntryPoint>false</GenerateTestingPlatformEntryPoint>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Runtime">
+    <!--
+      Trimming is on, as in DemoCenter.Web. Without it the stand would be checking
+      something other than what ships: the trimmer removes code that static analysis could
+      not reach, and that only breaks at run time - exactly the class of breakage the
+      browser run exists for.
+
+      SuppressTrimAnalysisWarnings for the same reason as in DemoCenter.Web: third-party
+      assemblies emit trim warnings, and TreatWarningsAsErrors raises them into errors.
+    -->
+    <PublishTrimmed>true</PublishTrimmed>
+    <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+    <RunAOTCompilation>false</RunAOTCompilation>
+    <WasmEnableThreads>false</WasmEnableThreads>
+    <!-- Avalonia.Browser draws through Skia, whose native part needs an Emscripten relink. -->
+    <WasmBuildNative>true</WasmBuildNative>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3.extensibility.core" />
+    <PackageReference Include="xunit.v3.runner.common" />
+    <PackageReference Include="xunit.v3.runner.inproc.console" />
+    <!-- Native Skia for wasm, as in DemoCenter.Web. -->
+    <PackageReference Include="SkiaSharp.NativeAssets.WebAssembly" />
+    <PackageReference Include="Avalonia.Browser" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+  </ItemGroup>
+
+  <!--
+    Trimmer roots.
+
+    DemoCenter.Wasm.Tests is mandatory: xunit finds tests by reflection, there are no static
+    calls to them, and without a root the trimmer would remove the whole suite - the run
+    would come out green simply because no tests were left.
+
+    The rest mirror DemoCenter.Web: assemblies that carry markup must be roots, otherwise
+    the publish succeeds and the application fails at run time with
+    "No precompiled XAML found for avares://...".
+  -->
+  <ItemGroup>
+    <TrimmerRootAssembly Include="DemoCenter.Wasm.Tests" />
+    <!--
+      xunit itself is a root too. It creates its extensions through
+      Activator.CreateInstance, and the trimmer cannot see those constructors: without a
+      root the publish succeeds and the run fails with a MissingMethodException in
+      CollectionPerAssemblyTestCollectionFactory.
+    -->
+    <TrimmerRootAssembly Include="xunit.v3.core" />
+    <TrimmerRootAssembly Include="xunit.v3.common" />
+    <TrimmerRootAssembly Include="Eremex.Avalonia.Themes.DeltaDesign" />
+    <TrimmerRootAssembly Include="Eremex.Avalonia.Controls" />
+    <TrimmerRootAssembly Include="Eremex.Avalonia.Charts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DemoCenter.Wasm.Tests\DemoCenter.Wasm.Tests.csproj" />
+  </ItemGroup>
+
+</Project>

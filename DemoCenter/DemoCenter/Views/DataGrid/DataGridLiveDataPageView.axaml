@@ -1,5 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
@@ -7,7 +8,8 @@
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:local="using:DemoCenter.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridLiveDataPageView">
+             x:Class="DemoCenter.Views.DataGridLiveDataPageView"
+             x:DataType="vm:DataGridLiveDataPageViewModel">
     <UserControl.Styles>
         <Style Selector="local|LiveDataColumnHeaderControl">
             <Setter Property="Template">
@@ -21,7 +23,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style Selector="local|LiveDataBorder">
+        <Style Selector="local|LiveDataBorder" x:DataType="mxdcv:CellData">
             <Setter Property="Value" Value="{Binding Value}"/>
             <Setter Property="BasicBrush" Value="{DynamicResource Icons/Fill/Yellow}"/>
         </Style>
@@ -43,7 +45,7 @@
                 </DataTemplate>
             </mxdg:GridColumn.HeaderTemplate>
             <mxdg:GridColumn.CellTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="mxdcv:CellData">
                     <local:LiveDataBorder Threshold="10">
                         <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=%}" HorizontalContentAlignment="Right"/>
                     </local:LiveDataBorder>
@@ -58,7 +60,7 @@
                 </DataTemplate>
             </mxdg:GridColumn.HeaderTemplate>
             <mxdg:GridColumn.CellTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="mxdcv:CellData">
                     <local:LiveDataBorder Threshold="1024">
                         <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=' MB'}" HorizontalContentAlignment="Right"/>
                     </local:LiveDataBorder>
@@ -73,7 +75,7 @@
                 </DataTemplate>
             </mxdg:GridColumn.HeaderTemplate>
             <mxdg:GridColumn.CellTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="mxdcv:CellData">
                     <local:LiveDataBorder Threshold="1">
                         <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=' MB/s'}" HorizontalContentAlignment="Right"/>
                     </local:LiveDataBorder>
@@ -88,7 +90,7 @@
                 </DataTemplate>
             </mxdg:GridColumn.HeaderTemplate>
             <mxdg:GridColumn.CellTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="mxdcv:CellData">
                     <local:LiveDataBorder Threshold="1">
                         <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=' Mbps'}" HorizontalContentAlignment="Right"/>
                     </local:LiveDataBorder>
@@ -103,7 +105,7 @@
                 </DataTemplate>
             </mxdg:GridColumn.HeaderTemplate>
             <mxdg:GridColumn.CellTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="mxdcv:CellData">
                     <local:LiveDataBorder Threshold="2.5">
                         <mxe:TextEditor x:Name="PART_Editor" EditorValue="{Binding Value, Converter={x:Static local:LiveDataValueToStringConverter.Instance}, ConverterParameter=%}" HorizontalContentAlignment="Right"/>
                     </local:LiveDataBorder>

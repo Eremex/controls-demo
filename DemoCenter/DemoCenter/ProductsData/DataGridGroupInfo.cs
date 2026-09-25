@@ -1,10 +1,4 @@
 ﻿using DemoCenter.ViewModels;
-using Eremex.AvaloniaUI.Controls.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DemoCenter.ProductsData
 {
@@ -16,6 +10,7 @@ namespace DemoCenter.ProductsData
             {
                 new PageInfo(name: "Grouping", title: "Grouping", viewModelGetter: () => new DataGridGroupingPageViewModel(), descriptionGetter: () => Resources.TheDataGridSGroupingFeatureMakesItEasyToSu),
                 new PageInfo(name: "Data Editors", title: "Data Editors", viewModelGetter: () => new DataGridDataEditorsViewModel(), descriptionGetter: () => Resources.YouCanEmbedAnyControlInDataGridCellsToPres),
+                new PageInfo(name: "Total Summaries", title: "Total Summaries", viewModelGetter: () => new DataGridTotalSummariesViewModel(), descriptionGetter: () => Resources.DataGridTotalSummariesDescription, introduced: new VersionInfo(1, 5), showInWeb: true),
                 new PageInfo(name: "Data Validation", title: "Data Validation", viewModelGetter: () => new DataGridValidationViewModel(), descriptionGetter: () => Resources.TheDataValidationMechanismAllowsYouToCheck, introduced: new VersionInfo(1, 0)),
                 new PageInfo(name: "Filter & Search", title: "Filter & Search", viewModelGetter: () => new DataGridFilteringViewModel(), descriptionGetter: () => Resources.DataGridSupportsBuiltInDataSearchAndFiltra, updated: new VersionInfo(1, 3)),
                 new PageInfo(name: "Large Data", title: "Large Data", viewModelGetter: () => new DataGridLargeDataViewModel(), descriptionGetter: () => string.Format( Resources.RegardlessOfTheNumberOfColumnsAndRowsInThe), introduced: new VersionInfo(1, 0), updated: new VersionInfo(1, 1)),
@@ -26,7 +21,7 @@ namespace DemoCenter.ProductsData
                 new PageInfo(name: "Fixed Columns", title: "Fixed Columns", viewModelGetter: () => new DataGridFixedColumnsViewModel(), descriptionGetter: () => Resources.DataGridFixedColumnsDescription, introduced: new VersionInfo(1, 3), showInWeb: true),
                 new PageInfo(name: "Drag & Drop", title: "Drag & Drop", viewModelGetter: () => new DataGridDragDropPageViewModel(), descriptionGetter: () => string.Format( Resources.DataGridDragAndDropDescription, Environment.NewLine + Environment.NewLine, Environment.NewLine + Environment.NewLine), introduced: new VersionInfo(1, 1), updated: new VersionInfo(1, 4), showInWeb: false),
                 new PageInfo(name: "Column Bands", title: "Column Bands", viewModelGetter: () => new DataGridColumnBandsViewModel(), descriptionGetter: () => Resources.DataGridColumnBandsDescription, introduced: new VersionInfo(1, 2), updated: new VersionInfo(1, 3)),
-                new PageInfo(name: "Export", title: "Export", viewModelGetter: () => new DataGridExportViewModel(), descriptionGetter: () => Resources.DataGridExportDescription, introduced: new VersionInfo(1, 2), showInWeb: true)
+                new PageInfo(name: "Export", title: "Export", viewModelGetter: () => new DataGridExportViewModel(), descriptionGetter: () => Resources.DataGridExportDescription, introduced: new VersionInfo(1, 2), showInWeb: false)
             };
         }
     }

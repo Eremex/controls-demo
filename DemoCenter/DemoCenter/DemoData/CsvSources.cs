@@ -13,8 +13,57 @@ namespace DemoCenter.DemoData
         {
             get
             {
-                cars ??= GetCars();
+                LoadCatalogue();
                 return cars;
+            }
+        }
+
+        static List<CarPartInfo> carParts;
+        public static List<CarPartInfo> CarParts
+        {
+            get
+            {
+                LoadCatalogue();
+                return carParts;
+            }
+        }
+
+        static void LoadCatalogue()
+        {
+            if (cars != null && carParts != null && yachts != null)
+                return;
+
+            cars ??= GetCars();
+            yachts ??= GetYachts();
+            carParts ??= GetCarParts();
+
+            var carsByName = cars
+                .GroupBy(x => x.Trademark)
+                .ToDictionary(x => x.Key, x => x.First());
+
+            var yachtsByName = yachts
+                .GroupBy(x => x.Name)
+                .ToDictionary(x => x.Key, x => x.First());
+
+            foreach (var part in carParts)
+            {
+                foreach (var model in part.FitsModels)
+                {
+                    if (!carsByName.TryGetValue(model, out var car))
+                        continue;
+
+                    part.CarList.Add(car);
+                    car.PartList.Add(part);
+                }
+
+                foreach (var model in part.FitsYachtModels)
+                {
+                    if (!yachtsByName.TryGetValue(model, out var yacht))
+                        continue;
+
+                    part.YachtList.Add(yacht);
+                    yacht.PartList.Add(part);
+                }
             }
         }
 
@@ -53,7 +102,7 @@ namespace DemoCenter.DemoData
         {
             get
             {
-                yachts ??= GetYachts();
+                LoadCatalogue();
                 return yachts;
             }
         }
@@ -116,6 +165,33 @@ namespace DemoCenter.DemoData
                     return new SpaceLaunchInfo(launchDate, values[2].TrimStart(), values[3].TrimStart()); 
                 });
         }
+        static List<CarPartInfo> GetCarParts()
+        {
+            var provider = CultureInfo.InvariantCulture;
+            return GetInfo<CarPartInfo>(GetUriString("carParts"),
+                values => new CarPartInfo
+                {
+                    PartNumber = values[0],
+                    Name = values[1],
+                    Group = values[2],
+                    Material = values[3],
+                    Weight = double.Parse(values[4], provider),
+                    Dimensions = values[5],
+                    Price = decimal.Parse(values[6], provider),
+                    Supplier = values[7],
+                    CountryOfOrigin = values[8],
+                    LeadTimeDays = int.Parse(values[9], provider),
+                    Stock = int.Parse(values[10], provider),
+                    MinimumStock = int.Parse(values[11], provider),
+                    LifecycleStatus = values[12],
+                    Revision = values[13],
+                    WarrantyMonths = int.Parse(values[14], provider),
+                    Fits = values[15],
+                    FitsYachts = values[16],
+                    Description = values[17],
+                    ImageName = values[18],
+                });
+        }
         static List<string> GetYachtNames() => GetInfo<string>(GetUriString("yachtNames"), values => values[0]);
         static List<YachtInfo> GetYachts()
         {
@@ -123,8 +199,10 @@ namespace DemoCenter.DemoData
             return GetInfo<YachtInfo>(GetUriString("yachts"),
                 values =>
                 {
-                    var price = 1000000m* decimal.Parse(values[5]) + 1000m * decimal.Parse(values[6]) + decimal.Parse(values[7]);
-                    return new YachtInfo(values[0], double.Parse(values[1]), int.Parse(values[2]), double.Parse(values[3]), decimal.Parse(values[4]), price, int.Parse(values[8]), values[9], values[10], values[11], values[12]);
+                    var price = decimal.Parse(values[5], NumberStyles.Number, provider);
+                    return new YachtInfo(values[0], double.Parse(values[1], provider), int.Parse(values[2], provider),
+                        double.Parse(values[3], provider), decimal.Parse(values[4], provider), price,
+                        int.Parse(values[6], provider), values[7], values[8], values[9], values[10], values[11], values[12]);
                 });
         }
         static List<CsvDoubleColumn> GetLogarithmic() => GetColumnInfo<CsvDoubleColumn>(GetUriString("logarithmic"));

@@ -12,17 +12,19 @@
                 <mx3d:MeshGeometry3D Vertices="{Binding Vertices}" Indices="{Binding Indices}" MaterialKey="{Binding SelectedMaterial.Key}" />
             </mx3d:GeometryModel3D>
         </mx3d:Graphics3DControl>
-        
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Materials"  Classes="PropertiesGroup">
-                <ListBox ItemsSource="{Binding Materials}" SelectedItem="{Binding SelectedMaterial}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate x:DataType="mx3d:TexturedPbrMaterial">
-                            <Image Source="{Binding Albedo}" Width="80" Height="80" Margin="8" />
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </mxe:GroupBox>
-        </StackPanel>
+
+        <ScrollViewer Grid.Column="1">
+            <Border BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+                <mxe:GroupBox Header="Materials" Classes="PropertiesGroup Last">
+                    <ListBox ItemsSource="{Binding Materials}" SelectedItem="{Binding SelectedMaterial}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="mx3d:TexturedPbrMaterial">
+                                <Image Source="{Binding Albedo}" Width="80" Height="80" Margin="{DynamicResource GroupPadding}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </mxe:GroupBox>
+            </Border>
+        </ScrollViewer>
     </Grid>
 </UserControl>

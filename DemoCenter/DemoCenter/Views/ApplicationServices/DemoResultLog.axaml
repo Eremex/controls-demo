@@ -1,0 +1,45 @@
+<UserControl x:Class="DemoCenter.Views.ApplicationServices.DemoResultLog"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:DemoCenter.ViewModels.ApplicationServices"
+             x:Name="Root"
+             x:CompileBindings="False">
+
+    <Border BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
+            BorderThickness="1,0,0,0">
+        <Grid RowDefinitions="Auto, *, Auto">
+            <TextBlock Margin="16,16,16,8"
+                       Text="Result log"
+                       FontWeight="SemiBold" />
+
+            <ScrollViewer Grid.Row="1">
+                <ItemsControl Margin="8,0" ItemsSource="{Binding ItemsSource, ElementName=Root}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="vm:DemoLogEntry">
+                            <Border Margin="4"
+                                    Padding="10"
+                                    CornerRadius="6"
+                                    Background="{DynamicResource Fill/Neutral/Secondary/Enabled}">
+                                <StackPanel Spacing="2">
+                                    <TextBlock Text="{Binding Time}"
+                                               FontSize="11"
+                                               Foreground="{DynamicResource Text/Neutral/Secondary}" />
+                                    <TextBlock Text="{Binding Scenario}"
+                                               FontWeight="SemiBold"
+                                               TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding Result}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <Button Grid.Row="2"
+                    Margin="16"
+                    HorizontalAlignment="Stretch"
+                    Content="Clear"
+                    Command="{Binding ClearCommand, ElementName=Root}" />
+        </Grid>
+    </Border>
+</UserControl>

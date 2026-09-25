@@ -1,4 +1,4 @@
-<Project>
+﻿<Project>
   <PropertyGroup>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Eremex.ruleset</CodeAnalysisRuleSet>
@@ -7,24 +7,22 @@
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="Properties\stylecop.json" />
   </ItemGroup>
  
+  <!--
+    xunit v3 on the Microsoft Testing Platform. Under VSTest the process main thread belongs to
+    testhost, which macOS needs for AppKit - with MTP, "dotnet test" launches the test project's
+    own executable instead, so Program.Main can put Avalonia on the main thread. See UiTestHost.
+  -->
   <ItemGroup>
 	<PackageReference Include="FluentAssertions" />
-	<PackageReference Include="Microsoft.NET.Test.Sdk" />
-	<PackageReference Include="xunit" />
-	<PackageReference Include="xunit.stafact" />
-    <PackageReference Include="Xunit.Combinatorial" />
-	<PackageReference Include="xunit.runner.visualstudio">
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		<PrivateAssets>all</PrivateAssets>
-	</PackageReference>
+	<PackageReference Include="xunit.v3" />
+	<PackageReference Include="xunit.v3.runner.inproc.console" />
+	<PackageReference Include="xunit.v3.mtp-v1" />
 	<PackageReference Include="stylecop.analyzers" PrivateAssets="all" />
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers"/>
-    <PackageReference Include="JunitXml.TestLogger"/>
 	<PackageReference Include="Moq" />
     <PackageReference Include="Moq.AutoMock" />
 	<PackageReference Include="NuGet.Common" />
-	<PackageReference Include="XunitContext" />
-	<PackageReference Include="Serilog.Sinks.XUnit" />
+	<Using Include="Xunit" />
   </ItemGroup>
   
 </Project>

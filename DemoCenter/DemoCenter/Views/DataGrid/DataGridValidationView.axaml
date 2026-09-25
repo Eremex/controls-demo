@@ -1,11 +1,14 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridValidationView">
+             x:Class="DemoCenter.Views.DataGridValidationView"
+             x:DataType="vm:DataGridValidationViewModel">
     
     <Grid ColumnDefinitions="*, 250">
         <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" ValidateCellValue="OnValidateCellValue" ShowGroupPanel="False" BorderThickness="1,0">
@@ -26,16 +29,61 @@
 			</mxdg:GridColumn>
         </mxdg:DataGridControl>
 
-        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-			<mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+			<mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
 				<StackPanel>
-					<mxe:CheckEditor Content="Show ItemsSource Errors" IsChecked="{Binding #dataGrid.ShowItemsSourceErrors}" Classes="LayoutItem"/>
+                    <mxe:GroupBox Header="Data Annotation Attributes" Classes="PropertiesGroup">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <mxe:CheckEditor Content="Show ItemsSource Errors" IsChecked="{Binding #dataGrid.ShowItemsSourceErrors}" Classes="PropertyEditor"/>
 
-					<Label Content="Validate User Input" Classes="LayoutItem" FontWeight="SemiBold" />
-					<StackPanel Margin="16,0,0,0">
-						<mxe:CheckEditor x:Name="chkValidateHireDate" Content="HireDate > BirthDate" Classes="LayoutItem" IsChecked="True" />
-						<mxe:CheckEditor x:Name="chkValidateExperience" Content="Experience >= 1" Classes="LayoutItem" IsChecked="True" />
-					</StackPanel>
+                                <Border Margin="{DynamicResource PropertyEditorPadding}"/>
+
+                                <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                                    <ToolTip.Tip>
+                                        <TextBlock Text="Specifies whether to display validation errors produced by rules applied at the bound object level (DataAnnotation attributes in this example)."
+                                                   MaxWidth="400" TextWrapping="Wrap"/>
+                                    </ToolTip.Tip>
+                                </Image>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <mxe:CheckEditor Content="Ignore Attributes on Commit" IsChecked="{Binding #dataGrid.IgnoreValidationAttributesOnCommit}" Classes="PropertyEditor"/>
+
+                                <Border Margin="{DynamicResource PropertyEditorPadding}"/>
+
+                                <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                                    <ToolTip.Tip>
+                                        <TextBlock Text="Specifies whether the control allows committing a value even if it violates DataAnnotation attributes."
+                                                   MaxWidth="400" TextWrapping="Wrap"/>
+                                    </ToolTip.Tip>
+                                </Image>
+                            </StackPanel>
+                        </StackPanel>
+                    </mxe:GroupBox>
+
+                    <mxe:GroupBox Header="Custom Validation Using Event" Classes="PropertiesGroup Last">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <mxe:CheckEditor Content="Validate on Show/Update" IsChecked="{Binding #dataGrid.ValidateCellValuesOnShowAndUpdate}" Classes="PropertyEditor"/>
+
+                                <Border Margin="{DynamicResource PropertyEditorPadding}"/>
+
+                                <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
+                                    <ToolTip.Tip>
+                                        <TextBlock Text="Specifies whether to invoke custom validation on value commits, when cells are displayed, or when data is updated. If this option is disabled, the grid invokes custom validation only on value commits."
+                                                   MaxWidth="400" TextWrapping="Wrap"/>
+                                    </ToolTip.Tip>
+                                </Image>
+                            </StackPanel>
+
+                            <Label Content="Rules:" Classes="PropertyEditor EditorLabel"/>
+                            <StackPanel Margin="6,0">
+                                <mxe:CheckEditor x:Name="chkValidateHireDate" Content="HireDate > BirthDate" Classes="PropertyEditor" IsChecked="True" />
+                                <mxe:CheckEditor x:Name="chkValidateExperience" Content="Experience >= 1" Classes="PropertyEditor" IsChecked="True" />
+                            </StackPanel>
+                        </StackPanel>
+                    </mxe:GroupBox>
 				</StackPanel>
 			</mxe:GroupBox>
         </Border>

@@ -1,0 +1,146 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxpg="https://schemas.eremexcontrols.net/avalonia/propertygrid"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="700"
+             d:DesignWidth="1000"
+             x:DataType="vm:CarComparisonViewModel"
+             mc:Ignorable="d"
+             x:Class="DemoCenter.Views.CarComparisonView">
+    <Design.DataContext>
+        <vm:CarComparisonViewModel />
+    </Design.DataContext>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="BetterFill" Color="#2622C55E"/>
+                    <SolidColorBrush x:Key="WorseFill" Color="#26EF4444"/>
+                    <SolidColorBrush x:Key="BetterText" Color="#166534"/>
+                    <SolidColorBrush x:Key="WorseText" Color="#991B1B"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="BetterFill" Color="#3322C55E"/>
+                    <SolidColorBrush x:Key="WorseFill" Color="#33EF4444"/>
+                    <SolidColorBrush x:Key="BetterText" Color="#4ADE80"/>
+                    <SolidColorBrush x:Key="WorseText" Color="#FCA5A5"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <DataTemplate x:Key="PictureCellTemplate">
+                <Image Source="{ReflectionBinding Value}" Height="110" Margin="0,4" HorizontalAlignment="Left"
+                       RenderOptions.BitmapInterpolationMode="HighQuality"/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="SpecCellTemplate">
+                <Border Classes="Spec"
+                        Classes.Better="{ReflectionBinding Value.IsBetter}"
+                        Classes.Worse="{ReflectionBinding Value.IsWorse}">
+                    <TextBlock Text="{ReflectionBinding Value.Text}"/>
+                </Border>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="Border.Spec">
+            <Setter Property="Padding" Value="8,2"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Margin" Value="0,1"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style Selector="Border.Spec.Better">
+            <Setter Property="Background" Value="{DynamicResource BetterFill}"/>
+        </Style>
+        <Style Selector="Border.Spec.Worse">
+            <Setter Property="Background" Value="{DynamicResource WorseFill}"/>
+        </Style>
+        <Style Selector="Border.Spec.Better TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource BetterText}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style Selector="Border.Spec.Worse TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource WorseText}"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid>
+        <Border x:Name="DemoControl">
+            <Grid ColumnDefinitions="*, *" Margin="16" MaxWidth="1000" HorizontalAlignment="Center">
+                <Grid RowDefinitions="Auto, *" Margin="0,0,8,0">
+                    <mxe:ComboBoxEditor ItemsSource="{Binding Cars}"
+                                        DisplayMember="Trademark"
+                                        EditorValue="{Binding LeftCar}"
+                                        IsTextEditable="False"/>
+                    <mxpg:PropertyGridControl Grid.Row="1" x:Name="leftGrid" Margin="0,8,0,0"
+                                              SelectedObject="{Binding LeftSpecs}"
+                                              CellTemplate="{StaticResource SpecCellTemplate}"
+                                              AllowEditing="False"
+                                              ShowSearchPanel="False"
+                                              BorderThickness="1">
+                        <mxpg:PropertyGridCategoryRow Caption="Overview">
+                            <mxpg:PropertyGridRow FieldName="Image" Caption="Photo"
+                                                  CellTemplate="{StaticResource PictureCellTemplate}"/>
+                        </mxpg:PropertyGridCategoryRow>
+
+                        <mxpg:PropertyGridCategoryRow Caption="Engine">
+                            <mxpg:PropertyGridRow FieldName="Power" Caption="Power, hp"/>
+                            <mxpg:PropertyGridRow FieldName="Displacement" Caption="Displacement, l"/>
+                            <mxpg:PropertyGridRow FieldName="Cylinders"/>
+                            <mxpg:PropertyGridRow FieldName="FuelEconomy" Caption="Fuel economy, mpg"/>
+                        </mxpg:PropertyGridCategoryRow>
+
+                        <mxpg:PropertyGridCategoryRow Caption="Transmission">
+                            <mxpg:PropertyGridRow FieldName="Transmission" Caption="Type"/>
+                            <mxpg:PropertyGridRow FieldName="Speeds"/>
+                        </mxpg:PropertyGridCategoryRow>
+
+                        <mxpg:PropertyGridCategoryRow Caption="Purchase">
+                            <mxpg:PropertyGridRow FieldName="Price"/>
+                            <mxpg:PropertyGridRow FieldName="InStock" Caption="In stock"/>
+                        </mxpg:PropertyGridCategoryRow>
+                    </mxpg:PropertyGridControl>
+                </Grid>
+
+                <Grid Grid.Column="1" RowDefinitions="Auto, *" Margin="8,0,0,0">
+                    <mxe:ComboBoxEditor ItemsSource="{Binding Cars}"
+                                        DisplayMember="Trademark"
+                                        EditorValue="{Binding RightCar}"
+                                        IsTextEditable="False"/>
+                    <mxpg:PropertyGridControl Grid.Row="1" x:Name="rightGrid" Margin="0,8,0,0"
+                                              SelectedObject="{Binding RightSpecs}"
+                                              CellTemplate="{StaticResource SpecCellTemplate}"
+                                              AllowEditing="False"
+                                              ShowSearchPanel="False"
+                                              BorderThickness="1">
+                        <mxpg:PropertyGridCategoryRow Caption="Overview">
+                            <mxpg:PropertyGridRow FieldName="Image" Caption="Photo"
+                                                  CellTemplate="{StaticResource PictureCellTemplate}"/>
+                        </mxpg:PropertyGridCategoryRow>
+
+                        <mxpg:PropertyGridCategoryRow Caption="Engine">
+                            <mxpg:PropertyGridRow FieldName="Power" Caption="Power, hp"/>
+                            <mxpg:PropertyGridRow FieldName="Displacement" Caption="Displacement, l"/>
+                            <mxpg:PropertyGridRow FieldName="Cylinders"/>
+                            <mxpg:PropertyGridRow FieldName="FuelEconomy" Caption="Fuel economy, mpg"/>
+                        </mxpg:PropertyGridCategoryRow>
+
+                        <mxpg:PropertyGridCategoryRow Caption="Transmission">
+                            <mxpg:PropertyGridRow FieldName="Transmission" Caption="Type"/>
+                            <mxpg:PropertyGridRow FieldName="Speeds"/>
+                        </mxpg:PropertyGridCategoryRow>
+
+                        <mxpg:PropertyGridCategoryRow Caption="Purchase">
+                            <mxpg:PropertyGridRow FieldName="Price"/>
+                            <mxpg:PropertyGridRow FieldName="InStock" Caption="In stock"/>
+                        </mxpg:PropertyGridCategoryRow>
+                    </mxpg:PropertyGridControl>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

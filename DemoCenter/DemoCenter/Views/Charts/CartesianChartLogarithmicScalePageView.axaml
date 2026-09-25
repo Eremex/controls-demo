@@ -33,10 +33,10 @@
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
 
-        <StackPanel Grid.Column="1" Grid.RowSpan="2">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+        <Border Grid.Column="1" Grid.RowSpan="2" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
                 <mxe:CheckEditor Content="Logarithmic X-Axis" IsChecked="{Binding LogarithmicX}" Classes="PropertyEditor"/>
             </mxe:GroupBox>
-        </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

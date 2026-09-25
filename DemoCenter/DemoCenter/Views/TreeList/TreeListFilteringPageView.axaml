@@ -1,4 +1,4 @@
-<UserControl x:Class="DemoCenter.Views.TreeListFilteringPageView"
+﻿<UserControl x:Class="DemoCenter.Views.TreeListFilteringPageView"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,10 +7,13 @@
              xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
              xmlns:mxtlv="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
 			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+			 xmlns:demodata="clr-namespace:DemoCenter.DemoData"
+			 xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
 			 xmlns:views="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
+             xmlns:data="using:DemoCenter.DemoData"
              d:DesignHeight="450"
              d:DesignWidth="900"
              x:DataType="vm:TreeListFilteringPageViewModel"
@@ -45,7 +48,7 @@
                                   ColumnFilterButtonDisplayMode="Always"
                                   ColumnFilterPopupMode="CheckedList">
 			<mxtl:TreeListControl.Styles>
-				<Style Selector="mxtlv|TreeListRowControl">
+				<Style Selector="mxtlv|TreeListRowControl" x:DataType="data:ProjectTask">
 					<Setter Property="TextBlock.FontWeight">
 						<Setter.Value>
 							<Binding Path="HasTasks">
@@ -66,7 +69,7 @@
 			</mxtl:TreeListControl.Styles>
 			<mxtl:TreeListColumn FieldName="HighPriority" ColumnChooserHeader="High Priority" AllowSorting="False" AllowResizing="False" Header=" " Width="38">
 				<mxtl:TreeListColumn.CellTemplate>
-					<DataTemplate>
+					<DataTemplate x:DataType="mxdcv:CellData">
 						<Border ToolTip.Tip="High Priority" Background="Transparent">
 							<Image Width="16" Height="16" Stretch="None" IsVisible="{Binding Value, Converter={StaticResource nullValueConverter}}" 
 							       Source="{x:Static mxi:Basic.Error}" />
@@ -75,63 +78,71 @@
 				</mxtl:TreeListColumn.CellTemplate>
 			</mxtl:TreeListColumn>
 			<mxtl:TreeListColumn FieldName="Description" Width="*" />
-			<mxtl:TreeListColumn FieldName="Assignee" Width="120" />
-			<mxtl:TreeListColumn FieldName="Status" Width="85" />
-			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="110" />
-			<mxtl:TreeListColumn FieldName="TimeSpent" Header="Time Spent (h)" Width="90" />
+			<mxtl:TreeListColumn FieldName="Assignee" Width="Auto">
+				<mxtl:TreeListColumn.CellTemplate>
+					<DataTemplate x:DataType="mxdcv:CellData">
+						<DockPanel>
+							<Image DockPanel.Dock="Left" Source="{Binding ((demodata:ProjectTask)Row).AssigneePhoto}" Width="24" Height="24"
+								       RenderOptions.BitmapInterpolationMode="HighQuality"/>
+							<TextBlock Text="{Binding Value}" VerticalAlignment="Center" Margin="6,0,0,0"
+							           TextTrimming="CharacterEllipsis"
+							           mx:TextBlockHelper.ShowTooltipWhenTrimming="True"/>
+						</DockPanel>
+					</DataTemplate>
+				</mxtl:TreeListColumn.CellTemplate>
+			</mxtl:TreeListColumn>
+			<mxtl:TreeListColumn FieldName="Status" Width="Auto" />
+			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="Auto" />
+			<mxtl:TreeListColumn FieldName="TimeSpent" Header="Time Spent (h)" Width="Auto" />
 			<mxtl:TreeListColumn FieldName="Progress" Header="Progress" Width="110">
 				<mxtl:TreeListColumn.CellTemplate>
-					<DataTemplate>
+					<DataTemplate x:DataType="mxdcv:CellData">
 						<ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Enabled}" CornerRadius="2" Margin="4,0" Minimum="0" Maximum="100" MinWidth="10" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
 					</DataTemplate>
 				</mxtl:TreeListColumn.CellTemplate>
 			</mxtl:TreeListColumn>
-			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="90" />
+			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="Auto" />
 		</mxtl:TreeListControl>
 		</Border>
-        <Border Grid.Column="1">
+        <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
             <StackPanel>
-                <mxe:GroupBox Header="Filter Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+                <mxe:GroupBox Header="Filter Properties" Classes="PropertiesGroup">
                     <StackPanel>
-                        <Label Grid.Row="3" Content="Filter Mode" Classes="LayoutItem"/>
+                        <mxe:CheckEditor Content="Show Auto Filter Row" IsChecked="{Binding #treeList.ShowAutoFilterRow}" Classes="PropertyEditor"/>
+                        <mxe:CheckEditor Content="Show Condition In Auto Filter Row" IsChecked="{Binding #treeList.ShowConditionInAutoFilterRow}" Classes="PropertyEditor"/>
+
+                        <Label Content="Filter Mode" Classes="PropertyEditor EditorLabel"/>
                         <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxtl:FilterMode}"
                                             EditorValue="{Binding #treeList.FilterMode}"
-                                            Grid.Row="4"
-                                            Grid.ColumnSpan="2"
-                                            Classes="LayoutItem"/>
+                                            Classes="PropertyEditor"/>
                         
-                        <mxe:CheckEditor Content="Allow Column Filtering" IsChecked="{Binding #treeList.AllowColumnFiltering}" Classes="LayoutItem" Margin="6,6,6,0"/>
-                        <DockPanel IsEnabled="{Binding #treeList.AllowColumnFiltering}">
-                            <Label Content="Column Filter Popup Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                        <mxe:CheckEditor Content="Allow Column Filtering" IsChecked="{Binding #treeList.AllowColumnFiltering}" Classes="PropertyEditor"/>
+                        <StackPanel IsEnabled="{Binding #treeList.AllowColumnFiltering}">
+                            <Label Content="Column Filter Popup Mode:" Classes="PropertyEditor EditorLabel"/>
                             <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPopupMode}"
                                                 EditorValue="{Binding #treeList.ColumnFilterPopupMode}"
-                                                DockPanel.Dock="Top" Classes="LayoutItem"/>
+                                                Classes="PropertyEditor"/>
 
-                            <Label Content="Column Filter Icon Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                            <Label Content="Column Filter Icon Display Mode:" Classes="PropertyEditor EditorLabel"/>
                             <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:ColumnFilterButtonDisplayMode}"
                                                 EditorValue="{Binding #treeList.ColumnFilterButtonDisplayMode}"
-                                                Classes="LayoutItem"/>
-                        </DockPanel>
-                        <mxe:CheckEditor Content="Show Auto Filter Row" IsChecked="{Binding #treeList.ShowAutoFilterRow}" Classes="LayoutItem" Margin="6,6,6,0"/>
-						<mxe:CheckEditor Content="Show Condition In Auto Filter Row" IsChecked="{Binding #treeList.ShowConditionInAutoFilterRow}" Classes="LayoutItem" Margin="6,6,6,0"/>
-                        <DockPanel>
-                            <Label Content="Filter Panel Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                            <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPanelDisplayMode}"
+                                                Classes="PropertyEditor"/>
+                        </StackPanel>
+                        
+                        <Label Content="Filter Panel Display Mode:" Classes="PropertyEditor EditorLabel"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPanelDisplayMode}"
                                                 EditorValue="{Binding #treeList.FilterPanelDisplayMode}"
-                                                Classes="LayoutItem"/>
-                        </DockPanel>
+                                                Classes="PropertyEditor"/>
                     </StackPanel>
                 </mxe:GroupBox>
 
-                <mxe:GroupBox Header="Search Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+                <mxe:GroupBox Header="Search Properties" Classes="PropertiesGroup Last">
                     <StackPanel>
-                        <mxe:CheckEditor Content="Highlight Search Results" IsChecked="{Binding #treeList.SearchPanelHighlightResults}" Classes="LayoutItem"/>
-                        <DockPanel>
-                            <Label Content="Search Panel Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                            <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:SearchPanelDisplayMode}"
-                                                EditorValue="{Binding #treeList.SearchPanelDisplayMode}"
-                                                Classes="LayoutItem"/>
-                        </DockPanel>
+                        <mxe:CheckEditor Content="Highlight Search Results" IsChecked="{Binding #treeList.SearchPanelHighlightResults}" Classes="PropertyEditor"/>
+                        <Label Content="Search Panel Display Mode:" Classes="PropertyEditor"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:SearchPanelDisplayMode}"
+                                            EditorValue="{Binding #treeList.SearchPanelDisplayMode}"
+                                            Classes="PropertyEditor"/>
                     </StackPanel>
                 </mxe:GroupBox>
             </StackPanel>

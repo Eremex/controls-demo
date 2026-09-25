@@ -33,9 +33,9 @@
 		                                               CSharpFileImage="{x:Static mxi:Code.Doc_CSharp }"/>
 		<DataTemplate x:Key="DockPaneTabHeaderTemplate">
 			<Border Background="Transparent"
-			        ToolTip.Tip="{Binding $self.(mxd:DockManager.DockItem)?.Header}"
+			        ToolTip.Tip="{Binding $self.((mxd:DockPane)(mxd:DockManager.DockItem)).Header}"
 			        ToolTip.ShowDelay="500">
-				<Image Source="{Binding $self.(mxd:DockManager.DockItem)?.TabGlyph}"
+				<Image Source="{Binding $self.((mxd:DockPane)(mxd:DockManager.DockItem)).TabGlyph}"
 				       Width="16"
 				       Height="16">
 				</Image>

@@ -10,7 +10,8 @@
              xmlns="https://github.com/avaloniaui"
              xmlns:views="clr-namespace:DemoCenter.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.WordPadExampleView">
+             x:Class="DemoCenter.Views.WordPadExampleView"
+             x:DataType="vm:WordPadExampleViewModel">
     <UserControl.Resources>
         <views:FontStyleGalleryItemForegroundConverter x:Key="ForegroundConverter" />
     </UserControl.Resources>

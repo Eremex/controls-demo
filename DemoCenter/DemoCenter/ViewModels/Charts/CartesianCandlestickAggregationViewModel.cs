@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Markup.Xaml;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Eremex.AvaloniaUI.Charts;
 
@@ -44,8 +45,13 @@ public partial class CartesianCandlestickAggregationViewModel : ChartsPageViewMo
     }
 }
 
-public class DateTimeUnitItem
+public class DateTimeUnitItem : MarkupExtension
 {
     public DateTimeUnit Unit { get; set; }
     public int Factor { get; set; }
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
+    }
 }

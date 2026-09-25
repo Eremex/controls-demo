@@ -1,5 +1,6 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
@@ -11,15 +12,17 @@
              xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
              xmlns:resources="clr-namespace:DemoCenter"
 			 xmlns:data="clr-namespace:DemoCenter.DemoData"
+			 xmlns:csv="clr-namespace:DemoCenter.DemoData.CsvClasses"
 			 xmlns:view="using:DemoCenter.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridDragDropPageView">
+             x:Class="DemoCenter.Views.DataGridDragDropPageView"
+             x:DataType="vm:DataGridDragDropPageViewModel">
 
 	<Grid ColumnDefinitions="*, 20, 20, *, 250" RowDefinitions="Auto, *">
 		<Grid.Resources>
 			<view:SmallQuantityToVisibilityConverter x:Key="quantityToVisibilityConverter" />
 			<view:SmallQuantityToColorConverter x:Key="quantityToColorConverter" />
-			<DataTemplate x:Key="quantityTemplate">
+			<DataTemplate x:Key="quantityTemplate" x:DataType="mxdcv:CellData">
 				<Grid ColumnDefinitions="Auto, *" Margin="8,0">
 					<Border ToolTip.Tip="Small quantity" IsVisible="{Binding Value, Converter={StaticResource quantityToVisibilityConverter}}" VerticalAlignment="Center">
 						<Image Source="{x:Static mxi:Basic.Warning}" />
@@ -40,7 +43,7 @@
 				<Setter Property="SelectionMode" Value="Multiple" />
 				<Setter Property="AutoExpandAllGroups" Value="True" />
 			</Style>
-			<Style Selector="mxdgv|DataGridRowControl">
+			<Style Selector="mxdgv|DataGridRowControl" x:DataType="csv:StockProduct">
 				<Setter Property="Background">
 					<Setter.Value>
 						<MultiBinding Converter="{StaticResource quantityToColorConverter}">
@@ -94,13 +97,13 @@
 			<mxdg:GridColumn FieldName="Quantity" Width="70" CellTemplate="{StaticResource quantityTemplate}" />
 		</mxdg:DataGridControl>
 
-        <Border Grid.RowSpan="2" Grid.Column="4" BorderThickness="1,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-            <mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+        <Border Grid.RowSpan="2" Grid.Column="4" BorderThickness="1,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup Last">
                 <StackPanel>
-                    <mxe:CheckEditor x:Name="allowDragDropCheckEditor" Content="Allow Drag Drop" IsChecked="True" Classes="LayoutItem"/>
+                    <mxe:CheckEditor x:Name="allowDragDropCheckEditor" Content="Allow Drag Drop" IsChecked="True" Classes="PropertyEditor"/>
 
                     <StackPanel Orientation="Horizontal">
-                        <mxe:CheckEditor x:Name="usePlatformRowDragDropCheckEditor" Content="Use Platform Drag Drop" IsChecked="False" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="LayoutItem"/>
+                        <mxe:CheckEditor x:Name="usePlatformRowDragDropCheckEditor" Content="Use Platform Drag Drop" IsChecked="False" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="PropertyEditor"/>
 
                         <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
                             <ToolTip.Tip>
@@ -110,7 +113,7 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-						<mxe:CheckEditor x:Name="allowDragDropSortedRowsCheckEditor" Content="Allow Drag Drop Sorted Rows" IsChecked="True" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="LayoutItem"/>
+						<mxe:CheckEditor x:Name="allowDragDropSortedRowsCheckEditor" Content="Allow Drag Drop Sorted Rows" IsChecked="True" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="PropertyEditor"/>
 
                         <Image Source="{x:Static mxi:_12.Info}" Stretch="None">
                             <ToolTip.Tip>
@@ -119,8 +122,8 @@
                         </Image>
                     </StackPanel>
 
-                    <Label Content="Row Drag Mode:" Classes="LayoutItem"/>
-                    <mxe:ComboBoxEditor x:Name="rowDragModeComboBoxEditor" ItemsSource="{mx:EnumItemsSource EnumType=mxdc:RowDragMode}" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="LayoutItem">
+                    <Label Content="Row Drag Mode:" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ComboBoxEditor x:Name="rowDragModeComboBoxEditor" ItemsSource="{mx:EnumItemsSource EnumType=mxdc:RowDragMode}" IsEnabled="{Binding #allowDragDropCheckEditor.IsChecked}" Classes="PropertyEditor">
                         <mxe:ComboBoxEditor.EditorValue>
                             <mxdc:RowDragMode>Row</mxdc:RowDragMode>
                         </mxe:ComboBoxEditor.EditorValue>

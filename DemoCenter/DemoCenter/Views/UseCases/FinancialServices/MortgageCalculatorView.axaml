@@ -1,4 +1,4 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
 			 xmlns:mxc="https://schemas.eremexcontrols.net/avalonia/charts"
@@ -12,9 +12,9 @@
 
 	<Grid Margin="10" ColumnDefinitions="Auto,*">
 		<StackPanel>
-			<Border Margin="0,20, 0,20" CornerRadius="20" ClipToBounds="True" Width="200" Height="200">
-				<Image  Source="{Binding HousePreviewImage}"></Image>
-			</Border>
+			<Image Margin="0,20,0,20" Width="384" Height="288"
+			       Source="{Binding HousePreviewImage}"
+			       RenderOptions.BitmapInterpolationMode="HighQuality"/>
 			<Label>
 				Principal
 			</Label>

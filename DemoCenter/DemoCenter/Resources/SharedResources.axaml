@@ -20,4 +20,6 @@
 	<Thickness x:Key="verticalStackItemMargin">8,4,0,4</Thickness>
 	<Thickness x:Key="verticalStackTopItemMargin">8,0,0,4</Thickness>
 	<Thickness x:Key="verticalStackBottomItemMargin">8,4,0,0</Thickness>
+
+    <Thickness x:Key="OptionsMargin">8</Thickness>
 </ResourceDictionary>

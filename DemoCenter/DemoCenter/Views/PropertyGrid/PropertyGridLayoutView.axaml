@@ -1,0 +1,78 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:layout="clr-namespace:Avalonia.Layout;assembly=Avalonia.Base"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxpg="https://schemas.eremexcontrols.net/avalonia/propertygrid"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:col="using:System.Collections"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.PropertyGridLayoutView"
+             x:DataType="vm:PropertyGridLayoutViewModel">
+    <UserControl.Resources>
+        <col:ArrayList x:Key="columnWidths">
+            <GridLength>*</GridLength>
+            <GridLength>2*</GridLength>
+            <GridLength>3*</GridLength>
+            <GridLength>120</GridLength>
+            <GridLength>240</GridLength>
+        </col:ArrayList>
+    </UserControl.Resources>
+
+    <Grid ColumnDefinitions="*, 2*, *, 250">
+        <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding SelectedObject}"
+                                  Margin="16" BorderThickness="1" Grid.Column="1">
+            <mxpg:PropertyGridCategoryRow Caption="General">
+                <mxpg:PropertyGridRow FieldName="Image" ReadOnly="True">
+                    <mxpg:PropertyGridRow.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{ReflectionBinding Value}" Height="72" Margin="2" HorizontalAlignment="Left"
+                                   RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                        </DataTemplate>
+                    </mxpg:PropertyGridRow.CellTemplate>
+                </mxpg:PropertyGridRow>
+                <mxpg:PropertyGridRow FieldName="Trademark" Caption="Model"/>
+                <mxpg:PropertyGridRow FieldName="Price"/>
+                <mxpg:PropertyGridRow FieldName="IsInStock" Caption="In Stock"/>
+            </mxpg:PropertyGridCategoryRow>
+
+            <mxpg:PropertyGridCategoryRow Caption="Engine">
+                <mxpg:PropertyGridRow FieldName="HP" Caption="Power, hp"/>
+                <mxpg:PropertyGridRow FieldName="Liter" Caption="Displacement, l"/>
+                <mxpg:PropertyGridRow FieldName="Cyl" Caption="Cylinders"/>
+                <mxpg:PropertyGridRow FieldName="MPG" Caption="Fuel Economy, mpg"/>
+            </mxpg:PropertyGridCategoryRow>
+
+            <mxpg:PropertyGridCategoryRow Caption="Transmission">
+                <mxpg:PropertyGridRow FieldName="TransmissionType" Caption="Type"/>
+                <mxpg:PropertyGridRow FieldName="TransmissionSpeedCount" Caption="Speeds"/>
+            </mxpg:PropertyGridCategoryRow>
+
+        </mxpg:PropertyGridControl>
+
+        <Border Grid.Column="3" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Show Search Panel" IsChecked="{Binding #propertyGrid.ShowSearchPanel}" Classes="PropertyEditor"/>
+
+                    <mxe:CheckEditor Content="Allow Resizing" IsChecked="{Binding #propertyGrid.AllowResizing}" Classes="PropertyEditor"/>
+
+                    <Label Content="Caption Column Width" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ComboBoxEditor ItemsSource="{StaticResource columnWidths}" EditorValue="{Binding #propertyGrid.CaptionColumnWidth}"
+                                        IsTextEditable="False" Classes="PropertyEditor"/>
+
+                    <Label Content="Editor Column Width" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ComboBoxEditor ItemsSource="{StaticResource columnWidths}" EditorValue="{Binding #propertyGrid.EditorColumnWidth}"
+                                        IsTextEditable="False" Classes="PropertyEditor"/>
+
+                    <Label Content="Caption Alignment" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=layout:HorizontalAlignment}"
+                                        EditorValue="{Binding #propertyGrid.CaptionHorizontalAlignment}"
+                                        IsTextEditable="False" Classes="PropertyEditor"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>

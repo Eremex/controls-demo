@@ -23,8 +23,8 @@
 				<Grid ColumnDefinitions="3*, 20, *" RowDefinitions="*, Auto">
 					<mxe:ComboBoxEditor x:Name="ComboBoxSelector" ItemsSource="{mx:EnumItemsSource EnumType=data:GraphicPosition, ShowImages=True, ImageSize='32,32'}"
 										EditorValue="{Binding GraphicPosition}" VerticalAlignment="Center" Grid.RowSpan="2"/>
-					<Image Grid.Column="2" Width="96" Height="96" Source="{Binding SelectedItem.Image, ElementName=ComboBoxSelector}"/>
-					<Label Grid.Row="1" Grid.Column="2" Content="{Binding SelectedItem.Name, ElementName=ComboBoxSelector}" FontWeight="Bold" Classes="LayoutItem" HorizontalAlignment="Center"/>
+					<Image Grid.Column="2" Width="96" Height="96" Source="{Binding ((mx:EnumMemberInfo)SelectedItem).Image, ElementName=ComboBoxSelector}"/>
+					<Label Grid.Row="1" Grid.Column="2" Content="{Binding ((mx:EnumMemberInfo)SelectedItem).Name, ElementName=ComboBoxSelector}" FontWeight="Bold" Classes="LayoutItem" HorizontalAlignment="Center"/>
 				</Grid>
 			</mxe:GroupBox>
 			<mxe:GroupBox Grid.Row="2" Header="Segmented Editor">
@@ -32,8 +32,8 @@
 					<mxe:SegmentedEditor x:Name="SegmentedEditorSelector" EditorValue="{Binding GraphicView}"
 										 ItemsSource="{mx:EnumItemsSource EnumType=data:GraphicView, ShowImages=True, ShowNames=False, ImageSize='32,32', NameToDescriptionConverter={view:EnumDescriptionConverter}}"
 										 VerticalAlignment="Center" Grid.RowSpan="2"/>
-					<Image Grid.Column="2" Width="96" Height="96" Source="{Binding SelectedItem.Image, ElementName=SegmentedEditorSelector}"/>
-					<Label Grid.Row="1" Grid.Column="2" Content="{Binding SelectedItem.Name, ElementName=SegmentedEditorSelector}" FontWeight="Bold" Classes="LayoutItem" HorizontalAlignment="Center"/>
+					<Image Grid.Column="2" Width="96" Height="96" Source="{Binding ((mx:EnumMemberInfo)SelectedItem).Image, ElementName=SegmentedEditorSelector}"/>
+					<Label Grid.Row="1" Grid.Column="2" Content="{Binding ((mx:EnumMemberInfo)SelectedItem).Name, ElementName=SegmentedEditorSelector}" FontWeight="Bold" Classes="LayoutItem" HorizontalAlignment="Center"/>
 				</Grid>
 			</mxe:GroupBox>
 		</Grid>

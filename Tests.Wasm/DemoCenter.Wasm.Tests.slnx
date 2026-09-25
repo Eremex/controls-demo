@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../DemoCenter/DemoCenter/DemoCenter.csproj" />
+  <Project Path="DemoCenter.Wasm.TestHost/DemoCenter.Wasm.TestHost.csproj" />
+  <Project Path="DemoCenter.Wasm.TestRunner/DemoCenter.Wasm.TestRunner.csproj" />
+  <Project Path="DemoCenter.Wasm.Tests/DemoCenter.Wasm.Tests.csproj" />
+</Solution>

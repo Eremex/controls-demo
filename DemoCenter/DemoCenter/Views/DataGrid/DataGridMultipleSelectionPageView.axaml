@@ -1,14 +1,17 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
 			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
 			 xmlns:data="clr-namespace:DemoCenter.DemoData"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridMultipleSelectionPageView">
+             x:Class="DemoCenter.Views.DataGridMultipleSelectionPageView"
+             x:DataType="vm:DataGridMultipleSelectionPageViewModel">
 
 	<Grid ColumnDefinitions="*, 250">
 		<mxdg:DataGridControl x:Name="dataGrid" 
@@ -18,6 +21,14 @@
 							  ShowGroupPanel="False" 
 							  AllowEditing="False" 
 							  BorderThickness="1,0">
+			<mxdg:GridColumn FieldName="PhotoThumbnail" Header="Photo" Width="72" MinWidth="72" AllowSorting="False" ReadOnly="True">
+			    <mxdg:GridColumn.CellTemplate>
+			        <DataTemplate x:DataType="mxdcv:CellData">
+			            <Image Source="{Binding Value}" Width="48" Height="48" Margin="2" HorizontalAlignment="Center"
+                               RenderOptions.BitmapInterpolationMode="HighQuality"/>
+			        </DataTemplate>
+			    </mxdg:GridColumn.CellTemplate>
+			</mxdg:GridColumn>
 			<mxdg:GridColumn FieldName="FirstName" Width="*" MinWidth="80"/>
 			<mxdg:GridColumn FieldName="LastName" Width="*" MinWidth="80"/>
 			<mxdg:GridColumn FieldName="HireDate" Header="Hire Date" Width="*" MinWidth="80" />			
@@ -28,9 +39,9 @@
 			<mxdg:GridColumn FieldName="BirthDate" Width="*" MinWidth="80" />
 		</mxdg:DataGridControl>
 
-		<Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-			<mxe:GroupBox Header="Selected Employees" VerticalAlignment="Top" Classes="PropertiesGroup">
-				<ListBox ItemsSource="{Binding SelectedEmployees}" VerticalAlignment="Top">
+		<Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+			<mxe:GroupBox Header="Selected Employees" VerticalAlignment="Top" Classes="PropertiesGroup Last">
+				<ListBox ItemsSource="{Binding SelectedEmployees}">
 					<ListBox.DisplayMemberBinding>
 						<MultiBinding StringFormat="{}{0} {1}">
 							<Binding Path="FirstName" />

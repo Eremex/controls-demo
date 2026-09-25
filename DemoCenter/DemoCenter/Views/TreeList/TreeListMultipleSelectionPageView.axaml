@@ -4,12 +4,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:mx="clr-namespace:Eremex.AvaloniaUI.Controls;assembly=Eremex.Avalonia.Controls"
+			 xmlns:mxc="clr-namespace:Eremex.AvaloniaUI.Controls.Common;assembly=Eremex.Avalonia.Controls"
+             xmlns:demodata="clr-namespace:DemoCenter.DemoData"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
              xmlns:mxtlv="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
 			 xmlns:views="using:DemoCenter.Views"
              xmlns:vm="using:DemoCenter.ViewModels"
+             xmlns:data="using:DemoCenter.DemoData"
              d:DesignHeight="450"
              d:DesignWidth="900"
              x:DataType="vm:TreeListMultipleSelectionPageViewModel"
@@ -37,7 +41,7 @@
 		                      NodeImageSelector="{StaticResource imageSelector}"
 		                      AutoExpandAllNodes="True">
 			<mxtl:TreeListControl.Styles>
-				<Style Selector="mxtlv|TreeListRowControl">
+				<Style Selector="mxtlv|TreeListRowControl" x:DataType="data:ProjectTask">
 					<Setter Property="TextBlock.FontWeight">
 						<Setter.Value>
 							<Binding Path="HasTasks">
@@ -57,15 +61,27 @@
 				</Style>
 			</mxtl:TreeListControl.Styles>
 			<mxtl:TreeListColumn FieldName="Description" Width="2*" />
-			<mxtl:TreeListColumn FieldName="Assignee" Width="*" />
-			<mxtl:TreeListColumn FieldName="HighPriority" Header="High Priority" AllowSorting="False" Width="90" />
-			<mxtl:TreeListColumn FieldName="Status" Width="*" />
-			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="*" />
-			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="*" />
+			<mxtl:TreeListColumn FieldName="Assignee" Width="Auto">
+				<mxtl:TreeListColumn.CellTemplate>
+					<DataTemplate x:DataType="mxdcv:CellData">
+						<DockPanel>
+							<Image DockPanel.Dock="Left" Source="{Binding ((demodata:ProjectTask)Row).AssigneePhoto}" Width="24" Height="24"
+								       RenderOptions.BitmapInterpolationMode="HighQuality"/>
+							<TextBlock Text="{Binding Value}" VerticalAlignment="Center" Margin="6,0,0,0"
+							           TextTrimming="CharacterEllipsis"
+							           mxc:TextBlockHelper.ShowTooltipWhenTrimming="True"/>
+						</DockPanel>
+					</DataTemplate>
+				</mxtl:TreeListColumn.CellTemplate>
+			</mxtl:TreeListColumn>
+			<mxtl:TreeListColumn FieldName="HighPriority" Header="High Priority" AllowSorting="False" Width="Auto" />
+			<mxtl:TreeListColumn FieldName="Status" Width="Auto" />
+			<mxtl:TreeListColumn FieldName="EstimateTime" Header="Estimate Time (h)" Width="Auto" />
+			<mxtl:TreeListColumn FieldName="DueDate" Header="Due Date" Width="Auto" />
 		</mxtl:TreeListControl>
 		</Border>
-        <mxe:GroupBox Grid.Column="1" Header="Selected Assignees" Classes="PropertiesGroup">
-			<ListBox ItemsSource="{Binding SelectedTasks}" DisplayMemberBinding="{Binding Assignee}" VerticalAlignment="Top" />
+        <mxe:GroupBox Grid.Column="1" Header="Selected Assignees" Classes="PropertiesGroup Last" Margin="{DynamicResource OptionsMargin}">
+			<ListBox ItemsSource="{Binding SelectedTasks}" DisplayMemberBinding="{Binding Assignee}"/>
         </mxe:GroupBox> 
 	</Grid>
 </UserControl>

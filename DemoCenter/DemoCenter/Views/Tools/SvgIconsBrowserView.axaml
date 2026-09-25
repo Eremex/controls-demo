@@ -11,7 +11,8 @@
              xmlns:aEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
              xmlns:internal="clr-namespace:Eremex.AvaloniaUI.Controls.Editors.Internal;assembly=Eremex.Avalonia.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.SvgIconsBrowserView">
+             x:Class="DemoCenter.Views.SvgIconsBrowserView"
+             x:DataType="vm:SvgIconsBrowserViewModel">
     <UserControl.Styles>
         <Style Selector="mxlv|ListViewItemControl.Detail/template/Rectangle#PART_Border">
             <Setter Property="Margin" Value="1"/>

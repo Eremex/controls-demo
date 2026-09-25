@@ -1,7 +1,7 @@
 ﻿// This file is auto-generated. Please do not change it.
 using System.Runtime.CompilerServices;
-
 using Eremex.AvaloniaUI.Controls.License;
+
 
 namespace DemoCenter;
 public class LicenseProvider
@@ -11,6 +11,6 @@ public class LicenseProvider
 #pragma warning restore CA2255 // The 'ModuleInitializer' attribute should not be used in libraries
     public static void RegisterLicense()
 	{
-        ControlsLicenseManager.SetRuntimeLicenseOwner(new LicenseProvider(),"", "A2F7867D", "C6 D6 90 62 AE 2D 77 83 0B 16 37 EA 62 59 60 A9 F6 20 5C 2F D9 C3 B5 8E 42 37 EC C4 AA 5C 16 60 D0 39 37 49 20 A1 09 B2", "F2 38 23 E5 C2 9A A3 6F F8 F4 83 5A 60 0E 70 42 58 19 50 F3 92 8A 9F 9E 3B 32 4B A4 80 69 41 7C 91 B0 6E 3A 97 B7 8D C5");
+        ControlsLicenseManager.SetRuntimeLicenseOwner(new LicenseProvider(),"", "A2F7867D", "EF 7D 8B 1D BD 8C CD 0E 79 20 40 FC 3D 43 BE EE D2 E3 BD B8 0D 6C 24 98 F8 2B 5F 4B 4D 03 7B 37 D2 AA 73 EB DC BE 70 52", "F4 24 E5 0A FD 77 7C 01 27 69 D5 AE 6F 26 6A F0 0F 3C 99 E0 09 34 46 AE 62 7C E2 68 F0 6A 03 C2 9D B8 F1 4A 7E 10 A2 5A");
 	}
 }

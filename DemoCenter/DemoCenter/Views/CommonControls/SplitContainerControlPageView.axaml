@@ -1,4 +1,4 @@
-<UserControl x:Class="DemoCenter.Views.SplitContainerControlPageView"
+﻿<UserControl x:Class="DemoCenter.Views.SplitContainerControlPageView"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -59,7 +59,8 @@
                         <mxlv:ListViewControl.ItemTemplate>
                             <DataTemplate DataType="demoData:CarInfo">
                                 <Border>
-                                    <Image Source="{Binding Image}" Width="256" Height="256" />
+                                    <Image Source="{Binding Image}" Width="256" Height="144"
+                                           RenderOptions.BitmapInterpolationMode="HighQuality"/>
                                 </Border>
                             </DataTemplate>
                         </mxlv:ListViewControl.ItemTemplate>
@@ -68,25 +69,26 @@
             </mxe:SplitContainerControl>
         </ContentControl>
 
-        <!--Options-->
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto Auto Auto" ColumnDefinitions="3*, *">
+        <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
                     <mxe:CheckEditor x:Name="IsCollapsedSelector" Content="IsCollapsed" Classes="PropertyEditor" />
-                    <mxe:CheckEditor Grid.Row="1" x:Name="IsSplitterVisibleSelector" Content="Is Splitter Visible"
+                    
+                    <mxe:CheckEditor x:Name="IsSplitterVisibleSelector" Content="Is Splitter Visible"
                                      IsChecked="True" Classes="PropertyEditor" />
-                    <Label Grid.Row="2" Content="Collapsed Panel" Classes="PropertyLabel" />
-                    <mxe:ComboBoxEditor Grid.Row="3"
-                                        ItemsSource="{mx:EnumItemsSource EnumType=mxe:SplitContainerControlCollapsePanel}"
+                    
+                    <Label Content="Collapsed Panel" Classes="PropertyEditor EditorLabel" />
+                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxe:SplitContainerControlCollapsePanel}"
                                         Classes="PropertyEditor"
                                         x:Name="CollapsePanelComboBox"
                                         EditorValue="{x:Static mxe:SplitContainerControlCollapsePanel.Panel2}" />
-                    <Label Grid.Row="4" Content="Orientation" Classes="PropertyLabel" />
-                    <mxe:ComboBoxEditor Grid.Row="5" ItemsSource="{mx:EnumItemsSource EnumType=Orientation}"
+                    
+                    <Label Content="Orientation" Classes="PropertyEditor EditorLabel" />
+                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=Orientation}"
                                         Classes="PropertyEditor"
                                         x:Name="OrientationComboBox"
                                         EditorValue="{x:Static Orientation.Horizontal}" />
-                </Grid>
+                </StackPanel>
             </mxe:GroupBox>
         </StackPanel>
     </Grid>

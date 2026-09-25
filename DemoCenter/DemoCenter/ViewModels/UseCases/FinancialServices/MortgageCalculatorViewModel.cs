@@ -80,12 +80,12 @@ public partial class MortgageCalculatorViewModel : PageViewModelBase
 
     Dictionary<int, Bitmap> houseImages = new Dictionary<int, Bitmap>()
         {
-            {0, GetImage("House-3-Level.jpg") },
-            {1, GetImage("House-4-Level.jpg") },
-            {2, GetImage("House-5-Level.jpg") },
-            {3, GetImage("House-6-Level.jpg") },
-            {4, GetImage("House-7-Level.jpg") },
-            {5, GetImage("House-Vip.jpg") },
+            {0, GetImage("House-3-Level.png") },
+            {1, GetImage("House-4-Level.png") },
+            {2, GetImage("House-5-Level.png") },
+            {3, GetImage("House-6-Level.png") },
+            {4, GetImage("House-7-Level.png") },
+            {5, GetImage("House-Vip.png") },
 
         };
 

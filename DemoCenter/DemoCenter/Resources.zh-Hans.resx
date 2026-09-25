@@ -199,7 +199,7 @@
     <value>您可以在 Data Grid 单元格中嵌入任何控件，以按您希望的方式呈现和编辑单元格数据。此演示展示了 Eremex 的内置编辑器：DateEditor、SpinEditor 和 ComboBoxEditor。当您在单元格中使用 Eremex 编辑器时，Data Grid 的性能会显著提高，尤其是在处理大型数据源时。</value>
   </data>
   <data name="TheDataValidationMechanismAllowsYouToCheck" xml:space="preserve">
-    <value>数据验证机制允许您检查单元格值并显示包含无效数据的单元格中的错误。您可以使用 DataAnnotation 属性和 IDataErrorInfo/INotifyDataErrorInfo 接口在 ItemsSource 级别验证数据。在此演示中切换“显示 ItemsSource 错误”复选框以查看来自 DataAnnotation 属性的数据验证错误。Data Grid 还允许您使用 ValidateCellValue 事件来实现自定义规则以验证用户输入。</value>
+    <value>数据验证机制允许您检查单元格值并显示包含无效数据的单元格中的错误。您可以使用 DataAnnotation 属性和 IDataErrorInfo/INotifyDataErrorInfo 接口在 ItemsSource 级别验证数据。在此演示中切换“Show ItemsSource Errors”复选框以查看来自 DataAnnotation 属性的数据验证错误。Data Grid 还允许您使用 ValidateCellValue 事件来实现自定义规则以验证用户输入。</value>
   </data>
   <data name="DataGridSupportsBuiltInDataSearchAndFiltra" xml:space="preserve">
     <value>Data Grid 提供了多种过滤和搜索数据的方法：
@@ -221,11 +221,17 @@
     <value>DataGrid 支持多行选择模式，允许您和用户一次选择（突出显示）多行。用户可以使用鼠标和键盘选择多行。按住 CTRL 和/或 SHIFT 键单击行以选择行。</value>
   </data>
   <data name="DataGridFixedColumnsDescription" xml:space="preserve">
-    <value>要在水平滚动期间保留基本数据，您可以将列固定（固定）到左侧或右侧边缘。一旦固定，这些列将保持静止，而其他数据则滚动。启用内置的“固定”列菜单以允许用户在运行时修复列。</value>
-  </data>    
+    <value>为了在水平滚动时始终显示关键数据，您可以将列固定（锁定）到左侧或右侧边缘。固定后，这些列保持不动，而其他数据继续滚动。启用内置的“固定”列菜单，允许用户在运行时固定列。</value>
+  </data>
   <data name="DataGridDragAndDropDescription" xml:space="preserve">
     <value>Data Grid 支持在控件内部和外部控件（例如 Tree List 或另一个 Data Grid）之间进行拖放操作。此示例展示了在 Data Grid 内部和之间的拖放功能。AllowDragDrop 选项激活拖放功能。
 在此示例中，控件绑定到包含相同业务对象的集合。这确保了在从源网格到目标网格的拖放操作期间自动移动行。当您将一行从一个网格移动到另一个网格时，相应的项会在两个网格控件的项源之间移动。</value>
+  </data>
+  <data name="DataGridUsePlatformDragDropTooltip" xml:space="preserve">
+    <value>若要允许将行拖动到其他应用程序，请启用 UsePlatformRowDragDrop 属性。该属性会启用由 Avalonia 平台处理拖放操作的模式。在基于平台的行拖动过程中不会显示行预览。</value>
+  </data>
+  <data name="DataGridAllowDragDropSortedRowsTooltip" xml:space="preserve">
+    <value>要在已排序或已分组的 Data Grid 中启用拖放操作，必须启用 AllowDragDropSortedRows 选项。当数据已排序或分组时，拖放操作会修改被拖动行在排序列中的值。</value>
   </data>
   <data name="DataGridColumnBandsDescription" xml:space="preserve">
     <value>列带允许您通过在列上方显示共享标题，将列以可视方式组合在一起。列带和列标题均可包含文本、图像或自定义内容。此演示展示了以下功能：
@@ -236,14 +242,19 @@
   <data name="DataGridBestFitDescription" xml:space="preserve">
     <value>Best-Fit 功能可调整列的大小，以确保其内容完全可见。它计算并应用每列所需的理想最小宽度，以显示其值而不被截断。用户可以通过两种方式调用Best-Fit：
 • 双击列标题的右边缘
-• 从列的上下文菜单中选择“最佳拟合”或“最佳拟合所有列”
-“重置列宽度”命令（在列上下文菜单中可用）将列恢复为其原始宽度。此命令将恢复用户执行的任何手动调整大小，将列返回到 XAML 或代码隐藏中设置的宽度。仅当用户修改列宽后，“重置列宽”命令才会启用。</value>
+• 从列的上下文菜单中选择“最适合”或“最适合所有列”
+“重置列宽”命令（在列上下文菜单中可用）将列恢复为其原始宽度。此命令将恢复用户执行的任何手动调整大小，将列返回到 XAML 或代码隐藏中设置的宽度。仅当用户修改列宽后，“重置列宽”命令才会启用。</value>
+  </data>
+  <data name="DataGridBestFitModeTooltip" xml:space="preserve">
+    <value>提供两种 Best-Fit 计算模式：
+• 快速模式 — 根据行中的唯一值计算最佳列宽，性能更好。在某些情况下（例如网格使用单元格模板时），该模式可能不够准确。
+• 完整模式 — 根据所有行值计算最佳列宽。虽然比快速模式慢，但当网格使用单元格模板或在单元格中显示数据源验证错误时，该模式能提供最准确的结果。</value>
   </data>
   <data name="TheEremexControlsLibraryIncludesMultipleEd" xml:space="preserve">
     <value>Eremex 控件库包括多个编辑器，为您提供高级数据编辑功能。这些编辑器允许您显示和编辑不同数据类型（数字、布尔值、日期时间、枚举等）的数据。它们支持数据验证机制、样式设置以及嵌入到容器控件（Data Grid、Tree List、Property Grid 和工具栏/菜单）中。</value>
   </data>
   <data name="TheEditorsLibraryIncludesTheTextEditorAndB" xml:space="preserve">
-    <value>编辑器库包括 Text Editor 和 Button Editor 控件，它们提供基本的文本编辑功能：数据验证、水印（编辑器为空时显示的提示）以及控制文本选择和数据编辑操作的多个选项。Button Editor 支持无限数量的内置常规按钮和复选框按钮，它们可以在编辑框的左侧或右侧显示文本或图像。</value>
+    <value>编辑器库包括 Text Editor 和 Button Editor 控件，它们提供基本的文本编辑功能：数据验证、水印（编辑器为空时显示的提示）以及控制文本选择和数据编辑操作的多个选项。Button Editor 支持无限数量的内置常规按钮和切换按钮，它们可以在编辑框的左侧或右侧显示文本或图像。</value>
   </data>
   <data name="TheSpinEditorIsANumericValueEditorWithBuil" xml:space="preserve">
     <value>Spin Editor 是一个数值编辑器，带有用于按特定值（增量）增加和减少数字的内置旋转按钮。用户可以通过单击这些按钮或按键盘上的上下箭头来增加和减少数字。SpinEditor 使用数字掩码将用户输入限制为仅数字值，并根据指定的模式格式化编辑值。</value>
@@ -323,7 +334,7 @@
     <value>属性网格的选项卡行允许您将一组字段分组到选项卡式用户界面中。每行中的选项卡项显示其自己的一组绑定字段。</value>
   </data>
   <data name="RibbonControlAllowsYouToIntegrateMicrosoft" xml:space="preserve">
-    <value>RibbonControl 允许您将受 Microsoft Office 启发的导航菜单集成到您的 Avalonia UI 应用程序中。该控件提供两种视图：经典视图（三行项目）和简化视图（一行项目）。控件右下角的下拉按钮打开一个选择器以在这些视图之间切换。{0}RibbonControl 支持多种项目类型：大按钮和小按钮、复选框按钮、子菜单、内置编辑器、内联和下拉画廊、按钮组等。您可以根据需要创建任意数量的页面，并将项目放置在快速访问工具栏或选项卡标题区域。{1}按下 ALT 键以聚焦到功能区，然后使用键盘在功能区元素之间导航并激活命令。</value>
+    <value>RibbonControl 允许您将受 Microsoft Office 启发的导航菜单集成到您的 Avalonia UI 应用程序中。该控件提供两种视图：经典视图（三行项目）和简化视图（一行项目）。控件右下角的下拉按钮打开一个选择器以在这些视图之间切换。{0}RibbonControl 支持多种项目类型：大按钮和小按钮、切换按钮、子菜单、内置编辑器、内联和下拉画廊、按钮组等。您可以根据需要创建任意数量的页面，并将项目放置在快速访问工具栏或选项卡标题区域。{1}按下 ALT 键以聚焦到功能区，然后使用键盘在功能区元素之间导航并激活命令。</value>
   </data>
   <data name="ThisExampleDemonstratesThePointSeriesViewW2" xml:space="preserve">
     <value>此示例展示了点系列视图，它允许您在史密斯图上绘制单个点。</value>
@@ -351,7 +362,7 @@
     <value>列带功能允许您通过在列上方显示共享标题，将多列以可视化的方式组合在一起。列标题和列带标题均可包含文本、图像或自定义内容。该控件允许您创建具有无限嵌套级别的分层列带。</value>
   </data>
   <data name="WASMOnlyText1" xml:space="preserve">
-    <value>此演示仅适用于桌面模式。下载应用程序。</value>
+    <value>此演示仅适用于桌面模式。请下载 </value>
   </data>
   <data name="WASMOnlyText2" xml:space="preserve">
     <value>解决方案并运行 DemoCenter.Desktop 项目以查看此演示。</value>
@@ -386,6 +397,12 @@
   <data name="UseCasesGroupInfo_Desc" xml:space="preserve">
     <value>本演示应用模拟了一个抵押贷款计算器，它使用 Data Grid（数据网格）和 Cartesian Chart（直角坐标图表）控件构建。数据网格以表格形式呈现详细的还款计划。同步的图表会将此数据绘制出来，显示在贷款期限内本金和利息之间的关系。</value>
   </data>
+  <data name="YachtParts_Desc" xml:space="preserve">
+    <value>面向游艇船队的零部件目录，以主从关系的两个 Data Grid 呈现。上方表格列出船只，下方表格显示适用于所选船只的零部件，按系统分组，并在旁边预览所选零部件。该零部件目录与汽车共用，因此从游艇找到的零部件与从汽车找到的是同一条记录。</value>
+  </data>
+  <data name="CarComparison_Desc" xml:space="preserve">
+    <value>两辆汽车并排对比：每一行中较优的数值以绿色标出，较差的以红色标出。何为更优取决于该行：功率更大、挡位更多、每加仑里程更高为优，价格更低同样为优；而排量或变速器类型这类行不作着色，因为两者都算不上优势。在图片上方的下拉列表中更换任一车型，对比会随之重新计算。</value>
+  </data>
   <data name="EmptyPoints" xml:space="preserve">
     <value>本演示展示了图表控件如何借助"空点"处理不完整的数据集。这些点允许您在值缺失的位置创建系列中的可见间隙。要将某个点指定为空点，请将其值设置为 double.NaN、double.PositiveInfinity 或 double.NegativeInfinity。</value>
   </data>
@@ -400,5 +417,67 @@
   </data>
   <data name="STL" xml:space="preserve">
     <value>本演示展示了在Graphics3DControl中渲染的电路板3D模型。该示例展示了如何使用Assimp库从STL文件导入复杂模型。加载的几何数据用于初始化Graphics3DControl中的网格、顶点和材质。</value>
+  </data>
+  <data name="ApplicationServicesRegistrationDescription" xml:space="preserve">
+    <value>Application Services 描述的是需要注册什么，而不是如何注册：使用哪个容器、采用什么生命周期由宿主决定。本示例列出了 RegisterApplicationServices 提供的所有服务，然后逐一解析它们，以确认注册已经完整。
+ • Microsoft.Extensions.DependencyInjection 与 Autofac — 两者通过同一个回调进行集成，将每个服务注册为单例。
+ • 完全不使用容器 — 内置的 SimpleServiceProvider，本示例本身使用的就是它。
+ • 构造函数注入 — 视图模型获取已注册服务的常规方式。</value>
+  </data>
+  <data name="ApplicationServicesMessageBoxesDescription" xml:space="preserve">
+    <value>通过 IMessageBoxService 显示的标准消息框，提供固定的按钮和图标组合：Ok/Information、Yes/No/Question、Yes/No/Cancel/Warning、Retry/Cancel/Error。可以显式传入所有者窗口；如果省略，服务会向 IWindowsManager 请求当前的活动窗口。</value>
+  </data>
+  <data name="ApplicationServicesDialogsDescription" xml:space="preserve">
+    <value>通过 IDialogService，模态对话框的标题、内容和按钮均由视图模型提供，而非在标记中拼装。本演示展示了以下场景：
+ • Ok / Cancel — 基类无需额外代码即可创建标准按钮对。
+ • Apply / Cancel — 重写 CreateButtons 可替换标准按钮集。
+ • 带 Dock 的 Yes / No — 按钮可拥有自定义文字，并停靠在任意一侧。
+ • 验证 — 在输入变为有效之前，CanOk 会使默认按钮保持禁用。
+ • 嵌套对话框 — 从另一个模态对话框中打开的模态对话框。</value>
+  </data>
+  <data name="ApplicationServicesChoiceDialogsDescription" xml:space="preserve">
+    <value>IChoiceDialogService 弥补了 IMessageBoxService 的不足：消息框只提供固定的按钮集合，并且始终返回 DialogResult，而该服务可接受任意按钮文字，并返回调用方选择的任意结果类型。
+ • 自定义按钮文字 — 例如"Show log"或"Retry"，任何标准按钮集都无法提供。
+ • 任意结果类型 — 普通 bool、自定义枚举，或任何其他结构体。
+ • 带 Dock 的按钮 — 诸如 Help 之类的次要操作可与主按钮分开放置。</value>
+  </data>
+  <data name="ApplicationServicesWindowsDescription" xml:space="preserve">
+    <value>通过 IWindowService 打开的非模态窗口，以及跟踪当前活动窗口的 IWindowsManager — 当未显式指定所有者时，其他服务都会以它作为回退。传递给服务的标题会覆盖视图模型上设置的标题，而在多个已打开窗口中的某一个上打开的模态对话框，只会阻塞该窗口。</value>
+  </data>
+  <data name="ApplicationServicesFileDialogsDescription" xml:space="preserve">
+    <value>通过 IOpenFileDialogService 和 ISaveFileDialogService 提供的打开与保存对话框，二者都同时具有同步和异步版本 — 同步版本会让调用线程停留在嵌套消息循环中，仅为遗留代码保留，新代码应优先使用 ShowAsync。本示例展示了选择单个文件、通过 AllowMultiple 选择多个文件，以及使用建议文件名、默认扩展名、覆盖确认提示和默认起始文件夹进行保存。</value>
+  </data>
+  <data name="PropertyGridMultipleObjectsDescription" xml:space="preserve">
+    <value>“属性网格”（Property Grid）允许您同时显示和编辑多个对象的属性。如果这些对象类型不同，该控件仅显示它们共有的属性。在此演示中，您可以按住 Ctrl 键并点击以选中左侧表格中的多名员工，从而在属性网格中查看其属性。属性网格会显示共有的属性值，并将不同的值留空。修改任意属性时，更改将同步应用到所有选定的员工。</value>
+  </data>
+  <data name="PropertyGridValidationDescription" xml:space="preserve">
+    <value>数据验证机制允许您检查单元格值，并针对包含无效数据的单元格显示错误提示。您可以使用 DataAnnotation 特性（attributes）以及 IDataErrorInfo 或 INotifyDataErrorInfo 接口，在绑定对象层面进行数据验证。
+此外，PropertyGrid 还支持通过处理 ValidateRowValue 事件来执行自定义验证。您可以勾选“规则”（Rules）区域下的复选框，以查看各项验证规则的实际效果。</value>
+  </data>
+  <data name="PropertyGridLayoutDescription" xml:space="preserve">
+    <value>此示例展示了属性网格（Property Grid）的布局设置。
+• 标题列与编辑器列的宽度 —— 每列的宽度既可以是固定的像素值，也可以是可用空间的比例（即“星号”尺寸调整模式）。
+• 标题对齐方式 —— 标题在标题列内可设置为左对齐、右对齐、居中对齐或拉伸填充。
+• 内置调整器 —— 调整器允许用户在运行时重新分配标题列与编辑器列之间的空间。</value>
+  </data>
+  <data name="RibbonLayoutDescription" xml:space="preserve">
+    <value>功能区中由应用程序而非命令决定的部分：经典布局与简化布局、允许用户在两者之间切换的按钮、应用程序按钮，以及快速访问工具栏——可以显示在功能区上方或下方，并可选择是否带自定义菜单。拖动宽度滑块，可以看到空间不足时分组如何折叠为下拉按钮。页面下方的状态栏是 Bars 中处于 StatusBar 模式的工具栏，与功能区共用同一个 ToolbarManager。</value>
+  </data>
+  <data name="DataGridTotalSummariesDescription" xml:space="preserve">
+    <value>DataGrid 可以对行计算汇总，并将结果显示在底部的汇总页脚中。
+• 支持的汇总类型：Sum、Min、Max、Count 和 Average。
+• 最终用户可以在运行时管理汇总：单击页脚单元格中的 Σ 按钮添加汇总，或选择“Σ → Customize”调用 Summary Editor 对话框。
+• 每一列都可以显示基于该列值计算的多个汇总。
+• 可以针对某一列计算汇总，并在另一列中显示结果。
+• 处理 CustomSummary 事件可计算自定义汇总。</value>
+  </data>
+  <data name="TreeListTotalSummariesDescription" xml:space="preserve">
+    <value>TreeList 可以对行计算汇总，并将结果显示在底部的汇总页脚中。
+• 支持的汇总类型：Sum、Min、Max、Count 和 Average。
+• 最终用户可以在运行时管理汇总：单击页脚单元格中的 Σ 按钮添加汇总，或选择“Σ → Customize”调用 Summary Editor 对话框。
+• 每一列都可以显示基于该列值计算的多个汇总。
+• 可以针对某一列计算汇总，并在另一列中显示结果。
+• 汇总仅针对当前已加载的节点计算。禁用 AllowDynamicDataLoading 可一次性加载所有节点并将其纳入汇总。
+• 处理 CustomSummary 事件可计算自定义汇总。</value>
   </data>
 </root>

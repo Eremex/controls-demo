@@ -13,7 +13,11 @@
             <mxc:CartesianChart.SeriesTemplate>
                 <DataTemplate x:DataType="vm:SeriesViewModel">
                     <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}" AxisXKey="{Binding AxisXKey}" AxisYKey="{Binding AxisYKey}">
-                        <mxc:CartesianAreaSeriesView Color="{Binding Color}" Thickness="2" />
+                        <mxc:CartesianAreaSeriesView Color="{Binding Color}">
+                            <mxc:CartesianAreaSeriesView.LineStyle>
+                                <mxc:LineStyle Thickness="2" />
+                            </mxc:CartesianAreaSeriesView.LineStyle>
+                        </mxc:CartesianAreaSeriesView>
                     </mxc:CartesianSeries>
                 </DataTemplate>
             </mxc:CartesianChart.SeriesTemplate>
@@ -51,30 +55,35 @@
             </mxc:CartesianChart.AxisYTemplate>
         </mxc:CartesianChart>
 
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Cartesian Chart" Classes="PropertiesGroup">
-                <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
-            </mxe:GroupBox>
-            <mxe:GroupBox Header="Selected Axis" Classes="PropertiesGroup">
-                <mxe:ComboBoxEditor ItemsSource="{Binding Axes}" EditorValue="{Binding SelectedAxis}" Classes="PropertyEditor" Margin="0,12,0,0"/>
-            </mxe:GroupBox>
-            <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
-                <StackPanel Orientation="Vertical">
-                    <Label Content="Position" Classes="TopPropertyLabel" />
-                    <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxc:AxisPosition}" EditorValue="{Binding SelectedAxis.Position}" Classes="PropertyEditor"/>
+        <ScrollViewer Grid.Column="1" >
+            <Border BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+                <StackPanel>
+                    <mxe:GroupBox Header="Cartesian Chart" Classes="PropertiesGroup">
+                        <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
+                    </mxe:GroupBox>
+                    <mxe:GroupBox Header="Selected Axis" Classes="PropertiesGroup">
+                        <mxe:ComboBoxEditor ItemsSource="{Binding Axes}" EditorValue="{Binding SelectedAxis}" DisplayMember="Title" Classes="PropertyEditor"/>
+                    </mxe:GroupBox>
+                    <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup Last">
+                        <StackPanel>
+                            <Label Content="Position" Classes="PropertyEditor EditorLabel" />
+                            <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxc:AxisPosition}" EditorValue="{Binding SelectedAxis.Position}" Classes="PropertyEditor"/>
 
-                    <mxe:CheckEditor Content="Reverse" IsChecked="{Binding SelectedAxis.Reverse}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Content="Show Title" IsChecked="{Binding SelectedAxis.ShowTitle}" Classes="PropertyEditor"/>
-                    <mxe:TextEditor IsEnabled="{Binding SelectedAxis.ShowTitle}" EditorValue="{Binding SelectedAxis.Title}" Margin="0,8,0,0" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Content="Show Labels" IsChecked="{Binding SelectedAxis.ShowLabels}" Classes="PropertyEditor"/>
+                            <mxe:CheckEditor Content="Reverse" IsChecked="{Binding SelectedAxis.Reverse}" Classes="PropertyEditor"/>
+                            <mxe:CheckEditor Content="Show Title" IsChecked="{Binding SelectedAxis.ShowTitle}" Classes="PropertyEditor"/>
+                            <mxe:TextEditor IsEnabled="{Binding SelectedAxis.ShowTitle}" EditorValue="{Binding SelectedAxis.Title}" Classes="PropertyEditor"/>
+                            <mxe:CheckEditor Content="Show Labels" IsChecked="{Binding SelectedAxis.ShowLabels}" Classes="PropertyEditor"/>
 
-                    <mxe:CheckEditor Content="Show Major Gridlines" IsChecked="{Binding SelectedAxis.ShowMajorGridlines}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Content="Show Interlacing" IsEnabled="{Binding SelectedAxis.ShowMajorGridlines}" IsChecked="{Binding SelectedAxis.ShowInterlacing}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Content="Show Minor Gridlines" IsChecked="{Binding SelectedAxis.ShowMinorGridlines}" Classes="PropertyEditor"/>
-                    <Label Content="Minor Count" Classes="PropertyLabel"/>
-                    <Slider Minimum="0" Maximum="9" Value="{Binding SelectedAxis.MinorCount}" Margin="0,8,0,0" />
+                            <mxe:CheckEditor Content="Show Major Gridlines" IsChecked="{Binding SelectedAxis.ShowMajorGridlines}" Classes="PropertyEditor"/>
+                            <mxe:CheckEditor Content="Show Interlacing" IsEnabled="{Binding SelectedAxis.ShowMajorGridlines}" IsChecked="{Binding SelectedAxis.ShowInterlacing}" Classes="PropertyEditor"/>
+                            <mxe:CheckEditor Content="Show Minor Gridlines" IsChecked="{Binding SelectedAxis.ShowMinorGridlines}" Classes="PropertyEditor"/>
+                            
+                            <Label Content="Minor Count" Classes="PropertyEditor EditorLabel"/>
+                            <Slider Minimum="0" Maximum="9" Value="{Binding SelectedAxis.MinorCount}"/>
+                        </StackPanel>
+                    </mxe:GroupBox>
                 </StackPanel>
-            </mxe:GroupBox>
-        </StackPanel>
+            </Border>
+        </ScrollViewer>
     </Grid>
 </UserControl>

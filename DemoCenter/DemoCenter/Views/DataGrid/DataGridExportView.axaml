@@ -1,5 +1,6 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:data="clr-namespace:DemoCenter.DemoData"
@@ -12,7 +13,8 @@
 			 xmlns:views="using:DemoCenter.Views"
 			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridExportView">
+             x:Class="DemoCenter.Views.DataGridExportView"
+             x:DataType="vm:DataGridExportViewModel">
 
 	<Grid ColumnDefinitions="*, 250">
 		<Border x:Name="DemoControl">
@@ -43,28 +45,28 @@
 			</mxdg:DataGridControl>
 		</Border>
 
-		<Border Grid.Column="1">
+		<Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
 			<StackPanel>
 				<mxe:GroupBox Header="Xlsx Export Properties" Classes="PropertiesGroup">
-					<Grid RowDefinitions="Auto, Auto, Auto">
+                    <StackPanel>
 						<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding XlsExportColumnHeaders}" Classes="PropertyEditor"/>
-						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding XlsExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
-						<Button Content="Export" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Xlsx}" HorizontalAlignment="Stretch" Grid.Row="2" />
-					</Grid>
+						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding XlsExportBandHeaders}" Classes="PropertyEditor"/>
+						<Button Content="Export" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Xlsx}" Classes="PropertyEditor"/>
+                    </StackPanel>
 				</mxe:GroupBox>
 
-				<mxe:GroupBox Header="Pdf/Image Export Properties" Classes="PropertiesGroup">
-					<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
-						<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding PdfExportColumnHeaders}" Classes="PropertyEditor"/>
-						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding PdfExportBandHeaders}" Classes="PropertyEditor" Grid.Row="1"/>
-						<mxe:CheckEditor Content="Fit To Page Width" IsChecked="{Binding FitToPageWidth}" Classes="PropertyEditor" Grid.Row="2"/>
-						<Label Content="Page Orientation" Margin="0,8,0,0" FontWeight="SemiBold" Grid.Row="3"/>
-						<StackPanel Margin="16,0,0,0" Grid.Row="4">
+				<mxe:GroupBox Header="Pdf/Image Export Properties" Classes="PropertiesGroup Last">
+                    <StackPanel>
+						<mxe:CheckEditor Content="Export Column Headers" IsChecked="{Binding PageExportColumnHeaders}" Classes="PropertyEditor"/>
+						<mxe:CheckEditor Content="Export Band Headers" IsChecked="{Binding PageExportBandHeaders}" Classes="PropertyEditor"/>
+						<mxe:CheckEditor Content="Fit To Page Width" IsChecked="{Binding FitToPageWidth}" Classes="PropertyEditor"/>
+						<Label Content="Page Orientation" FontWeight="SemiBold" Classes="PropertyEditor EditorLabel"/>
+						<StackPanel>
 							<RadioButton Content="Landscape" IsChecked="{Binding Landscape}" GroupName="G1" Classes="PropertyEditor"/>
 							<RadioButton Content="Portrait" IsChecked="{Binding !Landscape}" GroupName="G1" Classes="PropertyEditor"/>
 						</StackPanel>
-						<Button Content="Export To Pdf" Margin="0,8,0,0" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Pdf}" HorizontalAlignment="Stretch" Grid.Row="5" />
-						<mx:MxSplitButton Content="Export To Image" Margin="0,8,0,0" Command="{Binding ExportImageCommand}" CommandParameter="{x:Static exports:MxImageFormat.Jpeg}" HorizontalAlignment="Stretch" Grid.Row="6">
+						<Button Content="Export To Pdf" Command="{Binding ExportCommand}" CommandParameter="{x:Static viewModels:ExportType.Pdf}" Classes="PropertyEditor"/>
+						<mx:MxSplitButton Content="Export To Image" Command="{Binding ExportImageCommand}" CommandParameter="{x:Static exports:MxImageFormat.Jpeg}" Classes="PropertyEditor">
 							<mx:MxSplitButton.DropDownControl>
 								<mxb:PopupMenu>
 									<mxb:ToolbarButtonItem Header="Jpeg" Command="{Binding ExportImageCommand}" CommandParameter="{x:Static exports:MxImageFormat.Jpeg}"/>
@@ -74,7 +76,7 @@
 								</mxb:PopupMenu>
 							</mx:MxSplitButton.DropDownControl>
 						</mx:MxSplitButton>
-					</Grid>
+                    </StackPanel>
 				</mxe:GroupBox>
 			</StackPanel>
 		</Border>

@@ -1,15 +1,18 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:views="using:DemoCenter.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridGroupingPageView">
+             x:Class="DemoCenter.Views.DataGridGroupingPageView"
+             x:DataType="vm:DataGridGroupingPageViewModel">
     <UserControl.Resources>
         <views:NullValueConverter x:Key="nullValueConverter"/>
-        <DataTemplate x:Key="quarterTemplate">
+        <DataTemplate x:Key="quarterTemplate" x:DataType="mxdcv:CellData">
             <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Pressed}"
                          MinWidth="0"
                          Background="Transparent"
@@ -18,7 +21,7 @@
                          Margin="1"
                          Minimum="0" Maximum="100" ShowProgressText="True" Value="{Binding Value, Converter={StaticResource nullValueConverter}}" />
         </DataTemplate>
-        <DataTemplate x:Key="totalTemplate">
+        <DataTemplate x:Key="totalTemplate" x:DataType="mxdcv:CellData">
             <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Text}"
                          MinWidth="0"
                          Background="Transparent"
@@ -43,8 +46,8 @@
             </mxdg:DataGridControl>
         </Border>
 
-        <Border Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+        <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
                 <StackPanel>
                     <mxe:CheckEditor Content="Show Group Panel" IsChecked="{Binding #dataGrid.ShowGroupPanel}" Classes="PropertyEditor"/>
                     <mxe:CheckEditor Content="Show Grouped Columns" IsChecked="{Binding #dataGrid.ShowGroupedColumns}" Classes="PropertyEditor"/>

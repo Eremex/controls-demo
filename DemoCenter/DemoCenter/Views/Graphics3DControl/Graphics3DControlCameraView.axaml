@@ -3,7 +3,8 @@
              xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:mx3d="https://schemas.eremexcontrols.net/avalonia/controls3d"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
-             x:Class="DemoCenter.Views.Graphics3DControlCameraView">
+             x:Class="DemoCenter.Views.Graphics3DControlCameraView"
+             x:DataType="vm:Graphics3DControlCameraViewModel">
   <Grid ColumnDefinitions="* 250">
         <mx3d:Graphics3DControl Classes="DemoGraphics3DControl" x:Name="DemoControl" MaterialsSource="{Binding Materials}" Camera="{Binding SelectedCamera.Camera}" Grid.Column="0">
             <mx3d:Graphics3DControl.Models>
@@ -20,63 +21,46 @@
                 <mx3d:Gizmo x:Name="Gizmo" />
             </mx3d:Graphics3DControl.Gizmo>
         </mx3d:Graphics3DControl>
-        
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Camera" Classes="PropertiesGroup">
-                <StackPanel Orientation="Vertical">
-                    <ListBox ItemsSource="{Binding Cameras}" SelectedItem="{Binding SelectedCamera}" Classes="PropertyEditor">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate x:DataType="vm:CameraItem">
-                                <Label Content="{Binding Name}" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
 
-                    <Label Content="Perspective Field Of View" Classes="PropertyLabel"/>
-                    <Slider Minimum="0.1" Maximum="2.1" Value="{Binding SelectedCamera.FieldOfView}" IsEnabled="{Binding SelectedCamera.IsPerspective}" Classes="PropertyEditor" />
+      <ScrollViewer Grid.Column="1" >
+          <Border BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+              <mxe:GroupBox Header="Camera" Classes="PropertiesGroup Last">
+                  <StackPanel>
+                      <ListBox ItemsSource="{Binding Cameras}" SelectedItem="{Binding SelectedCamera}" Classes="PropertyEditor">
+                          <ListBox.ItemTemplate>
+                              <DataTemplate x:DataType="vm:CameraItem">
+                                  <Label Content="{Binding Name}" Classes="PropertyEditor"/>
+                              </DataTemplate>
+                          </ListBox.ItemTemplate>
+                      </ListBox>
 
-                    <Button Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" HorizontalAlignment="Stretch" Classes="LayoutItem">Up
-                        <Button.CommandParameter>
-                            <mx3d:CameraPosition>Up</mx3d:CameraPosition>
-                        </Button.CommandParameter>
-                    </Button>
-                    <Button Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" HorizontalAlignment="Stretch" Classes="LayoutItem">Down
-                        <Button.CommandParameter>
-                            <mx3d:CameraPosition>Down</mx3d:CameraPosition>
-                        </Button.CommandParameter>
-                    </Button>
-                    <Button Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" HorizontalAlignment="Stretch" Classes="LayoutItem">Front
-                        <Button.CommandParameter>
-                            <mx3d:CameraPosition>Front</mx3d:CameraPosition>
-                        </Button.CommandParameter>
-                    </Button>
+                      <Label Content="Perspective Field Of View" Classes="PropertyEditor EditorLabel"/>
+                      <Slider Minimum="0.1" Maximum="2.1" Value="{Binding SelectedCamera.FieldOfView}" IsEnabled="{Binding SelectedCamera.IsPerspective}"/>
 
-                    <Button Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" HorizontalAlignment="Stretch" Classes="LayoutItem">Rear
-                        <Button.CommandParameter>
-                            <mx3d:CameraPosition>Rear</mx3d:CameraPosition>
-                        </Button.CommandParameter>
-                    </Button>
+                      <Button Content="Up" Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" CommandParameter="{x:Static mx3d:CameraPosition.Up}"
+                              HorizontalAlignment="Stretch" Classes="PropertyEditor"/>
+                      
+                      <Button Content="Down" Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" CommandParameter="{x:Static mx3d:CameraPosition.Down}"
+                              HorizontalAlignment="Stretch" Classes="PropertyEditor"/>
+                      
+                      <Button Content="Front" Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" CommandParameter="{x:Static mx3d:CameraPosition.Front}"
+                              HorizontalAlignment="Stretch" Classes="PropertyEditor"/>
 
-                    <Button Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" HorizontalAlignment="Stretch" Classes="LayoutItem">Left
-                        <Button.CommandParameter>
-                            <mx3d:CameraPosition>Left</mx3d:CameraPosition>
-                        </Button.CommandParameter>
-                    </Button>
+                      <Button Content="Rear" Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" CommandParameter="{x:Static mx3d:CameraPosition.Rear}"
+                              HorizontalAlignment="Stretch" Classes="PropertyEditor"/>
 
-                    <Button Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" HorizontalAlignment="Stretch" Classes="LayoutItem">Right
-                        <Button.CommandParameter>
-                            <mx3d:CameraPosition>Right</mx3d:CameraPosition>
-                        </Button.CommandParameter>
-                    </Button>
+                      <Button Content="Left" Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" CommandParameter="{x:Static mx3d:CameraPosition.Left}"
+                              HorizontalAlignment="Stretch" Classes="PropertyEditor"/>
 
-                    <Button Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" HorizontalAlignment="Stretch" Classes="LayoutItem">IsoXYZ
-                        <Button.CommandParameter>
-                            <mx3d:CameraPosition>IsoXYZ</mx3d:CameraPosition>
-                        </Button.CommandParameter>
-                    </Button>
+                      <Button Content="Right" Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" CommandParameter="{x:Static mx3d:CameraPosition.Right}"
+                              HorizontalAlignment="Stretch" Classes="PropertyEditor"/>
 
-                </StackPanel>
-            </mxe:GroupBox>
-        </StackPanel>
+                      <Button Content="IsoXYZ" Command="{Binding ElementName=DemoControl, Path=LookCameraAtSceneCommand}" CommandParameter="{x:Static mx3d:CameraPosition.IsoXYZ}"
+                              HorizontalAlignment="Stretch" Classes="PropertyEditor"/>
+
+                  </StackPanel>
+              </mxe:GroupBox>
+          </Border>
+      </ScrollViewer>
     </Grid>
 </UserControl>

@@ -1,6 +1,4 @@
-using System.Collections;
-using System.ComponentModel;
-using System.Globalization;
+﻿
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Data;
@@ -12,8 +10,13 @@ using Avalonia.Styling;
 using DemoCenter.Helpers;
 using DemoCenter.ProductsData;
 using DemoCenter.ViewModels;
-
+using Eremex.AvaloniaUI.Controls.Editors;
 using Eremex.AvaloniaUI.Controls.TreeList;
+using Eremex.AvaloniaUI.Icons;
+using Eremex.AvaloniaUI.Themes.DeltaDesign;
+using System.Collections;
+using System.ComponentModel;
+using System.Globalization;
 
 namespace DemoCenter.Views;
 
@@ -26,6 +29,17 @@ public partial class MainView : UserControl
     {
         InitializeComponent();
         pageSelector.AddHandler(TextBox.KeyDownEvent, OnPageSelectorKeyDown, RoutingStrategies.Tunnel);
+        densityComboBox.EditorValue = Density.Standard;
+    }
+
+    private void DensityComboBoxEditor_EditorValueChanged(object sender, EditorValueChangedEventArgs e)
+    {
+        var comboBox = (ComboBoxEditor)sender;
+        foreach (var style in App.Current.Styles)
+        {
+            if (style is DeltaDesignTheme deltaDesignTheme)
+                deltaDesignTheme.Density = (Density)comboBox.EditorValue;
+        }
     }
 
     MainViewModel ViewModel { get; set; }
@@ -58,9 +72,7 @@ public partial class MainView : UserControl
 
     private void OnMainViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(MainViewModel.SelectedThemeVariant) && ViewModel?.SelectedThemeVariant != null && Application.Current is App application)
-            application.RequestedThemeVariant = ViewModel.SelectedThemeVariant;
-        else if (e.PropertyName == nameof(MainViewModel.SourceFile))
+        if (e.PropertyName == nameof(MainViewModel.SourceFile))
             UpdateDocument();
         else if (e.PropertyName == nameof(MainViewModel.SelectedCode))
         {
@@ -183,5 +195,27 @@ public class ThemeVariantToIconDataConverter : MarkupExtension, IMultiValueConve
         if(variant == ThemeVariant.Dark)
             return values[2];
         return null;
+    }
+}
+
+public class DensityToIconConverter : MarkupExtension, IValueConverter
+{
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
+    }
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return value switch
+        {
+            Density.Compact => Basic.Density_Compact,
+            Density.Spacious => Basic.Density_Spacious,
+            Density.Standard => Basic.Density_Standart,
+            _ => null,
+        };
+    }
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return BindingOperations.DoNothing;
     }
 }

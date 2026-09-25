@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DemoCenter.Wasm.TestHost": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:59677;http://localhost:59679"
+    }
+  }
+}

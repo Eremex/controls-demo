@@ -15,12 +15,14 @@
                 <mx3d:PerspectiveCamera MinDistance="0.1" MaxDistance="4" NearClipPlane="0.1" />
             </mx3d:Graphics3DControl.Camera>
         </mx3d:Graphics3DControl>
-        
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Point Size" Classes="PropertyLabel"/>
-                <Slider Minimum="1" Maximum="5" Value="{Binding PointSize}" />
-            </StackPanel>
-        </mxe:GroupBox>
+
+        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <Label Content="Point Size" Classes="PropertyEditor EditorLabel"/>
+                    <Slider Minimum="1" Maximum="5" Value="{Binding PointSize}" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
     </Grid>
 </UserControl>

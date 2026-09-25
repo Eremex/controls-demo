@@ -15,15 +15,17 @@
                 <mx3d:SimplePbrMaterial x:Name="Material" />
             </mx3d:Graphics3DControl.Materials>
         </mx3d:Graphics3DControl>
-        
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Line Width" Classes="PropertyLabel"/>
-                <Slider Minimum="1" Maximum="10" Value="{Binding LineWidth}" />
 
-                <Label Content="Albedo" Classes="PropertyLabel"/>
-                <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Albedo, Converter={StaticResource Vector3ToColorConverter}}" />
-            </StackPanel>
-        </mxe:GroupBox>
+        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last" >
+                <StackPanel>
+                    <Label Content="Line Width" Classes="PropertyEditor EditorLabel"/>
+                    <Slider Minimum="1" Maximum="10" Value="{Binding LineWidth}" />
+
+                    <Label Content="Albedo" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ColorEditor Color="{Binding ElementName=Material, Path=Albedo, Converter={StaticResource Vector3ToColorConverter}}" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
     </Grid>
 </UserControl>

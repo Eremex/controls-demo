@@ -20,10 +20,10 @@
             </mxc:SmithChart.SeriesTemplate>
         </mxc:SmithChart>
         
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Marker Size" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="12" Classes="PropertyEditor" />
+        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup Last" Margin="{DynamicResource OptionsMargin}">
+            <StackPanel>
+                <Label Content="Marker Size" Classes="PropertyEditor EditorLabel" />
+                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="12" />
             </StackPanel>
         </mxe:GroupBox>
     </Grid>

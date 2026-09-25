@@ -27,8 +27,8 @@
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
         
-        <mxe:GroupBox Grid.Column="1" Header="Cartesian Chart" Classes="PropertiesGroup">
-            <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor" VerticalAlignment="Top" />
+        <mxe:GroupBox Grid.Column="1" Header="Cartesian Chart" Classes="PropertiesGroup Last" Margin="{DynamicResource OptionsMargin}">
+            <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
         </mxe:GroupBox>        
     </Grid>
 </UserControl>

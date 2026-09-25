@@ -13,7 +13,11 @@
         <mxc:PolarChart Grid.Row="1" Grid.Column="0" Classes="DemoChartWithNoOptions" x:Name="DemoControl" PointerPressed="DemoControl_OnPointerPressed">
             <mxc:PolarChart.Series>
                 <mxc:PolarSeries DataAdapter="{Binding Series.DataAdapter}">
-                    <mxc:PolarLineSeriesView Color="{Binding Series.Color}" Thickness="2" />
+                    <mxc:PolarLineSeriesView Color="{Binding Series.Color}">
+                        <mxc:PolarLineSeriesView.LineStyle>
+                            <mxc:LineStyle Thickness="2" />
+                        </mxc:PolarLineSeriesView.LineStyle>
+                    </mxc:PolarLineSeriesView>
                 </mxc:PolarSeries>
             </mxc:PolarChart.Series>
 
@@ -45,16 +49,21 @@
                 </mxc:PolarAxisY>
             </mxc:PolarChart.AxisY>
         </mxc:PolarChart>
-        
-        <mxe:GroupBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Header="Properties" Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Start Angle" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlStartAngle" Minimum="0" Maximum="360" Value="270" Classes="PropertyEditor" />
-                <Label Content="Sweep Direction" Classes="TopPropertyLabel" />
-                <mxe:ComboBoxEditor EditorValue="{Binding ElementName=AxisX, Path=SweepDirection, Mode=TwoWay}"
-                                    ItemsSource="{mx:EnumItemsSource EnumType=SweepDirection}" />
-                <Button Command="{Binding ClearConstantLinesCommand}" Margin="0, 8, 0, 0" HorizontalAlignment="Stretch">Clear Constant Lines</Button>
-            </StackPanel>
-        </mxe:GroupBox>
+
+        <Border Grid.Column="1" Grid.RowSpan="2" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <Label Content="Start Angle" Classes="PropertyEditor EditorLabel" />
+                    <Slider x:Name="SlStartAngle" Minimum="0" Maximum="360" Value="270" />
+
+                    <Label Content="Sweep Direction" Classes="PropertyEditor EditorLabel" />
+                    <mxe:ComboBoxEditor EditorValue="{Binding ElementName=AxisX, Path=SweepDirection, Mode=TwoWay}"
+                                        ItemsSource="{mx:EnumItemsSource EnumType=SweepDirection}"
+                                        Classes="PropertyEditor"/>
+
+                    <Button Content="Clear Constant Lines" Command="{Binding ClearConstantLinesCommand}" Classes="PropertyEditor"/>
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
     </Grid>
 </UserControl>

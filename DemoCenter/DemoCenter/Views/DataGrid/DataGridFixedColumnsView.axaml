@@ -1,13 +1,16 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:data="clr-namespace:DemoCenter.DemoData"
 			 xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
 			 xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:views="using:DemoCenter.Views"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridFixedColumnsView">
+             x:Class="DemoCenter.Views.DataGridFixedColumnsView"
+             x:DataType="vm:DataGridFixedColumnsViewModel">
     
     <Grid ColumnDefinitions="*, 250">
 	    <Border x:Name="DemoControl">
@@ -18,6 +21,14 @@
                     </Style>
                 </mxdg:DataGridControl.Styles>
                 
+                <mxdg:GridColumn FieldName="PhotoThumbnail" Header="Photo" Width="72" MinWidth="72" AllowSorting="False" ReadOnly="True">
+                    <mxdg:GridColumn.CellTemplate>
+                        <DataTemplate x:DataType="mxdcv:CellData">
+                            <Image Source="{Binding Value}" Width="48" Height="48" Margin="2" HorizontalAlignment="Center"
+                               RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                        </DataTemplate>
+                    </mxdg:GridColumn.CellTemplate>
+                </mxdg:GridColumn>
                 <mxdg:GridColumn FieldName="FirstName" FixedMode="Left"/>
                 <mxdg:GridColumn FieldName="LastName" FixedMode="Left"/>
                 <mxdg:GridColumn FieldName="BirthDate" Width="200"/>
@@ -35,11 +46,11 @@
             </mxdg:DataGridControl>
 	    </Border>
 
-        <Border Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+        <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
                 <StackPanel>
                     <mxe:CheckEditor Content="Allow 'Fixed' Menu for Columns" IsChecked="{Binding #dataGrid.ShowColumnMenuFixedItem}" Classes="PropertyEditor"/>
-                    <Label Content="Fixed Column Separator Width" Classes="PropertyLabel"/>
+                    <Label Content="Fixed Column Separator Width:" Classes="PropertyEditor EditorLabel"/>
                     <Slider Minimum="1" Maximum="20" Value="{Binding #dataGrid.FixedColumnSeparatorWidth, Converter={views:SeparatorWidthConverter}}"/>
                     <mxe:CheckEditor Content="Extend Scrollbar to Fixed Columns" IsChecked="{Binding #dataGrid.ExtendScrollbarToFixedColumns}" Classes="PropertyEditor"/>
                     <mxe:CheckEditor Content="Auto Hide Scrollbars" IsChecked="{Binding AutoHideScrollbars}" Classes="PropertyEditor"/>

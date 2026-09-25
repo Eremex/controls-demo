@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DemoCenter.Wasm.TestRunner</RootNamespace>
+    <IsTestProject>false</IsTestProject>
+    <Configurations>Debug;Release;Release_WASM</Configurations>
+    <!--
+      An ordinary desktop process: all it does is serve the published static files and drive
+      a headless browser. The tests themselves run inside wasm, in DemoCenter.Wasm.TestHost.
+    -->
+    <UseAppHost>true</UseAppHost>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="chromium" />
+    <PackageReference Include="chromium.linux-x64" />
+    <PackageReference Include="chromium.win-x64" />
+    <PackageReference Include="Microsoft.Playwright" />
+  </ItemGroup>
+
+  <!--
+    There is deliberately no ProjectReference to DemoCenter.Wasm.TestHost: the browser
+    project is consumed as published static content (its path is passed as an argument),
+    otherwise net10.0-browser would be dragged into the desktop build.
+  -->
+
+</Project>

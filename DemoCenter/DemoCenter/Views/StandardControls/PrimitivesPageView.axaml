@@ -49,9 +49,9 @@
                 </mxe:GroupBox>
             </Grid>            
         </ContentControl>
-        <!--Options-->
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+        
+        <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
                 <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="PropertyEditor"/>
             </mxe:GroupBox>
         </StackPanel>

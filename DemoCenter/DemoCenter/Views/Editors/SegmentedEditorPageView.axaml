@@ -31,7 +31,7 @@
                                          ItemsSource="{mx:EnumItemsSource EnumType=data:GraphicView, ShowImages=True, ShowNames=False, ImageSize='32,32', NameToDescriptionConverter={view:EnumDescriptionConverter}}"
                                          Grid.ColumnSpan="3"/>
                     <Border x:Name="ImageBorder" Grid.Row="2" Grid.ColumnSpan="3" BorderThickness="{StaticResource EditorBorderThickness}" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-                        <Image Grid.Column="2" HorizontalAlignment="Stretch" Width="96" Height="96" Source="{Binding SelectedItem.Image, ElementName=GraphicViewSelector}"/>
+                        <Image Grid.Column="2" HorizontalAlignment="Stretch" Width="96" Height="96" Source="{Binding ((mx:EnumMemberInfo)SelectedItem).Image, ElementName=GraphicViewSelector}"/>
                     </Border>
                     <Label Content="Horizontal Alignment:" Grid.Row="4" Classes="LayoutItem"/>
                     <mxe:SegmentedEditor x:Name="HorizontalAlignmentSelector" Grid.Row="5" EditorValue="{Binding HorizontalAlignment, ElementName=ImageBorder, Mode=TwoWay}"

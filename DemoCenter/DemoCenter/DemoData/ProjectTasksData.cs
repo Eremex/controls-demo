@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Media;
+
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -53,6 +55,8 @@ namespace DemoCenter.DemoData
 
         [ObservableProperty]
         private DateTime dueDate;
+
+        public IImage AssigneePhoto => EmployeesData.LoadThumbnailOf(Assignee);
 
         public List<ProjectTask> Tasks { get; }
 
@@ -145,13 +149,7 @@ namespace DemoCenter.DemoData
            "Testing and quality assurance", "Security Assessment", "Launch and post-launch activities",
         };
 
-        private static readonly string[] AssigneeNames = new[]
-        {
-            "Ben Elliott", "Nelson Blackburn", "Clifford Hines", "Kaitlin Watts", "Lana Burnett",
-            "Stanley Dorsey", "Tony Huffman", "Lisa Marquez", "Tim Robinson", "Jodie Bradley",
-            "Casey Mccarthy", "Ralph Livingston", "Scott Reed", "Sarah Evans", "Jeremy Pearson", "Mattie Fowler",
-            "Kylie Phillips", "Stefan Garrison", "Daniel Harvey", "Krish Joyce", "Kaitlyn Thomas", "Dan Berry",
-            "John Oneal", "Nikolas Andrews", "Lisa Chan", "Molly Byrd", "Oliver Welsh", "Dillan Tanner"
-        };
+        // The employee list, so that every assignee has a portrait.
+        private static readonly string[] AssigneeNames = EmployeesData.EmployeeNames.ToArray();
     }
 }

@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
       - name: EMXDemo Unit Test
         run: dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj
 
@@ -20,8 +24,66 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
-      - name: EMXDemo Unit Test
-        uses: GabrielBB/xvfb-action@v1
+        uses: actions/checkout@v5
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          run: dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj
+          dotnet-version: '10.0.x'
+      # The tests open real windows through UsePlatformDetect(), so X11 needs a display.
+      - name: Install Xvfb
+        run: sudo apt-get update && sudo apt-get install -y xvfb
+      - name: EMXDemo Unit Test
+        run: xvfb-run -a dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj
+
+  # The tests open real windows. GitHub's macOS runners execute under a logged in GUI session, so
+  # that works, but two things are needed that the other platforms do not care about:
+  #   * caffeinate - Avalonia's native backend builds its render timer from CVDisplayLink and fails
+  #     with "RenderTimer -6661" if no display is awake;
+  #   * a macOS build of assimp next to the binary - the 3D demo loads models through AssimpNet,
+  #     which dlopen()s a bare "libassimp.dylib" and therefore does not see Homebrew's copy in
+  #     /opt/homebrew/lib. This mirrors the libassimp.so step already present in publish.yml.
+  macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install native dependencies
+        run: brew install assimp
+      - name: Build
+        run: dotnet build ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj -c Debug
+      - name: Copy assimp next to the test binary
+        run: cp "$(brew --prefix)/lib/libassimp.dylib" ./Tests/DemoCenter.Desktop.UI.Tests/bin/Debug/net10.0/
+      - name: EMXDemo Unit Test
+        run: caffeinate -disu dotnet test ./Tests/DemoCenter.Desktop.UI.Tests/DemoCenter.Desktop.UI.Tests.csproj -c Debug --no-build
+
+  # DemoCenter under WebAssembly: publishes Tests.Wasm/DemoCenter.Wasm.TestHost (Release_WASM,
+  # trimmed, native Skia relink - hence wasm-tools) and drives it with headless Chromium from the
+  # chromium.linux-x64 nuget package. The script's exit code is the number of failed tests.
+  # See Tests.Wasm/README.md.
+  wasm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Install wasm-tools
+        run: dotnet workload install wasm-tools
+      - name: EMXDemo WASM Test
+        env:
+          WASM_TEST_RESULTS: ${{ github.workspace }}/Tests.Wasm/TestResults
+        run: bash ./Tests.Wasm/run-wasm-tests.sh
+      - name: Upload WASM test report
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: wasm-test-results
+          path: Tests.Wasm/TestResults
+          if-no-files-found: ignore

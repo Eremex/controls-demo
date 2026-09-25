@@ -1,11 +1,14 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:DemoCenter.ViewModels"
+             xmlns:views="clr-namespace:DemoCenter.Views"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.MemoEditorPageView">
+             x:Class="DemoCenter.Views.MemoEditorPageView"
+             x:DataType="vm:MemoEditorPageViewModel">
     <Design.DataContext>
 		<viewModels:MemoEditorPageViewModel />
 	</Design.DataContext>
@@ -13,12 +16,11 @@
     <Grid ColumnDefinitions="*, 250">
         <ContentControl x:Name="DemoControl" Classes="DemoUserControl">
                         <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, 26, Auto"
-                              Margin="30"
-                          IsEnabled="{Binding #IsEnabledSelector.IsChecked}">
+                              Margin="30">
                         <Label Content="Memo Editor" Classes="EditorHeader"/>
-                        <mxe:MemoEditor x:Name="DateEditor" HorizontalAlignment="Stretch"
+                        <mxe:MemoEditor HorizontalAlignment="Stretch"
                                         IsTextEditable="{Binding #IsTextEditableSelector.IsChecked}"
-                                        MemoTextWrapping="{Binding #WordWrapCheck.IsChecked}"
+                                        MemoTextWrapping="{Binding #WordWrapCheck.IsChecked, Converter={views:BoolToTextWrappingConverter}}"
                                         ShowSizeGrip="{Binding #ShowSizeGripCheck.IsChecked}"
                                         ShowIcon="{Binding #ShowIconCheck.IsChecked }"
                                         MemoHorizontalScrollBarVisibility="{Binding HorizontalScrollbarVisibility}"
@@ -35,8 +37,8 @@
                                         Grid.Row="1"/>
                     </Grid>
             </ContentControl>
-        <!--Options-->
-        <StackPanel Grid.Column="1">
+        
+        <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
             <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
                 <StackPanel>
                     <mxe:CheckEditor x:Name="WordWrapCheck" Content="Word Wrap" IsChecked="False" Classes="PropertyEditor"/>
@@ -45,17 +47,18 @@
                     <mxe:CheckEditor x:Name="ShowIconCheck" Content="Show Icon" IsChecked="True" Classes="PropertyEditor"/>
                 </StackPanel>
             </mxe:GroupBox>
-            <mxe:GroupBox Header="ScrollBars" Classes="PropertiesGroup">
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
-                    <Label Content="Horizontal" Classes="TopPropertyLabel"/>
-                    <mxe:ComboBoxEditor x:Name="HorizontalScrollbarVisibilityCombo" Grid.Row="1"
+            <mxe:GroupBox Header="ScrollBars" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <Label Content="Horizontal" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ComboBoxEditor x:Name="HorizontalScrollbarVisibilityCombo"
                                         ItemsSource="{Binding ScrollbarVisibilityItems}" IsTextEditable="False"
                                         SelectedItem="{Binding HorizontalScrollbarVisibility, Mode=TwoWay}" Classes="PropertyEditor"/>
-                    <Label Content="Vertical" Grid.Row="2" Classes="PropertyLabel"/>
-                    <mxe:ComboBoxEditor x:Name="VerticalScrollbarVisibilityCombo" Grid.Row="3"
+                    
+                    <Label Content="Vertical" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ComboBoxEditor x:Name="VerticalScrollbarVisibilityCombo"
                                         ItemsSource="{Binding ScrollbarVisibilityItems}" IsTextEditable="False"
                                         SelectedItem="{Binding VerticalScrollbarVisibility, Mode=TwoWay}" Classes="PropertyEditor"/>
-                </Grid>
+                </StackPanel>
             </mxe:GroupBox>
         </StackPanel>
     </Grid>

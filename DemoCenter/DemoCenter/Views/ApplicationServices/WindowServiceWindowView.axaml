@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="DemoCenter.Views.ApplicationServices.WindowServiceWindowView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:DemoCenter.ViewModels.ApplicationServices"
+             x:CompileBindings="True"
+             x:DataType="vm:WindowServiceWindowViewModel"
+             MinWidth="420">
+
+    <StackPanel Margin="20" Spacing="12">
+        <TextBlock Text="This window is not modal: the demo behind it stays usable."
+                   TextWrapping="Wrap" />
+        <TextBlock Text="Opening a dialog from here makes this window the owner, so only this window is blocked."
+                   TextWrapping="Wrap"
+                   Foreground="{DynamicResource Text/Neutral/Secondary}" />
+        <Button Content="Open a modal dialog from here"
+                Command="{Binding ShowDialogCommand}"
+                HorizontalAlignment="Left" />
+        <TextBlock Text="{Binding StatusText}" TextWrapping="Wrap" />
+    </StackPanel>
+</UserControl>

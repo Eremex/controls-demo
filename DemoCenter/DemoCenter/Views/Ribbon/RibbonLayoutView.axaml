@@ -1,0 +1,115 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxb="https://schemas.eremexcontrols.net/avalonia/bars"
+             xmlns:mxr="https://schemas.eremexcontrols.net/avalonia/ribbon"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:icons="https://schemas.eremexcontrols.net/avalonia/icons"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.RibbonLayoutView"
+             x:DataType="vm:RibbonLayoutViewModel">
+
+    <Grid ColumnDefinitions="*, 280">
+        <Grid x:Name="demoArea" RowDefinitions="Auto, *">
+            <mxb:ToolbarManager IsWindowManager="True" Width="{Binding RibbonWidth}" HorizontalAlignment="Left">
+                <mxr:RibbonControl x:Name="ribbon" ApplicationButtonContent="File" ApplicationButtonKeyTip="F">
+                    <mxr:RibbonControl.ApplicationButtonDropDownControl>
+                        <mxb:PopupMenu MinWidth="220" ContentRightIndent="30">
+                            <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static icons:Basic.Doc}" GlyphSize="32,32"/>
+                            <mxb:ToolbarButtonItem Header="Open" Glyph="{x:Static icons:Basic.Folder_Open}" GlyphSize="32,32"/>
+                            <mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save}" GlyphSize="32,32"/>
+                        </mxb:PopupMenu>
+                    </mxr:RibbonControl.ApplicationButtonDropDownControl>
+
+                    <mxr:RibbonControl.QuickAccessToolbarItems>
+                        <mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save}" KeyTip="S"/>
+                        <mxb:ToolbarButtonItem Header="Undo" Glyph="{x:Static icons:Basic.Undo}" KeyTip="U"/>
+                        <mxb:ToolbarButtonItem Header="Redo" Glyph="{x:Static icons:Basic.Redo}" KeyTip="R"/>
+                    </mxr:RibbonControl.QuickAccessToolbarItems>
+
+                    <mxr:RibbonPage Header="Home" KeyTip="H">
+                        <mxr:RibbonPageGroup Header="Clipboard" KeyTip="CB">
+                            <mxb:ToolbarButtonItem Header="Paste" Glyph="{x:Static icons:Basic.Paste}" GlyphSize="32,32"/>
+                            <mxb:ToolbarButtonItem Header="Cut" Glyph="{x:Static icons:Basic.Cut}"/>
+                            <mxb:ToolbarButtonItem Header="Copy" Glyph="{x:Static icons:Basic.Copy}"/>
+                        </mxr:RibbonPageGroup>
+                        <mxr:RibbonPageGroup Header="Document" KeyTip="DC">
+                            <mxb:ToolbarButtonItem Header="New" Glyph="{x:Static icons:Basic.Doc_Add}" GlyphSize="32,32"/>
+                            <mxb:ToolbarButtonItem Header="Open" Glyph="{x:Static icons:Basic.Folder_Open}" GlyphSize="32,32"/>
+                            <mxb:ToolbarButtonItem Header="Save" Glyph="{x:Static icons:Basic.Save}" GlyphSize="32,32"/>
+                            <mxb:ToolbarButtonItem Header="Save All" Glyph="{x:Static icons:Basic.Save_All}"/>
+                            <mxb:ToolbarButtonItem Header="Print" Glyph="{x:Static icons:Basic.Print}"/>
+                        </mxr:RibbonPageGroup>
+                        <mxr:RibbonPageGroup Header="Editing" KeyTip="ED" IsHeaderButtonVisible="False">
+                            <mxb:ToolbarButtonItem Header="Find" Glyph="{x:Static icons:Basic.Search}"/>
+                            <mxb:ToolbarButtonItem Header="Undo" Glyph="{x:Static icons:Basic.Undo}"/>
+                            <mxb:ToolbarButtonItem Header="Redo" Glyph="{x:Static icons:Basic.Redo}"/>
+                            <mxb:ToolbarCheckItem Header="Read Only" Glyph="{x:Static icons:Basic.Lock_Closed}"/>
+                        </mxr:RibbonPageGroup>
+                    </mxr:RibbonPage>
+
+                    <mxr:RibbonPage Header="View" KeyTip="V">
+                        <mxr:RibbonPageGroup Header="Show" KeyTip="SH">
+                            <mxb:ToolbarCheckItem Header="Grid" Glyph="{x:Static icons:Basic.Table}" IsChecked="True"/>
+                            <mxb:ToolbarCheckItem Header="Rulers" Glyph="{x:Static icons:Basic.Doc_Ruler}"/>
+                            <mxb:ToolbarCheckItem Header="Status Bar" Glyph="{x:Static icons:Basic.Info}" IsChecked="True"/>
+                        </mxr:RibbonPageGroup>
+                        <mxr:RibbonPageGroup Header="Preview" KeyTip="PV">
+                            <mxb:ToolbarButtonItem Header="Expand" Glyph="{x:Static icons:Basic.List_Expand}" GlyphSize="32,32"/>
+                            <mxb:ToolbarButtonItem Header="Preview" Glyph="{x:Static icons:Basic.Eye}" GlyphSize="32,32"/>
+                        </mxr:RibbonPageGroup>
+                    </mxr:RibbonPage>
+                </mxr:RibbonControl>
+            </mxb:ToolbarManager>
+
+            <Grid Grid.Row="1" RowDefinitions="*, Auto">
+                <Border Margin="16" BorderThickness="1" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+                    <TextBlock Text="Narrow the ribbon with the slider on the right to watch the groups collapse."
+                               HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Margin="16"/>
+                </Border>
+
+                <mxb:ToolbarContainerControl Grid.Row="1" DockType="Bottom">
+                    <mxb:Toolbar DisplayMode="StatusBar" ShowCustomizationButton="False">
+                        <mxb:ToolbarTextItem Header="Ready" ShowBorder="False"
+                                             Glyph="{x:Static icons:Basic.Info}" GlyphSize="16,16"/>
+                        <mxb:ToolbarTextItem Header="Page 1 of 1" ShowBorder="False" Alignment="Far"/>
+                    </mxb:Toolbar>
+                </mxb:ToolbarContainerControl>
+            </Grid>
+        </Grid>
+
+        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+                    <StackPanel>
+                        <Label Content="Command Layout" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxr:RibbonCommandLayout}"
+                                            EditorValue="{Binding #ribbon.CommandLayout}"
+                                            IsTextEditable="False" Classes="LayoutItem"/>
+
+                        <mxe:CheckEditor Content="Layout Selection Button"
+                                         IsChecked="{Binding #ribbon.IsCommandLayoutSelectionButtonVisible}" Classes="LayoutItem"/>
+                        <mxe:CheckEditor Content="Application Button"
+                                         IsChecked="{Binding #ribbon.IsApplicationButtonVisible}" Classes="LayoutItem"/>
+                        <mxe:CheckEditor Content="Quick Access Toolbar"
+                                         IsChecked="{Binding #ribbon.IsQuickAccessToolbarVisible}" Classes="LayoutItem"/>
+                        <mxe:CheckEditor Content="Quick Access Customization Menu"
+                                         IsChecked="{Binding #ribbon.AllowQuickAccessToolbarCustomizationMenu}" Classes="LayoutItem"/>
+
+                        <Label Content="Quick Access Toolbar Location" Classes="LayoutItem"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxr:QuickAccessToolbarLocation}"
+                                            EditorValue="{Binding #ribbon.QuickAccessToolbarLocation}"
+                                            IsTextEditable="False" Classes="LayoutItem"/>
+
+                        <Label Content="Ribbon Width" Classes="LayoutItem"/>
+                        <Slider Minimum="320" Maximum="{Binding #demoArea.Bounds.Width}"
+                                Value="{Binding RibbonWidth}" Classes="LayoutItem"/>
+                    </StackPanel>
+                </mxe:GroupBox>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

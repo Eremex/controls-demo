@@ -1,0 +1,59 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
+             xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
+             xmlns:views="using:DemoCenter.Views"
+             xmlns:resources="clr-namespace:DemoCenter"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridTotalSummariesView"
+             x:DataType="vm:DataGridTotalSummariesViewModel">
+
+    <Grid ColumnDefinitions="*, 250">
+        <mxdg:DataGridControl x:Name="dataGrid" 
+                              ItemsSource="{Binding ApparelSales}" 
+                              AutoGenerateColumns="True" 
+                              ShowTotalSummaries="True" 
+                              BorderThickness="0,0,1,0"
+                              CustomSummary = "OnCustomSummary">
+            <mxdg:DataGridControl.TotalSummaries>
+                <mxdc:SummaryItem FieldName="Name" SummaryType="Count" />
+                <mxdc:SummaryItem FieldName="SaleDate" SummaryType="Min" ShowInColumn="Total" />
+                <mxdc:SummaryItem FieldName="SaleDate" SummaryType="Max" ShowInColumn="Total" />
+                <mxdc:SummaryItem FieldName="Price" SummaryType="Min" />
+                <mxdc:SummaryItem FieldName="Price" SummaryType="Max" />
+                <mxdc:SummaryItem FieldName="Quantity" SummaryType="Average" />
+                <mxdc:SummaryItem FieldName="Total" SummaryType="Sum" />
+            </mxdg:DataGridControl.TotalSummaries>
+            <mxdg:GridColumn FieldName="Name" Width="4*" />
+            <mxdg:GridColumn FieldName="City" Header="Ship To" Width="2*" />
+            <mxdg:GridColumn FieldName="SaleDate" Width="3*" />
+            <mxdg:GridColumn FieldName="Price" Width="2*">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="C0" />
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>
+            <mxdg:GridColumn FieldName="Quantity" Width="2*" />
+            <mxdg:GridColumn FieldName="Total" Width="3.5*">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="C0" />
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>
+        </mxdg:DataGridControl>
+
+        <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Show Total Summaries" IsChecked="{Binding #dataGrid.ShowTotalSummaries}" Classes="PropertyEditor" />
+                    <mxe:CheckEditor x:Name="customSummaryCheckEditor" Content="Custom Summary (Count of Orders over 1000)" 
+                                     TextBlock.TextWrapping="Wrap" EditorValueChanged="OnCustomSummaryCheckChanged" Classes="PropertyEditor" />
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>

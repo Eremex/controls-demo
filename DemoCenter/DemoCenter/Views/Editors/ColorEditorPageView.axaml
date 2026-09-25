@@ -67,18 +67,19 @@
             </Grid>
         </Grid>
         </ContentControl>
-        <!--Options-->
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
-                <StackPanel>
-                    <mxe:CheckEditor x:Name="AlphaChannelSelector" Content="Use Alpha Channel" IsChecked="True" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor x:Name="ReadOnlySelector" Content="Read Only" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor x:Name="StandardColorsSelector" Content="Show Standard Colors" IsChecked="{Binding ShowStandardColors, Mode=TwoWay}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor x:Name="CustomColorsSelector" Content="Show Custom Colors" IsChecked="{Binding ShowCustomColors, Mode=TwoWay}" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor x:Name="ShowConfirmationButtonsSelector" Content="Show Confirmation Buttons"
-                                     IsEnabled="{Binding IsChecked, ElementName=CustomColorsSelector}" Classes="PropertyEditor"/>
-                </StackPanel>
-            </mxe:GroupBox>
-        </StackPanel>
+
+        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup Last" Padding="{DynamicResource OptionsMargin}">
+            <StackPanel>
+                <mxe:CheckEditor x:Name="AlphaChannelSelector" Content="Use Alpha Channel" IsChecked="True" Classes="PropertyEditor"/>
+                
+                <mxe:CheckEditor x:Name="ReadOnlySelector" Content="Read Only" Classes="PropertyEditor"/>
+                
+                <mxe:CheckEditor x:Name="StandardColorsSelector" Content="Show Standard Colors" IsChecked="{Binding ShowStandardColors, Mode=TwoWay}" Classes="PropertyEditor"/>
+                
+                <mxe:CheckEditor x:Name="CustomColorsSelector" Content="Show Custom Colors" IsChecked="{Binding ShowCustomColors, Mode=TwoWay}" Classes="PropertyEditor"/>
+                
+                <mxe:CheckEditor x:Name="ShowConfirmationButtonsSelector" Content="Show Confirmation Buttons" IsEnabled="{Binding IsChecked, ElementName=CustomColorsSelector}" Classes="PropertyEditor"/>
+            </StackPanel>
+        </mxe:GroupBox>
     </Grid>
 </UserControl>

@@ -20,20 +20,25 @@
                 </DataTemplate>
             </mx3d:Graphics3DControl.LightTemplate>
         </mx3d:Graphics3DControl>
-        <mxe:GroupBox Header="Lights" Classes="PropertiesGroup" Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding Lights}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate x:DataType="vm:LightViewModel">
-                        <Grid RowDefinitions="Auto Auto Auto" ColumnDefinitions="Auto *">
-                            <Label Content="{Binding Name}" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Classes="LayoutItem"/>
-                            <Label Content="Radius" Grid.Column="0" Grid.Row="1" Classes="LayoutItem" />
-                            <Slider Grid.Column="1" Grid.Row="1" Minimum="0.1" Maximum="20" Value="{Binding Radius}" />
-                            <Label Content="Color Intensity" Grid.Column="0" Grid.Row="2" Classes="LayoutItem" />
-                            <Slider Grid.Column="1" Grid.Row="2" Minimum="0" Maximum="10" Value="{Binding ColorIntensity}" />
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </mxe:GroupBox>
+
+        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Lights" Classes="PropertiesGroup Last">
+                <ItemsControl ItemsSource="{Binding Lights}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="vm:LightViewModel">
+                            <Grid RowDefinitions="Auto Auto Auto" ColumnDefinitions="Auto *">
+                                <Label Content="{Binding Name}" FontWeight="Bold" Grid.ColumnSpan="2" Classes="PropertyEditor"/>
+                                
+                                <Label Content="Radius" Grid.Row="1" Classes="PropertyEditor"/>
+                                <Slider Grid.Column="1" Grid.Row="1" Minimum="0.1" Maximum="20" Value="{Binding Radius}" VerticalAlignment="Center"/>
+                                
+                                <Label Content="Color Intensity" Grid.Row="2" Classes="PropertyEditor"/>
+                                <Slider Grid.Column="1" Grid.Row="2" Minimum="0" Maximum="10" Value="{Binding ColorIntensity}" VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </mxe:GroupBox>
+        </Border>
     </Grid>
 </UserControl>

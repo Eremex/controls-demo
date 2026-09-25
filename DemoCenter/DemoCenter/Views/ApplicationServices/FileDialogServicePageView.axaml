@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="DemoCenter.Views.ApplicationServices.FileDialogServicePageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:demo="clr-namespace:DemoCenter.Views.ApplicationServices"
+             xmlns:vm="using:DemoCenter.ViewModels.ApplicationServices"
+             d:DesignHeight="600"
+             d:DesignWidth="900"
+             x:CompileBindings="True"
+             x:DataType="vm:FileDialogServicePageViewModel"
+             mc:Ignorable="d">
+
+    <Grid ColumnDefinitions="*, 320">
+        <ScrollViewer>
+            <StackPanel Margin="24" Spacing="16">
+
+                <demo:DemoPageHeader
+                    Title="IOpenFileDialogService and ISaveFileDialogService"
+                    Summary="File dialogs configured through an options object. Both services expose an asynchronous and a synchronous variant; the synchronous one holds the calling thread on a nested message loop and exists for legacy code." />
+
+                <mxe:GroupBox Header="Dialog" Classes="PropertiesGroup">
+                    <StackPanel Margin="12" Spacing="8">
+                        <TextBlock Text="Title" />
+                        <mxe:TextEditor EditorValue="{Binding DialogTitle, Mode=TwoWay}" />
+                    </StackPanel>
+                </mxe:GroupBox>
+
+                <demo:DemoScenario
+                    Title="Open a file"
+                    Description="ShowAsync with a filter. This is the recommended way to show an open dialog."
+                    ActionCaption="Open file (async)"
+                    Command="{Binding OpenFileCommand}" />
+
+                <demo:DemoScenario
+                    Title="Open several files"
+                    Description="AllowMultiple lets the user pick more than one file; the service returns every selected path."
+                    ActionCaption="Open multiple (async)"
+                    Command="{Binding OpenMultipleFilesCommand}" />
+
+                <demo:DemoScenario
+                    Title="Synchronous variant"
+                    Description="Show returns the result directly, without awaiting. Kept for code that cannot be made asynchronous."
+                    ActionCaption="Open file (sync)"
+                    Command="{Binding OpenFileSyncCommand}" />
+
+                <demo:DemoScenario
+                    Title="Save a file"
+                    Description="A suggested file name, a default extension and the overwrite prompt."
+                    ActionCaption="Save file (async)"
+                    Command="{Binding SaveFileCommand}" />
+
+                <demo:DemoScenario
+                    Title="Start in a well-known folder"
+                    Description="DefaultWellKnownFolder opens the dialog in Documents, Pictures and the like without hard-coding a path."
+                    ActionCaption="Save to Documents"
+                    Command="{Binding SaveToDocumentsCommand}" />
+
+                <mxe:GroupBox Header="Selected files" Classes="PropertiesGroup">
+                    <ItemsControl Margin="12" ItemsSource="{Binding SelectedFiles}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="0,2" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </mxe:GroupBox>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <demo:DemoResultLog Grid.Column="1"
+                            ItemsSource="{Binding Log}"
+                            ClearCommand="{Binding ClearLogCommand}" />
+    </Grid>
+</UserControl>

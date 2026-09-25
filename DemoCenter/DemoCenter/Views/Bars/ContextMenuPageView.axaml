@@ -83,8 +83,8 @@
             </ContentControl>
         </mxb:ToolbarManager>
         <!--Options-->
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Segmented Editor Properties"  Classes="PropertiesGroup">
+        <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Segmented Editor Properties" Classes="PropertiesGroup Last">
                 <StackPanel>
                     <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Menu Enabled" IsChecked="True" Classes="PropertyEditor"/>
                     <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Menu Visible" IsChecked="True" Classes="PropertyEditor"/>

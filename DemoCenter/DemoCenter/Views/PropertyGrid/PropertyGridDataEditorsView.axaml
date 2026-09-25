@@ -1,6 +1,8 @@
-<UserControl x:Class="DemoCenter.Views.PropertyGridDataEditorsView"
+﻿<UserControl x:Class="DemoCenter.Views.PropertyGridDataEditorsView"
+             x:DataType="vm:PropertyGridDataEditorsViewModel"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mxpg="https://schemas.eremexcontrols.net/avalonia/propertygrid"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
@@ -13,6 +15,14 @@
             <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding SelectedObject}" 
                                       Margin="16" BorderThickness="1" Grid.Column="1">
                 <mxpg:PropertyGridCategoryRow Caption="General">
+                    <mxpg:PropertyGridRow FieldName="Photo" ReadOnly="True">
+                        <mxpg:PropertyGridRow.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{ReflectionBinding Value}" Width="64" Height="64" Margin="2" HorizontalAlignment="Left"
+                                       RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                            </DataTemplate>
+                        </mxpg:PropertyGridRow.CellTemplate>
+                    </mxpg:PropertyGridRow>
                     <mxpg:PropertyGridRow FieldName="FirstName"  Caption="First Name"/>
                     <mxpg:PropertyGridRow FieldName="LastName" Caption="Last Name"/>
                     <mxpg:PropertyGridRow FieldName="BirthDate" Caption="Date of Birth"/>
@@ -20,6 +30,7 @@
                 </mxpg:PropertyGridCategoryRow>
 
                 <mxpg:PropertyGridCategoryRow Caption="Employee Details">
+                    <mxpg:PropertyGridRow FieldName="Notes" ReadOnly="True"/>
                     <mxpg:PropertyGridRow FieldName="Position">
                         <mxpg:PropertyGridRow.EditorProperties>
                             <mxe:ComboBoxEditorProperties ItemsSource="{Binding Source={x:Static data:EmployeesData.Positions}}" IsTextEditable="False"/>
@@ -27,7 +38,7 @@
                     </mxpg:PropertyGridRow>
                     <mxpg:PropertyGridRow FieldName="EmploymentType" Caption="Employment Type">
                         <mxpg:PropertyGridRow.CellTemplate>
-                            <DataTemplate>
+                            <DataTemplate x:CompileBindings="False">
                                 <mxe:SegmentedEditor EditorValue="{Binding Value}" ItemsSource="{mx:EnumItemsSource EnumType=data:EmploymentType}"/>
                             </DataTemplate>
                         </mxpg:PropertyGridRow.CellTemplate>
@@ -42,25 +53,23 @@
                 </mxpg:PropertyGridCategoryRow>
             </mxpg:PropertyGridControl>
 
-            <Border Grid.Column="3" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-                <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
-                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+            <Border Grid.Column="3" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+                <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                    <StackPanel>
                         <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #propertyGrid.AllowEditing}" Classes="PropertyEditor"/>
-                        <Label Grid.Row="1" Content="Editor Show Mode" IsEnabled="{Binding #propertyGrid.AllowEditing}" Classes="PropertyLabel"/>
+                        
+                        <Label Content="Editor Show Mode" IsEnabled="{Binding #propertyGrid.AllowEditing}" Classes="PropertyEditor EditorLabel"/>
                         <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxpg:EditorShowMode}"
                                             EditorValue="{Binding #propertyGrid.EditorShowMode}"
                                             IsEnabled="{Binding #propertyGrid.AllowEditing}"
-                                            Grid.Row="2"
-                                            Grid.ColumnSpan="2"
                                             Classes="PropertyEditor"/>
-                        <Label Grid.Row="3" Content="Editor Button Show Mode" IsEnabled="{Binding #propertyGrid.AllowEditing}" Classes="PropertyLabel"/>
+                        
+                        <Label Content="Editor Button Show Mode" IsEnabled="{Binding #propertyGrid.AllowEditing}" Classes="PropertyEditor EditorLabel"/>
                         <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxpg:EditorButtonShowMode}"
                                             EditorValue="{Binding #propertyGrid.EditorButtonShowMode}"
                                             IsEnabled="{Binding #propertyGrid.AllowEditing}"
-                                            Grid.Row="4"
-                                            Grid.ColumnSpan="2" 
                                             Classes="PropertyEditor"/>
-                    </Grid>
+                    </StackPanel>
                 </mxe:GroupBox>
             </Border>
         </Grid>

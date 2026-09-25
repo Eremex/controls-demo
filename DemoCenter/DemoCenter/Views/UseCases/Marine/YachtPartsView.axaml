@@ -1,0 +1,109 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxlv="https://schemas.eremexcontrols.net/avalonia/listview"
+             xmlns:demoData="clr-namespace:DemoCenter.DemoData"
+             xmlns:vm="using:DemoCenter.ViewModels"
+             d:DesignHeight="700"
+             d:DesignWidth="1100"
+             x:DataType="vm:YachtPartsViewModel"
+             mc:Ignorable="d"
+             x:Class="DemoCenter.Views.YachtPartsView">
+    <Design.DataContext>
+        <vm:YachtPartsViewModel />
+    </Design.DataContext>
+
+    <Grid>
+        <Border x:Name="DemoControl">
+            <Grid RowDefinitions="Auto, Auto, Auto, *">
+                <Label Content="Fleet" Classes="LayoutItem" Margin="12,8,12,0" FontWeight="Bold"/>
+
+                <ScrollViewer Grid.Row="1"
+                              Margin="12,4,12,0"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Disabled">
+                <mxlv:ListViewControl x:Name="fleetList"
+                                      Height="230"
+                                      HorizontalAlignment="Left"
+                                      mxlv:ListViewControl.VerticalScrollBarVisibility="Disabled"
+                                      ItemsSource="{Binding Yachts}"
+                                      FocusedItem="{Binding SelectedYacht, Mode=TwoWay}"
+                                      SelectionMode="Single"
+                                      ItemLayoutMode="Wrap"
+                                      ItemWidth="300"
+                                      ItemHeight="210">
+                    <mxlv:ListViewControl.ItemTemplate>
+                        <DataTemplate DataType="demoData:YachtInfo">
+                            <Grid RowDefinitions="*, Auto, Auto" Margin="8">
+                                <Image Source="{Binding Image}" Margin="4"
+                                       RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Name}" FontWeight="Bold"
+                                           HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                                <TextBlock Grid.Row="2" HorizontalAlignment="Center" Margin="0,2,0,0"
+                                           Foreground="{DynamicResource Text/Neutral/Secondary}"
+                                           Text="{Binding Builder}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </mxlv:ListViewControl.ItemTemplate>
+                </mxlv:ListViewControl>
+                </ScrollViewer>
+
+                <Grid Grid.Row="2" ColumnDefinitions="Auto, *" Height="60" Margin="12,12,12,0">
+                    <TextBlock Classes="LayoutItem" FontWeight="Bold" VerticalAlignment="Top"
+                               Text="{Binding SelectedYacht.Name, StringFormat='Parts for {0}', FallbackValue='Parts'}"/>
+                    <TextBlock Grid.Column="1" Margin="16,0,16,0" VerticalAlignment="Top"
+                               TextWrapping="Wrap" TextTrimming="CharacterEllipsis" MaxLines="3"
+                               Foreground="{DynamicResource Text/Neutral/Secondary}"
+                               Text="{Binding SelectedYacht.Description}"/>
+                </Grid>
+
+                <Grid Grid.Row="3" ColumnDefinitions="*, 260" Margin="12,8,12,12">
+                    <mxdg:DataGridControl x:Name="partsGrid" BorderThickness="1"
+                                          ItemsSource="{Binding Parts}"
+                                          FocusedItem="{Binding SelectedPart, Mode=TwoWay}"
+                                          GroupCount="{Binding PartsGroupCount}"
+                                          AutoExpandAllGroups="True"
+                                          AllowEditing="False"
+                                          ShowGroupPanel="False"
+                                          ShowTotalSummaries="True"
+                                          NavigationMode="Row">
+                        <mxdg:DataGridControl.TotalSummaries>
+                            <mxdc:SummaryItem FieldName="Weight" SummaryType="Sum" Label="Weight: "/>
+                            <mxdc:SummaryItem FieldName="Price" SummaryType="Sum" Label="Total: "/>
+                        </mxdg:DataGridControl.TotalSummaries>
+                        <mxdg:GridColumn FieldName="Group" SortIndex="0" Width="Auto"/>
+                        <mxdg:GridColumn FieldName="PartNumber" Header="Part Number" Width="Auto"/>
+                        <mxdg:GridColumn FieldName="Name" Width="*" MinWidth="240"/>
+                        <mxdg:GridColumn FieldName="Supplier" Width="Auto"/>
+                        <mxdg:GridColumn FieldName="Stock" Width="Auto"/>
+                        <mxdg:GridColumn FieldName="Weight" Header="Weight, kg" Width="Auto" MinWidth="130">
+                            <mxdg:GridColumn.EditorProperties>
+                                <mxe:TextEditorProperties DisplayFormatString="0.0" HorizontalContentAlignment="Right"/>
+                            </mxdg:GridColumn.EditorProperties>
+                        </mxdg:GridColumn>
+                        <mxdg:GridColumn FieldName="Price" Width="Auto" MinWidth="150">
+                            <mxdg:GridColumn.EditorProperties>
+                                <mxe:TextEditorProperties DisplayFormatString="c0" HorizontalContentAlignment="Right"/>
+                            </mxdg:GridColumn.EditorProperties>
+                        </mxdg:GridColumn>
+                    </mxdg:DataGridControl>
+
+                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                        <TextBlock Text="Selected Part Details" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <Image Source="{Binding SelectedPart.Image}" Height="120"
+                               RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                        <TextBlock Text="{Binding SelectedPart.Name}" FontWeight="Bold" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                        <TextBlock Text="{Binding SelectedPart.Material}" TextWrapping="Wrap" Margin="0,4,0,0"
+                                   Foreground="{DynamicResource Text/Neutral/Secondary}"/>
+                        <TextBlock Text="{Binding SelectedPart.Description}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+</UserControl>

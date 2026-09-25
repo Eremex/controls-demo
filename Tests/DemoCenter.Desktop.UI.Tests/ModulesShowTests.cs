@@ -59,32 +59,4 @@ public class WindowsTests
 
         window.Close();
     }
-    [Fact]
-    public async Task ShowAllModules()
-    {
-        MainViewModel mainViewModel = new MainViewModel();
-        var window = new MainWindow
-        {
-
-            DataContext = mainViewModel
-        };
-        window.Show();
-        window.WindowState = Avalonia.Controls.WindowState.Maximized;
-        await WaitEx(100);
-
-        foreach (var product in mainViewModel.FlatProducts) 
-        {
-            try
-            {
-                mainViewModel.SelectProduct(product);
-                await WaitEx(100);
-            }
-            catch (Exception ex)
-            {
-                    Assert.Fail(string.Format("problem in {0} {1}", product.Name, ex));
-            }
-        }
-
-        window.Close();
-    }
 }

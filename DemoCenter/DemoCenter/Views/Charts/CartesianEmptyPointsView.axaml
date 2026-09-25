@@ -11,11 +11,11 @@
             <mxc:CartesianSeries SeriesName="Series 1" DataAdapter="{Binding DataAdapter}" View="{Binding SelectedView}" />
         </mxc:CartesianChart>
         
-        <mxe:GroupBox Grid.Column="1" Header="Views"  Classes="PropertiesGroup">
+        <mxe:GroupBox Grid.Column="1" Header="Views" Classes="PropertiesGroup Last" Margin="{DynamicResource OptionsMargin}">
             <ListBox ItemsSource="{Binding Views}" SelectedIndex="0" SelectionChanged="ViewOnSelectionChanged">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate x:DataType="vm:ViewViewModel">
-                        <Label Content="{Binding Name}" FontWeight="Bold" />
+                        <Label Content="{Binding Name}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ListBox>

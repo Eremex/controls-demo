@@ -1,5 +1,6 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:data="clr-namespace:DemoCenter.DemoData"
@@ -8,7 +9,8 @@
 			 xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
 			 xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridDataEditorsView">
+             x:Class="DemoCenter.Views.DataGridDataEditorsView"
+             x:DataType="vm:DataGridDataEditorsViewModel">
     
     <Grid ColumnDefinitions="*, 250">
 	    <Border x:Name="DemoControl">
@@ -44,23 +46,23 @@
         </mxdg:DataGridControl>
 	    </Border>
 
-        <Border Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+        <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
                     <mxe:CheckEditor Content="Allow Editing" IsChecked="{Binding #dataGrid.AllowEditing}" Classes="PropertyEditor"/>
-                    <Label Grid.Row="1" Content="Editor Show Mode" DockPanel.Dock="Top" Classes="PropertyLabel" IsEnabled="{Binding #dataGrid.AllowEditing}"/>
+                    
+                    <Label Content="Editor Show Mode" DockPanel.Dock="Top" Classes="PropertyEditor EditorLabel" IsEnabled="{Binding #dataGrid.AllowEditing}"/>
                     <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:EditorShowMode}"
                                         EditorValue="{Binding #dataGrid.EditorShowMode}"
                                         IsEnabled="{Binding #dataGrid.AllowEditing}"
-                                        Grid.Row="2"
                                         Classes="PropertyEditor"/>
-                    <Label Grid.Row="3" Content="Editor Button Show Mode" IsEnabled="{Binding #dataGrid.AllowEditing}" Classes="PropertyLabel"/>
+                    
+                    <Label Content="Editor Button Show Mode" IsEnabled="{Binding #dataGrid.AllowEditing}" Classes="PropertyEditor EditorLabel"/>
                     <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:EditorButtonShowMode}"
                                         EditorValue="{Binding #dataGrid.EditorButtonShowMode}"
                                         IsEnabled="{Binding #dataGrid.AllowEditing}"
-                                        Grid.Row="4"
                                         Classes="PropertyEditor"/>
-                </Grid>
+                </StackPanel>
             </mxe:GroupBox>
         </Border>
     </Grid>

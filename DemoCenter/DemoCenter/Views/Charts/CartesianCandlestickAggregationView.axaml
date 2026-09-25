@@ -31,38 +31,17 @@
             </mxc:CartesianChart.CrosshairOptions>
         </mxc:CartesianChart>
         
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <RadioButton Command="{Binding SetMeasureUnitCommand}">
-                    15 Minutes
-                    <RadioButton.CommandParameter>
-                        <vm:DateTimeUnitItem Unit="Minute" Factor="15" />
-                    </RadioButton.CommandParameter>
-                </RadioButton>
-                <RadioButton Command="{Binding SetMeasureUnitCommand}">
-                    30 Minutes
-                    <RadioButton.CommandParameter>
-                        <vm:DateTimeUnitItem Unit="Minute" Factor="30" />
-                    </RadioButton.CommandParameter>
-                </RadioButton>
-                <RadioButton Command="{Binding SetMeasureUnitCommand}" IsChecked="True">
-                    1 Hour
-                    <RadioButton.CommandParameter>
-                        <vm:DateTimeUnitItem Unit="Hour" Factor="1" />
-                    </RadioButton.CommandParameter>
-                </RadioButton>
-                <RadioButton Command="{Binding SetMeasureUnitCommand}">
-                    5 Hours
-                    <RadioButton.CommandParameter>
-                        <vm:DateTimeUnitItem Unit="Hour" Factor="5" />
-                    </RadioButton.CommandParameter>
-                </RadioButton>
-                <RadioButton Command="{Binding SetMeasureUnitCommand}">
-                    1 Day
-                    <RadioButton.CommandParameter>
-                        <vm:DateTimeUnitItem Unit="Day" Factor="1" />
-                    </RadioButton.CommandParameter>
-                </RadioButton>
+        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup Last" Margin="{DynamicResource OptionsMargin}">
+            <StackPanel>
+                <RadioButton Content="15 Minutes" Command="{Binding SetMeasureUnitCommand}" CommandParameter="{vm:DateTimeUnitItem Unit=Minute, Factor=15}" Classes="PropertyEditor"/>
+                
+                <RadioButton Content="30 Minutes" Command="{Binding SetMeasureUnitCommand}" CommandParameter="{vm:DateTimeUnitItem Unit=Minute, Factor=30}" Classes="PropertyEditor"/>
+                    
+                <RadioButton Content="1 Hour" Command="{Binding SetMeasureUnitCommand}" CommandParameter="{vm:DateTimeUnitItem Unit=Hour, Factor=1}" IsChecked="True" Classes="PropertyEditor"/>
+                    
+                <RadioButton Content="5 Hours" Command="{Binding SetMeasureUnitCommand}" CommandParameter="{vm:DateTimeUnitItem Unit=Hour, Factor=5}" Classes="PropertyEditor"/>
+                    
+                <RadioButton Content="1 Day" Command="{Binding SetMeasureUnitCommand}" CommandParameter="{vm:DateTimeUnitItem Unit=Day, Factor=1}" Classes="PropertyEditor"/>
             </StackPanel>
         </mxe:GroupBox>
     </Grid>

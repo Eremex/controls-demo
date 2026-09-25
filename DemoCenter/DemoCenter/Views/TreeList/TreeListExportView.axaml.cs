@@ -54,9 +54,9 @@ namespace DemoCenter.Views
             DemoExportHelper.ExportImage(treeList, options, (control, options, dir, fileFormat) => control.ExportToImages(dir, fileFormat, options));
         }
 
-        private T CreateExportOptions<T>() where T : PageExportOptions
+        private T CreateExportOptions<T>() where T : PageExportOptions, new()
         {
-            var options = Activator.CreateInstance<T>();
+            var options = new T();
             options.ShowColumnHeaders = ViewModel.PageExportColumnHeaders;
             options.ShowBands = ViewModel.PageExportBandHeaders;
             options.FitToPageWidth = ViewModel.FitToPageWidth;

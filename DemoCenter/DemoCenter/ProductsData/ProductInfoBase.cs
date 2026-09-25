@@ -12,8 +12,8 @@ public abstract class ProductInfoBase
     public string Description => DescriptionGetter?.Invoke();
     public Func<PageViewModelBase> ViewModelGetter { get; }
     public bool ShowInWeb { get; }
-    public bool IsNew => Introduced.Matches(App.Version) && !IsUpdated;
-    public bool IsUpdated => Updated?.Matches(App.Version) is true;
+    public bool IsNew => Introduced.Matches(App.Version);
+    public bool IsUpdated => Updated?.Matches(App.Version) is true && !IsNew;
     public bool IsWebApp => App.IsWebApp;
     public abstract VersionInfo Introduced { get; }
     public abstract VersionInfo? Updated { get; }

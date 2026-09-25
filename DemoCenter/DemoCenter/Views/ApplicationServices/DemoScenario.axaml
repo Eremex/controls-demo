@@ -1,0 +1,29 @@
+<UserControl x:Class="DemoCenter.Views.ApplicationServices.DemoScenario"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Root"
+             x:CompileBindings="False">
+
+    <Border BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="16">
+        <Grid ColumnDefinitions="*, Auto" ColumnSpacing="16">
+            <StackPanel Spacing="4" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Title, ElementName=Root}"
+                           FontWeight="SemiBold"
+                           TextWrapping="Wrap" />
+                <TextBlock Text="{Binding Description, ElementName=Root}"
+                           TextWrapping="Wrap"
+                           Foreground="{DynamicResource Text/Neutral/Secondary}" />
+            </StackPanel>
+
+            <Button Grid.Column="1"
+                    Classes="accent"
+                    MinWidth="180"
+                    VerticalAlignment="Center"
+                    Content="{Binding ActionCaption, ElementName=Root}"
+                    Command="{Binding Command, ElementName=Root}" />
+        </Grid>
+    </Border>
+</UserControl>

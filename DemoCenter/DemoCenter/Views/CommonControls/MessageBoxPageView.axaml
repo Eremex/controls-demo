@@ -1,4 +1,4 @@
-<UserControl x:Class="DemoCenter.Views.MessageBoxPageView"
+﻿<UserControl x:Class="DemoCenter.Views.MessageBoxPageView"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -39,61 +39,43 @@
 				</mxe:GroupBox>
 			</Border>
 		</Grid>
-		<!--Options-->
-        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-            <StackPanel>
-               <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
-                    <Grid RowDefinitions="Auto Auto Auto Auto Auto Auto Auto Auto Auto Auto Auto Auto Auto"
-                          ColumnDefinitions="3* *">
-                        <Label Grid.Row="0"
-                               Content="Title"
-                               Classes="TopPropertyLabel"/>                        
-                        <mxe:TextEditor Grid.Row="1"
-                                            EditorValue="{Binding Title, Mode=TwoWay}"
-                                            Classes="PropertyEditor" />
-                        <Label Grid.Row="2"
-                               Content="Text"
-                               Classes="PropertyLabel" />
-                        <mxe:TextEditor Grid.Row="3"
-                                            EditorValue="{Binding Text, Mode=TwoWay}"
-                                            Classes="PropertyEditor" />
 
-                        <Label Grid.Row="4"
-                               Content="Icon"
-                               Classes="PropertyLabel" />
-                        <mxe:ComboBoxEditor Grid.Row="5"
-                                            EditorValue="{Binding Icon, Mode=TwoWay}"
-                                            ItemsSource="{mx:EnumItemsSource EnumType=controls:MessageBoxIcon}"
-                                            Classes="PropertyEditor" />
-                        <Label Grid.Row="6"
-                               Content="Buttons"
-                               Classes="PropertyLabel" />
-                        <mxe:ComboBoxEditor Grid.Row="7"
-                                            EditorValue="{Binding Buttons, Mode=TwoWay}"
-                                            ItemsSource="{mx:EnumItemsSource EnumType=controls:MessageBoxButtons}"
-                                            Classes="PropertyEditor" />
-                        <Label Grid.Row="8"
-                               Content="Button Alignment"
-                               Classes="PropertyLabel" />
-                        <mxe:ComboBoxEditor Grid.Row="9"
-                                            EditorValue="{Binding ButtonAlignment, Mode=TwoWay}"
-                                            ItemsSource="{mx:EnumItemsSource EnumType=HorizontalAlignment}"
-                                            Classes="PropertyEditor" />
-                        <Label Grid.Row="10"
-                               Content="Default Button"
-                               Classes="PropertyLabel" />
-                        <mxe:ComboBoxEditor Grid.Row="11"
-                                            EditorValue="{Binding Result, Mode=TwoWay}"
-                                            ItemsSource="{mx:EnumItemsSource EnumType=controls:MessageBoxResult}"
-                                            Classes="PropertyEditor" />
-                        <Button Grid.Row="12"
-                                Classes="LayoutItem"
-                                Content="Show MessageBox"
-                                Click="Button_OnClick"
-                                HorizontalAlignment="Center"/>
-                    </Grid>
-                </mxe:GroupBox> 
-            </StackPanel>            
-        </Border>
+        <ScrollViewer Grid.Column="1">
+            <Border BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+                <StackPanel>
+                    <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                        <StackPanel>
+                            <Label Content="Title" Classes="PropertyEditor EditorLabel"/>
+                            <mxe:TextEditor EditorValue="{Binding Title, Mode=TwoWay}" Classes="PropertyEditor" />
+
+                            <Label Content="Text" Classes="PropertyEditor EditorLabel" />
+                            <mxe:TextEditor EditorValue="{Binding Text, Mode=TwoWay}" Classes="PropertyEditor" />
+
+                            <Label Content="Icon" Classes="PropertyEditor EditorLabel" />
+                            <mxe:ComboBoxEditor EditorValue="{Binding Icon, Mode=TwoWay}"
+                                                ItemsSource="{mx:EnumItemsSource EnumType=controls:MessageBoxIcon}"
+                                                Classes="PropertyEditor" />
+
+                            <Label Content="Buttons" Classes="PropertyEditor EditorLabel" />
+                            <mxe:ComboBoxEditor EditorValue="{Binding Buttons, Mode=TwoWay}"
+                                                ItemsSource="{mx:EnumItemsSource EnumType=controls:MessageBoxButtons}"
+                                                Classes="PropertyEditor" />
+
+                            <Label Content="Button Alignment" Classes="PropertyEditor EditorLabel" />
+                            <mxe:ComboBoxEditor EditorValue="{Binding ButtonAlignment, Mode=TwoWay}"
+                                                ItemsSource="{mx:EnumItemsSource EnumType=HorizontalAlignment}"
+                                                Classes="PropertyEditor" />
+
+                            <Label Content="Default Button" Classes="PropertyEditor EditorLabel" />
+                            <mxe:ComboBoxEditor EditorValue="{Binding Result, Mode=TwoWay}"
+                                                ItemsSource="{mx:EnumItemsSource EnumType=controls:MessageBoxResult}"
+                                                Classes="PropertyEditor" />
+
+                            <Button Classes="PropertyEditor" Content="Show MessageBox" Click="Button_OnClick"/>
+                        </StackPanel>
+                    </mxe:GroupBox>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
 	</Grid>
 </UserControl>

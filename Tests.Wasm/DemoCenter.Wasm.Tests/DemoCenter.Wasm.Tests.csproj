@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-browser</TargetFramework>
+    <RootNamespace>DemoCenter.Wasm.Tests</RootNamespace>
+    <!--
+      IsTestProject=false on purpose: the assembly is run neither by VSTest nor by
+      Microsoft.Testing.Platform, but by DemoCenter.Wasm.TestHost directly in the browser.
+    -->
+    <IsTestProject>false</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3.extensibility.core" />
+    <PackageReference Include="xunit.v3.assert" />
+    <PackageReference Include="Avalonia" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      The demo is referenced as a project rather than as a package: the tests must check
+      what lives in this repository, not the latest published version.
+    -->
+    <ProjectReference Include="..\..\DemoCenter\DemoCenter\DemoCenter.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -14,7 +14,11 @@
                             PointerMoved="DemoChart_OnPointerMoved"
                             PointerReleased="DemoChart_OnPointerReleased">
             <mxc:CartesianSeries SeriesName="Signal" DataAdapter="{Binding SignalAdapter}">
-                <mxc:CartesianLineSeriesView Color="#2D55CE" Thickness="2" />
+                <mxc:CartesianLineSeriesView Color="#2D55CE">
+                    <mxc:CartesianLineSeriesView.LineStyle>
+                        <mxc:LineStyle Thickness="2" />
+                    </mxc:CartesianLineSeriesView.LineStyle>
+                </mxc:CartesianLineSeriesView>
             </mxc:CartesianSeries>
             <mxc:CartesianChart.CrosshairOptions>
                 <mxc:CrosshairOptions ShowCrosshair="False" />

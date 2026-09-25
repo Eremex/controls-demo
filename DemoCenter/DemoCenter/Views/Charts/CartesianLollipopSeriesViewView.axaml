@@ -12,11 +12,13 @@
             <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
                 <mxc:CartesianLollipopSeriesView Color="#BD1436"
                                                  LineColor="#00787A"
-                                                 LineThickness="{Binding LineThickness}"
                                                  MarkerSize="{Binding MarkerSize}"
                                                  LineOrientation="{Binding LineOrientation}"
                                                  MarkerImageCss=".base_color{{fill:{0};}}">
                     <SvgImage Source="avares://DemoCenter/Resources/Svg/Ring.svg" />
+                    <mxc:CartesianLollipopSeriesView.LineStyle>
+                        <mxc:LineStyle Thickness="{Binding LineThickness}" />
+                    </mxc:CartesianLollipopSeriesView.LineStyle>
                 </mxc:CartesianLollipopSeriesView>
             </mxc:CartesianSeries>
             <mxc:CartesianChart.AxesY>
@@ -27,18 +29,20 @@
             </mxc:CartesianChart.AxesX>
         </mxc:CartesianChart>
         
-        <StackPanel Grid.Column="1" Orientation="Vertical">
+        <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
             <mxe:GroupBox Header="Cartesian Chart" Classes="PropertiesGroup">
                 <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
             </mxe:GroupBox>
-            <mxe:GroupBox  Header="Properties" Classes="PropertiesGroup">
-                <StackPanel Orientation="Vertical">
-                    <Label Content="Line Thickness" Classes="TopPropertyLabel" />
-                    <Slider Minimum="1" Maximum="8" Value="{Binding LineThickness}" Classes="PropertyEditor" IsSnapToTickEnabled="True" TickFrequency="1" />
-                    <Label Content="Marker Size" Classes="TopPropertyLabel" />
-                    <Slider Minimum="10" Maximum="20" Value="{Binding MarkerSize}" Classes="PropertyEditor" IsSnapToTickEnabled="True" TickFrequency="1" />
-                    <Label Content="Line Orientation" Classes="TopPropertyLabel" />
-                    <mxe:ComboBoxEditor EditorValue="{Binding LineOrientation}" ItemsSource="{mx:EnumItemsSource EnumType=mxc:CartesianLollipopOrientation}" />
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <Label Content="Line Thickness" Classes="PropertyEditor EditorLabel" />
+                    <Slider Minimum="1" Maximum="8" Value="{Binding LineThickness}" IsSnapToTickEnabled="True" TickFrequency="1" />
+                    
+                    <Label Content="Marker Size" Classes="PropertyEditor EditorLabel" />
+                    <Slider Minimum="10" Maximum="20" Value="{Binding MarkerSize}" IsSnapToTickEnabled="True" TickFrequency="1" />
+                    
+                    <Label Content="Line Orientation" Classes="PropertyEditor EditorLabel" />
+                    <mxe:ComboBoxEditor EditorValue="{Binding LineOrientation}" ItemsSource="{mx:EnumItemsSource EnumType=mxc:CartesianLollipopOrientation}" Classes="PropertyEditor"/>
                 </StackPanel>
             </mxe:GroupBox>
         </StackPanel>

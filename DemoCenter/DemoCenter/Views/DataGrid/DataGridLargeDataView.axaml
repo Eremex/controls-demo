@@ -1,5 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
@@ -7,7 +8,8 @@
              xmlns:data="using:DemoCenter.DemoData"
 			 xmlns:views="using:DemoCenter.Views"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridLargeDataView">
+             x:Class="DemoCenter.Views.DataGridLargeDataView"
+             x:DataType="vm:DataGridLargeDataViewModel">
 	<UserControl.Resources>
 		<views:EnumRadioButtonConverter x:Key="enumRadioButtonConverter"/>
 	</UserControl.Resources>
@@ -21,7 +23,7 @@
                 </mxdg:DataGridControl.ColumnTemplate>
 			</mxdg:DataGridControl>
 		</Border>
-		<Border Grid.Column="1">
+		<Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
 			<StackPanel>
 				<mxe:GroupBox Header="Item Count" Classes="PropertiesGroup">
 					<StackPanel>
@@ -45,7 +47,7 @@
                     </StackPanel>
                 </mxe:GroupBox>
 
-				<Button Content="Generate" Command="{Binding GenerateCommand}" Classes="LayoutItem" HorizontalAlignment="Center"/>
+				<Button Content="Generate" Command="{Binding GenerateCommand}" Classes="PropertyEditor"/>
 			</StackPanel>
 		</Border>
 	</Grid>

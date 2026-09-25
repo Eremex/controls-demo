@@ -25,7 +25,7 @@ jobs:
           Compress-Archive -Path $files.FullName -DestinationPath ./upload/EMX.Demo.Desktop.win-x64.zip
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: windows
           path: ./upload
@@ -55,7 +55,7 @@ jobs:
         run: zip -j -r ./upload/EMX.Demo.Desktop.linux-x64.zip ./publish/linux64 -x "*.pdb"
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: linux
           path: ./upload
@@ -108,43 +108,127 @@ jobs:
 
 
   osx-x64:
-    runs-on: ubuntu-latest
+    runs-on: macos-15-intel
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
       - name: Make upload directory
         run: mkdir upload
 
-      - name: Publish linux-arm64
-        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-x64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-x64
+      # A .app bundle rather than a bare executable: it carries the icon and the bundle identity,
+      # and it is the only shape that can hold the native libraries the demo needs next to the
+      # binary. BundleApp comes from the Dotnet.Bundle package the desktop project references and
+      # reads the CFBundle* properties out of its csproj. The restore is explicit because the
+      # target publishes for a specific RID and the default restore has no RID-specific assets.
+      - name: Restore for osx-x64
+        run: dotnet restore ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-x64
 
+      - name: Bundle .app for osx-x64
+        run: >
+          dotnet msbuild ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj
+          -t:BundleApp
+          -p:Configuration=Release
+          -p:RuntimeIdentifier=osx-x64
+          -p:SelfContained=true
+          -p:UseAppHost=true
+
+      - name: Install native dependencies
+        run: brew install assimp molten-vk
+
+      # Both libraries are dlopen()ed by bare name, so they have to sit next to the executable -
+      # inside Contents/MacOS. AssimpNet loads "libassimp.dylib" for the 3D models; Silk.NET looks
+      # for "libvulkan.dylib", and MoltenVK implements the Vulkan API itself, so copying it under
+      # that name means Graphics3DControl runs with no Vulkan loader, no ICD manifest and no
+      # VK_ICD_FILENAMES / DYLD_LIBRARY_PATH - none of which an app started from Finder would have.
+      # Building on a macOS runner also means brew hands us a matching architecture: the arm64
+      # image cannot produce an x64 dylib, which is why osx-x64 uses the Intel runner.
+      # See Docs/macos.md in the controls repository.
+      - name: Copy native libraries into the bundle
+        run: |
+          APP=./DemoCenter/DemoCenter.Desktop/bin/Release/net10.0/osx-x64/publish/DemoCenter.Desktop.app
+          cp "$(brew --prefix)/lib/libassimp.dylib" "$APP/Contents/MacOS/"
+          cp "$(brew --prefix)/lib/libMoltenVK.dylib" "$APP/Contents/MacOS/libvulkan.dylib"
+          find "$APP" -name '*.pdb' -delete
+
+      # ditto, not zip: a plain "zip -j" flattens directories, which destroys the bundle, and only
+      # ditto preserves the symlinks and permissions that make the .app launchable after download.
       - name: Zip osx-x64
-        run: zip -j -r ./upload/EMX.Demo.Desktop.osx-x64.zip ./publish/osx-x64 -x "*.pdb"
+        run: >
+          ditto -c -k --sequesterRsrc --keepParent
+          ./DemoCenter/DemoCenter.Desktop/bin/Release/net10.0/osx-x64/publish/DemoCenter.Desktop.app
+          ./upload/EMX.Demo.Desktop.osx-x64.zip
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: osx-x64
           path: ./upload
 
   osx-arm64:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
       - name: Make upload directory
         run: mkdir upload
 
-      - name: Publish osx-arm64
-        run: dotnet publish ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-arm64 -c Release --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/osx-arm64
+      # A .app bundle rather than a bare executable: it carries the icon and the bundle identity,
+      # and it is the only shape that can hold the native libraries the demo needs next to the
+      # binary. BundleApp comes from the Dotnet.Bundle package the desktop project references and
+      # reads the CFBundle* properties out of its csproj. The restore is explicit because the
+      # target publishes for a specific RID and the default restore has no RID-specific assets.
+      - name: Restore for osx-arm64
+        run: dotnet restore ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj -r osx-arm64
 
+      - name: Bundle .app for osx-arm64
+        run: >
+          dotnet msbuild ./DemoCenter/DemoCenter.Desktop/DemoCenter.Desktop.csproj
+          -t:BundleApp
+          -p:Configuration=Release
+          -p:RuntimeIdentifier=osx-arm64
+          -p:SelfContained=true
+          -p:UseAppHost=true
+
+      - name: Install native dependencies
+        run: brew install assimp molten-vk
+
+      # Both libraries are dlopen()ed by bare name, so they have to sit next to the executable -
+      # inside Contents/MacOS. AssimpNet loads "libassimp.dylib" for the 3D models; Silk.NET looks
+      # for "libvulkan.dylib", and MoltenVK implements the Vulkan API itself, so copying it under
+      # that name means Graphics3DControl runs with no Vulkan loader, no ICD manifest and no
+      # VK_ICD_FILENAMES / DYLD_LIBRARY_PATH - none of which an app started from Finder would have.
+      # Building on a macOS runner also means brew hands us a matching architecture: the arm64
+      # image cannot produce an x64 dylib, which is why osx-x64 uses the Intel runner.
+      # See Docs/macos.md in the controls repository.
+      - name: Copy native libraries into the bundle
+        run: |
+          APP=./DemoCenter/DemoCenter.Desktop/bin/Release/net10.0/osx-arm64/publish/DemoCenter.Desktop.app
+          cp "$(brew --prefix)/lib/libassimp.dylib" "$APP/Contents/MacOS/"
+          cp "$(brew --prefix)/lib/libMoltenVK.dylib" "$APP/Contents/MacOS/libvulkan.dylib"
+          find "$APP" -name '*.pdb' -delete
+
+      # ditto, not zip: a plain "zip -j" flattens directories, which destroys the bundle, and only
+      # ditto preserves the symlinks and permissions that make the .app launchable after download.
       - name: Zip osx-arm64
-        run: zip -j -r ./upload/EMX.Demo.Desktop.osx-arm64.zip ./publish/osx-arm64 -x "*.pdb"
+        run: >
+          ditto -c -k --sequesterRsrc --keepParent
+          ./DemoCenter/DemoCenter.Desktop/bin/Release/net10.0/osx-arm64/publish/DemoCenter.Desktop.app
+          ./upload/EMX.Demo.Desktop.osx-arm64.zip
 
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: osx-arm64
           path: ./upload
@@ -173,6 +257,16 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: linux-orangepi
+
+      - name: Download osx-x64 Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: osx-x64
+
+      - name: Download osx-arm64 Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: osx-arm64
 
       - name: Release
         uses: softprops/action-gh-release@v3

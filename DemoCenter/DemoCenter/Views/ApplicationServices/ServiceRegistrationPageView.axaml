@@ -1,0 +1,105 @@
+<UserControl x:Class="DemoCenter.Views.ApplicationServices.ServiceRegistrationPageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:demo="clr-namespace:DemoCenter.Views.ApplicationServices"
+             xmlns:vm="using:DemoCenter.ViewModels.ApplicationServices"
+             d:DesignHeight="600"
+             d:DesignWidth="900"
+             x:CompileBindings="True"
+             x:DataType="vm:ServiceRegistrationPageViewModel"
+             mc:Ignorable="d">
+
+    <UserControl.Styles>
+        <Style Selector="TextBlock.Snippet">
+            <Setter Property="FontFamily" Value="Consolas, Menlo, monospace" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+        </Style>
+        <Style Selector="Border.SnippetBox">
+            <Setter Property="Padding" Value="12" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Background" Value="{DynamicResource Fill/Neutral/Secondary/Enabled}" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid ColumnDefinitions="*, 320">
+        <ScrollViewer>
+            <StackPanel Margin="24" Spacing="16">
+
+                <demo:DemoPageHeader
+                    Title="Registering the services"
+                    Summary="The library knows nothing about any particular DI container. It hands the host pairs of service type and factory, and the host decides how to register them and with which lifetime. The only integration type is IServiceProvider from the BCL." />
+
+                <mxe:GroupBox Header="Registered services" Classes="PropertiesGroup">
+                    <StackPanel Margin="12" Spacing="10">
+                        <ItemsControl ItemsSource="{Binding Registrations}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="vm:ServiceRegistrationInfo">
+                                    <Grid ColumnDefinitions="220, *, 150" Margin="0,3">
+                                        <TextBlock Text="{Binding ServiceName}" FontWeight="SemiBold" />
+                                        <TextBlock Grid.Column="1"
+                                                   Text="{Binding Description}"
+                                                   TextWrapping="Wrap"
+                                                   Foreground="{DynamicResource Text/Neutral/Secondary}" />
+                                        <TextBlock Grid.Column="2" Text="{Binding ImplementationName}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Button Content="Resolve all services"
+                                Classes="accent"
+                                HorizontalAlignment="Left"
+                                Command="{Binding CheckRegistrationsCommand}" />
+                    </StackPanel>
+                </mxe:GroupBox>
+
+                <mxe:GroupBox Header="Without a container" Classes="PropertiesGroup">
+                    <StackPanel Margin="12" Spacing="8">
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="SimpleServiceProvider ships with the library and needs no package. This demo is wired up exactly this way." />
+                        <Border Classes="SnippetBox">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <TextBlock Classes="Snippet" Text="{Binding NoContainerSnippet}" />
+                            </ScrollViewer>
+                        </Border>
+                    </StackPanel>
+                </mxe:GroupBox>
+
+                <mxe:GroupBox Header="Microsoft.Extensions.DependencyInjection" Classes="PropertiesGroup">
+                    <Border Classes="SnippetBox" Margin="12">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <TextBlock Classes="Snippet" Text="{Binding MicrosoftDiSnippet}" />
+                        </ScrollViewer>
+                    </Border>
+                </mxe:GroupBox>
+
+                <mxe:GroupBox Header="Autofac" Classes="PropertiesGroup">
+                    <Border Classes="SnippetBox" Margin="12">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <TextBlock Classes="Snippet" Text="{Binding AutofacSnippet}" />
+                        </ScrollViewer>
+                    </Border>
+                </mxe:GroupBox>
+
+                <mxe:GroupBox Header="Consuming a service" Classes="PropertiesGroup">
+                    <StackPanel Margin="12" Spacing="8">
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="Constructor injection is the normal way to use the services. The ambient ApplicationServicesContext exists only for places injection cannot reach: markup extensions, attached properties, converters and code-behind." />
+                        <Border Classes="SnippetBox">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <TextBlock Classes="Snippet" Text="{Binding InjectionSnippet}" />
+                            </ScrollViewer>
+                        </Border>
+                    </StackPanel>
+                </mxe:GroupBox>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <demo:DemoResultLog Grid.Column="1"
+                            ItemsSource="{Binding Log}"
+                            ClearCommand="{Binding ClearLogCommand}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,63 @@
+<UserControl x:Class="DemoCenter.Views.ApplicationServices.ChoiceDialogServicePageView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:demo="clr-namespace:DemoCenter.Views.ApplicationServices"
+             xmlns:vm="using:DemoCenter.ViewModels.ApplicationServices"
+             d:DesignHeight="600"
+             d:DesignWidth="900"
+             x:CompileBindings="True"
+             x:DataType="vm:ChoiceDialogServicePageViewModel"
+             mc:Ignorable="d">
+
+    <Grid ColumnDefinitions="*, 320">
+        <ScrollViewer>
+            <StackPanel Margin="24" Spacing="16">
+
+                <demo:DemoPageHeader
+                    Title="IChoiceDialogService"
+                    Summary="A dialog whose buttons are defined by application code. IMessageBoxService only offers the fixed sets and always returns DialogResult; this service takes arbitrary captions and returns whatever type the caller chose." />
+
+                <mxe:GroupBox Header="Dialog content" Classes="PropertiesGroup">
+                    <StackPanel Margin="12" Spacing="8">
+                        <TextBlock Text="Title" />
+                        <mxe:TextEditor EditorValue="{Binding DialogTitle, Mode=TwoWay}" />
+                        <TextBlock Text="Message" />
+                        <mxe:TextEditor EditorValue="{Binding DialogMessage, Mode=TwoWay}" />
+                    </StackPanel>
+                </mxe:GroupBox>
+
+                <demo:DemoScenario
+                    Title="Custom captions"
+                    Description="Show log / Retry / Close — captions that no standard button set provides. The result is the string attached to the pressed choice."
+                    ActionCaption="Show custom captions"
+                    Command="{Binding ShowCustomCaptionsCommand}" />
+
+                <demo:DemoScenario
+                    Title="Boolean result"
+                    Description="The result type is up to the caller. A two-way question maps naturally onto bool."
+                    ActionCaption="Ask a yes/no question"
+                    Command="{Binding ShowBooleanResultCommand}" />
+
+                <demo:DemoScenario
+                    Title="Enum result"
+                    Description="Any struct works, including an enum such as DialogResult."
+                    ActionCaption="Show enum choices"
+                    Command="{Binding ShowEnumResultCommand}" />
+
+                <demo:DemoScenario
+                    Title="Placement per choice"
+                    Description="Each choice carries its own Dock, so secondary actions such as Help can sit apart from the main buttons."
+                    ActionCaption="Show docked choices"
+                    Command="{Binding ShowDockedChoicesCommand}" />
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <demo:DemoResultLog Grid.Column="1"
+                            ItemsSource="{Binding Log}"
+                            ClearCommand="{Binding ClearLogCommand}" />
+    </Grid>
+</UserControl>

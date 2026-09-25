@@ -3,18 +3,55 @@
     <LangVersion>latest</LangVersion>
     <Configurations>Debug;Release;Release_WASM</Configurations>
   </PropertyGroup>
-  
+
+  <!--
+    Release_WASM is the browser build. The flag was already used below to keep
+    Resources\Graphics3D\** out of it; here it also strips the 3D code itself along with
+    its dependencies.
+
+    Why: the 3D pages are already hidden on the web (Products.cs, showInWeb: false), yet
+    the browser still downloaded the assemblies. Measured by diffing the published
+    assembly lists - 2.6 MB goes away:
+
+      Eremex.Avalonia.Controls3D          1697 KB
+      Silk.NET.Vulkan plus two extensions  791 KB
+      Silk.NET.Core                         32 KB
+      AssimpNetter                          68 KB
+      SharpDX.Direct3D11                    14 KB
+
+    DirectX and Vulkan mean nothing in a browser.
+
+    What stays and why: SharpDX.Direct2D1 and SharpDX.DXGI come from Eremex.Drawing.Skia,
+    and ReactiveUI is used by the demo itself, outside of 3D.
+
+    PDF cannot be dropped the same way: Eremex.DocumentProcessing arrives transitively
+    through Eremex.Avalonia.Controls and does not depend on the demo.
+  -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release_WASM'">
+    <DefineConstants>$(DefineConstants);DEMO_WEB</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release_WASM'" Label="3D does not reach the browser">
+    <Compile Remove="ViewModels\Graphics3DControl\**" />
+    <Compile Remove="Views\Graphics3DControl\**" />
+    <Compile Remove="ProductsData\Graphics3DControlGroupInfo.cs" />
+    <AvaloniaXaml Remove="Views\Graphics3DControl\**" />
+    <AvaloniaXaml Remove="Resources\Graphics3DStyles.axaml" />
+  </ItemGroup>
+
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
     <AvaloniaResource Include="DemoData\csv\**" />
+    <AvaloniaResource Include="DemoData\Employees\*.png" />
+    <AvaloniaResource Include="DemoData\Employees\Thumbnails\*.png" />
     <AvaloniaXaml Remove="Views\Tools\Templates\svgXamlExample.axaml" />
     <Compile Remove="Views\Tools\Templates\svgCodeExample.cs" />
-    <AvaloniaResource Include="DemoData\HouseImages\House-3-Level.jpg" />
-    <AvaloniaResource Include="DemoData\HouseImages\House-4-Level.jpg" />
-    <AvaloniaResource Include="DemoData\HouseImages\House-5-Level.jpg" />
-    <AvaloniaResource Include="DemoData\HouseImages\House-6-Level.jpg" />
-    <AvaloniaResource Include="DemoData\HouseImages\House-7-Level.jpg" />
-    <AvaloniaResource Include="DemoData\HouseImages\House-Vip.jpg" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-3-Level.png" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-4-Level.png" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-5-Level.png" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-6-Level.png" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-7-Level.png" />
+    <AvaloniaResource Include="DemoData\HouseImages\House-Vip.png" />
     <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Dark.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\Axaml-Highlight-Light.xshd" />
     <EmbeddedResource Include="Resources\Highlighters\CSharp-Highlight-Dark.xshd" />
@@ -90,16 +127,17 @@
   </ItemGroup>
     
   <ItemGroup>
-    <PackageReference Include="StirlingLabs.assimp.native.linux-x64" />
-    <PackageReference Include="StirlingLabs.assimp.native.osx" />
-    <PackageReference Include="StirlingLabs.assimp.native.win-x64" />
+    <!-- Native Assimp and the 3D controls: outside the browser only. -->
+    <PackageReference Include="StirlingLabs.assimp.native.linux-x64" Condition="'$(Configuration)' != 'Release_WASM'" />
+    <PackageReference Include="StirlingLabs.assimp.native.osx" Condition="'$(Configuration)' != 'Release_WASM'" />
+    <PackageReference Include="StirlingLabs.assimp.native.win-x64" Condition="'$(Configuration)' != 'Release_WASM'" />
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
     <PackageReference Include="ReactiveUI.Avalonia" />
 
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Svg.Controls.Skia.Avalonia" />
-    <PackageReference Include="Eremex.Avalonia.Controls3D" />
+    <PackageReference Include="Eremex.Avalonia.Controls3D" Condition="'$(Configuration)' != 'Release_WASM'" />
     <PackageReference Include="Newtonsoft.Json"/>
     <PackageReference Include="SkiaSharp" />
     <PackageReference Include="System.Resources.Extensions"/>
@@ -107,12 +145,13 @@
     <PackageReference Include="AvaloniaEdit.TextMate" />
     <PackageReference Include="TextMateSharp.Grammars" />
     <PackageReference Include="Eremex.Avalonia.Controls" />
+    <PackageReference Include="Eremex.Avalonia.Controls.ApplicationServices" />
     <PackageReference Include="Eremex.Avalonia.Themes.DeltaDesign" />
 	<PackageReference Include="Eremex.Drawing" />
 	<PackageReference Include="Eremex.Drawing.Skia" />
 	<PackageReference Include="Eremex.DocumentProcessing" />
 
-   <PackageReference Include="AssimpNetter">
+   <PackageReference Include="AssimpNetter" Condition="'$(Configuration)' != 'Release_WASM'">
 	  <ExcludeAssets>native</ExcludeAssets>
    </PackageReference>
   </ItemGroup>

@@ -1,4 +1,4 @@
-<UserControl x:Class="DemoCenter.Views.SliderPageView"
+﻿<UserControl x:Class="DemoCenter.Views.SliderPageView"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -53,21 +53,22 @@
             </Grid>            
         </ContentControl>
 
-        <!--Options-->
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
-                    <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Grid.Row="1" x:Name="IsSnapToTickEnabledSelector" Content="Snap to Tick" Classes="PropertyEditor"/>
-                    <Label Grid.Row="2" Content="Tick Placement" Classes="PropertyLabel"/>
-                    <mxe:ComboBoxEditor Grid.Row="3" EditorValue="{Binding TickPlacement, Mode=TwoWay}" ItemsSource="{mx:EnumItemsSource EnumType=TickPlacement}" Classes="PropertyEditor"/>
-                    <Label Grid.Row="4" Content="Minimum" Classes="PropertyLabel"/>
-                    <mxe:SpinEditor Grid.Row="5" Value="{Binding Minimum, ElementName=VerticalSlider, Mode=TwoWay}" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
-                    <Label Grid.Row="6" Content="Maximum" Classes="PropertyLabel"/>
-                    <mxe:SpinEditor Grid.Row="7" Value="{Binding Maximum, ElementName=VerticalSlider, Mode=TwoWay}" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
-                </Grid>
-            </mxe:GroupBox>
-        </StackPanel>
+        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup Last" Margin="{DynamicResource OptionsMargin}">
+            <StackPanel>
+                <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="PropertyEditor"/>
+                
+                <mxe:CheckEditor x:Name="IsSnapToTickEnabledSelector" Content="Snap to Tick" Classes="PropertyEditor"/>
+                
+                <Label Content="Tick Placement" Classes="PropertyEditor EditorLabel"/>
+                <mxe:ComboBoxEditor EditorValue="{Binding TickPlacement, Mode=TwoWay}" ItemsSource="{mx:EnumItemsSource EnumType=TickPlacement}" Classes="PropertyEditor"/>
+                
+                <Label Content="Minimum" Classes="PropertyEditor EditorLabel"/>
+                <mxe:SpinEditor Value="{Binding Minimum, ElementName=VerticalSlider, Mode=TwoWay}" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
+                
+                <Label Content="Maximum" Classes="PropertyEditor EditorLabel"/>
+                <mxe:SpinEditor Value="{Binding Maximum, ElementName=VerticalSlider, Mode=TwoWay}" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
+            </StackPanel>
+        </mxe:GroupBox>
     </Grid>
     
 </UserControl>

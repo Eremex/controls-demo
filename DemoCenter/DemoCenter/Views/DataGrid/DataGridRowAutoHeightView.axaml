@@ -1,11 +1,14 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridRowAutoHeightView">
+             x:Class="DemoCenter.Views.DataGridRowAutoHeightView"
+             x:DataType="vm:DataGridRowAutoHeightViewModel">
     
     <mxdg:DataGridControl ItemsSource="{Binding Cars}" AllowEditing="False" ShowGroupPanel="False">
         <mxdg:DataGridControl.Styles>
@@ -15,7 +18,7 @@
         </mxdg:DataGridControl.Styles>
         <mxdg:GridColumn FieldName="Image" Width="120" AllowResizing="False">
             <mxdg:GridColumn.CellTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="mxdcv:CellData">
                     <Image Source="{Binding Value}"/>
                 </DataTemplate>
             </mxdg:GridColumn.CellTemplate>

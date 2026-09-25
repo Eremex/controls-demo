@@ -1,16 +1,19 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxtl="https://schemas.eremexcontrols.net/avalonia/treelist"
              xmlns:mxtlv="clr-namespace:Eremex.AvaloniaUI.Controls.TreeList.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:views="using:DemoCenter.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.TreeListColumnBandsView">
+             x:Class="DemoCenter.Views.TreeListColumnBandsView"
+             x:DataType="vm:TreeListColumnBandsViewModel">
     <UserControl.Resources>
         <views:NullValueConverter x:Key="nullValueConverter"/>
-        <DataTemplate x:Key="quarterTemplate">
+        <DataTemplate x:Key="quarterTemplate" x:DataType="mxdcv:CellData">
             <ProgressBar Foreground="{DynamicResource Fill/Accent/Highlighting/Item/Pressed}"
                          MinWidth="0"
                          Background="Transparent"
@@ -78,8 +81,8 @@
                 </mxtl:TreeListColumn>
             </mxtl:TreeListControl>
         </Border>
-        <Border Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
+        <Border Grid.Column="1"  Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
                 <StackPanel>
                     <mxe:CheckEditor Content="Show Bands" IsChecked="{Binding #treeList.ShowBands}" Classes="PropertyEditor"/>
                     <mxe:CheckEditor Content="Show Band Separators" IsChecked="{Binding #treeList.ShowBandSeparators}" Classes="PropertyEditor"/>

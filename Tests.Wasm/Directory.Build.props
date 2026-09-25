@@ -1,0 +1,26 @@
+﻿<Project>
+  <!--
+    The root Directory.Build.props is imported explicitly to pick up the repository-wide
+    settings. Anything that gets in the way of building for net10.0-browser is overridden
+    below.
+  -->
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <!-- The target framework is set explicitly in each project. -->
+    <TargetFramework></TargetFramework>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
+    <RunAnalyzers>false</RunAnalyzers>
+  </PropertyGroup>
+</Project>

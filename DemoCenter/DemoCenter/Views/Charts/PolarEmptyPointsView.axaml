@@ -10,15 +10,17 @@
         <mxc:PolarChart Grid.Column="0" Classes="DemoChartWithNoOptions" x:Name="DemoControl">
             <mxc:PolarSeries SeriesName="Series 1" DataAdapter="{Binding DataAdapter}" View="{Binding SelectedView}" />
         </mxc:PolarChart>
-        
-        <mxe:GroupBox Grid.Column="1" Header="Views"  Classes="PropertiesGroup">
-            <ListBox ItemsSource="{Binding Views}" SelectedIndex="0" SelectionChanged="ViewOnSelectionChanged">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate x:DataType="vm:ViewViewModel">
-                        <Label Content="{Binding Name}" FontWeight="Bold" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ListBox>
-        </mxe:GroupBox>
+
+        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Views" Classes="PropertiesGroup Last">
+                <ListBox ItemsSource="{Binding Views}" SelectedIndex="0" SelectionChanged="ViewOnSelectionChanged">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="vm:ViewViewModel">
+                            <Label Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ListBox>
+            </mxe:GroupBox>
+        </Border>
     </Grid>
 </UserControl>

@@ -1,10 +1,4 @@
 ﻿using DemoCenter.ViewModels;
-using Eremex.AvaloniaUI.Controls.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DemoCenter.ProductsData
 {
@@ -22,6 +16,10 @@ namespace DemoCenter.ProductsData
                 viewModelGetter: () => new TreeListDataEditorsPageViewModel(),
                 descriptionGetter: () => Resources.EremexEditorsAreUsedInTreeListCellsByDefau, showInWeb: false),
 
+                new PageInfo(name: "Total Summaries", title: "Total Summaries",
+                viewModelGetter: () => new TreeListTotalSummariesViewModel(),
+                descriptionGetter: () => Resources.TreeListTotalSummariesDescription, introduced: new VersionInfo(1, 5), showInWeb: true),
+
                 new PageInfo(name: "Folder Browser", title: "Folder Browser",
                 viewModelGetter: () => new FolderBrowserPageViewModel(), descriptionGetter: () => Resources.YouCanBindTreeListToAHierarchicalDataSourc),
 
@@ -31,7 +29,7 @@ namespace DemoCenter.ProductsData
                 new PageInfo(name: "Column Bands", title: "Column Bands",
                 viewModelGetter: () => new TreeListColumnBandsViewModel(), descriptionGetter: () => Resources.TreeListColumnBandsDescription, introduced: new VersionInfo(1, 2)),
 
-                new PageInfo(name: "Export", title: "Export", viewModelGetter: () => new TreeListExportViewModel(), descriptionGetter: () => Resources.TreeListExportDescription, introduced: new VersionInfo(1, 2))
+                new PageInfo(name: "Export", title: "Export", viewModelGetter: () => new TreeListExportViewModel(), descriptionGetter: () => Resources.TreeListExportDescription, introduced: new VersionInfo(1, 2), showInWeb: false)
             };
         }
     }

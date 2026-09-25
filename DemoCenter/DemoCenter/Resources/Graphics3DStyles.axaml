@@ -1,0 +1,22 @@
+<!--
+	The 3D styles were moved out of SharedStyles.axaml so that the web build does not pull
+	in Eremex.Avalonia.Controls3D. XAML has no conditional compilation, so a single xmlns
+	pointing at that assembly in the shared style file made it mandatory for every head,
+	including the browser one.
+
+	This file is excluded from the build in the Release_WASM configuration (see
+	DemoCenter.csproj) and is added from code in App.axaml.cs under #if !DEMO_WEB.
+-->
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mx3d="clr-namespace:Eremex.AvaloniaUI.Controls3D;assembly=Eremex.Avalonia.Controls3D">
+
+  <Style Selector="mx3d|Graphics3DControl.DemoGraphics3DControl">
+    <Setter Property="Gizmo">
+      <Template>
+        <mx3d:Gizmo />
+      </Template>
+    </Setter>
+  </Style>
+
+</Styles>

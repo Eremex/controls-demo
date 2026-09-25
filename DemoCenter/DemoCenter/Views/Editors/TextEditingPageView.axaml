@@ -1,4 +1,4 @@
-<UserControl x:Class="DemoCenter.Views.TextEditingPageView"
+﻿<UserControl x:Class="DemoCenter.Views.TextEditingPageView"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -57,22 +57,24 @@
 
         </Grid>
         </ContentControl>
-        <!--Options-->
-        <StackPanel Grid.Column="1">
+        
+        <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
             <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+                <StackPanel>
                     <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="True" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Grid.Row="1" x:Name="ShowErrorSelector" Content="Show Error" IsChecked="{Binding ShowError}" Classes="PropertyEditor"/>
-                    <Label Grid.Row="2" Content="Error Show Mode" Classes="PropertyLabel"/>
-                    <mxe:ComboBoxEditor Grid.Row="3" x:Name="ErrorShowModeSelector" EditorValue="{Binding ErrorShowMode, ElementName=EmptyTextEditor, Mode=TwoWay}" 
+                    
+                    <mxe:CheckEditor x:Name="ShowErrorSelector" Content="Show Error" IsChecked="{Binding ShowError}" Classes="PropertyEditor"/>
+                    
+                    <Label Content="Error Show Mode" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ComboBoxEditor x:Name="ErrorShowModeSelector" EditorValue="{Binding ErrorShowMode, ElementName=EmptyTextEditor, Mode=TwoWay}" 
                                         ItemsSource="{mx:EnumItemsSource EnumType=mxe:EditorErrorShowMode}" Classes="PropertyEditor"/>
-                </Grid>
+                </StackPanel>
             </mxe:GroupBox>
-            <mxe:GroupBox Header="Button Click Log" Classes="PropertiesGroup">
-                <Grid RowDefinitions="*, Auto">
-                    <mxe:TextEditor EditorValue="{Binding LogContent}" ReadOnly="True" Height="150" VerticalContentAlignment="Top" Classes="PropertyEditor" Margin="0,12,0,0"/>
-                    <Button Grid.Row="1" Content="Clear" Command="{Binding ClearLogCommand}" HorizontalAlignment="Center" Classes="LayoutItem"/>
-                </Grid>
+            <mxe:GroupBox Header="Button Click Log" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <mxe:TextEditor EditorValue="{Binding LogContent}" ReadOnly="True" Height="150" Classes="PropertyEditor"/>
+                    <Button Content="Clear" Command="{Binding ClearLogCommand}" Classes="PropertyEditor"/>
+                </StackPanel>
             </mxe:GroupBox>
         </StackPanel>
     </Grid>

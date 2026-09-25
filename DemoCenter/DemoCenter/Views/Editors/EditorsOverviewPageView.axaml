@@ -23,7 +23,7 @@
         </Style>
     </UserControl.Styles>
     <UserControl.Resources>
-        <DataTemplate x:Key="ElementItemTemplate">
+        <DataTemplate x:Key="ElementItemTemplate" x:DataType="data:ElementInfo">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>

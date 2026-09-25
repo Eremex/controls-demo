@@ -13,8 +13,11 @@
                         <mxc:CartesianFullStackedAreaSeriesView Color="{Binding Color}"
                                                                 Transparency="{Binding ElementName=SlTransparency, Path=Value}"
                                                                 ShowMarkers="{Binding ElementName=CheShowMarkers, Path=IsChecked}"
-                                                                MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}"
-                                                                Thickness="{Binding ElementName=SlLineThickness, Path=Value}" />
+                                                                MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}">
+                            <mxc:CartesianFullStackedAreaSeriesView.LineStyle>
+                                <mxc:LineStyle Thickness="{Binding ElementName=SlLineThickness, Path=Value}" />
+                            </mxc:CartesianFullStackedAreaSeriesView.LineStyle>
+                        </mxc:CartesianFullStackedAreaSeriesView>
                     </mxc:CartesianSeries>
                 </DataTemplate>
             </mxc:CartesianChart.SeriesTemplate>
@@ -38,15 +41,18 @@
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
         
-        <mxe:GroupBox Grid.Column="1" Header="Properties"  Classes="PropertiesGroup">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Line Thickness" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlLineThickness" Minimum="1" Maximum="8" Value="1" Classes="PropertyEditor" />
-                <Label Content="Transparency" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlTransparency" Minimum="0" Maximum="1" Value="0.6" Classes="PropertyEditor" />
+        <mxe:GroupBox Grid.Column="1" Header="Properties" Classes="PropertiesGroup Last" Margin="{DynamicResource OptionsMargin}">
+            <StackPanel>
+                <Label Content="Line Thickness" Classes="PropertyEditor EditorLabel" />
+                <Slider x:Name="SlLineThickness" Minimum="1" Maximum="8" Value="1" />
+                
+                <Label Content="Transparency"  Classes="PropertyEditor EditorLabel"/>
+                <Slider x:Name="SlTransparency" Minimum="0" Maximum="1" Value="0.6" />
+                
                 <mxe:CheckEditor x:Name="CheShowMarkers" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
-                <Label Content="Marker Size" Classes="TopPropertyLabel" />
-                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="5" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers, Path=IsChecked}" />
+                
+                <Label Content="Marker Size"  Classes="PropertyEditor EditorLabel"/>
+                <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="5" IsEnabled="{Binding ElementName=CheShowMarkers, Path=IsChecked}" />
             </StackPanel>
         </mxe:GroupBox>
     </Grid>

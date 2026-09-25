@@ -3,7 +3,6 @@
              xmlns:local="using:DemoCenter"
              x:Class="DemoCenter.App"
              xmlns:theme="clr-namespace:Eremex.AvaloniaUI.Themes.DeltaDesign;assembly=Eremex.Avalonia.Themes.DeltaDesign"
-             xmlns:theme3D="clr-namespace:Eremex.AvaloniaUI.Themes.Controls3D;assembly=Eremex.Avalonia.Controls3D"
              RequestedThemeVariant="Light">
     <Application.DataTemplates>
         <local:ViewLocator/>
@@ -19,8 +18,7 @@
         </ResourceDictionary>
     </Application.Resources>
     <Application.Styles>
-        <theme:DeltaDesignTheme/>
-        <theme3D:Controls3DTheme />
+        <theme:DeltaDesignTheme PropertyChanged="DeltaDesignTheme_PropertyChanged"/>
         <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
         <StyleInclude Source="/Resources/SharedStyles.axaml"/>
     </Application.Styles>

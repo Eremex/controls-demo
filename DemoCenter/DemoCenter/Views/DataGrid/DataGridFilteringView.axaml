@@ -1,5 +1,6 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
@@ -8,7 +9,8 @@
              xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
 			 xmlns:data="clr-namespace:DemoCenter.DemoData"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="DemoCenter.Views.DataGridFilteringView">
+             x:Class="DemoCenter.Views.DataGridFilteringView"
+             x:DataType="vm:DataGridFilteringViewModel">
     
     <Grid ColumnDefinitions="*, 250">
         <mxdg:DataGridControl x:Name="dataGrid" ItemsSource="{Binding Employees}" ShowGroupPanel="False" AllowEditing="False" SearchPanelDisplayMode="HotKey"
@@ -43,41 +45,42 @@
 			</mxdg:GridColumn>
         </mxdg:DataGridControl>
 
-        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
+        <Border Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
             <StackPanel>
-                <mxe:GroupBox Header="Filter Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+                <mxe:GroupBox Header="Filter Properties" Classes="PropertiesGroup">
                     <StackPanel>
-                        <mxe:CheckEditor Content="Allow Column Filtering" IsChecked="{Binding #dataGrid.AllowColumnFiltering}" Classes="LayoutItem"/>
-                        <DockPanel IsEnabled="{Binding #dataGrid.AllowColumnFiltering}">
-                            <Label Content="Column Filter Popup Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                        <mxe:CheckEditor Content="Show Auto Filter Row" IsChecked="{Binding #dataGrid.ShowAutoFilterRow}" Classes="PropertyEditor"/>
+                        <mxe:CheckEditor Content="Show Condition In Auto Filter Row" IsChecked="{Binding #dataGrid.ShowConditionInAutoFilterRow}" Classes="PropertyEditor"/>
+
+                        <mxe:CheckEditor Content="Allow Column Filtering" IsChecked="{Binding #dataGrid.AllowColumnFiltering}" Classes="PropertyEditor"/>
+                        <StackPanel IsEnabled="{Binding #dataGrid.AllowColumnFiltering}">
+                            <Label Content="Column Filter Popup Mode:" Classes="PropertyEditor EditorLabel"/>
                             <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPopupMode}"
                                                 EditorValue="{Binding #dataGrid.ColumnFilterPopupMode}"
-                                                DockPanel.Dock="Top" Classes="LayoutItem"/>
-                            <Label Content="Column Filter Icon Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
+                                                Classes="PropertyEditor"/>
+                            
+                            <Label Content="Column Filter Icon Display Mode:" Classes="PropertyEditor EditorLabel"/>
                             <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:ColumnFilterButtonDisplayMode}"
                                                 EditorValue="{Binding #dataGrid.ColumnFilterButtonDisplayMode}"
-                                                Classes="LayoutItem"/>
-                        </DockPanel>
-                        <mxe:CheckEditor Content="Show Auto Filter Row" IsChecked="{Binding #dataGrid.ShowAutoFilterRow}" Classes="LayoutItem" Margin="6,6,6,0"/>
-						<mxe:CheckEditor Content="Show Condition In Auto Filter Row" IsChecked="{Binding #dataGrid.ShowConditionInAutoFilterRow}" Classes="LayoutItem" Margin="6,6,6,0"/>
-                        <DockPanel>
-                            <Label Content="Filter Panel Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                            <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPanelDisplayMode}"
-                                                EditorValue="{Binding #dataGrid.FilterPanelDisplayMode}"
-                                                Classes="LayoutItem"/>
-                        </DockPanel>
+                                                Classes="PropertyEditor"/>
+                        </StackPanel>
+                        
+                        <Label Content="Filter Panel Display Mode:" Classes="PropertyEditor EditorLabel"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:FilterPanelDisplayMode}"
+                                            EditorValue="{Binding #dataGrid.FilterPanelDisplayMode}"
+                                            Classes="PropertyEditor"/>
                     </StackPanel>
                 </mxe:GroupBox>
 
-                <mxe:GroupBox Header="Search Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+                <mxe:GroupBox Header="Search Properties" Classes="PropertiesGroup Last">
                     <StackPanel>
-                        <mxe:CheckEditor Content="Highlight Search Results" IsChecked="{Binding #dataGrid.SearchPanelHighlightResults}" Classes="LayoutItem"/>
-                        <DockPanel>
-                            <Label Content="Search Panel Display Mode:" DockPanel.Dock="Top" Classes="LayoutItem"/>
-                            <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:SearchPanelDisplayMode}"
-                                                EditorValue="{Binding #dataGrid.SearchPanelDisplayMode}"
-                                                Classes="LayoutItem"/>
-                        </DockPanel>
+                        <mxe:CheckEditor Content="Highlight Search Results" IsChecked="{Binding #dataGrid.SearchPanelHighlightResults}" Classes="PropertyEditor"/>
+
+                        <Border Margin="{DynamicResource ControlPaddingTop}"/>
+                        <Label Content="Search Panel Display Mode:" Classes="PropertyEditor EditorLabel"/>
+                        <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxdc:SearchPanelDisplayMode}"
+                                            EditorValue="{Binding #dataGrid.SearchPanelDisplayMode}"
+                                            Classes="PropertyEditor"/>
                     </StackPanel>
                 </mxe:GroupBox>
             </StackPanel>

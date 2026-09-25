@@ -12,7 +12,6 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Eremex.Avalonia.TestUtls;
 

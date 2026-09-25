@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DemoCenter WASM test host</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/" />
+    <link rel="modulepreload" href="./main.js" />
+    <link rel="modulepreload" href="./_framework/dotnet.js" />
+    <link rel="modulepreload" href="./_framework/avalonia.js" />
+    <style>
+        body { margin: 0; font: 13px/1.45 ui-monospace, SFMono-Regular, Consolas, monospace; }
+        #log { margin: 0; padding: 12px; white-space: pre-wrap; word-break: break-word; }
+        html, body { height: 100%; }
+        /*
+          The Avalonia mount point. The application is started by the real browser backend
+          (StartBrowserAppAsync), as in DemoCenter.Web - there is no other way to get the
+          same ISingleViewApplicationLifetime.
+
+          The element is visible and on screen, not tucked away past the window edge. It was
+          hidden at first, and that produced false failures: the OverlayLayer, in which
+          Avalonia draws popups when there are no operating-system windows, is created by a
+          rendering pass rather than a layout pass. A hidden element gets no such pass, so
+          there is no layer - and every popup check went red on every page at once.
+
+          The log therefore sits on top as a translucent strip: it is there to be read by
+          eye while debugging, but it must not take space away from the application.
+        */
+        #out { position: absolute; inset: 0; }
+
+        #log {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            max-height: 40vh;
+            overflow: auto;
+            background: rgba(255, 255, 255, 0.82);
+            border-top: 1px solid #ccc;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="out"></div>
+    <pre id="log">Loading the runtime...
+</pre>
+    <script type='module' src="./main.js"></script>
+</body>
+
+</html>

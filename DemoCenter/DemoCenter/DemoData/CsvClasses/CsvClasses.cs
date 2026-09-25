@@ -4,6 +4,10 @@ using System.Text;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
+
 namespace DemoCenter.DemoData
 {
     public class MechInfo
@@ -36,6 +40,9 @@ namespace DemoCenter.DemoData
 
     public class YachtInfo
     {
+        private readonly List<CarPartInfo> parts = new();
+        private IImage image;
+
         public string Name { get; init; }
         public double Length { get; init; }
         public int NumberOfCabins { get; init; }
@@ -47,10 +54,32 @@ namespace DemoCenter.DemoData
         public string Designer { get; init; }
         public string Flag { get; init; }
         public string Location { get; init; }
+        public string Description { get; init; }
+        public string ImageName { get; init; }
         public YachtWebInfo Details { get; init; }
 
+        public IReadOnlyList<CarPartInfo> Parts => parts;
+
+        internal List<CarPartInfo> PartList => parts;
+
+        public IImage Image => image ??= LoadImage(ImageName);
+
+        internal static IImage LoadImage(string imageName)
+        {
+            if (string.IsNullOrEmpty(imageName))
+                return null;
+
+            var uri = new Uri($"avares://DemoCenter/DemoData/csv/YachtImages/{imageName}", UriKind.RelativeOrAbsolute);
+            if (!AssetLoader.Exists(uri))
+                return null;
+
+            using var stream = AssetLoader.Open(uri);
+            return new Bitmap(stream);
+        }
+
         public YachtInfo(string name, double length, int numberOfCabins, double maxSpeed, decimal cruisingRange, 
-            decimal price, int launchingYear, string builder, string designer, string flag, string location)
+            decimal price, int launchingYear, string builder, string designer, string flag, string location,
+            string description, string imageName)
         {
             Name = name;
             Length = length;
@@ -62,7 +91,9 @@ namespace DemoCenter.DemoData
             Builder = builder;
             Designer = designer;
             Flag = flag;
-            Location = location.Replace("''", ", ");
+            Location = location;
+            Description = description;
+            ImageName = imageName;
             Details = new YachtWebInfo(Name, Location, $"https://www.google.com/search?q=yacht+{Name.Replace(" ", "+")}");
         }
     }

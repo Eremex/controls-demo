@@ -11,7 +11,11 @@
         <mxc:CartesianChart Grid.Row="1" Classes="DemoChartWithNoOptions" x:Name="DemoControl" ScrollMouseButton="Left" PointerPressed="DemoControl_OnPointerPressed">
             <mxc:CartesianChart.Series>
                 <mxc:CartesianSeries DataAdapter="{Binding Series.DataAdapter}">
-                    <mxc:CartesianLineSeriesView Color="{Binding Series.Color}" Thickness="2" />
+                    <mxc:CartesianLineSeriesView Color="{Binding Series.Color}">
+                        <mxc:CartesianLineSeriesView.LineStyle>
+                            <mxc:LineStyle Thickness="2" />
+                        </mxc:CartesianLineSeriesView.LineStyle>
+                    </mxc:CartesianLineSeriesView>
                 </mxc:CartesianSeries>
             </mxc:CartesianChart.Series>
 

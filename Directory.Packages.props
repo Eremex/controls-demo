@@ -30,6 +30,7 @@
     <PackageVersion Include="Eremex.Drawing" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.Drawing.Skia" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.DocumentProcessing" Version="$(EMXControlsVersion)" />
+    <PackageVersion Include="Eremex.Avalonia.Controls.ApplicationServices" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.Avalonia.Controls" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.Avalonia.Controls3D" Version="$(EMXControlsVersion)" />
     <PackageVersion Include="Eremex.Avalonia.Themes.DeltaDesign" Version="$(EMXControlsVersion)" />
@@ -38,6 +39,16 @@
     <PackageVersion Include="Moq.AutoMock" Version="3.2.0" />
     <PackageVersion Include="Moq" Version="4.18.1" />
     <PackageVersion Include="Xunit.Combinatorial" Version="1.6.24" />
+    <PackageVersion Include="xunit.v3" Version="3.2.2" />
+    <PackageVersion Include="xunit.v3.assert" Version="3.2.2" />
+    <PackageVersion Include="xunit.v3.extensibility.core" Version="3.2.2" />
+    <PackageVersion Include="xunit.v3.runner.common" Version="3.2.2" />
+    <PackageVersion Include="xunit.v3.runner.inproc.console" Version="3.2.2" />
+    <PackageVersion Include="xunit.v3.mtp-v1" Version="3.2.2" />
+    <PackageVersion Include="Microsoft.Playwright" Version="1.49.0" />
+    <PackageVersion Include="chromium" Version="2026.8.16" />
+    <PackageVersion Include="chromium.linux-x64" Version="2026.8.16" />
+    <PackageVersion Include="chromium.win-x64" Version="2026.8.16" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageVersion Include="xunit" Version="2.5.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.3" />
@@ -57,4 +68,4 @@
     <PackageVersion Include="StirlingLabs.assimp.native.win-x64" Version="5.2.5.4" />
     <PackageVersion Include="stylecop.analyzers" Version="1.1.118" />
   </ItemGroup>
-</Project>
+</Project>

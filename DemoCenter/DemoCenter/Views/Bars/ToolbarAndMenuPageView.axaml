@@ -21,10 +21,10 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <ControlTemplate x:Key="DemoToolbarBorderTemplate">
+            <ControlTemplate x:Key="DemoToolbarBorderTemplate" TargetType="ContentControl">
                 <Grid>
                     <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="22" Padding="1">
-                        <ContentPresenter Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
                     </Border>
                     <Border CornerRadius="4" Margin="1, 2" IsHitTestVisible="False" Background="LightPink" Classes.highlight="{Binding $parent[mxb:Toolbar].(view:ToolbarAndMenuPageView.IsToolbarSelected)}" Opacity="0" IsVisible="False"/>
                 </Grid>
@@ -177,7 +177,7 @@
             </mxb:ToolbarManager>
             
             <!--Options-->
-            <StackPanel Grid.Column="1">
+            <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
                 <mxe:GroupBox Grid.Row="2" Header="Selected Toolbar" Classes="PropertiesGroup">
                     <StackPanel>
                         <RadioButton x:Name="MainMenuSelector" Classes="PropertyEditor" GroupName="G1" IsChecked="True" Content="Main Menu" IsCheckedChanged="OnRadioButtonCheckedChanged"/>
@@ -188,8 +188,8 @@
                     </StackPanel>
                 </mxe:GroupBox>
 
-                <mxe:GroupBox x:Name="PropertiesSelector" Header="Selected toolbar properties" Classes="PropertiesGroup">
-                    <StackPanel>
+                <mxe:GroupBox x:Name="PropertiesSelector" Header="Selected toolbar properties" Classes="PropertiesGroup Last">
+                    <StackPanel x:DataType="mxb:Toolbar">
                         <mxe:CheckEditor x:Name="IsVisibleSelector" Content="Is Visible" IsChecked="{Binding IsVisible, Mode=TwoWay}" Classes="PropertyEditor"/>
                         <mxe:CheckEditor x:Name="IsEnabledSelector" Content="Is Enabled" IsChecked="{Binding IsEnabled, Mode=TwoWay}" Classes="PropertyEditor"/>
                         <mxe:CheckEditor x:Name="AllowDragToolbarSelector" Content="Allow Drag" IsChecked="{Binding AllowDragToolbar, Mode=TwoWay}" IsThreeState="True" Classes="PropertyEditor"/>

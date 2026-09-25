@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <Thickness x:Key="PropertyEditorPadding">4</Thickness>
+    <Thickness x:Key="PropertyEditorPaddingTopBottom">0,4</Thickness>
+
+    <Thickness x:Key="VerticalLabelPadding">0,4,0,-2</Thickness>
+    
+</ResourceDictionary>

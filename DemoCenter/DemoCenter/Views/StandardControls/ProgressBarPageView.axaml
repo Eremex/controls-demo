@@ -1,4 +1,4 @@
-<UserControl x:Class="DemoCenter.Views.ProgressBarPageView"
+﻿<UserControl x:Class="DemoCenter.Views.ProgressBarPageView"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -37,23 +37,28 @@
                              MinWidth="16"/>
             </Grid>  
         </ContentControl>
-        <!--Options-->
-        <StackPanel Grid.Column="1">
-            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup">
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="3*, *">
+        
+        <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
                     <mxe:CheckEditor x:Name="ShowProgressTextSelector" Content="Show Progress Text" IsChecked="True" Classes="PropertyEditor"/>
-                    <mxe:CheckEditor Grid.Row="1" x:Name="IsIndeterminateSelector" Content="Indeterminate" Classes="PropertyEditor"/>
-                    <Label Grid.Row="2" Content="Maximum" Classes="PropertyLabel"/>
-                    <mxe:SpinEditor Grid.Row="3" x:Name="MaximumSelector" Value="100" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
-                    <Label Grid.Row="4" Content="Value" Classes="PropertyLabel"/>
-                    <mxe:SpinEditor Grid.Row="5" x:Name="ValueSelector" Value="41" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
-                    <Label Grid.Row="6" Content="Minimum" Classes="PropertyLabel"/>
-                    <mxe:SpinEditor Grid.Row="7" x:Name="MinimumSelector" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
-                    <Label Grid.Row="8" Content="Text Format" Classes="PropertyLabel"/>                        
-                    <mxe:ComboBoxEditor Grid.Row="9" x:Name="ProgressTextFormatSelector" HorizontalContentAlignment="Left"
+                    
+                    <mxe:CheckEditor x:Name="IsIndeterminateSelector" Content="Indeterminate" Classes="PropertyEditor"/>
+                    
+                    <Label Content="Maximum" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:SpinEditor x:Name="MaximumSelector" Value="100" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
+                    
+                    <Label Content="Value" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:SpinEditor x:Name="ValueSelector" Value="41" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
+                    
+                    <Label Content="Minimum" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:SpinEditor x:Name="MinimumSelector" HorizontalContentAlignment="Left" Classes="PropertyEditor"/>
+                    
+                    <Label Content="Text Format" Classes="PropertyEditor EditorLabel"/>
+                    <mxe:ComboBoxEditor x:Name="ProgressTextFormatSelector" HorizontalContentAlignment="Left"
                                         ItemsSource="{Binding Formats}"
                                         SelectedItem="{Binding SelectedTextFormat, Mode=TwoWay}" Classes="PropertyEditor"/>
-                </Grid>
+                </StackPanel>
             </mxe:GroupBox>
         </StackPanel>
     </Grid>

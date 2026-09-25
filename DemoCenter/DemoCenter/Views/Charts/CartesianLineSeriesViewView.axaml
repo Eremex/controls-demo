@@ -12,8 +12,11 @@
                     <mxc:CartesianSeries DataAdapter="{Binding DataAdapter}">
                         <mxc:CartesianLineSeriesView Color="{Binding Color}"
                                                      ShowMarkers="{Binding ElementName=CheShowMarkers, Path=IsChecked}"
-                                                     MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}"
-                                                     Thickness="{Binding ElementName=SlLineThickness, Path=Value}" />
+                                                     MarkerSize="{Binding ElementName=SlMarkerSize, Path=Value}">
+                            <mxc:CartesianLineSeriesView.LineStyle>
+                                <mxc:LineStyle Thickness="{Binding ElementName=SlLineThickness, Path=Value}" />
+                            </mxc:CartesianLineSeriesView.LineStyle>
+                        </mxc:CartesianLineSeriesView>
                     </mxc:CartesianSeries>
                 </DataTemplate>
             </mxc:CartesianChart.SeriesTemplate>
@@ -26,17 +29,19 @@
             </mxc:CartesianChart.AxesY>
         </mxc:CartesianChart>
         
-        <StackPanel Grid.Column="1" Orientation="Vertical">
+        <StackPanel Grid.Column="1" Margin="{DynamicResource OptionsMargin}">
             <mxe:GroupBox Header="Cartesian Chart" Classes="PropertiesGroup">
                 <mxe:CheckEditor Content="Swap Axes" IsChecked="{Binding ElementName=DemoControl, Path=SwapAxes}" Classes="PropertyEditor"/>
             </mxe:GroupBox>
-            <mxe:GroupBox Header="Properties"  Classes="PropertiesGroup">
-                <StackPanel Orientation="Vertical">
-                    <Label Content="Line Thickness" Classes="TopPropertyLabel" />
-                    <Slider x:Name="SlLineThickness" Minimum="1" Maximum="8" Value="2" Classes="PropertyEditor" />
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <Label Content="Line Thickness" Classes="PropertyEditor EditorLabel" />
+                    <Slider x:Name="SlLineThickness" Minimum="1" Maximum="8" Value="2" />
+                    
                     <mxe:CheckEditor x:Name="CheShowMarkers" Content="Show Markers" IsChecked="True" Classes="PropertyEditor" />
-                    <Label Content="Marker Size" Classes="TopPropertyLabel" />
-                    <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="8" Classes="PropertyEditor" IsEnabled="{Binding ElementName=CheShowMarkers, Path=IsChecked}" />
+                    
+                    <Label Content="Marker Size" Classes="PropertyEditor EditorLabel" />
+                    <Slider x:Name="SlMarkerSize" Minimum="4" Maximum="20" Value="8" IsEnabled="{Binding ElementName=CheShowMarkers, Path=IsChecked}" />
                 </StackPanel>
             </mxe:GroupBox>
         </StackPanel>

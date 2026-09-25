@@ -1,4 +1,4 @@
-using Avalonia.Media;
+﻿using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 
@@ -6,6 +6,7 @@ namespace DemoCenter.DemoData;
 
 public class CarInfo
 {
+    private readonly List<CarPartInfo> parts = new();
     private IImage image;
     
     public int Id { get; init; }
@@ -22,16 +23,21 @@ public class CarInfo
     public bool IsInStock { get; init; }
     public string ImageName { get; init; }
 
+    public IReadOnlyList<CarPartInfo> Parts => parts;
+
+    internal List<CarPartInfo> PartList => parts;
+
     public IImage Image
     {
         get
         {
-            if (image == null)
+            if (image == null && !string.IsNullOrEmpty(ImageName))
             {
-                if (!string.IsNullOrEmpty(ImageName))
+                var uri = new Uri($"avares://DemoCenter/DemoData/csv/CarImages/{ImageName}", UriKind.RelativeOrAbsolute);
+                if (AssetLoader.Exists(uri))
                 {
-                    var s = AssetLoader.Open(new Uri($"avares://DemoCenter/DemoData/csv/CarImages/{ImageName}", UriKind.RelativeOrAbsolute));
-                    image = new Bitmap(s);
+                    using var stream = AssetLoader.Open(uri);
+                    image = new Bitmap(stream);
                 }
             }
 

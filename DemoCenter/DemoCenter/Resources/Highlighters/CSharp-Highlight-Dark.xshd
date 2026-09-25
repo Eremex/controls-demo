@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <SyntaxDefinition name="C#" extensions=".cs" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<!-- The named colors 'Comment' and 'String' are used in SharpDevelop to detect if a line is inside a multiline string/comment -->
 	<Color name="Comment" foreground="#85C46C" exampleText="// comment" />
@@ -10,7 +10,7 @@
 	<Color name="ValueTypeKeywords"  foreground="#6C95EB" exampleText="bool b = true;" />
 	<Color name="ReferenceTypeKeywords" foreground="#6C95EB" exampleText="object o;" />
 	<Color name="MethodCall" foreground="#39CC8F"  exampleText="o.ToString();"/>
-	<Color name="NumberLiteral" foreground="#248700" exampleText="3.1415f"/>
+	<Color name="NumberLiteral" foreground="#279100" exampleText="3.1415f"/>
 	<Color name="ThisOrBaseReference" foreground="#6C95EB"  exampleText="this.Do(); base.Do();"/>
 	<Color name="NullOrValueKeywords" foreground="#6C95EB"  exampleText="if (value == null)"/>
 	<Color name="Keywords"  foreground="#6C95EB" exampleText="if (a) {} else {}"/>

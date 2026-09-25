@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -234,7 +234,7 @@ In this example, the controls are bound to collections that contain the same bus
   <data name="DataGridAllowDragDropSortedRowsTooltip" xml:space="preserve">
     <value>The AllowDragDropSortedRows option must be enabled to allow drag-and-drop operations for sorted/grouped Data Grids. When data is sorted or grouped, a drag-and-drop operation modifies values of a dragged row in sort columns.</value>
   </data>
-    <data name="DataGridColumnBandsDescription" xml:space="preserve">
+  <data name="DataGridColumnBandsDescription" xml:space="preserve">
     <value>Column bands allow you to visually combine columns together by displaying shared headers above them. Both band and column headers can include text, images, or custom content. This demo showcases the following features:
  • Band Generation from a Source — You can populate column bands from a band source defined in a View Model.
  • Hierarchical Bands — The control allows you to create hierarchical bands with an unlimited number of nesting levels.
@@ -250,7 +250,7 @@ The "Reset Column Width" command (available in column context menus) restores co
     <value>Two Best-Fit calculation modes are available:
 • Fast mode — Calculates optimal column widths against unique row values, ensuring better performance. This mode may be less accurate in certain scenarios, such as when the grid uses cell templates.
 • Full mode — Calculates optimal column widths against all row values. Although slower than Fast, this mode delivers the most accurate results when the grid uses cell templates or displays data source validation errors in cells.</value>
-  </data>    
+  </data>
   <data name="TheEremexControlsLibraryIncludesMultipleEd" xml:space="preserve">
     <value>The Eremex Controls library includes multiple editors that provide you with advanced data editing capabilities. The editors allow you to display and edit data of different data types (numeric, Boolean, date-time, enumerations, etc.). They support the data validation mechanism, styling, and embedding in container controls (Data Grid, Tree List, Property Grid, and Toolbars/Menus).</value>
   </data>
@@ -397,7 +397,13 @@ Instead of bulky bars, it uses thin lines topped with markers to visualize data 
     <value>TreeList can export data to XLSX (Microsoft Excel) and PDF formats. The Excel export feature is data-aware — it preserves the control's data shaping configuration (node hierarchy, data sorting, and value formatting) in the output XLSX document. The PDF rendering engine follows the WYSIWYG concept, which ensures the layout of TreeList elements is accurately reproduced in the output document.</value>
   </data>
   <data name="UseCasesGroupInfo_Desc" xml:space="preserve">
-    <value>This demo emulates a dynamic mortgage calculator, built with the Data Grid and Cartersian Chart controls. Data Grid presents a detailed payment schedule as a table. The synchronized chart plots this data to show the relationship between principal and interest over the life of the loan.</value>
+    <value>This demo emulates a dynamic mortgage calculator, built with the Data Grid and Cartesian Chart controls. Data Grid presents a detailed payment schedule as a table. The synchronized chart plots this data to show the relationship between principal and interest over the life of the loan.</value>
+  </data>
+  <data name="YachtParts_Desc" xml:space="preserve">
+    <value>A parts catalogue for a fleet of yachts, shown as a master detail pair of Data Grids. The upper grid lists the vessels; the lower one shows the parts that fit the selected vessel, grouped by system, with the selected part previewed beside it. The same parts catalogue is shared with the vehicles, so a part reached from a yacht is the same record a car would reach.</value>
+  </data>
+  <data name="CarComparison_Desc" xml:space="preserve">
+    <value>Two cars side by side, with the better figure in each row picked out in green and the weaker one in red. Which way is better depends on the row: more power, more gears and more miles per gallon win, a lower price wins, and rows such as displacement or transmission type are left uncoloured because neither value is an advantage. Change either car in the drop-down above its picture and the comparison is rebuilt.</value>
   </data>
   <data name="EmptyPoints" xml:space="preserve">
     <value>This demo shows how a chart control handles incomplete datasets with the help of "empty points". These points allow you to create visible gaps in the series where values are missing. To specify an empty point, set its value to double.NaN, double.PositiveInfinity, or double.NegativeInfinity.</value>
@@ -413,5 +419,68 @@ Instead of bulky bars, it uses thin lines topped with markers to visualize data 
   </data>
   <data name="STL" xml:space="preserve">
     <value>This demo showcases a 3D model of a circuit board rendered in the Graphics3DControl. The example shows how you can import a complex model from an STL file using the Assimp library. The loaded geometry is used to initialize meshes, vertices and materials in the Graphics3DControl.</value>
+  </data>
+  <data name="ApplicationServicesRegistrationDescription" xml:space="preserve">
+    <value>Application Services describe what to register, not how: the host decides which container and which lifetime to use. This demo lists every service RegisterApplicationServices hands over, then resolves each one to confirm the wiring is complete.
+ • Microsoft.Extensions.DependencyInjection and Autofac — both integrate through the same callback, registering each service as a singleton.
+ • No container at all — the built-in SimpleServiceProvider, which is what this demo itself uses.
+ • Constructor injection — the normal way a view model consumes a service once it is registered.</value>
+  </data>
+  <data name="ApplicationServicesMessageBoxesDescription" xml:space="preserve">
+    <value>Standard message boxes shown through IMessageBoxService, with a fixed set of buttons and icons: Ok/Information, Yes/No/Question, Yes/No/Cancel/Warning, Retry/Cancel/Error. The owner window can be passed explicitly; when it is omitted, the service asks IWindowsManager for the currently active window.</value>
+  </data>
+  <data name="ApplicationServicesDialogsDescription" xml:space="preserve">
+    <value>Modal dialogs whose title, content and buttons are supplied by a view model through IDialogService, rather than assembled in markup. This demo showcases the following scenarios:
+ • Ok / Cancel — the base class creates the standard button pair with no extra code.
+ • Apply / Cancel — overriding CreateButtons replaces the standard set with a custom one.
+ • Yes / No with Dock — buttons carry custom captions and can be docked to either side.
+ • Validation — CanOk keeps the default button disabled until the input becomes valid.
+ • Nested — a modal dialog opened from another modal dialog.</value>
+  </data>
+  <data name="ApplicationServicesChoiceDialogsDescription" xml:space="preserve">
+    <value>IChoiceDialogService fills the gap IMessageBoxService leaves: where message boxes only offer fixed button sets and always return DialogResult, this service accepts arbitrary captions and returns whatever result type the caller chooses.
+ • Custom captions — buttons such as "Show log" or "Retry" that no standard set provides.
+ • Arbitrary result type — a plain bool, a custom enum, or any other struct.
+ • Docked choices — secondary actions, like Help, can be placed apart from the main buttons.</value>
+  </data>
+  <data name="ApplicationServicesWindowsDescription" xml:space="preserve">
+    <value>Non-modal windows opened through IWindowService, and IWindowsManager, which tracks the currently active window so that every other service can fall back to it when no owner is given explicitly. The caption passed to the service overrides the one set on the view model, and a modal dialog opened from one of several open windows blocks only that window.</value>
+  </data>
+  <data name="ApplicationServicesFileDialogsDescription" xml:space="preserve">
+    <value>Open and save dialogs through IOpenFileDialogService and ISaveFileDialogService, each with a synchronous and an asynchronous variant — the synchronous one holds the calling thread on a nested message loop and exists for legacy code, new code should prefer ShowAsync. This demo covers picking a single file, picking multiple files with AllowMultiple, and saving with a suggested name, a default extension, an overwrite prompt, and a well-known starting folder.</value>
+  </data>
+  <data name="PropertyGridMultipleObjectsDescription" xml:space="preserve">
+    <value>Property Grid allows you to show and edit the properties of multiple objects simultaneously. If the objects are of different types, the control shows only the properties they have in common.
+In this demo, Ctrl-click to select several employees in the table on the left and show their properties in the Property Grid. The Property Grid displays the property values in common and blanks the differing values. Editing any property writes the change back to all selected employees.</value>
+  </data>
+  <data name="PropertyGridValidationDescription" xml:space="preserve">
+    <value>The data validation mechanism allows you to check cell values and show errors in cells that contain invalid data. You can use DataAnnotation attributes and the IDataErrorInfo/INotifyDataErrorInfo interface to validate data at the bound object level. 
+PropertyGrid also allows you to handle the ValidateRowValue event to perform custom validation. Toggle the checkboxes under the Rules section to see individual validation rules in action.</value>
+  </data>
+  <data name="PropertyGridLayoutDescription" xml:space="preserve">
+    <value>This example demonstrates the Property Grid's layout settings.
+• Widths of the caption and editor columns — Each column's width can be a fixed number of pixels or a proportion of the available space (star sizing).
+• Caption alignment — Captions can be aligned within the caption column to the left or right edge, centered, or stretched.
+• Built-in resizer — The resizer allows a user to redistribute space between the caption and editor columns at runtime.</value>
+  </data>
+  <data name="RibbonLayoutDescription" xml:space="preserve">
+    <value>Everything about the ribbon that is decided by the application rather than by its commands: the classic and the simplified command layouts and the button that lets the user switch between them, the application button, and the quick access toolbar - shown above or below the ribbon, with or without its customization menu. Drag the width slider to watch the groups collapse into drop-down buttons as the room runs out. The status bar under the page is a Bars toolbar in status bar mode, sharing the toolbar manager with the ribbon.</value>
+  </data>
+  <data name="DataGridTotalSummariesDescription" xml:space="preserve">
+    <value>DataGrid can calculate summaries against rows and display them in the summary footer at the bottom.
+• Supported summary types: Sum, Min, Max, Count, and Average.
+• End users can manage summaries at runtime: click the Σ button in the footer cell to add summaries, or select "Σ → Customize" to invoke the Summary Editor dialog.
+• Each column can display multiple summaries calculated against that column's values.
+• You can calculate a summary against one column and display it in another.
+• Handle the CustomSummary event to calculate a custom summary.</value>
+  </data>
+  <data name="TreeListTotalSummariesDescription" xml:space="preserve">
+    <value>TreeList can calculate summaries against rows and display them in the summary footer at the bottom.
+• Supported summary types: Sum, Min, Max, Count, and Average.
+• End users can manage summaries at runtime: click the Σ button in the footer cell to add summaries, or select "Σ → Customize" to invoke the Summary Editor dialog.
+• Each column can display multiple summaries calculated against that column's values.
+• You can calculate a summary against one column and display it in another.
+• Summaries are calculated against currently loaded nodes. Disable AllowDynamicDataLoading to load all nodes at once and include them in the summaries.
+• Handle the CustomSummary event to calculate a custom summary.</value>
   </data>
 </root>
