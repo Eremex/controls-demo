@@ -129,22 +129,30 @@ jobs:
           -p:UseAppHost=true
 
       - name: Install native dependencies
-        run: brew install assimp molten-vk
+        run: brew install molten-vk
 
-      # Both libraries are dlopen()ed by bare name, so they have to sit next to the executable -
-      # inside Contents/MacOS. AssimpNet loads "libassimp.dylib" for the 3D models; Silk.NET looks
-      # for "libvulkan.dylib", and MoltenVK implements the Vulkan API itself, so copying it under
-      # that name means Graphics3DControl runs with no Vulkan loader, no ICD manifest and no
+      # Silk.NET dlopen()s "libvulkan.dylib" by bare name, so it has to sit next to the executable -
+      # inside Contents/MacOS. MoltenVK implements the Vulkan API itself, so copying it under that
+      # name means Graphics3DControl runs with no Vulkan loader, no ICD manifest and no
       # VK_ICD_FILENAMES / DYLD_LIBRARY_PATH - none of which an app started from Finder would have.
-      # Building on a macOS runner also means brew hands us a matching architecture: the arm64
-      # image cannot produce an x64 dylib, which is why osx-x64 uses the Intel runner.
-      # See Docs/macos.md in the controls repository.
+      # libassimp.dylib is not taken from brew: brew builds for the runner's macOS version, so its
+      # copy refuses to load on older systems. The one from the AssimpNetter package is already in
+      # the bundle. See Docs/macos.md in the controls repository.
       - name: Copy native libraries into the bundle
         run: |
           APP=./DemoCenter/DemoCenter.Desktop/bin/Release/net10.0/osx-x64/publish/DemoCenter.Desktop.app
-          cp "$(brew --prefix)/lib/libassimp.dylib" "$APP/Contents/MacOS/"
+          test -f "$APP/Contents/MacOS/libassimp.dylib"
           cp "$(brew --prefix)/lib/libMoltenVK.dylib" "$APP/Contents/MacOS/libvulkan.dylib"
           find "$APP" -name '*.pdb' -delete
+
+      # The apphost is signed on its own, before it is put into the bundle, and the bundle itself is
+      # not sealed. Gatekeeper reports such a download as "damaged and can't be opened", so the
+      # whole .app is signed ad hoc once its contents are final.
+      - name: Sign the bundle
+        run: |
+          APP=./DemoCenter/DemoCenter.Desktop/bin/Release/net10.0/osx-x64/publish/DemoCenter.Desktop.app
+          codesign --force --deep --sign - "$APP"
+          codesign --verify --deep --strict --verbose=2 "$APP"
 
       # ditto, not zip: a plain "zip -j" flattens directories, which destroys the bundle, and only
       # ditto preserves the symlinks and permissions that make the .app launchable after download.
@@ -193,22 +201,30 @@ jobs:
           -p:UseAppHost=true
 
       - name: Install native dependencies
-        run: brew install assimp molten-vk
+        run: brew install molten-vk
 
-      # Both libraries are dlopen()ed by bare name, so they have to sit next to the executable -
-      # inside Contents/MacOS. AssimpNet loads "libassimp.dylib" for the 3D models; Silk.NET looks
-      # for "libvulkan.dylib", and MoltenVK implements the Vulkan API itself, so copying it under
-      # that name means Graphics3DControl runs with no Vulkan loader, no ICD manifest and no
+      # Silk.NET dlopen()s "libvulkan.dylib" by bare name, so it has to sit next to the executable -
+      # inside Contents/MacOS. MoltenVK implements the Vulkan API itself, so copying it under that
+      # name means Graphics3DControl runs with no Vulkan loader, no ICD manifest and no
       # VK_ICD_FILENAMES / DYLD_LIBRARY_PATH - none of which an app started from Finder would have.
-      # Building on a macOS runner also means brew hands us a matching architecture: the arm64
-      # image cannot produce an x64 dylib, which is why osx-x64 uses the Intel runner.
-      # See Docs/macos.md in the controls repository.
+      # libassimp.dylib is not taken from brew: brew builds for the runner's macOS version, so its
+      # copy refuses to load on older systems. The one from the AssimpNetter package is already in
+      # the bundle. See Docs/macos.md in the controls repository.
       - name: Copy native libraries into the bundle
         run: |
           APP=./DemoCenter/DemoCenter.Desktop/bin/Release/net10.0/osx-arm64/publish/DemoCenter.Desktop.app
-          cp "$(brew --prefix)/lib/libassimp.dylib" "$APP/Contents/MacOS/"
+          test -f "$APP/Contents/MacOS/libassimp.dylib"
           cp "$(brew --prefix)/lib/libMoltenVK.dylib" "$APP/Contents/MacOS/libvulkan.dylib"
           find "$APP" -name '*.pdb' -delete
+
+      # The apphost is signed on its own, before it is put into the bundle, and the bundle itself is
+      # not sealed. Gatekeeper reports such a download as "damaged and can't be opened", so the
+      # whole .app is signed ad hoc once its contents are final.
+      - name: Sign the bundle
+        run: |
+          APP=./DemoCenter/DemoCenter.Desktop/bin/Release/net10.0/osx-arm64/publish/DemoCenter.Desktop.app
+          codesign --force --deep --sign - "$APP"
+          codesign --verify --deep --strict --verbose=2 "$APP"
 
       # ditto, not zip: a plain "zip -j" flattens directories, which destroys the bundle, and only
       # ditto preserves the symlinks and permissions that make the .app launchable after download.
