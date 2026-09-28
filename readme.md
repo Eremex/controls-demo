@@ -38,6 +38,30 @@ Certain example modules are disabled in the Online Demo, including:
 
 Known limitations: Hyperlinks are not supported.
 
+### Download Desktop Demo
+
+Ready-to-run builds for Windows, Linux, and macOS are available on the [Releases](https://github.com/Eremex/controls-demo/releases) page. Download the archive for your platform, unpack it, and run the `DemoCenter` application.
+
+#### macOS
+
+The macOS demo is not notarized by Apple. If you download the archive in a browser, macOS reports that it could not verify the application. To avoid this, download and unpack the demo from the Terminal, which does not mark the application as downloaded from the Internet:
+
+- Apple Silicon (M1 and later):
+
+    ```bash
+    curl -L https://github.com/Eremex/controls-demo/releases/latest/download/EMX.Demo.Desktop.osx-arm64.zip -o /tmp/emx-demo.zip && ditto -x -k /tmp/emx-demo.zip /Applications
+    ```
+
+- Intel:
+
+    ```bash
+    curl -L https://github.com/Eremex/controls-demo/releases/latest/download/EMX.Demo.Desktop.osx-x64.zip -o /tmp/emx-demo.zip && ditto -x -k /tmp/emx-demo.zip /Applications
+    ```
+
+Then run `DemoCenter.Desktop` from the Applications folder.
+
+If you have already downloaded the archive in a browser, open the application once, click **Done**, then go to **System Settings | Privacy & Security** and click **Open Anyway**. Alternatively, run `xattr -cr /Applications/DemoCenter.Desktop.app` in the Terminal.
+
 ### Run Demo Offline
 
 - Clone the repository with the `git clone` command.
