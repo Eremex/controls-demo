@@ -1,4 +1,4 @@
-﻿EMXControls license is listed at https://eremexcontrols.net/articles/licensing/eula.html
+﻿EMXControls license is listed at https://eremexcontrols.net/licensing/eula/
 
 This Demo project source code is licensed under the MIT License
 

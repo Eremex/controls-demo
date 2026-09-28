@@ -5,7 +5,6 @@
     <PackageVersion Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia" Version="$(AvaloniaVersion)" />
-    <PackageVersion Include="Avalonia.iOS" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
     <PackageVersion Include="Avalonia.Browser" Version="$(AvaloniaVersion)" />
@@ -68,4 +67,4 @@
     <PackageVersion Include="StirlingLabs.assimp.native.win-x64" Version="5.2.5.4" />
     <PackageVersion Include="stylecop.analyzers" Version="1.1.118" />
   </ItemGroup>
-</Project>
+</Project>

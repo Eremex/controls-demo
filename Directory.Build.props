@@ -29,8 +29,4 @@
   <ItemGroup>
     <TrimmerRootAssembly Include="DemoCenter" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <NoWarn>NU1803;</NoWarn>
-  </PropertyGroup>
 </Project>

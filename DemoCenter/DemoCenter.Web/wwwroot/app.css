@@ -72,3 +72,28 @@
         visibility: collapse;
     }
 }
+
+/* Runtime loading progress. Filled in from main.js. */
+#loading-progress-track {
+    width: 320px;
+    max-width: 60vw;
+    height: 4px;
+    margin: 1.2rem auto 0.6rem;
+    background: rgba(139, 68, 172, 0.25);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+#loading-progress-bar {
+    width: 0;
+    height: 100%;
+    background: #8b44ac;
+    transition: width 0.2s linear;
+}
+
+#loading-progress-text {
+    color: #8b44ac;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.85rem;
+    opacity: 0.85;
+}

@@ -291,21 +291,69 @@ A collection of useful controls shipped with the Eremex Controls library allow y
 [Learn more...](docs/commoncontrols.md)
 
 
+###  Application Services
+
+A set of platform-agnostic services to display modal and non-modal windows, file dialogs, and custom message boxes, as well as to customize application-wide appearance settings directly from your ViewModels, without referencing any Avalonia window type.
+
+![thumb-appservices](docs/images/thumb-appservices.png) 
+
+Services decouple your ViewModels from the underlying UI framework. You can invoke these services through well-defined interfaces to:
+
+- Open and manage application windows.
+- Show **Open File** and **Save File** dialogs.
+- Display message boxes and custom modal dialogs.
+- Identify the active window.
+- Programmatically customize settings of the active Eremex visual theme.
+
+
 ## Themes
 
-The Eremex Controls Library includes the following paint themes to render the controls shipped with the library:
+The Eremex Controls Library provides dedicated paint themes to customize and render the visual interface of your applications.
 
-- 'DeltaDesign' paint theme (included in the `Eremex.Avalonia.Themes.DeltaDesign` package) — Contains visual settings for the Eremex Controls (except `Graphics3DControl`) and a set of standard Avalonia UI controls. 
-- 'Controls3D' paint theme (included in the `Eremex.Avalonia.Controls3D` package) — Contains visual settings for the `Graphics3DControl`.
+### DeltaDesign Theme
 
-These paint themes support two theme variants that help you deliver interfaces with the light and dark color palettes. Please note that the 'DeltaDesign' theme also affects a set of standard Avalonia controls used in your project: Button, CalendarControl, CheckBox, Label, ListBox, ProgressBar, RadioButton, Slider, TextBox, ToolTip, and more.
+**Package**: `Eremex.Avalonia.Themes.DeltaDesign`
+
+**Target Controls**: Core Eremex controls (excluding `Graphics3DControl`) and standard Avalonia UI elements.
+
+Applying this theme styles a set of standard Avalonia components (such as Button, TextBox, CalendarControl, CheckBox, Label, and ListBox) to match the appearance of the EMX controls used in the same application.
 
 
-| **Light Theme Variant** | **Dark Theme Variant** |
+### Controls3D Theme 
+
+**Package**: `Eremex.Avalonia.Controls3D` 
+
+**Target Controls**: `Graphics3DControl`
+
+
+
+
+### Light and Dark Theme Variants
+
+The DeltaDesign and Controls3D themes support both Light and Dark color schemes to accommodate user preferences or application requirements.
+
+
+| Light Theme Variant | Dark Theme Variant |
 |---|---|
 | ![thumb-lighttheme](docs/images/thumb-lighttheme.png) | ![thumb-darktheme](docs/images/thumb-darktheme.png) |
-| ![thumb-lighttheme2](docs/images/thumb-lighttheme2.png) | ![thumb-darktheme2](docs/images/thumb-darktheme2.png) |
 
+<!-- | ![thumb-lighttheme2](docs/images/thumb-lighttheme2.png) | ![thumb-darktheme2](docs/images/thumb-darktheme2.png) | -->
+
+
+### Color Palettes for the DeltaDesign Theme
+
+The DeltaDesign theme includes multiple color palettes to fine-tune the appearance of EMX Controls. A color palette is a predefined set of colors applied to the base theme, allowing users to quickly switch styling and accent colors.
+
+![whats-new-v15-theme-color-palettes](docs/images/theme-color-palettes.png)
+
+Applying a palette dynamically updates the color values of key UI elements, including:
+
+- Window, panel, and container backgrounds.
+- Editor backgrounds across various states (e.g., normal, hovered, focused).
+- Row and cell backgrounds in data-aware controls.
+- Selection highlights, hot-tracked elements, focused control accents, and more.
+
+Color palettes are supported for both Light and Dark theme variants.
 
 
 ## Supported Operating Systems

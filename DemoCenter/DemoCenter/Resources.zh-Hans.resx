@@ -425,27 +425,37 @@
  • 构造函数注入 — 视图模型获取已注册服务的常规方式。</value>
   </data>
   <data name="ApplicationServicesMessageBoxesDescription" xml:space="preserve">
-    <value>通过 IMessageBoxService 显示的标准消息框，提供固定的按钮和图标组合：Ok/Information、Yes/No/Question、Yes/No/Cancel/Warning、Retry/Cancel/Error。可以显式传入所有者窗口；如果省略，服务会向 IWindowsManager 请求当前的活动窗口。</value>
+    <value>您可以使用 IMessageBoxService 从 ViewModel 中显示标准消息框。消息框支持预定义的按钮组合（OK、Yes/No、Yes/No/Cancel、Abort/Retry/Ignore 等）和标准图标（Information、Question、Warning 等）。该服务可以自动获取当前活动窗口（通过内置的 IWindowsManager 服务），也可以将消息框与显式传入的所有者窗口相关联。</value>
   </data>
   <data name="ApplicationServicesDialogsDescription" xml:space="preserve">
-    <value>通过 IDialogService，模态对话框的标题、内容和按钮均由视图模型提供，而非在标记中拼装。本演示展示了以下场景：
- • Ok / Cancel — 基类无需额外代码即可创建标准按钮对。
- • Apply / Cancel — 重写 CreateButtons 可替换标准按钮集。
- • 带 Dock 的 Yes / No — 按钮可拥有自定义文字，并停靠在任意一侧。
- • 验证 — 在输入变为有效之前，CanOk 会使默认按钮保持禁用。
- • 嵌套对话框 — 从另一个模态对话框中打开的模态对话框。</value>
+    <value>本示例演示如何使用 IDialogService 从 ViewModel 中显示模态对话框。对话框的标题、内容和按钮在 ViewModel 中指定，而不是在 XAML 标记中硬编码。
+
+本演示展示了几种常见场景：
+• OK/Cancel：生成带有标准按钮对的对话框。
+• 自定义按钮集：演示如何用自定义按钮集替换默认按钮。
+• 按钮文字与位置：使用自定义按钮文字，并演示如何在底部栏中对齐按钮。
+• 验证：演示如何在用户输入有效之前禁用提交按钮。
+• 嵌套对话框：演示如何在一个活动的模态对话框中安全地打开另一个模态对话框。</value>
   </data>
   <data name="ApplicationServicesChoiceDialogsDescription" xml:space="preserve">
-    <value>IChoiceDialogService 弥补了 IMessageBoxService 的不足：消息框只提供固定的按钮集合，并且始终返回 DialogResult，而该服务可接受任意按钮文字，并返回调用方选择的任意结果类型。
- • 自定义按钮文字 — 例如"Show log"或"Retry"，任何标准按钮集都无法提供。
- • 任意结果类型 — 普通 bool、自定义枚举，或任何其他结构体。
- • 带 Dock 的按钮 — 诸如 Help 之类的次要操作可与主按钮分开放置。</value>
+    <value>您可以使用 IChoiceDialogService 从 ViewModel 中显示带有自定义操作的多用途对话框。与依赖固定按钮布局和预定义返回类型的标准消息框不同，该服务允许您定义任意按钮文字，并返回任意自定义结果类型。
+
+本演示展示了几种常见场景：
+• 自定义按钮文字：对话框按钮可以使用任意文本。
+• 任意结果类型：对话框可以返回任意数据类型的结果，包括 Boolean、自定义枚举或结构体。
+• 自定义按钮位置：可以将按钮对齐到按钮面板的左侧或右侧。</value>
   </data>
   <data name="ApplicationServicesWindowsDescription" xml:space="preserve">
-    <value>通过 IWindowService 打开的非模态窗口，以及跟踪当前活动窗口的 IWindowsManager — 当未显式指定所有者时，其他服务都会以它作为回退。传递给服务的标题会覆盖视图模型上设置的标题，而在多个已打开窗口中的某一个上打开的模态对话框，只会阻塞该窗口。</value>
+    <value>本示例演示如何使用 IWindowService 从 ViewModel 中显示非模态窗口。如果未为显示的窗口指定所有者，则当前活动窗口（通过 IWindowsManager 服务自动获取）将成为其所有者。
+在非模态窗口中显示的 View 由应用于该窗口 ViewModel 的 ViewLocator 特性指定。</value>
   </data>
   <data name="ApplicationServicesFileDialogsDescription" xml:space="preserve">
-    <value>通过 IOpenFileDialogService 和 ISaveFileDialogService 提供的打开与保存对话框，二者都同时具有同步和异步版本 — 同步版本会让调用线程停留在嵌套消息循环中，仅为遗留代码保留，新代码应优先使用 ShowAsync。本示例展示了选择单个文件、通过 AllowMultiple 选择多个文件，以及使用建议文件名、默认扩展名、覆盖确认提示和默认起始文件夹进行保存。</value>
+    <value>您可以使用 IOpenFileDialogService 和 ISaveFileDialogService 从 ViewModel 中显示打开文件和保存文件对话框。这些服务提供同步和异步两种显示对话框的方法。异步版本（ShowAsync）可以避免阻塞调用线程。
+
+本演示展示了几种常见场景：
+• 文件选择：演示打开单个文件或同时打开多个文件。
+• 文件保存：演示建议文件名、默认扩展名和自动覆盖确认等配置选项。
+• 初始目录：演示如何在指定的起始文件夹中打开文件对话框。</value>
   </data>
   <data name="PropertyGridMultipleObjectsDescription" xml:space="preserve">
     <value>“属性网格”（Property Grid）允许您同时显示和编辑多个对象的属性。如果这些对象类型不同，该控件仅显示它们共有的属性。在此演示中，您可以按住 Ctrl 键并点击以选中左侧表格中的多名员工，从而在属性网格中查看其属性。属性网格会显示共有的属性值，并将不同的值留空。修改任意属性时，更改将同步应用到所有选定的员工。</value>

@@ -427,27 +427,37 @@ Instead of bulky bars, it uses thin lines topped with markers to visualize data 
  • Constructor injection — the normal way a view model consumes a service once it is registered.</value>
   </data>
   <data name="ApplicationServicesMessageBoxesDescription" xml:space="preserve">
-    <value>Standard message boxes shown through IMessageBoxService, with a fixed set of buttons and icons: Ok/Information, Yes/No/Question, Yes/No/Cancel/Warning, Retry/Cancel/Error. The owner window can be passed explicitly; when it is omitted, the service asks IWindowsManager for the currently active window.</value>
+    <value>You can use IMessageBoxService to display standard message boxes from your ViewModels. Message boxes support predefined button sets (OK, Yes/No, Yes/No/Cancel, Abort/Retry/Ignore, and more) and standard icons (Information, Question, Warning, and so on). The service can automatically resolve the currently active window (using the built-in IWindowsManager service), or associate the message box with an explicitly passed owner window.</value>
   </data>
   <data name="ApplicationServicesDialogsDescription" xml:space="preserve">
-    <value>Modal dialogs whose title, content and buttons are supplied by a view model through IDialogService, rather than assembled in markup. This demo showcases the following scenarios:
- • Ok / Cancel — the base class creates the standard button pair with no extra code.
- • Apply / Cancel — overriding CreateButtons replaces the standard set with a custom one.
- • Yes / No with Dock — buttons carry custom captions and can be docked to either side.
- • Validation — CanOk keeps the default button disabled until the input becomes valid.
- • Nested — a modal dialog opened from another modal dialog.</value>
+    <value>This example demonstrates how to use IDialogService to display modal dialogs from your ViewModels. The title, content, and buttons of a dialog are specified in a ViewModel rather than being hardcoded in XAML markup.
+
+The demo showcases several common scenarios:
+• OK/Cancel: Generates a dialog with the standard button pair.
+• Custom button set: Shows how to replace the default buttons with a custom set.
+• Captions and placement: Features custom button captions and demonstrates how to align buttons within the footer.
+• Validation: Shows how to disable the submission button until the user input is valid.
+• Nested Dialogs: Illustrates how to safely open a modal dialog from within another active modal dialog.</value>
   </data>
   <data name="ApplicationServicesChoiceDialogsDescription" xml:space="preserve">
-    <value>IChoiceDialogService fills the gap IMessageBoxService leaves: where message boxes only offer fixed button sets and always return DialogResult, this service accepts arbitrary captions and returns whatever result type the caller chooses.
- • Custom captions — buttons such as "Show log" or "Retry" that no standard set provides.
- • Arbitrary result type — a plain bool, a custom enum, or any other struct.
- • Docked choices — secondary actions, like Help, can be placed apart from the main buttons.</value>
+    <value>You can use IChoiceDialogService to display versatile dialogs with custom actions from your ViewModels. Unlike standard message boxes that rely on fixed button layouts and predefined return types, this service allows you to define arbitrary button captions and return any custom result type.
+
+The demo showcases several common scenarios:
+• Custom captions: Dialog buttons can have any custom text.
+• Arbitrary result types: Dialog can return results of any data type, including Boolean, custom enumerations, or structures.
+• Custom button placement: You can align buttons to the left or right edge of the button panel.</value>
   </data>
   <data name="ApplicationServicesWindowsDescription" xml:space="preserve">
-    <value>Non-modal windows opened through IWindowService, and IWindowsManager, which tracks the currently active window so that every other service can fall back to it when no owner is given explicitly. The caption passed to the service overrides the one set on the view model, and a modal dialog opened from one of several open windows blocks only that window.</value>
+    <value>This example demonstrates how to use IWindowService to display non-modal windows from your ViewModels. If no owner is specified for the shown window, the currently active window (automatically resolved through the IWindowsManager service) becomes the owner.
+The View displayed as a non-modal window is specified by the ViewLocator attribute applied to the window's ViewModel.</value>
   </data>
   <data name="ApplicationServicesFileDialogsDescription" xml:space="preserve">
-    <value>Open and save dialogs through IOpenFileDialogService and ISaveFileDialogService, each with a synchronous and an asynchronous variant — the synchronous one holds the calling thread on a nested message loop and exists for legacy code, new code should prefer ShowAsync. This demo covers picking a single file, picking multiple files with AllowMultiple, and saving with a suggested name, a default extension, an overwrite prompt, and a well-known starting folder.</value>
+    <value>You can use IOpenFileDialogService and ISaveFileDialogService to display Open File and Save File dialogs from your ViewModels. These services provide synchronous and asynchronous methods to show dialogs. The asynchronous variant (ShowAsync) allows you to avoid blocking the calling thread.
+
+The demo showcases several common scenarios:
+• File selection: Illustrates opening a single file or multiple files simultaneously.
+• File saving: Demonstrates configuration options such as suggested file names, default extensions, and automatic overwrite prompts.
+• Initial directory: Shows how to open the file dialog inside a specified starting folder.</value>
   </data>
   <data name="PropertyGridMultipleObjectsDescription" xml:space="preserve">
     <value>Property Grid allows you to show and edit the properties of multiple objects simultaneously. If the objects are of different types, the control shows only the properties they have in common.

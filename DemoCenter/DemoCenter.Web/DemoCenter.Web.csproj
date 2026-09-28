@@ -5,7 +5,44 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>	
                 <WasmBuildNative>true</WasmBuildNative>
                 <Configurations>Debug;Release;Release_WASM</Configurations>
+		<!--
+			Trimming is on: without it the web build is 272 assemblies and 108 MB, with it
+			100 assemblies and 74.6 MB (measured on a Debug publish). About 33 MB saved.
+
+			SuppressTrimAnalysisWarnings is what makes the publish pass at all. Third-party
+			assemblies (Avalonia.Base, Svg.Model, System.Configuration.ConfigurationManager,
+			System.Private.CoreLib) emit trim warnings, and TreatWarningsAsErrors from
+			Directory.Build.props raises them into IL2104 and NETSDK1144 errors.
+
+			What that costs, honestly: trim warnings are the only signal that something
+			needed by reflection has been removed. The demo leans on reflection (ViewLocator
+			resolves views by name, resources are read through ResourceManager), so muting
+			them means a breakage shows up at run time rather than at build time.
+			Directory.Build.props declares DemoCenter a trimmer root, which covers the demo
+			itself but not the libraries. After enabling this, click through the web build.
+		-->
+		<PublishTrimmed>true</PublishTrimmed>
+		<SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
 	</PropertyGroup>
+	<!--
+		Assemblies that carry markup must be trimmer roots.
+
+		Without this the publish succeeds and the application fails at run time with
+		"No precompiled XAML found for
+		avares://Eremex.Avalonia.Themes.DeltaDesign/DensityResources/Standard.axaml".
+		The trimmer cannot see that the compiled XAML is used and strips it - and since
+		trim warnings are muted here, the only way to find out is to run the build in a
+		browser.
+
+		DemoCenter is already declared a root in Directory.Build.props; the libraries that
+		ship their own markup are added here.
+	-->
+	<ItemGroup>
+		<TrimmerRootAssembly Include="Eremex.Avalonia.Themes.DeltaDesign" />
+		<TrimmerRootAssembly Include="Eremex.Avalonia.Controls" />
+		<TrimmerRootAssembly Include="Eremex.Avalonia.Charts" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="SkiaSharp.NativeAssets.WebAssembly"/>
 		<PackageReference Include="Avalonia.Browser" />

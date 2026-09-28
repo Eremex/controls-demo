@@ -38,14 +38,14 @@
     <AvaloniaXaml Remove="Views\Graphics3DControl\**" />
     <AvaloniaXaml Remove="Resources\Graphics3DStyles.axaml" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
     <AvaloniaResource Include="DemoData\csv\**" />
-    <AvaloniaResource Include="DemoData\Employees\*.png" />
-    <AvaloniaResource Include="DemoData\Employees\Thumbnails\*.png" />
     <AvaloniaXaml Remove="Views\Tools\Templates\svgXamlExample.axaml" />
     <Compile Remove="Views\Tools\Templates\svgCodeExample.cs" />
+    <AvaloniaResource Include="DemoData\Employees\*.png" />
+    <AvaloniaResource Include="DemoData\Employees\Thumbnails\*.png" />
     <AvaloniaResource Include="DemoData\HouseImages\House-3-Level.png" />
     <AvaloniaResource Include="DemoData\HouseImages\House-4-Level.png" />
     <AvaloniaResource Include="DemoData\HouseImages\House-5-Level.png" />
@@ -138,9 +138,9 @@
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Svg.Controls.Skia.Avalonia" />
     <PackageReference Include="Eremex.Avalonia.Controls3D" Condition="'$(Configuration)' != 'Release_WASM'" />
-    <PackageReference Include="Newtonsoft.Json"/>
+    <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="SkiaSharp" />
-    <PackageReference Include="System.Resources.Extensions"/>
+    <PackageReference Include="System.Resources.Extensions" />
     <PackageReference Include="Avalonia.AvaloniaEdit" />
     <PackageReference Include="AvaloniaEdit.TextMate" />
     <PackageReference Include="TextMateSharp.Grammars" />
