@@ -3,18 +3,29 @@
     --sar: env(safe-area-inset-right);
     --sab: env(safe-area-inset-bottom);
     --sal: env(safe-area-inset-left);
+
+    /* The dark DeltaDesign palette, so the splash and the application that follows it agree. */
+    --emx-surface: #0f0f0f;
+    --emx-track: #282929;
+    --emx-accent: #63d9de;
+    --emx-text: #f2f2f2;
+    --emx-text-secondary: #cacece;
 }
 
 /* HTML styles for the splash screen */
 
+html, body {
+    background: var(--emx-surface);
+}
+
 .highlight {
-    color: white;
+    color: var(--emx-text);
     font-size: 2.5rem;
     display: block;
 }
 
-.purple {
-    color: #8b44ac;
+.accent {
+    color: var(--emx-accent);
 }
 
 .icon {
@@ -33,29 +44,28 @@
 }
 
 #avalonia-splash a {
-    color: whitesmoke;
+    color: var(--emx-text);
     text-decoration: none;
 }
 
+/* Two centred lines: the message above, the progress bar below. */
 .center {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 0 24px;
+    box-sizing: border-box;
 }
 
 #avalonia-splash {
     position: relative;
     height: 100%;
     width: 100%;
-    color: whitesmoke;
-    background: #1b2a4e;
-    font-family: 'Inter';
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    justify-content: center;
-    align-items: center;
+    color: var(--emx-text);
+    background: var(--emx-surface);
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
 .splash-close {
@@ -74,12 +84,24 @@
 }
 
 /* Runtime loading progress. Filled in from main.js. */
+/* The line keeps its height and the digits keep their width, so the bar underneath does not
+   move as the numbers change. */
+#loading-progress-text {
+    margin: 0 0 0.9rem;
+    color: var(--emx-text-secondary);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    min-height: 1.5rem;
+    text-align: center;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
 #loading-progress-track {
     width: 320px;
-    max-width: 60vw;
+    max-width: 70vw;
     height: 4px;
-    margin: 1.2rem auto 0.6rem;
-    background: rgba(139, 68, 172, 0.25);
+    background: var(--emx-track);
     border-radius: 2px;
     overflow: hidden;
 }
@@ -87,13 +109,6 @@
 #loading-progress-bar {
     width: 0;
     height: 100%;
-    background: #8b44ac;
+    background: var(--emx-accent);
     transition: width 0.2s linear;
-}
-
-#loading-progress-text {
-    color: #8b44ac;
-    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-    font-size: 0.85rem;
-    opacity: 0.85;
 }

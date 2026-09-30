@@ -73,7 +73,7 @@ public class CarSpecs
 
 public partial class CarComparisonViewModel : PageViewModelBase
 {
-    static readonly CultureInfo Culture = CultureInfo.CurrentCulture;
+    static CultureInfo Culture => CultureInfo.CurrentCulture;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(LeftSpecs))]

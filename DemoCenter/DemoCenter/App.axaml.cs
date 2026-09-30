@@ -26,14 +26,16 @@ public class App : Application
 
     static App()
     {
-        SetCultureInfo();
+        ApplyCulture(CultureInfo.GetCultureInfo("en-US"));
         Version = new VersionInfo(Assembly.GetAssembly(typeof(MxWindow)));
     }
-    static void SetCultureInfo()
+    public static void ApplyCulture(CultureInfo culture)
     {
-        var cultureInfo = CultureInfo.GetCultureInfo("en-US");
-        Thread.CurrentThread.CurrentCulture = cultureInfo;
-        Thread.CurrentThread.CurrentUICulture = cultureInfo;
+        // Without the defaults the browser build keeps the navigator locale on continuations.
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
+        CultureInfo.CurrentCulture = culture;
+        CultureInfo.CurrentUICulture = culture;
     }
     public override void Initialize()
     {

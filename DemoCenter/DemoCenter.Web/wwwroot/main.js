@@ -18,7 +18,6 @@ const progressText = document.getElementById('loading-progress-text');
 
 let loadedBytes = 0;
 let expectedBytes = 0;
-let filesDone = 0;
 
 const formatMB = bytes => (bytes / 1048576).toFixed(1) + ' MB';
 
@@ -28,9 +27,9 @@ function renderProgress() {
     if (expectedBytes > 0) {
         const ratio = Math.min(loadedBytes / expectedBytes, 1);
         if (progressBar) progressBar.style.width = (ratio * 100).toFixed(1) + '%';
-        progressText.textContent = `${formatMB(loadedBytes)} of ${formatMB(expectedBytes)} · files: ${filesDone}`;
+        progressText.textContent = `Loading … ${formatMB(loadedBytes)} of ${formatMB(expectedBytes)}`;
     } else {
-        progressText.textContent = `${formatMB(loadedBytes)} · files: ${filesDone}`;
+        progressText.textContent = 'Loading …';
     }
 }
 
@@ -44,15 +43,17 @@ globalThis.fetch = async function (input, init) {
     const response = await originalFetch(input, init);
     if (!isRuntimeAsset || !response.ok) return response;
 
-    expectedBytes += Number(response.headers.get('content-length')) || 0;
+    // Both sides of the ratio are transferred bytes. Counting the decompressed body against
+    // a compressed Content-Length is what used to report more downloaded than there is.
+    const transferred = Number(response.headers.get('content-length')) || 0;
+    expectedBytes += transferred;
 
-    // Count on a clone so the stream handed to the runtime is left untouched.
+    // Read a clone so the stream handed to the runtime is left untouched.
     const counted = response.clone();
     (async () => {
         try {
             const buffer = await counted.arrayBuffer();
-            loadedBytes += buffer.byteLength;
-            filesDone++;
+            loadedBytes += transferred || buffer.byteLength;
             renderProgress();
         } catch { }
     })();
@@ -71,7 +72,7 @@ const dotnetRuntime = await dotnet
 // report the current stage so the pause does not look like a hang.
 globalThis.fetch = originalFetch;
 if (progressBar) progressBar.style.width = '100%';
-if (progressText) progressText.textContent = 'starting the application…';
+if (progressText) progressText.textContent = 'Starting the application …';
 
 const config = dotnetRuntime.getConfig();
 

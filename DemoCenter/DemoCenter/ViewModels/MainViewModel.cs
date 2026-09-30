@@ -158,8 +158,7 @@ public partial class MainViewModel : ObservableObject
 
     partial void OnSelectedLocaleChanged(CultureInfo value)
     {
-        CultureInfo.CurrentCulture = value;
-        CultureInfo.CurrentUICulture = value;
+        App.ApplyCulture(value);
 
         var current = CurrentProductItem;
         CurrentProductItem = null;
