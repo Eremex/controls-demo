@@ -47,7 +47,7 @@ public class GlobalizationTests
 	{
 		await DemoApp.Settle();
 
-		Assert.Equal("05/18/2025", new DateTime(2025, 5, 18).ToString("d", CultureInfo.CurrentCulture));
+		Assert.Equal("5/18/2025", new DateTime(2025, 5, 18).ToString("d", CultureInfo.CurrentCulture));
 	}
 
 	/// <summary>

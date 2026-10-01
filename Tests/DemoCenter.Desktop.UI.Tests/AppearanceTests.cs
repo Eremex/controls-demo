@@ -25,9 +25,9 @@ public class AppearanceTests : IClassFixture<DemoWindowFixture>
         demo.EnsureStarted();
 
         var appearance = demo.ViewModel.Appearance;
-        Assert.True(appearance.Themes.Count > 0, "The appearance service offers no themes.");
+        Assert.True(appearance.ThemeVariants.Count > 0, "The appearance service offers no themes.");
 
-        var originalTheme = appearance.SelectedTheme;
+        var originalTheme = appearance.SelectedThemeVariant;
         var originalPalette = appearance.SelectedPalette;
 
         // A theme without palettes still has to be visited, so an empty list becomes one null entry.
@@ -37,17 +37,17 @@ public class AppearanceTests : IClassFixture<DemoWindowFixture>
 
         try
         {
-            foreach (var theme in appearance.Themes)
+            foreach (var theme in appearance.ThemeVariants)
             {
                 foreach (var palette in palettes)
                 {
                     using var errors = new AvaloniaErrorCollector();
 
-                    appearance.SelectedTheme = theme;
+                    appearance.SelectedThemeVariant = theme;
                     appearance.SelectedPalette = palette;
                     demo.Settle();
 
-                    Assert.Same(theme, appearance.SelectedTheme);
+                    Assert.Same(theme, appearance.SelectedThemeVariant);
                     if (palette != null)
                         Assert.Same(palette, appearance.SelectedPalette);
 
@@ -57,7 +57,7 @@ public class AppearanceTests : IClassFixture<DemoWindowFixture>
         }
         finally
         {
-            appearance.SelectedTheme = originalTheme;
+            appearance.SelectedThemeVariant = originalTheme;
             appearance.SelectedPalette = originalPalette;
             demo.Settle();
         }

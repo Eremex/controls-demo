@@ -36,17 +36,17 @@ public partial class CodeReadabilityTests : IClassFixture<DemoWindowFixture>
             ? appearance.Palettes.ToList()
             : new List<IAppearanceOption> { null };
 
-        var originalTheme = appearance.SelectedTheme;
+        var originalTheme = appearance.SelectedThemeVariant;
         var originalPalette = appearance.SelectedPalette;
         var failures = new List<string>();
 
         try
         {
-            foreach (var theme in appearance.Themes)
+            foreach (var theme in appearance.ThemeVariants)
             {
                 foreach (var palette in palettes)
                 {
-                    appearance.SelectedTheme = theme;
+                    appearance.SelectedThemeVariant = theme;
                     appearance.SelectedPalette = palette;
                     demo.Settle();
 
@@ -71,7 +71,7 @@ public partial class CodeReadabilityTests : IClassFixture<DemoWindowFixture>
         }
         finally
         {
-            appearance.SelectedTheme = originalTheme;
+            appearance.SelectedThemeVariant = originalTheme;
             appearance.SelectedPalette = originalPalette;
             demo.ViewModel.IsDemoSelected = true;
             demo.Settle();
