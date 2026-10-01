@@ -1,0 +1,114 @@
+﻿:root {
+    --sat: env(safe-area-inset-top);
+    --sar: env(safe-area-inset-right);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+
+    /* The dark DeltaDesign palette, so the splash and the application that follows it agree. */
+    --emx-surface: #0f0f0f;
+    --emx-track: #282929;
+    --emx-accent: #63d9de;
+    --emx-text: #f2f2f2;
+    --emx-text-secondary: #cacece;
+}
+
+/* HTML styles for the splash screen */
+
+html, body {
+    background: var(--emx-surface);
+}
+
+.highlight {
+    color: var(--emx-text);
+    font-size: 2.5rem;
+    display: block;
+}
+
+.accent {
+    color: var(--emx-accent);
+}
+
+.icon {
+    opacity: 0.05;
+    height: 35%;
+    width: 35%;
+    position: absolute;
+    background-repeat: no-repeat;
+    right: 0px;
+    bottom: 0px;
+    margin-right: 3%;
+    margin-bottom: 5%;
+    z-index: 5000;
+    background-position: right bottom;
+    pointer-events: none;
+}
+
+#avalonia-splash a {
+    color: var(--emx-text);
+    text-decoration: none;
+}
+
+/* Two centred lines: the message above, the progress bar below. */
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+#avalonia-splash {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    color: var(--emx-text);
+    background: var(--emx-surface);
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.splash-close {
+    animation: fadeout 0.25s linear forwards;
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: collapse;
+    }
+}
+
+/* Runtime loading progress. Filled in from main.js. */
+/* The line keeps its height and the digits keep their width, so the bar underneath does not
+   move as the numbers change. */
+#loading-progress-text {
+    margin: 0 0 0.9rem;
+    color: var(--emx-text-secondary);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    min-height: 1.5rem;
+    text-align: center;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+#loading-progress-track {
+    width: 320px;
+    max-width: 70vw;
+    height: 4px;
+    background: var(--emx-track);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+#loading-progress-bar {
+    width: 0;
+    height: 100%;
+    background: var(--emx-accent);
+    transition: width 0.2s linear;
+}
