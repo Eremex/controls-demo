@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Avalonia.Controls;
 using Avalonia.Data.Converters;
+using Avalonia.Markup.Xaml;
 using DemoCenter.DemoData;
 
 using Eremex.AvaloniaUI.Controls.DataControl;
@@ -62,5 +63,29 @@ public class StatusToVisibilityConverter : IValueConverter
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         throw new NotImplementedException();
+    }
+}
+
+public class TreeListSummaryTypeToForegroundConverter : MarkupExtension, IMultiValueConverter
+{
+    public object Convert(IList<object> values, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (values.Count != 4)
+            return null;
+
+        if (values[0] is string fieldName && fieldName == "MaintenanceCost" && values[1] is SummaryItemType sumType)
+        {
+            if (sumType == SummaryItemType.Min)
+                return values[2];
+            else if (sumType == SummaryItemType.Max)
+                return values[3];
+        }
+
+        return null;
+    }
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
     }
 }

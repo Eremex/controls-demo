@@ -59,12 +59,27 @@
                     <mxe:TextEditorProperties DisplayFormatString="{}{0:F1} kW" />
                 </mxtl:TreeListColumn.EditorProperties>
             </mxtl:TreeListColumn>
+            <mxtl:TreeListControl.Styles>
+                <Style Selector="mxdcv|FooterCellItemControl /template/ TextBlock#DisplayValue" x:DataType="mxdcv:FooterCellItem">
+                    <Setter Property="Foreground">
+                      <Setter.Value>
+                        <MultiBinding Converter="{views:TreeListSummaryTypeToForegroundConverter}">
+                          <Binding Path="FieldName" />
+                          <Binding Path="SummaryType" />
+                          <DynamicResourceExtension ResourceKey="Icons/Outline/Green"/>
+                          <DynamicResourceExtension ResourceKey="Icons/Outline/Red"/>
+                        </MultiBinding>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>                
+            </mxtl:TreeListControl.Styles>
         </mxtl:TreeListControl>
 
         <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
             <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
                 <StackPanel>
                     <mxe:CheckEditor Content="Show Total Summaries" IsChecked="{Binding #treeList.ShowTotalSummaries}" Classes="PropertyEditor" />
+                    <mxe:CheckEditor Content="Allow Editing Total Summaries" IsChecked="{Binding #treeList.AllowEditingTotalSummaries}" Classes="PropertyEditor" />
                     <mxe:CheckEditor x:Name="customSummaryCheckEditor" Content="Custom Summary (Assets Requiring Attention)"
                                      TextBlock.TextWrapping="Wrap" EditorValueChanged="OnCustomSummaryCheckChanged" Classes="PropertyEditor" />
                 </StackPanel>

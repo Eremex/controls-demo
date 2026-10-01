@@ -1,0 +1,17 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:dd="clr-namespace:DemoCenter.DemoData"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxpg="https://schemas.eremexcontrols.net/avalonia/propertygrid"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.PropertyGridNestedPropertiesView"
+             x:DataType="vm:PropertyGridNestedPropertiesViewModel">
+
+    <Grid ColumnDefinitions="*, 2*, *">
+        <mxpg:PropertyGridControl x:Name="propertyGrid" SelectedObject="{Binding SelectedObject}"
+                                  CaptionColumnWidth="*" EditorColumnWidth="*"
+                                  Grid.Column="1" Margin="16" BorderThickness="1"/>
+    </Grid>
+</UserControl>

@@ -473,6 +473,9 @@ PropertyGrid also allows you to handle the ValidateRowValue event to perform cus
 • Caption alignment — Captions can be aligned within the caption column to the left or right edge, centered, or stretched.
 • Built-in resizer — The resizer allows a user to redistribute space between the caption and editor columns at runtime.</value>
   </data>
+  <data name="PropertyGridNestedPropertiesDescription" xml:space="preserve">
+    <value>PropertyGrid control can display objects with an unlimited number of nested properties, allowing users to explore and edit complex hierarchical data structures. Each nested object appears as an expandable node in the grid, providing a tree-like navigation. At every nesting level, the control detects the underlying data type (string, decimal, enumeration, DateTime, etc.) and applies the appropriate cell editors.</value>
+  </data>
   <data name="RibbonLayoutDescription" xml:space="preserve">
     <value>Everything about the ribbon that is decided by the application rather than by its commands: the classic and the simplified command layouts and the button that lets the user switch between them, the application button, and the quick access toolbar - shown above or below the ribbon, with or without its customization menu. Drag the width slider to watch the groups collapse into drop-down buttons as the room runs out. The status bar under the page is a Bars toolbar in status bar mode, sharing the toolbar manager with the ribbon.</value>
   </data>

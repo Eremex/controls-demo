@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
              xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
              xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
              xmlns:mx="https://schemas.eremexcontrols.net/avalonia"
              xmlns:mxi="https://schemas.eremexcontrols.net/avalonia/icons"
@@ -39,17 +40,32 @@
                 </mxdg:GridColumn.EditorProperties>
             </mxdg:GridColumn>
             <mxdg:GridColumn FieldName="Quantity" Width="2*" />
-            <mxdg:GridColumn FieldName="Total" Width="3.5*">
+            <mxdg:GridColumn FieldName="Total" Width="3.8*">
                 <mxdg:GridColumn.EditorProperties>
                     <mxe:TextEditorProperties DisplayFormatString="C0" />
                 </mxdg:GridColumn.EditorProperties>
             </mxdg:GridColumn>
+            <mxdg:DataGridControl.Styles>
+                <Style Selector="mxdcv|FooterCellItemControl /template/ TextBlock#DisplayValue" x:DataType="mxdcv:FooterCellItem">
+                    <Setter Property="Foreground">
+                      <Setter.Value>
+                        <MultiBinding Converter="{views:DataGridSummaryTypeToForegroundConverter}">
+                          <Binding Path="FieldName" />
+                          <Binding Path="SummaryType" />
+                          <DynamicResourceExtension ResourceKey="Icons/Outline/Green"/>
+                          <DynamicResourceExtension ResourceKey="Icons/Outline/Red"/>
+                        </MultiBinding>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>                
+            </mxdg:DataGridControl.Styles>
         </mxdg:DataGridControl>
 
         <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
             <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
                 <StackPanel>
                     <mxe:CheckEditor Content="Show Total Summaries" IsChecked="{Binding #dataGrid.ShowTotalSummaries}" Classes="PropertyEditor" />
+                    <mxe:CheckEditor Content="Allow Editing Total Summaries" IsChecked="{Binding #dataGrid.AllowEditingTotalSummaries}" Classes="PropertyEditor" />
                     <mxe:CheckEditor x:Name="customSummaryCheckEditor" Content="Custom Summary (Count of Orders over 1000)" 
                                      TextBlock.TextWrapping="Wrap" EditorValueChanged="OnCustomSummaryCheckChanged" Classes="PropertyEditor" />
                 </StackPanel>

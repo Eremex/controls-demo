@@ -1,5 +1,7 @@
-﻿using Avalonia.Controls;
-
+﻿using System.Globalization;
+using Avalonia.Controls;
+using Avalonia.Data.Converters;
+using Avalonia.Markup.Xaml;
 using Eremex.AvaloniaUI.Controls.DataControl;
 using Eremex.AvaloniaUI.Controls.DataGrid;
 using Eremex.AvaloniaUI.Controls.Editors;
@@ -37,5 +39,29 @@ public partial class DataGridTotalSummariesView : UserControl
                 largeOrdersCount++;
         }
         e.SummaryValue = largeOrdersCount.ToString();
+    }
+}
+
+public class DataGridSummaryTypeToForegroundConverter : MarkupExtension, IMultiValueConverter
+{
+    public object Convert(IList<object> values, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (values.Count != 4)
+            return null;
+
+        if (values[0] is string fieldName && fieldName == "Price" && values[1] is SummaryItemType sumType)
+        {
+            if (sumType == SummaryItemType.Min)
+                return values[2];
+            else if (sumType == SummaryItemType.Max)
+                return values[3];
+        }
+
+        return null;
+    }
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return this;
     }
 }

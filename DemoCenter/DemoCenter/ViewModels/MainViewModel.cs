@@ -53,7 +53,7 @@ public partial class MainViewModel : ObservableObject
     public MainViewModel(ThemeVariant startupThemeVariant = null)
     {
         Appearance = ApplicationServicesContext.GetRequiredService<IAppearanceService>();
-        Appearance.SelectedTheme = FindTheme(startupThemeVariant) ?? Appearance.SelectedTheme;
+        Appearance.SelectedThemeVariant = FindTheme(startupThemeVariant) ?? Appearance.SelectedThemeVariant;
 
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0";
         titlePrefix = $"Demo Center v.{version}";
@@ -141,13 +141,13 @@ public partial class MainViewModel : ObservableObject
     public IAppearanceService Appearance { get; }
 
     public IReadOnlyList<IAppearanceOption> ThemeOptions =>
-        Appearance.Themes.Where(x => x is ThemeOption { Variant: not null } option
+        Appearance.ThemeVariants.Where(x => x is ThemeOption { Variant: not null } option
                                      && option.Variant != ThemeVariant.Default).ToList();
 
     IAppearanceOption FindTheme(ThemeVariant variant) =>
         variant == null
             ? null
-            : Appearance.Themes.FirstOrDefault(x => string.Equals(x.Header, variant.ToString(), StringComparison.OrdinalIgnoreCase));
+            : Appearance.ThemeVariants.FirstOrDefault(x => string.Equals(x.Header, variant.ToString(), StringComparison.OrdinalIgnoreCase));
 
     public string PurchaseUrl =>
         string.Equals(CultureInfo.InstalledUICulture.TwoLetterISOLanguageName, "ru", StringComparison.OrdinalIgnoreCase)

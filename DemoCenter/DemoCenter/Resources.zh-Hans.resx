@@ -470,6 +470,9 @@
 • 标题对齐方式 —— 标题在标题列内可设置为左对齐、右对齐、居中对齐或拉伸填充。
 • 内置调整器 —— 调整器允许用户在运行时重新分配标题列与编辑器列之间的空间。</value>
   </data>
+  <data name="PropertyGridNestedPropertiesDescription" xml:space="preserve">
+    <value>PropertyGrid 控件能够显示具有任意层级嵌套属性的对象，使用户能够浏览和编辑复杂的分层数据结构。每个嵌套对象在网格中均显示为一个可展开的节点，从而提供树状的导航体验。在每一层级上，该控件都会识别底层数据类型（如字符串、十进制数、枚举、DateTime 等），并应用相应的单元格编辑器。</value>
+  </data>
   <data name="RibbonLayoutDescription" xml:space="preserve">
     <value>功能区中由应用程序而非命令决定的部分：经典布局与简化布局、允许用户在两者之间切换的按钮、应用程序按钮，以及快速访问工具栏——可以显示在功能区上方或下方，并可选择是否带自定义菜单。拖动宽度滑块，可以看到空间不足时分组如何折叠为下拉按钮。页面下方的状态栏是 Bars 中处于 StatusBar 模式的工具栏，与功能区共用同一个 ToolbarManager。</value>
   </data>

@@ -210,7 +210,7 @@
                 </mxe:ComboBoxEditor>
 
                 <mxe:SegmentedEditor ItemsSource="{Binding ThemeOptions}" Width="56"
-                                     EditorValue="{Binding Appearance.SelectedTheme}">
+                                     EditorValue="{Binding Appearance.SelectedThemeVariant}">
                     <mxe:SegmentedEditor.ItemTemplate>
                         <DataTemplate x:DataType="appsvc:ThemeOption">
                             <PathIcon Width="16" Height="16" Foreground="{DynamicResource Text/Neutral/Secondary}"

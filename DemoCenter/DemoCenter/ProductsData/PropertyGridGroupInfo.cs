@@ -18,7 +18,8 @@ namespace DemoCenter.ProductsData
                 new PageInfo(name: "Multiple Objects Editing", title: "Multiple Objects Editing", viewModelGetter: () => new PropertyGridMultipleObjectsViewModel(), descriptionGetter: () => Resources.PropertyGridMultipleObjectsDescription, introduced: new VersionInfo(1, 5)),
                 new PageInfo(name: "Tab Items", title: "Tab Items", viewModelGetter: () => new PropertyGridTabItemsViewModel(), descriptionGetter: () => Resources.PropertyGridTabRowsAllowYouToGroupASetOfFi),
                 new PageInfo(name: "Validation", title: "Validation", viewModelGetter: () => new PropertyGridValidationViewModel(), descriptionGetter: () => Resources.PropertyGridValidationDescription, introduced: new VersionInfo(1, 5)),
-                new PageInfo(name: "PropertyGrid Layout", title: "PropertyGrid Layout", viewModelGetter: () => new PropertyGridLayoutViewModel(), descriptionGetter: () => Resources.PropertyGridLayoutDescription, introduced: new VersionInfo(1, 5))
+                new PageInfo(name: "PropertyGrid Layout", title: "PropertyGrid Layout", viewModelGetter: () => new PropertyGridLayoutViewModel(), descriptionGetter: () => Resources.PropertyGridLayoutDescription, introduced: new VersionInfo(1, 5)),
+                new PageInfo(name: "Nested Properties", title: "Nested Properties", viewModelGetter: () => new PropertyGridNestedPropertiesViewModel(), descriptionGetter: () => Resources.PropertyGridNestedPropertiesDescription, introduced: new VersionInfo(1, 5))
             };
         }
     }

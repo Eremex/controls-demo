@@ -496,6 +496,15 @@ namespace DemoCenter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PropertyGrid control can display objects with an unlimited number of nested properties, allowing users to explore and edit complex hierarchical data structures. Each nested object appears as an expandable node in the grid, providing a tree-like navigation. At every nesting level, the control detects the underlying data type (string, decimal, enumeration, DateTime, etc.) and applies the appropriate cell editors..
+        /// </summary>
+        public static string PropertyGridNestedPropertiesDescription {
+            get {
+                return ResourceManager.GetString("PropertyGridNestedPropertiesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Property Grid tab rows allow you to group a set of fields into a tabbed UI. Each tab item in a row displays its own set of bound fields..
         /// </summary>
         public static string PropertyGridTabRowsAllowYouToGroupASetOfFi {
