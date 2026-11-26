@@ -25,7 +25,7 @@ namespace DemoCenter.Desktop.UI.Tests
 		public static Window GetMainWindow() => GetApp()?.MainWindow;
 
 		public static IClassicDesktopStyleApplicationLifetime GetApp() =>
-			(IClassicDesktopStyleApplicationLifetime)Application.Current?.ApplicationLifetime;
+			Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;
 
 		public static AppBuilder BuildAvaloniaApp() =>
 			AppBuilder
