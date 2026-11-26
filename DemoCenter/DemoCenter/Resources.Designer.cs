@@ -305,6 +305,20 @@ namespace DemoCenter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DataGrid can calculate summaries for each group of rows and display them in group footer rows under the corresponding groups.
+        ///• Supported summary types: Sum, Min, Max, Count, and Average.
+        ///• Each grouping level displays its own footer row with summaries.
+        ///• End users can manage group summaries at runtime: click the Σ button in a group footer cell to add summaries, or select &quot;Σ → Customize&quot; to invoke the Summary Editor dialog.
+        ///• You can calculate a summary against one column and display it in another.
+        ///• Handle the Custom [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DataGridGroupSummariesDescription {
+            get {
+                return ResourceManager.GetString("DataGridGroupSummariesDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to DataGrid can calculate summaries against rows and display them in the summary footer at the bottom.
         ///• Supported summary types: Sum, Min, Max, Count, and Average.
         ///• End users can manage summaries at runtime: click the Σ button in the footer cell to add summaries, or select &quot;Σ → Customize&quot; to invoke the Summary Editor dialog.

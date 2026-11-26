@@ -81,35 +81,35 @@
             </Grid>
         </Grid>
 
-        <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <mxe:GroupBox Header="Properties" VerticalAlignment="Top" Classes="PropertiesGroup">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
+            <Border BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">
+                <mxe:GroupBox Header="Properties" VerticalAlignment="Top"  Classes="PropertiesGroup Last">
                     <StackPanel>
-                        <Label Content="Command Layout" Classes="LayoutItem"/>
+                        <Label Content="Command Layout" Classes="PropertyEditor EditorLabel"/>
                         <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxr:RibbonCommandLayout}"
                                             EditorValue="{Binding #ribbon.CommandLayout}"
-                                            IsTextEditable="False" Classes="LayoutItem"/>
+                                            IsTextEditable="False" Classes="PropertyEditor"/>
 
                         <mxe:CheckEditor Content="Layout Selection Button"
-                                         IsChecked="{Binding #ribbon.IsCommandLayoutSelectionButtonVisible}" Classes="LayoutItem"/>
+                                         IsChecked="{Binding #ribbon.IsCommandLayoutSelectionButtonVisible}" Classes="PropertyEditor"/>
                         <mxe:CheckEditor Content="Application Button"
-                                         IsChecked="{Binding #ribbon.IsApplicationButtonVisible}" Classes="LayoutItem"/>
+                                         IsChecked="{Binding #ribbon.IsApplicationButtonVisible}" Classes="PropertyEditor"/>
                         <mxe:CheckEditor Content="Quick Access Toolbar"
-                                         IsChecked="{Binding #ribbon.IsQuickAccessToolbarVisible}" Classes="LayoutItem"/>
+                                         IsChecked="{Binding #ribbon.IsQuickAccessToolbarVisible}" Classes="PropertyEditor"/>
                         <mxe:CheckEditor Content="Quick Access Customization Menu"
-                                         IsChecked="{Binding #ribbon.AllowQuickAccessToolbarCustomizationMenu}" Classes="LayoutItem"/>
+                                         IsChecked="{Binding #ribbon.AllowQuickAccessToolbarCustomizationMenu}" Classes="PropertyEditor"/>
 
-                        <Label Content="Quick Access Toolbar Location" Classes="LayoutItem"/>
+                        <Label Content="Quick Access Toolbar Location" Classes="PropertyEditor EditorLabel"/>
                         <mxe:ComboBoxEditor ItemsSource="{mx:EnumItemsSource EnumType=mxr:QuickAccessToolbarLocation}"
                                             EditorValue="{Binding #ribbon.QuickAccessToolbarLocation}"
-                                            IsTextEditable="False" Classes="LayoutItem"/>
+                                            IsTextEditable="False" Classes="PropertyEditor"/>
 
-                        <Label Content="Ribbon Width" Classes="LayoutItem"/>
+                        <Label Content="Ribbon Width" Classes="PropertyEditor EditorLabel"/>
                         <Slider Minimum="320" Maximum="{Binding #demoArea.Bounds.Width}"
-                                Value="{Binding RibbonWidth}" Classes="LayoutItem"/>
+                                Value="{Binding RibbonWidth}"/>
                     </StackPanel>
                 </mxe:GroupBox>
-            </ScrollViewer>
-        </Border>
+            </Border>
+        </ScrollViewer>
     </Grid>
 </UserControl>

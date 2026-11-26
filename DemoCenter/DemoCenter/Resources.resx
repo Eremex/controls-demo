@@ -382,7 +382,7 @@ Image source: Webb Space Telescope, https://webbtelescope.org/</value>
 Instead of bulky bars, it uses thin lines topped with markers to visualize data points. You can use default markers or specify custom markers in SVG format. The Orientation setting allows you to specify the direction of the lollipop lines (horizontal or vertical).</value>
   </data>
   <data name="DataGridExportDescription" xml:space="preserve">
-    <value>This example demonstrates the Data Grid control's export functionality. Data Grid can export data to XLSX (Microsoft Excel) and PDF formats, while preserving data shaping options, including row grouping, sorting, and cell formatting.</value>
+    <value>This example demonstrates the Data Grid control's export functionality. Data Grid can export data to XLSX (Microsoft Excel) and PDF formats, while preserving data shaping options, including row grouping, sorting, and cell formatting. The XLSX export can also include total and group summaries — use the corresponding options to include or exclude them.</value>
   </data>
   <data name="ExportProgressTitle" xml:space="preserve">
     <value>Export</value>
@@ -394,7 +394,7 @@ Instead of bulky bars, it uses thin lines topped with markers to visualize data 
     <value>Do you want to open the exported file?</value>
   </data>
   <data name="TreeListExportDescription" xml:space="preserve">
-    <value>TreeList can export data to XLSX (Microsoft Excel) and PDF formats. The Excel export feature is data-aware — it preserves the control's data shaping configuration (node hierarchy, data sorting, and value formatting) in the output XLSX document. The PDF rendering engine follows the WYSIWYG concept, which ensures the layout of TreeList elements is accurately reproduced in the output document.</value>
+    <value>TreeList can export data to XLSX (Microsoft Excel) and PDF formats. The Excel export feature is data-aware — it preserves the control's data shaping configuration (node hierarchy, data sorting, value formatting, and total summaries) in the output XLSX document. The PDF rendering engine follows the WYSIWYG concept, which ensures the layout of TreeList elements is accurately reproduced in the output document.</value>
   </data>
   <data name="UseCasesGroupInfo_Desc" xml:space="preserve">
     <value>This demo emulates a dynamic mortgage calculator, built with the Data Grid and Cartesian Chart controls. Data Grid presents a detailed payment schedule as a table. The synchronized chart plots this data to show the relationship between principal and interest over the life of the loan.</value>
@@ -484,6 +484,14 @@ PropertyGrid also allows you to handle the ValidateRowValue event to perform cus
 • Supported summary types: Sum, Min, Max, Count, and Average.
 • End users can manage summaries at runtime: click the Σ button in the footer cell to add summaries, or select "Σ → Customize" to invoke the Summary Editor dialog.
 • Each column can display multiple summaries calculated against that column's values.
+• You can calculate a summary against one column and display it in another.
+• Handle the CustomSummary event to calculate a custom summary.</value>
+  </data>
+  <data name="DataGridGroupSummariesDescription" xml:space="preserve">
+    <value>DataGrid can calculate summaries for each group of rows and display them in group footer rows under the corresponding groups.
+• Supported summary types: Sum, Min, Max, Count, and Average.
+• Each grouping level displays its own footer row with summaries.
+• End users can manage group summaries at runtime: click the Σ button in a group footer cell to add summaries, or select "Σ → Customize" to invoke the Summary Editor dialog.
 • You can calculate a summary against one column and display it in another.
 • Handle the CustomSummary event to calculate a custom summary.</value>
   </data>

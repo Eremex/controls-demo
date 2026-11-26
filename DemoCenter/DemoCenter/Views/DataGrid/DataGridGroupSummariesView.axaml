@@ -1,0 +1,76 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid"
+             xmlns:mxdc="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxdcv="clr-namespace:Eremex.AvaloniaUI.Controls.DataControl.Visuals;assembly=Eremex.Avalonia.Controls"
+             xmlns:mxe="https://schemas.eremexcontrols.net/avalonia/editors"
+             xmlns:views="using:DemoCenter.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DemoCenter.Views.DataGridGroupSummariesView"
+             x:DataType="vm:DataGridGroupSummariesViewModel">
+
+    <Grid ColumnDefinitions="*, 250">
+        <mxdg:DataGridControl x:Name="dataGrid"
+                              ItemsSource="{Binding Orders}"
+                              AutoGenerateColumns="False"
+                              GroupCount="1"
+                              AutoExpandAllGroups="True"
+                              ShowGroupSummaries="True"
+                              BorderThickness="0,0,1,0">
+            <mxdg:DataGridControl.GroupSummaries>
+                <mxdc:SummaryItem FieldName="OrderId" SummaryType="Count" />
+                <mxdc:SummaryItem FieldName="Quantity" SummaryType="Sum" />
+                <mxdc:SummaryItem FieldName="TotalPrice" SummaryType="Sum" />
+                <mxdc:SummaryItem FieldName="TotalPrice" SummaryType="Average" />
+            </mxdg:DataGridControl.GroupSummaries>
+            <mxdg:GridColumn FieldName="OrderId" Width="0.5*" />
+            <mxdg:GridColumn FieldName="Manager" Width="*" ReadOnly="True">
+                <mxdg:GridColumn.CellTemplate>
+                    <DataTemplate x:DataType="mxdcv:CellData" x:CompileBindings="False">
+                        <StackPanel Orientation="Horizontal" Spacing="8" Margin="2">
+                            <Image Source="{Binding Row.ManagerPhoto}" Width="24" Height="24"
+                                   VerticalAlignment="Center" RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                            <TextBlock Text="{Binding Value}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </mxdg:GridColumn.CellTemplate>
+            </mxdg:GridColumn>
+            <mxdg:GridColumn FieldName="Product" Width="*" />
+            <mxdg:GridColumn FieldName="City" SortIndex="0" Width="*" />
+            <mxdg:GridColumn FieldName="Date" Width="0.7*">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="d" />
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>
+            <mxdg:GridColumn FieldName="Status" Width="0.7*" />
+            <mxdg:GridColumn FieldName="Quantity" Width="0.7*" />
+            <mxdg:GridColumn FieldName="Price" Width="0.5*">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="C0" />
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>
+            <mxdg:GridColumn FieldName="Discount" Width="0.5*">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="P0" />
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>
+            <mxdg:GridColumn FieldName="TotalPrice" Width="*">
+                <mxdg:GridColumn.EditorProperties>
+                    <mxe:TextEditorProperties DisplayFormatString="C0" />
+                </mxdg:GridColumn.EditorProperties>
+            </mxdg:GridColumn>          
+        </mxdg:DataGridControl>
+
+        <Border Grid.Column="1" Padding="{DynamicResource OptionsMargin}">
+            <mxe:GroupBox Header="Properties" Classes="PropertiesGroup Last">
+                <StackPanel>
+                    <mxe:CheckEditor Content="Show Group Summaries" IsChecked="{Binding #dataGrid.ShowGroupSummaries}" Classes="PropertyEditor" />
+                    <mxe:CheckEditor Content="Allow Editing Group Summaries" IsChecked="{Binding #dataGrid.AllowEditingGroupSummaries}" Classes="PropertyEditor" />                 
+                </StackPanel>
+            </mxe:GroupBox>
+        </Border>
+    </Grid>
+</UserControl>

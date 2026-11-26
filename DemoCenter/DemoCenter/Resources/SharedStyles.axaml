@@ -48,6 +48,7 @@
     </Style>
     <Style Selector="ContentControl.ContentViewer">
         <Setter Property="Margin" Value="{DynamicResource PropertyEditorPaddingTopBottom}"/>
+        <Setter Property="Padding" Value="{DynamicResource TextEditorPadding}"/>
         <Setter Property="MinHeight" Value="{DynamicResource EditorMinHeight}"/>
         <Setter Property="CornerRadius" Value="{StaticResource EditorCornerRadius}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Outline/Neutral/Transparent/Medium}"/>

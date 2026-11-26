@@ -1,4 +1,5 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
+using Avalonia.Interactivity;
 using DemoCenter.Helpers;
 using DemoCenter.ViewModels;
 using Eremex.AvaloniaUI.Controls.DataControl;
@@ -11,6 +12,12 @@ namespace DemoCenter.Views
         public DataGridExportView()
         {
             InitializeComponent();
+        }
+
+        private void OnDataGridInitialized(object sender, EventArgs e)
+        {
+            dataGrid.CollapseGroupRow(-2);
+            dataGrid.CollapseGroupRow(-1);
         }
 
         private DataGridExportViewModel ViewModel { get; set; }
@@ -37,7 +44,7 @@ namespace DemoCenter.Views
         {
             if (type == ExportType.Xlsx)
             {
-                var options = new XlsxExportOptions() { ShowColumnHeaders = ViewModel.XlsExportColumnHeaders, ShowBands = ViewModel.XlsExportBandHeaders };
+                var options = new XlsxExportOptions() { ShowColumnHeaders = ViewModel.XlsExportColumnHeaders, ShowBands = ViewModel.XlsExportBandHeaders, ShowTotalSummaries = ViewModel.XlsExportTotalSummaries, ShowGroupSummaries = ViewModel.XlsExportGroupSummaries };
                 DemoExportHelper.Export(dataGrid, options, (stream, control, options) => control.ExportToXlsx(stream, options));
             } 
             else if(type == ExportType.Pdf)
@@ -56,11 +63,15 @@ namespace DemoCenter.Views
 
         private T CreateExportOptions<T>() where T : PageExportOptions, new()
         {
-            var options = new T();
-            options.ShowColumnHeaders = ViewModel.PageExportColumnHeaders;
-            options.ShowBands = ViewModel.PageExportBandHeaders;
-            options.FitToPageWidth = ViewModel.FitToPageWidth;
-            options.Landscape = ViewModel.Landscape;
+            var options = new T
+            {
+                ShowColumnHeaders = ViewModel.PageExportColumnHeaders,
+                ShowBands = ViewModel.PageExportBandHeaders,
+                FitToPageWidth = ViewModel.FitToPageWidth,
+                Landscape = ViewModel.Landscape,
+                ShowTotalSummaries = ViewModel.PageExportTotalSummaries,
+                ShowGroupSummaries = ViewModel.PageExportGroupSummaries
+            };
             return options;
         }
     }

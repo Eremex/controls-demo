@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using DemoCenter.Helpers;
 using DemoCenter.ViewModels;
 using Eremex.AvaloniaUI.Controls.DataControl;
@@ -37,7 +37,7 @@ namespace DemoCenter.Views
         {
             if (type == ExportType.Xlsx)
             {
-                var options = new XlsxExportOptions() { ShowColumnHeaders = ViewModel.XlsExportColumnHeaders, ShowBands = ViewModel.XlsExportBandHeaders };
+                var options = new XlsxExportOptions() { ShowColumnHeaders = ViewModel.XlsExportColumnHeaders, ShowBands = ViewModel.XlsExportBandHeaders, ShowTotalSummaries = ViewModel.XlsExportTotalSummaries };
                 DemoExportHelper.Export(treeList, options, (stream, control, options) => control.ExportToXlsx(stream, options));
             }
             else if (type == ExportType.Pdf)
@@ -56,11 +56,14 @@ namespace DemoCenter.Views
 
         private T CreateExportOptions<T>() where T : PageExportOptions, new()
         {
-            var options = new T();
-            options.ShowColumnHeaders = ViewModel.PageExportColumnHeaders;
-            options.ShowBands = ViewModel.PageExportBandHeaders;
-            options.FitToPageWidth = ViewModel.FitToPageWidth;
-            options.Landscape = ViewModel.Landscape;
+            var options = new T
+            {
+                ShowColumnHeaders = ViewModel.PageExportColumnHeaders,
+                ShowBands = ViewModel.PageExportBandHeaders,
+                FitToPageWidth = ViewModel.FitToPageWidth,
+                Landscape = ViewModel.Landscape,
+                ShowTotalSummaries = ViewModel.PageExportTotalSummaries
+            };
             return options;
         }
     }

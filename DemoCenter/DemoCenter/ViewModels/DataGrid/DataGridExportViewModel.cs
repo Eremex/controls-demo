@@ -22,6 +22,12 @@ namespace DemoCenter.ViewModels
         [ObservableProperty]
         private bool xlsExportBandHeaders = true;
 
+        [ObservableProperty]
+        private bool xlsExportTotalSummaries = true;
+
+        [ObservableProperty]
+        private bool xlsExportGroupSummaries = true;
+
         #endregion
 
         #region page export properties
@@ -31,6 +37,12 @@ namespace DemoCenter.ViewModels
 
         [ObservableProperty]
         private bool pageExportBandHeaders = true;
+
+        [ObservableProperty]
+        private bool pageExportTotalSummaries = true;
+
+        [ObservableProperty]
+        private bool pageExportGroupSummaries = true;
 
         [ObservableProperty]
         private bool fitToPageWidth = true;

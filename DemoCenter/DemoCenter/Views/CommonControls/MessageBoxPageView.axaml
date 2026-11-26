@@ -18,27 +18,29 @@
 	</Design.DataContext>
 	
 	<Grid ColumnDefinitions="*, 250">
-		<Grid RowDefinitions="*" Margin="0,40">
-			<Border HorizontalAlignment="Center"
-			        VerticalAlignment="Center"
-			        BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
-			        BorderThickness="1"
-			        CornerRadius="8">
-				<mxe:GroupBox Header="{Binding Title}"
-				              Classes="PropertiesGroup">
-					<mxe:GroupBox.Styles>
-						<Style Selector="mxe|GroupBox.PropertiesGroup/template/ContentPresenter#PART_HeaderPresenter">
-							<Setter Property="FontWeight" Value="Normal"></Setter>
-						</Style>
-					</mxe:GroupBox.Styles>
-					<internal:MessageWindowPresenter Text="{Binding Text}"
-					                                 MessageIcon="{Binding Icon}"
-					                                 Buttons="{Binding Buttons}"
-					                                 ButtonAlignment="{Binding ButtonAlignment}"
-					                                 DefaultButton="{Binding Result}"/>
-				</mxe:GroupBox>
-			</Border>
-		</Grid>
+        <Border HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Margin="0,40">
+            <StackPanel>
+                <mxe:GroupBox Header="{Binding Title}"
+                              Classes="PropertiesGroup" Padding="{DynamicResource GroupPadding}">
+                    <mxe:GroupBox.Styles>
+                        <Style Selector="mxe|GroupBox.PropertiesGroup/template/ContentPresenter#PART_HeaderPresenter">
+                            <Setter Property="FontWeight" Value="Normal"></Setter>
+                        </Style>
+                    </mxe:GroupBox.Styles>
+                </mxe:GroupBox>
+
+                <internal:MessageWindowPresenter Text="{Binding Text}"
+                                                 MessageIcon="{Binding Icon}"
+                                                 Buttons="{Binding Buttons}"
+                                                 ButtonAlignment="{Binding ButtonAlignment}"
+                                                 DefaultButton="{Binding Result}"/>
+            </StackPanel>
+        </Border>
 
         <ScrollViewer Grid.Column="1">
             <Border BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Outline/Neutral/Transparent/Medium}" Padding="{DynamicResource OptionsMargin}">

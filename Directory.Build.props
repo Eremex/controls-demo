@@ -18,11 +18,11 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <LangVersion>12.0</LangVersion>
-    <AvaloniaVersion>12.1.0</AvaloniaVersion>
+    <AvaloniaVersion>12.2.0</AvaloniaVersion>
     <AvaloniaSvgSkiaVersion>12.0.0.11</AvaloniaSvgSkiaVersion>
     <SkiaSharpVersion>3.119.4</SkiaSharpVersion>
     <MicrosoftCodeAnalysisVersion>4.3.0</MicrosoftCodeAnalysisVersion>
-    <EMXControlsVersion>1.5.53-preview3</EMXControlsVersion>
+    <EMXControlsVersion>1.5.86</EMXControlsVersion>
     <Version>$(EMXControlsVersion)</Version>
   </PropertyGroup>
 

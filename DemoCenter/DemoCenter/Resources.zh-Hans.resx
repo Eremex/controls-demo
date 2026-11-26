@@ -380,7 +380,7 @@
     <value>棒棒糖系列视图是一种时尚、节省空间的传统条形图替代方案。它不使用笨重的条形，而是采用顶端带有标记的细线来可视化数据点。您可以使用默认标记，或以SVG格式指定自定义标记。通过“方向”设置，您可以指定棒棒糖线条的方向（水平或垂直）。</value>
   </data>
   <data name="DataGridExportDescription" xml:space="preserve">
-    <value>此示例演示了 Data Grid 控件的导出功能。Data Grid 可以将数据导出为 XLSX (Microsoft Excel) 和 PDF 格式，同时保留数据整形选项，包括行分组、排序和单元格格式。</value>
+    <value>此示例演示了 Data Grid 控件的导出功能。Data Grid 可以将数据导出为 XLSX (Microsoft Excel) 和 PDF 格式，同时保留数据整形选项，包括行分组、排序和单元格格式。导出为XLSX时，还可以包含总计汇总（total summaries）和分组汇总（group summaries）——可通过相应选项来包含或排除它们。</value>
   </data>
   <data name="ExportProgressTitle" xml:space="preserve">
     <value>导出</value>
@@ -392,7 +392,7 @@
     <value>您想打开导出的文件吗？</value>
   </data>
   <data name="TreeListExportDescription" xml:space="preserve">
-    <value>树状列表（TreeList）支持将数据导出为XLSX（Microsoft Excel）和PDF格式。其Excel导出功能具备数据感知特性——可在输出的XLSX文档中保留控件的数据整形配置（节点层级结构、数据排序和数值格式化）。PDF渲染引擎遵循WYSIWYG（所见即所得）原则，确保树状列表元素在输出文档中的布局能够被精确还原。</value>
+    <value>树状列表（TreeList）支持将数据导出为XLSX（Microsoft Excel）和PDF格式。其Excel导出功能具备数据感知特性——可在输出的XLSX文档中保留控件的数据整形配置（节点层级结构、数据排序、数值格式化和总计汇总）。PDF渲染引擎遵循WYSIWYG（所见即所得）原则，确保树状列表元素在输出文档中的布局能够被精确还原。</value>
   </data>
   <data name="UseCasesGroupInfo_Desc" xml:space="preserve">
     <value>本演示应用模拟了一个抵押贷款计算器，它使用 Data Grid（数据网格）和 Cartesian Chart（直角坐标图表）控件构建。数据网格以表格形式呈现详细的还款计划。同步的图表会将此数据绘制出来，显示在贷款期限内本金和利息之间的关系。</value>
@@ -481,6 +481,14 @@
 • 支持的汇总类型：Sum、Min、Max、Count 和 Average。
 • 最终用户可以在运行时管理汇总：单击页脚单元格中的 Σ 按钮添加汇总，或选择“Σ → Customize”调用 Summary Editor 对话框。
 • 每一列都可以显示基于该列值计算的多个汇总。
+• 可以针对某一列计算汇总，并在另一列中显示结果。
+• 处理 CustomSummary 事件可计算自定义汇总。</value>
+  </data>
+  <data name="DataGridGroupSummariesDescription" xml:space="preserve">
+    <value>DataGrid 可以对每组行计算汇总，并将结果显示在相应分组下方的分组页脚行中。
+• 支持的汇总类型：Sum、Min、Max、Count 和 Average。
+• 每个分组级别都显示自己的汇总页脚行。
+• 最终用户可以在运行时管理分组汇总：单击分组页脚单元格中的 Σ 按钮添加汇总，或选择“Σ → Customize”调用 Summary Editor 对话框。
 • 可以针对某一列计算汇总，并在另一列中显示结果。
 • 处理 CustomSummary 事件可计算自定义汇总。</value>
   </data>
