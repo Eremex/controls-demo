@@ -18,8 +18,11 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
+      # See the comment in test.yml: restoring from the project picks the workload band it targets
+      # (net10.0-browser), whereas `workload install wasm-tools` follows the default SDK (11.x on
+      # the hosted runner) and leaves the project without wasm-tools-net10.
       - name: Install wasm-tools
-        run: dotnet workload install wasm-tools
+        run: dotnet workload restore $PROJECT_PATH
 
       - name: Publish .NET Project
         run: dotnet publish $PROJECT_PATH -f net10.0-browser -c Release_WASM --nologo -p:PublishTrimmed=false

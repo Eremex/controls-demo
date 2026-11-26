@@ -107,8 +107,12 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+      # The runner image ships the SDK 11 muxer next to the SDK 10 that setup-dotnet adds, and
+      # `dotnet` resolves to the newest one, so a plain `workload install wasm-tools` installs the
+      # net11 workload while the projects target net10.0-browser (NETSDK1147). Restoring from the
+      # project installs the band the project actually needs.
       - name: Install wasm-tools
-        run: dotnet workload install wasm-tools
+        run: dotnet workload restore ./Tests.Wasm/DemoCenter.Wasm.TestHost/DemoCenter.Wasm.TestHost.csproj
       - name: EMXDemo WASM Test
         env:
           WASM_TEST_RESULTS: ${{ github.workspace }}/Tests.Wasm/TestResults
