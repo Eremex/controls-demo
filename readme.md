@@ -83,7 +83,7 @@ Alternatively, open the application once, click **Done**, then go to **System Se
 
 Displays data from an item source as a two-dimensional table, providing rich data shaping and editing functionality.
 
-![thumb-datagrid](docs/images/thumb-datagrid.png) 
+![Data Grid](docs/images/data-grid.png) 
 
 - Large data sources support
 - Unbound data
@@ -105,7 +105,7 @@ Displays data from an item source as a two-dimensional table, providing rich dat
 
 Renders hierarchical data in the form of a tree. Tree List supports multiple data columns, while Tree View is a single-column control.
 
-![thumb-treelist](docs/images/thumb-treelist.png) 
+![Tree List and Tree View](docs/images/treelist.png) 
 
 - Binding to self-referential (flat) and hierarchical data sources
 - Unbound mode (allows you to manually supply data)
@@ -128,7 +128,7 @@ Renders hierarchical data in the form of a tree. Tree List supports multiple dat
 
 An efficient solution for browsing and editing properties of one or more objects.
 
-![thumb-propertygrid](docs/images/thumb-propertygrid.png)  
+![Property Grid](docs/images/propertygrid.png)  
 
 - Automatic generation of rows from public properties of a bound object(s)
 - Manual row creation mode
@@ -147,7 +147,7 @@ An efficient solution for browsing and editing properties of one or more objects
 
 The `CartesianChart`, `PolarChart` and `SmithChart` controls allow you to integrate the most popular interactive charts into your application's UI.
 
-![thumb-chartcontrol](docs/images/thumb-chartcontrol.png) 
+![Charts](docs/images/cartesianchart1.png) 
 
 - Displaying an unlimited number of data series simultaneously.
 - Supported series views: Line, Scatter Line, Point, Area, Step Line, Bar, Range Bar, Candlestick, and more.
@@ -164,7 +164,7 @@ The `CartesianChart`, `PolarChart` and `SmithChart` controls allow you to integr
 
 The Heatmap control allows you to create a two-dimensional [heat map](https://en.wikipedia.org/wiki/Heat_map), a chart that visualizes data using color. The control paints each data point within a 2D "map" with a color that corresponds to a value at this point.
 
-![thumb-chartcontrol](docs/images/thumb-heatmap.png) 
+![Heatmap](docs/images/heatmap-control.png) 
 
 - Custom color encoding
 - Grayscale colorization
@@ -184,7 +184,7 @@ The Heatmap control allows you to create a two-dimensional [heat map](https://en
 
 The menu inspired by the ribbon UI found in Microsoft Office products.
 
-![thumb-ribbon](docs/images/thumb-ribbon.png) 
+![Ribbon](docs/images/ribbon.png) 
 
 - Simplified and Classic views
 - Supported items: small and large buttons, toggle buttons, button groups, sub-menus, and more.
@@ -201,7 +201,7 @@ The menu inspired by the ribbon UI found in Microsoft Office products.
 
 Traditional toolbars and menus for your applications.
 
-![thumb-bars](docs/images/thumb-bars.png) 
+![Toolbars and Menus](docs/images/toolbars.png) 
 
 - Supported toolbar item types: buttons, check buttons, sub-menus, item groups, and more
 - Docking toolbars at the edges of a container
@@ -221,7 +221,7 @@ Traditional toolbars and menus for your applications.
 
 Classic docking interface inspired by the Microsoft Visual Studio IDE.
 
-![thumb-docking](docs/images/thumb-docking.png) 
+![Docking UI](docs/images/docking-ui.png) 
 
 - Dockable panels
 - Documents (embedded dock windows)
@@ -247,7 +247,7 @@ Classic docking interface inspired by the Microsoft Visual Studio IDE.
 
 `Graphics3DControl` can visualize 3D models in your Avalonia applications.
 
-![thumb-docking](docs/images/thumb-graphics3dcontrol.png) 
+![Graphics3DControl](docs/images/graphics3dcontrol.png) 
 
 - API to specify 3D models
 - Simple materials 
@@ -271,7 +271,7 @@ Classic docking interface inspired by the Microsoft Visual Studio IDE.
 
 Simple and advanced editors that allow users to edit almost everything - from text and numbers to date/time values and colors. You can use them as standalone controls, or as in-place editors.
 
-![thumb-editors](docs/images/thumb-editors.png)  
+![Data Editors](docs/images/data-editors.png)  
 
 - ButtonEditor
 - CheckEditor
@@ -290,7 +290,7 @@ Simple and advanced editors that allow users to edit almost everything - from te
 
 A collection of useful controls shipped with the Eremex Controls library allow you to create feature-rich applications.
 
-![thumb-utilitycontrols](docs/images/thumb-utilitycontrols.png) 
+![Utility Controls](docs/images/utility-controls.png) 
 
 - SplitButton
 - MxTabControl
@@ -307,7 +307,7 @@ A collection of useful controls shipped with the Eremex Controls library allow y
 
 A set of platform-agnostic services to display modal and non-modal windows, file dialogs, and custom message boxes, as well as to customize application-wide appearance settings directly from your ViewModels, without referencing any Avalonia window type.
 
-![thumb-appservices](docs/images/thumb-appservices.png) 
+![Application Services](docs/images/app-services-overview.png) 
 
 Services decouple your ViewModels from the underlying UI framework. You can invoke these services through well-defined interfaces to:
 
@@ -347,7 +347,7 @@ The DeltaDesign and Controls3D themes support both Light and Dark color schemes 
 
 | Light Theme Variant | Dark Theme Variant |
 |---|---|
-| ![thumb-lighttheme](docs/images/thumb-lighttheme.png) | ![thumb-darktheme](docs/images/thumb-darktheme.png) |
+| ![Light Theme](docs/images/theme-palette-helios.png) | ![Dark Theme](docs/images/theme-palette-helios-dark.png) |
 
 <!-- | ![thumb-lighttheme2](docs/images/thumb-lighttheme2.png) | ![thumb-darktheme2](docs/images/thumb-darktheme2.png) | -->
 
