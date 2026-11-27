@@ -12,9 +12,9 @@ The advanced controls - from Data Grid and Tree List to Charts and Docking UI - 
 
 ## About
 
-The current repository includes a Demo project that enables you to explore and test all the features of the Eremex Controls for Avalonia UI. The demo provides access to the fully functional version of the Eremex Controls Library, which you can use in your projects for evaluation purposes without time restrictions. Note that an unlicensed version of the Library displays trial messages.
+This repository contains the demo application for Eremex Controls for Avalonia UI: explore and test every feature of the library in a running app. The demo uses a fully licensed build of Eremex Controls, which you can also use in your own projects for evaluation with no time limit; without a license, the library displays trial messages.
 
-For more details about the Controls Library, [purchasing and licensing options](#product-purchasing-and-licensing), or any other inquiries, please feel free to [contact us](#contact-us).
+For details about the library, [purchasing and licensing options](#product-purchasing-and-licensing), or any other questions, feel free to [contact us](#contact-us).
 
 If you are developing an open-source project and wish to use the Eremex Controls library within it, you can apply for a free non-commercial license. See [Free Non-commercial Licenses for Open-Source Projects](#free-non-commercial-licenses-for-open-source-projects).
 
