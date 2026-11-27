@@ -19,7 +19,7 @@ For more details about the Controls Library, [purchasing and licensing options](
 If you are developing an open-source project and wish to use the Eremex Controls library within it, you can apply for a free non-commercial license. See [Free Non-commercial Licenses for Open-Source Projects](#free-non-commercial-licenses-for-open-source-projects).
 
 
-[![Controls - Light Theme](docs/images/controls-light-v1.3-sm.png)](docs/images/controls-light-v1.3.png)
+[![Controls - Light Theme](docs/images/controls-light-v1.5-sm.png)](docs/images/controls-light-v1.5.png)
   
 <!-- [![Controls - Dark Theme](docs/images/controls-dark-sm.png)](docs/images/controls-dark.png) -->
 
@@ -47,8 +47,6 @@ We've created a WASM (WebAssembly) version of this Demo, which you can run direc
 Certain example modules are disabled in the Online Demo, including:
 - Examples that demonstrate features not supported in WASM (for instance, the 3D engine).
 - Examples not optimized for display and interaction in a web browser.
-
-Known limitations: Hyperlinks are not supported.
 
 ### Download Desktop Demo
 
