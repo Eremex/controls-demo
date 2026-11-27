@@ -392,8 +392,6 @@ Along with color palettes, the DeltaDesign theme lets you change the UI density 
 - [Astra Linux <img src="docs/images/os-logo-astra_linux.svg" height=30>](https://astralinux.ru) <sup>*</sup>
 - [RED OS <img src="docs/images/os-logo-RED_OS.png" height=30>](https://redos.red-soft.ru) 
 
-<sup>*</sup> Including OS editions optimized for the Elbrus CPU.
-
 
 
 **macOS**
