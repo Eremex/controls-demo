@@ -23,6 +23,18 @@ If you are developing an open-source project and wish to use the Eremex Controls
   
 <!-- [![Controls - Dark Theme](docs/images/controls-dark-sm.png)](docs/images/controls-dark.png) -->
 
+## What's New in 1.5
+
+Version 1.5 delivers the capabilities our customers ask for most often:
+
+- **Color palettes and UI density** in the DeltaDesign theme - light and dark palettes and three density modes, so a product can be tuned to a customer's brand and screen.
+- **Total and group summaries** in Data Grid and Tree List, including XLSX and PDF export.
+- **Application Services** - show windows, dialogs, message boxes, and file dialogs from ViewModels without referencing Avalonia window types.
+- **Wayland support** in the Docking UI - dock panels in native Wayland sessions on Linux.
+- **Line customization** on charts (`LineStyle`), new tab sizing and icon display modes, and new `Graphics3DControl` capabilities: grid planes, camera rotation modes, hit testing, and selection.
+
+See the [version history](https://eremexcontrols.net/version-history/version-1.5/) for the full list of changes.
+
 ## Get Started
 
 ### Run Demo Online
@@ -91,6 +103,7 @@ Displays data from an item source as a two-dimensional table, providing rich dat
 - Fixed (frozen) columns
 - Search and data filtration
 - Data validation
+- Total and group summaries
 - Row drag-and-drop
 - Built-in and custom context menus
 - Export to XLSX, PDF, CSV, and image formats
@@ -113,6 +126,7 @@ Renders hierarchical data in the form of a tree. Tree List supports multiple dat
 - Fixed (frozen) columns
 - Data search and filtering
 - Data validation
+- Total summaries
 - Row drag-and-drop
 - Built-in and custom context menus
 - Export to XLSX, PDF, CSV, and image formats
@@ -151,6 +165,7 @@ The `CartesianChart`, `PolarChart` and `SmithChart` controls allow you to integr
 - Scrolling and zooming the entire view and individual axes
 - High-performance when displaying large data.
 - Real-time data visualization
+- Advanced line customization: thickness, dash pattern, line caps and joins (`LineStyle`)
 
 [Learn more...](docs/charts.md) 
 
@@ -226,10 +241,12 @@ Classic docking interface inspired by the Microsoft Visual Studio IDE.
 - Tab containers
 - Panel resizing and drag-and-drop
 - Dock hints
+- Customizable dock guides
 - Built-in context menus to perform operations on panels and Documents
 - MVVM support
 - Docking on multiple monitors
-- Save and restore layouts of dock panels between applicaion runs
+- Save and restore layouts of dock panels between application runs
+- Wayland support in native Linux sessions (Dock To and Float commands)
 
 [Learn more...](docs/docking.md)
 
@@ -250,6 +267,11 @@ Classic docking interface inspired by the Microsoft Visual Studio IDE.
 - Model rotation, panning and zooming with the mouse and keyboard at runtime
 - Rendering on a video card with the Vulkan SDK
 - MVVM pattern support for specifying 3D models
+- Grid plane visibility (XY, XZ, and YZ planes)
+- Camera rotation modes - around the camera target or around the point under the mouse pointer
+- Click-based element selection and hit testing
+
+> **Note**: `Graphics3DControl` renders with the Vulkan API. Standard macOS graphics drivers do not support Vulkan - install the [MoltenVK](https://github.com/KhronosGroup/MoltenVK) runtime (or the Vulkan SDK, which includes it) to run the 3D module on macOS.
 
 [Learn more...](docs/graphics3dcontrol.md)
 
@@ -281,7 +303,7 @@ A collection of useful controls shipped with the Eremex Controls library allow y
 ![thumb-utilitycontrols](docs/images/thumb-utilitycontrols.png) 
 
 - SplitButton
-- TabControl
+- MxTabControl
 - SplitContainerControl
 - GroupBox
 - CalendarControl
@@ -355,6 +377,12 @@ Applying a palette dynamically updates the color values of key UI elements, incl
 
 Color palettes are supported for both Light and Dark theme variants.
 
+### UI Density
+
+Along with color palettes, the DeltaDesign theme lets you change the UI density - make the layout more compact or more spacious. Three modes are available: `Compact`, `Standard` (default), and `Spacious`.
+
+![theme-ui-density](docs/images/theme-ui-density.png)
+
 
 ## Supported Operating Systems
 
@@ -374,19 +402,25 @@ Color palettes are supported for both Light and Dark theme variants.
 - [Astra Linux <img src="docs/images/os-logo-astra_linux.svg" height=30>](https://astralinux.ru) <sup>*</sup>
 - [RED OS <img src="docs/images/os-logo-RED_OS.png" height=30>](https://redos.red-soft.ru) 
 
+<sup>*</sup> Including OS editions optimized for the Elbrus CPU.
+
 
 
 **macOS**
 
+- macOS (Intel and Apple Silicon)
+
 **WebAssembly**
+
+- Modern desktop browsers
 
 ## System Requirements
 
 The following are system requirements to run the current Demo project, and use the Eremex Controls Library for Avalonia UI in your projects.
 
-- [.NET](https://dotnet.microsoft.com/en-us/download/dotnet) 8.0+
-- [Avalonia UI Framework](https://avaloniaui.net) v11.3.8+
-- Developement: IDEs that have Avalonia UI support (Visual Studio 2022 and higher, JetBrains Rider 2021.3 and higher).
+- [.NET](https://dotnet.microsoft.com/en-us/download/dotnet) 8.0 or later. The library targets .NET 8 and .NET 10; the Demo project requires .NET 10.
+- [Avalonia UI Framework](https://avaloniaui.net) v12.1.5 - the version verified with EMX Controls 1.5. Newer 12.x versions are allowed but not verified by our team.
+- Development: IDEs that have Avalonia UI support (Visual Studio 2022 and higher, JetBrains Rider 2021.3 and higher).
 
 
 ## Documentation
@@ -439,7 +473,7 @@ The terms and conditions for using the EMX Controls Library are fully defined in
 
 ### Free Non-commercial Licenses for Open-Source Projects
 
-To support open-source development, we offer free non-commercial licenses. If you are the author of an open-source project and wish to use our library within it, you can apply for a non-commecial license using the following service:
+To support open-source development, we offer free non-commercial licenses. If you are the author of an open-source project and wish to use our library within it, you can apply for a non-commercial license using the following service:
 
 - [Apply for an open-source project license](https://eremexcontrols.net/open-source-licensing/)
 
