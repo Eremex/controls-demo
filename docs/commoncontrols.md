@@ -1,50 +1,46 @@
 # Utility Controls
 
-The Eremex Avalonia Controls library ships with many multi-purpose utility controls that help you address a broad range of tasks.
+Multiple utility controls shipped with the Eremex Controls library help you create a functional and appealing UI.
 
 ![utility-controls](images/utility-controls.png)
 
-- `MxTabControl` — A control that allows you to combine panels into a tabbed UI.
-    - An unlimited number of tabs.
-    - Population of tabs and tab contents from an item source.
-    - Tab re-ordering via drag-and-drop.
-    - Tab layout modes: Stretch, Scroll and Multi-line.
-    - Tab 'Close' buttons.
-    - 'New Tab' button.
-    - Custom controls in the tab header area.
-    
-- `SplitContainerControl` — Separates two panels with a splitter.
-    - A user can drag the splitter to change size of the panels.
-    - Vertical or horizontal arrangement of the panels.
-    - Ability to collapse/expand one of the panels.
-    - An option to hide the splitter.
+- **MxTabControl** - Combines panels into a tabbed UI.
+    - An unlimited number of tabs
+    - Populating tabs and tab contents from an items source
+    - Tab re-ordering via drag-and-drop
+    - Tab layout modes: stretch, scroll, and multi-line
+    - Tab sizing modes and icon display modes
+    - 'Close tab' buttons and a 'New Tab' button
+    - Custom controls in the tab header area
 
-- `ColorEditor` — A standalone control that allows a user to pick a color. 
-    - The ColorEditor is used as part of the PopupColorEditor control, and it can be used as a standalone control as well.
-    - Three color palettes — Default, Standard, Custom.
-    - The Default color palette can be initialized in code.
-    - The Standard color palette displays predefined standard colors.
-    - The Custom color palette allows users to add and modify colors using the built-in Color Picker.
-    - Ability to specify colors in the RGB and HSB formats.
+- **MxSplitButton** - Combines two buttons in one control: the primary button executes the main action, the secondary button opens an associated dropdown menu or a popup control.
 
-- `CalendarControl` — A standalone control that allows a user to pick a date. 
-    - The CalendarControl is used as part of the DateEditor control. You can use it as a standalone control as well.
-    - Date selection in the calendar using the mouse and keyboard.
-    - Navigation bar allows for browsing through months and years.
-    - Three calendar views: month view, year view, and year range view.
-    - An option to limit the available date range.
+- **SplitContainerControl** - Separates two panels with a splitter.
+    - Dragging the splitter changes the size of the panels
+    - Vertical or horizontal arrangement
+    - Collapsing and expanding one of the panels
+    - An option to hide the splitter
 
-- `GroupBox` — A container for a group of controls.
-    - Displays a customizable header.
-    - Displays a line below the client region.
+- **ColorEditor** - A standalone control that allows a user to pick a color.
+    - Three color palettes - Default, Standard, and Custom
+    - The Custom palette lets users add and modify colors with the built-in color picker
+    - Colors can be specified in RGB and HSB formats
 
-- `MxMessageBox` - Displays a message box as a modal window.
-    - The dialog can display a text message, an icon, and a set of standard buttons.
-    - Full support for the Eremex visual themes.
-    - Simple and consistent API.
+- **CalendarControl** - A standalone control that allows a user to pick a date.
+    - Date selection with the mouse and keyboard
+    - Navigation bar to browse through months and years
+    - Month, year, and year range views
+    - An option to limit the available date range
 
-- `CircleProgressIndicator` - Displays the progress of an operation as a rotating circle.
+- **GroupBox** - A panel with a header that displays custom text.
+
+- **CircleProgressIndicator** - Displays the progress of an operation as a rotating circle.
+
+- **MxWindow** - A window that paints its title bar and borders with the Eremex visual themes, with options to customize the visibility and glyphs of the standard buttons.
+
+- **MxMessageBox** - Displays a message box as a modal window with a text message, an icon, and a set of standard buttons.
 
 ## Documentation
 
 - [Utility Controls](https://eremexcontrols.net/controls/utility-controls/)
+- [Windows and Dialogs](https://eremexcontrols.net/controls/windows-and-dialogs/)

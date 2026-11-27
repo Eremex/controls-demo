@@ -95,8 +95,7 @@ You can embed the Eremex data editors in cells in container controls (Data Grid,
     - Text editors support masked input, which prevents users from entering invalid values.
     - Masks can be used to format cell text in container controls in display mode (when text editing is not active).
     - Supported mask types: Numeric and DateTime.
-    - DateEditor uses a DateTime input mask by default.
-    - SpinEditor uses a Numeric input mask by default.
+    - DateEditor always operates in masked mode (`MaskType.DateTime`), SpinEditor - in `MaskType.Numeric`. Since v1.5 an incompatible mask type cannot be applied to these editors.
 
 <br/>
 

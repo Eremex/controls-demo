@@ -1,28 +1,31 @@
 # Data Grid
 
-`DataGridControl` allows you to display data from any data source in a column and row format. It provides high-performance data shaping and rich editing functionality. The control supports data sorting and grouping by any number of columns. The built-in auto-filter row and search panel allows a user to quickly locate data. You can embed any editor in grid cells to format and edit cell data in a specific manner.
+`DataGridControl` allows you to display data from an items source in columns and rows. It provides rich data shaping and editing functionality: users can rearrange columns, edit, sort, group, and search data.
 
 ![data grid](images/data-grid.png)
 
-- Data Binding — You can bind the control to an IList, IBindingList, DataTable or any IEnumerable data source.
-- Data Sorting — Allows you to sort data against an unlimited number of columns.
-- Data Grouping — The data grouping feature combines rows with identical column values into the same data groups. You can group the control's data against multiple columns.
-- Styles — Allow you to customize the appearance settings of the control's elements in various states.
-- Data Edit Operations — A user can edit cell values if data editing is enabled. You can embed Eremex and custom editors in cells to edit and present cell values in a specific manner.
-- Data Validation — The validation mechanism helps you check a user's input and data source's values, and show errors in cells.
-- Built-in and Custom Context Menus.
-- Unbound Columns — You can add unbound columns (those that are not bound to data source fields) and populate them with data manually, using an event.
-- Column Resize and Move Operations.
-- Search Panel — Helps a user quickly locate rows by the data they contain.
-- Auto Filter Row — A special row that allows a user to filter data against columns.
-- Row Drag-and-Drop - A user can drag a row within the control and to another control.
-- Column Bands — Allow you to visually group multiple columns under a common header.
-- Fixed Columns — Allow specific columns to remain visible and anchored to the left or right edge of the control while other columns scroll horizontally.
-- Column Header Templates – Allow you to display custom content in column headers, including images.
-- Multiple Row Selection (Highlight) — You can enable multiple row selection mode to allow a user to select (highlight) multiple rows at one time.
-- Data Annotation Attribute Support — The DataGrid control takes into account dedicated Data Annotation attributes applied to the data source's properties. You can use Data Annotation attributes to specify custom visibility, position, read-only state, and display name for auto-generated columns.
-- High Performance for Large Volumes of Data — The data virtualization mechanism for vertical and horizontal scrolling boosts the control's performance when displaying large numbers of rows and columns.
-- Export to XLSX, PDF, CSV, and image formats
+- **Data Binding** - Bind the control to an IList, IBindingList, DataTable, or any IEnumerable data source.
+- **Data Sorting** - Sort data against an unlimited number of columns.
+- **Data Grouping** - Combine rows with identical column values into data groups, against multiple columns.
+- **Summaries** - Total and group summaries (aggregate functions calculated over rows). Apply summaries in code, and let users add them at runtime.
+- **Filtering** - Filter data with dropdown menus that display unique column values.
+- **Search Panel** - Quickly locate rows by the data they contain.
+- **Auto Filter Row** - A special row that allows a user to filter data against columns.
+- **Styles** - Customize the appearance of the control's elements in various states.
+- **Data Edit Operations** - Embed Eremex and custom editors in cells to edit and present values.
+- **Data Validation** - Check a user's input and data source values, and show errors in cells.
+- **Built-in and Custom Context Menus**
+- **Unbound Columns** - Add columns that are not bound to data source fields and populate them manually.
+- **Column Resize and Move Operations**
+- **Row Drag-and-Drop** - Drag a row within the control and to another control.
+- **Column Bands** - Visually group multiple columns under a common header.
+- **Fixed Columns** - Keep specific columns visible at the left or right edge while other columns scroll horizontally.
+- **Best Fit** - Resize columns to the minimum width required to display their contents without truncation.
+- **Column Header Templates** - Display custom content in column headers, including images.
+- **Multiple Row Selection** - Select (highlight) multiple rows at once.
+- **Data Annotation Attribute Support** - Control visibility, position, read-only state, and display name for auto-generated columns.
+- **High Performance for Large Volumes of Data** - Vertical and horizontal data virtualization.
+- **Export to XLSX, PDF, CSV and Image Formats**
 
 ## Documentation
 

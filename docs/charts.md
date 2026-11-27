@@ -1,89 +1,54 @@
 # Charts
 
-The Eremex Controls Library for Avalonia UI includes powerful chart controls that help you visualize data as 2D charts. The chart controls' graphics rendering is optimized to display large data. The controls maintain high performance even when series contain millions of points.
+The library includes chart controls that visualize data as 2D charts. Their rendering is optimized for large data - the controls maintain high performance even when series contain millions of points.
 
 ## CartesianChart
 
-Allows you to plot a diagram on a Cartesian coordinate system.
+`CartesianChart` plots a diagram in a Cartesian coordinate system.
 
 ![cartesianchart1](images/cartesianchart1.png)
 
-### Features
-
 - An unlimited number of data series within each chart
-- Supported series views: Line, Scatter Line, Point, Area, Step Line, Bar, Range Bar, Candlestick, and more.
-- Displaying multiple axes simultaneously
-- Swapping X and Y axes
-- Reversing axes
-- Available axis types: Numeric, Date-Time, Time Span, Qualitative, and Logarithmic
-- Scrolling and zooming a View (all axes at the same time)
-- Scrolling and zooming individual axes
+- Multiple axes support
+- Swapping and reversing the X and Y axes
+- Axis types: Numeric, Date-Time, Time Span, Qualitative, and Logarithmic
+- Scrolling and zooming all axes at the same time, or individual axes
 - High-performance when displaying large data
-- Real-time data visualization
+- Real-time data visualization, including a special data adapter with a moving viewport
+- Crosshair
 - Strips and constant lines
-- Empty points (gaps)
+- Advanced line customization with `LineStyle`: thickness, dash pattern, line caps and joins
+- Empty points (gaps) - data points with undefined values leave visible gaps in a series
 - Using the MVVM design pattern to provide data and customize chart options
-- Displaying rapidly changing real-time data. Use a special data adapter to implement a moving viewport
 
-### Series Types
+Series types: Line, Scatter Line, Point (with SVG marker support), Area, Step Line, Step Area, Range Area, Stacked Area, Full-Stacked Area, Bar, Range Bar, Candlestick, and Lollipop.
 
-* Line Series View
-* Scatter Line Series View
-* Point Series View (with SVG marker support)
-* Area Series View
-* Step Line Series View
-* Step Area Series View
-* Range Area Series View
-* Stacked Area Series View
-* Full-Stacked Area Series View
-* Bar Series View
-* Range Bar Series View 
-* Candlestick Series View
-* Lollipop Series View
-
-### Documentation
-
-- [Cartesian Chart](https://eremexcontrols.net/controls/charts/cartesian-chart/)
-
+See [Cartesian Chart](https://eremexcontrols.net/controls/charts/cartesian-chart/) for details.
 
 ## PolarChart
 
-Plots a diagram on a polar coordinate system.
+Plots a diagram in a polar coordinate system.
 
 ![polarchart1](images/polarchart1.png)
 
-### Features
-
 - Crosshair
 - Strips and constant lines
-- Using the MVVM design pattern to provide data and customize chart options
 - Sweep direction and start angle (for the X axis)
+- MVVM support
 
-### Series Types
-
-- Point Series View
-- Line Series View
-- Scatter Line Series View
-- Area Series View
-- Range Area Series View
+Series types: Point, Line, Scatter Line, Area, and Range Area.
 
 ## SmithChart
 
-Allows you to create a Smith chart.
+Creates a Smith chart.
 
 ![smithchart1](images/smithchart1.png)
 
-### Features
-
 - Crosshair
-- Using the MVVM design pattern to provide data and customize chart options
+- MVVM support
 
-### Series Types
-
-- Point Series View
-- Scatter Line Series View
+Series types: Point and Scatter Line.
 
 ## Documentation
 
 - [Charts](https://eremexcontrols.net/controls/charts/)
-
